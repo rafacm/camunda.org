@@ -1,0 +1,159 @@
+/** 
+ * loaded to remove angular template flicker on site load
+ * @see http://docs.angularjs.org/api/ng.directive:ngCloak
+*/
+[ng\:cloak], [ng-cloak], .ng-cloak {
+  display: none;
+}
+
+.hero-unit h2 {
+  padding-top: 1.5em;
+  padding-bottom: 1em;
+  margin: 0;
+  font-size: 30px;
+  color: #535353;
+  font-family: 'helvetica neue', Helvetica, Arial;
+  font-weight: 300;
+}
+
+.center {
+  text-align: center;
+}
+
+.spacer {
+  display: inline-block;
+  width: 6em;
+  height: 3em;
+}
+
+
+code.nocode {
+  display: inline-block;
+  background-color: #99c2ff;
+  border: 1px solid #7699d1;
+  -webkit-border-radius: 2px;
+  -moz-border-radius: 2px;
+  border-radius: 2px;
+  color: #223f7a;
+
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  border-radius: 3px;
+  border: 1px solid #e1e1e8;
+}
+
+/** loading icon integration */
+.icon-loading {
+  background-image: url(../img/ajax-loader.gif);
+  width: 16px; 
+  height: 16px;
+  line-height: 16px;
+  background-position: 0px 0px;
+}
+
+/** help system */
+.help-toggle {
+  display: inline-block;
+  margin-left: 5px;
+
+  cursor: help;
+  opacity: 0.6;
+}
+
+.help-toggle:hover {
+  opacity: 1;
+}
+/** end help system */
+
+/** utilities */
+/** for image replacement */
+.ir {
+  display: block;
+  text-indent: -999em;
+  overflow: hidden;
+  background-repeat: no-repeat;
+  text-align: left;
+  direction: ltr;
+}
+/** end utilities */
+
+/**
+ * shared style declarations
+*/
+html, body {
+  height:100%;
+  min-height: 100%;
+}
+
+.actions .btn {
+  margin-bottom: 5px;
+}
+
+.breadcrumbs {
+  margin-top: 60px;
+}
+
+@media (max-width: 979px) {
+  .breadcrumbs {
+    margin-top: 0px;
+  }
+}
+
+@media (max-width: 480px) {
+  .footer {
+    padding-top: 20px;
+    padding-bottom: 20px;
+  }
+}
+
+@media (max-width: 767px) {
+  .footer {
+    margin-left: -20px;
+    margin-right: -20px;
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+}
+
+.footer {
+  padding: 70px 0;
+  margin-top: 70px;
+  border-top: 1px solid #E5E5E5;
+  background-color: whiteSmoke;
+}
+
+.wrapper {
+  min-height: 100%;
+  height: auto !important; /* ie7 fix */
+  height: 100%;
+  margin: 0 auto -43px;
+}
+
+.push-down {
+  height: 60px;
+}
+
+/**
+ * Logo styling
+*/
+.navbar .brand {
+  display: block;
+  float: left;
+
+  background: no-repeat url('../img/fruit-shop-logo-2.png');
+  width: 130px;
+  height: 39px;
+  padding: 0;
+}
+
+/**
+ * form styling
+*/
+form input.ng-dirty.ng-invalid {
+  background-color: #FFDEDE;
+  color: #000;
+}
+
+input.ng-invalid-required {
+  border-color: #f00;
+}

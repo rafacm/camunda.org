@@ -1,0 +1,147 @@
+<div class="hero-unit">
+
+	<div class="center"> 
+		<h1>camunda bpm platform</h1>
+		<h2>BPM with Java: Simply Awesome!</h2>
+	</div>
+
+	<div class="center"> 
+		<div id="myCarousel" class="carousel slide">
+	    	<!-- Carousel items -->
+	    	<div class="carousel-inner">
+	    	<div class="active item">Simple Programming Model</div>
+	    	<div class="item">Next generation Process Engine Middleware</div>
+	    	<div class="item">Business &amp; IT Alignment</div>
+	    	</div>
+	    	<!-- Carousel nav -->
+	    	<a class="carousel-control left" href="#myCarousel" data-slide="prev">&lsaquo;</a>
+	    	<a class="carousel-control right" href="#myCarousel" data-slide="next">&rsaquo;</a>
+		</div>
+	</div>
+
+	<div class="center">
+        <a class="btn btn-large" href="https://github.com/camunda/bpm-platform">
+           <i class="icon-github-sign"></i> View on GitHub
+            </a>
+            <span class="spacer"></span>
+
+            <a class="btn btn-large btn-primary" href="http://fox.camunda.com/download/old/camunda-bpm-platform-tomcat7-7.0.0-SNAPSHOT.tar.gz">
+              <i class="icon-download-alt icon-large"></i> Download
+            </a>
+
+    </div>
+
+
+</div>
+
+ <h1 id="the-basics">Bootstrap a Process Application</h1>
+ <p>
+ A process application is a Java web application that includes BPMN 2.0 processes. 
+ Assuming that you use apache maven as build tool, your process application could look like this:
+ </p>
+    <div class="row example">
+          <div class="span8 app-source" app-source="Project-Layout pom.xml web.xml processes.xml oneTaskProcess.bpmn20.xml" annotate="hello.annotation"></div>     
+     
+    </div>
+
+
+<div class="bootstrap-code">
+    <!-- ============== Hello ============== -->
+    <script type="text/xml" id="Project-Layout">
+  my-application/
+  ├── src/
+  │   └─ main/
+  │      ├── java/
+  │      ├── resources/        
+  │      │   ├── META-INF/
+  │      │   │   └── processes.xml
+  │      │   └── oneTaskProcess.bpmn20.xml
+  │      └─  webapp/
+  │          └─  WEB-INF/
+  │              └── web.xml
+  └──  pom.xml
+  </script>
+
+    <script type="text/xml" id="pom.xml">
+<project xmlns="http://maven.apache.org/POM/4.0.0" 
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <name>camunda bpm platform - examples - simple servlet process application</name>
+  
+  <groupId>org.camunda.bpm</groupId>
+  <artifactId>simple-process-application</artifactId>
+  <packaging>war</packaging>
+
+  <dependencies>
+    <dependency>
+      <groupId>org.camunda.bpm</groupId>
+      <artifactId>camunda-engine</artifactId>
+      <version>7.0.0-SNAPSHOT</version>
+      <scope>provided</scope>
+    </dependency>
+  </dependencies>
+
+</project>
+    </script>
+
+    <script type="text/xml" id="processes.xml">
+<process-application 
+  xmlns="http://www.camunda.org/schema/1.0/ProcessApplication" 
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+
+  <process-archive name="example">  
+    <process-engine>default</process-engine>
+    <properties>
+      <property name="isScanningEnabled">true</property>
+    </properties>
+  </process-archive>
+
+</process-application>
+    </script>
+
+    <script type="text/xml" id="oneTaskProcess.bpmn20.xml">
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions
+  xmlns="http://www.omg.org/spec/BPMN/20100524/MODEL"
+  xmlns:activiti="http://activiti.org/bpmn"
+  targetNamespace="Examples">
+
+  <process id="oneTaskProcess" name="The One Task Process">
+  
+    <startEvent id="theStart" />
+    <sequenceFlow id="flow1" sourceRef="theStart" targetRef="theTask" />
+    <userTask id="theTask" name="My User Task" />    
+    <sequenceFlow id="flow2" sourceRef="theTask" targetRef="theEnd" />
+    <endEvent id="theEnd" />
+    
+  </process>
+
+</definitions>
+    </script>
+
+    <script type="text/xml" id="web.xml">
+<web-app xmlns="http://java.sun.com/xml/ns/javaee"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://java.sun.com/xml/ns/javaee 
+                      http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd" version="3.0"> 
+    
+  <listener>
+    <listener-class>org.camunda.bpm.application.spi.servlet.ServletProcessApplication</listener-class>
+  </listener>
+    
+</web-app>
+    </script>
+
+
+    <script type="text/ng-template" id="hello.annotation">
+      { "Project-Layout":
+          { "pom.xml": "Decriptor file required by apache maven. Maven is the de-facto standard for declarative dependency management in the Java World.", 
+            "processes.xml": "Deployment descriptor for the Process Application deployment.",
+            "web.xml": "Deployment Descriptor for Java Web Applications.",
+            "oneTaskProcess.bpmn20.xml": "This is the BPMN 2.0 Process Definition!"
+          }
+      }
+    </script>
+  </div>
