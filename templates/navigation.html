@@ -13,7 +13,47 @@
       <div class="nav-collapse collapse">
         <ul class="nav">
           <ul class="nav" ng-controller="NavigationController">
-            <li ng-class="activeClass('')"><a href="#/">Home</a></li>    
+            <li ng-class="activeClass('/')"><a href="index.html">Home</a></li>    
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">Model <b class="caret"></b></a>
+              <ul class="dropdown-menu">                
+                <li><a href="#">Introduction to BPMN 2.0</a></li>  
+                <li><a href="#">Modeling Patterns</a></li>  
+                <li class="divider"></li>    
+                <li class="nav-header">BPMN 2.0 Modeler</li>           
+               
+              </ul>
+            </li>
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">Implement <b class="caret"></b></a>
+              <ul class="dropdown-menu">
+                <li><a href="#">Overview</a></li>
+                <li><a href="#">Tutorial</a></li>         
+                <li><a href="#">Implementation Patterns</a></li>      
+                <li class="divider"></li>    
+                <li class="nav-header">Process Engine</li>
+                <li><a href="#">BPMN 2.0 Implementation Reference</a></li>
+                <li><a href="#">Java API</a></li>    
+                <li><a href="#">REST API</a></li>  
+                <li class="nav-header">Programing Model</li>
+                <li><a href="#">Spring &amp; CDI</a></li>    
+                <li><a href="#">OSGi</a></li>  
+                <li><a href="#">Java Script</a></li>    
+              </ul>
+            </li>  
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">Run <b class="caret"></b></a>
+              <ul class="dropdown-menu">
+                <li><a href="#">Overview</a></li>
+                <li><a href="#">Runtime Patterns</a></li>       
+                <li class="divider"></li>    
+                <li class="nav-header">Tasklist</li>  
+                <li><a href="#">Human Task Management</a></li>
+                <li class="nav-header">Cockpit</li>   
+                <li><a href="#">Monitoring &amp; Operations</a></li>
+              </ul>
+            </li>          
+            <li ng-class="activeClass('/')"><a href="run.html">Community</a></li>
             <li><a href="http://www.camunda.com/fox/services/support/" style="color:red">Services</a></li>             
           </ul>
         </ul>
