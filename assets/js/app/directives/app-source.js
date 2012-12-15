@@ -112,7 +112,7 @@ angular.module('camundaorg.directives')
 
           // hack around incorrect tokenization
           content = content.replace('.done-true', 'doneTrue');
-          if(filename != 'Project-Layout') {
+          if(filename.indexOf('Project-Layout')==-1) {
             content = prettyPrintOne(escape(content), undefined, true);
           }
           
@@ -128,7 +128,7 @@ angular.module('camundaorg.directives')
             content = content.replace(regexp, function(_, before, token, after) {
               var token = "__" + (counter++) + "__";
               popovers[token] =
-                '<code class="nocode" rel="popover" title="' + escape('<code>' + key + '</code>') +
+                '<code class="nocode" rel="popover" data-trigger="hover" title="' + escape('<code>' + key + '</code>') +
                 '" data-content="' + escape(text) + '">' + escape(key) + '</code>';
               return before + token + after;
             });
@@ -140,7 +140,7 @@ angular.module('camundaorg.directives')
 
           panes.push(
             '<div class="tab-pane' + (!index ? ' active' : '') + '" id="' + id(filename) + '">' +
-              '<pre class="prettyprint linenums nocode">' + content +'</pre>' +
+              '<pre class="linenums nocode">' + content +'</pre>' +
             '</div>');
         });
 

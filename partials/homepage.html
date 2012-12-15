@@ -1,7 +1,7 @@
 <div class="hero-unit">
 
 	<div class="center"> 
-		<h1>camunda bpm platform</h1>
+		<h1>camunda BPM platform</h1>
 		<h2>BPM with Java: Simply Awesome!</h2>
 	</div>
 
@@ -28,26 +28,148 @@
             <a class="btn btn-large btn-primary" href="http://fox.camunda.com/download/old/camunda-bpm-platform-tomcat7-7.0.0-SNAPSHOT.tar.gz">
               <i class="icon-download-alt icon-large"></i> Download
             </a>
-
     </div>
 
 
 </div>
 
- <h1 id="the-basics">Bootstrap a Process Application</h1>
- <p>
- A process application is a Java web application that includes BPMN 2.0 processes. 
- Assuming that you use apache maven as build tool, your process application could look like this:
- </p>
-    <div class="row example">
-          <div class="span8 app-source" app-source="Project-Layout pom.xml web.xml processes.xml oneTaskProcess.bpmn20.xml" annotate="hello.annotation"></div>     
+<section id="play">
+    <div class="page-header">
+      <h1>Play the numberguessing game</h1>
+    </div>
+
+  <div class="span12" ng-controller="NumberguessAppController">
+    <div id="continue-game">
+      <a class="btn btn-warning continue-game" href="#play" ng-show="showContinueButton()">
+        <i class="icon-arrow-up"></i>Continue the Game
+      </a>
+    </div>
+    <div style=" position:absolute">
+      
+      <div style="left:55px; top:120px; position:relative; z-index:2" ng-show="inactive()">
+        <a class="btn btn-warning" ng-click="showStartDialog()">Begin</a>
+      </div>
+      <div style="position:relative; top:-120px; left:-32px; z-index:2" ng-show="startDialog()">
+        <div class="popover top" style="display:block; width:250px">
+            <div class="arrow"></div>
+            <button type="button" class="close popover-title pull-right" ng-show="startDialog()" ng-click="cancel()">×</button>
+            <h3 class="popover-title">Start event</h3>        
+            <div class="popover-content">
+              <p> A <strong>Start Event</strong> allows you to define where a process starts.</p>              
+              <p>If you click on the button below, a new process instance is started.</p>
+              <p class="center padded row">
+                 <a class="btn btn-warning" ng-click="startProcess()"><i class="icon-play"></i>Start</a>
+              </p>              
+            </div>
+          </div>
+      </div>
+      <div id="ServiceTask_1" style="position:relative; top:-150px; left:65px; display:none; z-index:2">
+        <div class="popover top" style="display:block; width:300px">
+            <div class="arrow"></div>
+            <button type="button" class="close popover-title pull-right" ng-show="startDialog()" ng-click="cancel()">×</button>
+            <h3 class="popover-title">Service Task</h3>        
+            <div class="popover-content">
+              <p> A <a href="index.html#implementing-a-service-task" target="_self">Service Task</a> executes some program function or routine.</p>              
+              <p>This service task calls a method of a Java class that generates a random number.</p>
+              <p class="center padded row">
+                 <a class="btn btn-warning" ng-click="generateRandomNumber()"><i class="icon-play"></i> continue</a>
+              </p>              
+            </div>
+          </div>
+      </div>
+
+      <div id="animations" style="position:relative;" >
+        
+      </div>
      
     </div>
 
+    <!--<img src="/process-engine-rest/process/numberGuessing/diagram" />-->
+    <img src="/assets/img/app/homepage/numberGuessing.png" />
+    
+  </section>
+
+  <section id="setup" style="margin-top:280px">
+    <div class="page-header">
+      <h1 id="the-basics">1. Get some setup!</h1>
+    </div>
+
+    <div class="row example">
+      <div class="span9">
+        <p>
+         A process application is an ordinary Java Web Application (deployed as a .WAR file) that includes BPMN 2.0 processes. 
+         Assuming that you use apache maven as build tool, your process application could look like this:
+        </p>
+        <div class="app-source" app-source="Project-Layout pom.xml web.xml processes.xml" annotate="hello.annotation"></div>     
+      </div>
+      <div class="span3">
+          <h3>Watch</h3>
+          Watch as we setup this project in eclipse:
+
+          <h3>There's more...</h3>
+          <ul>
+            <li><a href="">Documentation on Process Applications</a></li>
+            <li><a href="">Java EE 6 Process Applications</a></li>
+          </ul>          
+      </div>          
+    </div>
+  </section>
+
+  <section id="create-process-model">
+   <div class="page-header">
+      <h1>2. Creating a process model</h1>
+   </div>
+   <p>
+    Here we show a 90 seconds Video with Jakob modeling the Process in Eclipse. 
+   </p>
+  </section>
+
+  <section id="implementing-a-service-task">
+   <div class="page-header">      
+      <h1>3. Implementing a Service Task</h1>   
+   </div>
+   <div class="row example">
+      <div class="span9">
+        <p> 
+          Service tasks allow you to call some piece of programming code from the process model. Most of the time you will implement service tasks using Java code. The Java code is able to communicate with the current process instance using the 
+          <code>DelegateExecution</code> object.
+        </p>
+        <div class="app-source" app-source="GenerateRandomNumberDelegate.java Project-Layout-with-Service-Task" annotate="hello.annotation"></div>     
+      </div>
+      <div class="span3">      
+        <h3>Watch</h3>
+          Watch as we add this service task to the process:
+        <h3>There's more...</h3>
+        <ul>            
+          <li><a href="">Documentation on Service Tasks</a></li>
+          <li><a href="">Service Tasks with Spring and CDI</a></li>
+          <li><a href="">Asynchronous Service Tasks</a></li>
+          <li><a href="">Web Services</a></li>
+          <li><a href="">Legacy Systems</a></li>
+        </ul>        
+          
+      </div>                
+    </div>
+  </section>
+
+  <section id="gateways">
+   <div class="page-header">
+      <h1>4. Adding Gateways and Conditions</h1>
+   </div>
+  
+  </section>
+
+  <section id="implementing-a-user-task">
+   <div class="page-header">
+      <h1>5. Implementing a User Task</h1>
+   </div>
+  
+  </section>
+ 
 
 <div class="bootstrap-code">
-    <!-- ============== Hello ============== -->
-    <script type="text/xml" id="Project-Layout">
+<!-- ============== Hello ============== -->
+<script type="text/xml" id="Project-Layout">
   my-application/
   ├── src/
   │   └─ main/
@@ -60,9 +182,11 @@
   │          └─  WEB-INF/
   │              └── web.xml
   └──  pom.xml
-  </script>
+</script>
 
-    <script type="text/xml" id="pom.xml">
+
+<!-- ======================================================= -->
+<script type="text/xml" id="pom.xml">
 <project xmlns="http://maven.apache.org/POM/4.0.0" 
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
   xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
@@ -84,9 +208,10 @@
   </dependencies>
 
 </project>
-    </script>
+</script>
 
-    <script type="text/xml" id="processes.xml">
+<!-- ======================================================= -->
+<script type="text/xml" id="processes.xml">
 <process-application 
   xmlns="http://www.camunda.org/schema/1.0/ProcessApplication" 
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
@@ -99,9 +224,10 @@
   </process-archive>
 
 </process-application>
-    </script>
+</script>
 
-    <script type="text/xml" id="oneTaskProcess.bpmn20.xml">
+<!-- ======================================================= -->
+<script type="text/xml" id="oneTaskProcess.bpmn20.xml">
 <?xml version="1.0" encoding="UTF-8"?>
 <definitions
   xmlns="http://www.omg.org/spec/BPMN/20100524/MODEL"
@@ -119,29 +245,91 @@
   </process>
 
 </definitions>
-    </script>
+</script>
 
-    <script type="text/xml" id="web.xml">
+<!-- ======================================================= -->
+<script type="text/xml" id="web.xml">
 <web-app xmlns="http://java.sun.com/xml/ns/javaee"
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xsi:schemaLocation="http://java.sun.com/xml/ns/javaee 
                       http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd" version="3.0"> 
     
   <listener>
-    <listener-class>org.camunda.bpm.application.spi.servlet.ServletProcessApplication</listener-class>
+    <listener-class>
+      org.camunda.bpm.application.spi.servlet.ServletProcessApplication
+    </listener-class>
   </listener>
     
 </web-app>
-    </script>
+</script>
 
+<!-- ============== Hello ============== -->
+<script type="text/xml" id="Project-Layout-with-Service-Task">
+  my-application/
+  ├── src/
+  │   └─ main/
+  │      ├── java/
+  │      │   └── GenerateRandomNumberDelegate.java
+  │      ├── resources/        
+  │      │   ├── META-INF/
+  │      │   │   └── processes.xml
+  │      │   └── oneTaskProcess.bpmn20.xml
+  │      └─  webapp/
+  │          └─  WEB-INF/
+  │              └── web.xml
+  └──  pom.xml
+</script>
 
-    <script type="text/ng-template" id="hello.annotation">
-      { "Project-Layout":
-          { "pom.xml": "Decriptor file required by apache maven. Maven is the de-facto standard for declarative dependency management in the Java World.", 
-            "processes.xml": "Deployment descriptor for the Process Application deployment.",
-            "web.xml": "Deployment Descriptor for Java Web Applications.",
-            "oneTaskProcess.bpmn20.xml": "This is the BPMN 2.0 Process Definition!"
-          }
-      }
-    </script>
-  </div>
+<script type="text/xml" id="GenerateRandomNumberDelegate.java">
+public class GenerateRandomNumberDelegate implements JavaDelegate {
+
+  public void execute(DelegateExecution execution) throws Exception {
+    
+    Random random = new Random();
+    int secretNumber = random.nextInt(100);
+    
+    execution.setVariable("secretNumber", secretNumber);
+    
+    System.out.println("Random number generated: "+secretNumber);
+    
+  }
+
+}
+</script>
+
+<!-- ======================================================= -->
+<script type="text/ng-template" id="hello.annotation">
+{ "Project-Layout":
+  { "pom.xml": "Decriptor file required by apache maven. Maven is the de-facto standard for declarative dependency management in the Java World.", 
+    "processes.xml": "Deployment descriptor for the Process Application deployment.",
+    "web.xml": "Deployment Descriptor for Java Web Applications.",
+    "oneTaskProcess.bpmn20.xml": "This is the BPMN 2.0 Process Definition!"
+  },
+ "pom.xml":
+  { "war": "Process Applications are most commonly packaged as Java Web Applications (WAR files). Other deployment options are available. On the Java EE 6 platform, you can use plain JAR or advanced EAR deployments as well." ,
+    "camunda-engine": "The process engine is the component responsible for picking up your BPMN 2.0 processes and executing them.",
+    "provided": "The process engine can be either <ul><li>provided by the servlet container or</li><li>embedded inside your process application.</li></ul> <p />Here, we use a shared process engine that is provided by the servlet container."
+  },
+  "web.xml":
+  { "ServletProcessApplication": "A Servlet Process Application is a process application running inside a Servlet Container like Apache Tomcat. The Servlet Process Application is bootrapped using a servlet listener. This means that when your application starts, all BPMN 2.0 processes are automatically picked up (as defined in your <code>processes.xml</code> file) and deployed to the process engine."
+  },
+  "processes.xml":
+  {
+    "process-archive": "A process archive collects a set of process definitions and performs a deployment to the process engine. Process definitions can either be listed explicitly or discovered automatically using scanning (see <code>isScanningEnabled</code> below). You can define multiple process archives in your processes.xml.",
+    "default" : "You can define which process engine the process archive should be deployed to.",
+    "isScanningEnabled" : "If set to true, your application is automatically scanned for process definitions."
+  },
+  "GenerateRandomNumberDelegate.java":
+  { "JavaDelegate" : "The JavaDelegate interface is provided by the process engine and needs to be implemented by Java Service Tasks.",
+    "DelegateExecution" : "The DelegateExecution object allows your class to communicate with the current process instance. It can be used for accessing and manipulating process variables.",
+    "setVariable" : "Here, we create a new process variable named <code>secretNumber</code> and assign it a randomly generated number between 0 and 100. The value of the process variable will be available to all subsequently executed tasks in the process instance."
+
+  },
+  "Project-Layout-with-Service-Task":
+  {
+    "GenerateRandomNumberDelegate" : "The java class is added as a Java source file to the project. Now your project contains both Java Code and a BPMN 2.0 process that are deployed side-by-side."
+  }
+
+}
+</script>
+</div>

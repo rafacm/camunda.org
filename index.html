@@ -9,10 +9,10 @@
     <meta name="author" content="Fruit Shoppers" />
     
     <!-- Styles -->
-    <link href="assets/css/bootstrap.css" rel="stylesheet" />
+    <link href="assets/js/lib/google-code-prettify/prettify.css" rel="stylesheet" />
+    <link href="assets/css/bootstrap.css" rel="stylesheet" />    
     <link href="assets/css/boostrap-responsive.css" rel="stylesheet" />
     <link href="assets/css/app.css" rel="stylesheet" />
-    
     <!-- For IE6-8 support of HTML5 elements -->
     <!--[if lt IE 9]>
       <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
@@ -26,60 +26,28 @@
   <body ng-controller="DefaultController">
     <div class="wrapper">
       <!-- navigation -->
-      <div class="navbar navbar-inverse navbar-fixed-top">
-        <div class="navbar-inner">
-          <div class="container">
-            <button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-            </button>
-            <!-- logo -->
-            <a class="brand ir" href="index.html">
-              camunda.org
-            </a>
-            <div class="nav-collapse collapse">
-              <ul class="nav">
-                <ul class="nav" ng-controller="NavigationController">
-                  <li ng-class="activeClass('/')"><a href="#/">Home</a></li>    
-                  <li><a href="http://www.camunda.com/fox/services/support/" style="color:red">Services</a></li>             
-                </ul>
-              </ul>
-            </div>
-          </div>
-        </div>
-      </div>
+      <div data-ng-include=" 'templates/navigation.html' "></div>
+
       <div class="container">
-      <!--  <div class="row breadcrumbs" ng-cloak>
-          <div class="span12">
-            <div>
-              <ul class="breadcrumb">
-                <li>
-                  <a href="#/">Home</a> 
-                </li>
-                <li ng-repeat="breadCrumb in breadCrumbs">
-                  <span class="divider">/</span> 
-                  <a href="#{{breadCrumb.href}}">{{breadCrumb.name}}</a>
-                </li>
-              </ul>
-            </div>
-          </div>
-        </div>-->
+        <div data-ng-include=" 'templates/breadcrumbs.html' "></div>
+
         <div class="row">
-          <!-- actual view body is rendered here whenever the url changes -->
-          <div data-ng-view class="span12">
-          </div>
+          <div data-ng-include=" 'partials/homepage.html' "></div>
         </div>
+
       </div>
       <div class="push-down"><!-- // --></div> 
     </div>
     <!-- footer -->
     <footer class="footer">
       <div class="container">
-        <p><a href="index.html">Home</a></p>
+        <p><a href="index.html">Home</a> - This page is built with <a href="http://angularjs.org/">angularjs</a></p>
       </div>
 
-      <script src="assets/js/lib/google-code-prettify/prettify.js"></script>
+    </footer>
+
+      <script src="assets/js/lib/google-code-prettify/prettify.min.js"></script>
+      <script src="assets/js/lib/raphaeljs/raphael.js"></script>
 
       <script src="assets/js/lib/jquery-1.7.2.min.js"></script>
       <script src="assets/js/lib/bootstrap/bootstrap.min.js"></script>
@@ -101,7 +69,7 @@
       <script src="assets/js/app/controllers.js"></script>
       <script src="assets/js/app/controllers/default.js"></script>
       <script src="assets/js/app/controllers/home.js"></script>
+      <script src="assets/js/app/controllers/numberguess.js"></script>
 
-    </footer>
   </body>
 </html>
