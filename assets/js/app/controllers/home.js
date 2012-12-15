@@ -4,10 +4,22 @@ angular.module('camundaorg.controllers', []);
 
 function HomeController($scope) {
   $scope.$emit("navigation-changed");
-}
 
-$(document).ready(function(){
-     var ROOT = (function () {
+  $(".tweet").tweet({
+     query: "#activiti",
+            join_text: "auto",
+            avatar_size: 32,
+            count: 3,
+            auto_join_text_default: ",", 
+            auto_join_text_ed: "",
+            auto_join_text_ing: "",
+            auto_join_text_reply: "",
+            auto_join_text_url: "",
+            loading_text: "Loading Tweets..."
+     });
+
+
+    var ROOT = (function () {
         var html = document.documentElement;
         var htmlScrollTop = html.scrollTop++;
         var root = html.scrollTop == htmlScrollTop + 1 ? html : document.body;
@@ -46,4 +58,9 @@ $(document).ready(function(){
     function showCredit(){
         $("#continue-game").removeClass("hidden");
     }
-});
+
+
+  
+}
+
+

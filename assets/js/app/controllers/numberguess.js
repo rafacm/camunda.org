@@ -54,8 +54,7 @@ function NumberguessAppController($scope, $http, $element) {
                             "y" : 51,
                             "width" : 110.0,
                             "height" : 89.0,
-                      }
-      
+                      }      
   };
 
   $scope.inactive = function() {

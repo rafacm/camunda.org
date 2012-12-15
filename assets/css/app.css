@@ -188,3 +188,17 @@ section {
   position:fixed;
 
 }
+
+.tweet_list .tweet_odd {
+  background-color: white;
+  color:#535353;
+}
+
+.tweet_list .tweet_even {
+  background-color: white;
+  color:#535353;
+}
+
+.carousel .item {
+  height:362px;
+}
