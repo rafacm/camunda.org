@@ -3,6 +3,9 @@
 // Copyright (c) 2009-2010 Ash Berlin
 // Copyright (c) 2011 Christoph Dorn <christoph@christophdorn.com> (http://www.christophdorn.com)
 
+
+// our customizations are annotated with <!> customization
+
 (function( expose ) {
 
 /**
@@ -1471,6 +1474,8 @@ function convert_tree_to_html( tree, references, options ) {
     case "header":
       jsonml[ 0 ] = "h" + jsonml[ 1 ].level;
       delete jsonml[ 1 ].level;
+      jsonml[1].class="page-header";   // <!> customization      
+      jsonml[1].id=jsonml[2].replace(/\s/g, '').replace(/\./g, '').replace(/\&/g, '&amp;').replace(/\</g, '&lt;').replace(/\>/g, '&gt;').replace(/"/g, '&quot;');
       break;
     case "bulletlist":
       jsonml[ 0 ] = "ul";

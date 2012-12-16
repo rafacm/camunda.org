@@ -46,16 +46,7 @@ function DefaultController($scope, $location) {
 function NavigationController($scope, $location) {
 
   $scope.activeClass = function(link) {
-    var path = $location.path();
-    
-    if (!path || link == "/") {
-      if (path == "/") {
-        return "active";
-      }
-      
-      return "";
-    }
-  
-    return path.indexOf(link) == 0 ? "active" : "";
+    var path = $location.absUrl();      
+    return path.indexOf(link) != -1 ? "active" : "";
   };
 }

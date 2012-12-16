@@ -1,27 +1,21 @@
 <!DOCTYPE html>
-<html lang="en" data-ng-app="camundaorg">
+<html lang="en">
   <head>
     <title>camunda.org - the camunda bpm community homepage</title>
     
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <meta name="author" content="Fruit Shoppers" />
+    <meta name="author" content="camunda.org community" />
     
-    <!-- Styles -->
-    <link href="assets/js/lib/tweet/jquery.tweet.css" rel="stylesheet" />
-    <link href="assets/js/lib/google-code-prettify/prettify.css" rel="stylesheet" />
-    <link href="assets/css/bootstrap.css" rel="stylesheet" />    
-    <link href="assets/css/boostrap-responsive.css" rel="stylesheet" />
-    <link href="assets/css/app.css" rel="stylesheet" />
+    <!-- loads all stylesheets -->
+    <link href="assets/css/loader.css" rel="stylesheet" />
+
     <!-- For IE6-8 support of HTML5 elements -->
     <!--[if lt IE 9]>
       <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
-    
-    <!-- Favicon -->
-    <link rel="shortcut icon" href="assets/img/favicon.ico" />
-    
+     
     <base app-base="." />
 
   </head>
@@ -34,7 +28,7 @@
         <div data-ng-include=" 'templates/breadcrumbs.html' "></div>
 
         <div class="row">
-          <div data-ng-view></div>
+          <div data-ng-include=" 'partials/homepage.html' "></div>
         </div>
 
       </div>
@@ -43,36 +37,10 @@
     <!-- footer -->
     <footer class="footer">
       <div data-ng-include=" 'templates/footer.html' "></div>
+
+      <!-- loads all javascript -->
+      <script src="assets/js/loader.js"></script>
+    
     </footer>
-
-      <script src="assets/js/lib/google-code-prettify/prettify.min.js"></script>
-      <script src="assets/js/lib/raphaeljs/raphael.js"></script>
-
-      <script src="assets/js/lib/markdownjs/markdown.js"></script>
-
-      <script src="assets/js/lib/jquery-1.7.2.min.js"></script>
-      <script src="assets/js/lib/tweet/jquery.tweet.js"></script>
-
-      <script src="assets/js/lib/bootstrap/bootstrap.min.js"></script>
-      <script src="assets/js/lib/angular/angular.min.js"></script>
-      <script src="assets/js/lib/angular/angular-resource.min.js"></script>
-
-      <script src="assets/js/app/app.js"></script>
-
-      <script src="assets/js/app/directives.js"></script>
-      <script src="assets/js/app/directives/modalDialog.js"></script>
-      <script src="assets/js/app/directives/windowCenter.js"></script>
-      <script src="assets/js/app/directives/ngmif.js"></script>
-      <script src="assets/js/app/directives/app-source.js"></script>
-
-      <script src="assets/js/app/filters.js"></script>
-
-      <script src="assets/js/app/services.js"></script>
-
-      <script src="assets/js/app/controllers.js"></script>
-      <script src="assets/js/app/controllers/default.js"></script>
-      <script src="assets/js/app/controllers/home.js"></script>
-      <script src="assets/js/app/controllers/numberguess.js"></script>
-
   </body>
 </html>

@@ -129,7 +129,7 @@ angular.module('camundaorg.directives')
               var token = "__" + (counter++) + "__";
               popovers[token] =
                 '<code class="nocode" rel="popover" data-trigger="hover" title="' + escape('<code>' + key + '</code>') +
-                '" data-content="' + escape(text) + '">' + escape(key) + '</code>';
+                '" data-content="' + escape(text) + '" data-html=\"true\">' + escape(key) + '</code>';
               return before + token + after;
             });
           });

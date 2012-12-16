@@ -13,16 +13,17 @@
       <div class="nav-collapse collapse">
         <ul class="nav">
           <ul class="nav" ng-controller="NavigationController">
-            <li ng-class="activeClass('/')"><a href="index.html">Home</a></li>    
-             <li class="dropdown">
+            <li ng-class="activeClass('/index.html')"><a href="index.html">Home</a></li>    
+             <li class="dropdown" ng-class="activeClass('/gs-')">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown">Getting Started <b class="caret"></b></a>
-              <ul class="dropdown-menu">                
-                <li><a href="#">Setup</a></li>  
+              <ul class="dropdown-menu">   
+                <li><a href="#">Why camunda?</a></li>              
+                <li><a href="gs-setup.html">Setup</a></li>  
                 <li><a href="#">Tutorial</a></li>  
                 <li><a href="#">Case Studies</a></li>                        
               </ul>
             </li> 
-            <li class="dropdown">
+            <li class="dropdown" ng-class="activeClass('/model-')">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown">Model <b class="caret"></b></a>
               <ul class="dropdown-menu">                
                 <li><a href="#">Introduction to BPMN 2.0</a></li>  
@@ -32,7 +33,7 @@
                
               </ul>
             </li>
-            <li class="dropdown">
+            <li class="dropdown" ng-class="activeClass('/implement-')">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown">Implement <b class="caret"></b></a>
               <ul class="dropdown-menu">
                 <li><a href="#">Overview</a></li>       
@@ -48,7 +49,7 @@
                 <li><a href="#">Java Script</a></li>    
               </ul>
             </li>  
-            <li class="dropdown">
+            <li class="dropdown" ng-class="activeClass('/run-')">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown">Run <b class="caret"></b></a>
               <ul class="dropdown-menu">
                 <li><a href="#">Overview</a></li>
@@ -60,7 +61,7 @@
                 <li><a href="#">Monitoring &amp; Operations</a></li>
               </ul>
             </li>          
-            <li ng-class="activeClass('/')"><a href="run.html">Community</a></li>
+            <li ng-class="activeClass('/community-')"><a href="run.html">Community</a></li>
             <li><a href="http://www.camunda.com/fox/services/support/" style="color:red">Services</a></li>             
           </ul>
         </ul>
