@@ -34,7 +34,7 @@
         <div data-ng-include=" 'templates/breadcrumbs.html' "></div>
 
         <div class="row">
-          <div data-ng-include=" 'partials/homepage.html' "></div>
+          <div data-ng-view></div>
         </div>
 
       </div>
@@ -42,14 +42,13 @@
     </div>
     <!-- footer -->
     <footer class="footer">
-      <div class="container">
-        <p><a href="index.html">Home</a> - This page is built with <a href="http://angularjs.org/">angularjs</a></p>
-      </div>
-
+      <div data-ng-include=" 'templates/footer.html' "></div>
     </footer>
 
       <script src="assets/js/lib/google-code-prettify/prettify.min.js"></script>
       <script src="assets/js/lib/raphaeljs/raphael.js"></script>
+
+      <script src="assets/js/lib/markdownjs/markdown.js"></script>
 
       <script src="assets/js/lib/jquery-1.7.2.min.js"></script>
       <script src="assets/js/lib/tweet/jquery.tweet.js"></script>

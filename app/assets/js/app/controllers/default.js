@@ -32,6 +32,12 @@ function DefaultController($scope, $location) {
     }
   });
   // end Bread Crumb
+
+
+  $scope.scrollTo = function(elementId) {
+    window.scroll(0, $("#"+elementId).position().top);  
+  }
+
 }
 
 /**

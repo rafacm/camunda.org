@@ -64,7 +64,7 @@
 
   <div class="span12" ng-controller="NumberguessAppController">
     <div id="continue-game">
-      <a class="btn btn-warning continue-game" href="#play" ng-show="showContinueButton()">
+      <a class="btn btn-warning continue-game" ng-show="showContinueButton()" ng-click="scrollTo('play')">
         <i class="icon-arrow-up"></i>Continue the Game
       </a>
     </div>
@@ -93,7 +93,7 @@
             <button type="button" class="close popover-title pull-right" ng-show="startDialog()" ng-click="cancel()">×</button>
             <h3 class="popover-title">Service Task</h3>        
             <div class="popover-content">
-              <p> A <a href="index.html#implementing-a-service-task" target="_self">Service Task</a> executes some program function or routine.</p>              
+              <p> A <a ng-click="scrollTo('implementing-a-service-task')">Service Task</a> executes some program function or routine.</p>              
               <p>This service task calls a method of a Java class that generates a random number.</p>
               <p class="center padded row">
                  <a class="btn btn-warning" ng-click="generateRandomNumber()"><i class="icon-play"></i> continue</a>
