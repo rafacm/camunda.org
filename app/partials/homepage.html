@@ -64,40 +64,128 @@
     </div>
 
   <div class="span12" ng-controller="NumberguessAppController">
-    <div id="continue-game">
+    <!--<div id="continue-game">
       <a class="btn btn-warning continue-game" ng-show="showContinueButton()" ng-click="scrollTo('play')">
         <i class="icon-arrow-up"></i>Continue the Game
       </a>
-    </div>
+    </div>-->
     <div style=" position:absolute">
       
-      <div style="left:55px; top:120px; position:relative; z-index:2" ng-show="inactive()">
-        <a class="btn btn-warning" ng-click="showStartDialog()">Begin</a>
+      <div class="startButton" style="left:55px; top:120px; position:relative; z-index:3">
+        <a class="btn btn-warning" ng-click="activateProcess('numberGuessing')">Begin</a>
       </div>
-      <div style="position:relative; top:-120px; left:-32px; z-index:2" ng-show="startDialog()">
+
+      <div id="StartEvent_1" style="position:relative; top:-150px; left:-32px; z-index:3; display:none;">
         <div class="popover top" style="display:block; width:250px">
             <div class="arrow"></div>
-            <button type="button" class="close popover-title pull-right" ng-show="startDialog()" ng-click="cancel()">×</button>
+            <button type="button" class="close popover-title pull-right" ng-click="cancel()">×</button>
             <h3 class="popover-title">Start event</h3>        
             <div class="popover-content">
               <p> A <strong>Start Event</strong> allows you to define where a process starts.</p>              
               <p>If you click on the button below, a new process instance is started.</p>
               <p class="center padded row">
-                 <a class="btn btn-warning" ng-click="startProcess()"><i class="icon-play"></i>Start</a>
+                 <a class="btn btn-warning" ng-click="signalNode('StartEvent_1')"><i class="icon-play"></i>Start</a>
               </p>              
             </div>
           </div>
       </div>
-      <div id="ServiceTask_1" style="position:relative; top:-150px; left:65px; display:none; z-index:2">
+
+      <div id="ServiceTask_1" style="position:relative; top:-165px; left:65px; display:none; z-index:3">
         <div class="popover top" style="display:block; width:300px">
             <div class="arrow"></div>
-            <button type="button" class="close popover-title pull-right" ng-show="startDialog()" ng-click="cancel()">×</button>
+            <button type="button" class="close popover-title pull-right" ng-click="cancel()">×</button>
             <h3 class="popover-title">Service Task</h3>        
             <div class="popover-content">
-              <p> A <a ng-click="scrollTo('implementing-a-service-task')">Service Task</a> executes some program function or routine.</p>              
+              <p> A <a href="#implementing-a-service-task">Service Task</a> executes some program function or routine.</p>              
               <p>This service task calls a method of a Java class that generates a random number.</p>
               <p class="center padded row">
-                 <a class="btn btn-warning" ng-click="generateRandomNumber()"><i class="icon-play"></i> continue</a>
+                 <a class="btn btn-warning" ng-click="signalNode('ServiceTask_1')"><i class="icon-play"></i> continue</a>
+              </p>              
+            </div>
+          </div>
+      </div>
+
+      <div id="ExclusiveGateway_1" style="position:relative; top:-150px; left:200px; display:none; z-index:3">
+        <div class="popover top" style="display:block; width:300px">
+            <div class="arrow"></div>
+            <button type="button" class="close popover-title pull-right" ng-click="cancel()">×</button>
+            <h3 class="popover-title">Exclusive Gateway</h3>        
+            <div class="popover-content">
+              <p> An <a href="#implementing-a-service-task">Exclusive Gateway</a> marks a decision point in a process.</p>              
+              <p>This service task calls a method of a Java class that generates a random number.</p>
+              <p class="center padded row">
+                 <a class="btn btn-warning" ng-click="signalNode('ExclusiveGateway_1')"><i class="icon-play"></i> continue</a>
+              </p>              
+            </div>
+          </div>
+      </div>
+
+      <div id="UserTask_1" style="position:relative; top:-250px; left:320px; display:none; z-index:3">
+        <div class="popover top" style="display:block; width:300px">
+            <div class="arrow"></div>
+            <button type="button" class="close popover-title pull-right" ng-click="cancel()">×</button>
+            <h3 class="popover-title">User Task</h3>        
+            <div class="popover-content">
+              <p> A <a href="#implementing-a-service-task">User Task</a> is performed by a human user. Usually it is associated with a Task Form that allows the user to provide some input</p>          
+              <p>
+                <div data-ng-show="hasProcessVariable('loopCount')">
+                  <span data-ng-show="processVariables.guess &gt;processVariables.random">
+                    Try a smaller number!
+                  </span>
+                  <span data-ng-show="processVariables.guess &lt; processVariables.random">
+                    Try a larger number!
+                  </span>
+                </div>
+                <form novalidate>
+                  Your guess: 
+                  <input type="text" ng-model="processVariables.guess"/> 
+                </form>
+              </p>                 
+              <p class="center padded row">
+                 <a class="btn btn-warning" ng-click="signalNode('UserTask_1')"><i class="icon-play"></i> continue</a>
+              </p>              
+            </div>
+          </div>
+      </div>
+
+      <div id="ExclusiveGateway_2" style="position:relative; top:-150px; left:470px; display:none; z-index:3">
+        <div class="popover top" style="display:block; width:300px">
+            <div class="arrow"></div>
+            <button type="button" class="close popover-title pull-right" ng-click="cancel()">×</button>
+            <h3 class="popover-title">Exclusive Gateway</h3>        
+            <div class="popover-content">
+              <p> An <a href="#implementing-a-service-task">Exclusive Gateway</a> marks a decision point in a process.</p>              
+              <p>This service task calls a method of a Java class that generates a random number.</p>
+              <p class="center padded row">
+                 <a class="btn btn-warning" ng-click="signalNode('ExclusiveGateway_2')"><i class="icon-play"></i> continue</a>
+              </p>              
+            </div>
+          </div>
+      </div>
+
+      <div id="ServiceTask_2" style="position:relative; top:-130px; left:570px; display:none; z-index:3">
+        <div class="popover top" style="display:block; width:300px">
+            <div class="arrow"></div>
+            <button type="button" class="close popover-title pull-right" ng-click="cancel()">×</button>
+            <h3 class="popover-title">Service Task</h3>        
+            <div class="popover-content">
+              <p>Your last guess made it. Congratulations, you are a winner!</p>
+              <p class="center padded row">
+                 <a class="btn btn-warning" ng-click="signalNode('ServiceTask_2')"><i class="icon-play"></i> Continue</a>
+              </p>              
+            </div>
+          </div>
+      </div>
+
+      <div id="EndEvent_1" style="position:relative; top:-130px; left:770px; display:none; z-index:3">
+        <div class="popover top" style="display:block; width:300px">
+            <div class="arrow"></div>
+            <button type="button" class="close popover-title pull-right" ng-click="cancel()">×</button>
+            <h3 class="popover-title">End Event</h3>        
+            <div class="popover-content">
+              <p>An End Event marks the end of a process</p>
+              <p class="center padded row">
+                 <a class="btn btn-warning" ng-click="signalNode('EndEvent_1')"><i class="icon-play"></i> Done</a>
               </p>              
             </div>
           </div>
@@ -320,6 +408,13 @@ public class GenerateRandomNumberDelegate implements JavaDelegate {
   }
 
 }
+</script>
+
+<script type="text/xml" id="inputGuessTaskform.html">
+<task-form>
+  <input type="text" ng-model="processVariables.guess" />
+</task-form>
+<button type="submit" />
 </script>
 
 <!-- ======================================================= -->
