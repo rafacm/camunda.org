@@ -1,0 +1,139 @@
+
+<header class="hero-unit" id="overview">
+  <div class="center">
+    <h1>BPMN 2.0 Tutorial</h1>
+    <h2>Process Modeling with a Global Standard</h2>
+  </div>
+</header>
+
+<div class="container">
+	<!--<div tutorial="partials/design/tutorial.md" />-->
+	<div class="row">
+      <div id="nav" class="span3 bs-docs-sidebar" >
+        <ul class="nav nav-list bs-docs-sidenav"  data-spy="affix">
+          <li ><a href="#intro"><i class="icon-chevron-right"></i> Introduction</a></li>
+          <li><a href="#tasks"><i class="icon-chevron-right"></i> Tasks, Gateways and Lanes</a></li>
+          <li><a href="#app"><i class="icon-chevron-right"></i> Events</a></li>
+          <li><a href="#task"><i class="icon-chevron-right"></i> Subprocesses</a></li>
+          <li><a href="#service"><i class="icon-chevron-right"></i> Collaboration Diagrams</a></li>
+		</ul>
+      </div>
+
+     <div class="span9"  >
+		<section id="intro">
+			<div class="page-header" >
+				<h1>Introduction<small> Why should I care about BPMN 2.0?</small></h1>
+			</div>
+			<p>
+Business Process Model and Notation (BPMN) is the global standard for process modelling and one of the most important components of a successful Business-IT-Alignment.
+</p>
+<p>
+More and more organisations are using BPMN and in more and more universities BPMN is taught as a subject. These are the reasons:
+</p>
+<dl class="dl-horizontal">
+				  <dt>Standard</dt>
+				  <dd>BPMN is not owned by a certain enterprise but by an institution (OMG), which is already established through other world-wide standards, e.g. UML. The standard is supported by many software products; you are less dependent on any particular vendor's products.</dd>
+				  <dt>Simplicity</dt>
+				  <dd>The principle behind BPMN is rather simple which is why you can very quickly work with this notation.</dd>
+				  <dt>Power of expression</dt>
+				  <dd>If necessary, with BPMN you can describe precisely how a process functions. This is however more difficult than describing the process only roughly. This way of precise modelling is possible, but not mandatory.</dd>
+				  <dt>Implementation in IT</dt>
+				  <dd>BPMN has been primarily developed to support a technical implementation of processes ("Process Automation"). The more important the IT is in a company, the more helpful is the use of BPMN.</dd>
+				  </dl>	
+			
+			<p>
+			In this tutorial you will learn the essentials of BPMN 2.0. We will briefly describe the meaning of the symbols, and how you can use them for process mapping. We will also refer to the respective section covering the use in camunda bpm, when it comes to process automation.
+			
+			If you want to get a deeper understanding of BPMN 2.0, please check out our BPMN handbook or <a href="http://www.camunda.com/consulting/bpmn/overview/">attend/book a training</a>.
+			</p>
+<div class="row-fluid">
+	<div class="span4">
+		<div class="span4">
+		<img src="http://ecx.images-amazon.com/images/I/41XSes77XSL._SL135_.jpg"/>
+		</div>
+		<div class="span8">
+		<p>
+			<img src="http://www.bpm-guide.de/wp-content/plugins/polyglot2/polyglot_flags/uk.png"> English Edition<br/>
+			<b>Real Life BPMN</b></p>
+			<p><a c href="http://www.amazon.com/Real-Life-BPMN-Analyze-Automate-Processes/dp/1480034983">Get at Amazon.com</a>
+		</div>
+	</div>
+	<div class="span4">
+		<div class="span4">
+		<img src="http://ecx.images-amazon.com/images/I/414DcF8OJaL._SL135_.jpg" />
+		</div>
+		<div class="span8">
+		<p>
+			<img src="http://www.bpm-guide.de/wp-content/plugins/polyglot2/polyglot_flags/es.png"> Spanish Edition<br/>
+			<b>BPMN 2.0 Manual</b></p>
+			<p><a href="http://www.amazon.com/BPMN-Manual-Referencia-Práctica-Spanish/dp/1460903935">Get at Amazon.com</a>
+		</div>
+		
+	</div>
+	<div class="span4">
+		<div class="span4">
+		<img src="http://files.hanser.de/hanser/pics/978-3-446-42986-4_2122714399-110.jpg" />
+		</div>
+		<div class="span8">
+		<p>
+			<img src="http://www.bpm-guide.de/wp-content/plugins/polyglot2/polyglot_flags/de.png"> German Edition<br/>
+			<b>Praxishandbuch BPMN</b></p>
+			<p><a href="http://www.amazon.de/Praxishandbuch-BPMN-2-0-Jakob-Freund/dp/3446429867">Get at Amazon.de</a>
+		</div>
+	</div>
+</div>
+			
+		</section>		
+		<section id="tasks">
+			<div class="page-header" >
+				<h1>Tasks, Gateways and Lanes<small> Sketching out the core flow.</small></h1>
+			</div>
+			<h2>A simple flow</h2>
+			<script>bpmn;</script>
+			<p>
+			shows a simple process triggered by someone being hungry. The result is that someone must shop for groceries and prepare a meal. After that, someone will eat the meal and have his or her hunger satisfied. 
+</p>
+<p>
+You will easily recognize the following symbols and their meanings in the diagram:
+</p>
+<p>
+Tasks are the heart of the process. Ultimately, something has to happen to bring about a desired outcome. In BPMN, a task technically is part of the activities category, which also includes the sub-process explained in \secvref{sec:02:teilprozesse}.
+</p>
+<div class="alert alert-info">
+When naming tasks, we try to adhere to the object-orientated design principle of using the [verb] + [object] pattern. We would say "acquire groceries," for example, not "first take care of shopping for groceries." 
+</div>
+
+<p>
+Events describe significant things that happen before, during, or at the end of a process. The example in \Figvref{fig:02:Aufgaben_Blanko} uses only "none events." None events can be used in a process flow to indicate a status or a milestone. We explain about more event types later. 
+</p>
+<ul>
+<li>Start events show which event causes the process to start. </li>
+<li>Intermediate events stand for a status that is reached in the process and that is modeled explicitly. They are used infrequently, but intermediate events can be useful, for example, if you regard reaching a certain status as a milestone and you want to measure the time until the milestone is reached.</li>
+<li>End events} mark the status reached at the end of the process path.</li>
+</ul>
+<p>
+Even for these simple events, we have to make further distinctions:
+</p>
+<ul>
+	<li>Start events are catching events. That means something happened independent of the process, but the process has to wait for this event, or react to it.</li>
+	<li>Intermediate events may occur, or they may be caused or triggered by the process itself (throwing events). The none intermediate event marks a status reached by the process and is therefore a throwing event. (Again, we will explain about more event types later, including more types of intermediate events to be classified as catching events.)</li>
+	<li>End events take place when the process can no longer react to them. As a consequence, only the process can trigger them.</li>
+</ul>
+
+<div class="alert alert-info">
+Events refer to something that has already happened regardless of the process (if they are catching events) and as a result of the process (if they are throwing events). For this reason, we use the [object] and make the [verb] passive in voice, so we write "hunger noticed." BPMN does not require you to model start and end events for a process \textemdash you can leave them out \textemdash but \textit{if} you model a start event, you must model an end event for each path. The same is true for end events that require start events. We always create our models with start and end events for two reasons: first, that way it's possible to determine the process trigger, and second, you can describe the final status of each path end. We only sometimes abandon this practice with sub-processes. More on this later.
+</div>
+
+\textbf{Sequence flows}
+
+The sequence flow describes the time-logic sequence of the flow elements: tasks, events, and the gateways we describe later. 
+
+The process path taken by our token is also a sequence flow. It is "born" with the process instance because of the start event. Through the sequence flow and by means of the tasks and the intermediate events, it reaches the end event, where it is "consumed" and disappears. This also leads to the "death" of our process instance.
+
+\begin{knigge}
+If it makes sense for you to draw process diagrams vertically instead of horizontally. We always draw ours horizontally, from left to right, but there is nothing to keep you from orienting your flow differently.  
+\end{knigge}
+		</section>
+		</div>
+		</div>
+</div>
