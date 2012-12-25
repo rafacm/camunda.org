@@ -89,10 +89,15 @@ More and more organisations are using BPMN and in more and more universities BPM
 				<h1>Tasks, Gateways and Lanes<small> Sketching out the core flow.</small></h1>
 			</div>
 			<h2>A simple flow</h2>
-			<script>bpmn;</script>
+			<div >
+				<div id="simple" >
+					<script>bpmn("tutorial/simple_flow", "simple");</script>
+				</div>
+			</div>
+
 			<p>
-			shows a simple process triggered by someone being hungry. The result is that someone must shop for groceries and prepare a meal. After that, someone will eat the meal and have his or her hunger satisfied. 
-</p>
+				This diagram shows a simple process triggered by someone being hungry. The result is that someone must shop for groceries and prepare a meal. After that, someone will eat the meal and have his or her hunger satisfied. 
+			</p>
 <p>
 You will easily recognize the following symbols and their meanings in the diagram:
 </p>
@@ -133,6 +138,33 @@ The process path taken by our token is also a sequence flow. It is "born" with t
 \begin{knigge}
 If it makes sense for you to draw process diagrams vertically instead of horizontally. We always draw ours horizontally, from left to right, but there is nothing to keep you from orienting your flow differently.  
 \end{knigge}
+<h2>Exclusive Data-based Gateways</h2>
+			<div  ">
+				<div id="xor" >
+					<script>bpmn("tutorial/xor", "xor");</script>
+				</div>
+			</div>
+Certain things can only be done under certain circumstances, so few processes always take the same course. In our simple example (\figvref{fig:02:XOR-Gateway-First}), we want to go into the details of cookery. Driven by hunger, we think about what we are going to cook today. We only know three recipes, so we choose one. We can either cook pasta \textit{or} cook a steak \textit{or} prepare a salad. Let's say that these options are exclusive \textemdash we will never prepare more than one at a time. The point of decision on what to do next is called gateway. We decide based on available data (the chosen recipe) and we follow only one of the paths, which is a data-based exclusive gateway. We abbreviate "exclusive gateway" as \textbf{XOR}.  
+
+Bear in mind that a gateway is not a task! You have to determine facts and needs before reaching a gateway. We will encounter this again in Business Rules Management (see \secvref{sec:03:Regeln}).
+
+BPMN uses two symbols for XOR gateways (see \figvref{fig:02:XOR-Gateway-Blanko}). They are identical in meaning. We always use the version with the X because it seems less ambiguous, but use what works for you. 
+
+\begin{knigge}
+As in \figvref{fig:02:XOR-Gateway-First}, we place the crucial question before the gateway. This is our convention, which has proved its value in our projects. Possible answers go on parallel paths after the gateway, which is how the BPMN specification shows them. We always work with XOR gateways as follows: 
+
+\begin{enumerate}
+	\item Model the task that requires a decision for the XOR gateway.
+	\item Model the XOR gateway after that. Create a question with mutually exclusive answers. 
+	\item Model one outgoing path (or sequence flow) for each possible answer, and label the path with the answer.
+\end{enumerate}
+
+An XOR gateway can have as many outgoing paths as you like. We start some paths in the upper left corner and the others in the bottom left corner, but these are just our style conventions. 
+\end{knigge}
+
+By the way, it is not unusual to have three end events nor for the process to result in three end states. Recognizing this possibility can help you with more complex diagrams. Later, we will give more reasons for working with different end events. BPMN is not a block-oriented process notation, so you need not merge a split process path later \textemdash you can, but you don't have to.
+
+Certainly, it may make semantic sense to merge the three paths. The meal is eaten after it's prepared, regardless of the recipe chosen. We can use the XOR gateway for merging also, and doing so leads the tokens from the three incoming paths into a single outgoing path. (See \figvref{fig:02:XOR-Gateway-Zusammen}.) 
 		</section>
 		</div>
 		</div>

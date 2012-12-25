@@ -23,6 +23,7 @@ $script([
 			
 				$script([
 					'app/app',
+					'app/cabpmn',
 					'app/directives',
 					'app/directives/modalDialog',
 					'app/directives/windowCenter',
