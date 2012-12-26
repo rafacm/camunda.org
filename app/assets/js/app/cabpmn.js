@@ -24,6 +24,9 @@ var endEventStyle = {
 	"fill": "white"
   };
 
+   var gatewayStyle = {
+    "fill": "white"
+  };
   
   var gatewayMarkerStyle = {
     stroke: "grey",
@@ -40,14 +43,18 @@ var endEventStyle = {
   
   var textStyle = {
 	"font-size": 12, 
-	"font-family": "Arial, Helvetica, sans-serif" 
+	"font-family": "Arial, Helvetica, sans-serif",
+  }
+  
+  var highlightStyle = {
+	"fill": "darkOrange"
   }
   
   function bpmn (diagram, container) {
 
 	var paper = Raphael(container, "100%");
 	//$("#processDiagramOverlay").css("height","180px");
-	parseBPMNXML(diagram, paper);
+	parseBPMNXML(diagram, paper, container);
 
 }
 
@@ -68,6 +75,7 @@ function textLineBreaker (t, content, maxWidth) {
 }
 
 function elementSVG (element, paper) {
+	var drawnElement;
 
 	// Event?
 	if (element.type.toLowerCase().indexOf("event") >= 0) {
@@ -76,19 +84,19 @@ function elementSVG (element, paper) {
 		var y = parseInt(parseInt(element.y) + rad);
 		
 		// event border
-		paper.circle(x, y, rad)
+		drawnElement = paper.circle(x, y, rad)
 			  .attr(generalStyle).attr(eventStyle);
 		
 		// intermediate?
 		if ((element.type.toLowerCase().indexOf("intermediate") >= 0) || (element.type.toLowerCase().indexOf("boundary") >= 0)) {
 			// intermediate event border
 			paper.circle(x, y, rad-2)
-			  .attr(generalStyle).attr(eventStyle);
+			  .attr(generalStyle).attr(eventStyle).attr({fill:"none"});
 		
 		// end?
 		} else if (element.type.toLowerCase().indexOf("end") >= 0) {
 			// end event border
-			paper.circle(x, y, rad)
+			drawnElement = paper.circle(x, y, rad)
 			  .attr(generalStyle).attr(eventStyle).attr(endEventStyle);
 		}
 		
@@ -111,7 +119,7 @@ function elementSVG (element, paper) {
 			
 		}
 
-		paper.text(x, parseInt(y) + parseInt(element.height/2) + 15, element.name).attr(textStyle);
+		if (element.name) paper.text(x, parseInt(y) + parseInt(element.height/2) + 15, element.name).attr(textStyle);
 		
 	// Gateways
 	} else if (element.type.toLowerCase().indexOf("gateway") >= 0) {
@@ -120,19 +128,22 @@ function elementSVG (element, paper) {
 		var radHeight = element.height/2;
 		var radWidth = element.width/2;
 		var rhombus = "M" + x + " " + y + " l" + radWidth + " -" + radHeight + " l" + radWidth + " " + radHeight + " l-" + radWidth + " " + radHeight + " l-" + radHeight + " -" + radWidth;
-		paper.path(rhombus)
-				.attr(generalStyle);
+		drawnElement = paper.path(rhombus)
+				.attr(generalStyle).attr(gatewayStyle);
 		
-		paper.text(parseInt(x) + parseInt(element.width) - 5, parseInt(y) + parseInt(element.height/2) -4, element.name).attr(textStyle).attr({'text-anchor': 'start'});
+		if (element.name) paper.text(parseInt(x) + parseInt(element.width) - 5, parseInt(y) + parseInt(element.height/2) -4, element.name).attr(textStyle).attr({'text-anchor': 'start'});
 
 		// Exclusive?
 		if (element.type == "exclusiveGateway") {
-			var markerX = parseInt(element.x) + parseInt(element.width/2.6) -0.5;
-			var markerY = parseInt(element.y) + parseInt(element.height/3) - 0.5;
-			var marker1 = "M" + markerX + " " + markerY + " l10.5 16 z";
-			var marker2 = "M" + markerX + " " + parseInt(parseInt(markerY) + 16.9) + " l10.5 -16 z";
-			paper.path(marker1).attr(gatewayMarkerStyle);
-			paper.path(marker2).attr(gatewayMarkerStyle);
+			// Should marker be visible?
+			if (element.isMarkerVisible == "true") {
+				var markerX = parseInt(element.x) + parseInt(element.width/2.6) -0.5;
+				var markerY = parseInt(element.y) + parseInt(element.height/3) - 0.5;
+				var marker1 = "M" + markerX + " " + markerY + " l10.5 16 z";
+				var marker2 = "M" + markerX + " " + parseInt(parseInt(markerY) + 16.9) + " l10.5 -16 z";
+				paper.path(marker1).attr(gatewayMarkerStyle);
+				paper.path(marker2).attr(gatewayMarkerStyle);
+			}
 		}
 
 		// Parallel?
@@ -182,7 +193,7 @@ function elementSVG (element, paper) {
 		var y = element.y;
 		var height = element.height;
 		var pathSpec = "M" + x + " " + y + " l-10 0 l0 " + element.height + " l10 0";
-		paper.path(pathSpec).attr(generalStyle);
+		drawnElement = paper.path(pathSpec).attr(generalStyle);
 		
 		// Printing the Text
 		var textX = parseInt(parseInt(element.x) + 5);
@@ -192,33 +203,31 @@ function elementSVG (element, paper) {
 		
 	// Activities
 	} else {
-		
-	var act = paper.rect(
+
+		drawnElement = paper.rect(
 				element.x, 
 				element.y, 
 				element.width, 
 				element.height, 
 				5)
 			  .attr(activityStyle);
+
 		var textX = parseInt(parseInt(element.x) + parseInt(element.width)/2);
 		var textY = parseInt(parseInt(element.y) + parseInt(element.height)/2);
 		var t = paper.text(textX, textY, element.name).attr(textStyle);	
 		textLineBreaker (t, element.name, element.width);
-
-		act.hover(function () {
-			act.attr({"stroke": "red"});
-		  },
-		  function () {
-			act.attr({"stroke": "grey"});
-		  }
-		);
+	
 		
 	}
 	
+	drawnElement.node.id = "svg_" + element.id;
+	drawnElement.data ("bpmnType", element.type);
+	return drawnElement.id;
 }
 
 function drawFlow (flow, pathSpec, paper) {
-    var pathString = "M"+(pathSpec[0].x)+","+(pathSpec[0].y);
+    var drawnFlow;
+	var pathString = "M"+(pathSpec[0].x)+","+(pathSpec[0].y);
     for (var i=1; i<pathSpec.length; i++) { 
       if(i==1) {
         pathString += "L";
@@ -234,13 +243,14 @@ function drawFlow (flow, pathSpec, paper) {
 		var e = paper.path(pathString).attr(generalStyle).attr(sequenceFlowStyle),
 			l = e.getTotalLength(),
 		   to = 1;
+		
 	}
 	
 	if (flow.type == "association") { 
 		var e = paper.path(pathString).attr("stroke-dasharray", ". "),
 			l = e.getTotalLength(),
 		   to = 1;
-	
+		
 	}
 
 	// Print the Text
@@ -260,10 +270,26 @@ function drawFlow (flow, pathSpec, paper) {
 		
 		paper.text(textX, textY, flow.name).attr({'text-anchor': 'start'});
 	}
-	   
+
+	
 }
 
-function drawElement (data, element, paper) {
+function getDivLayer (element) {
+	elementH = '<div ' + 
+	' id=\"' + element.id + '"' +
+	' style=\"position: absolute; border: 1px solid red;' +
+	'left: '+ element.x + 'px; ' + 
+	'top: '+ element.y + 'px; '+
+	'width: '+ element.width + 'px; '+
+	'height: '+ element.height + 'px; '+
+	'\">' + '</div>';
+	
+	return elementH;
+}
+
+function drawElement (data, element, paper, container) {
+	var raphaelElementId;
+	
 	// Find respective DI
 	$(data).find("bpmndi\\:BPMNShape[bpmnElement='" + element.id + "']").each(function(){
 		var $di = $(this);
@@ -278,12 +304,49 @@ function drawElement (data, element, paper) {
 			element.labelY = $(this).find("omgdc\\:Bounds").attr("y");
 		});		
 
-		elementSVG (element, paper);
+		// if exclusiveGateway, determine if marker should be visible
+		if (element.type == "exclusiveGateway") {
+			element.isMarkerVisible = $(this).attr("isMarkerVisible");
+		}
+		
+		raphaelElementId = elementSVG (element, paper);
 	});
+
+	// create DIV for Popover
+	//alert(container);
+	//$("#" + container).append(getDivLayer(element));
 	
+	// Position DIV Element (if exists)
+	if ($('#' + container + "-" + element.id).length > 0) {
+		$('#' + container + "-" + element.id).css({
+			"position": "absolute",
+			"width": element.width + "px",
+			"height": element.height + "px",
+			"left": element.x + "px",
+			"top": element.y + "px"
+			});
+	$('#' + container + "-" + element.id).hover(
+	  function () {
+			r = paper.getById(raphaelElementId);
+			
+			// For Rectangles with rounded corners (i.e. tasks) a special Offset of 5px for glow effect is needed
+			var specialOffsetx = 0;
+			if (element.type.toLowerCase().indexOf("task") >= 0) specialOffsetx = 5;
+			r.g = r.glow({
+				color: "darkOrange", 
+				width: 10,
+				offsetx: specialOffsetx
+			});
+	  }, 
+	  function () {
+			r.g.remove();
+	  }
+	);
+		$('#svg_' + element.id).attr({stroke: "darkOrange"});
+	}
 }
 
-function parseBPMNXML (diagram, paper) {
+function parseBPMNXML (diagram, paper, container) {
 
 $.get("http://localhost:8000/app/assets/bpmn/" + diagram + ".bpmn", function(data){
 	var isCollaboration = false;
@@ -301,7 +364,7 @@ $.get("http://localhost:8000/app/assets/bpmn/" + diagram + ".bpmn", function(dat
 		element.id = $elem.attr("id");
 		element.name = $elem.attr("name");
 		
-		drawElement(data, element, paper);
+		drawElement(data, element, paper, container);
 	});	
 
 	// 	Find Tasks
@@ -312,7 +375,7 @@ $.get("http://localhost:8000/app/assets/bpmn/" + diagram + ".bpmn", function(dat
 		element.id = $elem.attr("id");
 		element.name = $elem.attr("name");
 		
-		drawElement(data, element, paper);
+		drawElement(data, element, paper, container);
 	});	
 
 	// 	Find Exclusive Gateways
@@ -323,7 +386,7 @@ $.get("http://localhost:8000/app/assets/bpmn/" + diagram + ".bpmn", function(dat
 		element.id = $elem.attr("id");
 		element.name = $elem.attr("name");
 		
-		drawElement(data, element, paper);
+		drawElement(data, element, paper, container);
 	});	
 
 	// 	Find Inclusive Gateways
@@ -334,7 +397,7 @@ $.get("http://localhost:8000/app/assets/bpmn/" + diagram + ".bpmn", function(dat
 		element.id = $elem.attr("id");
 		element.name = $elem.attr("name");
 		
-		drawElement(data, element, paper);
+		drawElement(data, element, paper, container);
 	});	
 
 	// 	Find Parallel Gateways
@@ -345,7 +408,7 @@ $.get("http://localhost:8000/app/assets/bpmn/" + diagram + ".bpmn", function(dat
 		element.id = $elem.attr("id");
 		element.name = $elem.attr("name");
 		
-		drawElement(data, element, paper);
+		drawElement(data, element, paper, container);
 	});	
 	
 	
@@ -357,7 +420,7 @@ $.get("http://localhost:8000/app/assets/bpmn/" + diagram + ".bpmn", function(dat
 		element.id = $elem.attr("id");
 		element.name = $elem.attr("name");
 		
-		drawElement(data, element, paper);
+		drawElement(data, element, paper, container);
 	});	
 
 	// 	Find Intermediate Throw Events
@@ -368,7 +431,7 @@ $.get("http://localhost:8000/app/assets/bpmn/" + diagram + ".bpmn", function(dat
 		element.id = $elem.attr("id");
 		element.name = $elem.attr("name");
 		
-		drawElement(data, element, paper);
+		drawElement(data, element, paper, container);
 	});	
 
 	// 	Find Endevents
@@ -379,7 +442,7 @@ $.get("http://localhost:8000/app/assets/bpmn/" + diagram + ".bpmn", function(dat
 		element.id = $elem.attr("id");
 		element.name = $elem.attr("name");
 		
-		drawElement(data, element, paper);
+		drawElement(data, element, paper, container);
 	});	
 
 	// 	Find Text Annotations
@@ -390,7 +453,7 @@ $.get("http://localhost:8000/app/assets/bpmn/" + diagram + ".bpmn", function(dat
 		element.id = $elem.attr("id");
 		element.textAnnotation = $elem.find("text").text();
 		
-		drawElement(data, element, paper);
+		drawElement(data, element, paper, container);
 	});	
 	
 
@@ -456,11 +519,10 @@ $.get("http://localhost:8000/app/assets/bpmn/" + diagram + ".bpmn", function(dat
 		if (myY > maxY) {maxY = myY;}
 	});
 	
-	paper.setSize (maxX + 10, maxY + 10);
+	paper.setSize (maxX + 30, maxY + 10);
 	
 	});
 
-	
 }
 
 

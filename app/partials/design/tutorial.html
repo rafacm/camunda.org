@@ -32,7 +32,7 @@ More and more organisations are using BPMN and in more and more universities BPM
 </p>
 <dl class="dl-horizontal">
 				  <dt>Standard</dt>
-				  <dd>BPMN is not owned by a certain enterprise but by an institution (OMG), which is already established through other world-wide standards, e.g. UML. The standard is supported by many software products; you are less dependent on any particular vendor's products.</dd>
+				  <dd>BPMN is not owned by a certain enterprise but by an institution (<a href="http://www.omg.org">OMG</a>), which is already established through other world-wide standards, e.g. UML. The standard is supported by many software products; you are less dependent on any particular vendor's products.</dd>
 				  <dt>Simplicity</dt>
 				  <dd>The principle behind BPMN is rather simple which is why you can very quickly work with this notation.</dd>
 				  <dt>Power of expression</dt>
@@ -46,42 +46,42 @@ More and more organisations are using BPMN and in more and more universities BPM
 			
 			If you want to get a deeper understanding of BPMN 2.0, please check out our BPMN handbook or <a href="http://www.camunda.com/consulting/bpmn/overview/">attend/book a training</a>.
 			</p>
-<div class="row-fluid">
-	<div class="span4">
-		<div class="span4">
-		<img src="http://ecx.images-amazon.com/images/I/41XSes77XSL._SL135_.jpg"/>
-		</div>
-		<div class="span8">
-		<p>
-			<img src="http://www.bpm-guide.de/wp-content/plugins/polyglot2/polyglot_flags/uk.png"> English Edition<br/>
-			<b>Real Life BPMN</b></p>
-			<p><a c href="http://www.amazon.com/Real-Life-BPMN-Analyze-Automate-Processes/dp/1480034983">Get at Amazon.com</a>
-		</div>
-	</div>
-	<div class="span4">
-		<div class="span4">
-		<img src="http://ecx.images-amazon.com/images/I/414DcF8OJaL._SL135_.jpg" />
-		</div>
-		<div class="span8">
-		<p>
-			<img src="http://www.bpm-guide.de/wp-content/plugins/polyglot2/polyglot_flags/es.png"> Spanish Edition<br/>
-			<b>BPMN 2.0 Manual</b></p>
-			<p><a href="http://www.amazon.com/BPMN-Manual-Referencia-Práctica-Spanish/dp/1460903935">Get at Amazon.com</a>
-		</div>
-		
-	</div>
-	<div class="span4">
-		<div class="span4">
-		<img src="http://files.hanser.de/hanser/pics/978-3-446-42986-4_2122714399-110.jpg" />
-		</div>
-		<div class="span8">
-		<p>
-			<img src="http://www.bpm-guide.de/wp-content/plugins/polyglot2/polyglot_flags/de.png"> German Edition<br/>
-			<b>Praxishandbuch BPMN</b></p>
-			<p><a href="http://www.amazon.de/Praxishandbuch-BPMN-2-0-Jakob-Freund/dp/3446429867">Get at Amazon.de</a>
-		</div>
-	</div>
-</div>
+			<div class="row-fluid">
+				<div class="span4">
+					<div class="span4">
+					<img src="http://ecx.images-amazon.com/images/I/41XSes77XSL._SL135_.jpg"/>
+					</div>
+					<div class="span8">
+					<p>
+						<img src="http://www.bpm-guide.de/wp-content/plugins/polyglot2/polyglot_flags/uk.png"> English Edition<br/>
+						<b>Real Life BPMN</b></p>
+						<p><a c href="http://www.amazon.com/Real-Life-BPMN-Analyze-Automate-Processes/dp/1480034983">Get at Amazon.com</a>
+					</div>
+				</div>
+				<div class="span4">
+					<div class="span4">
+					<img src="http://ecx.images-amazon.com/images/I/414DcF8OJaL._SL135_.jpg" />
+					</div>
+					<div class="span8">
+					<p>
+						<img src="http://www.bpm-guide.de/wp-content/plugins/polyglot2/polyglot_flags/es.png"> Spanish Edition<br/>
+						<b>BPMN 2.0 Manual</b></p>
+						<p><a href="http://www.amazon.com/BPMN-Manual-Referencia-Práctica-Spanish/dp/1460903935">Get at Amazon.com</a>
+					</div>
+					
+				</div>
+				<div class="span4">
+					<div class="span4">
+					<img src="http://files.hanser.de/hanser/pics/978-3-446-42986-4_2122714399-110.jpg" />
+					</div>
+					<div class="span8">
+					<p>
+						<img src="http://www.bpm-guide.de/wp-content/plugins/polyglot2/polyglot_flags/de.png"> German Edition<br/>
+						<b>Praxishandbuch BPMN</b></p>
+						<p><a href="http://www.amazon.de/Praxishandbuch-BPMN-2-0-Jakob-Freund/dp/3446429867">Get at Amazon.de</a>
+					</div>
+				</div>
+			</div>
 			
 		</section>		
 		<section id="tasks">
@@ -89,83 +89,221 @@ More and more organisations are using BPMN and in more and more universities BPM
 				<h1>Tasks, Gateways and Lanes<small> Sketching out the core flow.</small></h1>
 			</div>
 			<h2>A simple flow</h2>
-			<div >
-				<div id="simple" >
-					<script>bpmn("tutorial/simple_flow", "simple");</script>
+			<div class="label label-warning">Hover over orange symbols for explanation</div>
+			<div  >
+				<div id="simple" style="position:relative">
+					<script>
+					bpmn("tutorial/simple_flow", "simple");
+					</script>
+					<div class="tutPop" id="simple-sid-B04D1D48-F63A-440D-8354-072FEA072E41" rel="popover" title="Start Event" data-content="Start events show which event causes the process to start. Start Evens are always catching events.">
+					</div>
+					<div class="tutPop" id="simple-sid-4A1FEF34-88D7-4845-940F-9C048C11B5A6" rel="popover" title="Task" data-content="Tasks are the heart of the process. Ultimately, something has to happen to bring about a desired outcome. In BPMN, a task technically is part of the activities category, which also includes the sub-process">
+					</div>
+					<div class="tutPop" id="simple-sid-BC888BAA-90B0-4173-ACAA-F1621EE71B2D" rel="popover" title="Intermediate Event" data-content="Intermediate events stand for a status that is reached in the process and that is modeled explicitly. They are used infrequently, but intermediate events can be useful, for example, if you regard reaching a certain status as a milestone and you want to measure the time until the milestone is reached. Intermeidate none events are always throwing events.">
+					</div>
+					<div class="tutPop" id="simple-sid-153C934A-CC9F-4169-A816-6CBE7B159D1E" rel="popover" title="End Event" data-content="End events mark the status reached at the end of the process path. End events are always throwing events.">
+					</div>
 				</div>
 			</div>
+
 
 			<p>
 				This diagram shows a simple process triggered by someone being hungry. The result is that someone must shop for groceries and prepare a meal. After that, someone will eat the meal and have his or her hunger satisfied. 
 			</p>
-<p>
-You will easily recognize the following symbols and their meanings in the diagram:
-</p>
-<p>
-Tasks are the heart of the process. Ultimately, something has to happen to bring about a desired outcome. In BPMN, a task technically is part of the activities category, which also includes the sub-process explained in \secvref{sec:02:teilprozesse}.
-</p>
-<div class="alert alert-info">
-When naming tasks, we try to adhere to the object-orientated design principle of using the [verb] + [object] pattern. We would say "acquire groceries," for example, not "first take care of shopping for groceries." 
-</div>
+			<div class="accordion" id="accSimple">
+			  <div class="accordion-group">
+				<div class="accordion-heading">
+				  <a class="accordion-toggle" data-toggle="collapse" data-parent="#accSimple" href="#collapseOne">
+					<i class="icon-thumbs-up"></i> Best Practice: Naming Conventions
+				  </a>
+				</div>
+				<div id="collapseOne" class="accordion-body collapse">
+				  <div class="accordion-inner">
+							<p>
+							When naming tasks, we try to adhere to the object-orientated design principle of using the [verb] + [object] pattern. We would say "acquire groceries," for example, not "first take care of shopping for groceries." 
+							</p>
+							<p>
+							Events refer to something that has already happened regardless of the process (if they are catching events) and as a result of the process (if they are throwing events). For this reason, we use the [object] and make the [verb] passive in voice, so we write "hunger noticed." BPMN does not require you to model start and end events for a process - you can leave them out - but <b>if</b> you model a start event, you must model an end event for each path. The same is true for end events that require start events. We always create our models with start and end events for two reasons: first, that way it's possible to determine the process trigger, and second, you can describe the final status of each path end. We only sometimes abandon this practice with sub-processes. More on this later.				
+							</p>
+				  </div>
+				</div>
+			  </div>
+			  <div class="accordion-group">
+				<div class="accordion-heading">
+				  <a class="accordion-toggle" data-toggle="collapse" data-parent="#accSimple" href="#collapseTwo">
+					<i class="icon-question-sign"></i> FAQ: Is it obligatory to draw BPMN diagrams horizontally? What if I prefer to draw them vertically?
+				  </a>
+				</div>
+				<div id="collapseTwo" class="accordion-body collapse">
+				  <div class="accordion-inner">
+							You could always draw your diagrams from top to bottom instead fom left to right - the BPMN 2.0 standard does not forbid it. However we do not recommend it: It is very uncommon, and experience has proven that people tend to understand the process flow better if it is described in the same way like written text (from left to right, at least in the western world).
+				  </div>
+				</div>
+			  </div>
+			</div>			
 
-<p>
-Events describe significant things that happen before, during, or at the end of a process. The example in \Figvref{fig:02:Aufgaben_Blanko} uses only "none events." None events can be used in a process flow to indicate a status or a milestone. We explain about more event types later. 
-</p>
-<ul>
-<li>Start events show which event causes the process to start. </li>
-<li>Intermediate events stand for a status that is reached in the process and that is modeled explicitly. They are used infrequently, but intermediate events can be useful, for example, if you regard reaching a certain status as a milestone and you want to measure the time until the milestone is reached.</li>
-<li>End events} mark the status reached at the end of the process path.</li>
-</ul>
-<p>
-Even for these simple events, we have to make further distinctions:
-</p>
-<ul>
-	<li>Start events are catching events. That means something happened independent of the process, but the process has to wait for this event, or react to it.</li>
-	<li>Intermediate events may occur, or they may be caused or triggered by the process itself (throwing events). The none intermediate event marks a status reached by the process and is therefore a throwing event. (Again, we will explain about more event types later, including more types of intermediate events to be classified as catching events.)</li>
-	<li>End events take place when the process can no longer react to them. As a consequence, only the process can trigger them.</li>
-</ul>
-
-<div class="alert alert-info">
-Events refer to something that has already happened regardless of the process (if they are catching events) and as a result of the process (if they are throwing events). For this reason, we use the [object] and make the [verb] passive in voice, so we write "hunger noticed." BPMN does not require you to model start and end events for a process \textemdash you can leave them out \textemdash but \textit{if} you model a start event, you must model an end event for each path. The same is true for end events that require start events. We always create our models with start and end events for two reasons: first, that way it's possible to determine the process trigger, and second, you can describe the final status of each path end. We only sometimes abandon this practice with sub-processes. More on this later.
-</div>
-
-\textbf{Sequence flows}
-
-The sequence flow describes the time-logic sequence of the flow elements: tasks, events, and the gateways we describe later. 
-
-The process path taken by our token is also a sequence flow. It is "born" with the process instance because of the start event. Through the sequence flow and by means of the tasks and the intermediate events, it reaches the end event, where it is "consumed" and disappears. This also leads to the "death" of our process instance.
-
-\begin{knigge}
-If it makes sense for you to draw process diagrams vertically instead of horizontally. We always draw ours horizontally, from left to right, but there is nothing to keep you from orienting your flow differently.  
-\end{knigge}
-<h2>Exclusive Data-based Gateways</h2>
-			<div  ">
-				<div id="xor" >
-					<script>bpmn("tutorial/xor", "xor");</script>
+			
+			<h2>Data-based Exclusive Gateways</h2>
+			<div class="label label-warning">Hover over orange symbols for explanation</div>
+			<div  >
+				<div id="xor" style="position:relative">
+					<script>
+						bpmn("tutorial/xor", "xor");
+					</script>
+					<div class="tutPop" id="xor-sid-433EEF5E-4740-4E48-9503-61C492767C56" rel="popover" title="Data-based Exclusive Gateway (diverging)" data-content="When splitting, this gateway routes the sequence flow to exactly one of the outgoing branches.">
+					</div>
+					<div class="tutPop" id="xor-sid-47D7385A-388F-40C4-892E-F814C0659C54" rel="popover" title="Data-based Exclusive Gateway (converging)" data-content="
+						Certainly, it may make semantic sense to merge the three paths. The meal is eaten after it's prepared, regardless of the recipe chosen. We can use the XOR gateway for merging also, and doing so leads the tokens from the three incoming paths into a single outgoing path.  
+					">
+					</div>
 				</div>
 			</div>
-Certain things can only be done under certain circumstances, so few processes always take the same course. In our simple example (\figvref{fig:02:XOR-Gateway-First}), we want to go into the details of cookery. Driven by hunger, we think about what we are going to cook today. We only know three recipes, so we choose one. We can either cook pasta \textit{or} cook a steak \textit{or} prepare a salad. Let's say that these options are exclusive \textemdash we will never prepare more than one at a time. The point of decision on what to do next is called gateway. We decide based on available data (the chosen recipe) and we follow only one of the paths, which is a data-based exclusive gateway. We abbreviate "exclusive gateway" as \textbf{XOR}.  
+			<p>
+			Certain things can only be done under certain circumstances, so few processes always take the same course.
+			In our simple example, we want to go into the details of cookery. Driven by hunger, we think about what we are going to cook today.
+			We only know three recipes, so we choose one. We can either cook pasta <b>or</b> cook a steak <b>or</b> prepare a salad. Let's say that these options are exclusive - we will never prepare more than one at a time. 
+			The point of decision on what to do next is called gateway. We decide based on available data (the chosen recipe) and we follow only one of the paths, which is a data-based exclusive gateway. 
+			We abbreviate "exclusive gateway" as <b>XOR</b>.  
+			</p>
+			<p>
+				<b>Heads up!</b> Bear in mind that a gateway is not a task! You have to determine facts and needs before reaching a gateway.
+			</p>
+			<div class="accordion" id="accXOR">
+			  <div class="accordion-group">
+				<div class="accordion-heading">
+				  <a class="accordion-toggle" data-toggle="collapse" data-parent="#accXOR" href="#XORcollapseOne">
+					<i class="icon-thumbs-up"></i> Best Practice: Naming Conventions
+				  </a>
+				</div>
+				<div id="XORcollapseOne" class="accordion-body collapse">
+				  <div class="accordion-inner">
+					<p>
+						As in the diagram above, we place the crucial question before the gateway. This is our convention, which has proved its value in our projects. 
+						Possible answers go on parallel paths after the gateway, which is how the BPMN specification shows them. We always work with XOR gateways as follows: 
+						<ul>
+							<li>Model the task that requires a decision for the XOR gateway.</li>
+							<li>Model the XOR gateway after that. Create a question with mutually exclusive answers.</li>
+							<li>Model one outgoing path (or sequence flow) for each possible answer, and label the path with the answer.</li>
+						</ul>
+					</p>
+				  </div>
+				</div>
+			  </div>
+			  <div class="accordion-group">
+				<div class="accordion-heading">
+				  <a class="accordion-toggle" data-toggle="collapse" data-parent="#accXOR" href="#XORcollapseTwo">
+					<i class="icon-question-sign"></i> FAQ: Do I have to draw the "X"-Marker inside the rhombus? I have already seen that symbol without any marker...
+				  </a>
+				</div>
+				<div id="XORcollapseTwo" class="accordion-body collapse">
+				  <div class="accordion-inner">
+					BPMN uses two symbols for XOR gateways:
+					<div  >
+						<div id="xor_marker" style="position:relative">
+							<script>
+								bpmn("tutorial/xor_marker", "xor_marker");
+							</script>
+						</div>
+					</div>
+					<p>
+					They are identical in meaning. We always use the version with the X because it seems less ambiguous.
+					</p>
+				  </div>
+				</div>
+			  </div>
+		  </div>			
+			<h2>Parallel Gateways</h2>
+			<p>
+				Suppose that now we want a salad on the side. If you want salad no matter what, you could model it as we have done in this diagram: 
+			</p>
+			<div class="label label-warning">Hover over orange symbols for explanation</div>
+			<div  style="width:100%; overflow:auto">
+				<div id="parallel_without" style="position:relative">
+					<script>
+						bpmn("tutorial/parallel_without", "parallel_without");
+					</script>
+					<div class="tutPop" id="parallel_without-sid-A6E3D7E7-B739-4B08-993E-B5CB5F61C69F" rel="popover" title="Text Annotation" data-content="
+						Here, we've introduced another symbol, the (text) annotation. This is an artifact that you can associate with any flow object (in this case, tasks). 
+						You can enter any text; in our example, we entered the average time to  carry out the associated task.
+					">
+					</div>
+				</div>
+			</div>		
+			<p>
+				The total of the task times equals the running time of the process, which was a total of 48 minutes for pasta and 43 minutes for steak. 
+				Congratulations: you've just analyzed your first process based on key data! 
+			</p>
+			<p>
+				Still, this means waiting 23 or even 28 minutes until you can start to eat. Insufferable! You're really hungry, but what can you do? 
+				Maybe you don't prepare the salad first and then cook the pasta or the steak, but you work on both at the same time - in parallel. 
+				The appropriate symbol is the parallel gateway, or the "AND gateway" for short, as shown in here:			
+			</p>
+			<div class="label label-warning">Hover over orange symbols for explanation</div>
+			<div  style="width:100%; overflow:auto;">
+				<div id="parallel" style="position:relative">
+					<script>
+						bpmn("tutorial/parallel", "parallel");
+					</script>
+					<div class="tutPop" id="parallel-sid-2C2A6D8A-860D-46FB-8A18-1663DF783355" rel="popover" title="Parallel Gateway (Diverging)" data-content="
+						The token plunges into this Gateway. One token emerges from the gateway for each path. That means two tokens in this example.
+					">
+					</div>
+					<div class="tutPop" id="parallel-sid-D18906E5-0DF9-4FF1-A921-4A430C1C379C" rel="popover" title="Parallel Gateway (Converging)" data-content="
+				The number of incoming paths determines the number of 
+				related tokens the gateway is waiting for, so here, it waits for two tokens, and these must belong to the same process instance. 
+				In a Pasta-scenario, the second token arrives at the AND merge after 10 minutes, while the first token stays in 'cook pasta' for a total of 15 minutes.
+				This means the AND merge waits until the first token arrives - an additional 5 minutes.
+				At that point, the tokens happily merge into a single token, which continues on the outgoing path. 
+					">
+					</div>
+				</div>
+			</div>
+			<p>
+				Diagramming tasks as parallel does not make simultaneous processing compulsory. In contrast to the example shown before, it is also not imperative that you 
+				prepare the salad before starting other tasks. Parallel preparation does, however, reduce our total time by 10 minutes. 
+				It is classic process optimization to make tasks parallel as much as possible. 
+			</p>
+			<div class="accordion" id="accAND">
+			  <div class="accordion-group">
+				<div class="accordion-heading">
+				  <a class="accordion-toggle" data-toggle="collapse" data-parent="#accAND" href="#ANDcollapseOne">
+					<i class="icon-certificate"></i> Check yourself: What if we draw the same process, but leave the AND merge out for lack of space, 
+					and the path from the "prepare salad" task leads directly to the XOR merge. What happens if we instantiate the process, and we decide in favor of pasta?
+				  </a>
+				</div>
+				<div id="ANDcollapseOne" class="accordion-body collapse">
+				  <div class="accordion-inner">
+						The token is generated and then cloned as always at the AND split. As soon as we finish preparing the salad, the token passes through the XOR merge and "eat meal" executes. Five minutes later,"cook pasta" also completes. Its token passes through the XOR merge and "eat meal" executes again! That's not the behavior we wanted.
+						<div  style="width:100%; overflow:auto;">
+							<div id="parallel_nomerge" style="position:relative">
+								<script>
+									bpmn("tutorial/parallel_nomerge", "parallel_nomerge");
+								</script>
+							</div>
+						</div>
+				  </div>
+				</div>
+			  </div>
+		  </div>		
+		<h2>Data-based inclusive gateway</h2>
+		We want to make our process even more flexible: When we are hungry, we want to eat 
+		<ul>
+			<li>Only a salad,</li>
+			<li>A salad and "something real," like pasta or steak, or</li>
+			<li>Only something real.</li>
+		</ul>
 
-Bear in mind that a gateway is not a task! You have to determine facts and needs before reaching a gateway. We will encounter this again in Business Rules Management (see \secvref{sec:03:Regeln}).
-
-BPMN uses two symbols for XOR gateways (see \figvref{fig:02:XOR-Gateway-Blanko}). They are identical in meaning. We always use the version with the X because it seems less ambiguous, but use what works for you. 
-
-\begin{knigge}
-As in \figvref{fig:02:XOR-Gateway-First}, we place the crucial question before the gateway. This is our convention, which has proved its value in our projects. Possible answers go on parallel paths after the gateway, which is how the BPMN specification shows them. We always work with XOR gateways as follows: 
-
-\begin{enumerate}
-	\item Model the task that requires a decision for the XOR gateway.
-	\item Model the XOR gateway after that. Create a question with mutually exclusive answers. 
-	\item Model one outgoing path (or sequence flow) for each possible answer, and label the path with the answer.
-\end{enumerate}
-
-An XOR gateway can have as many outgoing paths as you like. We start some paths in the upper left corner and the others in the bottom left corner, but these are just our style conventions. 
-\end{knigge}
-
-By the way, it is not unusual to have three end events nor for the process to result in three end states. Recognizing this possibility can help you with more complex diagrams. Later, we will give more reasons for working with different end events. BPMN is not a block-oriented process notation, so you need not merge a split process path later \textemdash you can, but you don't have to.
-
-Certainly, it may make semantic sense to merge the three paths. The meal is eaten after it's prepared, regardless of the recipe chosen. We can use the XOR gateway for merging also, and doing so leads the tokens from the three incoming paths into a single outgoing path. (See \figvref{fig:02:XOR-Gateway-Zusammen}.) 
+		
 		</section>
 		</div>
 		</div>
 </div>
+<style>
+ .popover {z-index:100 !important;}
+</style>
+			<script>
+						$('.tutPop').popover({
+							"trigger": "hover",
+							"placement": "bottom"
+						})
+					</script>

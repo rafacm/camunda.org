@@ -38,4 +38,15 @@ angular.module('camundaorg.directives')
 
     }
   }
-});
+})
+
+.directive('bpmn', function() {
+  return {
+	restrict: 'E',
+    transclude: true,
+	template:
+	'<p >{{disrc}}</p>'
+ 	  ,
+	  replace: true
+    }
+})
