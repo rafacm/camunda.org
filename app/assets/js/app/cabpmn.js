@@ -1,8 +1,47 @@
+var eventDefinitions = {
+			"messageCatch":" M7 10  L7 20  L23 20  L23 10  z M7 10  L15 16  L23 10 ",
+			"messageThrow":"M7 9  L15 15  L23 9  z M7 10  L7 20  L23 20  L23 10  L15 16  z",
+			"timer":" M15 5  L15 8  M20 6  L18.5 9  M24 10  L21 11.5  M25 15  L22 15  M24 20  L21 18.5  M20 24  L18.5 21  M15 25  L15 22  M10 24  L11.5 21  M6 20  L9 18.5  M5 15  L8 15  M6 10  L9 11.5  M10 6  L11.5 9  M17 8  L15 15  L19 15 ",
+			"error": " M21.820839 10.171502  L18.36734 23.58992  L12.541380000000002 13.281818999999999  L8.338651200000001 19.071607  L12.048949000000002 5.832305699999999  L17.996148000000005 15.132659  L21.820839 10.171502  z",
+			"escalation": "M15 7.75  L21 22.75  L15 16  L9 22.75  z",
+			"signal": "M7.7124971 20.247342  L22.333334 20.247342  L15.022915000000001 7.575951200000001  L7.7124971 20.247342  z",
+			//"cancel": "M7 7  L21 21  M7 21  L21 7 z",
+			"cancel": " M6.283910500000001 9.27369  L9.151395 6.4062062  L14.886362000000002 12.141174  L20.621331 6.4062056  L23.488814 9.273689  L17.753846 15.008657  L23.488815 20.743626  L20.621331 23.611111  L14.886362000000002 17.876142  L9.151394 23.611109  L6.283911000000001 20.743625  L12.018878 15.008658  L6.283910500000001 9.27369  z",
+			"conditional": " M6 6  L24 6 L24 25 L6 25 L6 6 M9 9  L21 9  M9 13  L21 13  M9 17  L21 17  M9 21  L21 21 z",
+			"compensate": "M14 8 L14 22 L7 15 L14 8 M21 8 L21 22 L14 15 L21 8 z",
+			"multipleParallel": "M5.75 12  L5.75 18  L12 18  L12 24.75  L18 24.75  L18 18  L24.75 18  L24.75 12  L18 12  L18 5.75  L12 5.75  L12 12  z",
+			"multiple": " M19.834856 21.874369  L9.762008 21.873529  L6.650126 12.293421000000002  L14.799725 6.373429600000001  L22.948336 12.294781  L19.834856 21.874369  z",
+			"link": "M9 13 L18 13 L18 10 L23 15 L18 20 L18 17 L8 17 L8 13"
+			}
+			
+var taskDefinitions = {
+			// Public Domain: http://thenounproject.com/noun/user/#icon-No1331
+			"user": "M60.541,28.82c0.532,2.353,1.176,4.893,1.301,7.342c0.033,0.654,0.072,1.512-0.201,2.07  c2.227,1.482,1.137,4.562-0.166,6.129c-0.469,0.562-1.535,1.26-1.773,1.957c-0.352,1.025-0.787,2.031-1.408,2.938  c-0.519,0.756-0.408,0.184-0.925,1.344c-0.35,1.576-0.881,5.145-0.13,6.61c0.986,1.921,3.146,3.137,4.934,4.159  c2.37,1.356,5.018,2.351,7.549,3.362c2.33,0.931,4.76,1.626,7.002,2.764c0.703,0.356,1.412,0.704,2.078,1.128  c0.537,0.342,1.438,0.869,1.566,1.559v5.424h-60.01l0.041-5.424c0.128-0.689,1.029-1.217,1.566-1.559  c0.666-0.424,1.375-0.771,2.078-1.128c2.242-1.138,4.673-1.833,7.002-2.764c2.531-1.012,5.178-2.006,7.549-3.362  c1.787-1.022,3.947-2.238,4.933-4.159c0.752-1.466,0.332-5.05-0.019-6.624l0,0c-0.601-0.389-1.016-1.594-1.357-2.197  c-0.359-0.637-0.648-1.324-1.086-1.914c-0.597-0.805-1.592-1.182-2.242-1.936c-0.434-0.502-0.619-1.124-0.834-1.74  c-0.257-0.736-0.131-1.334-0.246-2.161c-0.051-0.354,0.13-0.765,0.34-1.064c0.258-0.368,0.728-0.44,0.847-0.906  c0.147-0.577-0.177-1.253-0.239-1.823c-0.066-0.609-0.224-1.58-0.221-2.191c0.01-2.217-0.4-4.217,1.375-5.969  c0.624-0.614,1.333-1.145,2.01-1.699l0,0c0.26-0.828,1.507-1.338,2.236-1.616c0.947-0.36,1.943-0.562,2.914-0.851  c2.93-0.873,6.297-0.78,8.866,1.029c0.843,0.594,2.005,0.084,2.893,0.594C59.619,26.634,60.639,27.771,60.541,28.82z",
+			// Public Domain: http://thenounproject.com/noun/gear/#icon-No1329
+			"service": "M95.784,59.057c1.867,0,3.604-1.514,3.858-3.364c0,0,0.357-2.6,0.357-5.692c0-3.092-0.357-5.692-0.357-5.692  c-0.255-1.851-1.991-3.364-3.858-3.364h-9.648c-1.868,0-3.808-1.191-4.31-2.646s-1.193-6.123,0.128-7.443l6.82-6.82  c1.32-1.321,1.422-3.575,0.226-5.01L80.976,11c-1.435-1.197-3.688-1.095-5.01,0.226l-6.82,6.82c-1.32,1.321-3.521,1.853-4.888,1.183  c-1.368-0.67-5.201-3.496-5.201-5.364V4.217c0-1.868-1.514-3.604-3.364-3.859c0,0-2.6-0.358-5.692-0.358s-5.692,0.358-5.692,0.358  c-1.851,0.254-3.365,1.991-3.365,3.859v9.648c0,1.868-1.19,3.807-2.646,4.31c-1.456,0.502-6.123,1.193-7.444-0.128l-6.82-6.82  C22.713,9.906,20.459,9.804,19.025,11L11,19.025c-1.197,1.435-1.095,3.689,0.226,5.01l6.819,6.82  c1.321,1.321,1.854,3.521,1.183,4.888s-3.496,5.201-5.364,5.201H4.217c-1.868,0-3.604,1.514-3.859,3.364c0,0-0.358,2.6-0.358,5.692  c0,3.093,0.358,5.692,0.358,5.692c0.254,1.851,1.991,3.364,3.859,3.364h9.648c1.868,0,3.807,1.19,4.309,2.646  c0.502,1.455,1.193,6.122-0.128,7.443l-6.819,6.819c-1.321,1.321-1.423,3.575-0.226,5.01L19.025,89  c1.435,1.196,3.688,1.095,5.009-0.226l6.82-6.82c1.321-1.32,3.521-1.853,4.889-1.183c1.368,0.67,5.201,3.496,5.201,5.364v9.648  c0,1.867,1.514,3.604,3.365,3.858c0,0,2.599,0.357,5.692,0.357s5.692-0.357,5.692-0.357c1.851-0.255,3.364-1.991,3.364-3.858v-9.648  c0-1.868,1.19-3.808,2.646-4.31s6.123-1.192,7.444,0.128l6.819,6.82c1.321,1.32,3.575,1.422,5.01,0.226L89,80.976  c1.196-1.435,1.095-3.688-0.227-5.01l-6.819-6.819c-1.321-1.321-1.854-3.521-1.183-4.889c0.67-1.368,3.496-5.201,5.364-5.201H95.784  z M50,68.302c-10.108,0-18.302-8.193-18.302-18.302c0-10.107,8.194-18.302,18.302-18.302c10.108,0,18.302,8.194,18.302,18.302  C68.302,60.108,60.108,68.302,50,68.302z",
+			"script": "M6.402,0.5h14.5c0,0-5.833,2.833-5.833,5.583s4.417,6,4.417,9.167    s-4.167,5.083-4.167,5.083H0.235c0,0,5-2.667,5-5s-4.583-6.75-4.583-9.25S6.402,0.5,6.402,0.5z"
+			}
+
+			
+
+
 var generalStyle = {
     stroke: "grey",
     "stroke-width": 2,
     "stroke-linecap": "round",
     "stroke-linejoin": "round",
+    "stroke-opacity" : 1
+}
+
+var groupStyle = {
+    stroke: "grey",
+    "stroke-width": 2,
+    "stroke-opacity" : 1
+}
+
+var dataObjectStyle = {
+    stroke: "grey",
+    "stroke-width": 2,
     "stroke-opacity" : 1
 }
 
@@ -30,7 +69,8 @@ var endEventStyle = {
   
   var gatewayMarkerStyle = {
     stroke: "grey",
-    "stroke-width": 4,
+	"stroke-opacity" : 1,
+    "stroke-width": 4
   };
 
   
@@ -40,6 +80,15 @@ var endEventStyle = {
 	"stroke-linecap": "square",
 	"stroke-linejoin": "round"  
   };
+
+   var messageFlowStyle = {
+   "stroke-width": 2,
+	"arrow-end": "open-wide-long",
+	"stroke-dasharray": "-",
+	"stroke-linecap": "round",
+	"stroke-linejoin": "round"  
+  };
+
   
   var textStyle = {
 	"font-size": 12, 
@@ -58,68 +107,110 @@ var endEventStyle = {
 
 }
 
+// For line breaking the caption in activities
 function textLineBreaker (t, content, maxWidth) {
-	var words = content.split(" ");
+	// content exists?
+	if (content) {
+		var words = content.split(" ");
 
-	var tempText = "";
-	for (var i=0; i<words.length; i++) {
-	  t.attr("text", tempText + " " + words[i]);
-	  if (t.getBBox().width > maxWidth) {
-		tempText += "\n" + words[i];
-	  } else {
-		tempText += " " + words[i];
-	  }
+		var tempText = "";
+		for (var i=0; i<words.length; i++) {
+		  t.attr("text", tempText + " " + words[i]);
+		  if (t.getBBox().width > maxWidth) {
+			tempText += "\n" + words[i];
+		  } else {
+			tempText += " " + words[i];
+		  }
+		}
+		t.attr("text", tempText.substring(1));
 	}
-
-	t.attr("text", tempText.substring(1));
 }
 
 function elementSVG (element, paper) {
 	var drawnElement;
 
 	// Event?
-	if (element.type.toLowerCase().indexOf("event") >= 0) {
+	if ((element.type.toLowerCase().indexOf("event") >= 0) && (element.type.toLowerCase().indexOf("gateway") == -1)) {
 		var rad = element.width / 2;	
-		var x = parseInt(parseInt(element.x) + rad);
-		var y = parseInt(parseInt(element.y) + rad);
+		var x = element.x + rad;
+		var y = element.y + rad;
 		
 		// event border
 		drawnElement = paper.circle(x, y, rad)
 			  .attr(generalStyle).attr(eventStyle);
+			  
+		// mark as non-interrupting if necessary
+		if (element.cancelActivity == false) {
+			drawnElement.attr({"stroke-dasharray": "-"})
+		}
 		
-		// intermediate?
+		// intermediate or boundary?
 		if ((element.type.toLowerCase().indexOf("intermediate") >= 0) || (element.type.toLowerCase().indexOf("boundary") >= 0)) {
 			// intermediate event border
-			paper.circle(x, y, rad-2)
+			var innerCircle = paper.circle(x, y, rad-2)
 			  .attr(generalStyle).attr(eventStyle).attr({fill:"none"});
+			// mark as non-interrupting if necessary
+			if (element.cancelActivity == false) {
+				innerCircle.attr({"stroke-dasharray": "-"})
+			}
 		
 		// end?
 		} else if (element.type.toLowerCase().indexOf("end") >= 0) {
 			// end event border
-			drawnElement = paper.circle(x, y, rad)
-			  .attr(generalStyle).attr(eventStyle).attr(endEventStyle);
+			drawnElement.attr(endEventStyle);
+			// adjust radius due to thicker border (rad = stroke-width/2)
+			rad = rad+0.75;
 		}
+		
 		
 		// message?
 		if (element.eventType == "message") {
-			envX = x - 8;
-			envY = y - 5;
-			envelope = "M" + envX + " " + envY + " l0 10  l16 0  l0 -10  z M" + envX + " " + envY + " l8 6  l8 -6";
-			paper.path(envelope).attr(generalStyle);
-		
+			// catch?
+			if ((element.type.toLowerCase().indexOf("catch") >= 0)|| (element.type.toLowerCase().indexOf("boundary") >= 0) || (element.type.toLowerCase().indexOf("start") >= 0)) {
+				var myPathSpec = eventDefinitions["messageCatch"];
+				var myPath = paper.path(myPathSpec).attr(generalStyle).attr(eventStyle);
+				myPath.translate(x - rad, y-rad);
+			} else {
+				var myPathSpec = eventDefinitions["messageThrow"];
+				var myPath = paper.path(myPathSpec).attr(generalStyle).attr({"stroke":"none", "fill":"grey"});
+				myPath.translate(x - rad, y-rad);
+			}
 		// timer?
 		} else if (element.eventType == "timer") {
-			envX = x - 1;
-			envY = y - 10;
-			paper.circle(x, y, rad-7).attr(generalStyle);
-
-			// M15 5  L15 8  M20 6  L18.5 9  M24 10  L21 11.5  M25 15  L22 15  M24 20  L21 18.5  M20 24  L18.5 21  M15 25  L15 22  M10 24  L11.5 21  M6 20  L9 18.5  M5 15  L8 15  M6 10  L9 11.5  M10 6  L11.5 9  M17 8  L15 15  L19 15
-			eventPath = "M" + envX + " " + envY + " l0 3  M" + parseInt(envX + 5) + " " + parseInt(envY + 1) + " l-1.5 3  M" + parseInt(envX + 9) + " " + parseInt(envY + 5) + " l-3 1.5  M" + parseInt(envX + 10) + " " + parseInt(envY + 10) + " l-3 0  M" + parseInt(envX + 9) + " " + parseInt(envY + 15) + " l-3 -1.5 M" + parseInt(envX + 5) + " " + parseInt(envY + 19) + " l-1.5 -3  M" + parseInt(envX + 0) + " " + parseInt(envY + 20) + " l0 -3  M" + parseInt(envX - 5) + " " + parseInt(envY + 19) + " l1.5 -3  M" + parseInt(envX - 9) + " " + parseInt(envY + 15) + " l3 -1.5  M" + parseInt(envX - 10) + " " + parseInt(envY + 10) + " l3 0  M" + parseInt(envX - 9) + " " + parseInt(envY + 5) + " l3 1.5 M" + parseInt(envX - 5) + " " + parseInt(envY + 1) + " l1.5 3 M" + parseInt(envX + 2) + " " + parseInt(envY + 3) + " l-2 7 l4 0";
-			paper.path(eventPath).attr(generalStyle);
-			
+			paper.circle(x, y, 10).attr(generalStyle).attr(eventStyle);
+			var myPathSpec = eventDefinitions[element.eventType];
+			var myPath = paper.path(myPathSpec).attr(generalStyle).attr(eventStyle);
+			myPath.translate(x - rad, y-rad);
+		// terminate?
+		} else if (element.eventType == "terminate") {
+			paper.circle(x, y, 8).attr(generalStyle).attr(eventStyle).attr({"fill":"grey"});
+		// cancel?
+		} else if (element.eventType == "cancel") {
+			var myPathSpec = eventDefinitions[element.eventType];
+			var myPath = paper.path(myPathSpec).attr(generalStyle).attr(eventStyle);
+			myPath.translate(x - rad, y-rad);
+			// throwing?
+			if ((element.type.toLowerCase().indexOf("throw") >= 0) || element.type.toLowerCase().indexOf("end") >= 0){
+				myPath.attr({"stroke":"none", "fill":"grey"});
+			}
+		// sth. else?
+		} else if ((element.eventType == "error") || (element.eventType == "multipleParallel") || (element.eventType == "multiple") || (element.eventType == "escalation") || (element.eventType == "link") || (element.eventType == "signal") || (element.eventType == "cancel") || (element.eventType == "conditional") || (element.eventType == "compensate")) {
+			var myPathSpec = eventDefinitions[element.eventType];
+			var myPath = paper.path(myPathSpec).attr(generalStyle).attr(eventStyle);
+			myPath.translate(x - rad, y-rad);
+			// throwing?
+			if ((element.type.toLowerCase().indexOf("throw") >= 0) || element.type.toLowerCase().indexOf("end") >= 0){
+				myPath.attr({"stroke":"none", "fill":"grey"});
+			}
 		}
 
-		if (element.name) paper.text(x, parseInt(y) + parseInt(element.height/2) + 15, element.name).attr(textStyle);
+		if (element.name) { 
+			if (element.labelX) {
+				paper.text(element.labelX, element.labelY, element.name).attr(textStyle);
+			} else {
+				paper.text(x, parseInt(y) + parseInt(element.height/2) + 15, element.name).attr(textStyle);
+			}
+		}
 		
 	// Gateways
 	} else if (element.type.toLowerCase().indexOf("gateway") >= 0) {
@@ -137,31 +228,51 @@ function elementSVG (element, paper) {
 		if (element.type == "exclusiveGateway") {
 			// Should marker be visible?
 			if (element.isMarkerVisible == "true") {
-				var markerX = parseInt(element.x) + parseInt(element.width/2.6) -0.5;
-				var markerY = parseInt(element.y) + parseInt(element.height/3) - 0.5;
-				var marker1 = "M" + markerX + " " + markerY + " l10.5 16 z";
-				var marker2 = "M" + markerX + " " + parseInt(parseInt(markerY) + 16.9) + " l10.5 -16 z";
-				paper.path(marker1).attr(gatewayMarkerStyle);
-				paper.path(marker2).attr(gatewayMarkerStyle);
+			var myPathSpec = " M13.25 12.05  L17.25 12.05  L27.65 28.95  L23.75 28.95  z";
+			var myPath = paper.path(myPathSpec).attr(gatewayMarkerStyle).attr({"stroke-width":"1", "fill":"grey"});
+			myPath.translate(x, y - radHeight);
+
+			myPathSpec = " M13.25 28.95  L23.75 12.05  L27.65 12.05  L17.25 28.95  z";
+			myPath = paper.path(myPathSpec).attr(gatewayMarkerStyle).attr({"stroke-width":"1", "fill":"grey"});
+			myPath.translate(x, y - radHeight);
 			}
-		}
 
 		// Parallel?
-		if (element.type == "parallelGateway") {
-			var markerX1 = parseInt(element.x) + parseInt(element.width/2) + 1;
-			var markerY1 = parseInt(element.y) + parseInt(element.height/3) - 1;
-			var marker1 = "M" + markerX1 + " " + markerY1 + " l0 16";
+		} else if (element.type == "parallelGateway") {
+			var myPathSpec = " M11.25 20.5  L30.25 20.5  M20.5 11.25  L20.5 30.25 ";
+			var myPath = paper.path(myPathSpec).attr(gatewayMarkerStyle);
+			myPath.translate(x, y - radHeight);
 
-			var markerX2 = parseInt(element.x) + parseInt(element.width/3);
-			var markerY2 = parseInt(element.y) + parseInt(element.height/2);
-			var marker2 = "M" + markerX2 + " " + markerY2 + " l16 0";
-			paper.path(marker1).attr(gatewayMarkerStyle);
-			paper.path(marker2).attr(gatewayMarkerStyle);
-		}
+		// Inclusive?
+		} else if (element.type == "inclusiveGateway") {
+			var rad = element.width / 3.5;	
+			var x = element.x + element.width/2;
+			var y = element.y + element.height/2;
+			paper.circle(x, y, rad-2).attr(gatewayMarkerStyle).attr({"stroke-width":3});
+					
+		// Event based?
+		} else if (element.type == "eventBasedGateway") {
+			var rad = element.width / 3.3;	
+			var x = element.x + element.width/2;
+			var y = element.y + element.height/2;
+			paper.circle(x, y, rad).attr(gatewayMarkerStyle).attr({"stroke-width":1});
+			paper.circle(x, y, rad-2).attr(gatewayMarkerStyle).attr({"stroke-width":1});
+			
+			var pathSpec = "M24.827514 26.844972  L15.759248000000001 26.844216  L12.957720300000002 18.219549  L20.294545 12.889969  L27.630481000000003 18.220774  L24.827514 26.844972  z";
+			var myPath = paper.path(pathSpec).attr(generalStyle).attr({"stroke-width":1.5});
+			myPath.translate(element.x , element.y);
 
+		// Complex?
+		} else if (element.type == "complexGateway") {
+			var pathSpec = "M10.75 20.5  L30.25 20.5  M20.5 10.75  L20.5 30.25  M13.35 13.35  L27.65 27.65  M13.35 27.65  L27.65 13.35";
+			var myPath = paper.path(pathSpec).attr(generalStyle);
+			myPath.translate(element.x , element.y);
+		}		
+	
+		
 	// Pools
 	} else if (element.type.toLowerCase().indexOf("participant") >= 0) {
-		paper.rect(
+		drawnElement = paper.rect(
 				element.x, 
 				element.y, 
 				element.width, 
@@ -170,11 +281,11 @@ function elementSVG (element, paper) {
 			  .attr(generalStyle);
 		var textX = parseInt(parseInt(element.x) + 10);
 		var textY = parseInt(parseInt(element.y) + parseInt(element.height)/2);
-		paper.text(textX, textY, element.name).rotate(-90,x,200).attr(textStyle);			  
+		if (element.name) paper.text(textX, textY, element.name).rotate(-90,x,200).attr(textStyle);			  
 
 	// Lanes
 	} else if (element.type.toLowerCase().indexOf("lane") >= 0) {
-		paper.rect(
+		drawnElement = paper.rect(
 				element.x, 
 				element.y, 
 				element.width, 
@@ -183,7 +294,7 @@ function elementSVG (element, paper) {
 			  .attr(generalStyle);
 		var textX = parseInt(parseInt(element.x) + 10);
 		var textY = parseInt(parseInt(element.y) + parseInt(element.height)/2);
-		paper.text(textX, textY, element.name).rotate(-90,x,200).attr(textStyle);			  
+		if (element.name) paper.text(textX, textY, element.name).rotate(-90,x,200).attr(textStyle);			  
 
 	// Text Annotation?
 	} else if (element.type.toLowerCase().indexOf("textannotation") >= 0) {
@@ -201,7 +312,116 @@ function elementSVG (element, paper) {
 		var t = paper.text(textX, textY, element.textAnnotation).attr(textStyle).attr({'text-anchor': 'start'});			  
 		textLineBreaker (t, element.textAnnotation, element.width);
 		
-	// Activities
+	// Group?
+	} else if (element.type == "group") {
+
+		drawnElement = paper.rect(
+				element.x, 
+				element.y, 
+				element.width, 
+				element.height, 
+				5)
+			  .attr(groupStyle).attr({"stroke-dasharray":"- ."});
+
+		var textX = element.x + 5;
+		var textY = element.y + 10;
+		if (element.name) var t = paper.text(textX, textY, element.name).attr(textStyle).attr({'text-anchor': 'start'});	
+
+	// DataObject?
+	} else if (element.type == "dataObject") {
+		var pathSpec = "M" + element.x + " " + element.y + " l" + (element.width-10) + " 0 l10 10 l0 " + (element.height-10) + " l-" + element.width + " 0 l0 -" + element.height + "M" + (element.x + element.width - 10) + " " + element.y + " l0 10 l10 0";
+		drawnElement = paper.path(pathSpec).attr(generalStyle);
+
+		var textX = element.x + 5;
+		var textY = element.y + 10;
+		if (element.name) var t = paper.text(textX, textY, element.name).attr(textStyle).attr({'text-anchor': 'start'});
+
+	// DataStore?
+	} else if (element.type == "dataStoreReference") {
+		var pathSpec = "M30.708999999999985 0  c20.013 0 31.292 3.05 31.292 5.729  c0 2.678 0 45.096 0 48.244  c0 3.148 -16.42 6.2 -31.388 6.2  c-14.968 0 -30.613 -2.955 -30.613 -6.298  c0 -3.342 0 -45.728 0 -48.05  C-1.4210854715202004e-14 3.503 10.696999999999985 0 30.708999999999985 0  M62.00099999999999 15.027999999999999  c0 1.986 -3.62 6.551 -31.267 6.551  c-27.646 0 -30.734 -4.686 -30.734 -6.454  M-1.4210854715202004e-14 10.475000000000001  c0 1.769 3.088 6.455 30.734 6.455  c27.647 0 31.267 -4.565 31.267 -6.551  M-1.4210854715202004e-14 5.825000000000001  c0 2.35 3.088 6.455 30.734 6.455  c27.647 0 31.267 -3.912 31.267 -6.552  M62.00099999999999 5.729000000000001  v4.844  M0.0239999999999857 5.729000000000001  v4.844  M62.00099999999999 10.379000000000001  v4.844  M0.0239999999999857 10.379000000000001  v4.844 ";
+		drawnElement = paper.path(pathSpec).attr(generalStyle);
+		drawnElement.translate(element.x, element.y);
+		
+		var textX = element.x + 5;
+		var textY = element.y + 10;
+		if (element.name) var t = paper.text(textX, textY, element.name).attr(textStyle).attr({'text-anchor': 'start'});
+		
+	// Tasks
+	} else if (element.type.toLowerCase().indexOf("task") >= 0) {
+
+		drawnElement = paper.rect(
+				element.x, 
+				element.y, 
+				element.width, 
+				element.height, 
+				5)
+			  .attr(activityStyle);
+
+		var textX = parseInt(parseInt(element.x) + parseInt(element.width)/2);
+		var textY = parseInt(parseInt(element.y) + parseInt(element.height)/2);
+		if (element.name) {
+			var t = paper.text(textX, textY, element.name).attr(textStyle);	
+			textLineBreaker (t, element.name, element.width);
+		}
+		
+		var taskType = element.type.replace("Task", "");
+		
+		if (taskType == "user") {
+			var pathSpec = taskDefinitions[taskType];
+			drawnElement = paper.path(pathSpec).attr(generalStyle).attr({"stroke-width":1, "fill":"grey"});
+			drawnElement.translate(element.x-element.width/2 + 13, element.y-element.height/2 + 1);
+			drawnElement.scale(0.25,0.25);
+		} else if (taskType == "service") {
+			var pathSpec = taskDefinitions[taskType];
+			drawnElement = paper.path(pathSpec).attr(generalStyle).attr({"stroke-width":1, "fill":"grey"});
+			drawnElement.translate(element.x-element.width/2 + 13, element.y-element.height/2 + 1);
+			drawnElement.scale(0.15,0.15);
+		} else if (taskType == "manual") {
+			var pathSpec1 = "M0.5,3.751l4.083-3.25c0,0,11.166,0.083,12.083,0.083s-2.417,2.917-1.5,2.917 s11.667,0,12.584,0c1.166,1.708-0.168,3.167-0.834,3.667s0.875,1.917-1,4.417c-0.75,0.25,0.75,1.875-1.333,3.333     c-1.167,0.583,0.583,1.542-1.25,2.833c-1.167,0-20.833,0.083-20.833,0.083l-2-1.333V3.751z";
+			pathSpec1 = pathSpec1 + " M 13.5 7 L 27 7 M 13.5 11 L 26 11 M 14 14.5 L 25 14.5 M 8.2 3.1 L 15 3.1";
+			drawnElement = paper.path(pathSpec1).attr(generalStyle).attr({"stroke-width":1, "fill":"white"});
+			drawnElement.translate(element.x, element.y);
+			drawnElement.scale(0.6,0.6);
+		} else if (taskType == "script") {
+			var pathSpec1 = "M6.402,0.5h14.5c0,0-5.833,2.833-5.833,5.583s4.417,6,4.417,9.167    s-4.167,5.083-4.167,5.083H0.235c0,0,5-2.667,5-5s-4.583-6.75-4.583-9.25S6.402,0.5,6.402,0.5z";
+			pathSpec1 = pathSpec1 + " M 3.5 4.5 L 13.5 4.5 M 3.8 8.5 L 13.8 8.5 M 6.3 12.5 L 16.3 12.5 M 6.5 16.5 L 16.5 16.5";
+			drawnElement = paper.path(pathSpec1).attr(generalStyle).attr({"stroke-width":1, "fill":"white"});
+			drawnElement.translate(element.x, element.y);
+			drawnElement.scale(0.6,0.6);
+		} else if (taskType == "businessRule") {
+			drawnElement = paper.rect(
+					element.x + 5, 
+					element.y + 4, 
+					17, 
+					12, 
+					0)
+				  .attr(activityStyle).attr({"stroke-width":1});
+			drawnElement = paper.rect(
+					element.x + 5, 
+					element.y + 4, 
+					17, 
+					4, 
+					0)
+				  .attr(activityStyle).attr({"stroke-width":1, "fill":"grey"});
+
+
+			var pathSpec1 = "M 2 10 L 19 10 M 7 4 L 7 14";
+			drawnElement = paper.path(pathSpec1).attr(generalStyle).attr({"stroke-width":1, "stroke-linecap": "butt", "stroke-linejoin": "butt"});
+			drawnElement.translate(element.x + 3, element.y+2);
+			
+		} else if (taskType == "receive") {
+			var pathSpec1 = eventDefinitions["messageCatch"]
+			drawnElement = paper.path(pathSpec1).attr(generalStyle).attr({"stroke-width":1, "fill":"white"});
+			drawnElement.translate(element.x-2, element.y-4);
+			
+		} else if (taskType == "send") {
+			var pathSpec1 = eventDefinitions["messageThrow"]
+			drawnElement = paper.path(pathSpec1).attr(generalStyle).attr({"stroke":"none", "fill":"grey"});
+			drawnElement.translate(element.x-2, element.y-4);
+		}
+
+		
+	// anything else..
 	} else {
 
 		drawnElement = paper.rect(
@@ -214,11 +434,12 @@ function elementSVG (element, paper) {
 
 		var textX = parseInt(parseInt(element.x) + parseInt(element.width)/2);
 		var textY = parseInt(parseInt(element.y) + parseInt(element.height)/2);
-		var t = paper.text(textX, textY, element.name).attr(textStyle);	
-		textLineBreaker (t, element.name, element.width);
-	
+		if (element.name) {
+			var t = paper.text(textX, textY, element.name).attr(textStyle);	
+			textLineBreaker (t, element.name, element.width);
+		}
 		
-	}
+	}	
 	
 	drawnElement.node.id = "svg_" + element.id;
 	drawnElement.data ("bpmnType", element.type);
@@ -245,6 +466,14 @@ function drawFlow (flow, pathSpec, paper) {
 		   to = 1;
 		
 	}
+	
+	if (flow.type == "message") { 
+		// draw messageFlow 
+		var e = paper.path(pathString).attr(generalStyle).attr(messageFlowStyle),
+			l = e.getTotalLength(),
+		   to = 1;
+		paper.circle(pathSpec[0].x, pathSpec[0].y, 4).attr(generalStyle).attr({"fill":"white"});
+	}	
 	
 	if (flow.type == "association") { 
 		var e = paper.path(pathString).attr("stroke-dasharray", ". "),
@@ -274,47 +503,63 @@ function drawFlow (flow, pathSpec, paper) {
 	
 }
 
-function getDivLayer (element) {
-	elementH = '<div ' + 
-	' id=\"' + element.id + '"' +
-	' style=\"position: absolute; border: 1px solid red;' +
-	'left: '+ element.x + 'px; ' + 
-	'top: '+ element.y + 'px; '+
-	'width: '+ element.width + 'px; '+
-	'height: '+ element.height + 'px; '+
-	'\">' + '</div>';
-	
-	return elementH;
-}
-
-function drawElement (data, element, paper, container) {
+function drawElement (data, element, paper, container, elemXML) {
 	var raphaelElementId;
+
+		// if event, determine eventType
+		if ((element.type.toLowerCase().indexOf("event") >= 0) && (element.type.toLowerCase().indexOf("gateway") == -1)) {
+			
+			
+			// Containts Event Definitions?
+			$(elemXML).find("*").filter(function() {
+			    return this.nodeName.match(/[^\d]EVENTDEFINITION/)}).each(function() {
+					// if already set, this is a muliple event
+					if (element.eventType) {
+						// is parallel Multiple?
+						if ($(elemXML).attr("parallelMultiple") == "true") {
+							element.eventType = "multipleParallel";
+						} else {
+							element.eventType = "multiple";
+						}					
+					} else {
+						element.eventType = (this).nodeName.replace("EVENTDEFINITION","").toLowerCase();
+					}
+					
+					// would cancel Activity?
+					if ($(elemXML).attr("cancelActivity") == "false") {
+						element.cancelActivity = false;
+					} else {
+						element.cancelActivity = true;
+					}
+				});
+			
+		}
+
 	
 	// Find respective DI
 	$(data).find("bpmndi\\:BPMNShape[bpmnElement='" + element.id + "']").each(function(){
 		var $di = $(this);
-		element.x = $(this).find('omgdc\\:Bounds').attr("x");
-		element.y = $(this).find('omgdc\\:Bounds').attr("y");
-		element.width = $(this).find('omgdc\\:Bounds').attr("width");
-		element.height = $(this).find('omgdc\\:Bounds').attr("height");
+		element.x = parseFloat($(this).find('omgdc\\:Bounds').attr("x"));
+		element.y = parseFloat($(this).find('omgdc\\:Bounds').attr("y"));
+		element.width = parseFloat($(this).find('omgdc\\:Bounds').attr("width"));
+		element.height = parseFloat($(this).find('omgdc\\:Bounds').attr("height"));
 		
-		// get Label Position
+		// get Label Position if existing
 		$(this).find("bpmndi\\:BPMNLabel").each(function() {
-			element.labelX = $(this).find("omgdc\\:Bounds").attr("x");
-			element.labelY = $(this).find("omgdc\\:Bounds").attr("y");
+			element.labelX = parseFloat($(this).find("omgdc\\:Bounds").attr("x"));
+			element.labelY = parseFloat($(this).find("omgdc\\:Bounds").attr("y"));
 		});		
 
 		// if exclusiveGateway, determine if marker should be visible
 		if (element.type == "exclusiveGateway") {
 			element.isMarkerVisible = $(this).attr("isMarkerVisible");
 		}
-		
-		raphaelElementId = elementSVG (element, paper);
-	});
 
-	// create DIV for Popover
-	//alert(container);
-	//$("#" + container).append(getDivLayer(element));
+			// Draw Symbol as SVG
+	raphaelElementId = elementSVG (element, paper);
+
+		});
+
 	
 	// Position DIV Element (if exists)
 	if ($('#' + container + "-" + element.id).length > 0) {
@@ -325,126 +570,105 @@ function drawElement (data, element, paper, container) {
 			"left": element.x + "px",
 			"top": element.y + "px"
 			});
-	$('#' + container + "-" + element.id).hover(
-	  function () {
-			r = paper.getById(raphaelElementId);
-			
-			// For Rectangles with rounded corners (i.e. tasks) a special Offset of 5px for glow effect is needed
-			var specialOffsetx = 0;
-			if (element.type.toLowerCase().indexOf("task") >= 0) specialOffsetx = 5;
-			r.g = r.glow({
-				color: "darkOrange", 
-				width: 10,
-				offsetx: specialOffsetx
-			});
-	  }, 
-	  function () {
-			r.g.remove();
-	  }
-	);
-		$('#svg_' + element.id).attr({stroke: "darkOrange"});
+		
+		// Get Raphael Element
+		var r = paper.getById(raphaelElementId);
+
+		// Give a glow effect for node that is associated with div layer that is hovered
+		$('#' + container + "-" + element.id).hover(
+		  function () {
+				r.g = r.glow({
+					color: "darkOrange", 
+					width: 10
+				});
+		  }, 
+		  function () {
+				r.g.remove();
+		  }
+		);
+		
+		// mark nodes that can be hovered with colored border
+		r.attr({stroke: "darkOrange"});
 	}
 }
 
 function parseBPMNXML (diagram, paper, container) {
 
 $.get("http://localhost:8000/app/assets/bpmn/" + diagram + ".bpmn", function(data){
-	var isCollaboration = false;
 
 	// Find Collaboration (if existing)
 	$(data).find("collaboration").each(function(){
-		isCollaboration = true;
+		// Find Pools
+		$(this).find("participant").each(function(){
+			var $elem = $(this);
+			var element = new Object;
+			element.type = "participant";
+			element.id = $elem.attr("id");
+			element.name = $elem.attr("name");
+			
+			drawElement(data, element, paper, container);
+		});
 	});	
 	
 	// 	Find Processes
 	$(data).find("process").each(function(){
-		var $elem = $(this);
-		var element = new Object;
-		element.type = "process";
-		element.id = $elem.attr("id");
-		element.name = $elem.attr("name");
 		
-		drawElement(data, element, paper, container);
+		var elem = $(this);
+		var element = new Object;
+		element.type = "participant";
+		element.id = elem.attr("id");
+		element.name = elem.attr("name");
+		
+		//drawElement(data, element, paper, container, elem);
+		
+		// Find Lanes
+		$(this).find("lane").each(function(){
+			var $elem = $(this);
+			var element = new Object;
+			element.type = "lane";
+			element.id = $elem.attr("id");
+			element.name = $elem.attr("name");
+			
+			drawElement(data, element, paper, container);
+		});
 	});	
 
-	// 	Find Tasks
-	$(data).find("task").each(function(){
-		var $elem = $(this);
-		var element = new Object;
-		element.type = "task";
-		element.id = $elem.attr("id");
-		element.name = $elem.attr("name");
-		
-		drawElement(data, element, paper, container);
-	});	
-
-	// 	Find Exclusive Gateways
-	$(data).find("exclusiveGateway").each(function(){
-		var $elem = $(this);
-		var element = new Object;
-		element.type = "exclusiveGateway";
-		element.id = $elem.attr("id");
-		element.name = $elem.attr("name");
-		
-		drawElement(data, element, paper, container);
-	});	
-
-	// 	Find Inclusive Gateways
-	$(data).find("inclusiveGateway").each(function(){
-		var $elem = $(this);
-		var element = new Object;
-		element.type = "inclusiveGateway";
-		element.id = $elem.attr("id");
-		element.name = $elem.attr("name");
-		
-		drawElement(data, element, paper, container);
-	});	
-
-	// 	Find Parallel Gateways
-	$(data).find("parallelGateway").each(function(){
-		var $elem = $(this);
-		var element = new Object;
-		element.type = "parallelGateway";
-		element.id = $elem.attr("id");
-		element.name = $elem.attr("name");
-		
-		drawElement(data, element, paper, container);
-	});	
+	var symbols = new Array("subprocess",
+							"task", 
+							"sendTask",
+							"receiveTask",
+							"userTask",
+							"manualTask",
+							"businessRuleTask",
+							"scriptTask",
+							"serviceTask",
+							"callActivity",
+							"exclusiveGateway", 
+							"inclusiveGateway", 
+							"parallelGateway",
+							"eventBasedGateway",
+							"complexGateway",
+							"startevent", 
+							"intermediatethrowevent", 
+							"intermediatecatchevent", 
+							"endevent", 
+							"boundaryEvent",
+							"group",
+							"dataObject",
+							"dataStoreReference"
+							);
 	
+	for(var s in symbols){
+		$(data).find(symbols[s]).each(function(){
+			var elemXML = $(this);
+			var element = new Object;
+			element.type = symbols[s];
+			element.id = elemXML.attr("id");
+			element.name = elemXML.attr("name");
+			drawElement(data, element, paper, container, elemXML);
+		});	
+	}	
 	
-	// 	Find Startevents
-	$(data).find("startevent").each(function(){
-		var $elem = $(this);
-		var element = new Object;
-		element.type = "startevent";
-		element.id = $elem.attr("id");
-		element.name = $elem.attr("name");
-		
-		drawElement(data, element, paper, container);
-	});	
-
-	// 	Find Intermediate Throw Events
-	$(data).find("intermediatethrowevent").each(function(){
-		var $elem = $(this);
-		var element = new Object;
-		element.type = "intermediatethrowevent";
-		element.id = $elem.attr("id");
-		element.name = $elem.attr("name");
-		
-		drawElement(data, element, paper, container);
-	});	
-
-	// 	Find Endevents
-	$(data).find("endevent").each(function(){
-		var $elem = $(this);
-		var element = new Object;
-		element.type = "endevent";
-		element.id = $elem.attr("id");
-		element.name = $elem.attr("name");
-		
-		drawElement(data, element, paper, container);
-	});	
-
 	// 	Find Text Annotations
 	$(data).find("textannotation").each(function(){
 		var $elem = $(this);
@@ -481,6 +705,31 @@ $.get("http://localhost:8000/app/assets/bpmn/" + diagram + ".bpmn", function(dat
 		drawFlow(flow, pathSpec, paper);
 		});
 	});
+	
+	// Find semantic Message Flows
+	$(data).find("messageFlow").each(function(){
+		var $edge = $(this);
+		var flow = new Object;
+		flow.id = $edge.attr("id");
+		flow.type = "message";
+		flow.name = $edge.attr("name");
+
+		// Find respective DI
+		var pathSpec = new Array();
+		$(data).find("bpmndi\\:BPMNEdge[bpmnElement='" + flow.id + "']").each(function(){
+			var $di = $(this);
+			$di.find("omgdi\\:waypoint").each(function(){
+				var waypoint = $(this);
+				//alert(waypoint.attr("x"));	
+				pathSpecElem = new Object();
+				pathSpecElem.x = waypoint.attr("x");
+				pathSpecElem.y = waypoint.attr("y");
+				pathSpec.push(pathSpecElem);
+			});
+		
+		drawFlow(flow, pathSpec, paper);
+		});
+	});	
 
 	// Find semantic Associations
 	$(data).find("association").each(function(){
