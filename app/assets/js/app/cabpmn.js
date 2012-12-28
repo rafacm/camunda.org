@@ -7,7 +7,7 @@ var eventDefinitions = {
 			"signal": "M7.7124971 20.247342  L22.333334 20.247342  L15.022915000000001 7.575951200000001  L7.7124971 20.247342  z",
 			//"cancel": "M7 7  L21 21  M7 21  L21 7 z",
 			"cancel": " M6.283910500000001 9.27369  L9.151395 6.4062062  L14.886362000000002 12.141174  L20.621331 6.4062056  L23.488814 9.273689  L17.753846 15.008657  L23.488815 20.743626  L20.621331 23.611111  L14.886362000000002 17.876142  L9.151394 23.611109  L6.283911000000001 20.743625  L12.018878 15.008658  L6.283910500000001 9.27369  z",
-			"conditional": " M6 6  L24 6 L24 25 L6 25 L6 6 M9 9  L21 9  M9 13  L21 13  M9 17  L21 17  M9 21  L21 21 z",
+			"conditional": " M6 6  L24 6 L24 24 L6 24 L6 6 M9 9  L21 9  M9 13  L21 13  M9 17  L21 17  M9 21  L21 21 z",
 			"compensate": "M14 8 L14 22 L7 15 L14 8 M21 8 L21 22 L14 15 L21 8 z",
 			"multipleParallel": "M5.75 12  L5.75 18  L12 18  L12 24.75  L18 24.75  L18 18  L24.75 18  L24.75 12  L18 12  L18 5.75  L12 5.75  L12 12  z",
 			"multiple": " M19.834856 21.874369  L9.762008 21.873529  L6.650126 12.293421000000002  L14.799725 6.373429600000001  L22.948336 12.294781  L19.834856 21.874369  z",
@@ -22,6 +22,13 @@ var taskDefinitions = {
 			"script": "M6.402,0.5h14.5c0,0-5.833,2.833-5.833,5.583s4.417,6,4.417,9.167    s-4.167,5.083-4.167,5.083H0.235c0,0,5-2.667,5-5s-4.583-6.75-4.583-9.25S6.402,0.5,6.402,0.5z"
 			}
 
+var activityMarkers = {
+			"loop": "M 49.5,72 L 49.5,75 L 46.5,75 M 49.5,75 A 4.875,4.875 0 1 1 53.5,75",
+			"miSeq": "M45,67 h10 M45,71 h10 M45,75 h10",
+			"miPar": "M46 65 v10 M50 65 v10 M54 65 v10",
+			"adhoc": "m 0 0 c -0.54305,0.60192 -1.04853,1.0324 -1.51647,1.29142 -0.46216,0.25908 -0.94744,0.38857 -1.4558,0.38857 -0.57194,0 -1.23628,-0.22473 -1.99307,-0.67428 -0.0577,-0.0306 -0.10111,-0.0534 -0.12999,-0.0687 -0.0346,-0.0228 -0.0896,-0.0533 -0.16464,-0.0915 -0.80878,-0.47234 -1.4558,-0.70857 -1.94107,-0.70857 -0.46217,0 -0.91566,0.14858 -1.36047,0.44576 -0.44485,0.2895 -0.92434,0.75046 -1.43849,1.38285 l 0,-2.03429 c 0.54881,-0.60194 1.05431,-1.0324 1.51647,-1.29147 0.46793,-0.26666 0.9532,-0.39999 1.45581,-0.39999 0.57191,0 1.24205,0.22856 2.01039,0.68574 0.0461,0.0308 0.0838,0.0533 0.11266,0.0687 0.0404,0.0228 0.0982,0.0533 0.1733,0.0913 0.803,0.4724 1.45002,0.70861 1.94108,0.70857 0.44481,4e-5 0.88676,-0.14475 1.32581,-0.43429 0.43905,-0.2895 0.9272,-0.75425 1.46448,-1.39428",
+			"compensate": "M 50 70 L 55 65 L 55 75z M44.7 70 L49.7 75 L 49.7 65z"
+			}
 			
 
 
@@ -94,6 +101,11 @@ var endEventStyle = {
 	"font-size": 12, 
 	"font-family": "Arial, Helvetica, sans-serif",
   }
+
+  var textBigStyle = {
+	"font-size": 20, 
+	"font-family": "Arial, Helvetica, sans-serif",
+  }
   
   var highlightStyle = {
 	"fill": "darkOrange"
@@ -103,12 +115,26 @@ var endEventStyle = {
 
 	var paper = Raphael(container, "100%");
 	//$("#processDiagramOverlay").css("height","180px");
-	parseBPMNXML(diagram, paper, container);
-
+	$.get("http://localhost:8000/app/assets/bpmn/" + diagram + ".bpmn", function(data){
+		parseBPMNXML(data, paper, container);
+	});
 }
+
+  function bpmnDirect (xml, container) {
+
+	var paper = Raphael(container, "100%");
+	//$("#processDiagramOverlay").css("height","180px");
+	parseBPMNXML(xml, paper, container);
+
+	return paper;
+	}	
+	
 
 // For line breaking the caption in activities
 function textLineBreaker (t, content, maxWidth) {
+	// set some buffer
+	maxWidth = maxWidth-5;
+	
 	// content exists?
 	if (content) {
 		var words = content.split(" ");
@@ -279,10 +305,20 @@ function elementSVG (element, paper) {
 				element.height, 
 				0)
 			  .attr(generalStyle);
-		var textX = parseInt(parseInt(element.x) + 10);
-		var textY = parseInt(parseInt(element.y) + parseInt(element.height)/2);
-		if (element.name) paper.text(textX, textY, element.name).rotate(-90,x,200).attr(textStyle);			  
-
+		
+		
+		// if collapsed, make a biiig caption
+		if (element.collapsed == true) {
+			var textX = element.x + element.width/2;
+			var textY = element.y + element.height/2;
+			if (element.name) paper.text(textX, textY, element.name).attr(textBigStyle);			  
+	
+		} else  {
+			var textX = parseInt(parseInt(element.x) + 10);
+			var textY = parseInt(parseInt(element.y) + parseInt(element.height)/2);
+			if (element.name) paper.text(textX, textY, element.name).rotate(-90,x,200).attr(textStyle);			  
+		}
+		
 	// Lanes
 	} else if (element.type.toLowerCase().indexOf("lane") >= 0) {
 		drawnElement = paper.rect(
@@ -332,9 +368,13 @@ function elementSVG (element, paper) {
 		var pathSpec = "M" + element.x + " " + element.y + " l" + (element.width-10) + " 0 l10 10 l0 " + (element.height-10) + " l-" + element.width + " 0 l0 -" + element.height + "M" + (element.x + element.width - 10) + " " + element.y + " l0 10 l10 0";
 		drawnElement = paper.path(pathSpec).attr(generalStyle);
 
-		var textX = element.x + 5;
-		var textY = element.y + 10;
-		if (element.name) var t = paper.text(textX, textY, element.name).attr(textStyle).attr({'text-anchor': 'start'});
+		if (element.name) { 
+			if (element.labelX) {
+				paper.text(element.labelX, element.labelY, element.name).attr(textStyle);
+			} else {
+				paper.text(element.x + element.width/2, element.y + element.height + 15, element.name).attr(textStyle);
+			}
+		}		
 
 	// DataStore?
 	} else if (element.type == "dataStoreReference") {
@@ -342,12 +382,16 @@ function elementSVG (element, paper) {
 		drawnElement = paper.path(pathSpec).attr(generalStyle);
 		drawnElement.translate(element.x, element.y);
 		
-		var textX = element.x + 5;
-		var textY = element.y + 10;
-		if (element.name) var t = paper.text(textX, textY, element.name).attr(textStyle).attr({'text-anchor': 'start'});
+		if (element.name) { 
+			if (element.labelX) {
+				paper.text(element.labelX, element.labelY, element.name).attr(textStyle);
+			} else {
+				paper.text(element.x + element.width/2, element.y + element.height + 15, element.name).attr(textStyle);
+			}
+		}		
 		
-	// Tasks
-	} else if (element.type.toLowerCase().indexOf("task") >= 0) {
+	// Tasks 
+	} else if (element.type.toLowerCase().indexOf("task") >= 0)  {
 
 		drawnElement = paper.rect(
 				element.x, 
@@ -368,9 +412,10 @@ function elementSVG (element, paper) {
 		
 		if (taskType == "user") {
 			var pathSpec = taskDefinitions[taskType];
-			drawnElement = paper.path(pathSpec).attr(generalStyle).attr({"stroke-width":1, "fill":"grey"});
-			drawnElement.translate(element.x-element.width/2 + 13, element.y-element.height/2 + 1);
-			drawnElement.scale(0.25,0.25);
+			var drawnTaskType = paper.path(pathSpec).attr(generalStyle).attr({"stroke-width":1, "fill":"grey"});
+			drawnTaskType.translate(element.x-element.width/2 + 13, element.y-element.height/2 + 1);
+			drawnTaskType.scale(0.25,0.25);
+			
 		} else if (taskType == "service") {
 			var pathSpec = taskDefinitions[taskType];
 			drawnElement = paper.path(pathSpec).attr(generalStyle).attr({"stroke-width":1, "fill":"grey"});
@@ -419,11 +464,29 @@ function elementSVG (element, paper) {
 			drawnElement = paper.path(pathSpec1).attr(generalStyle).attr({"stroke":"none", "fill":"grey"});
 			drawnElement.translate(element.x-2, element.y-4);
 		}
-
 		
-	// anything else..
-	} else {
+		// Loop Marker?
+		if (element.loop) {
+			var pathSpec = activityMarkers[element.loop];
+			var drawnMarker = paper.path(pathSpec).attr(generalStyle);
+			drawnMarker.translate(element.x, element.y);
+		}
+		
+		// Compensation Marker?
+		if (element.isForCompensation == true) {
+			var pathSpec = activityMarkers["compensate"];
+			var drawnMarker = paper.path(pathSpec).attr(generalStyle);
+			// if also loop marker, put left to loop marker
+			if (element.loop) {
+				drawnMarker.translate(element.x-15, element.y);
+			} else {
+				drawnMarker.translate(element.x, element.y);
+			}
+		}		
 
+	// Subprocesses
+	} else if (element.type == "adHocSubProcess" || element.type == "subprocess" || element.type == "transaction" || element.type == "callActivity") {
+		
 		drawnElement = paper.rect(
 				element.x, 
 				element.y, 
@@ -431,6 +494,103 @@ function elementSVG (element, paper) {
 				element.height, 
 				5)
 			  .attr(activityStyle);
+
+		// CallActivity? Then make thick border...
+		if (element.type == "callActivity") {
+			drawnElement.attr({"stroke-width":4});
+		}
+
+
+	  // eventSubProcess? then make a dashed border...
+		if (element.triggeredByEvent == true) {
+			drawnElement.attr({"stroke-dasharray":"-","stroke-width":1});
+		}
+
+		
+			  
+		// collapsed? Then draw the cross...
+		if (element.collapsed == true) {
+			paper.rect(
+				element.x + element.width/2 -6, 
+				element.y + element.height - 12, 
+				12, 
+				12, 
+				0)
+			  .attr(activityStyle).attr({"fill":"transparent"});		
+			  
+			var pathSpec = "M50 71 v6 M 47 74 h6";
+			var drawnCross = paper.path(pathSpec).attr(generalStyle);
+			drawnCross.translate(element.x, element.y);
+		} else {
+		// if expanded, fill transparent so you can see what's inside...
+			drawnElement.attr({"fill":"transparent"});
+		}
+
+		// transaction? Then draw second border...
+		if (element.type == "transaction") {
+			drawnElement = paper.rect(
+					element.x + 3, 
+					element.y + 3, 
+					element.width - 6, 
+					element.height - 6, 
+					3)
+				  .attr(activityStyle);
+		}
+		
+		// Adhoc? Then draw marker...
+		if (element.type == "adHocSubProcess") {
+			var pathSpec = activityMarkers["adhoc"];
+			var drawnMarker = paper.path(pathSpec).attr(generalStyle);
+			drawnMarker.translate(element.x + element.width/2 + 10, element.y + element.height - 10);
+		}
+		
+		// Loop Marker?
+		var loopMarker;
+		if (element.loop) {
+			var pathSpec = activityMarkers[element.loop];
+			loopMarker = paper.path(pathSpec).attr(generalStyle);
+			loopMarker.translate(element.x-15, element.y);
+		}
+		
+		// Compensation Marker?
+		if (element.isForCompensation == true) {
+			var pathSpec = activityMarkers["compensate"];
+			var drawnMarker = paper.path(pathSpec).attr(generalStyle);
+			// if also loop marker, put left to loop marker
+			if (loopMarker) {
+				drawnMarker.translate(element.x + loopMarker.attr("cx") - 30, element.y);
+			} else {
+				drawnMarker.translate(element.x, element.y);
+			}
+		}		
+
+		if (element.name) {
+			// collapsed? Then place caption in the middle
+			if (element.collapsed == true) {
+				var textX = element.x + element.width/2;
+				var textY = element.y + element.height/2;
+				var t = paper.text(textX, textY, element.name).attr(textStyle);	
+			} else {
+			// otherwise place caption top left
+				var textX = element.x + 8;
+				var textY = element.y + 15;
+				var t = paper.text(textX, textY, element.name).attr(textStyle).attr({'text-anchor': 'start'});	
+			}
+			textLineBreaker (t, element.name, element.width);
+		}
+	
+	
+	// anything else..
+	} else {
+		alert ("Not recognized: '" + element.name + "' of type '" + element.type + "'\n\ndrawing red rectangle as placeholder");
+		
+		drawnElement = paper.rect(
+				element.x, 
+				element.y, 
+				element.width, 
+				element.height, 
+				5)
+			  .attr(activityStyle).attr({"stroke":"red"});
 
 		var textX = parseInt(parseInt(element.x) + parseInt(element.width)/2);
 		var textY = parseInt(parseInt(element.y) + parseInt(element.height)/2);
@@ -506,11 +666,48 @@ function drawFlow (flow, pathSpec, paper) {
 function drawElement (data, element, paper, container, elemXML) {
 	var raphaelElementId;
 
+		// if Pool, determine whether it is collapsed
+		if (element.type == "participant") {
+			if ($(elemXML).attr("processRef")) {
+				element.collapsed = false;
+			} else {
+				element.collapsed = true;
+			}
+		}
+
+		// if Subprocess, determine whether it is eventSubProcess
+		if (element.type == "subprocess") {
+			if ($(elemXML).attr("triggeredByEvent") == "true") {
+				element.triggeredByEvent = true;
+			} else {
+				element.triggeredByEvent = false;
+			}
+		}
+
+		// if Task or Subprocess, determine loop/MI/Compensation Marker
+		if (element.type == "adHocSubProcess" || element.type == "callActivity" || element.type == "subprocess" || element.type.toLowerCase().indexOf("task") >= 0) {
+			if ($(elemXML).attr("isForCompensation") == "true") {
+				element.isForCompensation = true;
+			} else {
+				element.isForCompensation = false;
+			}
+			if ($(elemXML).find("standardLoopCharacteristics").length > 0) {
+				element.loop = "loop";
+			}
+			if ($(elemXML).find("multiInstanceLoopCharacteristics").length > 0) {
+				if ($(elemXML).find("multiInstanceLoopCharacteristics").attr("isSequential") == "true") {
+					element.loop = "miSeq";
+				} else {
+					element.loop = "miPar";
+				}
+			}
+		}
+		
+	
 		// if event, determine eventType
 		if ((element.type.toLowerCase().indexOf("event") >= 0) && (element.type.toLowerCase().indexOf("gateway") == -1)) {
-			
-			
-			// Containts Event Definitions?
+
+		// Containts Event Definitions?
 			$(elemXML).find("*").filter(function() {
 			    return this.nodeName.match(/[^\d]EVENTDEFINITION/)}).each(function() {
 					// if already set, this is a muliple event
@@ -525,8 +722,8 @@ function drawElement (data, element, paper, container, elemXML) {
 						element.eventType = (this).nodeName.replace("EVENTDEFINITION","").toLowerCase();
 					}
 					
-					// would cancel Activity?
-					if ($(elemXML).attr("cancelActivity") == "false") {
+					// would cancel Activity / interrupt eventSubProcess?
+					if ($(elemXML).attr("cancelActivity") == "false"  || $(elemXML).attr("isInterrupting") == "false") {
 						element.cancelActivity = false;
 					} else {
 						element.cancelActivity = true;
@@ -555,6 +752,15 @@ function drawElement (data, element, paper, container, elemXML) {
 			element.isMarkerVisible = $(this).attr("isMarkerVisible");
 		}
 
+		// if Subprocess, determine if collapsed
+		if (element.type == "adHocSubProcess" || element.type == "subprocess" || element.type == "transaction" || element.type == "callActivity"){
+			if ($(this).attr("isExpanded") == "true") {
+				element.collapsed = false;
+			} else {
+				element.collapsed = true;
+			}
+		}
+		
 			// Draw Symbol as SVG
 	raphaelElementId = elementSVG (element, paper);
 
@@ -592,21 +798,21 @@ function drawElement (data, element, paper, container, elemXML) {
 	}
 }
 
-function parseBPMNXML (diagram, paper, container) {
+function parseBPMNXML (data, paper, container) {
 
-$.get("http://localhost:8000/app/assets/bpmn/" + diagram + ".bpmn", function(data){
+
 
 	// Find Collaboration (if existing)
 	$(data).find("collaboration").each(function(){
 		// Find Pools
 		$(this).find("participant").each(function(){
-			var $elem = $(this);
+			var elem = $(this);
 			var element = new Object;
 			element.type = "participant";
-			element.id = $elem.attr("id");
-			element.name = $elem.attr("name");
+			element.id = elem.attr("id");
+			element.name = elem.attr("name");
 			
-			drawElement(data, element, paper, container);
+			drawElement(data, element, paper, container, elem);
 		});
 	});	
 	
@@ -634,6 +840,8 @@ $.get("http://localhost:8000/app/assets/bpmn/" + diagram + ".bpmn", function(dat
 	});	
 
 	var symbols = new Array("subprocess",
+							"transaction",
+							"adHocSubProcess",
 							"task", 
 							"sendTask",
 							"receiveTask",
@@ -770,7 +978,7 @@ $.get("http://localhost:8000/app/assets/bpmn/" + diagram + ".bpmn", function(dat
 	
 	paper.setSize (maxX + 30, maxY + 10);
 	
-	});
+
 
 }
 
