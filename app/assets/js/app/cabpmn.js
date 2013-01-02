@@ -635,13 +635,19 @@ function drawFlow (flow, pathSpec, paper) {
 		paper.circle(pathSpec[0].x, pathSpec[0].y, 4).attr(generalStyle).attr({"fill":"white"});
 	}	
 	
-	if (flow.type == "association") { 
-		var e = paper.path(pathString).attr("stroke-dasharray", ". "),
+	if (flow.type == "association" || flow.type == "dataAssociation") { 
+		var e = paper.path(pathString).attr({"stroke-dasharray":". "}),
 			l = e.getTotalLength(),
 		   to = 1;
-		
 	}
 
+	if (flow.type == "dataInputAssociation" || flow.type == "dataOutputAssociation") { 
+		var e = paper.path(pathString).attr({"stroke":"grey", "stroke-width":2, "stroke-dasharray":". ", "arrow-end": "classic-wide-long"}),
+			l = e.getTotalLength(),
+		   to = 1;
+	}
+
+	
 	// Print the Text
 	if (flow.name != undefined && flow.name != "") { 
 		var textX = 0;
@@ -964,6 +970,82 @@ function parseBPMNXML (data, paper, container) {
 		});
 	});
 
+	// Find semantic Data Associations
+	$(data).find("dataAssociation").each(function(){
+		var $edge = $(this);
+		var flow = new Object;
+		flow.id = $edge.attr("id");
+		flow.type = "association";
+		flow.name = $edge.attr("name");
+		
+		// Find respective DI
+		var pathSpec = new Array();
+		$(data).find("bpmndi\\:BPMNEdge[bpmnElement='" + flow.id + "']").each(function(){
+			var $di = $(this);
+			$di.find("omgdi\\:waypoint").each(function(){
+				var waypoint = $(this);
+				//alert(waypoint.attr("x"));	
+				pathSpecElem = new Object();
+				pathSpecElem.x = waypoint.attr("x");
+				pathSpecElem.y = waypoint.attr("y");
+				pathSpec.push(pathSpecElem);
+			});
+		
+		drawFlow(flow, pathSpec, paper);
+		});
+	});
+	
+	// Find semantic Data Associations
+	$(data).find("dataOutputAssociation").each(function(){
+		var $edge = $(this);
+		var flow = new Object;
+		flow.id = $edge.attr("id");
+		flow.type = "dataOutputAssociation";
+		flow.name = $edge.attr("name");
+		
+		// Find respective DI
+		var pathSpec = new Array();
+		$(data).find("bpmndi\\:BPMNEdge[bpmnElement='" + flow.id + "']").each(function(){
+			var $di = $(this);
+			$di.find("omgdi\\:waypoint").each(function(){
+				var waypoint = $(this);
+				//alert(waypoint.attr("x"));	
+				pathSpecElem = new Object();
+				pathSpecElem.x = waypoint.attr("x");
+				pathSpecElem.y = waypoint.attr("y");
+				pathSpec.push(pathSpecElem);
+			});
+		
+		drawFlow(flow, pathSpec, paper);
+		});
+	});
+
+	$(data).find("dataInputAssociation").each(function(){
+		var $edge = $(this);
+		var flow = new Object;
+		flow.id = $edge.attr("id");
+		flow.type = "dataInputAssociation";
+		flow.name = $edge.attr("name");
+		
+		// Find respective DI
+		var pathSpec = new Array();
+		$(data).find("bpmndi\\:BPMNEdge[bpmnElement='" + flow.id + "']").each(function(){
+			var $di = $(this);
+			$di.find("omgdi\\:waypoint").each(function(){
+				var waypoint = $(this);
+				//alert(waypoint.attr("x"));	
+				pathSpecElem = new Object();
+				pathSpecElem.x = waypoint.attr("x");
+				pathSpecElem.y = waypoint.attr("y");
+				pathSpec.push(pathSpecElem);
+			});
+		
+		drawFlow(flow, pathSpec, paper);
+		});
+	});
+	
+	
+	
 	// determine maxY
 	var maxX = 0; // maximum X Value for Resizing Canvas later
 	var maxY = 0; // maximum Y Value for Resizing Canvas later
