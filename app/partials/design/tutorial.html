@@ -511,7 +511,341 @@ More and more organisations are using BPMN and in more and more universities BPM
 			</div>			
 			
 			<h2>Timer Events</h2>
+			<p>
+				The timer event is often used when working with BPMN because it is so flexible to apply. A clock icon represents the timer event. The diagram below shows a few examples of applications:
+			</p>
+			<div id="timer_examples" style="position:relative">
+				<script>
+					bpmn("tutorial/timer_examples", "timer_examples");
+				</script>
+			</div>	
+			<p>
+				Time moves on no matter what we or our processes do, so timer events can exist only as catching starts or intermediate events.
+			</p>
+			<p>
+				You can model countdown times with an attached timer event. They are used this way frequently. You can specify upper time limits - the maximum time allowed for a processing task - for instance:
+			</p>
+			<div class="label label-warning">Hover over orange symbols for explanation</div>
+			<div id="timer_boundary" style="position:relative">
+				<script>
+					bpmn("tutorial/timer_boundary", "timer_boundary");
+				</script>
+				<div class="tutPop" id="timer_boundary-sid-93878818-A560-4B99-946C-C8DA3EED2761" rel="popover" title="Timer Boundary Event" data-content="
+					The task this event is attached to may take a maximum of 30 minutes. If the time expires before the task completes, the 'choose pizza' task is canceled, and we cook pasta instead. In either case, we eat the meal at the end. 
+				">
+				</div>
+			</div>	
+			<p>Non-interrupting timer events became possible with BPMN 2.0:</p>
+			<div class="label label-warning">Hover over orange symbols for explanation</div>			
+			<div id="timer_boundary_non-interrupt" style="position:relative">
+				<script>
+					bpmn("tutorial/timer_boundary_non-interrupt", "timer_boundary_non-interrupt");
+				</script>
+				<div class="tutPop" id="timer_boundary_non-interrupt-sid-45B9AF9C-16E7-4A43-80C5-C1B7D04F0DDE" rel="popover" title="Timer Boundary Event" data-content="
+					Before we can eat, we have to prepare the meal and set the table, but we only start setting the table 10 minutes before the meal is ready. 
+				">
+				</div>
+			</div>
+			<h2>Error Events</h2>
+			<p>
+				Do your processes run completely error-free? If not, you can identify potential errors in your models as a step toward eliminating them, or as part of modeling escalation processes. 
+				In BPMN, error events are represented by a flash symbol.
+			</p>
+			<p>
+				The BPMN specification does not specify what an error may be. As the modeler, you have to decide that.
+			</p>
+			<p>
+				An error is a serious event in BPMN, so if catching, it can be modeled only as an attached intermediate event. This means that an error during task execution must be handled in a specific way: 
+				As a throwing event, it can be modeled only at the end of a process path so that the participant knows the process has failed. The parent process should likewise recognize the failure. (We explain the interaction between parent  and sub-processes here TODO. You'll also find an example of applying an error event there.) 
+			</p>
+			<h2>Conditional Events</h2>
+			<p>
+				Sometimes we only want a process to start or to continue if a certain condition is true. Anything can be a condition, and conditions are independent of processes, 
+				which is why the condition (like the timer event) can only exist as a catching event. A process cannot therefore conditional event trigger a conditional event. 
+			</p>
+			<p>
+				We can enhance our pizza process with conditions. If we want to have frozen pizza, the process starts as shown in the diagram below. We take the pizza from the freezer and turn on the oven. 
+				But only after the temperature in the oven reaches 180 C do we put the pizza in, and only after it is done do we take it out to eat.  
+			</p>
+			<div id="conditional" style="position:relative">
+				<script>
+					bpmn("tutorial/conditional", "conditional");
+				</script>
+			</div>
+			<h2>Signal Events</h2>
+			<p>
+				Signals are similar to messages, which is why you can model them in BPMN as events just as you can with messages. 
+				The symbol for a signal is a triangle. The essential difference between a signal and a message is that that latter is always addressed to a specific recipient. 
+				(An e-mail contains the e-mail address of the recipient, a call starts with dialing the telephone number, and so on.) 
+				In contrast, a signal is more like a newspaper advertisement or a television commercial. It is relatively undirected. Anyone who receives the signal and wants to react may do so.  
+			</p>
+			<div id="signal" style="position:relative">
+				<script>
+					bpmn("tutorial/signal", "signal");
+				</script>
+			</div>			
+			<p>
+				We saw a new frozen pizza on TV, and we are keen to try it. The diagram above illustrates this new situation. We buy the pizza, but we keep it in the freezer until we're really hungry for pizza. 
+				That's a conditional event. After trying the new pizza, we go to Pizzatest.de to rate the new product. That's a signal. It is a signal for the general public too. 
+				(Pizzatest.de actually exists, by the way, which proves again that you can find simply <b>everything</b> on the Internet!) 			
+			</p>
+			<h2>Terminate Events</h2>
+			<p>
+				Let's look at the abstract example below. We already discussed (simple) Key Performance Indicator (KPI) analysis, and we therefore know that this process always takes 55 minutes. 
+				After task 1, tasks 2 and 3 can be processed simultaneously. Processing task 2 takes more time than does processing task 3, which is why it determines the runtime of the process. 
+				A token that runs through the process is cloned in the AND split. The first token stays in task 2 for 45 minutes; the second token stays in task 3 for 30 minutes. 
+				The second token arrives at the none event first, where it is consumed. After 15 more minutes, the first token arrives at the upper none event, where it is consumed too. 
+				Since no more tokens are available, the process instance finishes after 55 minutes. 
+			</p>
+			<div id="terminate_without" style="position:relative">
+				<script>
+					bpmn("tutorial/terminate_without", "terminate_without");
+				</script>
+			</div>			
+			<p>
+				So far, so good, but what happens if we already know that, after having completed task 3, task 2 has become redundant? This is a frequent situation with parallel task executions related to content. 
+				In such cases, we can apply the pattern shown in here: 
+			</p>
+			<div class="label label-warning">Hover over orange symbols for explanation</div>
+			<div id="terminate" style="position:relative">
+				<script>
+					bpmn("tutorial/terminate", "terminate");
+				</script>
+				<div class="tutPop" id="terminate-sid-A14E9B4C-CDAE-45C0-A878-082E588C6941" rel="popover" title="Terminate Event" data-content="
+					We use the terminate event to make sure that ALL available tokens are consumed immediately. 
+				That leads to the termination of the process instance, consequently, you can use the terminate event as an end event only.
+				">
+				</div>				
+			</div>			
+			<h2>Link Events</h2>
+			<p>	
+				The link event is a special case. It has no significance related to content, but it facilitates the diagram-creation process. 
+				As shown below, you can draw two associated links as an alternative to a sequence flow. Here, "associated" means there is a throwing link event as the "exit point," 
+				and a catching link event as the "entrance point," and the two events are marked as a pair - in our example by the designation "A." 
+			</p>
+			<div id="link" style="position:relative">
+				<script>
+					bpmn("tutorial/link", "link");
+				</script>
+			</div>			
+			<p>
+				Link events can be very useful if:
+				<ul>
+					<li>You have to distribute a process diagram across several pages. Links orient the reader from one page to the next.</li>
+					<li>You draw comprehensive process diagrams with many sequence flows. Links help avoid what otherwise might look like a "spaghetti" diagram.</li>
+				</ul>
+				Link events can be used as intermediate events only.
+			</p>
+			<h2>Compensation Events</h2>
+			<p>
+				We execute tasks in our processes that sometimes have to be canceled later under certain circumstances. 
+			</p>
+			<p>
+				Typical examples are:
+				<ul>
+					<li>Booking a train or airline ticket</li>
+					<li>Reserving a rental car</li>
+					<li>Charging a credit card</li>
+					<li>Commissioning a service provider</li>
+				</ul>
+				Below, we see this process: On Friday at 1 p.m. we agree with our partner either to go to the theater or to spend the evening with friends.
+				In both cases, we have to do something binding, either to reserve the theater tickets or make the arrangements with our friends. 
+				When evening arrives, perhaps we no longer feel like going out at all. We then have to cancel the arrangements we made with the theater or our friends before we can collapse in front of the TV in peace:
+			</p>
+			<div  style="width:100%; overflow:auto;">
+				<div id="compensation_without" style="position:relative">
+					<script>
+						bpmn("tutorial/compensation_without", "compensation_without");
+					</script>
+				</div>			
+			</div>
+			<p>
+				We can represent the latter part of the model more compactly with a compensation event, as shown in here: 
+			</p>
+			<div class="label label-warning">Hover over orange symbols for explanation</div>
+			<div id="compensation" style="position:relative">
+				<script>
+					bpmn("tutorial/compensation", "compensation");
+				</script>
+				<div class="tutPop" id="compensation-sid-6CB628A9-C00C-44F4-A2B0-9B1749277A09" rel="popover" title="Compensation Event (throw)" data-content="
+					If we don't feel like going out, we have to cancel all our arrangements; we don't have to check which ones to cancel. 							">
+				</div>				
+			</div>			
+			<p>
+				There are special rules for handling compensations:
+				<ul>
+					<li>Throwing compensations refer to their own processes, so the event is effective within the pool. This shows how this event type differs from a throwing message event.</li>
+					<li>Other attached events can take effect only while the activities to which they are attached remain active. 
+					In contrast, an attached compensation takes effect only if the process triggers a compensation <b>and</b> the activity to which the compensation is attached successfully completed.</li>
+					<li>Attached compensation events connect to compensation tasks through associations, and <b>not</b> through sequence flows, which would otherwise be common usage. 
+					BPMN thus emphasizes that compensations are beyond the regular process sequence; executing one is an exception.</li>
+					<li>The obligatory compensation task is a special task type that we explain with other task types in TODO</li>
+				</ul>
+			</p>
+			<div class="accordion" id="accComp">
+			  <div class="accordion-group">
+				<div class="accordion-heading">
+				  <a class="accordion-toggle" data-toggle="collapse" data-parent="#accComp" href="#CompcollapseOne">
+					<i class="icon-thumbs-up"></i> Best Practice: Using Compensation Events
+				  </a>
+				</div>
+				<div id="CompcollapseOne" class="accordion-body collapse">
+				  <div class="accordion-inner">
+					This example may be too simple to illustrate how much work this construct can save you. If you think of the complex business processes that frequently require compensations, 
+					however, you'll see how much leaner your models can be. You'll also be quick to spot the circumstances that demand compensations.  We use compensation events only 
+					occasionally to describe complex processes. 
+				  </div>
+				</div>
+			  </div>
+			</div>
+			<h2>Multiple Events</h2>
+			<p>
+				We can use the multiple event to summarize several events with a single symbol. The diagram below applies the multiple event to our pizza scenario. 
+				In the example, we try a new pizza after having seen it on TV or after a friend recommended it. After eating it, we will rate the pizza on Pizzatest.de and in turn inform our friend if 
+				we also recommend this pizza. 
+			</p>
+			<div class="label label-warning">Hover over orange symbols for explanation</div>
+			<div id="multiple" style="position:relative">
+				<script>
+					bpmn("tutorial/multiple", "multiple");
+				</script>
+				<div class="tutPop" id="multiple-sid-0FC67A07-E457-4C69-A06C-8FA465A0D173" rel="popover" title="Multiple Event (catch)" data-content="
+					If we model the multiple event as a catching event, ONLY ONE of the summarized events has to occur to start or continue the process or to cancel the task.">
+				</div>				
+				<div class="tutPop" id="multiple-sid-92DF9B54-1E65-4973-ABCE-52093BFB571D" rel="popover" title="Multiple Event (throw)" data-content="
+					If we model a multiple event as a throwing event, it means that ALL of the summarized events are triggered.">
+				</div>				
+			</div>			
+			<div class="accordion" id="accMultiple">
+			  <div class="accordion-group">
+				<div class="accordion-heading">
+				  <a class="accordion-toggle" data-toggle="collapse" data-parent="#accMultiple" href="#MultiplecollapseOne">
+					<i class="icon-thumbs-up"></i> Best Practice: Avoiding Multiple Events
+				  </a>
+				</div>
+				<div id="MultiplecollapseOne" class="accordion-body collapse">
+				  <div class="accordion-inner">
+					You have to decide if multiple events serve your purposes. We concede their benefit in rough functional process descriptions, but they cease to be as useful in the more advanced 
+					technical-implementation phase. You can't afford to leave relevant details hiding in the descriptive text. We don't find the multiple event to be intuitive, nor is it helpful on a functional level. 
+					It may make your diagrams larger to model all events separately, but the resulting diagrams will be both more comprehensive and more comprehensible. 
+					The bottom line is that we have never used this symbol in practice, nor have we seen anybody else doing so. 
+					<p>
+						The model in here describes the same process, but the events are fully modeled:
+						<div id="multiple_without" style="position:relative">
+							<script>
+								bpmn("tutorial/multiple_without", "multiple_without");
+							</script>
+						</div>			
+					</p>
+				  </div>
+				</div>
+			  </div>
+			</div>
 			
+			<h2>Parallel Events</h2>
+			<p>
+				The parallel event was added in BPMN 2.0 to supplement the multiple event. While a catching multiple event has XOR semantics - it occurs as soon as 
+				<b>one</b> of its contained events occurs - the parallel event uses AND semantics. It doesn't occur until <b>all</b> of its contained events occur. Because the throwing multiple event 
+				already implies AND semantics, the specification defines parallel events as catching events only. 			
+			</p>
+			
+			<h2>Escalation Events</h2>
+			<p>
+				The BPMN 2.0 specification added the escalation event. Mainly, it shows communication between parent and sub-processes. We discuss it in here TODO with the help of an example.	
+			</p>
+			
+			<h2>Cancel Events</h2>
+			<p>
+				You can use the cancel event only in the context of the transactions we discuss in TODO. That section also has examples of applying this event type. 
+			</p>
+			
+			<h2>Event-based Gateway</h2>
+			<p>
+				We learned about the exclusive data-based (XOR) gateway option in TODO as a way to use different paths with regard to the data being processed. 
+				Users of other process notations recognize this type of branching, but BPMN gives us another way to design process paths: 
+				the event-based gateway - event gateway, for short. This gateway does not route based on data, but rather by which event takes place next. To understand the 
+				benefit, consider the process shown below: We order pizza and wait for it to be delivered. We can eat only after we receive the pizza, but what if the pizza doesn't arrive after 60 minutes? 
+				We'll make an anxious phone call, that's what! We can model this with the event gateway: 
+			</p>
+			<div class="label label-warning">Hover over orange symbols for explanation</div>
+			<div id="event-based" style="position:relative">
+				<script>
+					bpmn("tutorial/event-based", "event-based");
+				</script>
+				<div class="tutPop" id="event-based-sid-86AEEAF2-E1FF-4EF3-B34E-7ADD4D914B47" rel="popover" title="Event-based Gateway" data-content="
+					Now, in contrast to the data-based XOR split, the token waits at the event gateway for one of the subsequent events to occur. Once any one event occurs, the token takes the respective path. 
+					If other events then take place, they are ignored. This is XOR semantics. 
+					">
+				</div>				
+			</div>			
+			<p>
+				As you can see here, not all intermediate events combine with the event gateway. You can, however, combine it with the receive task, which we discuss in TODO.
+			</p>
+			<div id="event-based-events" style="position:relative">
+				<script>
+					bpmn("tutorial/event-based-events", "event-based-events");
+				</script>
+			</div>			
+		</section>
+		<section id="subprocessesSect">
+			<div class="page-header" >
+				<h1>Subprocesses</h1>
+			</div>
+			<h2>Encapsulate complexity</h2>
+			<p>
+				The examples in this tutorial either deal with simple processes, or they diagram complex processes superficially so that the models fit on one page. 
+				When modeling your process landscape, you don't have this luxury. You have to rough out your processes so that you can get the general ideas in place and recognize correlations. 
+				Then you have to develop a detailed description, so that you can analyze exactly where the weak points are or how you'll have to execute the process in practice. 
+				The possible top-down refinements or bottom-up aggregations mark the difference between true process models and banal flow charts, between sophisticated BPM software products and mere drawing programs. 
+			</p>
+			<p>
+				BPMN provides us with the subprocess to help with the expanding/collapsing view. A subprocess describes a detailed sequence, but it takes no more space in the diagram of the parent process 
+				than does a task. Both tasks and subprocesses are part of the activities class and are therefore represented as rectangles with rounded corners. The only difference is the plus sign, 
+				indicating a stored detailed sequence for the subprocess:
+			</p>
+			<div id="subprocess" style="position:relative">
+				<script>
+					bpmn("tutorial/subprocess", "subprocess");
+				</script>
+			</div>
+			<p>
+				What good is that to us? That depends most on how your BPMN tool supports the following options for connecting subprocesses with their parent processes: 
+				<ul>
+					<li><b>Representation in a separate process diagram</b>: The subprocess symbol links to a separate diagram. If your BPMN tool displays the process model in a web browser, 
+					for instance, clicking on the symbol would open a new page to display the detail diagram.</li>
+					<li><b>Expanding in the process diagram of the parent process</b>: The activity with the plus sign is called a collapsed subprocess. The plus sign suggests that you could click on it and make 
+					the subprocess expand. The BPMN specification provides for this option, though not all tool suppliers implement it. The diagram below shows how the subprocess was directly expanded in the diagram of 
+					the parent process. A tool supporting this function enables you to expand and collapse the subprocess directly in the diagram, respectively, to show or hide details.</li>
+				</ul>
+			</p>
+			<div id="subprocess_expanded" style="position:relative">
+				<script>
+					bpmn("tutorial/subprocess_expanded", "subprocess_expanded");
+				</script>
+			</div>
+			<p>
+				Direct expansion may seem appealing, but often it is not useful in practice. Expanding the subprocess requires that all the adjacent symbols in the diagram shift to make room. 
+				This can result in sluggish performance with a complex diagram, and it can be visually nasty. The most important thing is that your tool provides for linking and that you can usefully navigate 
+				through the diagrams. In other words, it supports the first option above. Yes, it can be helpful to have your subprocess modeled and expandable directly from the parent process. 
+				That means process segments remain localized, and you can attach events too. This is, however, the less important option.			
+			</p>
+			<p>
+				The sequence flow of the parent process ends in both cases at the left edge of the subprocess. The next sequence flow starts at the right edge. This means that sequence flows are not allowed to exceed the 
+				boundaries of the subprocess, which not every beginner knows, and which becomes a problem when a subprocess expands. Visualize a token that behaves as follows:
+				<ul>
+					<li>The parent process starts, and a token is born.</li>
+					<li>The token runs through the task and arrives at the subprocess, which causes the parent process to create an instance of the subprocess.</li>
+					<li>Within the subprocess, a separate token is born which runs through the subprocess from the start to the end event, but the token of the parent process waits until the subprocess completes.</li>
+					<li>When the subprocess token arrives at the end event, it is consumed, which completes the subprocess. Now the token of the parent process moves to its own end event. </li>
+				</ul>
+			</p>
+			<p>
+				The encapsulation in subprocesses that we're describing isn't restricted to two levels. You could just as easily have a parent process as a subprocess, or you could model further subprocesses on the 
+				level of a defined subprocess. How many levels you use and the level of detail you apply to model them is up to you. BPMN doesn't specify this, and there can be no cross-company or cross-scenario cookbook 
+				to define levels. Participants in our BPMN workshops don't like this, but there's no point in hiding the fact nor attempting to explain it away. In the following chapters, we work often with 
+				subprocesses in explaining our best practices, but the truth is the number of refinement levels and their respective levels of detail is always situational. It depends on the organization, the roles 
+				of the project participants, and the goals for the process you're modeling. 			
+			</p>
 		</section>
 		</div>
 		</div>
