@@ -119,7 +119,7 @@ var endEventStyle = {
 	var paper = Raphael(container, "100%");
 	//$("#processDiagramOverlay").css("height","180px");
 	$.get("http://localhost:8000/app/assets/bpmn/" + diagram + ".bpmn", function(data){
-		parseBPMNXML(data, paper, container);
+		parseNew(data, paper, container);
 	});
 }
 
@@ -127,7 +127,7 @@ var endEventStyle = {
 
 	var paper = Raphael(container, "100%");
 	//$("#processDiagramOverlay").css("height","180px");
-	parseBPMNXML(xml, paper, container);
+	parseNew(xml, paper, container);
 
 	return paper;
 	}	
@@ -254,7 +254,7 @@ function elementSVG (element, paper) {
 		if (element.name) paper.text(parseInt(x) + parseInt(element.width) - 5, parseInt(y) + parseInt(element.height/2) -4, element.name).attr(textStyle).attr({'text-anchor': 'start'});
 
 		// Exclusive?
-		if (element.type == "exclusiveGateway") {
+		if (element.type == "exclusivegateway") {
 			// Should marker be visible?
 			if (element.isMarkerVisible == "true") {
 			var myPathSpec = " M13.25 12.05  L17.25 12.05  L27.65 28.95  L23.75 28.95  z";
@@ -267,20 +267,20 @@ function elementSVG (element, paper) {
 			}
 
 		// Parallel?
-		} else if (element.type == "parallelGateway") {
+		} else if (element.type == "parallelgateway") {
 			var myPathSpec = " M11.25 20.5  L30.25 20.5  M20.5 11.25  L20.5 30.25 ";
 			var myPath = paper.path(myPathSpec).attr(gatewayMarkerStyle);
 			myPath.translate(x, y - radHeight);
 
 		// Inclusive?
-		} else if (element.type == "inclusiveGateway") {
+		} else if (element.type == "inclusivegateway") {
 			var rad = element.width / 3.5;	
 			var x = element.x + element.width/2;
 			var y = element.y + element.height/2;
 			paper.circle(x, y, rad-2).attr(gatewayMarkerStyle).attr({"stroke-width":3});
 					
 		// Event based?
-		} else if (element.type == "eventBasedGateway") {
+		} else if (element.type == "eventbasedgateway") {
 			var rad = element.width / 3.3;	
 			var x = element.x + element.width/2;
 			var y = element.y + element.height/2;
@@ -292,7 +292,7 @@ function elementSVG (element, paper) {
 			myPath.translate(element.x , element.y);
 
 		// Complex?
-		} else if (element.type == "complexGateway") {
+		} else if (element.type == "complexgateway") {
 			var pathSpec = "M10.75 20.5  L30.25 20.5  M20.5 10.75  L20.5 30.25  M13.35 13.35  L27.65 27.65  M13.35 27.65  L27.65 13.35";
 			var myPath = paper.path(pathSpec).attr(generalStyle);
 			myPath.translate(element.x , element.y);
@@ -367,7 +367,7 @@ function elementSVG (element, paper) {
 		if (element.name) var t = paper.text(textX, textY, element.name).attr(textStyle).attr({'text-anchor': 'start'});	
 
 	// DataObject?
-	} else if (element.type == "dataObject") {
+	} else if (element.type == "dataobject") {
 		var pathSpec = "M" + element.x + " " + element.y + " l" + (element.width-10) + " 0 l10 10 l0 " + (element.height-10) + " l-" + element.width + " 0 l0 -" + element.height + "M" + (element.x + element.width - 10) + " " + element.y + " l0 10 l10 0";
 		drawnElement = paper.path(pathSpec).attr(generalStyle);
 
@@ -380,7 +380,7 @@ function elementSVG (element, paper) {
 		}		
 
 	// DataStore?
-	} else if (element.type == "dataStoreReference") {
+	} else if (element.type == "datastorereference") {
 		var pathSpec = "M30.708999999999985 0  c20.013 0 31.292 3.05 31.292 5.729  c0 2.678 0 45.096 0 48.244  c0 3.148 -16.42 6.2 -31.388 6.2  c-14.968 0 -30.613 -2.955 -30.613 -6.298  c0 -3.342 0 -45.728 0 -48.05  C-1.4210854715202004e-14 3.503 10.696999999999985 0 30.708999999999985 0  M62.00099999999999 15.027999999999999  c0 1.986 -3.62 6.551 -31.267 6.551  c-27.646 0 -30.734 -4.686 -30.734 -6.454  M-1.4210854715202004e-14 10.475000000000001  c0 1.769 3.088 6.455 30.734 6.455  c27.647 0 31.267 -4.565 31.267 -6.551  M-1.4210854715202004e-14 5.825000000000001  c0 2.35 3.088 6.455 30.734 6.455  c27.647 0 31.267 -3.912 31.267 -6.552  M62.00099999999999 5.729000000000001  v4.844  M0.0239999999999857 5.729000000000001  v4.844  M62.00099999999999 10.379000000000001  v4.844  M0.0239999999999857 10.379000000000001  v4.844 ";
 		drawnElement = paper.path(pathSpec).attr(generalStyle);
 		drawnElement.translate(element.x, element.y);
@@ -411,7 +411,7 @@ function elementSVG (element, paper) {
 			textLineBreaker (t, element.name, element.width);
 		}
 		
-		var taskType = element.type.replace("Task", "");
+		var taskType = element.type.replace("task", "");
 		
 		if (taskType == "user") {
 			var pathSpec = taskDefinitions[taskType];
@@ -640,7 +640,7 @@ function drawFlow (flow, pathSpec, paper) {
       }
     }
 	
-	if (flow.type == "sequence") { 
+	if (flow.type == "sequenceflow") { 
 		// draw sequenceflow 
 		var e = paper.path(pathString).attr(generalStyle).attr(sequenceFlowStyle),
 			l = e.getTotalLength(),
@@ -648,7 +648,7 @@ function drawFlow (flow, pathSpec, paper) {
 		
 	}
 	
-	if (flow.type == "message") { 
+	if (flow.type == "messageflow") { 
 		// draw messageFlow 
 		var e = paper.path(pathString).attr(generalStyle).attr(messageFlowStyle),
 			l = e.getTotalLength(),
@@ -662,7 +662,7 @@ function drawFlow (flow, pathSpec, paper) {
 		   to = 1;
 	}
 
-	if (flow.type == "dataInputAssociation" || flow.type == "dataOutputAssociation") { 
+	if (flow.type == "datainputassociation" || flow.type == "dataoutputassociation") { 
 		var e = paper.path(pathString).attr({"stroke":"grey", "stroke-width":2, "stroke-dasharray":". ", "arrow-end": "classic-wide-long"}),
 			l = e.getTotalLength(),
 		   to = 1;
@@ -690,9 +690,14 @@ function drawFlow (flow, pathSpec, paper) {
 	
 }
 
-function drawElement (data, element, paper, container, elemXML) {
+function drawElement (element, elemXML, paper, container, xmlJQuery) {
 	var raphaelElementId;
 
+		// if Textannotation, get Text
+		if (element.type == "textannotation") {
+			element.textAnnotation = elemXML.find("text").text();
+		}
+	
 		// if Pool, determine whether it is collapsed
 		if (element.type == "participant") {
 			if ($(elemXML).attr("processRef")) {
@@ -712,7 +717,7 @@ function drawElement (data, element, paper, container, elemXML) {
 		}
 
 		// if Task or Subprocess, determine loop/MI/Compensation Marker
-		if (element.type == "adHocSubProcess" || element.type == "callActivity" || element.type == "subprocess" || element.type.toLowerCase().indexOf("task") >= 0) {
+		if (element.type == "adhocsubprocess" || element.type == "callactivity" || element.type == "subprocess" || element.type.toLowerCase().indexOf("task") >= 0) {
 			if ($(elemXML).attr("isForCompensation") == "true") {
 				element.isForCompensation = true;
 			} else {
@@ -731,7 +736,7 @@ function drawElement (data, element, paper, container, elemXML) {
 		}
 
 		// if ReceiveTask determine if it is instantiating
-		if (element.type == "receiveTask") {
+		if (element.type == "receivetask") {
 			if ($(elemXML).attr("instantiate") == "true") {
 				element.isInstantiate = true;
 			} else {
@@ -742,10 +747,9 @@ function drawElement (data, element, paper, container, elemXML) {
 	
 		// if event, determine eventType
 		if ((element.type.toLowerCase().indexOf("event") >= 0) && (element.type.toLowerCase().indexOf("gateway") == -1)) {
-
 		// Containts Event Definitions?
 			$(elemXML).find("*").filter(function() {
-			    return this.nodeName.match(/[^\d]EVENTDEFINITION/)}).each(function() {
+			    return this.nodeName.toLowerCase().match(/[^\d]eventdefinition/)}).each(function() {
 					// if already set, this is a muliple event
 					if (element.eventType) {
 						// is parallel Multiple?
@@ -755,7 +759,7 @@ function drawElement (data, element, paper, container, elemXML) {
 							element.eventType = "multiple";
 						}					
 					} else {
-						element.eventType = (this).nodeName.replace("EVENTDEFINITION","").toLowerCase();
+						element.eventType = (this).nodeName.toLowerCase().replace("eventdefinition","").toLowerCase();
 					}
 					
 					// would cancel Activity / interrupt eventSubProcess?
@@ -770,26 +774,30 @@ function drawElement (data, element, paper, container, elemXML) {
 
 	
 	// Find respective DI
-	$(data).find("bpmndi\\:BPMNShape[bpmnElement='" + element.id + "']").each(function(){
+	
+	var found = false;
+	$(xmlJQuery).find("BPMNShape[bpmnElement='" + element.id + "']").each(function(){
+		found = true;
+		
 		var $di = $(this);
-		element.x = parseFloat($(this).find('omgdc\\:Bounds').attr("x"));
-		element.y = parseFloat($(this).find('omgdc\\:Bounds').attr("y"));
-		element.width = parseFloat($(this).find('omgdc\\:Bounds').attr("width"));
-		element.height = parseFloat($(this).find('omgdc\\:Bounds').attr("height"));
+		element.x = parseFloat($(this).find('Bounds').attr("x"));
+		element.y = parseFloat($(this).find('Bounds').attr("y"));
+		element.width = parseFloat($(this).find('Bounds').attr("width"));
+		element.height = parseFloat($(this).find('Bounds').attr("height"));
 		
 		// get Label Position if existing
-		$(this).find("bpmndi\\:BPMNLabel").each(function() {
-			element.labelX = parseFloat($(this).find("omgdc\\:Bounds").attr("x"));
-			element.labelY = parseFloat($(this).find("omgdc\\:Bounds").attr("y"));
+		$(this).find("BPMNLabel").each(function() {
+			element.labelX = parseFloat($(this).find("Bounds").attr("x"));
+			element.labelY = parseFloat($(this).find("Bounds").attr("y"));
 		});		
 
 		// if exclusiveGateway, determine if marker should be visible
-		if (element.type == "exclusiveGateway") {
+		if (element.type == "exclusivegateway") {
 			element.isMarkerVisible = $(this).attr("isMarkerVisible");
 		}
 
 		// if Subprocess, determine if collapsed
-		if (element.type == "adHocSubProcess" || element.type == "subprocess" || element.type == "transaction" || element.type == "callActivity"){
+		if (element.type == "adhocsubprocess" || element.type == "subprocess" || element.type == "transaction" || element.type == "callactivity"){
 			if ($(this).attr("isExpanded") == "true") {
 				element.collapsed = false;
 			} else {
@@ -798,9 +806,11 @@ function drawElement (data, element, paper, container, elemXML) {
 		}
 		
 			// Draw Symbol as SVG
-	raphaelElementId = elementSVG (element, paper);
+			raphaelElementId = elementSVG (element, paper);
 
 		});
+
+		if (!found) console.log ("DI not found for '" + element.name + "'");
 
 	
 	// Position DIV Element (if exists)
@@ -834,266 +844,98 @@ function drawElement (data, element, paper, container, elemXML) {
 	}
 }
 
-function parseBPMNXML (data, paper, container) {
+function parseNew (data, paper, container) {
+	var start = new Date().getTime();
 
-
-
-	// Find Collaboration (if existing)
-	$(data).find("collaboration").each(function(){
-		// Find Pools
-		$(this).find("participant").each(function(){
-			var elem = $(this);
-			var element = new Object;
-			element.type = "participant";
-			element.id = elem.attr("id");
-			element.name = elem.attr("name");
-			
-			drawElement(data, element, paper, container, elem);
-		});
-	});	
-	
-	// 	Find Processes
-	$(data).find("process").each(function(){
-		
-		var elem = $(this);
-		var element = new Object;
-		element.type = "participant";
-		element.id = elem.attr("id");
-		element.name = elem.attr("name");
-		
-		//drawElement(data, element, paper, container, elem);
-		
-		// Find Lanes
-		$(this).find("lane").each(function(){
-			var $elem = $(this);
-			var element = new Object;
-			element.type = "lane";
-			element.id = $elem.attr("id");
-			element.name = $elem.attr("name");
-			
-			drawElement(data, element, paper, container);
-		});
-	});	
-
-	var symbols = new Array("subprocess",
+	var symbols = new Array("participant",
+							"lane",
+							"subprocess",
 							"transaction",
-							"adHocSubProcess",
+							"adHocsubprocess",
 							"task", 
-							"sendTask",
-							"receiveTask",
-							"userTask",
-							"manualTask",
-							"businessRuleTask",
-							"scriptTask",
-							"serviceTask",
-							"callActivity",
-							"exclusiveGateway", 
-							"inclusiveGateway", 
-							"parallelGateway",
-							"eventBasedGateway",
-							"complexGateway",
+							"sendtask",
+							"receivetask",
+							"usertask",
+							"manualtask",
+							"businessruletask",
+							"scripttask",
+							"servicetask",
+							"callactivity",
+							"exclusivegateway", 
+							"inclusivegateway", 
+							"parallelgateway",
+							"eventbasedgateway",
+							"complexgateway",
 							"startevent", 
 							"intermediatethrowevent", 
 							"intermediatecatchevent", 
 							"endevent", 
 							"boundaryEvent",
 							"group",
-							"dataObject",
-							"dataStoreReference"
+							"dataobject",
+							"datastorereference",
+							"textannotation",
+							"sequenceflow",
+							"messageflow",
+							"association",
+							"datainputassociation",
+							"dataoutputassociation"
 							);
 	
-	for(var s in symbols){
-		$(data).find(symbols[s]).each(function(){
-			var elemXML = $(this);
-			var element = new Object;
-			element.type = symbols[s];
-			element.id = elemXML.attr("id");
-			element.name = elemXML.attr("name");
-			drawElement(data, element, paper, container, elemXML);
-		});	
-	}	
 	
-	// 	Find Text Annotations
-	$(data).find("textannotation").each(function(){
-		var $elem = $(this);
-		var element = new Object;
-		element.type = "textannotation";
-		element.id = $elem.attr("id");
-		element.textAnnotation = $elem.find("text").text();
-		
-		drawElement(data, element, paper, container);
-	});	
+	xmlJQuery = $.parseXML(data);
 	
-
-	// Find semantic Sequence Flows
-	$(data).find("sequenceFlow").each(function(){
-		var $edge = $(this);
-		var flow = new Object;
-		flow.id = $edge.attr("id");
-		flow.type = "sequence";
-		flow.name = $edge.attr("name");
-
-		// Find respective DI
-		var pathSpec = new Array();
-		$(data).find("bpmndi\\:BPMNEdge[bpmnElement='" + flow.id + "']").each(function(){
-			var $di = $(this);
-			$di.find("omgdi\\:waypoint").each(function(){
-				var waypoint = $(this);
-				//alert(waypoint.attr("x"));	
-				pathSpecElem = new Object();
-				pathSpecElem.x = waypoint.attr("x");
-				pathSpecElem.y = waypoint.attr("y");
-				pathSpec.push(pathSpecElem);
-			});
-		
-		drawFlow(flow, pathSpec, paper);
-		});
+	$(xmlJQuery).find("*").filter(function() {
+		if ($.inArray((this).nodeName.toLowerCase(), symbols) > -1) return true;
+			}).each(function(){
+				var elem = $(this);
+				var element = new Object;
+				element.type = (this).nodeName.toLowerCase();
+				element.id = elem.attr("id");
+				element.name = elem.attr("name");
+				
+				if (element.type == "sequenceflow" || element.type == "messageflow" || element.type == "association" || element.type == "datainputassociation" || element.type == "dataoutputassociation") {
+					// Find respective DI
+					var pathSpec = new Array();
+					$(xmlJQuery).find("BPMNEdge[bpmnElement='" + element.id + "']").each(function(){
+						var $di = $(this);
+						$di.find("waypoint").each(function(){
+							var waypoint = $(this);
+							pathSpecElem = new Object();
+							pathSpecElem.x = waypoint.attr("x");
+							pathSpecElem.y = waypoint.attr("y");
+							pathSpec.push(pathSpecElem);
+						});
+					
+					drawFlow(element, pathSpec, paper);
+					});
+				} else {
+					drawElement(element, $(this), paper, container, xmlJQuery);
+				}
 	});
-	
-	// Find semantic Message Flows
-	$(data).find("messageFlow").each(function(){
-		var $edge = $(this);
-		var flow = new Object;
-		flow.id = $edge.attr("id");
-		flow.type = "message";
-		flow.name = $edge.attr("name");
-
-		// Find respective DI
-		var pathSpec = new Array();
-		$(data).find("bpmndi\\:BPMNEdge[bpmnElement='" + flow.id + "']").each(function(){
-			var $di = $(this);
-			$di.find("omgdi\\:waypoint").each(function(){
-				var waypoint = $(this);
-				//alert(waypoint.attr("x"));	
-				pathSpecElem = new Object();
-				pathSpecElem.x = waypoint.attr("x");
-				pathSpecElem.y = waypoint.attr("y");
-				pathSpec.push(pathSpecElem);
-			});
-		
-		drawFlow(flow, pathSpec, paper);
-		});
-	});	
-
-	// Find semantic Associations
-	$(data).find("association").each(function(){
-		var $edge = $(this);
-		var flow = new Object;
-		flow.id = $edge.attr("id");
-		flow.type = "association";
-		flow.name = $edge.attr("name");
-
-		// Find respective DI
-		var pathSpec = new Array();
-		$(data).find("bpmndi\\:BPMNEdge[bpmnElement='" + flow.id + "']").each(function(){
-			var $di = $(this);
-			$di.find("omgdi\\:waypoint").each(function(){
-				var waypoint = $(this);
-				//alert(waypoint.attr("x"));	
-				pathSpecElem = new Object();
-				pathSpecElem.x = waypoint.attr("x");
-				pathSpecElem.y = waypoint.attr("y");
-				pathSpec.push(pathSpecElem);
-			});
-		
-		drawFlow(flow, pathSpec, paper);
-		});
-	});
-
-	// Find semantic Data Associations
-	$(data).find("dataAssociation").each(function(){
-		var $edge = $(this);
-		var flow = new Object;
-		flow.id = $edge.attr("id");
-		flow.type = "association";
-		flow.name = $edge.attr("name");
-		
-		// Find respective DI
-		var pathSpec = new Array();
-		$(data).find("bpmndi\\:BPMNEdge[bpmnElement='" + flow.id + "']").each(function(){
-			var $di = $(this);
-			$di.find("omgdi\\:waypoint").each(function(){
-				var waypoint = $(this);
-				//alert(waypoint.attr("x"));	
-				pathSpecElem = new Object();
-				pathSpecElem.x = waypoint.attr("x");
-				pathSpecElem.y = waypoint.attr("y");
-				pathSpec.push(pathSpecElem);
-			});
-		
-		drawFlow(flow, pathSpec, paper);
-		});
-	});
-	
-	// Find semantic Data Associations
-	$(data).find("dataOutputAssociation").each(function(){
-		var $edge = $(this);
-		var flow = new Object;
-		flow.id = $edge.attr("id");
-		flow.type = "dataOutputAssociation";
-		flow.name = $edge.attr("name");
-		
-		// Find respective DI
-		var pathSpec = new Array();
-		$(data).find("bpmndi\\:BPMNEdge[bpmnElement='" + flow.id + "']").each(function(){
-			var $di = $(this);
-			$di.find("omgdi\\:waypoint").each(function(){
-				var waypoint = $(this);
-				//alert(waypoint.attr("x"));	
-				pathSpecElem = new Object();
-				pathSpecElem.x = waypoint.attr("x");
-				pathSpecElem.y = waypoint.attr("y");
-				pathSpec.push(pathSpecElem);
-			});
-		
-		drawFlow(flow, pathSpec, paper);
-		});
-	});
-
-	$(data).find("dataInputAssociation").each(function(){
-		var $edge = $(this);
-		var flow = new Object;
-		flow.id = $edge.attr("id");
-		flow.type = "dataInputAssociation";
-		flow.name = $edge.attr("name");
-		
-		// Find respective DI
-		var pathSpec = new Array();
-		$(data).find("bpmndi\\:BPMNEdge[bpmnElement='" + flow.id + "']").each(function(){
-			var $di = $(this);
-			$di.find("omgdi\\:waypoint").each(function(){
-				var waypoint = $(this);
-				//alert(waypoint.attr("x"));	
-				pathSpecElem = new Object();
-				pathSpecElem.x = waypoint.attr("x");
-				pathSpecElem.y = waypoint.attr("y");
-				pathSpec.push(pathSpecElem);
-			});
-		
-		drawFlow(flow, pathSpec, paper);
-		});
-	});
-	
-	
 	
 	// determine maxY
 	var maxX = 0; // maximum X Value for Resizing Canvas later
 	var maxY = 0; // maximum Y Value for Resizing Canvas later
 
-	$(data).find("bpmndi\\:BPMNShape").each(function(){
-		myX = parseInt($(this).find('omgdc\\:Bounds').attr("x")) + parseInt($(this).find('omgdc\\:Bounds').attr("width"));
+
+	$(xmlJQuery).find("BPMNShape").each(function(){
+		myX = parseInt($(this).find('Bounds').attr("x")) + parseInt($(this).find('Bounds').attr("width"));
 		if (myX > maxX) {maxX = myX;}
 
-		myY = parseInt($(this).find('omgdc\\:Bounds').attr("y")) + parseInt($(this).find('omgdc\\:Bounds').attr("height"));
+		myY = parseInt($(this).find('Bounds').attr("y")) + parseInt($(this).find('Bounds').attr("height"));
 		if (myY > maxY) {maxY = myY;}
 	});
 	
 	paper.setSize (maxX + 30, maxY + 30);
+
 	
+	var end = new Date().getTime();
+	var delta = end-start;
+
+	console.log ("BPMN successfully rendered in " + delta + " ms.");
 
 
 }
-
-
 
 
