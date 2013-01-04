@@ -30,6 +30,7 @@ $script([
 					'app/directives/ngmif',
 					'app/directives/app-source',
 					'app/directives/tutorial',
+					'app/directives/cabpmn_dir',
 
 					'app/filters',
 

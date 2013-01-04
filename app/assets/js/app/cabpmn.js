@@ -22,9 +22,13 @@ var taskDefinitions = {
 			}
 
 var activityMarkers = {
-			"loop": "M 49.5,72 L 49.5,75 L 46.5,75 M 49.5,75 A 4.875,4.875 0 1 1 53.5,75",
-			"miSeq": "M45,67 h10 M45,71 h10 M45,75 h10",
-			"miPar": "M46 65 v10 M50 65 v10 M54 65 v10",
+			//"loop": "M 49.5,72 L 49.5,75 L 46.5,75 M 49.5,75 A 4.875,4.875 0 1 1 53.5,75",
+			//"loop": "M 0 0 L 0 -3 L -3 -3 M 0 -3 A 4.875,4.875 0 1 1 4 -3",
+			"loop": "M 0 0 L 0 3 L -3 3 M 0 3 A 4.875,4.875 0 1 1 4 3",
+			//"miSeq": "M45,67 h10 M45,71 h10 M45,75 h10",
+			"miSeq": "M 0 -2 h10 M 0 2 h10 M 0 6 h10",
+			//"miPar": "M46 65 v10 M50 65 v10 M54 65 v10",
+			"miPar": "M 0 -2 v8 M 4 -2 v8 M 8 -2 v8",
 			"adhoc": "m 0 0 c -0.54305,0.60192 -1.04853,1.0324 -1.51647,1.29142 -0.46216,0.25908 -0.94744,0.38857 -1.4558,0.38857 -0.57194,0 -1.23628,-0.22473 -1.99307,-0.67428 -0.0577,-0.0306 -0.10111,-0.0534 -0.12999,-0.0687 -0.0346,-0.0228 -0.0896,-0.0533 -0.16464,-0.0915 -0.80878,-0.47234 -1.4558,-0.70857 -1.94107,-0.70857 -0.46217,0 -0.91566,0.14858 -1.36047,0.44576 -0.44485,0.2895 -0.92434,0.75046 -1.43849,1.38285 l 0,-2.03429 c 0.54881,-0.60194 1.05431,-1.0324 1.51647,-1.29147 0.46793,-0.26666 0.9532,-0.39999 1.45581,-0.39999 0.57191,0 1.24205,0.22856 2.01039,0.68574 0.0461,0.0308 0.0838,0.0533 0.11266,0.0687 0.0404,0.0228 0.0982,0.0533 0.1733,0.0913 0.803,0.4724 1.45002,0.70861 1.94108,0.70857 0.44481,4e-5 0.88676,-0.14475 1.32581,-0.43429 0.43905,-0.2895 0.9272,-0.75425 1.46448,-1.39428",
 			"compensate": "M 50 70 L 55 65 L 55 75z M44.7 70 L49.7 75 L 49.7 65z"
 			}
@@ -417,30 +421,30 @@ function elementSVG (element, paper) {
 			
 		} else if (taskType == "service") {
 			var pathSpec = taskDefinitions[taskType];
-			drawnElement = paper.path(pathSpec).attr(generalStyle).attr({"stroke-width":1, "fill":"grey"});
-			drawnElement.translate(element.x-element.width/2 + 13, element.y-element.height/2 + 1);
-			drawnElement.scale(0.15,0.15);
+			drawnTaskType = paper.path(pathSpec).attr(generalStyle).attr({"stroke-width":1, "fill":"grey"});
+			drawnTaskType.translate(element.x-element.width/2 + 13, element.y-element.height/2 + 1);
+			drawnTaskType.scale(0.15,0.15);
 		} else if (taskType == "manual") {
 			var pathSpec1 = "M0.5,3.751l4.083-3.25c0,0,11.166,0.083,12.083,0.083s-2.417,2.917-1.5,2.917 s11.667,0,12.584,0c1.166,1.708-0.168,3.167-0.834,3.667s0.875,1.917-1,4.417c-0.75,0.25,0.75,1.875-1.333,3.333     c-1.167,0.583,0.583,1.542-1.25,2.833c-1.167,0-20.833,0.083-20.833,0.083l-2-1.333V3.751z";
 			pathSpec1 = pathSpec1 + " M 13.5 7 L 27 7 M 13.5 11 L 26 11 M 14 14.5 L 25 14.5 M 8.2 3.1 L 15 3.1";
-			drawnElement = paper.path(pathSpec1).attr(generalStyle).attr({"stroke-width":1, "fill":"white"});
-			drawnElement.translate(element.x, element.y);
-			drawnElement.scale(0.6,0.6);
+			drawnTaskType = paper.path(pathSpec1).attr(generalStyle).attr({"stroke-width":1, "fill":"white"});
+			drawnTaskType.translate(element.x, element.y);
+			drawnTaskType.scale(0.6,0.6);
 		} else if (taskType == "script") {
 			var pathSpec1 = "M6.402,0.5h14.5c0,0-5.833,2.833-5.833,5.583s4.417,6,4.417,9.167    s-4.167,5.083-4.167,5.083H0.235c0,0,5-2.667,5-5s-4.583-6.75-4.583-9.25S6.402,0.5,6.402,0.5z";
 			pathSpec1 = pathSpec1 + " M 3.5 4.5 L 13.5 4.5 M 3.8 8.5 L 13.8 8.5 M 6.3 12.5 L 16.3 12.5 M 6.5 16.5 L 16.5 16.5";
-			drawnElement = paper.path(pathSpec1).attr(generalStyle).attr({"stroke-width":1, "fill":"white"});
-			drawnElement.translate(element.x, element.y);
-			drawnElement.scale(0.6,0.6);
+			drawnTaskType = paper.path(pathSpec1).attr(generalStyle).attr({"stroke-width":1, "fill":"white"});
+			drawnTaskType.translate(element.x, element.y);
+			drawnTaskType.scale(0.6,0.6);
 		} else if (taskType == "businessRule") {
-			drawnElement = paper.rect(
+			drawnTaskType = paper.rect(
 					element.x + 5, 
 					element.y + 4, 
 					17, 
 					12, 
 					0)
 				  .attr(activityStyle).attr({"stroke-width":1});
-			drawnElement = paper.rect(
+			drawnTaskType = paper.rect(
 					element.x + 5, 
 					element.y + 4, 
 					17, 
@@ -450,25 +454,39 @@ function elementSVG (element, paper) {
 
 
 			var pathSpec1 = "M 2 10 L 19 10 M 7 4 L 7 14";
-			drawnElement = paper.path(pathSpec1).attr(generalStyle).attr({"stroke-width":1, "stroke-linecap": "butt", "stroke-linejoin": "butt"});
-			drawnElement.translate(element.x + 3, element.y+2);
+			drawnTaskType = paper.path(pathSpec1).attr(generalStyle).attr({"stroke-width":1, "stroke-linecap": "butt", "stroke-linejoin": "butt"});
+			drawnTaskType.translate(element.x + 3, element.y+2);
 			
 		} else if (taskType == "receive") {
+			
+			// If instantiating, draw circle around envelope
+			if (element.isInstantiate == true) {
+				var rad = 12;	
+				var x = element.x + 15;
+				var y = element.y + 15;
+				
+				// event border
+				drawnCircle = paper.circle(x, y, rad)
+					  .attr(generalStyle).attr(eventStyle).attr({"stroke-width":1});
+			}
+
 			var pathSpec1 = eventDefinitions["messageCatch"]
-			drawnElement = paper.path(pathSpec1).attr(generalStyle).attr({"stroke-width":1, "fill":"white"});
-			drawnElement.translate(element.x-2, element.y-4);
+			drawnTaskType = paper.path(pathSpec1).attr(generalStyle).attr({"stroke-width":1, "fill":"white"});
+			drawnTaskType.translate(element.x, element.y);
 			
 		} else if (taskType == "send") {
 			var pathSpec1 = eventDefinitions["messageThrow"]
-			drawnElement = paper.path(pathSpec1).attr(generalStyle).attr({"stroke":"none", "fill":"grey"});
-			drawnElement.translate(element.x-2, element.y-4);
+			drawnTaskType = paper.path(pathSpec1).attr(generalStyle).attr({"stroke":"none", "fill":"grey"});
+			drawnTaskType.translate(element.x-2, element.y-4);
 		}
 		
 		// Loop Marker?
 		if (element.loop) {
 			var pathSpec = activityMarkers[element.loop];
 			var drawnMarker = paper.path(pathSpec).attr(generalStyle);
-			drawnMarker.translate(element.x, element.y);
+			//drawnMarker.translate(element.x, element.y);
+			drawnMarker.translate(element.x + element.width/2 - 5, element.y + element.height - 10);
+			
 		}
 		
 		// Compensation Marker?
@@ -548,7 +566,11 @@ function elementSVG (element, paper) {
 		if (element.loop) {
 			var pathSpec = activityMarkers[element.loop];
 			loopMarker = paper.path(pathSpec).attr(generalStyle);
-			loopMarker.translate(element.x-15, element.y);
+			var shiftX = 0;
+			// shift left in case of other markers
+			if (element.collapsed == true) shiftX = shiftX - 17;
+			if (element.type == "adHocSubProcess") shiftX = shiftX - 17;
+			loopMarker.translate(element.x + element.width/2 + shiftX, element.y + element.height - 10);
 		}
 		
 		// Compensation Marker?
@@ -705,6 +727,15 @@ function drawElement (data, element, paper, container, elemXML) {
 				} else {
 					element.loop = "miPar";
 				}
+			}
+		}
+
+		// if ReceiveTask determine if it is instantiating
+		if (element.type == "receiveTask") {
+			if ($(elemXML).attr("instantiate") == "true") {
+				element.isInstantiate = true;
+			} else {
+				element.isInstantiate = false;
 			}
 		}
 		
