@@ -774,21 +774,25 @@ function drawElement (element, elemXML, paper, container, xmlJQuery) {
 
 	
 	// Find respective DI
+	$(xmlJQuery).find("*").each(function(){
+		//console.log((this).nodeName);
+	});
 	
 	var found = false;
-	$(xmlJQuery).find("BPMNShape[bpmnElement='" + element.id + "']").each(function(){
+	//$(xmlJQuery).find("[nodeName=z:row]"bpmndi:BPMNShape[bpmnElement='" + element.id + "']").each(function(){
+	$(xmlJQuery).find("bpmndi\\:BPMNShape[bpmnElement='" + element.id + "'], BPMNShape[bpmnElement='" + element.id + "']").each(function(){
 		found = true;
 		
 		var $di = $(this);
-		element.x = parseFloat($(this).find('Bounds').attr("x"));
-		element.y = parseFloat($(this).find('Bounds').attr("y"));
-		element.width = parseFloat($(this).find('Bounds').attr("width"));
-		element.height = parseFloat($(this).find('Bounds').attr("height"));
+		element.x = parseFloat($(this).find('omgdc\\:Bounds, Bounds').attr("x"));
+		element.y = parseFloat($(this).find('omgdc\\:Bounds, Bounds').attr("y"));
+		element.width = parseFloat($(this).find('omgdc\\:Bounds, Bounds').attr("width"));
+		element.height = parseFloat($(this).find('omgdc\\:Bounds, Bounds').attr("height"));
 		
 		// get Label Position if existing
 		$(this).find("BPMNLabel").each(function() {
-			element.labelX = parseFloat($(this).find("Bounds").attr("x"));
-			element.labelY = parseFloat($(this).find("Bounds").attr("y"));
+			element.labelX = parseFloat($(this).find("omgdc\\:Bounds, Bounds").attr("x"));
+			element.labelY = parseFloat($(this).find("omgdc\\:Bounds, Bounds").attr("y"));
 		});		
 
 		// if exclusiveGateway, determine if marker should be visible
@@ -870,7 +874,7 @@ function parseNew (data, paper, container) {
 							"intermediatethrowevent", 
 							"intermediatecatchevent", 
 							"endevent", 
-							"boundaryEvent",
+							"boundaryevent",
 							"group",
 							"dataobject",
 							"datastorereference",
@@ -897,9 +901,9 @@ function parseNew (data, paper, container) {
 				if (element.type == "sequenceflow" || element.type == "messageflow" || element.type == "association" || element.type == "datainputassociation" || element.type == "dataoutputassociation") {
 					// Find respective DI
 					var pathSpec = new Array();
-					$(xmlJQuery).find("BPMNEdge[bpmnElement='" + element.id + "']").each(function(){
+					$(xmlJQuery).find("bpmndi\\:BPMNEdge[bpmnElement='" + element.id + "'], BPMNEdge[bpmnElement='" + element.id + "']").each(function(){
 						var $di = $(this);
-						$di.find("waypoint").each(function(){
+						$di.find("omgdi\\:waypoint, waypoint").each(function(){
 							var waypoint = $(this);
 							pathSpecElem = new Object();
 							pathSpecElem.x = waypoint.attr("x");
@@ -919,11 +923,11 @@ function parseNew (data, paper, container) {
 	var maxY = 0; // maximum Y Value for Resizing Canvas later
 
 
-	$(xmlJQuery).find("BPMNShape").each(function(){
-		myX = parseInt($(this).find('Bounds').attr("x")) + parseInt($(this).find('Bounds').attr("width"));
+	$(xmlJQuery).find("bpmndi\\:BPMNShape, BPMNShape").each(function(){
+		myX = parseInt($(this).find("omgdc\\:Bounds, Bounds").attr("x")) + parseInt($(this).find("omgdc\\:Bounds, Bounds").attr("width"));
 		if (myX > maxX) {maxX = myX;}
 
-		myY = parseInt($(this).find('Bounds').attr("y")) + parseInt($(this).find('Bounds').attr("height"));
+		myY = parseInt($(this).find("omgdc\\:Bounds, Bounds").attr("y")) + parseInt($(this).find("omgdc\\:Bounds, Bounds").attr("height"));
 		if (myY > maxY) {maxY = myY;}
 	});
 	
