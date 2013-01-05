@@ -131,8 +131,96 @@ var endEventStyle = {
 
 	return paper;
 	}	
-	
 
+  function drawBpmnSymbol (type, name, container) {
+
+	var element = new Object;
+	element.type = type;
+	element.id = "1";
+	//alert (container.text());
+	element.name = name;
+	
+	// just in case it's a text annotation
+	element.textAnnotation = element.name;
+
+	element.x = 5;
+	element.y = 5;
+	
+	var paperBufferX = 10;
+	var paperBufferY = 10;
+	
+	if (type == "task" || type == "subprocess") {
+		element.width=100;
+		element.height=80;
+		element.collapsed=true;
+	} else 
+	if (element.type.indexOf("gateway") >= 0) {
+		element.width=40;
+		element.height=40;	
+		element.isMarkerVisible = "true";
+		element.labelX = element.x + element.width/2;
+		element.labelY = element.y + element.height + 10;
+		paperBufferY = 20;
+		paperBufferX = 20;
+	} else
+	if (element.type.indexOf("event") >= 0) {
+		element.width=30;
+		element.height=30;	
+		
+		// has eventtype-definition?
+		if (element.type.indexOf("/") >= 0) {
+			element.eventType = element.type.substring(element.type.indexOf("/") + 1, element.type.length);
+			// is non-interrupting?
+			if (element.eventType.indexOf("-non") >= 0) {
+				element.cancelActivity = false;
+				element.eventType = element.eventType.replace("-non", "");
+			
+			}
+		}		
+	}
+
+	var paper = Raphael(container.get(0), element.width+paperBufferX, element.height+paperBufferY);	
+	
+	var raphaelElementId = elementSVG(element, paper);
+	
+	makeHoverEffect (container, element, paper, raphaelElementId);
+	
+	}	
+	
+function makeHoverEffect (container, element, paper, raphaelElementId) {
+	// Position DIV Element (if exists)
+	$(container).find('#' + element.id).each(function() {
+		//alert ($(this).text());
+		$(this).css({
+			"position": "absolute",
+			"width": element.width + "px",
+			"height": element.height + "px",
+			"left": element.x + "px",
+			"top": element.y + "px"
+			});
+		
+		// Get Raphael Element
+		var r = paper.getById(raphaelElementId);
+
+		// Give a glow effect for node that is associated with div layer that is hovered
+		$(this).hover(
+		  function () {
+				r.g = r.glow({
+					color: "darkOrange", 
+					width: 10
+				});
+		  }, 
+		  function () {
+				r.g.remove();
+		  }
+		);
+		
+		// mark nodes that can be hovered with colored border
+		r.attr({stroke: "darkOrange"});
+		
+	});
+}
+	
 // For line breaking the caption in activities
 function textLineBreaker (t, content, maxWidth) {
 	// set some buffer
@@ -157,7 +245,6 @@ function textLineBreaker (t, content, maxWidth) {
 
 function elementSVG (element, paper) {
 	var drawnElement;
-
 	// Event?
 	if ((element.type.toLowerCase().indexOf("event") >= 0) && (element.type.toLowerCase().indexOf("gateway") == -1)) {
 		var rad = element.width / 2;	
@@ -251,7 +338,13 @@ function elementSVG (element, paper) {
 		drawnElement = paper.path(rhombus)
 				.attr(generalStyle).attr(gatewayStyle);
 		
-		if (element.name) paper.text(parseInt(x) + parseInt(element.width) - 5, parseInt(y) + parseInt(element.height/2) -4, element.name).attr(textStyle).attr({'text-anchor': 'start'});
+		if (element.name) {
+			if (element.labelX) {
+				paper.text(element.labelX, element.labelY, element.name).attr(textStyle);
+			} else {
+				paper.text(parseInt(x) + parseInt(element.width) - 5, parseInt(y) + parseInt(element.height/2) -4, element.name).attr(textStyle).attr({'text-anchor': 'start'});
+			}
+		}
 
 		// Exclusive?
 		if (element.type == "exclusivegateway") {
@@ -436,7 +529,7 @@ function elementSVG (element, paper) {
 			drawnTaskType = paper.path(pathSpec1).attr(generalStyle).attr({"stroke-width":1, "fill":"white"});
 			drawnTaskType.translate(element.x, element.y);
 			drawnTaskType.scale(0.6,0.6);
-		} else if (taskType == "businessRule") {
+		} else if (taskType == "businessrule") {
 			drawnTaskType = paper.rect(
 					element.x + 5, 
 					element.y + 4, 
@@ -502,7 +595,7 @@ function elementSVG (element, paper) {
 		}		
 
 	// Subprocesses
-	} else if (element.type == "adHocSubProcess" || element.type == "subprocess" || element.type == "transaction" || element.type == "callActivity") {
+	} else if (element.type == "adhocsubprocess" || element.type == "subprocess" || element.type == "transaction" || element.type == "callactivity") {
 		
 		drawnElement = paper.rect(
 				element.x, 
@@ -513,7 +606,7 @@ function elementSVG (element, paper) {
 			  .attr(activityStyle);
 
 		// CallActivity? Then make thick border...
-		if (element.type == "callActivity") {
+		if (element.type == "callactivity") {
 			drawnElement.attr({"stroke-width":4});
 		}
 
@@ -555,7 +648,7 @@ function elementSVG (element, paper) {
 		}
 		
 		// Adhoc? Then draw marker...
-		if (element.type == "adHocSubProcess") {
+		if (element.type == "adhocsubprocess") {
 			var pathSpec = activityMarkers["adhoc"];
 			var drawnMarker = paper.path(pathSpec).attr(generalStyle);
 			drawnMarker.translate(element.x + element.width/2 + 10, element.y + element.height - 10);
@@ -569,7 +662,7 @@ function elementSVG (element, paper) {
 			var shiftX = 0;
 			// shift left in case of other markers
 			if (element.collapsed == true) shiftX = shiftX - 17;
-			if (element.type == "adHocSubProcess") shiftX = shiftX - 17;
+			if (element.type == "adhocsubprocess") shiftX = shiftX - 17;
 			loopMarker.translate(element.x + element.width/2 + shiftX, element.y + element.height - 10);
 		}
 		
@@ -774,12 +867,8 @@ function drawElement (element, elemXML, paper, container, xmlJQuery) {
 
 	
 	// Find respective DI
-	$(xmlJQuery).find("*").each(function(){
-		//console.log((this).nodeName);
-	});
 	
 	var found = false;
-	//$(xmlJQuery).find("[nodeName=z:row]"bpmndi:BPMNShape[bpmnElement='" + element.id + "']").each(function(){
 	$(xmlJQuery).find("bpmndi\\:BPMNShape[bpmnElement='" + element.id + "'], BPMNShape[bpmnElement='" + element.id + "']").each(function(){
 		found = true;
 		
@@ -855,7 +944,7 @@ function parseNew (data, paper, container) {
 							"lane",
 							"subprocess",
 							"transaction",
-							"adHocsubprocess",
+							"adhocsubprocess",
 							"task", 
 							"sendtask",
 							"receivetask",

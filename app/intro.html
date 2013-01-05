@@ -10,7 +10,6 @@
         
     <!-- loads all stylesheets -->
     <link href="assets/css/loader.css" rel="stylesheet" />
-	  
     <!-- For IE6-8 support of HTML5 elements -->
     <!--[if lt IE 9]>
       <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
@@ -37,8 +36,9 @@
       <div id="navSide" class="span3 bs-docs-sidebar" >
         <ul class="nav nav-list bs-docs-sidenav" data-ca-affix>
           <li ><a href="#intro"><i class="icon-chevron-right"></i> Why should I care?</a></li>
-          <li><a href="#simpleAbout"><i class="icon-chevron-right"></i> About this tutorial</a></li>
-		  <li><a href="#gatewaysSect"><i class="icon-chevron-right"></i> Symbol Overview</a></li>
+          <li><a href="#aboutSect"><i class="icon-chevron-right"></i> About this tutorial</a></li>
+          <li><a href="#simpleSect"><i class="icon-chevron-right"></i> A simple flow</a></li>
+		  <li><a href="#overviewSect"><i class="icon-chevron-right"></i> Symbol Overview</a></li>
 		</ul>
       </div>
 
@@ -64,15 +64,21 @@
 				  <dd>BPMN has been primarily developed to support a technical implementation of processes ("Process Automation"). The more important the IT is in a company, the more helpful is the use of BPMN.</dd>
 			  </dl>	
 		</section>
-		<section id="sectAbout">
+		<section id="aboutSect">
 			<div class="page-header" >
 				<h1>About this tutorial</h1>
 			</div>
 			<p>
-			In this tutorial you will learn the essentials of BPMN 2.0. We will briefly describe the meaning of the symbols, and how you can use them for process mapping. We will also refer to the respective section covering the use in camunda bpm, when it comes to process automation.
-			
-			If you want to get a deeper understanding of BPMN 2.0, please check out our BPMN handbook or <a href="http://www.camunda.com/consulting/bpmn/overview/">attend/book a training</a>.
+				In this tutorial you will learn the essentials of BPMN 2.0. We will briefly describe the meaning of the symbols, and how you can use them for process mapping. 
 			</p>
+			<p>
+				This tutorial is dedicated to <b>Business Analysts</b> and explains how to use BPMN for general process mapping. However, we will also refer to the respective section 
+				covering the use in camunda bpm, when it comes to process automation.
+			</p>
+			<p>			
+				If you want to get a deeper understanding of BPMN 2.0, please check out our BPMN handbook or <a href="http://www.camunda.com/consulting/bpmn/overview/">attend/book a training</a>.
+			</p>
+			<hr/>
 			<div class="row-fluid">
 				<div class="span4">
 					<div class="span4">
@@ -109,7 +115,13 @@
 					</div>
 				</div>
 			</div>
-			<h2>A simple flow</h2>
+		</section>
+		<section id="simpleSect">
+			<div class="page-header" >
+				<h1>A simple flow</h1>
+			</div>
+			<p>Let's have a look at a rather simple BPMN process diagram. To learn all the other symbols BPMN provides, please have a look at the respective tutorials you can find in
+			the next section "BPMN 2.0 Symbol Overview".</p>
 			<div class="label label-warning">Hover over orange symbols for explanation</div>
 				<div id="simple" style="position:relative" data-bpmn-src="tutorial/simple_flow">
 					<div class="tutPop" id="simple-sid-B04D1D48-F63A-440D-8354-072FEA072E41" rel="popover" title="Start Event" data-content="Start events show which event causes the process to start. Start Evens are always catching events.">
@@ -121,8 +133,6 @@
 					<div class="tutPop" id="simple-sid-153C934A-CC9F-4169-A816-6CBE7B159D1E" rel="popover" title="End Event" data-content="End events mark the status reached at the end of the process path. End events are always throwing events.">
 					</div>
 				</div>
-
-
 			<p>
 				This diagram shows a simple process triggered by someone being hungry. The result is that someone must shop for groceries and prepare a meal. After that, someone will eat the meal and have his or her hunger satisfied. 
 			</p>
@@ -162,51 +172,483 @@
 			<div class="page-header" >
 				<h1>BPMN 2.0 Symbol Overview</h1>
 			</div>
+			<div class="label label-warning">Click on orange symbols for tutorial</div>
+			<div class="row">
+			<div class="span4">
+			<h2>Activities</h2>
+			<div class="row-fluid">
+				<div class="span6 bpmnContainer" data-bpmn-symbol="task"  data-bpmn-symbol-name="Task">
+					<a href="tasks.html">
+						<div class="bpmnSymbol" id="1" ></div>
+					</a>
+				</div>
+				<div class="span6 bpmnContainer"  data-bpmn-symbol="subprocess" data-bpmn-symbol-name="Subprocess">
+					<a href="subprocesses.html">
+						<div class="bpmnSymbol" id="1" ></div>
+					</a>				
+				</div>
+			</div>
+			</div>
+			<div class="span4">
+			<h2>Gateways</h2>
+			<div class="row-fluid">
+				<div class="span3 bpmnContainer" data-bpmn-symbol="exclusivegateway" data-bpmn-symbol-name="Exclusive">
+					<a href="tasks.html#exclusiveSect">
+						<div class="bpmnSymbol" id="1" ></div>
+					</a>				
+				</div>
+				<div class="span3 bpmnContainer" data-bpmn-symbol="inclusivegateway" data-bpmn-symbol-name="Inclusive">
+					<a href="tasks.html#inclusiveSect">
+						<div class="bpmnSymbol" id="1" ></div>
+					</a>				
+				</div>
+				<div class="span3 bpmnContainer" data-bpmn-symbol="parallelgateway" data-bpmn-symbol-name="Parallel">
+					<a href="tasks.html#parallelSect">
+						<div class="bpmnSymbol" id="1" ></div>
+					</a>				
+				</div>
+				<div class="span3 bpmnContainer" data-bpmn-symbol="eventbasedgateway" data-bpmn-symbol-name="Event">
+					<a href="tasks.html#eventSect">
+						<div class="bpmnSymbol" id="1" ></div>
+					</a>				
+				</div>
+			</div>
+			</div>
+			</div>
+			<h2>Events</h2>
+			<p><div class="alert">
+				<b>Heads up!</b> For understanding the principle behavior of events in BPMN, check out <a href="events.html">Events: Basic Concepts</a>.
+				</div>
+			</p>
 			<style>
-				.palette td {text-align:center}
-				.paletteLabel {text-align:left !important;}
+				.bpmn-events td {width:10%; text-align:center;}
+				.bpmn-events td.eventName {text-align:right; vertical-align:middle;}
+				.bpmnContainer {margin:auto; position:relative; }
+				.bpmn-events div.bpmnContainer {margin:auto; width:40px; position:relative; }
 			</style>
-			<table class="palette table table-striped table-condensed table-bordered">
+			<table class="table table-bordered bpmn-events">
 				<tr>
-					<td>Symbol</td><td colspan=2>Tutorial</td><td colspan=2>BPMN 2.0 Conformance Class</td><td colspan=3>camunda BPM</td>
+					<td>Type</td><td colspan="3">Start</td><td colspan="4">Intermediate</td><td>End</td>
 				</tr>
 				<tr>
-					<td></td><td>Business Analysts</td><td>Developers</td><td>Process Modeling</td><td>Process Execution</td><td>modeler</td><td>engine</td>
+					<td></td><td>Normal</td><td>Event Subprocess</td><td>Event Subprocess<br/>non-interrupt</td><td>catch</td><td>boundary</td><td>boundary<br/>non-interrupt</td><td>throw</td><td></td></tr>
 				</tr>
 				<tr>
-					<td class="paletteLabel" colspan="6"><h4>Swimlanes</h4></td>
-				<tr>
-					<td class="paletteLabel">Pool</td><td></td><td></td><td></td><td></td><td><i class="icon-check"></td><td></td>
+					<td class="eventName">None</td>
+					<td>
+						<div class="bpmnContainer" data-bpmn-symbol="startevent" >
+						</div>
+					</td>
+					<td></td><td></td><td></td><td></td><td></td>
+					<td>
+						<div style="position:relative" data-bpmn-symbol="intermediateevent" >
+						</div>
+					</td>
+					<td>
+						<div style="position:relative" data-bpmn-symbol="endevent" >
+						</div>
+					</td>
 				</tr>
 				<tr>
-					<td class="paletteLabel">Lane</td><td><a href="design-gateways.html#lanesSect">BA Tutorial</a></td><td>Dev Tutorial</td><td></td><td></td><td><i class="icon-check"></td><td></td>
+					<td class="eventName">Message</td>
+					<td>
+						<div class="bpmnContainer" data-bpmn-symbol="startevent/message" >
+							<a href="events.html#messageSect">
+								<div class="bpmnSymbol"id="1" ></div>
+							</a>
+						</div>
+					</td>
+					<td>
+						<div class="bpmnContainer"  data-bpmn-symbol="startevent/message" >
+							<a href="events.html#messageSect">
+								<div class="bpmnSymbol"id="1" ></div>
+							</a>
+						</div>
+					</td>
+					<td>
+						<div class="bpmnContainer"  data-bpmn-symbol="startevent/message-non" >
+							<a href="events.html#messageSect">
+								<div class="bpmnSymbol"id="1" ></div>
+							</a>
+						</div>
+					</td>					
+					<td>
+						<div class="bpmnContainer"  data-bpmn-symbol="intermediatecatchevent/message" >
+							<a href="events.html#messageSect">
+								<div class="bpmnSymbol"id="1" ></div>
+							</a>
+						</div>
+					</td>
+					<td>
+						<div class="bpmnContainer"  data-bpmn-symbol="intermediatecatchevent/message" >
+							<a href="events.html#messageSect">
+								<div class="bpmnSymbol"id="1" ></div>
+							</a>
+						</div>
+					</td>
+					<td>
+						<div class="bpmnContainer" data-bpmn-symbol="intermediatecatchevent/message-non" >
+							<a href="events.html#messageSect">
+								<div class="bpmnSymbol"id="1" ></div>
+							</a>
+						</div>
+					</td>
+					<td>
+						<div class="bpmnContainer"  data-bpmn-symbol="intermediatethrowevent/message" >
+							<a href="events.html#messageSect">
+								<div class="bpmnSymbol"id="1" ></div>
+							</a>
+						</div>
+					</td>
+					<td>
+						<div class="bpmnContainer"  data-bpmn-symbol="endevent/message" >
+							<a href="events.html#messageSect">
+								<div class="bpmnSymbol"id="1" ></div>
+							</a>
+						</div>
+					</td>
 				</tr>
 				<tr>
-					<td class="paletteLabel" colspan="6"><h4>Activities</h4></td>
-				<tr>
-					<td class="paletteLabel">Task</td><td></td><td></td><td><i class="icon-check"></td><td></td>
+					<td class="eventName">Timer</td>
+					<td>
+						<div class="bpmnContainer" data-bpmn-symbol="startevent/timer" >
+							<a href="events.html#timerSect">
+								<div class="bpmnSymbol"id="1" ></div>
+							</a>
+						</div>
+					</td>
+					<td>
+						<div class="bpmnContainer"  data-bpmn-symbol="startevent/timer" >
+							<a href="events.html#timerSect">
+								<div class="bpmnSymbol"id="1" ></div>
+							</a>
+						</div>
+					</td>
+					<td>
+						<div class="bpmnContainer"  data-bpmn-symbol="startevent/timer-non" >
+							<a href="events.html#timerSect">
+								<div class="bpmnSymbol"id="1" ></div>
+							</a>
+						</div>
+					</td>					
+					<td>
+						<div class="bpmnContainer"  data-bpmn-symbol="intermediatecatchevent/timer" >
+							<a href="events.html#timerSect">
+								<div class="bpmnSymbol"id="1" ></div>
+							</a>
+						</div>
+					</td>
+					<td>
+						<div class="bpmnContainer"  data-bpmn-symbol="intermediatecatchevent/timer" >
+							<a href="events.html#timerSect">
+								<div class="bpmnSymbol"id="1" ></div>
+							</a>
+						</div>
+					</td>
+					<td>
+						<div class="bpmnContainer" data-bpmn-symbol="intermediatecatchevent/timer-non" >
+							<a href="events.html#timerSect">
+								<div class="bpmnSymbol"id="1" ></div>
+							</a>
+						</div>
+					</td>
+				<td></td><td></td>
 				</tr>
 				<tr>
-					<td class="paletteLabel">Usertask</td><td></td><td></td><td><i class="icon-check"></td><td></td>
+					<td class="eventName">Conditional</td>
+					<td>
+						<div class="bpmnContainer" data-bpmn-symbol="startevent/conditional" >
+							<a href="events.html#conditionSect">
+								<div class="bpmnSymbol"id="1" ></div>
+							</a>
+						</div>
+					</td>
+					<td>
+						<div class="bpmnContainer"  data-bpmn-symbol="startevent/conditional" >
+							<a href="events.html#conditionSect">
+								<div class="bpmnSymbol"id="1" ></div>
+							</a>
+						</div>
+					</td>
+					<td>
+						<div class="bpmnContainer"  data-bpmn-symbol="startevent/conditional-non" >
+							<a href="events.html#conditionSect">
+								<div class="bpmnSymbol"id="1" ></div>
+							</a>
+						</div>
+					</td>					
+					<td>
+						<div class="bpmnContainer"  data-bpmn-symbol="intermediatecatchevent/conditional" >
+							<a href="events.html#conditionSect">
+								<div class="bpmnSymbol"id="1" ></div>
+							</a>
+						</div>
+					</td>
+					<td>
+						<div class="bpmnContainer"  data-bpmn-symbol="intermediatecatchevent/conditional" >
+							<a href="events.html#conditionSect">
+								<div class="bpmnSymbol"id="1" ></div>
+							</a>
+						</div>
+					</td>
+					<td>
+						<div class="bpmnContainer" data-bpmn-symbol="intermediatecatchevent/conditional-non" >
+							<a href="events.html#conditionSect">
+								<div class="bpmnSymbol"id="1" ></div>
+							</a>
+						</div>
+					</td>
+				<td></td><td></td>
+				</tr>	
+				<tr>
+					<td class="eventName">Link</td>
+					<td></td><td></td><td></td>				
+					<td>
+						<div class="bpmnContainer"  data-bpmn-symbol="intermediatecatchevent/link" >
+							<a href="events.html#linkSect">
+								<div class="bpmnSymbol"id="1" ></div>
+							</a>
+						</div>
+					</td>
+					<td></td><td></td>
+					<td>
+						<div class="bpmnContainer"  data-bpmn-symbol="intermediatethrowevent/link" >
+							<a href="events.html#linkSect">
+								<div class="bpmnSymbol"id="1" ></div>
+							</a>
+						</div>
+					</td>
+				<td></td>
+				</tr>		
+				<tr>
+					<td class="eventName">Escalation</td>
+					<td>
+						<div class="bpmnContainer" data-bpmn-symbol="startevent/escalation" >
+							<a href="events.html#escalationSect">
+								<div class="bpmnSymbol"id="1" ></div>
+							</a>
+						</div>
+					</td>
+					<td>
+						<div class="bpmnContainer"  data-bpmn-symbol="startevent/escalation" >
+							<a href="events.html#escalationSect">
+								<div class="bpmnSymbol"id="1" ></div>
+							</a>
+						</div>
+					</td>
+					<td>
+						<div class="bpmnContainer"  data-bpmn-symbol="startevent/escalation-non" >
+							<a href="events.html#escalationSect">
+								<div class="bpmnSymbol"id="1" ></div>
+							</a>
+						</div>
+					</td>					
+					<td>
+						<div class="bpmnContainer"  data-bpmn-symbol="intermediatecatchevent/escalation" >
+							<a href="events.html#escalationSect">
+								<div class="bpmnSymbol"id="1" ></div>
+							</a>
+						</div>
+					</td>
+					<td>
+						<div class="bpmnContainer"  data-bpmn-symbol="intermediatecatchevent/escalation" >
+							<a href="events.html#escalationSect">
+								<div class="bpmnSymbol"id="1" ></div>
+							</a>
+						</div>
+					</td>
+					<td>
+						<div class="bpmnContainer" data-bpmn-symbol="intermediatecatchevent/escalation-non" >
+							<a href="events.html#escalationSect">
+								<div class="bpmnSymbol"id="1" ></div>
+							</a>
+						</div>
+					</td>
+					<td>
+						<div class="bpmnContainer"  data-bpmn-symbol="intermediatethrowevent/escalation" >
+							<a href="events.html#escalationSect">
+								<div class="bpmnSymbol"id="1" ></div>
+							</a>
+						</div>
+					</td>
+					<td>
+						<div class="bpmnContainer"  data-bpmn-symbol="endevent/escalation" >
+							<a href="events.html#escalationSect">
+								<div class="bpmnSymbol"id="1" ></div>
+							</a>
+						</div>
+					</td>
+				</tr>	
+				<tr>
+					<td class="eventName">Termination</td>
+					<td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+					<td>
+						<div class="bpmnContainer"  data-bpmn-symbol="endevent/terminate" >
+							<a href="events.html#terminationSect">
+								<div class="bpmnSymbol"id="1" ></div>
+							</a>
+						</div>
+					</td>
+				</tr>	
+				<tr>
+					<td class="eventName">Compensation</td>
+					<td></td>
+					<td>
+						<div class="bpmnContainer"  data-bpmn-symbol="startevent/compensate" >
+							<a href="events.html#compensationSect">
+								<div class="bpmnSymbol"id="1" ></div>
+							</a>
+						</div>
+					</td>
+					<td></td><td></td>
+					<td>
+						<div class="bpmnContainer"  data-bpmn-symbol="intermediatecatchevent/compensate" >
+							<a href="events.html#compensationSect">
+								<div class="bpmnSymbol"id="1" ></div>
+							</a>
+						</div>
+					</td>
+					<td></td>
+					<td>
+						<div class="bpmnContainer"  data-bpmn-symbol="intermediatethrowevent/compensate" >
+							<a href="events.html#compensationSect">
+								<div class="bpmnSymbol"id="1" ></div>
+							</a>
+						</div>
+					</td>
+					<td>
+						<div class="bpmnContainer"  data-bpmn-symbol="endevent/compensate" >
+							<a href="events.html#compensationSect">
+								<div class="bpmnSymbol"id="1" ></div>
+							</a>
+						</div>
+					</td>
+				</tr>					
+				<tr>
+					<td class="eventName">Cancel</td>
+					<td></td><td></td><td></td><td></td>
+					<td>
+						<div class="bpmnContainer"  data-bpmn-symbol="startevent/cancel" >
+							<a href="events.html#cancelSect">
+								<div class="bpmnSymbol"id="1" ></div>
+							</a>
+						</div>
+					</td>
+					<td></td><td></td>
+					<td>
+						<div class="bpmnContainer"  data-bpmn-symbol="endevent/cancel" >
+							<a href="events.html#cancelSect">
+								<div class="bpmnSymbol"id="1" ></div>
+							</a>
+						</div>
+					</td>
+				</tr>					
+					<td class="eventName">Multiple</td>
+					<td>
+						<div class="bpmnContainer" data-bpmn-symbol="startevent/multiple" >
+							<a href="events.html#multipleSect">
+								<div class="bpmnSymbol"id="1" ></div>
+							</a>
+						</div>
+					</td>
+					<td>
+						<div class="bpmnContainer"  data-bpmn-symbol="startevent/multiple" >
+							<a href="events.html#multipleSect">
+								<div class="bpmnSymbol"id="1" ></div>
+							</a>
+						</div>
+					</td>
+					<td>
+						<div class="bpmnContainer"  data-bpmn-symbol="startevent/multiple-non" >
+							<a href="events.html#multipleSect">
+								<div class="bpmnSymbol"id="1" ></div>
+							</a>
+						</div>
+					</td>					
+					<td>
+						<div class="bpmnContainer"  data-bpmn-symbol="intermediatecatchevent/multiple" >
+							<a href="events.html#multipleSect">
+								<div class="bpmnSymbol"id="1" ></div>
+							</a>
+						</div>
+					</td>
+					<td>
+						<div class="bpmnContainer"  data-bpmn-symbol="intermediatecatchevent/multiple" >
+							<a href="events.html#multipleSect">
+								<div class="bpmnSymbol"id="1" ></div>
+							</a>
+						</div>
+					</td>
+					<td>
+						<div class="bpmnContainer" data-bpmn-symbol="intermediatecatchevent/multiple-non" >
+							<a href="events.html#multipleSect">
+								<div class="bpmnSymbol"id="1" ></div>
+							</a>
+						</div>
+					</td>
+					<td>
+						<div class="bpmnContainer"  data-bpmn-symbol="intermediatethrowevent/multiple" >
+							<a href="events.html#multipleSect">
+								<div class="bpmnSymbol"id="1" ></div>
+							</a>
+						</div>
+					</td>
+					<td>
+						<div class="bpmnContainer"  data-bpmn-symbol="endevent/multiple" >
+							<a href="events.html#multipleSect">
+								<div class="bpmnSymbol"id="1" ></div>
+							</a>
+						</div>
+					</td>
 				</tr>
 				<tr>
-					<td class="paletteLabel" colspan="6"><h4>Gateways</h4></td>
-				<tr>
-					<td class="paletteLabel">Exclusive</td><td></td><td></td><td><i class="icon-check"></td><td></td>
-				</tr>
-				<tr>
-					<td class="paletteLabel">Inclusive</td><td></td><td></td><td><i class="icon-check"></td><td></td>
-				</tr>
-				<tr>
-					<td class="paletteLabel" colspan="6"><h4>Events</h4></td>
-				<tr>
-					<td class="paletteLabel">None: Start</td><td></td><td></td><td><i class="icon-check"></td><td></td>
-				</tr>
-				<tr>
-					<td class="paletteLabel">None: Intermediate</td><td></td><td></td><td><i class="icon-check"></td><td></td>
-				</tr>
-
+					<td class="eventName">Multiple Parallel</td>
+					<td>
+						<div class="bpmnContainer" data-bpmn-symbol="startevent/multipleParallel" >
+							<a href="events.html#parallelSect">
+								<div class="bpmnSymbol"id="1" ></div>
+							</a>
+						</div>
+					</td>
+					<td>
+						<div class="bpmnContainer"  data-bpmn-symbol="startevent/multipleParallel" >
+							<a href="events.html#parallelSect">
+								<div class="bpmnSymbol"id="1" ></div>
+							</a>
+						</div>
+					</td>
+					<td>
+						<div class="bpmnContainer"  data-bpmn-symbol="startevent/multipleParallel-non" >
+							<a href="events.html#parallelSect">
+								<div class="bpmnSymbol"id="1" ></div>
+							</a>
+						</div>
+					</td>					
+					<td>
+						<div class="bpmnContainer"  data-bpmn-symbol="intermediatecatchevent/multipleParallel" >
+							<a href="events.html#parallelSect">
+								<div class="bpmnSymbol"id="1" ></div>
+							</a>
+						</div>
+					</td>
+					<td>
+						<div class="bpmnContainer"  data-bpmn-symbol="intermediatecatchevent/multipleParallel" >
+							<a href="events.html#parallelSect">
+								<div class="bpmnSymbol"id="1" ></div>
+							</a>
+						</div>
+					</td>
+					<td>
+						<div class="bpmnContainer" data-bpmn-symbol="intermediatecatchevent/multipleParallel-non" >
+							<a href="events.html#parallelSect">
+								<div class="bpmnSymbol"id="1" ></div>
+							</a>
+						</div>
+					</td>
+					<td></td><td></td>
+				</tr>				
 			</table>
+			
 		</div>
 		</div>
 </div>

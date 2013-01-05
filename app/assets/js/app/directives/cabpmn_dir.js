@@ -33,4 +33,12 @@ angular.module('camundaorg.directives')
 		//$('body').scrollspy({"target":"#navSide"});
     }
   }
+}).directive('bpmnSymbol', function() {
+  return {
+    link: function(scope, element, attrs) {
+		var bpmnSymbol = attrs.bpmnSymbol;
+		var bpmnSymbolName = attrs.bpmnSymbolName;
+		drawBpmnSymbol (bpmnSymbol, bpmnSymbolName, element);
+    }
+  }
 })
