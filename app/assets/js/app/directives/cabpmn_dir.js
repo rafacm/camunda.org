@@ -8,7 +8,7 @@ angular.module('camundaorg.directives')
 
     	var bpmnResource = attrs.bpmnSrc;
 		
-		bpmn(bpmnResource, $(element).attr("id"));
+		bpmn(bpmnResource, element);
 		//$('body').scrollspy('refresh');
     }
   }

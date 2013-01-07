@@ -35,7 +35,7 @@ function readMyFile(){
 	      fileData = evt.target.result;
 	      //alert("Data: " + fileData);
 				if (paper) paper.remove();
-				paper = bpmnDirect (fileData, "complete");		  
+				paper = bpmnDirect (fileData, $('#complete'));		  
 	};
 	//reader.readAsBinaryString(files[0]);
 	reader.readAsText(files[0], 'UTF-8');

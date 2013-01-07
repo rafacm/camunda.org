@@ -22,21 +22,18 @@ var taskDefinitions = {
 			}
 
 var activityMarkers = {
-			//"loop": "M 49.5,72 L 49.5,75 L 46.5,75 M 49.5,75 A 4.875,4.875 0 1 1 53.5,75",
-			//"loop": "M 0 0 L 0 -3 L -3 -3 M 0 -3 A 4.875,4.875 0 1 1 4 -3",
 			"loop": "M 0 0 L 0 3 L -3 3 M 0 3 A 4.875,4.875 0 1 1 4 3",
-			//"miSeq": "M45,67 h10 M45,71 h10 M45,75 h10",
 			"miSeq": "M 0 -2 h10 M 0 2 h10 M 0 6 h10",
-			//"miPar": "M46 65 v10 M50 65 v10 M54 65 v10",
 			"miPar": "M 0 -2 v8 M 4 -2 v8 M 8 -2 v8",
 			"adhoc": "m 0 0 c -0.54305,0.60192 -1.04853,1.0324 -1.51647,1.29142 -0.46216,0.25908 -0.94744,0.38857 -1.4558,0.38857 -0.57194,0 -1.23628,-0.22473 -1.99307,-0.67428 -0.0577,-0.0306 -0.10111,-0.0534 -0.12999,-0.0687 -0.0346,-0.0228 -0.0896,-0.0533 -0.16464,-0.0915 -0.80878,-0.47234 -1.4558,-0.70857 -1.94107,-0.70857 -0.46217,0 -0.91566,0.14858 -1.36047,0.44576 -0.44485,0.2895 -0.92434,0.75046 -1.43849,1.38285 l 0,-2.03429 c 0.54881,-0.60194 1.05431,-1.0324 1.51647,-1.29147 0.46793,-0.26666 0.9532,-0.39999 1.45581,-0.39999 0.57191,0 1.24205,0.22856 2.01039,0.68574 0.0461,0.0308 0.0838,0.0533 0.11266,0.0687 0.0404,0.0228 0.0982,0.0533 0.1733,0.0913 0.803,0.4724 1.45002,0.70861 1.94108,0.70857 0.44481,4e-5 0.88676,-0.14475 1.32581,-0.43429 0.43905,-0.2895 0.9272,-0.75425 1.46448,-1.39428",
 			"compensate": "M 50 70 L 55 65 L 55 75z M44.7 70 L49.7 75 L 49.7 65z"
 			}
 			
-
+var regularStroke = "grey";
+var highlightStroke = "darkOrange";
 
 var generalStyle = {
-    stroke: "grey",
+    stroke: regularStroke,
     "stroke-width": 2,
     "stroke-linecap": "round",
     "stroke-linejoin": "round",
@@ -44,13 +41,13 @@ var generalStyle = {
 }
 
 var groupStyle = {
-    stroke: "grey",
+    stroke: regularStroke,
     "stroke-width": 2,
     "stroke-opacity" : 1
 }
 
 var dataObjectStyle = {
-    stroke: "grey",
+    stroke: regularStroke,
     "stroke-width": 2,
     "stroke-opacity" : 1
 }
@@ -65,7 +62,7 @@ var endEventStyle = {
 };
 
   var activityStyle = {
-    stroke: "grey",
+    stroke: regularStroke,
     "stroke-width": 2,
     "stroke-linecap": "round",
     "stroke-linejoin": "round",
@@ -78,7 +75,7 @@ var endEventStyle = {
   };
   
   var gatewayMarkerStyle = {
-    stroke: "grey",
+    stroke: regularStroke,
 	"stroke-opacity" : 1,
     "stroke-width": 4
   };
@@ -110,50 +107,61 @@ var endEventStyle = {
 	"font-family": "Arial, Helvetica, sans-serif",
   }
   
-  var highlightStyle = {
-	"fill": "darkOrange"
-  }
   
   function bpmn (diagram, container) {
 
-	var paper = Raphael(container, "100%");
-	//$("#processDiagramOverlay").css("height","180px");
+	var paper = Raphael(container.get(0), "100%");
+
 	$.get("http://localhost:8000/app/assets/bpmn/" + diagram + ".bpmn", function(data){
-		parseNew(data, paper, container);
+		parseBpmnXml(data, paper, container);
 	});
-}
+
+	}
 
   function bpmnDirect (xml, container) {
 
-	var paper = Raphael(container, "100%");
-	//$("#processDiagramOverlay").css("height","180px");
-	parseNew(xml, paper, container);
+	var paper = Raphael(container.get(0), "100%");
+	parseBpmnXml(xml, paper, container);
 
 	return paper;
 	}	
 
+/**
+* draw single BPMN Symbol. Just a helper for camunda.org BPMN Tutorial
+**/
   function drawBpmnSymbol (type, name, container) {
 
 	var element = new Object;
 	element.type = type;
 	element.id = "1";
-	//alert (container.text());
-	element.name = name;
-	
-	// just in case it's a text annotation
-	element.textAnnotation = element.name;
 
+	// Just a workaround to allow linebreaks in Symbol names, does not work with "\n" directly, can't figure out why
+	if (name) element.name = name.replace("<br>", "\n");
+	
 	element.x = 5;
 	element.y = 5;
 	
 	var paperBufferX = 10;
 	var paperBufferY = 10;
 	
-	if (type == "task" || type == "subprocess") {
+	if (type == "task" || type == "subprocess" || type == "callactivity" || type == "eventsubprocess" || type == "transaction" ) {
 		element.width=100;
 		element.height=80;
 		element.collapsed=true;
+		if (type == "eventsubprocess") {
+			element.type = "subprocess";
+			element.triggeredByEvent = true;
+		}
 	} else 
+	if (element.type == "participant") {
+		element.width=200;
+		element.height=80;	
+	} else
+	if (element.type == "lane") {
+		element.width=176;
+		element.height=80;	
+	} else
+
 	if (element.type.indexOf("gateway") >= 0) {
 		element.width=40;
 		element.height=40;	
@@ -163,6 +171,30 @@ var endEventStyle = {
 		paperBufferY = 20;
 		paperBufferX = 20;
 	} else
+	if (element.type == "dataobject") {
+		element.width=50;
+		element.height=60;
+		element.labelX = 30;
+		element.labelY = 35;
+		paperBufferY = 40;
+	} else	
+	if (element.type == "datastorereference") {
+		element.width=60;
+		element.height=65;	
+		element.labelX = 35;
+		element.labelY = 45;
+		paperBufferY = 50;
+	} else	
+	if (element.type == "textannotation") {
+		element.textAnnotation = element.name;
+		element.width=60;
+		element.height=60;	
+		paperBufferY = 50;
+	} else	
+	if (element.type == "group") {
+		element.width=100;
+		element.height=60;	
+	} else	
 	if (element.type.indexOf("event") >= 0) {
 		element.width=30;
 		element.height=30;	
@@ -196,7 +228,8 @@ function makeHoverEffect (container, element, paper, raphaelElementId) {
 			"width": element.width + "px",
 			"height": element.height + "px",
 			"left": element.x + "px",
-			"top": element.y + "px"
+			"top": element.y + "px",
+			"background": "url(/app/assets/img/transparent.gif) repeat" // I need this workaround to make hover effect work in IEx :-(
 			});
 		
 		// Get Raphael Element
@@ -206,7 +239,7 @@ function makeHoverEffect (container, element, paper, raphaelElementId) {
 		$(this).hover(
 		  function () {
 				r.g = r.glow({
-					color: "darkOrange", 
+					color: highlightStroke, 
 					width: 10
 				});
 		  }, 
@@ -216,7 +249,7 @@ function makeHoverEffect (container, element, paper, raphaelElementId) {
 		);
 		
 		// mark nodes that can be hovered with colored border
-		r.attr({stroke: "darkOrange"});
+		r.attr({stroke: highlightStroke});
 		
 	});
 }
@@ -275,7 +308,7 @@ function elementSVG (element, paper) {
 			// end event border
 			drawnElement.attr(endEventStyle);
 			// adjust radius due to thicker border (rad = stroke-width/2)
-			rad = rad+0.75;
+			// rad = rad + 0.75; not working as intended...
 		}
 		
 		
@@ -288,7 +321,7 @@ function elementSVG (element, paper) {
 				myPath.translate(x - rad, y-rad);
 			} else {
 				var myPathSpec = eventDefinitions["messageThrow"];
-				var myPath = paper.path(myPathSpec).attr(generalStyle).attr({"stroke":"none", "fill":"grey"});
+				var myPath = paper.path(myPathSpec).attr(generalStyle).attr({"stroke":"none", "fill":regularStroke});
 				myPath.translate(x - rad, y-rad);
 			}
 		// timer?
@@ -299,7 +332,7 @@ function elementSVG (element, paper) {
 			myPath.translate(x - rad, y-rad);
 		// terminate?
 		} else if (element.eventType == "terminate") {
-			paper.circle(x, y, 8).attr(generalStyle).attr(eventStyle).attr({"fill":"grey"});
+			paper.circle(x, y, 8).attr(generalStyle).attr(eventStyle).attr({"fill":regularStroke});
 		// cancel?
 		} else if (element.eventType == "cancel") {
 			var myPathSpec = eventDefinitions[element.eventType];
@@ -307,7 +340,7 @@ function elementSVG (element, paper) {
 			myPath.translate(x - rad, y-rad);
 			// throwing?
 			if ((element.type.toLowerCase().indexOf("throw") >= 0) || element.type.toLowerCase().indexOf("end") >= 0){
-				myPath.attr({"stroke":"none", "fill":"grey"});
+				myPath.attr({"stroke":"none", "fill":regularStroke});
 			}
 		// sth. else?
 		} else if ((element.eventType == "error") || (element.eventType == "multipleParallel") || (element.eventType == "multiple") || (element.eventType == "escalation") || (element.eventType == "link") || (element.eventType == "signal") || (element.eventType == "cancel") || (element.eventType == "conditional") || (element.eventType == "compensate")) {
@@ -316,7 +349,7 @@ function elementSVG (element, paper) {
 			myPath.translate(x - rad, y-rad);
 			// throwing?
 			if ((element.type.toLowerCase().indexOf("throw") >= 0) || element.type.toLowerCase().indexOf("end") >= 0){
-				myPath.attr({"stroke":"none", "fill":"grey"});
+				myPath.attr({"stroke":"none", "fill":regularStroke});
 			}
 		}
 
@@ -351,11 +384,11 @@ function elementSVG (element, paper) {
 			// Should marker be visible?
 			if (element.isMarkerVisible == "true") {
 			var myPathSpec = " M13.25 12.05  L17.25 12.05  L27.65 28.95  L23.75 28.95  z";
-			var myPath = paper.path(myPathSpec).attr(gatewayMarkerStyle).attr({"stroke-width":"1", "fill":"grey"});
+			var myPath = paper.path(myPathSpec).attr(gatewayMarkerStyle).attr({"stroke-width":"1", "fill":regularStroke});
 			myPath.translate(x, y - radHeight);
 
 			myPathSpec = " M13.25 28.95  L23.75 12.05  L27.65 12.05  L17.25 28.95  z";
-			myPath = paper.path(myPathSpec).attr(gatewayMarkerStyle).attr({"stroke-width":"1", "fill":"grey"});
+			myPath = paper.path(myPathSpec).attr(gatewayMarkerStyle).attr({"stroke-width":"1", "fill":regularStroke});
 			myPath.translate(x, y - radHeight);
 			}
 
@@ -475,6 +508,7 @@ function elementSVG (element, paper) {
 	// DataStore?
 	} else if (element.type == "datastorereference") {
 		var pathSpec = "M30.708999999999985 0  c20.013 0 31.292 3.05 31.292 5.729  c0 2.678 0 45.096 0 48.244  c0 3.148 -16.42 6.2 -31.388 6.2  c-14.968 0 -30.613 -2.955 -30.613 -6.298  c0 -3.342 0 -45.728 0 -48.05  C-1.4210854715202004e-14 3.503 10.696999999999985 0 30.708999999999985 0  M62.00099999999999 15.027999999999999  c0 1.986 -3.62 6.551 -31.267 6.551  c-27.646 0 -30.734 -4.686 -30.734 -6.454  M-1.4210854715202004e-14 10.475000000000001  c0 1.769 3.088 6.455 30.734 6.455  c27.647 0 31.267 -4.565 31.267 -6.551  M-1.4210854715202004e-14 5.825000000000001  c0 2.35 3.088 6.455 30.734 6.455  c27.647 0 31.267 -3.912 31.267 -6.552  M62.00099999999999 5.729000000000001  v4.844  M0.0239999999999857 5.729000000000001  v4.844  M62.00099999999999 10.379000000000001  v4.844  M0.0239999999999857 10.379000000000001  v4.844 ";
+
 		drawnElement = paper.path(pathSpec).attr(generalStyle);
 		drawnElement.translate(element.x, element.y);
 		
@@ -508,13 +542,13 @@ function elementSVG (element, paper) {
 		
 		if (taskType == "user") {
 			var pathSpec = taskDefinitions[taskType];
-			var drawnTaskType = paper.path(pathSpec).attr(generalStyle).attr({"stroke-width":1, "fill":"grey"});
+			var drawnTaskType = paper.path(pathSpec).attr(generalStyle).attr({"stroke-width":1, "fill":regularStroke});
 			drawnTaskType.translate(element.x-element.width/2 + 13, element.y-element.height/2 + 1);
 			drawnTaskType.scale(0.25,0.25);
 			
 		} else if (taskType == "service") {
 			var pathSpec = taskDefinitions[taskType];
-			drawnTaskType = paper.path(pathSpec).attr(generalStyle).attr({"stroke-width":1, "fill":"grey"});
+			drawnTaskType = paper.path(pathSpec).attr(generalStyle).attr({"stroke-width":1, "fill":regularStroke});
 			drawnTaskType.translate(element.x-element.width/2 + 13, element.y-element.height/2 + 1);
 			drawnTaskType.scale(0.15,0.15);
 		} else if (taskType == "manual") {
@@ -543,7 +577,7 @@ function elementSVG (element, paper) {
 					17, 
 					4, 
 					0)
-				  .attr(activityStyle).attr({"stroke-width":1, "fill":"grey"});
+				  .attr(activityStyle).attr({"stroke-width":1, "fill":regularStroke});
 
 
 			var pathSpec1 = "M 2 10 L 19 10 M 7 4 L 7 14";
@@ -569,7 +603,7 @@ function elementSVG (element, paper) {
 			
 		} else if (taskType == "send") {
 			var pathSpec1 = eventDefinitions["messageThrow"]
-			drawnTaskType = paper.path(pathSpec1).attr(generalStyle).attr({"stroke":"none", "fill":"grey"});
+			drawnTaskType = paper.path(pathSpec1).attr(generalStyle).attr({"stroke":"none", "fill":regularStroke});
 			drawnTaskType.translate(element.x-2, element.y-4);
 		}
 		
@@ -617,25 +651,6 @@ function elementSVG (element, paper) {
 		}
 
 		
-			  
-		// collapsed? Then draw the cross...
-		if (element.collapsed == true) {
-			paper.rect(
-				element.x + element.width/2 -6, 
-				element.y + element.height - 12, 
-				12, 
-				12, 
-				0)
-			  .attr(activityStyle).attr({"fill":"transparent"});		
-			  
-			var pathSpec = "M50 71 v6 M 47 74 h6";
-			var drawnCross = paper.path(pathSpec).attr(generalStyle);
-			drawnCross.translate(element.x, element.y);
-		} else {
-		// if expanded, fill transparent so you can see what's inside...
-			drawnElement.attr({"fill":"transparent"});
-		}
-
 		// transaction? Then draw second border...
 		if (element.type == "transaction") {
 			drawnElement = paper.rect(
@@ -646,7 +661,27 @@ function elementSVG (element, paper) {
 					3)
 				  .attr(activityStyle);
 		}
-		
+
+			  
+		// collapsed? Then draw the cross...
+		if (element.collapsed == true) {
+			paper.rect(
+				element.x + element.width/2 -6, 
+				element.y + element.height - 12, 
+				12, 
+				12, 
+				0)
+			  .attr(activityStyle).attr({"fill":"white"});		
+			  
+			var pathSpec = "M50 71 v6 M 47 74 h6";
+			var drawnCross = paper.path(pathSpec).attr(generalStyle);
+			drawnCross.translate(element.x, element.y);
+		} else {
+		// if expanded, fill transparent so you can see what's inside...
+			drawnElement.attr({"fill":"transparent"});
+		}
+
+	
 		// Adhoc? Then draw marker...
 		if (element.type == "adhocsubprocess") {
 			var pathSpec = activityMarkers["adhoc"];
@@ -746,7 +781,7 @@ function drawFlow (flow, pathSpec, paper) {
 		var e = paper.path(pathString).attr(generalStyle).attr(messageFlowStyle),
 			l = e.getTotalLength(),
 		   to = 1;
-		paper.circle(pathSpec[0].x, pathSpec[0].y, 4).attr(generalStyle).attr({"fill":"white"});
+		var circle = paper.circle(pathSpec[0].x, pathSpec[0].y, 4).attr(generalStyle).attr({"fill":"white"});
 	}	
 	
 	if (flow.type == "association" || flow.type == "dataAssociation") { 
@@ -756,7 +791,7 @@ function drawFlow (flow, pathSpec, paper) {
 	}
 
 	if (flow.type == "datainputassociation" || flow.type == "dataoutputassociation") { 
-		var e = paper.path(pathString).attr({"stroke":"grey", "stroke-width":2, "stroke-dasharray":". ", "arrow-end": "classic-wide-long"}),
+		var e = paper.path(pathString).attr({"stroke":regularStroke, "stroke-width":2, "stroke-dasharray":". ", "arrow-end": "classic-wide-long"}),
 			l = e.getTotalLength(),
 		   to = 1;
 	}
@@ -836,7 +871,6 @@ function drawElement (element, elemXML, paper, container, xmlJQuery) {
 				element.isInstantiate = false;
 			}
 		}
-		
 	
 		// if event, determine eventType
 		if ((element.type.toLowerCase().indexOf("event") >= 0) && (element.type.toLowerCase().indexOf("gateway") == -1)) {
@@ -865,9 +899,7 @@ function drawElement (element, elemXML, paper, container, xmlJQuery) {
 			
 		}
 
-	
 	// Find respective DI
-	
 	var found = false;
 	$(xmlJQuery).find("bpmndi\\:BPMNShape[bpmnElement='" + element.id + "'], BPMNShape[bpmnElement='" + element.id + "']").each(function(){
 		found = true;
@@ -905,39 +937,10 @@ function drawElement (element, elemXML, paper, container, xmlJQuery) {
 
 		if (!found) console.log ("DI not found for '" + element.name + "'");
 
-	
-	// Position DIV Element (if exists)
-	if ($('#' + container + "-" + element.id).length > 0) {
-		$('#' + container + "-" + element.id).css({
-			"position": "absolute",
-			"width": element.width + "px",
-			"height": element.height + "px",
-			"left": element.x + "px",
-			"top": element.y + "px"
-			});
-		
-		// Get Raphael Element
-		var r = paper.getById(raphaelElementId);
-
-		// Give a glow effect for node that is associated with div layer that is hovered
-		$('#' + container + "-" + element.id).hover(
-		  function () {
-				r.g = r.glow({
-					color: "darkOrange", 
-					width: 10
-				});
-		  }, 
-		  function () {
-				r.g.remove();
-		  }
-		);
-		
-		// mark nodes that can be hovered with colored border
-		r.attr({stroke: "darkOrange"});
-	}
+		makeHoverEffect(container, element, paper, raphaelElementId);
 }
 
-function parseNew (data, paper, container) {
+function parseBpmnXml (data, paper, container) {
 	var start = new Date().getTime();
 
 	var symbols = new Array("participant",
@@ -1011,7 +1014,6 @@ function parseNew (data, paper, container) {
 	var maxX = 0; // maximum X Value for Resizing Canvas later
 	var maxY = 0; // maximum Y Value for Resizing Canvas later
 
-
 	$(xmlJQuery).find("bpmndi\\:BPMNShape, BPMNShape").each(function(){
 		myX = parseInt($(this).find("omgdc\\:Bounds, Bounds").attr("x")) + parseInt($(this).find("omgdc\\:Bounds, Bounds").attr("width"));
 		if (myX > maxX) {maxX = myX;}
@@ -1021,14 +1023,9 @@ function parseNew (data, paper, container) {
 	});
 	
 	paper.setSize (maxX + 30, maxY + 30);
-
-	
 	var end = new Date().getTime();
 	var delta = end-start;
-
 	console.log ("BPMN successfully rendered in " + delta + " ms.");
-
-
 }
 
 

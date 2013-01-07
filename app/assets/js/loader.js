@@ -24,6 +24,7 @@ $script([
 				$script([
 					'app/app',
 					'app/cabpmn',
+					'app/cabpmnLib',
 					'app/directives',
 					'app/directives/modalDialog',
 					'app/directives/windowCenter',
