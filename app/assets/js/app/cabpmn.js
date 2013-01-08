@@ -107,6 +107,7 @@ var endEventStyle = {
 	"font-family": "Arial, Helvetica, sans-serif",
   }
   
+  var caBpmnPapers = {};
   
   function bpmn (diagram, container) {
 
@@ -115,6 +116,8 @@ var endEventStyle = {
 	$.get("http://localhost:8000/app/assets/bpmn/" + diagram + ".bpmn", function(data){
 		parseBpmnXml(data, paper, container);
 	});
+
+	caBpmnPapers[container.get(0).id] = paper;
 
 	}
 
@@ -355,7 +358,7 @@ function elementSVG (element, paper) {
 
 		if (element.name) { 
 			if (element.labelX) {
-				paper.text(element.labelX, element.labelY, element.name).attr(textStyle);
+				paper.text(element.labelX, element.labelY, element.name).attr(textStyle).attr({'text-anchor': 'start'});
 			} else {
 				paper.text(x, parseInt(y) + parseInt(element.height/2) + 15, element.name).attr(textStyle);
 			}
@@ -373,7 +376,7 @@ function elementSVG (element, paper) {
 		
 		if (element.name) {
 			if (element.labelX) {
-				paper.text(element.labelX, element.labelY, element.name).attr(textStyle);
+				paper.text(element.labelX, element.labelY, element.name).attr(textStyle).attr({'text-anchor': 'start'});
 			} else {
 				paper.text(parseInt(x) + parseInt(element.width) - 5, parseInt(y) + parseInt(element.height/2) -4, element.name).attr(textStyle).attr({'text-anchor': 'start'});
 			}
@@ -751,6 +754,7 @@ function elementSVG (element, paper) {
 	}	
 	
 	drawnElement.node.id = "svg_" + element.id;
+	
 	drawnElement.data ("bpmnType", element.type);
 	return drawnElement.id;
 }
@@ -770,29 +774,29 @@ function drawFlow (flow, pathSpec, paper) {
 	
 	if (flow.type == "sequenceflow") { 
 		// draw sequenceflow 
-		var e = paper.path(pathString).attr(generalStyle).attr(sequenceFlowStyle),
-			l = e.getTotalLength(),
+		drawnFlow = paper.path(pathString).attr(generalStyle).attr(sequenceFlowStyle),
+			l = drawnFlow.getTotalLength(),
 		   to = 1;
 		
 	}
 	
 	if (flow.type == "messageflow") { 
 		// draw messageFlow 
-		var e = paper.path(pathString).attr(generalStyle).attr(messageFlowStyle),
-			l = e.getTotalLength(),
+		drawnFlow = paper.path(pathString).attr(generalStyle).attr(messageFlowStyle),
+			l = drawnFlow.getTotalLength(),
 		   to = 1;
 		var circle = paper.circle(pathSpec[0].x, pathSpec[0].y, 4).attr(generalStyle).attr({"fill":"white"});
 	}	
 	
 	if (flow.type == "association" || flow.type == "dataAssociation") { 
-		var e = paper.path(pathString).attr({"stroke-dasharray":". "}),
-			l = e.getTotalLength(),
+		drawnFlow = paper.path(pathString).attr({"stroke-dasharray":". "}),
+			l = drawnFlow.getTotalLength(),
 		   to = 1;
 	}
 
 	if (flow.type == "datainputassociation" || flow.type == "dataoutputassociation") { 
-		var e = paper.path(pathString).attr({"stroke":regularStroke, "stroke-width":2, "stroke-dasharray":". ", "arrow-end": "classic-wide-long"}),
-			l = e.getTotalLength(),
+		drawnFlow = paper.path(pathString).attr({"stroke":regularStroke, "stroke-width":2, "stroke-dasharray":". ", "arrow-end": "classic-wide-long"}),
+			l = drawnFlow.getTotalLength(),
 		   to = 1;
 	}
 
@@ -815,7 +819,8 @@ function drawFlow (flow, pathSpec, paper) {
 		paper.text(textX, textY, flow.name).attr({'text-anchor': 'start'});
 	}
 
-	
+	drawnFlow.id = flow.id;
+
 }
 
 function drawElement (element, elemXML, paper, container, xmlJQuery) {
@@ -981,12 +986,18 @@ function parseBpmnXml (data, paper, container) {
 	
 	xmlJQuery = $.parseXML(data);
 	
-	$(xmlJQuery).find("*").filter(function() {
-		if ($.inArray((this).nodeName.toLowerCase(), symbols) > -1) return true;
-			}).each(function(){
+	$(xmlJQuery).find("*").each(function() {
+		var myNodeName = (this).nodeName.toLowerCase();
+
+		// Namespaces?
+		if (myNodeName.indexOf(":") >= 0) {
+			myNodeName = myNodeName.substr(myNodeName.indexOf(":") +1 , myNodeName.length);
+		}
+
+		if ($.inArray(myNodeName, symbols) > -1) {
 				var elem = $(this);
 				var element = new Object;
-				element.type = (this).nodeName.toLowerCase();
+				element.type = myNodeName;
 				element.id = elem.attr("id");
 				element.name = elem.attr("name");
 				
@@ -1008,6 +1019,7 @@ function parseBpmnXml (data, paper, container) {
 				} else {
 					drawElement(element, $(this), paper, container, xmlJQuery);
 				}
+		}
 	});
 	
 	// determine maxY

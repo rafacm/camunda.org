@@ -13,6 +13,31 @@ angular.module('camundaorg.directives')
     }
   }
 })
+.directive('bpmnRun', function() {
+  return {
+    scope: true,
+    transclude: true, 
+    template: '<div><div ng-transclude></div><a class="btn" ng-click="startProcess()">kacken</a></div>',
+    link: function(scope, element, attrs) {
+
+      var bpmnResource = attrs.bpmnSrc;
+
+      $.get("http://localhost:8000/app/assets/bpmn/" + bpmnResource + ".bpmn", function(data){
+        
+        scope.processDefinition = CAM.transform(data)[0];
+
+        if(!scope.startProcess) {
+          scope.startProcess = function() {
+             var execution = new CAM.ActivityExecution(scope.processDefinition);
+             execution.variables["kack"] = element.attr("id");
+              execution.start();
+          }
+        }
+
+    });
+  }
+}
+})
 .directive('bpmnTutorial', function() {
   return {
     link: function(scope, element, attrs) {
