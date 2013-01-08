@@ -754,7 +754,8 @@ function elementSVG (element, paper) {
 	}	
 	
 	drawnElement.node.id = "svg_" + element.id;
-	
+	drawnElement.id = element.id;
+
 	drawnElement.data ("bpmnType", element.type);
 	return drawnElement.id;
 }

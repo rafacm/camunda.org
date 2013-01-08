@@ -32,51 +32,73 @@ function DefaultController($scope, $location) {
     }
   });
   // end Bread Crumb
-
-      CAM.parseListeners.push (function(activityDefinition){
-        activityDefinition.listeners.push ({
-          "start":function(activityExecution){
-              console.log("start-"+activityExecution.activityDefinition.name);
-            },
-          "take" : function(activityExecution,transition) {
-              console.log("take-"+transition.id);
-              
-              var paper = caBpmnPapers[activityExecution.parentExecution.variables["kack"]];
-
-              var e = paper.getById(transition.id);
-              
-                            paper.customAttributes.along = function (a) {
-                                var p = e.getPointAtLength(a * l);
-                                return {
-                                  transform: "t" + [p.x, p.y - 10] + "r" + p.alpha
-                                  };
-                              };
-
-                              // draw and animate token
-                              var c = paper.ellipse(0, 0, 5, 5).attr({
-                                along: 0
-                                }).animate({
-                                  along: to
-                                }, 1000, function() {
-                                  // remove token
-                                  c.remove();
-                                });
-
-          }
-        })
-      });
-
+        var tokens = {};
     CAM.parseListeners.push(function(activityDefinition){
       if (activityDefinition.typeId != "process" && activityDefinition.typeId != "startEvent") {
 
+
+
         activityDefinition.properties.asyncCallback = function(activityExecution) {
-          //interruptedExecution = activityExecution;
-          console.log ("Asynch Callback: " + activityExecution.activityDefinition.id);
 
-          setTimeout(function(){
-            activityExecution.continue();
+          console.log ("Task: " + activityExecution.activityDefinition.name);
 
-          }, 1000)
+          var transitionId = activityExecution.incomingTransitionId;
+
+             console.log("take-" + transitionId);
+          if(!!transitionId) {
+
+              
+              var paper = caBpmnPapers[activityExecution.parentExecution.variables["paperId"]];
+
+              var e = paper.getById(transitionId);
+
+              tokens[e.id] = e;
+
+              
+                            paper.customAttributes.along = function (a, cid) {
+                              
+                              console.log ("element mit id: " + cid + " ist: " + tokens[cid]);
+                              console.log ("a: " + a);
+                              l = tokens[cid].getTotalLength();
+                              to = 1;
+
+                              
+                                  var p = tokens[cid].getPointAtLength(a * l);  
+
+                                  return {                                  
+                                    transform: "t" + [p.x, p.y] 
+                                  }
+
+                              };
+                                                          
+
+                              // draw and animate token
+                              var c = paper.ellipse(0, 0, 5, 5);
+                              console.log ("c.id is " + c.id);
+                              tokens[c.id] = e;
+
+                              c.attr({"stroke":"none", "fill":"blue"}).attr({
+                                along: [0,c.id]
+                                });
+
+                              c.animate({
+                                  along: [to,c.id]
+                                  //along: to, "huhu"
+                                  //transform: "t" + [p.x, p.y - 10] + "r" + p.alpha
+                                }, 1000, function() {
+                                  //alert ("animation of " + c.id + " finished.");
+                                  // remove token
+                                  c.remove();
+                                  var task = paper.getById(activityExecution.activityDefinition.id);
+                                  task.attr({"stroke":"green"});
+
+                                  activityExecution.continue();
+                                });
+
+
+            } else {
+              activityExecution.continue();
+            }
           
         };
       }

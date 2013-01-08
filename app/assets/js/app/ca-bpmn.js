@@ -117,9 +117,12 @@ var CAM = {};
       }; 
     };
 
-    ActivityExecution.prototype.executeActivity = function(activity) {      
+    ActivityExecution.prototype.executeActivity = function(activity, transition) {          
       var childExecutor = new ActivityExecution(activity, this);                 
       this.activityExecutions.push(childExecutor);
+       if(!!transition) {
+        childExecutor.incomingTransitionId = transition.id; 
+      }
       childExecutor.start();
     };
 
@@ -193,7 +196,7 @@ var CAM = {};
       this.invokeListeners(LISTENER_TAKE, transition);     
 
       // have the parent execute the next activity
-      this.parentExecution.executeActivity(toActivity);
+      this.parentExecution.executeActivity(toActivity, transition);
     };
 
     ActivityExecution.prototype.signal = function() {

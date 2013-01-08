@@ -17,7 +17,7 @@ angular.module('camundaorg.directives')
   return {
     scope: true,
     transclude: true, 
-    template: '<div><div ng-transclude></div><a class="btn" ng-click="startProcess()">kacken</a></div>',
+    template: '<div><div ng-transclude></div><button class="btn btn-primary" ng-click="startProcess()"><i class="icon-play"></i> Play</button></div>',
     link: function(scope, element, attrs) {
 
       var bpmnResource = attrs.bpmnSrc;
@@ -29,7 +29,7 @@ angular.module('camundaorg.directives')
         if(!scope.startProcess) {
           scope.startProcess = function() {
              var execution = new CAM.ActivityExecution(scope.processDefinition);
-             execution.variables["kack"] = element.attr("id");
+             execution.variables["paperId"] = element.attr("id");
               execution.start();
           }
         }

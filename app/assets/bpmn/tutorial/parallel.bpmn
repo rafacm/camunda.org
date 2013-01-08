@@ -191,6 +191,9 @@
          <extensionElements>
             <signavio:signavioMetaData metaKey="userstory" metaValue="[]"/>
          </extensionElements>
+         <conditionExpression xsi:type="tFormalExpression"><![CDATA[
+            true
+         ]]></conditionExpression>         
       </sequenceFlow>
       <sequenceFlow id="sid-F4530A62-406B-4E23-939F-1C4A26DEC656" sourceRef="sid-2C2A6D8A-860D-46FB-8A18-1663DF783355" targetRef="sid-7422CDFB-4E26-4F24-BCC8-914A48CF4C5A">
          <extensionElements>
@@ -202,6 +205,9 @@
             <signavio:signavioLabel align="left" bottom="false" distance="8.5" from="0" left="false" orientation="ul" ref="text_name" right="false" to="1" top="false" valign="top" x="335.5" y="97.63157894736844"/>
             <signavio:signavioMetaData metaKey="userstory" metaValue="[]"/>
          </extensionElements>
+         <conditionExpression xsi:type="tFormalExpression"><![CDATA[
+            false
+         ]]></conditionExpression>         
       </sequenceFlow>
       <association associationDirection="None" id="sid-0D46FAC9-87CC-4B32-AC5B-E3D6294A3C42" sourceRef="sid-E5043951-C8E0-41C4-8257-90AC4B8B94BC" targetRef="sid-52168267-3D0B-4686-843D-744DCFCAD660">
          <extensionElements>
