@@ -90,7 +90,7 @@ function DefaultController($scope, $location) {
                                   // remove token
                                   c.remove();
                                   var task = paper.getById(activityExecution.activityDefinition.id);
-                                  task.attr({"stroke":"green"});
+                                  task.attr({"fill":"lightBlue"});
 
                                   activityExecution.continue();
                                 });
