@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>camunda.org - the camunda bpm community homepage</title>
+    
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <meta name="author" content="camunda.org community" />
+    
+    <!-- loads all stylesheets -->
+    <link href="assets/css/loader.css" rel="stylesheet" />
+
+    <!-- For IE6-8 support of HTML5 elements -->
+    <!--[if lt IE 9]>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+     
+    <base app-base="." />
+
+  </head>
+  <body ng-controller="DefaultController" >
+    <div class="wrapper">
+      <!-- navigation -->
+      <div data-ng-include=" 'templates/navigation.html' "></div>
+
+      <div class="container">
+        <div data-ng-include=" 'templates/breadcrumbs.html' "></div>
+
+        <div class="row">
+
+          <div class="hero-unit" ng-controller="HomeController">
+
+          	<div class="center"> 
+          		<h1>Get involved!</h1>
+          		<h2>camunda BPM community</h2>
+          	</div>
+          </div>
+        </div>
+
+      <div class="row-fluid">
+        <div class="span4">
+          <h2>Forum</h2>
+          <!--<img src="assets/img/forum.png" width="150px">-->
+          <p>
+            Discuss camunda BPM on GoogleGroups: <a href="">Join Forum</a>
+          </p>
+          <!-- 
+          <p>
+            So far 20 Users created 50 Threads.
+          </p>
+        -->
+          <h2>Contributions</h2>
+          <p>
+            We welcome you to contribute your ideas, bugfixes and features to camunda.org: <a href="">How to Contribute</a>
+          </p>
+          <!--
+          <p>
+            So far 15 Contributers created 100 Commits.
+          </p>
+        -->
+          <h2>Twitter</h2>
+          <p>
+            Spread the word and follow us on Twitter! 
+          </p>
+          <p>
+              <a href="">Follow @camunda.org</a> | <a href="">Tweet #camunda.org</a>
+          </p>
+          <!--
+          <p>
+            So far we got 27 followers and 75 tweets.
+          </p>
+        -->
+        </div>
+        <div class="span8">
+          <h2>Meetings</h2>
+          <p>
+            Meet the Team and other Users in our free Meeting Sessions:
+          </p>
+          <div id="meetingsContainer">
+            <table class="table" data-camunda-events></table>
+          </div>
+
+        </div>
+      </div>
+      <div class="row-fluid">
+        <div class="span12">
+          <h2>Core Team</h2>
+          Coole Team-Darstellung...
+          <div class="row-fluid>">
+
+          </div>
+        </div>
+      </div>
+
+      </div>
+      <div class="push-down"><!-- // --></div> 
+    </div>
+    <!-- footer -->
+    <footer class="footer">
+      <div data-ng-include=" 'templates/footer.html' "></div>
+
+      <!-- loads all javascript -->
+      <script src="assets/js/loader.js"></script>
+    <script src="assets/js/app/cabpmn.js"></script>
+    </footer>
+  </body>
+</html>

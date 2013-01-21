@@ -12,13 +12,14 @@ $script([
 	'lib/google-code-prettify/prettify.min',
 	'lib/raphaeljs/raphael',
 	'lib/markdownjs/markdown',
-	'lib/jquery-1.7.2.min'],  function() {
+	'lib/jquery-1.7.2.min',],  function() {
 
 		$script([
 			'lib/tweet/jquery.tweet',
 			'lib/bootstrap/bootstrap.min',
 			//'lib/angular/angular-resource.min',
-			'lib/angular/angular.min'
+			'lib/angular/angular.min',
+			'lib/jquery-validation/dist/jquery.validate.min'
 			], function() {
 			
 				$script([

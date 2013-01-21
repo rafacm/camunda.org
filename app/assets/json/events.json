@@ -1,0 +1,56 @@
+{
+  "events": [
+    {
+      "event": {
+        "id": "1",
+        "date": "2013-03-20 18:00:00",
+        "country": "Germany",
+        "city": "Berlin",
+        "place": "camunda services GmbH, Zossener Str. 55, 10961 Berlin",
+        "subject": "camunda.org Launch Party",
+        "text": "Be part of the moment, when a new open source project gets launched! Join us in camunda's headquarter in Berlin, grab a beer and count to zero...",
+        "seats": "50",
+        "attendees": "4"
+      }
+    },
+    {
+      "event": {
+        "id": "2",
+        "date": "2013-03-21 18:00:00",
+        "country": "Germany",
+        "city": "Hannover",
+        "place": "VHV insurance services GmbH, VHV-Platz 1, Hannover",
+        "subject": "Presenting camunda BPM platform",
+        "text": "camunda is an open source BPM platform dedicated to both Java developers and business analysts using BPMN 2.0. Come and learn what makes camunda different. \r\n<p>\r\n<b>Talk: camunda BPM @VHV insurance services</b>\r\n</p>",
+        "seats": "1",
+        "attendees": "2"
+      }
+    },
+    {
+      "event": {
+        "id": "3",
+        "date": "2013-04-04 18:00:00",
+        "country": "Germany",
+        "city": "Hamburg",
+        "place": "Hamburger Sparkasse, Adresse",
+        "subject": "Presenting camunda BPM platform",
+        "text": "camunda is an open source BPM platform dedicated to both Java developers and business analysts using BPMN 2.0. Come and learn what makes camunda different. \r\n\r\n<b>Talk: camunda BPM @Haspa</b>",
+        "seats": "20",
+        "attendees": "3"
+      }
+    },
+    {
+      "event": {
+        "id": "4",
+        "date": "2013-04-11 18:00:00",
+        "country": "Germany",
+        "city": "Berlin",
+        "place": "camunda services GmbH, Zossener Str. 55, 10961 Berlin",
+        "subject": "Process Design: Best Practices",
+        "text": "Come and learn how to apply BPMN 2.0 in practice: Do's and Dont's for successfull process design. ",
+        "seats": "20",
+        "attendees": "1"
+      }
+    }
+  ]
+}
