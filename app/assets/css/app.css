@@ -291,3 +291,16 @@ section {
   top: auto;
   bottom: 270px;
 }
+
+.doc {
+  margin-top: 70px;
+}
+
+.doc-menu-group {
+  border-color: dark-grey;
+  border-width: 2px;
+}
+
+li.module {
+background-color: #d3d3d3;
+}
