@@ -14,6 +14,7 @@
         <ul class="nav">
           <ul class="nav" ng-controller="NavigationController">
             <li ng-class="activeClass('/index.html')"><a href="index.html">Home</a></li>    
+             <!--
              <li class="dropdown" ng-class="activeClass('/gs-')">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown">Getting Started <b class="caret"></b></a>
               <ul class="dropdown-menu">   
@@ -22,17 +23,26 @@
                 <li><a href="#">Tutorial</a></li>  
                 <li><a href="#">Case Studies</a></li>                        
               </ul>
-            </li> 
+            </li>
+            --> 
 <!--            <li ng-class="activeClass('/design-')"><a href="design-tutorial.html" >Design</a></li>-->
 
 
             <li class="dropdown" ng-class="activeClass('/design-')">
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown">Design <b class="caret"></b></a>
+              <a href="design.html" class="dropdown-toggle" data-toggle="dropdown">Design <b class="caret"></b></a>
               <ul class="dropdown-menu">                
+        <li ng-class="activeClass('/design.html')"><a href="design.html">Overview</a></li>  
+              <li class="divider"></li>    
+
               <li class="nav-header">BPMN 2.0 Modeler</li>      
-              <li><a href="design-tutorial.html">Installation</a></li>  
+              <li><a href="design-tutorial.html">Modeler Setup</a></li>  
 			  <li><a href="design-tutorial.html">Creating BPMN 2.0 Diagrams</a></li>  
               <li class="divider"></li>    
+              <li class="nav-header">BPMN 2.0 Roundtrip</li>      
+              <li><a href="design-tutorial.html">Cycle Setup</a></li>  
+        <li><a href="design-tutorial.html">Working with different Modelers</a></li>  
+              <li class="divider"></li>    
+
 			  <!--
               <li class="nav-header">BPMN 2.0 Best Practices</li>      
               <li><a href="design-tutorial.html">camunda Framework</a></li>  
@@ -65,6 +75,7 @@
                 <li><a href="#">Java Script</a></li>    
               </ul>
             </li>  
+            <!--
             <li class="dropdown" ng-class="activeClass('/run-')">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown">Run <b class="caret"></b></a>
               <ul class="dropdown-menu">
@@ -77,8 +88,9 @@
                 <li><a href="#">Monitoring &amp; Operations</a></li>
               </ul>
             </li>        
+          -->
             <li ng-class="activeClass('/community.html')"><a href="community.html">Community</a></li>
-            <li><a href="http://www.camunda.com/fox/services/support/" style="color:red">Services</a></li>             
+            <li><a href="http://www.camunda.com/fox/services/support/" >Support</a></li>             
           </ul>
         </ul>
       </div>

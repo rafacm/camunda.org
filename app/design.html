@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>camunda.org - the camunda bpm community homepage</title>
+    
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <meta name="author" content="camunda.org community" />
+    
+    <!-- loads all stylesheets -->
+    <link href="assets/css/loader.css" rel="stylesheet" />
+
+    <!-- For IE6-8 support of HTML5 elements -->
+    <!--[if lt IE 9]>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+     
+    <base app-base="." />
+
+  </head>
+  <body ng-controller="DefaultController" >
+    <div class="wrapper">
+      <!-- navigation -->
+      <div data-ng-include=" 'templates/navigation.html' "></div>
+
+      <div class="container">
+        <div data-ng-include=" 'templates/breadcrumbs.html' "></div>
+
+        <div class="row">
+
+          <div class="hero-unit" ng-controller="HomeController">
+
+          	<div class="center"> 
+          		<h1>Process Design</h1>
+              <h2>...with BPMN 2.0</h2>
+          	</div>
+          </div>
+        </div>
+      <div class="row-fluid">
+        <div class="span4 center">
+            <img src="assets/img/modeler.png" style="border: 1px solid grey; height:200px !important; width:100%">
+        </div>
+        <div class="span4 center">
+          <img src="assets/img/cycle.png" style="border: 1px solid grey; height:200px !important;  width:100%">
+        </div>
+        <div class="span4 center">
+          <a href="intro.html">
+          <img src="assets/img/tutorial.png" style="border: 1px solid grey; height:200px !important; width:100%">
+        </a>
+        </div>
+
+      </div>
+      <div class="row-fluid">
+        <div class="span4 center">
+          <h2>Modeler</h2>
+          
+          <p>
+            Create BPMN 2.0 Diagrams with our easy to use <nobr><b>camunda Modeler</b></nobr>.
+          </p>
+          <a href="">Setup Modeler</a> | <a href="">Create BPMN 2.0 Diagrams</a>
+        </div>
+        <div class="span4 center">
+          <h2>Roundtrip</h2>
+          
+          <p>
+            Work with any BPMN 2.0 compliant Modeler using <nobr><b>camunda cycle</b></nobr>.
+          </p>
+          <a href="">Setup Cycle</a> | <a href="">Work with different Modelers</a>
+        </div>
+        <div class="span4 center">
+          <h2>Tutorial</h2>
+          
+          <p>
+            Learn how to use BPMN 2.0 in your daily work in our <nobr><b>step-by-step Tutorial</b></nobr>.
+          </p>
+          <a href="intro.html">Introduction</a> | <a href="">BPMN 2.0 Symbol Reference</a>
+        </div>
+
+      </div>
+
+      </div>
+      <div class="push-down"><!-- // --></div> 
+    </div>
+    <!-- footer -->
+    <footer class="footer">
+      <div data-ng-include=" 'templates/footer.html' "></div>
+
+      <!-- loads all javascript -->
+      <script src="assets/js/loader.js"></script>
+    <script src="assets/js/app/cabpmn.js"></script>
+    </footer>
+  </body>
+</html>
