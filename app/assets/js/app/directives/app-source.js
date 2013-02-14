@@ -170,3 +170,31 @@ angular.module('camundaorg.directives')
           'data-content="Place your mouse over highlighted areas in the code for explanations.">me</code>.'
     }
   })
+
+
+
+  .directive('appSourceNoTabs', function(fetchCode, escape, script) {
+    return {
+      terminal: true,
+      link: function(scope, element, attrs) {
+        var TEMPLATE = {             
+             
+        };
+
+        element.css('clear', 'both');
+        var filename = attrs.appSourceNoTabs;
+        var content = fetchCode(filename);
+          
+        // hack around incorrect tokenization
+        content = content.replace('.done-true', 'doneTrue');
+        if(filename.indexOf('Project-Layout')==-1) {
+          content = prettyPrintOne(escape(content), undefined, true);
+        }
+          
+        // hack around incorrect tokenization
+        content = content.replace('doneTrue', '.done-true');
+
+        element.html('<pre class="linenums nocode">' + content +'</pre>'); 
+      }
+    }
+  })  

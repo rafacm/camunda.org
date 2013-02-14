@@ -1,0 +1,374 @@
+<section id="service-task-logic">
+
+  <div class="page-header">
+      <h1>Service Task</h1>
+  </div>
+  
+  <div class="row-fluid">
+  <div class="span9">
+      <p>A service task is used to invoke services. In camunda this is done by calling Java code.</p>
+
+      <div id="service-task" style="position:relative" data-bpmn-src="implement/service-task" />
+
+      <p>There are 4 ways of declaring how to invoke Java logic:
+      <ul >
+          <li>Specifying a class that implements JavaDelegate or ActivityBehavior</li>
+          <li>Evaluating an expression that resolves to a delegation object</li>
+          <li>Invoking a method expression</li>
+          <li>Evaluating a value expression</li>
+      </ul>
+    </div>
+    <div class="span3">
+      <h3>There's more...</h3>
+      <ul>            
+          <li><a href="">Error Handling</a></li>
+          <li><a href="">Using Spring</a></li>
+          <li><a href="">Using CDI</a></li>
+          <li><a href="">Asynchronous Service Tasks</a></li>
+          <li><a href="">Web Services</a></li>
+          <li><a href="">Legacy Systems</a></li>
+      </ul>      
+    </div>
+  </div>
+  
+  To specify a class that is called during process execution, the fully qualified classname needs to be provided by the <code>activiti:class</code> attribute.
+
+  <div class="app-source" app-source-no-tabs="service-task-delegate" ></div>
+  <script type="text/xml" id="service-task-delegate">
+<serviceTask id="javaService" 
+             name="My Java Service Task" 
+             activiti:class="org.activiti.MyJavaDelegate" />
+	</script>
+
+	<p>
+		See <a class="link" href="#bpmnJavaServiceTaskImplementation" title="Implementation">the implementation section</a> for more details on how to use such a class.
+	</p>
+
+	<p>
+		It is also possible to use an expression that resolves to an object.
+		This object must follow the same rules as objects that are created
+		when the <code>activiti:class</code> attribute is used.
+
+    <div class="app-source" app-source-no-tabs="service-task-expression-delegate"></div>
+    <script type="text/xml" id="service-task-expression-delegate">
+<serviceTask id="serviceTask" activiti:delegateExpression="${delegateExpressionBean}" />
+    </script>
+
+
+		Here, the	<code>delegateExpression</code> is an expression that resolves to a bean implementing the <code>JavaDelegate</code>
+		interface. Beans can be resolved for example via CDI or Spring (see below).
+	</p>
+	<p>
+		To specify an expression that should be evaluated, use attribute <class>activiti:expression</class>.
+    <div class="app-source" app-source-no-tabs="service-task-expression"></div>
+    <script type="text/xml" id="service-task-expression">
+<serviceTask id="javaService" 
+             name="My Java Service Task" 
+             activiti:expression="#{printer.printMessage()}" />
+    </script>
+
+		Method <code>printMessage</code> (without parameters) will be called on the named bean called <code>printer</code>.
+	</p>
+	<p>It's also possible to pass parameters with an method used in the expression.
+    <div class="app-source" app-source-no-tabs="service-task-expression-params"></div>
+    <script type="text/xml" id="service-task-expression-params">
+<serviceTask id="javaService" 
+             name="My Java Service Task" 
+             activiti:expression="#{printer.printMessage(execution, myVar)}" />
+    </script>
+
+		Method <code>printMessage</code> will be called on the object named <code>printer</code>. 
+    The first parameter passed is the	<code>DelegateExecution</code>, which is available in the expression context by default available as
+		<code>execution</code>. The second parameter passed, is the value of the variable with name	<code>myVar</code>
+		in the current execution.
+	</p>
+	<p>
+		To specify a UEL value expression that should be evaluated, use
+		attribute <span class="bold"><strong>activiti:expression</strong></span>.
+    <div class="app-source" app-source-no-tabs="service-task-expression-value"></div>
+    <script type="text/xml" id="service-task-expression-value">
+<serviceTask id="javaService" 
+             name="My Java Service Task" 
+             activiti:expression="#{split.ready}"
+             activiti:resultVariable="myVar" />
+    </script>
+
+	<p>
+		The getter method of property <code>ready</code>,	<code>getReady</code>	(without parameters), will be called on the named bean called
+		<code>split</code>. The named objects are resolved in the execution's process variables	and (if applicable) in the CDI or Spring context.
+
+    Note that you can store the return value of the method in a process variable by specifying the <code>activiti:resultVariable</code>
+	</p>
+
+</section>
+<section id="implementation">
+  <div class="page-header" >
+    <h1>Implementation</h1>
+  </div>  
+	<p>
+		To implement a class that can be called during process execution, this
+		class needs to implement the <code>org.activiti.engine.delegate.JavaDelegate</code>
+		interface and provide the required logic in the <code>execute</code>
+		method. When process execution arrives at this particular step, it
+		will execute this logic defined in that method and leave the activity
+		in the default BPMN 2.0 way.
+	</p>
+	<p>
+		Let's create for example a Java class that can be used to change a
+		process variable String to uppercase. This class needs to implement
+		the <code>org.activiti.engine.delegate.JavaDelegate</code>
+		interface, which requires us to implement the <code>execute(DelegateExecution)</code>
+		method. It's this operation that will be called by the engine and
+		which needs to contain the business logic. Process instance
+		information such as process variables and other can be accessed and
+		manipulated through the <a class="ulink"
+			href="http://activiti.org/javadocs/org/activiti/engine/delegate/DelegateExecution.html"
+			target="_top">DelegateExecution</a> interface (click on the link for
+		a detailed Javadoc of its operations).
+
+    <div class="app-source" app-source-no-tabs="java-delegate-example"></div>
+    <script type="text/xml" id="java-delegate-example">
+public class ToUppercase implements JavaDelegate {
+
+  public void execute(DelegateExecution execution) throws Exception {
+    String var = (String) execution.getVariable("input");
+    var = var.toUpperCase();
+    execution.setVariable("input", var);
+  }  
+
+}
+    </script>
+
+		Note: there will be <strong>only one instance of that Java class created for the serviceTask it is
+    defined on</strong>. All process-instances share the same class instance that
+		will be used to call <class>execute(DelegateExecution)</class>.
+		This means that the class must not use any member variables and must
+		be thread-safe, since it can be executed simultaneously from different
+		threads. This also influences the way <a class="link"
+			href="#serviceTaskFieldInjection" title="Field Injection">Field
+			injection</a> is handled.
+	</p>
+	<p>
+		The classes that are referenced in the process definition (i.e. by using
+		<code>activiti:class</code>	) are <strong>NOT instantiated
+		during deployment</strong>. Only when a process execution arrives for the
+		first time at the point in the process where the class is used, an
+		instance of that class will be created. If the class cannot be found,
+		an <code>ActivitiException</code> will be thrown. The reasoning for this is that the environment (and
+		more specifically the classpath) when you are deploying is often different from the actual runtime
+		environment. For example when using <span class="emphasis"><em>ant</em></span>
+		or the business archive upload in Activiti Explorer to deploy
+		processes, the classpath does not contain the referenced classes.
+	</p>
+	<p>
+		<a class="link" href="#internal"
+			title="Internal implementation classes"><span class="bold"><strong>[INTERNAL:
+					non-public implementation classes]</strong></span></a> It is also possible to provide a
+		class that implements the <code>org.activiti.engine.impl.pvm.delegate.ActivityBehavior</code>
+		interface. Implementations have then access to the more powerful <code>ActivityExecution</code> that for example
+		also allows to influence the control flow of the process. Note however
+		that this is not a very good practice, and should be avoided as much
+		as possible. So, it is advised to use the <code>ActivityBehavior</code>
+		interface only for advanced use cases and if you know exactly what
+		you're doing.
+	</p>
+
+  <h2>Field Injection</h2>
+
+	<p>It's possible to inject values into the fields of the delegated
+		classes. The following types of injection are supported:
+
+		<ul>
+			<li><p>Fixed string values</p></li>
+			<li><p>Expressions</p></li>
+		</ul>
+
+		If available, the value is injected through a public setter method on
+		your delegated class, following the Java Bean naming conventions (e.g.
+		field <code>fistName</code>	has setter <code>setFirstName(...)</code>).
+    If no setter is available for that field, the value of private
+		member will be set on the delegate. SecurityManagers in some
+		environments don't allow modifying private fields, so it's safer to
+		expose a public setter-method for the fields you want to have
+		injected. <strong>Regardless of the type of value declared in the process-definition, the type of the
+    setter/private field on the injection target should always be <code>org.activiti.engine.delegate.Expression</code></strong>.		
+	</p>
+	<p>
+		The following code snippet shows how to inject a constant value into a field.
+    Field injection is supported when using the <class>class</class> attribute. Note that we need
+		to declare a <code>extensionElements</code> XML element before the actual field injection
+		declarations, which is a requirement of the BPMN 2.0 XML Schema.
+
+    <div class="app-source" app-source-no-tabs="service-task-field-injection"></div>
+    <script type="text/xml" id="service-task-field-injection">
+<serviceTask id="javaService" 
+             name="Java service invocation" 
+             activiti:class="org.activiti.examples.bpmn.servicetask.ToUpperCaseFieldInjected">
+  <extensionElements>
+      <activiti:field name="text" stringValue="Hello World" />
+  </extensionElements>           
+</serviceTask>          
+    </script>
+
+		The class <code>ToUpperCaseFieldInjected</code>	has a field
+		<code>text</code>	which is of type <code>org.activiti.engine.delegate.Expression</code>.
+    When calling <code>text.getValue(execution)</code>, the configured string value
+		<code>Hello World</code> will be returned.
+	</p>
+	<p>
+		Alternatively, for longs texts (e.g. an inline e-mail) the <cope>activiti:string</code> sub element can be
+		used:
+
+    <div class="app-source" app-source-no-tabs="service-task-field-injection-2"></div>
+    <script type="text/xml" id="service-task-field-injection-2">
+<serviceTask id="javaService" 
+             name="Java service invocation" 
+             activiti:class="org.activiti.examples.bpmn.servicetask.ToUpperCaseFieldInjected">
+  <extensionElements>   
+    <activiti:field name="text">
+        <activiti:string>
+          Hello World
+      </activiti:string>
+    </activiti:field>
+  </extensionElements>        
+</serviceTask>        
+    </script>
+  </p>
+	<p>
+		To inject values that are dynamically resolved at runtime, expressions
+		can be used. Those expressions can use process variables, CDI or Spring
+		beans. As already noted, an instance of the Java class is shared among
+		all process-instances in a service task. To have dynamic injection of
+		values in fields, you can inject value and method expressions in a
+		<code>org.activiti.engine.delegate.Expression</code>
+		which can be evaluated/invoked using the <code>DelegateExecution</code>
+		passed in the	<code>execute</code> method.
+
+    <div class="app-source" app-source-no-tabs="service-task-field-injection-3"></div>
+    <script type="text/xml" id="service-task-field-injection-3">
+<serviceTask id="javaService" name="Java service invocation" 
+             activiti:class="org.activiti.examples.bpmn.servicetask.ReverseStringsFieldInjected">
+  
+  <extensionElements>
+    <activiti:field name="text1">
+      <activiti:expression>${genderBean.getGenderString(gender)}</activiti:expression>
+    </activiti:field>
+    <activiti:field name="text2">
+       <activiti:expression>Hello ${gender == 'male' ? 'Mr.' : 'Mrs.'} ${name}</activiti:expression>
+    </activiti:field>
+  </ extensionElements>
+</ serviceTask>
+    </script>
+
+  </p>
+	<p>
+		The example class below uses the injected expressions and resolves
+		them using the current <code>DelegateExecution</code>.
+
+    <div class="app-source" app-source-no-tabs="service-task-field-injection-4"></div>
+    <script type="text/xml" id="service-task-field-injection-4">
+public class ReverseStringsFieldInjected implements JavaDelegate {
+
+  private Expression text1;
+  private Expression text2;
+
+  public void execute(DelegateExecution execution) {
+    String value1 = (String) text1.getValue(execution);
+    execution.setVariable("var1", new StringBuffer(value1).reverse().toString());
+
+    String value2 = (String) text2.getValue(execution);
+    execution.setVariable("var2", new StringBuffer(value2).reverse().toString());
+  }
+}
+    </script>
+  </p>
+	<p>Alternatively, you can also set the expressions as an attribute instead of a child-element, to make the XML less verbose.
+
+    <div class="app-source" app-source-no-tabs="service-task-field-injection-5"></div>
+    <script type="text/xml" id="service-task-field-injection-5">
+<activiti:field name="text1" expression="${genderBean.getGenderString(gender)}" />
+<activiti:field name="text1" expression="Hello ${gender == 'male' ? 'Mr.' : 'Mrs.'} ${name}" />
+    </script>
+  </p>
+	<p>
+		<strong> Since the Java class instance is reused, the injection only happens once, when the
+    serviceTask is called the first time. When the fields are altered by your code, the values won't be re-injected so you should treat them
+		as immutable and don't make any changes to them.</strong>
+	</p>
+
+  <h2>Service task results</h2>
+
+	<p>
+		The return value of a service execution (for service task using
+		expression only) can be assigned to an already existing or to a new
+		process variable by specifying the process variable name as a literal
+		value for the <code>'activiti:resultVariable'</code>
+		attribute of a service task definition. Any existing value for a
+		specific process variable will be overwritten by the result value of
+		the service execution. When not specifying a result variable name, the
+		service execution result value gets ignored.
+
+    <div class="app-source" app-source-no-tabs="service-task-results"></div>
+    <script type="text/xml" id="service-task-results">
+<serviceTask id="aMethodExpressionServiceTask"
+             activiti:expression="#{myService.doSomething()}"
+             activiti:resultVariable="myVar" />
+    </script>
+
+		In the example above, the result of the service execution (the return
+		value of the <code>doSomething()</code> method invocation on object 'myService') is set to the process variable named
+    <code>myVar</code> after the service execution completes.
+	</p>
+
+  <h2>Using Activiti services from within a JavaDelegate</h2>
+	<p>
+		For some use cases, it might be needed to use the Activiti services
+		from within a Java service task (eg. starting a process instance
+		through the RuntimeService, if the callActivity doesn't suit your
+		needs). The <class>org.activiti.engine.delegate.DelegateExecution</class>
+		allows to easily use these services through the 
+    <class>org.activiti.engine.EngineServices</class>
+		interface:
+
+    <div class="app-source" app-source-no-tabs="service-task-using-services"></div>
+    <script type="text/xml" id="service-task-using-services">
+public class StartProcessInstanceTestDelegate implements JavaDelegate {
+  public void execute(DelegateExecution execution) throws Exception {
+    RuntimeService runtimeService = execution.getEngineServices().getRuntimeService();
+    runtimeService.startProcessInstanceByKey("myProcess");
+  }
+}   
+    </script>
+
+	  All of the Activiti service API's are available through this interface.
+  </p>
+	<p>
+		All data changes that occur as an effect of using these API calls,
+		will be part of the current transaction. This also works in
+		environments with dependency injection like Spring and CDI with or
+		without a JTA enabled datasource. For example, the following snippet
+		of code will do the same as the snippet above, but now the
+		RuntimeService is injected rather than it is being fetched through the
+		<class>org.activiti.engine.EngineServices</class>	interface.
+
+    <div class="app-source" app-source-no-tabs="service-task-dependency-injection"></div>
+    <script type="text/xml" id="service-task-dependency-injection">
+@Component("startProcessInstanceDelegate")
+public class StartProcessInstanceTestDelegateWithInjection {
+  
+    @Autowired
+    private RuntimeService runtimeService;
+    
+    public void startProcess() {
+      runtimeService.startProcessInstanceByKey("oneTaskProcess");
+    }    
+}
+    </script>
+  </p>
+	<p>
+		<strong>Important technical note:</strong> since the service call is being done as part of the current
+		transaction any data that was produced or altered <strong>before</strong> the service task is executed,
+		is not yet flushed to the database. All API calls work on the database data, which means that these uncommitted changes are not be 'visible'
+		within the api call of the service task.
+	</p>
+</section>
