@@ -23,16 +23,20 @@
       <ul>            
           <li><a href="#">Service Tasks<a></li>
           <li><a href="#">Implementation</a></li>
+          <li><a href="#">Field Injections</a></li>
+          <li><a href="#">Service Results</a></li>
       </ul>
       <h3>There's more...</h3>
       <ul>            
           <li><a href="tasks.html">Tasks in the BPMN Tutorial<a></li>
-          <li><a href="implement-concepts.html#/concepts/error-handling">Error Handling</a></li>
-          <li><a href="">Using Spring</a></li>
-          <li><a href="">Using CDI</a></li>
+          <li><a href="https://app.camunda.com/confluence/display/foxUserGuide/Error+Handling">Error Handling</a></li>
+          <li><a href="implement-concepts.html#/concepts/spring">Using Spring</a></li>
+          <li><a href="implement-concepts.html#/concepts/cdi">Using CDI</a></li>
+          <li><a href="http://www.bpm-guide.de/2010/12/09/how-to-call-a-webservice-from-bpmn/">How to call Web Services from BPMN</a></li>
+          <!--
           <li><a href="">Asynchronous Service Tasks</a></li>
-          <li><a href="">Web Services</a></li>
           <li><a href="">Legacy Systems</a></li>
+        -->
       </ul>      
     </div>
   </div>
@@ -326,55 +330,4 @@ public class ReverseStringsFieldInjected implements JavaDelegate {
     <code>myVar</code> after the service execution completes.
 	</p>
 
-  <h2>Using Activiti services from within a JavaDelegate</h2>
-	<p>
-		For some use cases, it might be needed to use the Activiti services
-		from within a Java service task (eg. starting a process instance
-		through the RuntimeService, if the callActivity doesn't suit your
-		needs). The <class>org.activiti.engine.delegate.DelegateExecution</class>
-		allows to easily use these services through the 
-    <class>org.activiti.engine.EngineServices</class>
-		interface:
-
-    <div class="app-source" app-source-no-tabs="service-task-using-services"></div>
-    <script type="text/xml" id="service-task-using-services">
-public class StartProcessInstanceTestDelegate implements JavaDelegate {
-  public void execute(DelegateExecution execution) throws Exception {
-    RuntimeService runtimeService = execution.getEngineServices().getRuntimeService();
-    runtimeService.startProcessInstanceByKey("myProcess");
-  }
-}   
-    </script>
-
-	  All of the Activiti service API's are available through this interface.
-  </p>
-	<p>
-		All data changes that occur as an effect of using these API calls,
-		will be part of the current transaction. This also works in
-		environments with dependency injection like Spring and CDI with or
-		without a JTA enabled datasource. For example, the following snippet
-		of code will do the same as the snippet above, but now the
-		RuntimeService is injected rather than it is being fetched through the
-		<class>org.activiti.engine.EngineServices</class>	interface.
-
-    <div class="app-source" app-source-no-tabs="service-task-dependency-injection"></div>
-    <script type="text/xml" id="service-task-dependency-injection">
-@Component("startProcessInstanceDelegate")
-public class StartProcessInstanceTestDelegateWithInjection {
-  
-    @Autowired
-    private RuntimeService runtimeService;
-    
-    public void startProcess() {
-      runtimeService.startProcessInstanceByKey("oneTaskProcess");
-    }    
-}
-    </script>
-  </p>
-	<p>
-		<strong>Important technical note:</strong> since the service call is being done as part of the current
-		transaction any data that was produced or altered <strong>before</strong> the service task is executed,
-		is not yet flushed to the database. All API calls work on the database data, which means that these uncommitted changes are not be 'visible'
-		within the api call of the service task.
-	</p>
 </section>
