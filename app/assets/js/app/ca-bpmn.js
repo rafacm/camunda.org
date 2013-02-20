@@ -487,6 +487,10 @@ var CAM = {};
   function getXmlObject(source) {
     // use the browser's DOM implemenation
     var xmlDoc;
+    if (source instanceof Document) {
+      return source; 
+    }
+
     if (window.DOMParser) {
       var parser = new DOMParser();
       xmlDoc = parser.parseFromString(source,"text/xml");

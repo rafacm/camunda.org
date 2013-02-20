@@ -22,7 +22,7 @@ angular.module('camundaorg.directives')
 
       var bpmnResource = attrs.bpmnSrc;
 
-      $.get("http://localhost:8000/app/assets/bpmn/" + bpmnResource + ".bpmn", function(data){
+      $.get("../app/assets/bpmn/" + bpmnResource + ".bpmn", function(data){
         
         scope.processDefinition = CAM.transform(data)[0];
 

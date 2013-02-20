@@ -113,7 +113,7 @@ var endEventStyle = {
 
 	var paper = Raphael(container.get(0), "100%");
 
-	$.get("http://localhost:8000/app/assets/bpmn/" + diagram + ".bpmn", function(data){
+	$.get("../app/assets/bpmn/" + diagram + ".bpmn", function(data){
 		parseBpmnXml(data, paper, container);
 	});
 
@@ -984,9 +984,12 @@ function parseBpmnXml (data, paper, container) {
 							"dataoutputassociation"
 							);
 	
-	
-	xmlJQuery = $.parseXML(data);
-	
+	if (data instanceof Document) {
+          xmlJQuery = data;
+        }else {
+          xmlJQuery = $.parseXML(data);
+        }
+   
 	$(xmlJQuery).find("*").each(function() {
 		var myNodeName = (this).nodeName.toLowerCase();
 
