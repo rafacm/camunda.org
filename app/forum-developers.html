@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>camunda.org - the camunda bpm community homepage</title>
+    
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <meta name="author" content="camunda.org community" />
+    
+    <!-- loads all stylesheets -->
+    <link href="assets/css/loader.css" rel="stylesheet" />
+
+    <!-- For IE6-8 support of HTML5 elements -->
+    <!--[if lt IE 9]>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+     
+    <base app-base="." />
+
+  </head>
+  <body ng-controller="DefaultController" >
+    <div class="wrapper">
+      <!-- navigation -->
+      <div data-ng-include=" 'templates/navigation.html' "></div>
+
+      <div class="container">
+        <div data-ng-include=" 'templates/breadcrumbs.html' "></div>
+
+        <div class="row">
+
+          <div class="hero-unit" ng-controller="HomeController">
+
+          	<div class="center"> 
+          		<h1>Developer Forum</h1>
+          	</div>
+          </div>
+<ul class="breadcrumb" >
+  <li><a href="community.html">Community</a> <span class="divider">/</span></li>
+  <li class="active">Developer Forum</li>
+</ul>
+        </div>
+
+
+<div class="row">
+<iframe id="forum_embed2"
+ src="https://groups.google.com/forum/embed/?place=forum/camunda-bpm-dev&showsearch=true&showpopout=true"
+ scrolling="no"
+ frameborder="0"
+ style="width:100%; height:1000px;">
+</iframe>
+
+<script type="text/javascript">
+ document.getElementById("forum_embed").src =
+  "https://groups.google.com/forum/embed/?place=forum/camunda-bpm-dev" +
+  "&showsearch=true&showpopout=true&parenturl=" +
+  encodeURIComponent(window.location.href);
+</script>
+</div>
+      </div>
+      <div class="push-down"><!-- // --></div> 
+    </div>
+    <!-- footer -->
+    <footer class="footer">
+      <div data-ng-include=" 'templates/footer.html' "></div>
+
+      <!-- loads all javascript -->
+      <script src="assets/js/loader.js"></script>
+    <script src="assets/js/app/cabpmn.js"></script>
+    </footer>
+  </body>
+</html>
