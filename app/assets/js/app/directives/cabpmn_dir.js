@@ -38,7 +38,18 @@ angular.module('camundaorg.directives')
   }
 }
 })
-.directive('bpmnTutorial', function() {
+.directive('bpmnReferenceList', function() {
+  return {
+    link: function(scope, element, attrs) {
+    
+    
+    
+
+
+    }
+  }
+})
+.directive('bpmnTutorial', function($location) {
   return {
     link: function(scope, element, attrs) {
 		
@@ -46,6 +57,30 @@ angular.module('camundaorg.directives')
 			"trigger": "hover",
 			"placement": "bottom"
 		});
+
+    // update active entry in Breadcrumb
+
+    var link = '#' + $location.path();
+
+    // Remove any active entry marker from list
+    $('.bpmnSymbolLink').parent().removeClass("active");
+
+    if (link == '#/design/reference') {
+      $('#breadcrumbOverview').text('Symbol Reference');
+      $('#breadcrumbOverview').addClass('active');
+      $('#breadcrumbSymbol').text('');
+    } else {
+
+      $('#breadcrumbOverview').removeClass('active');
+      $('#breadcrumbOverview').html('<a href="design-reference.html#/design/reference">Symbol Reference</a> <span class="divider">/</span>');
+      // Highlight active entry in list
+      $('a[href="' + link + '"]').parent().addClass("active");
+      // update Breadcrumb active entry
+      $('#breadcrumbSymbol').text($('a[href="' + link + '"]').text());
+
+    }
+
+
 
     }
   }
