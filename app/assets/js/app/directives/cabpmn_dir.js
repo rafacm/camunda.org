@@ -93,12 +93,30 @@ angular.module('camundaorg.directives')
 		//$('body').scrollspy({"target":"#navSide"});
     }
   }
-}).directive('bpmnSymbol', function() {
+})
+.directive('bpmnSymbol', function() {
   return {
     link: function(scope, element, attrs) {
 		var bpmnSymbol = attrs.bpmnSymbol;
 		var bpmnSymbolName = attrs.bpmnSymbolName;
 		drawBpmnSymbol (bpmnSymbol, bpmnSymbolName, element);
+    }
+  }
+})
+.directive('imgThumb', function() {
+  return {
+    link: function(scope, element, attrs) {
+      //alert (attrs.imgSrc);
+      
+      $(element).append('<a href="#myModal_' + attrs.id +'" data-toggle="modal"><img src="' + attrs.imgSrc +'"/></a><div class="center"><p style="padding-top:5px; font-size:90%"><i class="icon-zoom-in"></i> click to enlarge</p></div>');
+      $(element).append('<div id="myModal_' + attrs.id +'" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">'
+  + '<div class="modal-body">'
+    + '<img src="' + attrs.imgSrc +'"/>'
+    + '</div>'
+    + '<div class="modal-footer">'
+    + '<button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>'
+    + '</div>'
+    + '</div>');
     }
   }
 })

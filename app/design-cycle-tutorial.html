@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>camunda.org - the camunda bpm community homepage</title>
+    
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <meta name="author" content="camunda.org community" />
+        
+    <!-- loads all stylesheets -->
+    <link href="assets/css/loader.css" rel="stylesheet" />
+
+    <!-- For IE6-8 support of HTML5 elements -->
+    <!--[if lt IE 9]>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+     
+    <base app-base="" />
+
+  </head>
+  <body ng-controller="DefaultController" >
+    <div class="wrapper">
+      <!-- navigation -->
+      <div data-ng-include=" 'templates/navigation.html' "></div>
+
+<div class="container">
+
+        <div class="row">
+
+          <div class="hero-unit" ng-controller="HomeController">
+
+          	<div class="center"> 
+          		<h1>Cycle Tutorial</h1>
+          	</div>
+          </div>
+          
+        <ul class="breadcrumb" >
+          <li><a href="design-overview.html">Design</a> <span class="divider">/</span></li>
+          <li class="active">Cycle Tutorial</li>
+        </ul>
+        </div>
+	<!--<div tutorial="partials/design/tutorial.md" />-->
+	<div class="row">
+      <div id="navSide" class="span3 bs-docs-sidebar" >
+        <ul class="nav nav-list bs-docs-sidenav" data-ca-affix>
+          <li ><a href="#intro"><i class="icon-chevron-right"></i> What's cool about Cycle?</a></li>
+          <li><a href="#simpleSect"><i class="icon-chevron-right"></i> Setup</a></li>
+          <li><a href="#simpleSect"><i class="icon-chevron-right"></i> Create a Roundtrip</a></li>
+		  <li><a href="#aboutSect"><i class="icon-chevron-right"></i> Information for Tool Vendors</a></li>
+		</ul>
+      </div>
+
+     <div class="span9" data-bpmn-tutorial >
+		<section id="intro">
+			<div class="page-header" >
+				<h1>What's cool about Cycle?</h1>
+			</div>
+			<div class="row-fluid">
+				<div id="cycle-idea" class="thumbnail span2" data-img-thumb img-src="./assets/img/cycle/cycle-idea.png" ></div>
+				<div class="span10">
+					<p>
+						With camunda Cycle you can create a roundtrip between a BPMN 2.0 modeler and your Development Repository (SVN, Local File etc.).
+					</p>
+					<p>
+						That way you can use a sophisticated BPMN Design Environment that especially suits your Business Users (Busines Analysts, Subject Matter Experts etc.), while keeping the process models created in those tools in synch with the ones that are executed by the camunda process engine. 
+					</p>
+				</div>
+			</div>
+		</section>
+		<section id="simpleSect">
+			<div class="page-header" >
+				<h1>Setup</h1>
+			</div>
+			<p>Cycle is already included in the camunda BPM distributions (<a href="">Download Area</a>). 
+				Just open <a href="http://localhost:8080/cycle">http://localhost:8080/cycle</a> and create a new Admin User.
+			</p>
+			<p>
+				Since your process models will be stored in certain repositories, you should setup the respective connectors. In the upper right menu, navigate to "Connectors". Hit the "New"-Button, and follow the steps below depending on what kind of connector you want to setup.
+			</p>
+			<h3>File Connector</h3>
+			<div class="row-fluid">
+				<div id="cycle-file" class="thumbnail span2" data-img-thumb img-src="./assets/img/cycle/file.png" ></div>
+				<div class="span8">
+					<p>
+						Here is a typical configuration for setting up a connector to you local File System. The variable "${user.home}" in this example points to the directory of your user in your Operating System, so if your user is "horst" and you are a Windows-User, this would mean "C:\Users\horst". You can also choose an absolute path like "C:\MyFolder" in here. Hit "Test" to check if Cycle can find the folder you specified. 
+					</p>
+			</div>
+			</div>
+			<h3>Subversion (SVN) Connector</h3>
+			<div class="row-fluid">
+				<div id="cycle-svn" class="thumbnail span2" data-img-thumb img-src="./assets/img/cycle/svn.png" ></div>
+				<div class="span8">
+					<p>
+						When connecting to a Subversion repository, you must specifiy the URL (including subfolders, if you want to directly point to a certain folder in the Subversion repository). 
+						If user credentials are mandatory, you can provide them either globally, or individually for each Cycle user. In this example, we assume that every Cycle user will use the same credentials when using this connector, which is why we provide them in this dialog. 
+						Hit "Test" to check if Cycle can connect to the SVN repo with the credentials you provided. 
+					</p>
+				</div>
+		</section>		
+			<div class="page-header" >
+				<h1>Create a Roundtrip</h1>
+			</div>
+			<div class="row-fluid">
+				<div id="cycle-create" class="thumbnail span2" data-img-thumb img-src="./assets/img/cycle/create.png" ></div>
+				<div class="span8">
+					<p>
+						At the left box "My Roundtrips", hit "Create" to create a new Roundtrip. Pick a name and hit "OK". In our example, we assume that a new Roundtrip named "invoice" has been created.
+					</p>
+					<p>
+						We will now add a process model from our BPMN modeler to the roundtrip, and create the process model we want to execute out of it.
+					</p>
+
+			</div>
+			</div>
+			<h3>Roundtrip with Signavio</h3>
+			<p>
+				The guys from <a href="http://www.Signavio.com">Signavio</a> have created a rather cool BPMN modeler (this is probably because they are located in Berlin, just like us). 
+			</p>
+		</section>		
+			
+		</div>
+		</div>
+</div>
+		
+      <div class="push-down"><!-- // --></div> 
+    </div>
+    <!-- footer -->
+    <footer class="footer">
+      <div data-ng-include=" 'templates/footer.html' "></div>
+
+      <!-- loads all javascript -->
+	<script src="assets/js/loader.js"></script>  
+    </footer>
+  </body>
+</html>
