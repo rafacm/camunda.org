@@ -5,7 +5,7 @@
   </div>
 
   <div class="center" style="font-size:120%"> 
-    <a href="design.html">Design</a> | <a href="implement-bpmn.html">Implement</a> and <a href="">Run</a> your Processes.
+    <a href="design.html">Design</a> | <a href="implement.html">Implement</a> and <a href="implement.html">Run</a> your Processes.
   </div>
 
 
@@ -194,7 +194,7 @@
     <div class="span3" style="text-align:center;">
       <h1>Implement</h1>
       <p><b>You're a Developer?</b> Build powerful Java-based Process Applications that directly execute the global standard BPMN 2.0.</p>
-      <p><a href="design.html">Take me there!</a></p>
+      <p><a href="implement.html">Take me there!</a></p>
   </div>
   <div class="span3">
   </div>
@@ -301,176 +301,5 @@
   </section>
  
 
-<div class="bootstrap-code">
-<!-- ============== Hello ============== -->
-<script type="text/xml" id="Project-Layout">
-  my-application/
-  ├── src/
-  │   └─ main/
-  │      ├── java/
-  │      ├── resources/        
-  │      │   ├── META-INF/
-  │      │   │   └── processes.xml
-  │      │   └── oneTaskProcess.bpmn20.xml
-  │      └─  webapp/
-  │          └─  WEB-INF/
-  │              └── web.xml
-  └──  pom.xml
-</script>
 
-
-<!-- ======================================================= -->
-<script type="text/xml" id="pom.xml">
-<project xmlns="http://maven.apache.org/POM/4.0.0" 
-  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
-  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-  <modelVersion>4.0.0</modelVersion>
-
-  <name>camunda bpm platform - examples - simple servlet process application</name>
-  
-  <groupId>org.camunda.bpm</groupId>
-  <artifactId>simple-process-application</artifactId>
-  <packaging>war</packaging>
-
-  <dependencies>
-    <dependency>
-      <groupId>org.camunda.bpm</groupId>
-      <artifactId>camunda-engine</artifactId>
-      <version>7.0.0-SNAPSHOT</version>
-      <scope>provided</scope>
-    </dependency>
-  </dependencies>
-
-</project>
-</script>
-
-<!-- ======================================================= -->
-<script type="text/xml" id="processes.xml">
-<process-application 
-  xmlns="http://www.camunda.org/schema/1.0/ProcessApplication" 
-  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-
-  <process-archive name="example">  
-    <process-engine>default</process-engine>
-    <properties>
-      <property name="isScanningEnabled">true</property>
-    </properties>
-  </process-archive>
-
-</process-application>
-</script>
-
-<!-- ======================================================= -->
-<script type="text/xml" id="oneTaskProcess.bpmn20.xml">
-<?xml version="1.0" encoding="UTF-8"?>
-<definitions
-  xmlns="http://www.omg.org/spec/BPMN/20100524/MODEL"
-  xmlns:activiti="http://activiti.org/bpmn"
-  targetNamespace="Examples">
-
-  <process id="oneTaskProcess" name="The One Task Process">
-  
-    <startEvent id="theStart" />
-    <sequenceFlow id="flow1" sourceRef="theStart" targetRef="theTask" />
-    <userTask id="theTask" name="My User Task" />    
-    <sequenceFlow id="flow2" sourceRef="theTask" targetRef="theEnd" />
-    <endEvent id="theEnd" />
-    
-  </process>
-
-</definitions>
-</script>
-
-<!-- ======================================================= -->
-<script type="text/xml" id="web.xml">
-<web-app xmlns="http://java.sun.com/xml/ns/javaee"
-  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xsi:schemaLocation="http://java.sun.com/xml/ns/javaee 
-                      http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd" version="3.0"> 
-    
-  <listener>
-    <listener-class>
-      org.camunda.bpm.application.spi.servlet.ServletProcessApplication
-    </listener-class>
-  </listener>
-    
-</web-app>
-</script>
-
-<!-- ============== Hello ============== -->
-<script type="text/xml" id="Project-Layout-with-Service-Task">
-  my-application/
-  ├── src/
-  │   └─ main/
-  │      ├── java/
-  │      │   └── GenerateRandomNumberDelegate.java
-  │      ├── resources/        
-  │      │   ├── META-INF/
-  │      │   │   └── processes.xml
-  │      │   └── oneTaskProcess.bpmn20.xml
-  │      └─  webapp/
-  │          └─  WEB-INF/
-  │              └── web.xml
-  └──  pom.xml
-</script>
-
-<script type="text/xml" id="GenerateRandomNumberDelegate.java">
-public class GenerateRandomNumberDelegate implements JavaDelegate {
-
-  public void execute(DelegateExecution execution) throws Exception {
-    
-    Random random = new Random();
-    int secretNumber = random.nextInt(100);
-    
-    execution.setVariable("secretNumber", secretNumber);
-    
-    System.out.println("Random number generated: "+secretNumber);
-    
-  }
-
-}
-</script>
-
-<script type="text/xml" id="inputGuessTaskform.html">
-<task-form>
-  <input type="text" ng-model="processVariables.guess" />
-</task-form>
-<button type="submit" />
-</script>
-
-<!-- ======================================================= -->
-<script type="text/ng-template" id="hello.annotation">
-{ "Project-Layout":
-  { "pom.xml": "Decriptor file required by apache maven. Maven is the de-facto standard for declarative dependency management in the Java World.", 
-    "processes.xml": "Deployment descriptor for the Process Application deployment.",
-    "web.xml": "Deployment Descriptor for Java Web Applications.",
-    "oneTaskProcess.bpmn20.xml": "This is the BPMN 2.0 Process Definition!"
-  },
- "pom.xml":
-  { "war": "Process Applications are most commonly packaged as Java Web Applications (WAR files). Other deployment options are available. On the Java EE 6 platform, you can use plain JAR or advanced EAR deployments as well." ,
-    "camunda-engine": "The process engine is the component responsible for picking up your BPMN 2.0 processes and executing them.",
-    "provided": "The process engine can be either <ul><li>provided by the servlet container or</li><li>embedded inside your process application.</li></ul> <p />Here, we use a shared process engine that is provided by the servlet container."
-  },
-  "web.xml":
-  { "ServletProcessApplication": "A Servlet Process Application is a process application running inside a Servlet Container like Apache Tomcat. The Servlet Process Application is bootrapped using a servlet listener. This means that when your application starts, all BPMN 2.0 processes are automatically picked up (as defined in your <code>processes.xml</code> file) and deployed to the process engine."
-  },
-  "processes.xml":
-  {
-    "process-archive": "A process archive collects a set of process definitions and performs a deployment to the process engine. Process definitions can either be listed explicitly or discovered automatically using scanning (see <code>isScanningEnabled</code> below). You can define multiple process archives in your processes.xml.",
-    "default" : "You can define which process engine the process archive should be deployed to.",
-    "isScanningEnabled" : "If set to true, your application is automatically scanned for process definitions."
-  },
-  "GenerateRandomNumberDelegate.java":
-  { "JavaDelegate" : "The JavaDelegate interface is provided by the process engine and needs to be implemented by Java Service Tasks.",
-    "DelegateExecution" : "The DelegateExecution object allows your class to communicate with the current process instance. It can be used for accessing and manipulating process variables.",
-    "setVariable" : "Here, we create a new process variable named <code>secretNumber</code> and assign it a randomly generated number between 0 and 100. The value of the process variable will be available to all subsequently executed tasks in the process instance."
-
-  },
-  "Project-Layout-with-Service-Task":
-  {
-    "GenerateRandomNumberDelegate" : "The java class is added as a Java source file to the project. Now your project contains both Java Code and a BPMN 2.0 process that are deployed side-by-side."
-  }
-
-}
-</script>
 </div>

@@ -1,0 +1,639 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>camunda.org - the camunda bpm community homepage</title>
+    
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <meta name="author" content="camunda.org community" />
+    
+    <!-- loads all stylesheets -->
+    <link href="assets/css/loader.css" rel="stylesheet" />
+
+    <!-- For IE6-8 support of HTML5 elements -->
+    <!--[if lt IE 9]>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+     
+    <base app-base="." />
+
+  </head>
+  <body ng-controller="DefaultController" >
+
+    <div class="wrapper" style="background-color:#292929">
+      <!-- navigation -->
+
+      <div style="position:absolute; width:100%; height:480px; background-color:white"> </div>
+     
+      <div data-ng-include=" 'templates/navigation.html' "></div>
+
+          <div class="container">
+            
+
+            <div style="position:relative; top:80px; text-align:center">            
+              <h1 style="color:#333">Process Implementation</h1>
+              <h3>with camunda BPM platform</h3>
+            </div>
+
+            <section id="Tasks">
+     
+              <div class="tabbable tabs-left" style="position:relative; top:80px"> 
+                <ul class="nav nav-tabs" style="position:relative;">
+                  <li class="active"><a href="#tab1" data-toggle="tab">Project Setup</a></li>
+                  <li class=""><a href="#tab2" data-toggle="tab">Process Engine</a></li>
+                  <li><a href="#tab3" data-toggle="tab">Programming Model</a></li>
+                </ul>
+                <div class="tab-content" style="position:relative;">
+
+                  <!-- content common to all tabs -->
+
+                  <div style="position:relative; width:100%;height: 400px;">
+
+                      <div style="
+                            left: 130px;
+                            position: relative;
+                            top: 25px;">
+
+                            <svg
+                               xmlns:dc="http://purl.org/dc/elements/1.1/"
+                               xmlns:cc="http://creativecommons.org/ns#"
+                               xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+                               xmlns:svg="http://www.w3.org/2000/svg"
+                               xmlns="http://www.w3.org/2000/svg"
+                               version="1.1"
+                               width="500"
+                               height="269"
+                               id="svg2">
+
+                              
+                              <g
+                                 transform="translate(0,-783.36218)"
+                                 id="layer1">
+                                <g
+                                   id="g3040"
+                                   style="fill:none;stroke:#000000;stroke-width:1;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0">
+                                  <path
+                                     d="m 60.912503,1024.6048 26.526573,23.2288 77.084544,-11.9869 -34.30433,-20.33 z"
+                                     id="path3050"
+                                     style="fill:none;stroke:#000000;stroke-width:1;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0" />
+                                  <path
+                                     d="m 60.912503,961.84988 0,62.75492 69.306787,-9.0881 0,-58.87909 z"
+                                     id="path3042"
+                                     style="fill:none;stroke:#000000;stroke-width:1;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0" />
+                                  <path
+                                     d="m 130.21929,956.63761 34.30433,12.13696 0,67.07213 -34.30433,-20.33 z"
+                                     id="path3052"
+                                     style="fill:none;stroke:#000000;stroke-width:1;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0" />
+                                  <path
+                                     d="m 60.912503,961.84988 26.526573,13.83565 77.084544,-6.91096 -34.30433,-12.13696 z"
+                                     id="path3044"
+                                     style="fill:none;stroke:#000000;stroke-width:1;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0" />
+                                  <path
+                                     d="m 87.439076,975.68553 0,72.14807 77.084544,-11.9869 0,-67.07213 z"
+                                     id="path3048"
+                                     style="fill:#b72a38;fill-opacity:1;stroke:#000000;stroke-width:1;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0" />
+                                  <path
+                                     d="m 60.912503,961.84988 26.526573,13.83565 0,72.14807 -26.526573,-23.2288 z"
+                                     id="path3046"
+                                     style="fill:#92222d;fill-opacity:1;stroke:#000000;stroke-width:1;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0" />
+                                </g>
+                                <g
+                                   id="g3040-4"
+                                   style="fill:none;stroke:none">
+                                  <path
+                                     d="m 314.60936,1022.7718 73.96096,26.3886 102.41973,-22.1778 -78.95465,-20.549 z"
+                                     id="path3044-7"
+                                     style="fill:#aa0000;fill-rule:evenodd;stroke:none" />
+                                  <path
+                                     d="m 314.60936,1022.7718 0,-21.4477 97.42604,-13.93138 0,19.04088 z"
+                                     id="path3042-5"
+                                     style="fill:#353564;fill-rule:evenodd;stroke:none" />
+                                  <path
+                                     d="m 412.0354,1006.4336 78.95465,20.549 0,-21.8808 -78.95465,-17.70908 z"
+                                     id="path3052-1"
+                                     style="fill:#e9e9ff;fill-rule:evenodd;stroke:none" />
+                                  <path
+                                     d="m 314.60936,1001.3241 73.96096,22.7162 102.41973,-18.9385 -78.95465,-17.70908 z"
+                                     id="path3050-5"
+                                     style="fill:#bdbdbd;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-opacity:1" />
+                                  <path
+                                     d="m 388.57032,1049.1604 0,-25.1201 102.41973,-18.9385 0,21.8808 z"
+                                     id="path3048-1"
+                                     style="fill:#9c9c9c;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-opacity:1" />
+                                  <path
+                                     d="m 314.60936,1022.7718 73.96096,26.3886 0,-25.1201 -73.96096,-22.7162 z"
+                                     id="path3046-1"
+                                     style="fill:#606060;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-opacity:1" />
+                                </g>
+                                <g
+                                   id="g3040-4-1-9"
+                                   style="fill:none;stroke:none">
+                                  <path
+                                     d="m 394.11829,995.01488 18.37063,4.53652 21.40741,-3.59878 -18.60297,-4.29399 z"
+                                     id="path3044-7-6-2"
+                                     style="fill:#aa0000;fill-rule:evenodd;stroke:none" />
+                                  <path
+                                     d="m 394.11829,995.01488 0,-25.27554 21.17507,-2.68176 0,24.60105 z"
+                                     id="path3042-5-8-7"
+                                     style="fill:#353564;fill-rule:evenodd;stroke:none" />
+                                  <path
+                                     d="m 415.29336,991.65863 18.60297,4.29399 0,-25.46043 -18.60297,-3.43461 z"
+                                     id="path3052-1-5-9"
+                                     style="fill:#e9e9ff;fill-rule:evenodd;stroke:none" />
+                                  <path
+                                     d="m 394.11829,969.73934 18.37063,3.6285 21.40741,-2.87565 -18.60297,-3.43461 z"
+                                     id="path3050-5-7-5"
+                                     style="fill:#ffffff;fill-rule:evenodd;stroke:#000000;stroke-opacity:1" />
+                                  <path
+                                     d="m 412.48892,999.5514 0,-26.18356 21.40741,-2.87565 0,25.46043 z"
+                                     id="path3048-1-6-4"
+                                     style="fill:#f9f9f9;fill-rule:evenodd;stroke:#000000;stroke-opacity:1" />
+                                  <path
+                                     d="m 394.11829,995.01488 18.37063,4.53652 0,-26.18356 -18.37063,-3.6285 z"
+                                     id="path3046-1-1-3"
+                                     style="fill:#f2f2f2;fill-rule:evenodd;stroke:#000000;stroke-opacity:1" />
+                                </g>
+                                <g
+                                   id="g3040-4-1"
+                                   style="fill:none;stroke:none">
+                                  <path
+                                     d="m 426.34045,1003.147 19.48545,4.7912 20.52884,-3.8217 -19.65839,-4.53441 z"
+                                     id="path3044-7-6"
+                                     style="fill:#aa0000;fill-rule:evenodd;stroke:none" />
+                                  <path
+                                     d="m 426.34045,1003.147 0,-25.27554 20.3559,-2.89042 0,24.60105 z"
+                                     id="path3042-5-8"
+                                     style="fill:#353564;fill-rule:evenodd;stroke:none" />
+                                  <path
+                                     d="m 446.69635,999.58209 19.65839,4.53441 0,-25.46046 -19.65839,-3.675 z"
+                                     id="path3052-1-5"
+                                     style="fill:#e9e9ff;fill-rule:evenodd;stroke:none" />
+                                  <path
+                                     d="m 426.34045,977.87146 19.48545,3.88322 20.52884,-3.09864 -19.65839,-3.675 z"
+                                     id="path3050-5-7"
+                                     style="fill:#ffffff;fill-rule:evenodd;stroke:#000000;stroke-opacity:1" />
+                                  <path
+                                     d="m 445.8259,1007.9382 0,-26.18352 20.52884,-3.09864 0,25.46046 z"
+                                     id="path3048-1-6"
+                                     style="fill:#f9f9f9;fill-rule:evenodd;stroke:#000000;stroke-opacity:1" />
+                                  <path
+                                     d="m 426.34045,1003.147 19.48545,4.7912 0,-26.18352 -19.48545,-3.88322 z"
+                                     id="path3046-1-1"
+                                     style="fill:#f2f2f2;fill-rule:evenodd;stroke:#000000;stroke-opacity:1" />
+                                </g>
+                                <g
+                                   id="g3040-4-1-3"
+                                   style="fill:none;stroke:#000000;stroke-width:1;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0">
+                                  <path
+                                     d="m 354.06677,1007.311 19.99434,5.8676 21.566,-3.83 -20.33967,-5.5667 z"
+                                     id="path3044-7-6-3"
+                                     style="fill:none;stroke:#000000;stroke-width:1;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0" />
+                                  <path
+                                     d="m 354.06677,1007.311 0,-27.00364 21.22067,-2.84269 0,26.31723 z"
+                                     id="path3042-5-8-4"
+                                     style="fill:none;stroke:#000000;stroke-width:1;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0" />
+                                  <path
+                                     d="m 375.28744,1003.7819 20.33967,5.5667 0,-27.40176 -20.33967,-4.48217 z"
+                                     id="path3052-1-5-1"
+                                     style="fill:none;stroke:#000000;stroke-width:1;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0" />
+                                  <path
+                                     d="m 354.06677,980.30736 19.99434,4.72438 21.566,-3.0849 -20.33967,-4.48217 z"
+                                     id="path3050-5-7-1"
+                                     style="fill:#d85460;fill-opacity:1;stroke:#000000;stroke-width:1;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0" />
+                                  <path
+                                     d="m 374.06111,1013.1786 0,-28.14686 21.566,-3.0849 0,27.40176 z"
+                                     id="path3048-1-6-3"
+                                     style="fill:#b72a38;fill-opacity:1;stroke:#000000;stroke-width:1;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0" />
+                                  <path
+                                     d="m 354.06677,1007.311 19.99434,5.8676 0,-28.14686 -19.99434,-4.72438 z"
+                                     id="path3046-1-1-8"
+                                     style="fill:#92222d;fill-opacity:1;stroke:#000000;stroke-width:1;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0" />
+                                </g>
+                                <path
+                                   d="m 171.30116,976.30577 c 167.18161,-113.34846 203.5701,-39.32173 202.82376,-8.15749 -0.11063,4.61932 -0.11032,8.26691 -0.11032,8.26691 m 6.82308,-10.00929 c -2.22207,1.98676 -6.68814,10.72839 -6.7909,10.85268 -3.70997,-6.44928 -5.02012,-7.55645 -7.75172,-9.53022"
+                                   id="path5697"
+                                   style="fill:none;stroke:#000000;stroke-width:2;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none" />
+                                                               
+                               
+                              </g>
+                            </svg>
+
+                          </div>
+                                                              
+                    </div>
+      
+      
+                  <div class="tab-pane active" id="tab1" >
+
+                     <div style="
+                            left: 130px;
+                            position: absolute;
+                            top: 25px;">
+
+                            <svg
+                               xmlns:dc="http://purl.org/dc/elements/1.1/"
+                               xmlns:cc="http://creativecommons.org/ns#"
+                               xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+                               xmlns:svg="http://www.w3.org/2000/svg"
+                               xmlns="http://www.w3.org/2000/svg"
+                               version="1.1"
+                               width="500"
+                               height="269"
+                               id="svg2">
+
+                              
+                              <g
+                                 transform="translate(7,-783.36218)"
+                                 id="vertical-text">
+
+
+                                <path
+                                   d="m -272.40908,76.71386 a 25.901192,25.901192 0 1 1 -51.80238,0 25.901192,25.901192 0 1 1 51.80238,0 z"
+                                   transform="matrix(0.51591799,0,0,0.51591799,218.85543,888.78412)"
+                                   id="path7841"
+                                   style="fill:#b78e2a;fill-opacity:1;stroke:none" />
+
+                                <path
+                                   d="m -272.40908,76.71386 a 25.901192,25.901192 0 1 1 -51.80238,0 25.901192,25.901192 0 1 1 51.80238,0 z"
+                                   transform="matrix(0.51591799,0,0,0.51591799,258.90364,888.78412)"
+                                   id="path7841-7"
+                                   style="fill:#2a69b7;fill-opacity:1;stroke:none" />
+                                <path
+                                   d="m -272.40908,76.71386 a 25.901192,25.901192 0 1 1 -51.80238,0 25.901192,25.901192 0 1 1 51.80238,0 z"
+                                   transform="matrix(0.51591799,0,0,0.51591799,299.90364,888.78412)"
+                                   id="path7841-7-2"
+                                   style="fill:#000000;fill-opacity:1;stroke:none" />
+
+
+                                   <g style="font-size:14px;font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;text-align:start;line-height:125%;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;-inkscape-font-specification:Sans Bold">
+                                <text
+                                   x="803.68054"
+                                   y="-60.351563"
+                                   transform="matrix(0,1,-1,0,0,0)"
+                                   id="bpmn-text"
+                                   xml:space="preserve"
+                                   ><tspan
+                                     x="803.68054"
+                                     y="-60.351563"
+                                     id="tspan8038">Bpmn 2.0 Xml</tspan></text>
+                                <text
+                                   x="808.23914"
+                                   y="-104.64111"
+                                   transform="matrix(0,1,-1,0,0,0)"
+                                   id="java-classes-text"
+                                   xml:space="preserve"
+                                   ><tspan
+                                     x="808.23914"
+                                     y="-104.64111"
+                                     id="tspan8038-0">Java Classes</tspan></text>
+                                <text
+                                   x="817.33289"
+                                   y="-145.55762"
+                                   transform="matrix(0,1,-1,0,0,0)"
+                                   id="task-forms-text"
+                                   xml:space="preserve"
+                                   ><tspan
+                                     x="817.33289"
+                                     y="-145.55762"
+                                     id="tspan8038-0-0">Task Forms</tspan></text>
+                                </g>
+
+                              </g>
+
+
+
+                              <g id="horizontal-text" 
+                                transform="translate(0,-783.36218)">
+
+                                <path
+                                   d="M 73.30198,1022.6642 33.698012,1002.8622 73.30198,983.06021 z"
+                                   id="path7990"
+                                   style="fill:#000000;stroke:#000000;stroke-width:0.39603969px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1" />
+
+
+                              </g>
+
+                            </svg>
+
+
+                          </div>
+
+                    
+                    <div style="position:absolute;top:300px;left: 150px; color:white">
+                      <center>
+                        <p>
+                          <strong>Process Application</strong>
+                        </p>
+                        <p>
+                          WAR | JAR | EAR | BUNDLE*
+                        </p>
+                      </center>
+                    </div>
+
+                    <div style="position:absolute;top:300px;left: 440px; color:white">
+                      <center>
+                        <p>
+                          <strong>Runtime Container</strong>
+                        </p>
+                        <p>
+                          Servlet | Application Server | OSGi*
+                        </p>
+                        <p>
+                          <em style="font-size:80%">*coming soon</em>
+                        </p>
+                      </center>
+                    </div>
+<!--
+                    <div style="position:absolute;top:78px;left: 110px;">
+                      <center>
+                        <p>
+                          <strong>Bpmn 2.0 Xml</strong>
+                        </p>                       
+                      </center>
+                    </div>
+
+                    <div style="position:absolute;top:117px;left: 110px;">
+                      <center>
+                        <p>
+                          <strong>Java Classes</strong>
+                        </p>                       
+                      </center>
+                    </div>
+
+                    <div style="position:absolute;top:156px;left: 120px;">
+                      <center>
+                        <p>
+                          <strong>Task Forms</strong>
+                        </p>                       
+                      </center>
+                    </div>
+-->
+                    <div style="position:absolute;top:233px;left: 50px;">
+                      <center>
+                        <p>
+                          <strong>maven pom.xml</strong>
+                        </p>                       
+                      </center>
+                    </div>
+
+                    <hr class="soften">
+
+                      <div style="color:white;text-align:center">
+
+                        <h1>Setting up a Process Application Project</h1>
+
+                        <p>
+                          A process application is a Java application that interacts with BPMN 2.0 processes. This means that part of the behavior and the functionality of the process application is described by one or multiple BPMN 2.0 process models.
+                        </p>
+
+                        <p>
+                          Setting up a process application is as easy as setting up an ordinary Java application. If you use Maven, you just have to add a dependency to the <code>org.camunda.bpm:camunda-engine:jar</code> artifact, add a <code>META-INF/processes.xml</code> file and you are good to go. 
+                        </p>
+                    
+
+                      <div class="row example" style="margin-top:50px; text-align:left">
+                        <div class="span9">                         
+                          <div class="app-source" app-source="Project-Layout pom.xml web.xml processes.xml" annotate="hello.annotation"></div>     
+                        </div>                       
+                      </div>
+
+                      <div >
+                          <h3>Watch</h3>
+                              Watch as we setup this project in eclipse                           
+                                 
+                      </div>
+
+                      <div >
+                         <h3>There's more</h3>
+                              <ul>
+                                <li><a href="">Documentation on Process Applications</a></li>
+                                <li><a href="">Java EE 6 Process Applications</a></li>
+                              </ul>          
+                      </div>
+
+
+
+                    </div>
+
+
+                     <hr class="soften">
+
+                      
+                      <div style="color:white; text-align:center">
+
+                        <h3>Selecting a Runtime Container</h3>
+
+
+
+                      </div>
+
+                      <div style="margin-top:200px"> </div>
+
+
+                  </div>
+
+
+
+                  <div class="tab-pane" id="tab2">
+                    <p>Howdy, I'm in Section 2.</p>
+                  </div>
+                </div>
+              </div>
+
+            
+          </section>     
+  
+  </div>    
+
+    </div>
+    <!-- footer -->
+    <footer class="footer">
+      <!-- loads all javascript -->
+      <script src="assets/js/loader.js"></script>
+    </footer>
+
+     <div class="btn-group btn-group-vertical" style="position:absolute; right:50px; top:200px;">
+      <button type="button" class="btn" alt="Tasks">1</button>
+      <button type="button" class="btn" alt="Use Cases">2</button>
+  
+     </div>
+
+
+<div class="bootstrap-code">
+<!-- ============== Hello ============== -->
+<script type="text/xml" id="Project-Layout">
+  my-application/
+  ├── src/
+  │   └─ main/
+  │      ├── java/
+  │      ├── resources/        
+  │      │   ├── META-INF/
+  │      │   │   └── processes.xml
+  │      │   └── oneTaskProcess.bpmn20.xml
+  │      └─  webapp/
+  │          └─  WEB-INF/
+  │              └── web.xml
+  └──  pom.xml
+</script>
+
+
+<!-- ======================================================= -->
+<script type="text/xml" id="pom.xml">
+<project xmlns="http://maven.apache.org/POM/4.0.0" 
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <name>camunda bpm platform - examples - simple servlet process application</name>
+  
+  <groupId>org.camunda.bpm</groupId>
+  <artifactId>simple-process-application</artifactId>
+  <packaging>war</packaging>
+
+  <dependencies>
+    <dependency>
+      <groupId>org.camunda.bpm</groupId>
+      <artifactId>camunda-engine</artifactId>
+      <version>7.0.0-SNAPSHOT</version>
+      <scope>provided</scope>
+    </dependency>
+  </dependencies>
+
+</project>
+</script>
+
+<!-- ======================================================= -->
+<script type="text/xml" id="processes.xml">
+<process-application 
+  xmlns="http://www.camunda.org/schema/1.0/ProcessApplication" 
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+
+  <process-archive name="example">  
+    <process-engine>default</process-engine>
+    <properties>
+      <property name="isScanningEnabled">true</property>
+    </properties>
+  </process-archive>
+
+</process-application>
+</script>
+
+<!-- ======================================================= -->
+<script type="text/xml" id="oneTaskProcess.bpmn20.xml">
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions
+  xmlns="http://www.omg.org/spec/BPMN/20100524/MODEL"
+  xmlns:activiti="http://activiti.org/bpmn"
+  targetNamespace="Examples">
+
+  <process id="oneTaskProcess" name="The One Task Process">
+  
+    <startEvent id="theStart" />
+    <sequenceFlow id="flow1" sourceRef="theStart" targetRef="theTask" />
+    <userTask id="theTask" name="My User Task" />    
+    <sequenceFlow id="flow2" sourceRef="theTask" targetRef="theEnd" />
+    <endEvent id="theEnd" />
+    
+  </process>
+
+</definitions>
+</script>
+
+<!-- ======================================================= -->
+<script type="text/xml" id="web.xml">
+<web-app xmlns="http://java.sun.com/xml/ns/javaee"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://java.sun.com/xml/ns/javaee 
+                      http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd" version="3.0"> 
+    
+  <listener>
+    <listener-class>
+      org.camunda.bpm.application.spi.servlet.ServletProcessApplication
+    </listener-class>
+  </listener>
+    
+</web-app>
+</script>
+
+<!-- ============== Hello ============== -->
+<script type="text/xml" id="Project-Layout-with-Service-Task">
+  my-application/
+  ├── src/
+  │   └─ main/
+  │      ├── java/
+  │      │   └── GenerateRandomNumberDelegate.java
+  │      ├── resources/        
+  │      │   ├── META-INF/
+  │      │   │   └── processes.xml
+  │      │   └── oneTaskProcess.bpmn20.xml
+  │      └─  webapp/
+  │          └─  WEB-INF/
+  │              └── web.xml
+  └──  pom.xml
+</script>
+
+<script type="text/xml" id="GenerateRandomNumberDelegate.java">
+public class GenerateRandomNumberDelegate implements JavaDelegate {
+
+  public void execute(DelegateExecution execution) throws Exception {
+    
+    Random random = new Random();
+    int secretNumber = random.nextInt(100);
+    
+    execution.setVariable("secretNumber", secretNumber);
+    
+    System.out.println("Random number generated: "+secretNumber);
+    
+  }
+
+}
+</script>
+
+<script type="text/xml" id="inputGuessTaskform.html">
+<task-form>
+  <input type="text" ng-model="processVariables.guess" />
+</task-form>
+<button type="submit" />
+</script>
+
+<!-- ======================================================= -->
+<script type="text/ng-template" id="hello.annotation">
+{ "Project-Layout":
+  { "pom.xml": "Decriptor file required by apache maven. Maven is the de-facto standard for declarative dependency management in the Java World.", 
+    "processes.xml": "Deployment descriptor for the Process Application deployment.",
+    "web.xml": "Deployment Descriptor for Java Web Applications.",
+    "oneTaskProcess.bpmn20.xml": "This is the BPMN 2.0 Process Definition!"
+  },
+ "pom.xml":
+  { "war": "Process Applications are most commonly packaged as Java Web Applications (WAR files). Other deployment options are available. On the Java EE 6 platform, you can use plain JAR or advanced EAR deployments as well." ,
+    "camunda-engine": "The process engine is the component responsible for picking up your BPMN 2.0 processes and executing them.",
+    "provided": "The process engine can be either <ul><li>provided by the servlet container or</li><li>embedded inside your process application.</li></ul> <p />Here, we use a shared process engine that is provided by the servlet container."
+  },
+  "web.xml":
+  { "ServletProcessApplication": "A Servlet Process Application is a process application running inside a Servlet Container like Apache Tomcat. The Servlet Process Application is bootrapped using a servlet listener. This means that when your application starts, all BPMN 2.0 processes are automatically picked up (as defined in your <code>processes.xml</code> file) and deployed to the process engine."
+  },
+  "processes.xml":
+  {
+    "process-archive": "A process archive collects a set of process definitions and performs a deployment to the process engine. Process definitions can either be listed explicitly or discovered automatically using scanning (see <code>isScanningEnabled</code> below). You can define multiple process archives in your processes.xml.",
+    "default" : "You can define which process engine the process archive should be deployed to.",
+    "isScanningEnabled" : "If set to true, your application is automatically scanned for process definitions."
+  },
+  "GenerateRandomNumberDelegate.java":
+  { "JavaDelegate" : "The JavaDelegate interface is provided by the process engine and needs to be implemented by Java Service Tasks.",
+    "DelegateExecution" : "The DelegateExecution object allows your class to communicate with the current process instance. It can be used for accessing and manipulating process variables.",
+    "setVariable" : "Here, we create a new process variable named <code>secretNumber</code> and assign it a randomly generated number between 0 and 100. The value of the process variable will be available to all subsequently executed tasks in the process instance."
+
+  },
+  "Project-Layout-with-Service-Task":
+  {
+    "GenerateRandomNumberDelegate" : "The java class is added as a Java source file to the project. Now your project contains both Java Code and a BPMN 2.0 process that are deployed side-by-side."
+  }
+
+}
+</script>
+
+</div>
+
+  </body>
+</html>
