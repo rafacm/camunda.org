@@ -104,7 +104,7 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title />
+        <dc:title></dc:title>
       </cc:Work>
     </rdf:RDF>
   </metadata>
@@ -295,7 +295,10 @@
        id="g3040-4-16"
        inkscape:perspectiveID="#perspective2985-2-8"
        inkscape:corner0="0.91349974 : 0.085131395 : 0 : 1"
-       inkscape:corner7="0.63375202 : 0.10769932 : 0.2418637 : 1">
+       inkscape:corner7="0.63375202 : 0.10769932 : 0.2418637 : 1"
+       inkscape:export-filename="C:\Workspace\camunda.org\app\assets\img\runtime-container.png"
+       inkscape:export-xdpi="60.495125"
+       inkscape:export-ydpi="60.495125">
       <path
          sodipodi:type="inkscape:box3dside"
          id="path3044-7-9"
@@ -339,7 +342,10 @@
        id="g3040-4-1-9-9"
        inkscape:perspectiveID="#perspective2985-2-2-8-3"
        inkscape:corner0="0.21724528 : 0.097374567 : 0 : 1"
-       inkscape:corner7="0.17503244 : 0.14870086 : 0.03337355 : 1">
+       inkscape:corner7="0.17503244 : 0.14870086 : 0.03337355 : 1"
+       inkscape:export-filename="C:\Workspace\camunda.org\app\assets\img\runtime-container.png"
+       inkscape:export-xdpi="60.495125"
+       inkscape:export-ydpi="60.495125">
       <path
          sodipodi:type="inkscape:box3dside"
          id="path3044-7-6-2-3"
@@ -383,7 +389,10 @@
        id="g3040-4-1-5"
        inkscape:perspectiveID="#perspective2985-2-2-81"
        inkscape:corner0="0.21724528 : 0.097374567 : 0 : 1"
-       inkscape:corner7="0.17503244 : 0.14870086 : 0.03337355 : 1">
+       inkscape:corner7="0.17503244 : 0.14870086 : 0.03337355 : 1"
+       inkscape:export-filename="C:\Workspace\camunda.org\app\assets\img\runtime-container.png"
+       inkscape:export-xdpi="60.495125"
+       inkscape:export-ydpi="60.495125">
       <path
          sodipodi:type="inkscape:box3dside"
          id="path3044-7-6-0"
@@ -427,7 +436,10 @@
        id="g3040-4-1-3-6"
        inkscape:perspectiveID="#perspective2985-2-2-2-0"
        inkscape:corner0="0.27939848 : 0.092271827 : 0 : 1"
-       inkscape:corner7="0.22743657 : 0.14990736 : 0.03337355 : 1">
+       inkscape:corner7="0.22743657 : 0.14990736 : 0.03337355 : 1"
+       inkscape:export-filename="C:\Workspace\camunda.org\app\assets\img\runtime-container.png"
+       inkscape:export-xdpi="60.495125"
+       inkscape:export-ydpi="60.495125">
       <path
          sodipodi:type="inkscape:box3dside"
          id="path3044-7-6-3-2"
