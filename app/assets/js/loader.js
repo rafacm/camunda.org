@@ -42,7 +42,8 @@ $script([
 					'app/controllers',
 					'app/controllers/default',
 					'app/controllers/home',
-					'app/controllers/numberguess'
+					'app/controllers/numberguess',
+					'app/controllers/implement'
 
 				], function() {
 					 angular.bootstrap(document, ['camundaorg']);
