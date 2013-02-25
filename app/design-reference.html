@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
     <meta name="author" content="camunda.org community" />
-    
+        
     <!-- loads all stylesheets -->
     <link href="assets/css/loader.css" rel="stylesheet" />
 
@@ -16,7 +16,7 @@
       <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
      
-    <base app-base="." />
+    <base app-base="" />
 
   </head>
   <body ng-controller="DefaultController" >
@@ -24,35 +24,38 @@
       <!-- navigation -->
       <div data-ng-include=" 'templates/navigation.html' "></div>
 
-      <div class="container">
-        <div data-ng-include=" 'templates/breadcrumbs.html' "></div>
+<div class="container">
 
         <div class="row">
 
           <div class="hero-unit" ng-controller="HomeController">
 
           	<div class="center"> 
-          		<h1>Developer Forum</h1>
+          		<h1>BPMN 2.0 Symbol Reference</h1>
           	</div>
           </div>
           
         <ul class="breadcrumb" >
-          <li><a href="community.html">Community</a> <span class="divider">/</span></li>
-          <li class="active">Developer Forum</li>
+          <li><a href="design-overview.html">Design</a> <span class="divider">/</span></li>
+          <li id="breadcrumbOverview"></li>
+          <li class="active" id="breadcrumbSymbol"></li>
         </ul>
         </div>
 
 
-<div class="row">
-<iframe id="forum_embed"
- src="https://groups.google.com/forum/embed/?place=forum/camunda-bpm-dev&showsearch=true&showpopout=true"
- scrolling="no"
- frameborder="0"
- style="width:100%; height:1000px;">
-</iframe>
+	<!--<div tutorial="partials/design/tutorial.md" />-->
+	<div class="row">
+      <div id="navSide" class="span3 bs-docs-sidebar" >
+      	      <div data-ng-include=" 'templates/bpmnSymbolList.html' "></div>
 
-</div>
       </div>
+     <div class="span9" >
+     	<div data-ng-view />
+
+		</div>
+		</div>
+</div>
+		
       <div class="push-down"><!-- // --></div> 
     </div>
     <!-- footer -->
@@ -60,8 +63,7 @@
       <div data-ng-include=" 'templates/footer.html' "></div>
 
       <!-- loads all javascript -->
-      <script src="assets/js/loader.js"></script>
-    <script src="assets/js/app/cabpmn.js"></script>
+	<script src="assets/js/loader.js"></script>  
     </footer>
   </body>
 </html>

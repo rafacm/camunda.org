@@ -189,7 +189,7 @@
   <div class="span3" style="text-align:center;">
       <h1>Design</h1>
       <p><b>You're a Business Analyst?</b> Create expressive, easy to read Process Diagrams using the global standard BPMN 2.0.</p>
-      <p><a href="design.html">Take me there!</a></p>
+      <p><a href="design-overview.html">Take me there!</a></p>
   </div>
     <div class="span3" style="text-align:center;">
       <h1>Implement</h1>
@@ -222,7 +222,7 @@
       </div>
     </div>
   -->
-
+<!--
   <section id="setup" style="margin-top:40px">
     <div class="page-header">
       <h1 id="the-basics">1. Getting set up</h1>
@@ -300,6 +300,89 @@
   
   </section>
  
+<<<<<<< HEAD
+
+=======
+-->
+<div class="bootstrap-code">
+<!-- ============== Hello ============== -->
+<script type="text/xml" id="Project-Layout">
+  my-application/
+  ├── src/
+  │   └─ main/
+  │      ├── java/
+  │      ├── resources/        
+  │      │   ├── META-INF/
+  │      │   │   └── processes.xml
+  │      │   └── oneTaskProcess.bpmn20.xml
+  │      └─  webapp/
+  │          └─  WEB-INF/
+  │              └── web.xml
+  └──  pom.xml
+</script>
+
+
+<!-- ======================================================= -->
+<script type="text/xml" id="pom.xml">
+<project xmlns="http://maven.apache.org/POM/4.0.0" 
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <name>camunda bpm platform - examples - simple servlet process application</name>
+  
+  <groupId>org.camunda.bpm</groupId>
+  <artifactId>simple-process-application</artifactId>
+  <packaging>war</packaging>
+
+  <dependencies>
+    <dependency>
+      <groupId>org.camunda.bpm</groupId>
+      <artifactId>camunda-engine</artifactId>
+      <version>7.0.0-SNAPSHOT</version>
+      <scope>provided</scope>
+    </dependency>
+  </dependencies>
+
+</project>
+</script>
+
+<!-- ======================================================= -->
+<script type="text/xml" id="processes.xml">
+<process-application 
+  xmlns="http://www.camunda.org/schema/1.0/ProcessApplication" 
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+
+  <process-archive name="example">  
+    <process-engine>default</process-engine>
+    <properties>
+      <property name="isScanningEnabled">true</property>
+    </properties>
+  </process-archive>
+
+</process-application>
+</script>
+
+<!-- ======================================================= -->
+<script type="text/xml" id="oneTaskProcess.bpmn20.xml">
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions
+  xmlns="http://www.omg.org/spec/BPMN/20100524/MODEL"
+  xmlns:activiti="http://activiti.org/bpmn"
+  targetNamespace="Examples">
+
+  <process id="oneTaskProcess" name="The One Task Process">
+  
+    <startEvent id="theStart" />
+    <sequenceFlow id="flow1" sourceRef="theStart" targetRef="theTask" />
+    <userTask id="theTask" name="My User Task" />    
+    <sequenceFlow id="flow2" sourceRef="theTask" targetRef="theEnd" />
+    <endEvent id="theEnd" />
+    
+  </process>
+
+</definitions>
+</script>
 
 
 </div>

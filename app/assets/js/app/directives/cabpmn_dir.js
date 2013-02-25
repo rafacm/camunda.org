@@ -38,7 +38,18 @@ angular.module('camundaorg.directives')
   }
 }
 })
-.directive('bpmnTutorial', function() {
+.directive('bpmnReferenceList', function() {
+  return {
+    link: function(scope, element, attrs) {
+    
+    
+    
+
+
+    }
+  }
+})
+.directive('bpmnTutorial', function($location) {
   return {
     link: function(scope, element, attrs) {
 		
@@ -46,6 +57,30 @@ angular.module('camundaorg.directives')
 			"trigger": "hover",
 			"placement": "bottom"
 		});
+
+    // update active entry in Breadcrumb
+
+    var link = '#' + $location.path();
+
+    // Remove any active entry marker from list
+    $('.bpmnSymbolLink').parent().removeClass("active");
+
+    if (link == '#/design/reference') {
+      $('#breadcrumbOverview').text('Symbol Reference');
+      $('#breadcrumbOverview').addClass('active');
+      $('#breadcrumbSymbol').text('');
+    } else {
+
+      $('#breadcrumbOverview').removeClass('active');
+      $('#breadcrumbOverview').html('<a href="design-reference.html#/design/reference">Symbol Reference</a> <span class="divider">/</span>');
+      // Highlight active entry in list
+      $('a[href="' + link + '"]').parent().addClass("active");
+      // update Breadcrumb active entry
+      $('#breadcrumbSymbol').text($('a[href="' + link + '"]').text());
+
+    }
+
+
 
     }
   }
@@ -58,12 +93,30 @@ angular.module('camundaorg.directives')
 		//$('body').scrollspy({"target":"#navSide"});
     }
   }
-}).directive('bpmnSymbol', function() {
+})
+.directive('bpmnSymbol', function() {
   return {
     link: function(scope, element, attrs) {
 		var bpmnSymbol = attrs.bpmnSymbol;
 		var bpmnSymbolName = attrs.bpmnSymbolName;
 		drawBpmnSymbol (bpmnSymbol, bpmnSymbolName, element);
+    }
+  }
+})
+.directive('imgThumb', function() {
+  return {
+    link: function(scope, element, attrs) {
+      //alert (attrs.imgSrc);
+      
+      $(element).append('<a href="#myModal_' + attrs.id +'" data-toggle="modal"><img src="' + attrs.imgSrc +'"/></a><div class="center"><p style="padding-top:5px; font-size:90%"><i class="icon-zoom-in"></i> click to enlarge</p></div>');
+      $(element).append('<div id="myModal_' + attrs.id +'" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">'
+  + '<div class="modal-body">'
+    + '<img src="' + attrs.imgSrc +'"/>'
+    + '</div>'
+    + '<div class="modal-footer">'
+    + '<button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>'
+    + '</div>'
+    + '</div>');
     }
   }
 })

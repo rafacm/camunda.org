@@ -16,6 +16,7 @@ $script([
 
 		$script([
 			'lib/tweet/jquery.tweet',
+			'lib/jquery-fastLiveFilter/jquery.fastLiveFilter',
 			'lib/bootstrap/bootstrap.min',
 			//'lib/angular/angular-resource.min',
 			'lib/angular/angular.min',
