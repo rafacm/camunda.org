@@ -47,3 +47,23 @@ function AnimateProjectSetupController($scope) {
 	
 
 };
+
+function RuntimeContainers($scope) {
+
+	$scope.selectedContainer = "NOTHING";
+
+	$scope.toggleContainer = function(container) {
+		if(container == $scope.selectedContainer) {
+			$scope.selectedContainer = "NOTHING";
+		} else {
+			$scope.selectedContainer = container;
+		}
+	}
+
+	$scope.class = function(container) {
+		return "container-" + (container == $scope.selectedContainer ? (container+"-glow") : container);
+	}
+
+
+
+};

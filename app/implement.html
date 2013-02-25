@@ -21,7 +21,7 @@
   </head>
   <body ng-controller="DefaultController" >
 
-    <div class="wrapper" style="background-color:#292929">
+    <div class="wrapper wrapper-dark">
       <!-- navigation -->
 
       <div style="position:absolute; width:100%; height:480px; background-color:white"> </div>
@@ -48,7 +48,7 @@
 
                   <!-- content common to all tabs -->
 
-                  <div style="position:relative; width:100%;height: 400px;">
+                  <div style="position:relative; width:500px;height: 400px;">
 
                       <div style="
                             left: 130px;
@@ -286,7 +286,7 @@
                           <strong>Process Application</strong>
                         </p>
                         <p>
-                          WAR | JAR | EAR | BUNDLE*
+                          JAR | WAR | EAR | BUNDLE*
                         </p>
                       </center>
                     </div>
@@ -297,7 +297,7 @@
                           <strong>Runtime Container</strong>
                         </p>
                         <p>
-                          Servlet | Application Server | OSGi*
+                           Servlet | Application Server | OSGi*
                         </p>
                         <p>
                           <em style="font-size:80%">*coming soon</em>
@@ -336,29 +336,214 @@
                         </p>                       
                       </center>
                     </div>
+ 
+  
+                </div>    
 
-                    <hr class="soften">
 
-                     <div style="color:white;text-align:center">
+                <div class="tab-pane" id="tab2">
+                    <p>Howdy, I'm in Section 2.</p>
+                  </div>
+                </div>
 
-                    <img src="assets/img/runtime-container.png" />
 
-                    <h1>Selecting a Runtime Container</h1>
+              </div>
+
+
+                    <hr style="margin-top:150px" class="soften">
+
+                    <section id="container" style="color:white;text-align:center" ng-controller="RuntimeContainers">
+
+                      <img src="assets/img/runtime-container.png" />
+
+                      <h1>Selecting a Runtime Container</h1>
 
                       <p>
-                        camunda BPM can run in a variety of containers. In may run into a plain servlet container like Apache Tomcat 6 or 7, a Java EE Application Server like JBoss AS 7 or Glassfish 3.x.
+                        camunda BPM is a flexible framework for workflow and process automation. It's core is a native BPMN 2.0 process engine that runs inside the Java Virtual Machine. <strong>Camunda gives you the coice</strong> of your favorite runtime, be it a standalone Java Virtual Machine, a Servlet Container, a Java EE Application Server or even OSGi.
                       </p>
 
                       <p>
-                          <img src="assets/img/as7-tile.png"></img>
-                          <img src="assets/img/tomcat-tile.png"></img>
-                          <img src="assets/img/glassfish-tile.png"></img>
+                        Use unique features and innovations delivered by state of the art containers like JBoss AS 7 and combine them with our rock-solid BPM process engine. 
                       </p>
 
-                      
+                      <p class="tile-link">
+                        <a>
+                          <i class="container-tile {{class('jvm')}}" ng-click="toggleContainer('jvm')"></i>
+                        </a>
+                        <a>
+                          <i class="container-tile {{class('tomcat')}}" ng-click="toggleContainer('tomcat')"></i>
+                        </a>                    
+                        <a>
+                          <i class="container-tile {{class('glassfish')}}" ng-click="toggleContainer('glassfish')"></i>
+                        </a>
+                        <a>
+                          <i class="container-tile {{class('as7')}}" ng-click="toggleContainer('as7')" ></i>
+                        </a>
+                      </p>
 
-                    </div>
+                      <div data-ng-show="selectedContainer == 'NOTHING'">
+                        <em>(Click on the icons above to discover the runtimes)</em>
+                      </div>
 
+                      <div data-ng-show="selectedContainer == 'jvm'" class="dark-selection">
+                        <h2>camunda BPM in a standalone JVM</h2>
+                        <p>
+                          The JVM is an aswesome platform. Integrating camunda BPM with nothing but the bare metal gives you maximal flexibility when it comes to your integration requirements. Yet, it already gives you advanced features like integration with the JMX management container, asynchronous processing and much more. And it's great for unit testing!
+                        </p> 
+                        <div class="row-fluid">
+                          <div class="span7" style="text-align:center">
+                            <div style="margin: 0 auto; text-align:left; width:220px">
+                              <h3>Core Features</h3>
+                                <p><i class="icon-ok"></i> Native BPMN 2.0 execution</p>
+                                <p><i class="icon-ok"></i> Embedded Process Engine</p>
+                                <p><i class="icon-ok"></i> Asynchronous Processing</p>
+                                <p><i class="icon-ok"></i> JMX Container integration</p>         
+                            </div>
+                          </div>
+
+                          <div class="span5" style="text-align:center">
+                            <div style="margin: 0 auto; text-align:left; width:200px">
+                              <h3>Stack</h3>
+                              <p><i class="icon-remove"></i> camunda cycle</p>
+                              <p><i class="icon-remove"></i> camunda cockpit</p>
+                              <p><i class="icon-remove"></i> camunda tasklist</p>
+                              <p><i class="icon-ok"></i> 
+                                <a data-toggle="tooltip" title="Using embedded REST server">camunda REST Api</a>
+                              </p>
+                            </div>
+                          </div>                         
+                        </div>
+                        <div style="margin-top:30px">
+                          <a class="btn btn-large" href="http://fox.camunda.com/download/old/camunda-bpm-platform-tomcat7-7.0.0-SNAPSHOT.tar.gz">
+                            <i class="icon-download-alt icon-large"></i> Download
+                          </a>
+                        </div>
+                      </div>
+
+                      <div data-ng-show="selectedContainer == 'tomcat'" class="dark-selection">
+                        <h2>camunda BPM in Apache Tomcat</h2>
+                        <p>
+                          Apache Tomcat is the ideal runtime if you are looking for a simple, easy to use runtime container for delivering web-based process applications. Use the process engine embedded inside you application or go with our advanced shared process engine deployment model. Use it with Spring or a framework of your choice. 
+                        </p> 
+                        <div class="row-fluid">
+                          <div class="span7" style="text-align:center">
+                            <div style="margin: 0 auto; text-align:left; width:220px">
+                              
+                              <h3>Advanced Features</h3>                            
+                              <p><i class="icon-ok"></i> Shared Process Engine</p>
+                              <p><i class="icon-ok"></i> Redeployment at Runtime</p>
+
+                              <h3 style="margin-top:30px">Core Features</h3>
+                              <p><i class="icon-ok"></i> Native BPMN 2.0 execution</p>
+                              <p><i class="icon-ok"></i> Embedded Process Engine</p>
+                              <p><i class="icon-ok"></i> Asynchronous Processing</p>
+                              <p><i class="icon-ok"></i> JMX Container integration</p>
+
+                              
+                            </div>
+                          </div>
+
+                          <div class="span5" style="text-align:center">
+                            <div style="margin: 0 auto; text-align:left; width:200px">
+                              <h3>Stack</h3>
+                              <p><i class="icon-ok"></i> camunda cycle</p>
+                              <p><i class="icon-ok"></i> camunda cockpit</p>
+                              <p><i class="icon-ok"></i> camunda tasklist</p>
+                              <p><i class="icon-ok"></i> camunda REST Api</p>
+                              
+                              <div style="margin-top:60px">
+                                <a class="btn btn-large" href="http://fox.camunda.com/download/old/camunda-bpm-platform-tomcat7-7.0.0-SNAPSHOT.tar.gz">
+                                  <i class="icon-download-alt icon-large"></i> Download
+                                </a>
+                              </div>
+                            </div>
+                          </div>                         
+                        </div>
+
+                      </div>
+
+                      <div data-ng-show="selectedContainer == 'glassfish'" class="dark-selection">
+                        <h2>camunda BPM in GlassFish Application Server</h2>
+                        <p>
+                          Java EE 6 at it's best. Use the camunda BPM Java EE 6 Integration inside a lightweight runtime container. We provide integration with application server threading through JCA, allowing you to leverage container-managed threads and proper Java EE context management for asynchronous background processing.
+                        </p> 
+                        <div class="row-fluid">
+                          <div class="span7" style="text-align:center">
+                            <div style="margin: 0 auto; text-align:left; width:220px">
+                              <h3>Advanced Features</h3>    
+                              <p><i class="icon-ok"></i> Shared Process Engine</p>
+                              <p><i class="icon-ok"></i> Redeployment at Runtime</p>
+                              <p><i class="icon-ok"></i> Java EE 6 Integration</p>
+                              
+                              <h3 style="margin-top:30px">Core Features</h3>
+                              <p><i class="icon-ok"></i> Native BPMN 2.0 execution</p>
+                              <p><i class="icon-ok"></i> Embedded Process Engine</p>
+                              <p><i class="icon-ok"></i> Asynchronous Processing</p>
+                              <p><i class="icon-ok"></i> JMX Container integration</p>
+                            </div>
+                          </div>
+
+                          <div class="span5" style="text-align:center">
+                            <div style="margin: 0 auto; text-align:left; width:200px">
+                              <h3>Stack</h3>
+                              <p><i class="icon-ok"></i> camunda cycle</p>
+                              <p><i class="icon-ok"></i> camunda cockpit</p>
+                              <p><i class="icon-ok"></i> camunda tasklist</p>
+                              <p><i class="icon-ok"></i> camunda REST Api</p>
+                              
+                              <div style="margin-top:70px">
+                                <a class="btn btn-large" href="http://fox.camunda.com/download/old/camunda-bpm-platform-tomcat7-7.0.0-SNAPSHOT.tar.gz">
+                                  <i class="icon-download-alt icon-large"></i> Download
+                                </a>
+                              </div>
+                            </div>
+                          </div>                         
+                        </div>
+                      </div>
+
+                      <div data-ng-show="selectedContainer == 'as7'" class="dark-selection">
+                        <h2>camunda BPM in JBoss AS 7</h2>
+                        <p>
+                          Experience BPM in a full-fledged Java EE Application Server with powerful, best in class middleware services for transacitons, messaging and web services while still being light-weight and modular. 
+                          camunda BPM integrates natively with JBoss AS 7, uses container-managed threads, native deployment and provides application server management model integration. 
+
+                        </p> 
+                        <div class="row-fluid">
+                          <div class="span7" style="text-align:center">
+                            <div style="margin: 0 auto; text-align:left; width:220px">
+                              <h3>Advanced Features</h3>                                                          
+                              <p><i class="icon-ok"></i> Shared Process Engine</p>
+                              <p><i class="icon-ok"></i> Redeployment at Runtime</p>
+                              <p><i class="icon-ok"></i> Java EE 6 Integration</p>
+                              <p><i class="icon-ok"></i> Native Container Integration</p>
+                              
+                              <h3 style="margin-top:30px">Core Features</h3>
+                              <p><i class="icon-ok"></i> Native BPMN 2.0 execution</p>
+                              <p><i class="icon-ok"></i> Embedded Process Engine</p>
+                              <p><i class="icon-ok"></i> Asynchronous Processing</p>
+                              <p><i class="icon-ok"></i> JMX Container integration</p>
+                            </div>
+                          </div>
+
+                          <div class="span5" style="text-align:center">
+                            <div style="margin: 0 auto; text-align:left; width:200px">
+                              <h3>Stack</h3>
+                              <p><i class="icon-ok"></i> camunda cycle</p>
+                              <p><i class="icon-ok"></i> camunda cockpit</p>
+                              <p><i class="icon-ok"></i> camunda tasklist</p>
+                              <p><i class="icon-ok"></i> camunda REST Api</p>
+                              
+                              <div style="margin-top:80px">
+                                <a class="btn btn-large" href="http://fox.camunda.com/download/old/camunda-bpm-platform-tomcat7-7.0.0-SNAPSHOT.tar.gz">
+                                  <i class="icon-download-alt icon-large"></i> Download
+                                </a>
+                              </div>
+                            </div>
+                          </div>                         
+                        </div>
+                      </div>                          
+
+                    </section>
 
                     <hr class="soften">
 
@@ -371,10 +556,14 @@
                       <p>
                         A process application is a Java application that interacts with BPMN 2.0 processes. This means that part of the behavior and the functionality of the process application is described by one or multiple BPMN 2.0 process models. On this page you can discover the necessary steps that allow you to turn a Java Application into a Process Application.
                       </p>
+
+                      <div class="dark-selection">
                      
 
-                      <div style="text-align:left">
-                        <div class="app-source" app-source="Project-Layout pom.xml web.xml processes.xml" annotate="hello.annotation"></div>  
+                        <div style="text-align:left">
+                          <div class="app-source" app-source="Project-Layout pom.xml web.xml processes.xml" annotate="hello.annotation"></div>  
+                        </div>
+
                       </div>
                
 
@@ -404,20 +593,11 @@
 
                   </div>
 
-
-
-                  <div class="tab-pane" id="tab2">
-                    <p>Howdy, I'm in Section 2.</p>
-                  </div>
-                </div>
               </div>
 
             
-          </section>     
-  
-  </div>    
+          </section>   
 
-    </div>
     <!-- footer -->
     <footer class="footer">
       <!-- loads all javascript -->

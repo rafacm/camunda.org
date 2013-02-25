@@ -314,3 +314,64 @@ hr.soften {
   background-image:      -o-linear-gradient(left, rgba(0,0,0,0), rgba(0,0,0,.6), rgba(0,0,0,0));
   border: 0;
 }
+
+.tile-link:hover {
+  border: 0px;
+}
+
+
+.container-tile {
+  display: inline-block;
+  width:135px;
+  height:135px;
+}
+
+.container-as7 {
+  background-image: url("/app/assets/img/as7-tile.png");
+}
+
+.container-as7-glow {
+  background-image: url("/app/assets/img/as7-tile-glow.png");
+}
+
+.container-jvm {
+  background-image: url("/app/assets/img/jvm-tile.png");
+}
+
+.container-jvm-glow {
+  background-image: url("/app/assets/img/jvm-tile-glow.png");
+}
+
+.container-glassfish {
+  background-image: url("/app/assets/img/glassfish-tile.png");
+}
+
+.container-glassfish-glow {
+  background-image: url("/app/assets/img/glassfish-tile-glow.png");
+}
+
+.container-tomcat {
+  background-image: url("/app/assets/img/tomcat-tile.png");
+}
+
+.container-tomcat-glow {
+  background-image: url("/app/assets/img/tomcat-tile-glow.png");
+}
+
+.wrapper-dark {
+  background-color:#2f2f2f;
+}
+
+.dark-selection {
+  width:70%;
+  margin: 0 auto;
+  background-color:#f9f9f9;
+  border-radius: 3px;
+  border-width: 1px;
+  border-color: #181b1f;
+  -moz-box-shadow: 3px 3px 3px #222;
+  -webkit-box-shadow: 3px 3px 3px #222;
+  box-shadow: 3px 3px 3px #222;
+  color:#333;
+  padding:20px;
+}
