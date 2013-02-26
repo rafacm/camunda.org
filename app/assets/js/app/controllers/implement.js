@@ -22,29 +22,40 @@ function AnimateProjectSetupController($scope) {
 	  
 	}
 
-	var element1 = document.getElementById( "bpmn-container" );
-	translateElement(element1, {x:0,y:200}, 0);
+	$scope.animateProjectSetup = function() {
 
-	setTimeout( function() {
+		var element1 = document.getElementById( "bpmn-container" );
 		var element2 = document.getElementById( "java-container" );
-		translateElement(element2, {x:0,y:200}, 0);
+		var element3 = document.getElementById( "taskForms-container" );
+
+		element1.transform.baseVal.getItem( 0 ).setTranslate( 0, 0 );
+		element2.transform.baseVal.getItem( 0 ).setTranslate( 0, 0 );
+		element3.transform.baseVal.getItem( 0 ).setTranslate( 0, 0 );
+
+
+		setTimeout( function() {
+			translateElement(element1, {x:0,y:200}, 0);
 
 			setTimeout( function() {
-				var element3 = document.getElementById( "taskForms-container" );
-				translateElement(element3, {x:0,y:200}, 0);
+				translateElement(element2, {x:0,y:200}, 0);
 
-/*				setTimeout( function() {
-					var element4 = document.getElementById( "maven-container" );
-					translateElement(element4, {x:232,y:0}, 0);					
-				}, 1000);
-*/
+					setTimeout( function() {
+						translateElement(element3, {x:0,y:200}, 0);
+
+		/*				setTimeout( function() {
+							var element4 = document.getElementById( "maven-container" );
+							translateElement(element4, {x:232,y:0}, 0);					
+						}, 1000);
+		*/
+
+					}, 1000);
 
 			}, 1000);
+		}, 1000);
 
-	}, 1000);
+	};
 
-	
-	
+	$scope.animateProjectSetup();
 
 };
 
