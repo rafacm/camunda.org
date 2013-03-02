@@ -1,5 +1,5 @@
 
-@font-face { font-family: VolkswagenTS-Regular; src: url(http://www.bpel.de/wp-content/themes/camunda-v2/assets/css/VolkswagenTS-Regular.otf); }
+@font-face { font-family: VolkswagenTS-Regular; src: url(VolkswagenTS-Regular.otf); }
 
 /** 
  * loaded to remove angular template flicker on site load
