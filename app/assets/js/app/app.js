@@ -113,8 +113,32 @@ angular
 
 
 
-        $routeProvider.when('/events/start-events', {
-            templateUrl: 'partials/implement/events/start-events.html',
+        $routeProvider.when('/events/event-overview', {
+            templateUrl: 'partials/implement/events/event-overview.html',
+            controller: 'DefaultController'
+        });
+        $routeProvider.when('/events/none-events', {
+            templateUrl: 'partials/implement/events/none-events.html',
+            controller: 'DefaultController'
+        });
+        $routeProvider.when('/events/timer-events', {
+            templateUrl: 'partials/implement/events/timer-events.html',
+            controller: 'DefaultController'
+        });
+        $routeProvider.when('/events/message-events', {
+            templateUrl: 'partials/implement/events/message-events.html',
+            controller: 'DefaultController'
+        });
+        $routeProvider.when('/events/error-events', {
+            templateUrl: 'partials/implement/events/error-events.html',
+            controller: 'DefaultController'
+        });
+        $routeProvider.when('/events/signal-events', {
+            templateUrl: 'partials/implement/events/signal-events.html',
+            controller: 'DefaultController'
+        });
+        $routeProvider.when('/events/cancel-and-compensation-events', {
+            templateUrl: 'partials/implement/events/cancel-and-compensation-events.html',
             controller: 'DefaultController'
         });
 
