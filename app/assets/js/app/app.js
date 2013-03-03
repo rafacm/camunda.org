@@ -151,28 +151,58 @@ angular
 
 
 
-        $routeProvider.when('/subprocess/embedded-subprocess', {
-            templateUrl: 'partials/implement/subprocess/embedded-subprocess.html',
+        $routeProvider.when('/subprocesses/embedded-subprocess', {
+            templateUrl: 'partials/implement/subprocesses/embedded-subprocess.html',
             controller: 'DefaultController'
         });
-        $routeProvider.when('/subprocess/call-activity', {
-            templateUrl: 'partials/implement/subprocess/call-activity.html',
+        $routeProvider.when('/subprocesses/call-activity', {
+            templateUrl: 'partials/implement/subprocesses/call-activity.html',
             controller: 'DefaultController'
         });
-        $routeProvider.when('/subprocess/event-subprocess', {
-            templateUrl: 'partials/implement/subprocess/event-subprocess.html',
+        $routeProvider.when('/subprocesses/event-subprocess', {
+            templateUrl: 'partials/implement/subprocesses/event-subprocess.html',
             controller: 'DefaultController'
         });
-        $routeProvider.when('/subprocess/transaction-subprocess', {
-            templateUrl: 'partials/implement/subprocess/transaction-subprocess.html',
+        $routeProvider.when('/subprocesses/transaction-subprocess', {
+            templateUrl: 'partials/implement/subprocesses/transaction-subprocess.html',
             controller: 'DefaultController'
         });
         
+        $routeProvider.when('/gateways/exclusive-gateway', {
+            templateUrl: 'partials/implement/gateways/exclusive-gateway.html',
+            controller: 'DefaultController'
+        });
+        $routeProvider.when('/gateways/parallel-gateway', {
+            templateUrl: 'partials/implement/gateways/parallel-gateway.html',
+            controller: 'DefaultController'
+        });
+        $routeProvider.when('/gateways/inclusive-gateway', {
+            templateUrl: 'partials/implement/gateways/inclusive-gateway.html',
+            controller: 'DefaultController'
+        });
+        $routeProvider.when('/gateways/event-based-gateway', {
+            templateUrl: 'partials/implement/gateways/event-based-gateway.html',
+            controller: 'DefaultController'
+        });
+        $routeProvider.when('/gateways/sequence-flow', {
+            templateUrl: 'partials/implement/gateways/sequence-flow.html',
+            controller: 'DefaultController'
+        });
 
         $routeProvider.when('/concepts/listeners', {
             templateUrl: 'partials/implement/concepts/listeners.html',
             controller: 'DefaultController'
         });
+        $routeProvider.when('/concepts/custom-extensions', {
+            templateUrl: 'partials/implement/concepts/custom-extensions.html',
+            controller: 'DefaultController'
+        });
+        $routeProvider.when('/concepts/listeners', {
+            templateUrl: 'partials/implement/concepts/listeners.html',
+            controller: 'DefaultController'
+        });
+
+
 
         $routeProvider.when('/concepts/error-handling', {
             templateUrl: 'partials/implement/concepts/error-handling.html',
