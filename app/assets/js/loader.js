@@ -15,18 +15,17 @@ $script([
 	'lib/jquery-1.7.2.min'],  function() {
 
 		$script([
-      'lib/superscrollorama/js/greensock/TweenMax.min',
-      'lib/superscrollorama/js/jquery.superscrollorama',
-      'lib/tweet/jquery.tweet',
+		    'lib/superscrollorama/js/greensock/TweenMax.min',
+		    'lib/superscrollorama/js/jquery.superscrollorama',
+      		'lib/tweet/jquery.tweet',
 			'lib/jquery-fastLiveFilter/jquery.fastLiveFilter',
-			'lib/bootstrap/bootstrap.min',
-			//'lib/angular/angular-resource.min',
+			'lib/bootstrap/bootstrap.min',			
 			'lib/angular/angular.min',
-      'lib/angular/angular-resource.min',
 			'lib/jquery-validation/dist/jquery.validate.min'
 			], function() {
 			
 				$script([
+					'lib/angular/angular-resource.min',
 					'app/app',
 					'app/cabpmn',
 					'app/ca-bpmn', 
@@ -48,7 +47,7 @@ $script([
 					'app/controllers/home',
 					'app/controllers/numberguess',
 					'app/controllers/implement',
-          'app/controllers/roadmap'
+          			'app/controllers/roadmap'
 
 				], function() {
 					angular.bootstrap(document, ['camundaorg']);
