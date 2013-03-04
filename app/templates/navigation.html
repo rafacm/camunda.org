@@ -28,43 +28,50 @@
 <!--            <li ng-class="activeClass('/design-')"><a href="design-tutorial.html" >Design</a></li>-->
 
 
-            <li class="dropdown" ng-class="activeClass('/design-')">
-              <a href="design.html" class="dropdown-toggle" data-toggle="dropdown">Design <b class="caret"></b></a>
-              <ul class="dropdown-menu">                
-        <li ng-class="activeClass('/design-overview.html')"><a href="design-overview.html">Overview</a></li>  
-              <li class="divider"></li>    
-
-              <li class="nav-header">BPMN 2.0 Modeler</li>      
-              <li><a href="design-tutorial.html">Modeler Setup</a></li>  
-			  <li><a href="design-tutorial.html">Creating BPMN 2.0 Diagrams</a></li>  
-              <li class="divider"></li>    
-              <li class="nav-header">BPMN 2.0 Roundtrip</li>      
-              <li><a href="design-tutorial.html">Cycle Setup</a></li>  
-        <li ng-class="activeClass('/design-cycle-tutorial.html')"><a href="design-cycle-tutorial.html">Working with different Modelers</a></li>  
-              <li class="divider"></li>    
+            <li ng-class="activeClass('/design-')">
+              <a href="design-overview.html" class="caret-before">Design</a>
+            </li>
+            <li class="dropdown">
+              <a class="dropdown-toggle caret-after" data-toggle="dropdown">
+              <b class="caret"></b></a>
+              <ul class="dropdown-menu">
+              <li ng-class="activeClass('/design-overview.html')"><a href="design-overview.html">Overview</a></li>
+              <li class="divider"></li>
+              <li class="nav-header">BPMN 2.0 Modeler</li>
+              <li><a href="design-tutorial.html">Modeler Setup</a></li>
+			        <li><a href="design-tutorial.html">Creating BPMN 2.0 Diagrams</a></li>
+              <li class="divider"></li>
+              <li class="nav-header">BPMN 2.0 Roundtrip</li>
+              <li><a href="design-tutorial.html">Cycle Setup</a></li>
+              <li ng-class="activeClass('/design-cycle-tutorial.html')"><a href="design-cycle-tutorial.html">Working with different Modelers</a></li>
+              <li class="divider"></li>
 
 			  <!--
-              <li class="nav-header">BPMN 2.0 Best Practices</li>      
-              <li><a href="design-tutorial.html">camunda Framework</a></li>  
-			  <li><a href="design-tutorial.html">Modeling Guidelines</a></li>  
-			  <li><a href="design-tutorial.html">Design Patterns</a></li>  			 
-              <li class="divider"></li>    
+              <li class="nav-header">BPMN 2.0 Best Practices</li>
+              <li><a href="design-tutorial.html">camunda Framework</a></li>
+			  <li><a href="design-tutorial.html">Modeling Guidelines</a></li>
+			  <li><a href="design-tutorial.html">Design Patterns</a></li>
+              <li class="divider"></li>
 			  -->
-              <li class="nav-header">BPMN 2.0 Tutorial</li>      
-              <li ng-class="activeClass('/design-tutorial.html')"><a href="design-tutorial.html">Introduction</a></li>  
-              <li ng-class="activeClass('/design-reference.html')"><a href="design-reference.html#/design/reference">Symbol Reference</a></li>  
+              <li class="nav-header">BPMN 2.0 Tutorial</li>
+              <li ng-class="activeClass('/design-tutorial.html')"><a href="design-tutorial.html">Introduction</a></li>
+              <li ng-class="activeClass('/design-reference.html')"><a href="design-reference.html#/design/reference">Symbol Reference</a></li>
               <!--
               <li><a href="tasks.html">Tasks, Gateways & Lanes</a></li>
-			  <li><a href="events.html">Events</a></li>  
-			  <li><a href="subprocesses.html">Subprocesses</a></li>  
-			  <li><a href="collaborations.html">Collaboration Diagrams</a></li> 
+			  <li><a href="events.html">Events</a></li>
+			  <li><a href="subprocesses.html">Subprocesses</a></li>
+			  <li><a href="collaborations.html">Collaboration Diagrams</a></li>
       -->
               </ul>
             </li>
-            <li class="dropdown" ng-class="activeClass('/implement')">
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown">Implement <b class="caret"></b></a>
+            <li ng-class="activeClass('/implement')">
+              <a href="implement.html" class="caret-before">Implement</a>
+            </li>
+            <li class="dropdown">
+              <a class="dropdown-toggle caret-after" data-toggle="dropdown">
+              <b class="caret"></b></a>
               <ul class="dropdown-menu">
-                <li ng-class="activeClass('/implement.html')"><a href="implement.html">Overview</a></li>       
+                <li ng-class="activeClass('/implement.html')"><a href="implement.html">Overview</a></li>
                 <li><a href="#">Implementation Patterns</a></li>      
                 <li class="divider"></li>    
                 <li class="nav-header">Process Engine</li>

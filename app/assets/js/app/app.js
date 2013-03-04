@@ -1,7 +1,7 @@
 'use strict';
 
 angular
-  .module('camundaorg', ['ng', 'camundaorg.filters', 'camundaorg.services', 'camundaorg.directives'])
+  .module('camundaorg', ['ng', 'ngResource', 'camundaorg.filters', 'camundaorg.services', 'camundaorg.directives'])
 
   .config(function ($routeProvider) {
 
@@ -113,8 +113,32 @@ angular
 
 
 
-        $routeProvider.when('/events/start-events', {
-            templateUrl: 'partials/implement/events/start-events.html',
+        $routeProvider.when('/events/event-overview', {
+            templateUrl: 'partials/implement/events/event-overview.html',
+            controller: 'DefaultController'
+        });
+        $routeProvider.when('/events/none-events', {
+            templateUrl: 'partials/implement/events/none-events.html',
+            controller: 'DefaultController'
+        });
+        $routeProvider.when('/events/timer-events', {
+            templateUrl: 'partials/implement/events/timer-events.html',
+            controller: 'DefaultController'
+        });
+        $routeProvider.when('/events/message-events', {
+            templateUrl: 'partials/implement/events/message-events.html',
+            controller: 'DefaultController'
+        });
+        $routeProvider.when('/events/error-events', {
+            templateUrl: 'partials/implement/events/error-events.html',
+            controller: 'DefaultController'
+        });
+        $routeProvider.when('/events/signal-events', {
+            templateUrl: 'partials/implement/events/signal-events.html',
+            controller: 'DefaultController'
+        });
+        $routeProvider.when('/events/cancel-and-compensation-events', {
+            templateUrl: 'partials/implement/events/cancel-and-compensation-events.html',
             controller: 'DefaultController'
         });
 
@@ -151,28 +175,58 @@ angular
 
 
 
-        $routeProvider.when('/subprocess/embedded-subprocess', {
-            templateUrl: 'partials/implement/subprocess/embedded-subprocess.html',
+        $routeProvider.when('/subprocesses/embedded-subprocess', {
+            templateUrl: 'partials/implement/subprocesses/embedded-subprocess.html',
             controller: 'DefaultController'
         });
-        $routeProvider.when('/subprocess/call-activity', {
-            templateUrl: 'partials/implement/subprocess/call-activity.html',
+        $routeProvider.when('/subprocesses/call-activity', {
+            templateUrl: 'partials/implement/subprocesses/call-activity.html',
             controller: 'DefaultController'
         });
-        $routeProvider.when('/subprocess/event-subprocess', {
-            templateUrl: 'partials/implement/subprocess/event-subprocess.html',
+        $routeProvider.when('/subprocesses/event-subprocess', {
+            templateUrl: 'partials/implement/subprocesses/event-subprocess.html',
             controller: 'DefaultController'
         });
-        $routeProvider.when('/subprocess/transaction-subprocess', {
-            templateUrl: 'partials/implement/subprocess/transaction-subprocess.html',
+        $routeProvider.when('/subprocesses/transaction-subprocess', {
+            templateUrl: 'partials/implement/subprocesses/transaction-subprocess.html',
             controller: 'DefaultController'
         });
         
+        $routeProvider.when('/gateways/exclusive-gateway', {
+            templateUrl: 'partials/implement/gateways/exclusive-gateway.html',
+            controller: 'DefaultController'
+        });
+        $routeProvider.when('/gateways/parallel-gateway', {
+            templateUrl: 'partials/implement/gateways/parallel-gateway.html',
+            controller: 'DefaultController'
+        });
+        $routeProvider.when('/gateways/inclusive-gateway', {
+            templateUrl: 'partials/implement/gateways/inclusive-gateway.html',
+            controller: 'DefaultController'
+        });
+        $routeProvider.when('/gateways/event-based-gateway', {
+            templateUrl: 'partials/implement/gateways/event-based-gateway.html',
+            controller: 'DefaultController'
+        });
+        $routeProvider.when('/gateways/sequence-flow', {
+            templateUrl: 'partials/implement/gateways/sequence-flow.html',
+            controller: 'DefaultController'
+        });
 
         $routeProvider.when('/concepts/listeners', {
             templateUrl: 'partials/implement/concepts/listeners.html',
             controller: 'DefaultController'
         });
+        $routeProvider.when('/concepts/custom-extensions', {
+            templateUrl: 'partials/implement/concepts/custom-extensions.html',
+            controller: 'DefaultController'
+        });
+        $routeProvider.when('/concepts/listeners', {
+            templateUrl: 'partials/implement/concepts/listeners.html',
+            controller: 'DefaultController'
+        });
+
+
 
         $routeProvider.when('/concepts/error-handling', {
             templateUrl: 'partials/implement/concepts/error-handling.html',
