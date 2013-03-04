@@ -2,9 +2,17 @@
 <html lang="en">
   <head>
     <title>camunda.org - the camunda bpm community homepage</title>
+    <meta charset="utf-8">
     
-    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <!--
+    <meta name="description"
+          content="camunda.org">
+    -->
+
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <meta name="fragment" content="!">
 
     <meta name="author" content="camunda.org community" />
     
@@ -29,54 +37,45 @@
 
         <div class="row-fluid doc">
 
-          <div class="span3 well"> 
+          <div class="span3">
+            <form class="well form-search" section="engine" ng-submit="updateSearch()">
+              <div class="input-prepend dropdown search" ng-class="{ open: focused && bestMatch.rank > 0 && bestMatch.page != currentPage}">
+                <span class="add-on">
+                  <i class="icon-search"></i>
+                </span>
+                <input type="text" tabindex="1" accesskey="s" focused="focused" ng-model="search" placeholder="search the docs" />
+                <ul class="dropdown-menu">
+                  <li>
+                    <a href="{{ bestMatch.page.url }}">{{ bestMatch.page.shortName }}</a>
+                  </li>
+                </ul>
+              </div>
 
-            <ul class="nav nav-list well">
-              <li class="nav-header module">Introduction</li>
-              <li><a href="#" doc-location-highlight>BPMN 2.0 Overview and Coverage</a></li>
-              <li><a href="#" doc-location-highlight>Custom Extensions</a></li>
-              <li><a href="#/concepts/listeners" doc-location-highlight>Listeners</a></li>
-            </ul>
+              <div class="spacer"></div>
 
-            <ul class="nav nav-list well">
-              <li class="nav-header module">Tasks</li>
-              <li><a href="#" doc-location-highlight>Overview</a></li>
-              <li><a href="#/tasks/service-task" doc-location-highlight>Service Task</a></li>
-              <li><a href="#/tasks/user-task" doc-location-highlight>User Task</a></li>
-              <li><a href="#/tasks/script-task" doc-location-highlight>Script Task</a></li>
-              <li><a href="#/tasks/business-rule-task" doc-location-highlight>Business Rule Task</a></li>
-              <li><a href="#/tasks/manual-task" doc-location-highlight>Manual Task</a></li>
-              <li><a href="#/tasks/receive-task" doc-location-highlight>Receive Task</a></li>
-              <li><a href="#/tasks/markers" doc-location-highlight>Task Markers (Multiple Instance, Loop and Compensation)</a></li>
-            </ul>
+              <div ng-show="search">Filtered results:</div>
 
-            <ul class="nav nav-list well">
-              <li class="nav-header module">Subprocesses</li>
-              <li><a href="#/subprocess/embedded-subprocess" doc-location-highlight>Embedded Subprocesses</a></li>
-              <li><a href="#/subprocess/call-activity" doc-location-highlight>Call Activity</a></li>
-              <li><a href="#/subprocess/event-subprocess" doc-location-highlight>Event Subprocess</a></li>
-              <li><a href="#/subprocess/transaction-subprocess" doc-location-highlight>Transaction Subprocess</a></li>
-            </ul>
+              <ul class="nav nav-list" ng-hide="categories.length">
+                <li ng-repeat="page in pages" ng-class="navClass(page)">
+                  <a href="#{{ page.url }}" tabindex="2">{{ page.shortName || page.name }}</a>
+                </li>
+              </ul>
 
-            <ul class="nav nav-list well">
-              <li class="nav-header module">Events</li>
-              <li><a href="#/events/start-events" doc-location-highlight>Overview and Basic Concepts</a></li>
-              <li><a href="#/events/" doc-location-highlight>Blank</a></li>
-              <li><a href="#/events/" doc-location-highlight>Message</a></li>
-              <li><a href="#/events/" doc-location-highlight>Timer</a></li>
-              <li><a href="#/events/" doc-location-highlight>Error</a></li>
-              <li>...</li>
-              <li><a href="#/events/" doc-location-highlight>Compensation</a></li>
-            </ul>
+              <ul class="nav nav-list well" ng-repeat="category in categories">
+                <li class="nav-header module">
+                  <a href="{{ category.url }}">{{ category.name }}</a>
+                </li>
 
-
+                <li ng-repeat="page in category.pages" ng-class="navClass(page)">
+                  <a href="{{ page.url }}" tabindex="2">{{ page.shortName || page.name }}</a>
+                </li>
+              </ul>
+            </form>
           </div>
 
           <div class="span9"> 
             <div data-ng-view />
           </div>
-
-
         </div>
 
       </div>
@@ -88,7 +87,7 @@
 
       <!-- loads all javascript -->
       <script src="assets/js/loader.js"></script>
-    <script src="assets/js/app/cabpmn.js"></script>
+      <script src="assets/js/app/cabpmn.js"></script>
     </footer>
   </body>
 </html>

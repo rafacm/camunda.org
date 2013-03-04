@@ -1,0 +1,23 @@
+CAM_PAGES = [
+  { section: "engine", category: "Introduction", id: "bpmn-overview", name: "BPMN 2.0 Overview and Coverage", keywords: "bpmn introduction overview coverage" },
+  { section: "engine", category: "Introduction", id: "extensions", name: "Custom Extensions", keywords: "" },
+  { section: "engine", category: "Introduction", id: "listeners", name: "Listeners", keywords: "" },
+  { section: "engine", category: "Tasks", id: "tasks-overview", name: "Overview", keywords: "" },
+  { section: "engine", category: "Tasks", id: "service-task", name: "Service Task", keywords: "" },
+  { section: "engine", category: "Tasks", id: "user-task", name: "User Task", keywords: "" },
+  { section: "engine", category: "Tasks", id: "script-task", name: "Script Task", keywords: "" },
+  { section: "engine", category: "Tasks", id: "business-rule-task", name: "Business Rule Task", keywords: "" },
+  { section: "engine", category: "Tasks", id: "manual-task", name: "Manual Task", keywords: "" },
+  { section: "engine", category: "Tasks", id: "task-markers", name: "Task Markers (Multiple Instance, Loop and Compensation)", keywords: "" },
+  { section: "engine", category: "Tasks", id: "manual-task", name: "Manual Task", keywords: "" },
+  { section: "engine", category: "Subprocesses", id: "embedded-subprocess", name: "Embedded Subprocesses", keywords: "" },
+  { section: "engine", category: "Subprocesses", id: "call-activity", name: "Call Activity", keywords: "" },
+  { section: "engine", category: "Subprocesses", id: "event-subprocess", name: "Event Subprocess", keywords: "" },
+  { section: "engine", category: "Subprocesses", id: "transaction-subprocess", name: "Transaction Subprocess", keywords: "" },
+  { section: "engine", category: "Events", id: "events-overview", name: "Overview and Basic Concepts", keywords: "" },
+  { section: "engine", category: "Events", id: "blank-event", name: "Blank Event", keywords: "" },
+  { section: "engine", category: "Events", id: "message-event", name: "Message Event", keywords: "" },
+  { section: "engine", category: "Events", id: "timer-event", name: "Timer Event", keywords: "" },
+  { section: "engine", category: "Events", id: "error-event", name: "Error Event", keywords: "" },
+  { section: "engine", category: "Events", id: "compensation-event", name: "Compensation Event", keywords: "" }
+];
