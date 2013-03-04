@@ -1,7 +1,7 @@
 'use strict';
 
 angular
-  .module('camundaorg', ['ng', 'camundaorg.filters', 'camundaorg.services', 'camundaorg.directives'])
+  .module('camundaorg', ['ng', 'ngResource', 'camundaorg.filters', 'camundaorg.services', 'camundaorg.directives'])
 
   .config(function ($routeProvider) {
 

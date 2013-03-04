@@ -87,9 +87,35 @@
         <div class="span12">
           <h2>Core Team</h2>
           Coole Team-Darstellung...
-          <div class="row-fluid>">
-
-          </div>
+        </div>
+      </div>
+      <div class="row-fluid" ng-controller="RoadmapController">
+        <div class="span12" ng-repeat="roadmapRow in roadmapRows">
+          <h2>Roadmap</h2>
+          <div class="info" ng-show="{{roadmapErrorText!=''}}">{{roadmapErrorText}}</div>
+          <table class="table table-striped">
+	  				<tr>
+	  					<th>Prio</th>
+	  					<th>Item + Link</th>
+	  					<th>Component</th>
+	  					<th>OSS/EE</th>
+	  					<th>Status</th>
+	  					<th>Release</th>
+	  					<th>Contributor</th>
+	  				</tr>
+	  				<tr ng-repeat="roadmapValue in roadmapRow">
+	  					<td>{{roadmapValue.Prio}}</td>
+	  					<td>
+	  						<a href="{{roadmapValue.URL}}" target="_blank" ng-show="isNotNull(roadmapValue.URL)">{{roadmapValue["Item + Link"]}}</a>
+	  						<span ng-show="!isNotNull(roadmapValue.URL)">{{roadmapValue["Item + Link"]}}</span>
+	  					</td>
+	  					<td>{{roadmapValue.Compnent}}</td>
+	  					<td>{{roadmapValue["OSS/EE"]}}</td>
+	  					<td>{{roadmapValue.Status}}</td>
+	  					<td>{{roadmapValue.Release}}</td>
+	  					<td>{{roadmapValue.Contributor}}</td>
+	  				</tr>
+	  			</table>
         </div>
       </div>
 

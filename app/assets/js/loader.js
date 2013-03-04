@@ -20,6 +20,7 @@ $script([
 			'lib/bootstrap/bootstrap.min',
 			//'lib/angular/angular-resource.min',
 			'lib/angular/angular.min',
+      'lib/angular/angular-resource.min',
 			'lib/jquery-validation/dist/jquery.validate.min'
 			], function() {
 			
@@ -44,7 +45,8 @@ $script([
 					'app/controllers/default',
 					'app/controllers/home',
 					'app/controllers/numberguess',
-					'app/controllers/implement'
+					'app/controllers/implement',
+          'app/controllers/roadmap'
 
 				], function() {
 					 angular.bootstrap(document, ['camundaorg']);
