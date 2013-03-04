@@ -12,10 +12,12 @@ $script([
 	'lib/google-code-prettify/prettify.min',
 	'lib/raphaeljs/raphael',
 	'lib/markdownjs/markdown',
-	'lib/jquery-1.7.2.min',],  function() {
+	'lib/jquery-1.7.2.min'],  function() {
 
 		$script([
-			'lib/tweet/jquery.tweet',
+      'lib/superscrollorama/js/greensock/TweenMax.min',
+      'lib/superscrollorama/js/jquery.superscrollorama',
+      'lib/tweet/jquery.tweet',
 			'lib/jquery-fastLiveFilter/jquery.fastLiveFilter',
 			'lib/bootstrap/bootstrap.min',
 			//'lib/angular/angular-resource.min',
@@ -47,7 +49,7 @@ $script([
 					'app/controllers/implement'
 
 				], function() {
-					 angular.bootstrap(document, ['camundaorg']);
+					angular.bootstrap(document, ['camundaorg']);
 				});
 		});
 
