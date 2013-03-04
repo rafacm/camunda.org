@@ -7,6 +7,15 @@ function DefaultController($scope, $location) {
   // Bread Crumb 
   var breadCrumbs = $scope.breadCrumbs = [];
 
+  $scope.initFade = function () {
+    $(document).ready(function() {
+      var controller = $.superscrollorama();
+
+      controller.addTween('#desgin-implement-img', TweenMax.from( $('#desgin-implement-img'), 1.0, {css:{opacity: 0}}), 0, -300);
+      controller.addTween('#desgin-implement-fork', TweenMax.from( $('#desgin-implement-fork'), 1.0, {css:{opacity: 0}}), 0, -300);
+    });
+  };
+
   $scope.$on("navigation-changed", function(event, navigationItem) {
     if (!navigationItem) {
       breadCrumbs.splice(0, breadCrumbs.length);
