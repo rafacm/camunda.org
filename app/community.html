@@ -103,13 +103,13 @@
 	  					<th>Release</th>
 	  					<th>Contributor</th>
 	  				</tr>
-	  				<tr ng-repeat="roadmapValue in roadmapRow">
+	  				<tr ng-repeat="roadmapValue in roadmapRow" ng-show="isNotNull(roadmapValue['OSS/EE'])">
 	  					<td>{{roadmapValue.Prio}}</td>
 	  					<td>
 	  						<a href="{{roadmapValue.URL}}" target="_blank" ng-show="isNotNull(roadmapValue.URL)">{{roadmapValue["Item + Link"]}}</a>
 	  						<span ng-show="!isNotNull(roadmapValue.URL)">{{roadmapValue["Item + Link"]}}</span>
 	  					</td>
-	  					<td>{{roadmapValue.Compnent}}</td>
+	  					<td>{{roadmapValue.Component}}</td>
 	  					<td>{{roadmapValue["OSS/EE"]}}</td>
 	  					<td>{{roadmapValue.Status}}</td>
 	  					<td>{{roadmapValue.Release}}</td>

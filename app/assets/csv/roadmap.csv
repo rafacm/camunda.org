@@ -1,4 +1,4 @@
-Prio;Item + Link;Compnent;OSS/EE;URL;Status;Release;Contributor
+Prio;Item + Link;Component;OSS/EE;URL;Status;Release;Contributor
 1;New REST API for Process Applications;engine;OSS;https://app.camunda.com/jira/secure/RapidBoard.jspa?rapidView=23&view=planning&selectedIssue=CAM-249&selectedEpic=CAM-9;ongoing;7.0;camunda
 2;Modelling Convenience Improvements;modeler;OSS;https://app.camunda.com/jira/secure/RapidBoard.jspa?rapidView=23&view=planning&selectedIssue=CAM-249&selectedEpic=CAM-338;ongoing;7.0;camunda
 3;Standalone Eclipse Distribution;modeler;OSS;;open;7.0;camunda
