@@ -236,7 +236,15 @@ angular
             templateUrl: 'partials/implement/concepts/cdi.html',
             controller: 'DefaultController'
         });
-
+	
+	$routeProvider.when('/rest/overview', {
+            templateUrl: 'partials/implement/rest/overview.html',
+            controller: 'DefaultController'
+        });
+	$routeProvider.when('/rest/process-definition/get', {
+            templateUrl: 'partials/implement/rest/process-definition/get.html',
+            controller: 'DefaultController'
+        });
     });
 
 

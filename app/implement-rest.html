@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>camunda.org - the camunda bpm community homepage</title>
+    
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <meta name="author" content="camunda.org community" />
+    
+    <!-- loads all stylesheets -->
+    <link href="assets/css/loader.css" rel="stylesheet" />
+
+    <!-- For IE6-8 support of HTML5 elements -->
+    <!--[if lt IE 9]>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+     
+    <base app-base="." />
+
+  </head>
+  <body ng-controller="DefaultController" >
+    <div class="wrapper">
+      <!-- navigation -->
+      <div data-ng-include=" 'templates/navigation.html' "></div>
+
+      <div class="container">
+        <div data-ng-include=" 'templates/breadcrumbs.html' "></div>
+
+        <div class="row-fluid doc">
+
+          <div class="span3 well"> 
+            <ul class="nav nav-list well">
+              <li class="nav-header module">Introduction</li>
+              <li><a href="#/rest/overview" doc-location-highlight>Overview and Coverage</a></li>
+              <!--<li><a href="#/concepts/custom-extensions" doc-location-highlight>Custom Extensions</a></li>
+              <li><a href="#/concepts/listeners" doc-location-highlight>Listeners</a></li>-->
+            </ul>
+            <ul class="nav nav-list well">
+              <li class="nav-header module">Process Definition</li>
+              <li><a href="#/rest/process-definition/get" doc-location-highlight>Retrieve single definition</a></li>
+              <li><a href="#" doc-location-highlight>Query</a></li>
+              <li><a href="#" doc-location-highlight>Query Count</a></li>
+              <li><a href="#" doc-location-highlight>Bpmn 2.0 XML</a></li>
+              <li><a href="#" doc-location-highlight>Start Process Instance</a></li>
+              <li><a href="#" doc-location-highlight>Process Instance Statistics</a></li>
+              <li><a href="#" doc-location-highlight>Activity Instance Statistics</a></li>
+            </ul>
+            <ul class="nav nav-list well">
+              <li class="nav-header module">Process Instance</li>
+              <li><a href="#" doc-location-highlight>Query</a></li>
+              <li><a href="#" doc-location-highlight>Query Count</a></li>
+            </ul>
+            <ul class="nav nav-list well">
+              <li class="nav-header module">/task</li>
+              <li><a href="#" doc-location-highlight>GET</a></li>
+              <li><a href="#" doc-location-highlight>GET /count</a></li>
+              <li><a href="#" doc-location-highlight>POST</a></li>
+              <li><a href="#" doc-location-highlight>POST /count</a></li>
+              <li><a href="#" doc-location-highlight>POST /{id}/claim</a></li>
+              <li><a href="#" doc-location-highlight>POST /{id}/complete</a></li>
+            </ul>
+          </div>
+
+          <div class="span9"> 
+            <div data-ng-view />
+          </div>
+        </div>
+      </div>
+      <div class="push-down"><!-- // --></div> 
+    </div>
+    <!-- footer -->
+    <footer class="footer">
+      <div data-ng-include=" 'templates/footer.html' "></div>
+
+      <!-- loads all javascript -->
+      <script src="assets/js/loader.js"></script>
+    <script src="assets/js/app/cabpmn.js"></script>
+    </footer>
+  </body>
+</html>
