@@ -273,6 +273,27 @@ angular
             templateUrl: 'partials/implement/rest/process-definition/get-start-form.html',
             controller: 'DefaultController'
         });
+	
+	$routeProvider.when('/rest/process-instance/get-query', {
+            templateUrl: 'partials/implement/rest/process-instance/get-query.html',
+            controller: 'DefaultController'
+        });
+	$routeProvider.when('/rest/process-instance/get-query-count', {
+            templateUrl: 'partials/implement/rest/process-instance/get-query-count.html',
+            controller: 'DefaultController'
+        });
+	$routeProvider.when('/rest/process-instance/post-query', {
+            templateUrl: 'partials/implement/rest/process-instance/post-query.html',
+            controller: 'DefaultController'
+        });
+	$routeProvider.when('/rest/process-instance/post-query-count', {
+            templateUrl: 'partials/implement/rest/process-instance/post-query-count.html',
+            controller: 'DefaultController'
+        });
+	$routeProvider.when('/rest/process-instance/get-variables', {
+            templateUrl: 'partials/implement/rest/process-instance/get-variables.html',
+            controller: 'DefaultController'
+        });
     });
 
 
