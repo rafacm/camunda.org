@@ -1,0 +1,110 @@
+<section id="rest-process-definition-get">
+
+  <div class="page-header">
+      <h1>Activity Instance Statistics</h1>
+  </div>
+  <p>
+    Retrieves runtime statistics of a given process definition grouped by activities.
+    These statistics include the number of running activity instances and optionally the number of failed jobs.<br/>
+    <strong>Note:</strong> This does not include historic data.
+  </p>
+  
+  <h2>Method</h2>  
+  <p>
+    <div>GET <code>/process-definition/{id}/statistics</code></div>
+  </p>
+  
+  <h2>Parameters</h2>
+  <p>
+    <h4>Path Parameters</h4>
+    <table class="table table-striped">
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+      <tr>
+        <td>id</td>
+        <td>The id of the process definition.</td>
+      </tr>
+    </table>
+  </p>
+  <p>
+    <h4>Query Parameters</h4>
+    <table class="table table-striped">
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+      <tr>
+        <td>failedJobs</td>
+        <td>Whether to include the number of failed jobs in the result or not. Valid values are <code>true</code> or <code>false</code>.</td>
+      </tr>
+    </table>
+  </p>
+  
+  <h2>Result</h2>  
+  <p>
+    A json array containing statistics results per activity.
+    Each object has the following properties:
+    <table class="table table-striped">
+      <tr>
+        <th>Name</th>
+        <th>Value</th>
+        <th>Description</th>
+      </tr>
+      <tr>
+        <td>id</td>
+        <td>String</td>
+        <td>The id of the activity the results are aggregated for.</td>
+      </tr>
+      <tr>
+        <td>instances</td>
+        <td>Number</td>
+        <td>The total number of running instances of this activity.</td>
+      </tr>
+      <tr>
+        <td>failedJobs</td>
+        <td>Number</td>
+        <td>The total number of failed jobs for the running instances.<br/>
+        <strong>Note:</strong> Will be <code>0</code> (not <code>null</code>), if failed jobs were excluded.</td>
+      </tr>
+    </table>
+  </p>
+  
+  <h2>Response codes</h2>  
+  <p>
+    <table class="table table-striped">
+      <tr>
+        <th>Code</th>
+        <th>Media type</th>
+        <th>Description</th>
+      </tr>
+      <tr>
+        <td>200</td>
+        <td>application/json</td>
+        <td>Request successful.</td>
+      </tr>
+    </table>
+  </p>
+  
+  <h2>Example</h2>
+  <h4>Request</h4>
+  <p>
+    <!-- TODO: Insert a 'real' example -->
+    GET <code>/process-definition/aProcessDefinitionId/statistics?failedJobs=true</code>
+  </p>
+  <h4>Response</h4>
+  <p>
+    <div class="app-source" app-source-no-tabs="get-activity-statistics-result"></div>
+    <script type="application/json" id="get-activity-statistics-result">
+      [{"id":"anActivity",
+       "instances":123,
+       "failedJobs":42
+       },
+       {"id":"anotherActivity",
+       "instances":124,
+       "failedJobs":43}]
+    </script>
+  </p>
+     
+</section>

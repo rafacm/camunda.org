@@ -1,0 +1,130 @@
+<section id="rest-process-definition-get">
+
+  <div class="page-header">
+      <h1>Start Process Instance</h1>
+  </div>
+  <p>
+    Instantiates a given process definition. Process variables may be supplied in the request body.
+  </p>
+  
+  <h2>Method</h2>  
+  <p>
+    <div>POST <code>/process-definition/{id}/start</code></div>
+  </p>
+  
+  <h2>Parameters</h2>  
+  <h4>Path Parameters</h4>
+  <p>
+    <table class="table table-striped">
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+      <tr>
+        <td>id</td>
+        <td>The id of the process definition to be retrieved</td>
+      </tr>
+    </table>
+  </p>
+    
+  <p>
+    <h4>Request Body</h4>
+    A json object with the following properties:
+    <table class="table table-striped">
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+      <tr>
+        <td>variables</td>
+        <td>A json object containing the variables the process is to be initialized with.
+        Variable names are property keys of this object and variable values are property values.
+        Valid variable values are Boolean, Integer and String values.</td>
+      </tr>
+    </table>
+  </p>
+  
+  <h2>Result</h2>  
+  <p>
+    A json object representing the newly created process instance.
+    Properties are:
+    <table class="table table-striped">
+      <tr>
+        <th>Name</th>
+        <th>Value</th>
+        <th>Description</th>
+      </tr>
+      <tr>
+        <td>id</td>
+        <td>String</td>
+        <td>The id of the process instance</td>
+      </tr>
+      <tr>
+        <td>definitionId</td>
+        <td>String</td>
+        <td>The id of the process definition</td>
+      </tr>
+      <tr>
+        <td>businessKey</td>
+        <td>String</td>
+        <td>The business key of the process instance</td>
+      </tr>
+      <tr>
+        <td>ended</td>
+        <td>Boolean</td>
+        <td>A flag indicating whether the instance is still running</td>
+      </tr>
+      <tr>
+        <td>suspended</td>
+        <td>Boolean</td>
+        <td>A flag indicating whether the instance is suspended</td>
+      </tr>
+      <tr>
+        <td>links</td>
+        <td>Object</td>
+        <td>A json array containing links to interact with the instance</td>
+      </tr>
+    </table>
+  </p>
+  
+  <h2>Response codes</h2>  
+  <p>
+    <table class="table table-striped">
+      <tr>
+        <th>Code</th>
+        <th>Media type</th>
+        <th>Description</th>
+      </tr>
+      <tr>
+        <td>200</td>
+        <td>application/json</td>
+        <td>Request successful.</td>
+      </tr>
+      <tr>
+        <td>500</td>
+        <td></td>
+        <td>The instance could not be created successfully.</td>
+      </tr>
+    </table>
+  </p>
+  
+  <h2>Example</h2>
+  <h4>Request</h4>
+  <p>
+    <!-- TODO: Insert a 'real' example -->
+    POST <code>/process-definition/aProcessDefinitionId/start</code>
+  </p>
+  <h4>Response</h4>
+  <p>
+    <div class="app-source" app-source-no-tabs="post-start-process-result"></div>
+    <script type="application/json" id="post-start-process-result">
+      {"links":[{"href":"http://localhost:8080/rest-test/process-instance/anId","rel":"self"}],
+      "id":"anId",
+      "definitionId":"aProcessDefinitionId",
+      "businessKey":null,
+      "ended":false,
+      "suspended":false}
+    </script>
+  </p>
+     
+</section>
