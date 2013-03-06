@@ -1,0 +1,97 @@
+<section id="rest-process-definition-get">
+
+  <div class="page-header">
+      <h1>Retrieve single definition</h1>
+  </div>
+  <p>
+    Retrieves all variables of a given process instance.
+  </p>
+  
+  <h2>Method</h2>  
+  <p>GET <code>/process-instance/{id}/variables</code></p>
+  
+  <h2>Parameters</h2>  
+  <h4>Path Parameters</h4>
+  <table class="table table-striped">
+    <tr>
+      <th>Name</th>
+      <th>Description</th>
+    </tr>
+    <tr>
+      <td>id</td>
+      <td>The id of the process instance to retrieve the variables for.</td>
+    </tr>
+  </table>
+  
+  <h2>Result</h2>  
+  <p>
+    A json object with a single <code>variables</code> property, which holds an array of variable objects.
+    Each variable object has the following properties:
+  </p>
+  <table class="table table-striped">
+    <tr>
+      <th>Name</th>
+      <th>Value</th>
+      <th>Description</th>
+    </tr>
+    <tr>
+      <td>name</td>
+      <td>String</td>
+      <td>The name of the process variable.</td>
+    </tr>
+    <tr>
+      <td>value</td>
+      <td>??</td>
+      <td>The value of the Java object.</td>
+    </tr>
+    <tr>
+      <td>type</td>
+      <td>String</td>
+      <td>The class name of the variable object.</td>
+    </tr>
+  </table>
+  
+  <h2>Response codes</h2>  
+  <table class="table table-striped">
+    <tr>
+      <th>Code</th>
+      <th>Media type</th>
+      <th>Description</th>
+    </tr>
+    <tr>
+      <td>200</td>
+      <td>application/json</td>
+      <td>Request successful.</td>
+    </tr>
+    <tr>
+      <td>400</td>
+      <td></td>
+      <td>Process definition with given id does not exist.</td>
+    </tr>
+  </table>
+  
+  <h2>Example</h2>
+  <h4>Request</h4>
+  <p>
+    <!-- TODO: Insert a 'real' example -->
+    GET <code>/process-instance/aProcessInstanceId/variables</code>
+  </p>
+  <h4>Response</h4>
+  <p>
+    TODO: add
+    <!--<div class="app-source" app-source-no-tabs="get-result"></div>
+    <script type="application/json" id="get-result">
+      {"id":"aProcessDefinitionId",
+      "key":"aKey",
+      "category":"aCategory",
+      "description":"aDescription",
+      "name":"aName",
+      "version":42,
+      "resource":"aResourceName",
+      "deploymentId":"aDeploymentId",
+      "diagram":"aResourceName",
+      "suspended":true}
+    </script>-->
+  </p>
+     
+</section>

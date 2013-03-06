@@ -236,7 +236,64 @@ angular
             templateUrl: 'partials/implement/concepts/cdi.html',
             controller: 'DefaultController'
         });
-
+	
+	$routeProvider.when('/rest/overview', {
+            templateUrl: 'partials/implement/rest/overview.html',
+            controller: 'DefaultController'
+        });
+	$routeProvider.when('/rest/process-definition/get', {
+            templateUrl: 'partials/implement/rest/process-definition/get.html',
+            controller: 'DefaultController'
+        });
+	$routeProvider.when('/rest/process-definition/get-query', {
+            templateUrl: 'partials/implement/rest/process-definition/get-query.html',
+            controller: 'DefaultController'
+        });
+	$routeProvider.when('/rest/process-definition/get-query-count', {
+            templateUrl: 'partials/implement/rest/process-definition/get-query-count.html',
+            controller: 'DefaultController'
+        });
+	$routeProvider.when('/rest/process-definition/get-xml', {
+            templateUrl: 'partials/implement/rest/process-definition/get-xml.html',
+            controller: 'DefaultController'
+        });
+	$routeProvider.when('/rest/process-definition/post-start-process', {
+            templateUrl: 'partials/implement/rest/process-definition/post-start-process.html',
+            controller: 'DefaultController'
+        });
+	$routeProvider.when('/rest/process-definition/get-statistics', {
+            templateUrl: 'partials/implement/rest/process-definition/get-statistics.html',
+            controller: 'DefaultController'
+        });
+	$routeProvider.when('/rest/process-definition/get-activity-statistics', {
+            templateUrl: 'partials/implement/rest/process-definition/get-activity-statistics.html',
+            controller: 'DefaultController'
+        });
+	$routeProvider.when('/rest/process-definition/get-start-form', {
+            templateUrl: 'partials/implement/rest/process-definition/get-start-form.html',
+            controller: 'DefaultController'
+        });
+	
+	$routeProvider.when('/rest/process-instance/get-query', {
+            templateUrl: 'partials/implement/rest/process-instance/get-query.html',
+            controller: 'DefaultController'
+        });
+	$routeProvider.when('/rest/process-instance/get-query-count', {
+            templateUrl: 'partials/implement/rest/process-instance/get-query-count.html',
+            controller: 'DefaultController'
+        });
+	$routeProvider.when('/rest/process-instance/post-query', {
+            templateUrl: 'partials/implement/rest/process-instance/post-query.html',
+            controller: 'DefaultController'
+        });
+	$routeProvider.when('/rest/process-instance/post-query-count', {
+            templateUrl: 'partials/implement/rest/process-instance/post-query-count.html',
+            controller: 'DefaultController'
+        });
+	$routeProvider.when('/rest/process-instance/get-variables', {
+            templateUrl: 'partials/implement/rest/process-instance/get-variables.html',
+            controller: 'DefaultController'
+        });
     });
 
 
