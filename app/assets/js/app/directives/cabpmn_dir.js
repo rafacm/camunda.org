@@ -2,6 +2,32 @@
 
 angular.module('camundaorg.directives')
 
+.directive('bpmnRender', function() {
+  require({
+        baseUrl: "./",
+        packages: [
+             { name: "dojo", location: "assets/js/lib/dojo/dojo"},
+             { name: "dojox", location: "assets/js/lib/dojo/dojox"},
+             { name: "bpmn", location: "assets/js/app/bpmn"}]
+  });
+  return {
+    link: function(scope, element, attrs) {
+      var bpmnResource = attrs.bpmnRender;
+
+      require(["bpmn/Bpmn"], function(Bpmn) {
+            new Bpmn().renderUrl("assets/bpmn/" + bpmnResource + ".bpmn", {
+                diagramElement : element[0].id,
+                width : 1,
+                height : 1,
+                overlayHtml : '<div style="position: relative; top:100%"></div>'
+            }).then(function (bpmn){
+                //bpmn.zoom(0.8);
+                //bpmn.annotate("reviewInvoice", '<span class="bluebox"  style="position: relative; top:100%">New Text</span>', ["highlight"]);
+            });
+        });
+    }
+  }
+})
 .directive('bpmnSrc', function() {
   return {
     link: function(scope, element, attrs) {
@@ -215,3 +241,68 @@ angular.module('camundaorg.directives')
     }
   }
 })
+.directive('camTweets', function() {
+  return {
+    link: function(scope, element, attrs) {
+      //alert (attrs.imgSrc);
+
+    $(element).tweet({
+          join_text: "auto",
+          query: "#activiti",
+          avatar_size: 30,
+          count: 5,
+          loading_text: "loading tweets..."
+        });      
+     
+    }
+  }
+})
+.directive('camBlogs', function() {
+  return {
+    link: function(scope, element, attrs) {
+      //alert (attrs.imgSrc);
+
+     $.getFeed({
+        url: 'http://www.bpm-guide.de/feed/?lang_view=en',
+        success: function(feed) {
+        
+            $(element).append('<h2>'
+            + '<a href="'
+            + feed.link
+            + '">'
+            + feed.title
+            + '</a>'
+            + '</h2>');
+            
+            var html = '';
+            
+            for(var i = 0; i < feed.items.length && i < 5; i++) {
+            
+                var item = feed.items[i];
+                
+                html += '<h3>'
+                + '<a href="'
+                + item.link
+                + '">'
+                + item.title
+                + '</a>'
+                + '</h3>';
+                
+                html += '<div class="updated">'
+                + item.updated
+                + '</div>';
+                
+                html += '<div>'
+                + item.description
+                + '</div>';
+            }
+            
+            $(element).append(html);
+        }    
+    });     
+     
+    }
+  }
+})
+
+

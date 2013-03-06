@@ -25,25 +25,21 @@
       <div data-ng-include=" 'templates/navigation.html' "></div>
 
       <div class="container">
-        <div data-ng-include=" 'templates/breadcrumbs.html' "></div>
+            <div style="position:relative; top:80px; text-align:center">            
+              <h1 style="color:#333">Forum Boards</h1>
+              <h3>in the camunda BPM Community</h3>
+            </div>
+<div style="position:relative; padding-top:120px">
+            <ul class="nav nav-pills">
+  <li><a href="#">BPMN 2.0 Process Design</a></li>
+  <li><a href="#">Process Application Development</a></li>
+  <li class="active"><a href="#">camunda BPM Contributors</a></li>
+</ul>
+</div>
 
-        <div class="row">
+<hr />
 
-          <div class="hero-unit" ng-controller="HomeController">
-
-          	<div class="center"> 
-          		<h1>Developer Forum</h1>
-          	</div>
-          </div>
-          
-        <ul class="breadcrumb" >
-          <li><a href="community.html">Community</a> <span class="divider">/</span></li>
-          <li class="active">Developer Forum</li>
-        </ul>
-        </div>
-
-
-<div class="row">
+<div class="row" style="position:relative; padding-top:10px;" >
 <iframe id="forum_embed"
  src="https://groups.google.com/forum/embed/?place=forum/camunda-bpm-dev&showsearch=true&showpopout=true"
  scrolling="no"
@@ -52,6 +48,7 @@
 </iframe>
 
 </div>
+
       </div>
       <div class="push-down"><!-- // --></div> 
     </div>
