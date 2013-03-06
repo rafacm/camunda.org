@@ -10,74 +10,68 @@
   </p>
   
   <h2>Method</h2>  
-  <p>
-    <div>GET <code>/process-definition/statistics</code></div>
-  </p>
+  <p>GET <code>/process-definition/statistics</code></p>
   
   <h2>Parameters</h2>  
-  <p>
-    <h4>Query Parameters</h4>
-    <table class="table table-striped">
-      <tr>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-      <tr>
-        <td>failedJobs</td>
-        <td>Whether to include the number of failed jobs in the result or not. Valid values are <code>true</code> or <code>false</code>.</td>
-      </tr>
-    </table>
-  </p>
+  <h4>Query Parameters</h4>
+  <table class="table table-striped">
+    <tr>
+      <th>Name</th>
+      <th>Description</th>
+    </tr>
+    <tr>
+      <td>failedJobs</td>
+      <td>Whether to include the number of failed jobs in the result or not. Valid values are <code>true</code> or <code>false</code>.</td>
+    </tr>
+  </table>
   
   <h2>Result</h2>  
   <p>
     A json array containing statistics results per process definition.
     Each object has the following properties:
-    <table class="table table-striped">
-      <tr>
-        <th>Name</th>
-        <th>Value</th>
-        <th>Description</th>
-      </tr>
-      <tr>
-        <td>id</td>
-        <td>String</td>
-        <td>The id of the process definition the results are aggregated for</td>
-      </tr>
-      <tr>
-        <td>instances</td>
-        <td>Number</td>
-        <td>The total number of running process instances of this process definition</td>
-      </tr>
-      <tr>
-        <td>failedJobs</td>
-        <td>Number</td>
-        <td>The total number of failed jobs for the running instances.<br/>
-        <strong>Note:</strong> Will be <code>0</code> (not <code>null</code>), if failed jobs were excluded.</td>
-      </tr>
-      <tr>
-        <td>definition</td>
-        <td>Object</td>
-        <td>The process definition with the properties as described in <a href="#/rest/process-definition/get" doc-location-highlight>GET /process-definition</a></td>
-      </tr>
-    </table>
   </p>
+  <table class="table table-striped">
+    <tr>
+      <th>Name</th>
+      <th>Value</th>
+      <th>Description</th>
+    </tr>
+    <tr>
+      <td>id</td>
+      <td>String</td>
+      <td>The id of the process definition the results are aggregated for</td>
+    </tr>
+    <tr>
+      <td>instances</td>
+      <td>Number</td>
+      <td>The total number of running process instances of this process definition</td>
+    </tr>
+    <tr>
+      <td>failedJobs</td>
+      <td>Number</td>
+      <td>The total number of failed jobs for the running instances.<br/>
+      <strong>Note:</strong> Will be <code>0</code> (not <code>null</code>), if failed jobs were excluded.</td>
+    </tr>
+    <tr>
+      <td>definition</td>
+      <td>Object</td>
+      <td>The process definition with the properties as described in <a href="#/rest/process-definition/get" doc-location-highlight>GET /process-definition</a></td>
+    </tr>
+  </table>
   
   <h2>Response codes</h2>  
-  <p>
-    <table class="table table-striped">
-      <tr>
-        <th>Code</th>
-        <th>Media type</th>
-        <th>Description</th>
-      </tr>
-      <tr>
-        <td>200</td>
-        <td>application/json</td>
-        <td>Request successful.</td>
-      </tr>
-    </table>
-  </p>
+  <table class="table table-striped">
+    <tr>
+      <th>Code</th>
+      <th>Media type</th>
+      <th>Description</th>
+    </tr>
+    <tr>
+      <td>200</td>
+      <td>application/json</td>
+      <td>Request successful.</td>
+    </tr>
+  </table>
   
   <h2>Example</h2>
   <h4>Request</h4>
@@ -86,40 +80,38 @@
     GET <code>/process-definition/statistics?failedJobs=true</code>
   </p>
   <h4>Response</h4>
-  <p>
-    <div class="app-source" app-source-no-tabs="get-statistics-result"></div>
-    <script type="application/json" id="get-statistics-result">
-      [{"id":"aProcessDefinitionId",
-       "instances":123,
-       "failedJobs":42,
-       "definition":
-          {"id":"aProcessDefinitionId",
-          "key":"aKey",
-          "category":null,
-          "description":null,
-          "name":"aName",
-          "version":0,
-          "resource":null,
-          "deploymentId":null,
-          "diagram":null,
-          "suspended":false}
-      },
-      {"id":"aProcessDefinitionId:2",
-      "instances":124,
-      "failedJobs":43,
-      "definition":
-          {"id":"aProcessDefinitionId:2",
-          "key":"aKey",
-          "category":null,
-          "description":null,
-          "name":"aName",
-          "version":0,
-          "resource":null,
-          "deploymentId":null,
-          "diagram":null,
-          "suspended":false}
-      }]
-    </script>
-  </p>
+  <div class="app-source" app-source-no-tabs="get-statistics-result"></div>
+  <script type="application/json" id="get-statistics-result">
+    [{"id":"aProcessDefinitionId",
+     "instances":123,
+     "failedJobs":42,
+     "definition":
+        {"id":"aProcessDefinitionId",
+        "key":"aKey",
+        "category":null,
+        "description":null,
+        "name":"aName",
+        "version":0,
+        "resource":null,
+        "deploymentId":null,
+        "diagram":null,
+        "suspended":false}
+    },
+    {"id":"aProcessDefinitionId:2",
+    "instances":124,
+    "failedJobs":43,
+    "definition":
+        {"id":"aProcessDefinitionId:2",
+        "key":"aKey",
+        "category":null,
+        "description":null,
+        "name":"aName",
+        "version":0,
+        "resource":null,
+        "deploymentId":null,
+        "diagram":null,
+        "suspended":false}
+    }]
+  </script>
      
 </section>
