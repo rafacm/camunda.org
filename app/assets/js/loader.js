@@ -21,7 +21,8 @@ $script([
 			'lib/jquery-fastLiveFilter/jquery.fastLiveFilter',
 			'lib/bootstrap/bootstrap.min',			
 			'lib/angular/angular.min',
-			'lib/jquery-validation/dist/jquery.validate.min'
+			'lib/jquery-validation/dist/jquery.validate.min',
+			'lib/analytics/analytics'
 			], function() {
 			
 				$script([
