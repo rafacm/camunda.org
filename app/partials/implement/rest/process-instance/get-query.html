@@ -4,7 +4,7 @@
       <h1>Query</h1>
   </div>
   <p>
-    Query for process instances that fulfill given parameters. Parameters may be statics as well as dynamic runtime properties of process instances, such as the 
+    Query for process instances that fulfill given parameters. Parameters may be static as well as dynamic runtime properties of process instances.
     The size of the result set can be retrieved by using <a href="#/rest/process-instance/get-query-count" doc-location-highlight>GET /process-instance/count</a>.
   </p>
   
@@ -49,8 +49,8 @@
     </tr>
     <tr>
       <td>variables</td>
-      <td>Only include process instances that have variables with certain values. <br/>
-      Parameter is a comma-separated list of values of the form <code>key_operator_value</code>.
+      <td>Only include process instances that has a variable with a certain value. <br/>
+      A valid parameter value has the form <code>key_operator_value</code>.
       <code>key</code> is the variable name, <code>op</code> is the comparison operator to be used and <code>value</code> the variable value.<br/>
       <strong>Note:</strong> Values are always treated as <code>String</code> objects on server side.<br/>
       <br/>
