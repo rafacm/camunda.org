@@ -1,8 +1,12 @@
 /**
- * Search and linking specific stuff
+ * Docs Navigation and Docs linking specific stuff
+ *
+ * Inspired by angular js docs
+ *
+ * @author nico.rehwaldt
  */
 
-// (function(angular, $) {
+(function(angular, $) {
   "use strict";
 
   var module = angular.module("camundaorg.directives");
@@ -22,6 +26,8 @@
 
         section.pages.push(p);
         section.pageById[p.id] = p;
+
+        p.partialUrl = "partials/" + p.section + p.url + ".html";
       }
 
       function getSection(name) {
@@ -63,27 +69,61 @@
     return new Pages(CAM_PAGES);
   };
 
-  var FormSearchController = function FormSearchController($scope, $location, Pages) {
+  var DocsNavigationController = function DocsNavigationController($scope, $location, Pages) {
+
+    $scope.currentPage = null;
 
     $scope.$watch(function getUrl() { return $location.path(); }, function(newValue) {
-      updateSearch();
+      updateSearch(newValue);
+      updatePage(newValue);
     });
 
     $scope.updateSearch = function() {
       updateSearch();
     };
 
-    function updateSearch() {
-      var allPages = Pages.getAll($scope.section),
+    $scope.navClass = function(page) {
+      return page == $scope.currentPage ? "active" : "";
+    };
+
+    $scope.submitForm = function() {
+      updateSearch();
+
+      var currentPage = $scope.currentPage,
+          bestMatch = $scope.bestMatch,
+          bestMatchPage = $scope.bestMatch.page;
+
+      $scope.search = "";
+
+      if (bestMatch.rank && currentPage != bestMatchPage) {
+        $location.path($scope.bestMatch.page.url);
+      } else {
+        updateSearch();
+      }
+    };
+
+    function getDocPages() {
+      return Pages.getAll($scope.section);
+    }
+
+    function updatePage(path) {
+      angular.forEach(getDocPages(), function(page) {
+        if (page.url == path) {
+          $scope.currentPage = page;
+        }
+      });
+    }
+
+    function updateSearch(path) {
+      var allPages = getDocPages(),
           categories = $scope.categories = [],
           cache = {},
           pages = $scope.pages = [],
           search = $scope.search,
-          bestMatch = $scope.bestMatch = { rank: 0, page: null };
+          bestMatch = { rank: 0, page: null };
 
       angular.forEach(allPages, function(page) {
         var match = rank(page, search);
-        console.log(search, page, match);
         if (!match) {
           return;
         }
@@ -128,15 +168,22 @@
         }
 
         angular.forEach(terms.toLowerCase().split(' '), function(term) {
-          var index;
+          var idx = keywords.indexOf(term);
 
           if (ranking) {
-            if (keywords.indexOf(term) == -1) {
+            if (idx == -1) {
               ranking = null;
             } else {
-              ranking.rank ++; // one point for each term found
-              if ((index = title.indexOf(term)) != -1) {
-                ranking.rank += 20 - index; // ten points if you match title
+              // one point for each term found
+              ranking.rank++;
+
+              // one additional point for every term starting with search
+              if (idx == 0) {
+                ranking.rank++;
+              }
+
+              if ((idx = title.indexOf(term)) != -1) {
+                ranking.rank += 20 - idx; // ten points if you match title
               }
             }
           }
@@ -144,13 +191,15 @@
 
         return ranking;
       }
+
+      $scope.bestMatch = bestMatch;
     }
   };
 
-  var FormSearchDirective = function FormSearchDirective() {
+  var DocsNavigationDirective = function DocsNavigationDirective() {
     return {
       restrict: 'EAC',
-      controller: FormSearchController,
+      controller: DocsNavigationController,
 
       link: function(scope, element, attributes) {
         scope.section = attributes["section"];
@@ -160,7 +209,7 @@
 
   module
     .service("Pages", PagesProducer)
-    .controller("FormSearchController", FormSearchController)
-    .directive("formSearch", FormSearchDirective);
+    .controller("DocsNavigationController", DocsNavigationController)
+    .directive("formSearch", DocsNavigationDirective);
 
-// })(angular, $);
+})(window.angular, window.jQuery);

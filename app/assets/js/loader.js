@@ -25,6 +25,7 @@ $script([
 
 				$script([
 					'lib/angular/angular-resource.min',
+					'lib/angular/angular-bootstrap.min',
 					'app/app',
 					'app/cabpmn',
 					'app/ca-bpmn',
@@ -33,6 +34,7 @@ $script([
 					'app/directives/windowCenter',
 					'app/directives/ngmif',
 					'app/directives/app-source',
+					'app/directives/focused',
 					'app/directives/tutorial',
 					'app/directives/docLocationHighlight',
 					'app/directives/cabpmn_dir',

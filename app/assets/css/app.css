@@ -457,3 +457,15 @@ a.caret-before {
 a.caret-after {
     padding-left:1px !important;
 }
+
+/**
+ * Docs pages tweeks
+ */
+
+.form-search .dropdown-menu {
+  left: 27px;
+  margin: 0;
+  -webkit-border-radius: 0 6px 6px 6px;
+  -moz-border-radius: 0 6px 6px 6px;
+  border-radius: 0 6px 6px 6px;
+}
