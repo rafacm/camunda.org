@@ -1,23 +1,19 @@
 <section id="rest-process-definition-get">
 
   <div class="page-header">
-      <h1>Query (POST)</h1>
+      <h1>Get Instances Count</h1>
   </div>
   <p>
-    Query for process instances that fulfill given parameters through a json object.
-    This method is slightly more powerful than the <a href="#/rest/process-instance/get-query" doc-location-highlight>GET query</a>, because it allows
-    to filter by multiple process variables of types <code>String</code>, <code>Number</code> or <code>Boolean</code>.
+    Query for the number of process instances that fulfill given parameters.
+    Takes the same parameters as <a href="#/process-instance/get-query-count" doc-location-highlight>GET /process-instance</a>.
   </p>
   
   
   <h2>Method</h2>  
-  <p>POST <code>/process-instance</code></p>
+  <p>GET <code>/process-instance/count</code></p>
   
   <h2>Parameters</h2>  
-  <h4>Request Body</h4>
-  <p>
-    A json object with the following properties:
-  </p>
+  <h4>Query Parameters</h4>
   <table class="table table-striped">
     <tr>
       <th>Name</th>
@@ -53,14 +49,15 @@
     </tr>
     <tr>
       <td>variables</td>
-      <td>A json array to only include process instances that have variables with certain values. <br/>
-      The array consists of objects with the three properties <code>key</code>, <code>operator</code> and <code>value</code>.
-      <code>key (String)</code> is the variable name, <code>operator (String)</code> is the comparison operator to be used and <code>value</code> the variable value.<br/>
-      <code>value</code> may be <code>String</code>, <code>Number</code> or <code>Boolean</code>.
+      <td>Only include process instances that have a variable with a certain value. <br/>
+      A valid parameter value has the form <code>key_operator_value</code>.
+      <code>key</code> is the variable name, <code>op</code> is the comparison operator to be used and <code>value</code> the variable value.<br/>
+      <strong>Note:</strong> Values are always treated as <code>String</code> objects on server side.<br/>
       <br/>
       Valid operator values are: <code>eq</code> - equals; <code>neq</code> - not equals; <code>gt</code> - greater than;
       <code>gteq</code> - greater than or equals; <code>lt</code> - lower than; <code>lteq</code> - lower than or equals;
       <code>like</code>.<br/>
+      <code>key</code> and <code>value</code> may not contain underscore characters.      
       </td>
     </tr>
     <tr>
@@ -86,8 +83,7 @@
   
   <h2>Result</h2>  
   <p>
-    A json array of process instance objects.
-    Each process instance object has the following properties:
+    A json object that contains the count as the only property.
   </p>
   <table class="table table-striped">
     <tr>
@@ -96,29 +92,9 @@
       <th>Description</th>
     </tr>
     <tr>
-      <td>id</td>
-      <td>String</td>
-      <td>The id of the process instance.</td>
-    </tr>
-    <tr>
-      <td>definitionId</td>
-      <td>String</td>
-      <td>The id of the process definition that this process instance belongs to.</td>
-    </tr>
-    <tr>
-      <td>businessKey</td>
-      <td>String</td>
-      <td>The business key of the process instance.</td>
-    </tr>
-    <tr>
-      <td>ended</td>
-      <td>Boolean</td>
-      <td>A flag indicating whether the process instance has ended.</td>
-    </tr>
-    <tr>
-      <td>suspended</td>
-      <td>Boolean</td>
-      <td>A flag indicating whether the process instance is suspended.</td>
+      <td>count</td>
+      <td>Number</td>
+      <td>The number of matching process instances.</td>
     </tr>
   </table>
   
@@ -146,33 +122,12 @@
   <h4>Request</h4>
   <p>
     <!-- TODO: Insert a 'real' example -->
-    POST <code>/process-instance</code>
+    GET <code>/process-instance/count?variables=myVariable_eq_camunda</code>
   </p>
-  <p>
-    Request body:
-  </p>
-  <div class="app-source" app-source-no-tabs="post-query-request"></div>
-  <script type="application/json" id="post-query-request">
-    {"variables": 
-        [{"name": "myVariable",
-         "operator": "eq",
-         "value": "camunda"
-        },
-        {"name": "mySecondVariable",
-         "operator": "neq",
-         "value": 124}],
-    "definitionId":"aProcessDefinitionId"}
-  </script>
-  
   <h4>Response</h4>
-  <div class="app-source" app-source-no-tabs="post-query-result"></div>
-  <script type="application/json" id="post-query-result">
-    [{"links":[],
-     "id":"anId",
-     "definitionId":"aProcessDefinitionId",
-     "businessKey":"aKey",
-     "ended":false,
-     "suspended":false}]
+  <div class="app-source" app-source-no-tabs="get-query-count-result"></div>
+  <script type="application/json" id="get-query-count-result">
+    {"count": 1}
   </script>
      
 </section>
