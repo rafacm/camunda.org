@@ -222,6 +222,81 @@ section {
 }
 
 
+/* =============================== */
+/* FORM SEARCH */
+
+.form-search .dropdown-menu {
+  margin-left: 10px;
+}
+
+.form-search .code {
+  font-family: monospace;
+  font-weight: bold;
+  font-size: 13px;
+  color: black;
+}
+
+.form-search > ul.nav > li.module {
+  background-color: #d3d3d3;
+}
+
+.form-search > ul.nav > li.section {
+  background-color: #ebebeb;
+  min-height: 14px;
+}
+
+.form-search > ul.nav > li.last {
+  margin-bottom: 1em;
+}
+
+.form-search .spacer {
+  display: block;
+  height: 15px;
+}
+
+.form-search .search {
+  width: auto;
+}
+
+.form-search input {
+  width: auto;
+}
+
+.form-search .well {
+  border-color: #d3d3d3;
+  padding-top: 0;
+  padding-bottom: 0;
+  margin-bottom: 15px;
+}
+
+.form-search .well .nav-header {
+  text-transform: none;
+  margin-top: 0;
+  margin-left: -15px;
+  margin-right: -15px;
+}
+
+.form-search .well .nav-header a {
+  text-transform: none;
+  color: black;
+}
+.form-search .well .nav-header a:hover {
+  background-color: inherit;
+}
+
+.form-search .well li {
+  line-height: 16px;
+}
+
+.form-search .well .guide {
+  float: right;
+  padding-top: 0;
+  color: gray;
+}
+
+.form-search .nav-list > li > a {
+  padding: 4px 15px;
+}
 
 /* ----------------------------- */
 
@@ -381,4 +456,16 @@ a.caret-before {
 }
 a.caret-after {
     padding-left:1px !important;
+}
+
+/**
+ * Docs pages tweeks
+ */
+
+.form-search .dropdown-menu {
+  left: 27px;
+  margin: 0;
+  -webkit-border-radius: 0 6px 6px 6px;
+  -moz-border-radius: 0 6px 6px 6px;
+  border-radius: 0 6px 6px 6px;
 }
