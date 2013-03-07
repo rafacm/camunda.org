@@ -1,15 +1,15 @@
-<section id="rest-task-get-query">
+<section id="rest-task-get-query-count">
 
   <div class="page-header">
-      <h1>Get Tasks</h1>
+      <h1>Get Tasks Count</h1>
   </div>
   <p>
-    Query for tasks that fulfill a given filter.
-    The size of the result set can be retrieved by using <a href="#/task/get-query-count" doc-location-highlight>get tasks count</a> method.
+    Get the number of tasks that fulfill a provided filter.
+    Corresponds to the size of the result set when using the <a href="#/task/get-query-count" doc-location-highlight>get tasks</a> method.
   </p>
   
   <h2>Method</h2>  
-  <p>GET <code>/task</code></p>
+  <p>GET <code>/task/count</code></p>
   
   <h2>Parameters</h2>  
   <h4>Query Parameters</h4>
@@ -167,32 +167,11 @@
       <code>key</code> and <code>value</code> may not contain underscore characters.      
       </td>
     </tr>
-    <tr>
-      <td>sortBy</td>
-      <td>Sort the results lexicographically by a given criterion. Valid values are
-      <code>instanceId</code>, <code>dueDate</code>, <code>executionId</code>, <code>assignee</code>, <code>created</code>,
-      <code>description</code>, <code>id</code>, <code>name</code> and <code>priority</code>.
-      Must be used in conjunction with the <code>sortOrder</code> parameter.</td>
-    </tr>
-    <tr>
-      <td>sortOrder</td>
-      <td>Sort the results in a given order. Values may be <code>asc</code> for ascending order or <code>desc</code> for descending order.
-      Must be used in conjunction with the <code>sortBy</code> parameter.</td>
-    </tr>
-    <tr>
-      <td>firstResult</td>
-      <td>Pagination of results. Specifies the index of the first result to return.</td>
-    </tr>
-    <tr>
-      <td>maxResults</td>
-      <td>Pagination of results. Specifies the maximum number of results to return. Will return less results, if there are no more results left.</td>
-    </tr>
   </table>
 
   <h2>Result</h2>  
   <p>
-    A json array of task objects.
-    Each task object has the following properties:
+    A json object with a single count property.
   </p>
   <table class="table table-striped">
     <tr>
@@ -201,74 +180,9 @@
       <th>Description</th>
     </tr>
     <tr>
-      <td>id</td>
-      <td>String</td>
-      <td>The task id.</td>
-    </tr>
-    <tr>
-      <td>name</td>
-      <td>String</td>
-      <td>The task name.</td>
-    </tr>
-    <tr>
-      <td>assignee</td>
-      <td>String</td>
-      <td>The assignee's id.</td>
-    </tr>
-    <tr>
-      <td>owner</td>
-      <td>String</td>
-      <td>The owner's id.</td>
-    </tr>
-    <tr>
-      <td>created</td>
-      <td>String</td>
-      <td>The date the task was created on. Has the format <code>yyyy-MM-dd'T'HH:mm:ss</code>.</td>
-    </tr>
-    <tr>
-      <td>due</td>
-      <td>String</td>
-      <td>The task's due date. Has the format <code>yyyy-MM-dd'T'HH:mm:ss</code>.</td>
-    </tr>
-    <tr>
-      <td>delegationState</td>
-      <td>String</td>
-      <td>The task's delegation state. Possible values are <code>PENDING</code> and <code>RESOLVED</code></td>
-    </tr>
-    <tr>
-      <td>description</td>
-      <td>String</td>
-      <td>The task's description.</td>
-    </tr>
-    <tr>
-      <td>executionId</td>
-      <td>String</td>
-      <td>The id of the execution the task belongs to.</td>
-    </tr>
-    <tr>
-      <td>parentTaskId</td>
-      <td>String</td>
-      <td>The id the parent task, if this task is a subtask.</td>
-    </tr>
-    <tr>
-      <td>priority</td>
+      <td>count</td>
       <td>Number</td>
-      <td>The task's priority.</td>
-    </tr>
-    <tr>
-      <td>processDefinitionId</td>
-      <td>String</td>
-      <td>The id of the process definition the task belongs to.</td>
-    </tr>
-    <tr>
-      <td>processInstanceId</td>
-      <td>String</td>
-      <td>The id of the process instance the task belongs to.</td>
-    </tr>
-    <tr>
-      <td>taskDefinitionKey</td>
-      <td>String</td>
-      <td>The task's key.</td>
+      <td>The number of tasks that fulfill the query criteria.</td>
     </tr>
   </table>
   
@@ -295,25 +209,12 @@
   <h2>Example</h2>
   <h4>Request</h4>
   <p>
-    GET <code>/task?assignee=anAssignee&delegationState=RESOLVED&maxPriority=50</code>
+    GET <code>/task/count?assignee=anAssignee&delegationState=RESOLVED&maxPriority=50</code>
   </p>
   <h4>Response</h4>
-  <div class="app-source" app-source-no-tabs="get-query-result"></div>
-  <script type="application/json" id="get-query-result">
-    [{"id":"anId",
-     "name":"aName",
-     "assignee":"anAssignee",
-     "created":"2013-01-23T13:42:42",
-     "due":"2013-01-23T13:42:43",
-     "delegationState":"RESOLVED",
-     "description":"aDescription",
-     "executionId":"anExecution",
-     "owner":"anOwner",
-     "parentTaskId":"aParentId",
-     "priority":42,
-     "processDefinitionId":"aProcDefId",
-     "processInstanceId":"aProcInstId",
-     "taskDefinitionKey":"aTaskDefinitionKey"}]
+  <div class="app-source" app-source-no-tabs="get-query-count-result"></div>
+  <script type="application/json" id="get-query-count-result">
+    {"count":1}
   </script>
      
 </section>
