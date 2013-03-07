@@ -41,13 +41,13 @@
     </tr>
     <tr>
       <td>value</td>
-      <td>??</td>
-      <td>The value of the Java object.</td>
+      <td>String/Number/Boolean/Object</td>
+      <td>Object serialization uses <a href="http://jackson.codehaus.org">Jackson's</a> POJO/bean property introspection feature.</td>
     </tr>
     <tr>
       <td>type</td>
       <td>String</td>
-      <td>The class name of the variable object.</td>
+      <td>The simple class name of the variable object.</td>
     </tr>
   </table>
   
@@ -64,34 +64,28 @@
       <td>Request successful.</td>
     </tr>
     <tr>
-      <td>400</td>
+      <td>500</td>
       <td></td>
-      <td>Process definition with given id does not exist.</td>
+      <td>Process instance with given id does not exist.</td>
     </tr>
   </table>
   
   <h2>Example</h2>
   <h4>Request</h4>
   <p>
-    <!-- TODO: Insert a 'real' example -->
     GET <code>/process-instance/aProcessInstanceId/variables</code>
   </p>
   <h4>Response</h4>
   <p>
-    TODO: add
-    <!--<div class="app-source" app-source-no-tabs="get-result"></div>
-    <script type="application/json" id="get-result">
-      {"id":"aProcessDefinitionId",
-      "key":"aKey",
-      "category":"aCategory",
-      "description":"aDescription",
-      "name":"aName",
-      "version":42,
-      "resource":"aResourceName",
-      "deploymentId":"aDeploymentId",
-      "diagram":"aResourceName",
-      "suspended":true}
-    </script>-->
+    <div class="app-source" app-source-no-tabs="get-variables-result"></div>
+    <script type="application/json" id="get-variables-result">
+      {"variables":
+        [{"name":"aProcessVariableKey",
+         "value":
+          {"property1":"aPropertyValue",
+          "property2":true},
+         "type":"ExampleVariableObject"}]}
+    </script>
   </p>
      
 </section>
