@@ -207,14 +207,18 @@ section {
 
 }
 
+.tweet_list a {
+  color:lightblue !important;
+}
+
 .tweet_list .tweet_odd {
-  background-color: white;
-  color:#535353;
+  background-color: #2f2f2f;
+  color:white;
 }
 
 .tweet_list .tweet_even {
-  background-color: white;
-  color:#535353;
+  background-color: #2f2f2f;
+  color:white;
 }
 
 .carousel .item {

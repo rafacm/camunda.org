@@ -250,7 +250,7 @@ angular.module('camundaorg.directives')
           join_text: "auto",
           query: "#activiti",
           avatar_size: 30,
-          count: 5,
+          count: 3,
           loading_text: "loading tweets..."
         });      
      
@@ -304,5 +304,29 @@ angular.module('camundaorg.directives')
     }
   }
 })
+.directive('vision', function() {
+  return {
+    link: function(scope, element, attrs) {
+/*
+    var controller = $.superscrollorama();
+    controller.addTween('#fade1', 
+      TweenMax.from($('#fade1'), .5, {css:{opacity:0}}));     
+    
+    controller.addTween('#fade2', 
+      TweenMax.from($('#fade2'), .5, {css:{opacity:0}}));
 
+    controller.addTween('#fade5', 
+      TweenMax.from($('#fade5'), .5, {css:{opacity:0}}));    
+  */
+
+  
+  $('#explainScalable').popover({
+    "title":"Scalable Business Model",
+    "trigger": "hover",
+    "content": "<div class='explain' ><p>BPM cannot help you inventing a great product or persuading your customers to buy it.</p><p>But if you do have the right product and a market to conquer, BPM can provide you with the infrastructure you need to turn a corner shop into a big yet profitable business.</p><p>Why BPM? To scale up your business model!</p></div>",
+    "html": true
+  });
+    }
+  }
+})
 
