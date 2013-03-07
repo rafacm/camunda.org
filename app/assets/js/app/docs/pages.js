@@ -32,7 +32,7 @@ CAM_PAGES = [
   { section: "implement", category: "Subprocesses", id: "event-subprocess", name: "Event Subprocess", url: "/subprocesses/event-subprocess", keywords: "subprocesses event subprocess" },
   { section: "implement", category: "Subprocesses", id: "transaction-subprocess", name: "Transaction Subprocess", url: "/subprocesses/transaction-subprocess", keywords: "subprocesses transaction subprocess" },
   
-  { section: "rest", category: "Overview", id: "rest-introduction", name: "Introduction", url: "/overview/introduction", keywords: "rest overview " },
+  { section: "rest", category: "Overview", id: "rest-introduction", name: "Introduction", url: "/overview/introduction", keywords: "rest overview" },
   
   { section: "rest", category: "Process Definition", id: "get-definition", name: "Get Single Definition", url: "/process-definition/get", keywords: "definition get process-definition" },
   { section: "rest", category: "Process Definition", id: "get-definitions", name: "Get Definitions", url: "/process-definition/get-query", keywords: "definitions get process-definition query filter" },

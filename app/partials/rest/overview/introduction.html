@@ -11,9 +11,10 @@
   </p>
   
   <!--TODO: general remarks, for example, if null properties are included...-->
-  <p>
+  <!--<p>
     General remarks such as authentication..
-  </p>
+  </p>-->
+  <h2>Structure</h2>
   <p>
     These documents explain all existing methods in the REST API. For each method they provide:
   </p>
@@ -25,4 +26,13 @@
     <li>Possible response codes</li>
     <li>A brief example request and response</li>
   </ul>
+  
+  <h2>Error handling</h2>
+  <p>
+    For every method this documentation gives possible HTTP status codes. The error code explanations do not cover all
+    possible error causes that may arise when the request is served. For example, most of the requests will not work properly if
+    there are problems with database access. <br/>
+    <br/>
+    Any of these undocumented errors will be translated to a HTTP 500 error.
+  </p>
 </section>
