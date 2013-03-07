@@ -41,7 +41,7 @@ CAM_PAGES = [
   { section: "rest", category: "Process Definition", id: "post-start-process", name: "Start Process", url: "/process-definition/post-start-process", keywords: "definition post process-definition start instance" },
   { section: "rest", category: "Process Definition", id: "get-statistics", name: "Get Process Instance Statistics", url: "/process-definition/get-statistics", keywords: "definitions get process-definition instance statistics aggregate sum" },
   { section: "rest", category: "Process Definition", id: "get-activity-statistics", name: "Get Activity Instance Statistics", url: "/process-definition/get-activity-statistics", keywords: "definitions get process-definition activity statistics aggregate sum" },
-  { section: "rest", category: "Process Definition", id: "get-start-form", name: "Get Start Form Key", url: "/process-definition/get-start-form-key", keywords: "definition get process-definition startForm start form key" },
+  { section: "rest", category: "Process Definition", id: "get-start-form-key", name: "Get Start Form Key", url: "/process-definition/get-start-form-key", keywords: "definition get process-definition startForm start form key" },
   
   { section: "rest", category: "Process Instance", id: "get-instances", name: "Get Instances", url: "/process-instance/get-query", keywords: "instances get process-instance query filter" },
   { section: "rest", category: "Process Instance", id: "get-instances-count", name: "Get Instances Count", url: "/process-instance/get-query-count", keywords: "instances get process-instance query filter count" },
@@ -54,7 +54,7 @@ CAM_PAGES = [
   { section: "rest", category: "Task", id: "get-tasks-count", name: "Get Tasks Count", url: "/task/get-query-count", keywords: "tasks get task filter query count" },
   { section: "rest", category: "Task", id: "post-tasks", name: "Get Tasks (POST)", url: "/task/post-query", keywords: "tasks post task filter query" },
   { section: "rest", category: "Task", id: "post-tasks-count", name: "Get Tasks Count (POST)", url: "/task/post-query-count", keywords: "tasks post task filter query count" },
-  { section: "rest", category: "Task", id: "get-form", name: "Get Form Key", url: "/task/get-form-key", keywords: "tasks get task form key" },
+  { section: "rest", category: "Task", id: "get-form-key", name: "Get Form Key", url: "/task/get-form-key", keywords: "tasks get task form key" },
   { section: "rest", category: "Task", id: "post-claim", name: "Claim Task", url: "/task/post-claim", keywords: "tasks post task claim" },
   { section: "rest", category: "Task", id: "post-unclaim", name: "Unclaim Task", url: "/task/post-unclaim", keywords: "tasks post task unclaim" },
   { section: "rest", category: "Task", id: "post-complete", name: "Complete Task", url: "/task/post-complete", keywords: "tasks post task complete variables" },
