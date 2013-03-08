@@ -34,6 +34,8 @@ CAM_PAGES = [
   
   { section: "rest", category: "Overview", id: "rest-introduction", name: "Introduction", url: "/overview/introduction", keywords: "rest overview" },
   
+  { section: "rest", category: "Process Engine", id: "get-engine-names", name: "Get Engine Names", url: "/engine/get-names", keywords: "get process engine processengine name list all" },
+  
   { section: "rest", category: "Process Definition", id: "get-definition", name: "Get Single Definition", url: "/process-definition/get", keywords: "definition get process-definition" },
   { section: "rest", category: "Process Definition", id: "get-definitions", name: "Get Definitions", url: "/process-definition/get-query", keywords: "definitions get process-definition query filter" },
   { section: "rest", category: "Process Definition", id: "get-definitions-count", name: "Get Definitions Count", url: "/process-definition/get-query-count", keywords: "definitions get process-definition query filter count" },

@@ -27,7 +27,16 @@
     <li>A brief example request and response</li>
   </ul>
   
-  <h2>Error handling</h2>
+  <h2>Engine Usage</h2>
+  <p>
+    The methods as described work on the default process engine, i.e. the one that can be retrieved by <code>BpmPlatform.getDefaultProcessEngine()</code>.
+  </p>
+  <p>
+    You may prepend <code>/engine/{name}</code> to any of the methods (unless otherwise documented) to access another engine. <code>name</code> is the name of the process engine
+    as returned by <code>ProcessEngine#getName()</code>.
+  </p>
+  
+  <h2>Error Handling</h2>
   <p>
     For every method this documentation gives possible HTTP status codes. The error code explanations do not cover all
     possible error causes that may arise when the request is served. For example, most of the requests will not work properly if
