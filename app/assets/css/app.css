@@ -16,6 +16,10 @@
   display: inline-block;
 }
 
+.header-icons {
+  fill: #2f2f2f;
+}
+
 h1, h2, h3 {
     font-family: 'VolkswagenTS-Regular';
     font-weight: normal;

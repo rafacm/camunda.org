@@ -248,7 +248,7 @@ angular.module('camundaorg.directives')
 
     $(element).tweet({
           join_text: "auto",
-          query: "#activiti",
+          query: "#camunda",
           avatar_size: 30,
           count: 3,
           loading_text: "loading tweets..."
