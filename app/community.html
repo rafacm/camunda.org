@@ -115,40 +115,38 @@
 
 
                         </div>
-                        </section>     
-                    <section id="roadmap" style="color:white;text-align:center" >
+                        </section>  
+                    <section  style="color:white;text-align:center" >
+ <h1>Our Vision</h1>
+                         <div id="vision" style="width:70%; margin: 0 auto; text-align:center;" data-vision>
+                      <style type="text/css">
+                        #vision a {color: lightblue;}
+                        #vision div {color:black;}
+                        #vision p {font-size:160%; line-height: 1.5;}
+                        #vision .explain {font-size:50% !important;}
+                      </style>
 
-                             <div class="row-fluid" ng-controller="RoadmapController">
-        <div class="span12" ng-repeat="roadmapRow in roadmapRows">
-          
-          <h1>Roadmap</h1>
-          <div class="info" ng-show="{{roadmapErrorText!=''}}">{{roadmapErrorText}}</div>
-          <table class="table">
-            <tr>
-              <th>Prio</th>
-              <th>Item + Link</th>
-              <th>Component</th>
-              <th>OSS/EE</th>
-              <th>Status</th>
-              <th>Release</th>
-              <th>Contributor</th>
-            </tr>
-            <tr ng-repeat="roadmapValue in roadmapRow" ng-show="isNotNull(roadmapValue['OSS/EE'])">
-              <td>{{roadmapValue.Prio}}</td>
-              <td>
-                <a style="color:lightblue;" href="{{roadmapValue.URL}}" target="_blank" ng-show="isNotNull(roadmapValue.URL)">{{roadmapValue["Item + Link"]}}</a>
-                <span ng-show="!isNotNull(roadmapValue.URL)">{{roadmapValue["Item + Link"]}}</span>
-              </td>
-              <td>{{roadmapValue.Component}}</td>
-              <td>{{roadmapValue["OSS/EE"]}}</td>
-              <td>{{roadmapValue.Status}}</td>
-              <td>{{roadmapValue.Release}}</td>
-              <td>{{roadmapValue.Contributor}}</td>
-            </tr>
-          </table>
-        </div>
-      </div> 
-</section>
+                        <p >
+                          We believe in <a href="">Business Process Management</a> as the perfect instrument to create <a href="" id="explainScalable">scalable business models</a>. 
+                        </p>
+                        <p >
+                          We strive to create the best BPM platform in the world.
+                        </p>
+                        <p>
+                          We think that the best BPM platform in the world must fulfill two top level requirements:
+                        </p>
+                        <p>
+                           1st: <a href="">Aligning Business and IT</a>.
+                        </p>
+                        <p>
+                           2nd: <a href="">Enabling individual process solutions</a> supporting individual business models.</li>
+                         </p>
+                        
+                        <p >
+                          This is what we build, and it is <a href="">Open Source</a>.
+                        </p>
+                      </div>
+                    </section>
       </div>
       <div class="push-down"><!-- // --></div> 
     </div>

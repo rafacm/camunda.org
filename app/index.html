@@ -83,38 +83,45 @@
                         </section>      
                     <hr style="margin-top:30px; margin-bottom:30px;" class="soften">
 
-                    <section style="color:white;text-align:center" ng-controller="RuntimeContainers">
-                      <h1>Our Vision</h1>
+                 <section id="roadmap" style="color:white;text-align:center" >
 
-                      <div id="vision" style="width:70%; margin: 0 auto; text-align:center;" data-vision>
-                      <style type="text/css">
-                        #vision a {color: lightblue;}
-                        #vision div {color:black;}
-                        #vision p {font-size:160%; line-height: 1.5;}
-                        #vision .explain {font-size:50% !important;}
-                      </style>
+ <div style="width:90%; margin: 0 auto;">
 
-                        <p >
-                          We believe in <a href="">Business Process Management</a> as the perfect instrument to create <a href="" id="explainScalable">scalable business models</a>. 
-                        </p>
-                        <p >
-                          We strive to create the best BPM platform in the world.
-                        </p>
-                        <p>
-                          We think that the best BPM platform in the world must fulfill two top level requirements:
-                        </p>
-                        <p>
-                           1st: <a href="">Aligning Business and IT</a>.
-                        </p>
-                        <p>
-                           2nd: <a href="">Enabling individual process solutions</a> supporting individual business models.</li>
-                         </p>
-                        
-                        <p >
-                          This is what we build, and it is <a href="">Open Source</a>.
-                        </p>
-                      </div>
-                        </section>      
+                             <div class="row-fluid" ng-controller="RoadmapController">
+        <div class="span12" ng-repeat="roadmapRow in roadmapRows">
+          
+          <h1>Roadmap</h1>
+          <p>
+            Below you can find the features we plan to implement and their priorities. We always welcome additional Contributors, see <a style="color:lightblue;" href="">How to Contribute?</a>
+          </p>
+          <div class="info" ng-show="{{roadmapErrorText!=''}}">{{roadmapErrorText}}</div>
+          <table class="table">
+            <tr>
+              <th>Prio</th>
+              <th>Item + Link</th>
+              <th>Component</th>
+              <th>OSS/EE</th>
+              <th>Status</th>
+              <th>Release</th>
+              <th>Contributor</th>
+            </tr>
+            <tr ng-repeat="roadmapValue in roadmapRow" ng-show="isNotNull(roadmapValue['OSS/EE'])">
+              <td>{{roadmapValue.Prio}}</td>
+              <td>
+                <a style="color:lightblue;" href="{{roadmapValue.URL}}" target="_blank" ng-show="isNotNull(roadmapValue.URL)">{{roadmapValue["Item + Link"]}}</a>
+                <span ng-show="!isNotNull(roadmapValue.URL)">{{roadmapValue["Item + Link"]}}</span>
+              </td>
+              <td>{{roadmapValue.Component}}</td>
+              <td>{{roadmapValue["OSS/EE"]}}</td>
+              <td>{{roadmapValue.Status}}</td>
+              <td>{{roadmapValue.Release}}</td>
+              <td>{{roadmapValue.Contributor}}</td>
+            </tr>
+          </table>
+        </div>
+      </div> 
+    </div>
+</section>   
 
         </div>
       <div class="push-down"><!-- // --></div> 
