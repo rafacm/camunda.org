@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>camunda.org - the camunda bpm community homepage</title>
+    
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <meta name="author" content="camunda.org community" />
+    
+    <!-- loads all stylesheets -->
+    <link href="assets/css/loader.css" rel="stylesheet" />
+
+    <!-- For IE6-8 support of HTML5 elements -->
+    <!--[if lt IE 9]>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+     
+    <base app-base="." />
+
+  </head>
+  <body ng-controller="DefaultController" >
+    <div class="wrapper wrapper-dark">
+      <!-- navigation -->
+      <div data-ng-include=" 'templates/navigation.html' "></div>
+
+      <div class="container">
+            <div style="padding-top:80px; text-align:center">            
+              <h1 style="color:#ffffff">Our Vision</h1>
+              <h3 style="color:#ffffff">for camunda BPM</h3>
+            </div>
+        <div class="row" style="position:relative; padding-top:50px;" >
+<div id="vision" style="width:70%; margin: 0 auto; text-align:center;" data-vision>
+                      <style type="text/css">
+                        #vision {color:white;}
+                        #vision a {color: lightblue;}
+                        #vision div {color:black;}
+                        #vision p {font-size:160%; line-height: 1.5;}
+                        #vision .explain {font-size:50% !important;}
+                      </style>
+
+                        <p >
+                          We believe in <a href="">Business Process Management</a> as the perfect instrument to create <a href="" id="explainScalable">scalable business models</a>. 
+                        </p>
+                        <p >
+                          We strive to create the best BPM platform in the world.
+                        </p>
+                        <p>
+                          We think that the best BPM platform in the world must fulfill two top level requirements:
+                        </p>
+                        <p>
+                           1st: <a href="">Aligning Business and IT</a>.
+                        </p>
+                        <p>
+                           2nd: <a href="">Enabling individual process solutions</a> supporting individual business models.</li>
+                         </p>
+                        
+                        <p >
+                          This is what we build, and it is <a href="">Open Source</a>.
+                        </p>
+                      </div>
+        </div>
+
+      </div>
+      <div class="push-down"><!-- // --></div> 
+    </div>
+    <!-- footer -->
+    <footer class="footer">
+      <div data-ng-include=" 'templates/footer.html' "></div>
+
+      <!-- loads all javascript -->
+      <script src="assets/js/loader.js"></script>
+    <script src="assets/js/app/cabpmn.js"></script>
+    </footer>
+  </body>
+</html>

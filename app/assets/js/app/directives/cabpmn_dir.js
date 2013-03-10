@@ -166,7 +166,7 @@ angular.module('camundaorg.directives')
             if (myMinutes < 10) myMinutes = "0" + myMinutes;
             var myDateString = myDate.getDate() + "-" + m_names[myDate.getMonth()] + "-" + myDate.getFullYear() + " " +  myHours + ":" + myMinutes;
 
-            var myRow = "<tr><td>" + myDateString + "</td><td>" + value.event.country + "</td><td>" + value.event.city + "</td><td>" + value.event.subject;
+            var myRow = "<tr><td>" + myDateString + "</td><td><img src='assets/img/app/community/meetings/" + value.event.country + ".png' > " + value.event.country + "</td><td>" + value.event.city + "</td><td>" + value.event.subject + "</td><td>" + value.event.attendees + " attendees</td><td>" + parseInt(value.event.seats - value.event.attendees)  + " seats left</td>";
             var selectDate = '<td><a href="#myModal' + value.event.id +'" role="button" class="btn" data-toggle="modal">Register</a></td>';
             var seatsInfo = "";
             var disabled_formelement = "";
@@ -308,9 +308,13 @@ angular.module('camundaorg.directives')
   return {
     link: function(scope, element, attrs) {
 /*
+    $('a').fadeIn('slow', function() {
+        alert ("hi");
+      });
+
     var controller = $.superscrollorama();
-    controller.addTween('#fade1', 
-      TweenMax.from($('#fade1'), .5, {css:{opacity:0}}));     
+    controller.addTween('a', 
+      TweenMax.from($('a'), .5, {css:{opacity:0}}));     
     
     controller.addTween('#fade2', 
       TweenMax.from($('#fade2'), .5, {css:{opacity:0}}));

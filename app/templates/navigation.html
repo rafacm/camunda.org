@@ -99,8 +99,26 @@
               </ul>
             </li>        
           -->
-            <li ng-class="activeClass('/community')"><a href="community.html">Community</a></li>
-            <li ng-class="activeClass('/support.html')"><a href="support.html" >Support</a></li>             
+            <li ng-class="activeClass('/community')">
+              <a href="community.html" class="caret-before">Community</a>
+            </li>
+            <li class="dropdown">
+              <a class="dropdown-toggle caret-after" data-toggle="dropdown">
+              <b class="caret"></b></a>
+              <ul class="dropdown-menu">
+                <li ng-class="activeClass('/community.html')"><a href="community.html">Overview</a></li>                
+                <li class="nav-header">Users</li>
+                <li ng-class="activeClass('/community-forum.html')"><a href="community-forum.html">Forum</a></li>
+                <li ng-class="activeClass('/community-meetings.html')"><a href="community-meetings.html">Next Meetings</a></li>
+                <li ng-class="activeClass('/community-users.html')"><a href="community-users.html">Who's using it?</a></li>
+                <li class="divider"></li>
+                <li class="nav-header">Contributors</li>
+                <li ng-class="activeClass('/community-vision.html')"><a href="community-vision.html">Our Vision</a></li>
+                <li ng-class="activeClass('/community-contribute.html')"><a href="community-contribute.html">How to Contribute</a></li>
+                <li ng-class="activeClass('/community-team.html')"><a href="community-team.html">Team</a></li>                                
+              </ul>
+            </li>
+            <li ng-class="activeClass('/support.html')"><a href="support.html">Support</a></li>                
           </ul>
         </ul>
       </div>

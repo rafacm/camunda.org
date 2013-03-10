@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>camunda.org - the camunda bpm community homepage</title>
+    
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <meta name="author" content="camunda.org community" />
+    
+    <!-- loads all stylesheets -->
+    <link href="assets/css/loader.css" rel="stylesheet" />
+
+    <!-- For IE6-8 support of HTML5 elements -->
+    <!--[if lt IE 9]>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+     
+    <base app-base="." />
+
+  </head>
+  <body ng-controller="DefaultController" >
+    <div class="wrapper">
+      <!-- navigation -->
+      <div data-ng-include=" 'templates/navigation.html' "></div>
+
+      <div class="container">
+            <div style="padding-top:80px; text-align:center">            
+              <h1 style="color:#333">Meetings</h1>
+              <h3>in the camunda BPM Community</h3>
+            </div>
+        <div class="row-fluid" >
+          <div class="span12">
+                        <p style="padding: 10px;">
+                          Meet the Team and other Users in our free Meeting Sessions.
+                        </p>
+         <div id="meetingsContainer" >
+            <table class="table" data-camunda-events></table>
+          </div>
+        </div>
+
+</div>
+
+      </div>
+      <div class="push-down"><!-- // --></div> 
+    </div>
+    <!-- footer -->
+    <footer class="footer">
+      <div data-ng-include=" 'templates/footer.html' "></div>
+
+      <!-- loads all javascript -->
+      <script src="assets/js/loader.js"></script>
+    <script src="assets/js/app/cabpmn.js"></script>
+    </footer>
+  </body>
+</html>
