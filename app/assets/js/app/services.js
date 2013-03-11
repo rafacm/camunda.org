@@ -61,11 +61,6 @@ angular
 							if (rowItems.hasOwnProperty(i)) {
 								var item = rowItems[i];
 	
-								// Try to (intelligently) cast the item to a number, if applicable
-								if(!isNaN(item*1)) {
-									item = item*1;
-								}
-	
 								rowObj[csvHeaders[i]] = item;
 							}
 						}
