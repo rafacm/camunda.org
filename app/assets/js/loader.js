@@ -14,6 +14,7 @@ $script([
 	'lib/markdownjs/markdown',
 	'lib/jquery-1.7.2.min'],  function() {
 		$script([
+			'lib/dojo/dojo/dojo',			
 		    'lib/superscrollorama/js/greensock/TweenMax.min',
 		    'lib/superscrollorama/js/jquery.superscrollorama',
       		'lib/tweet/jquery.tweet',
