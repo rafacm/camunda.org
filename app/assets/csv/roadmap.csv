@@ -1,22 +1,21 @@
 Prio;Item + Link;Component;OSS/EE;URL;Status;Release;Contributor
 1;New REST API for Process Applications;engine;OSS;https://app.camunda.com/jira/secure/RapidBoard.jspa?rapidView=23&view=planning&selectedIssue=CAM-249&selectedEpic=CAM-9;ongoing;7.0;camunda
-2;Modelling Convenience Improvements;modeler;OSS;https://app.camunda.com/jira/secure/RapidBoard.jspa?rapidView=23&view=planning&selectedIssue=CAM-249&selectedEpic=CAM-338;ongoing;7.0;camunda
-3;Standalone Eclipse Distribution;modeler;OSS;;open;7.0;camunda
+2;Spring process application support;engine;OSS;;open;7.0;camunda
+3;Modelling Convenience Improvements;modeler;OSS;https://app.camunda.com/jira/secure/RapidBoard.jspa?rapidView=23&view=planning&selectedIssue=CAM-249&selectedEpic=CAM-338;ongoing;7.0;camunda
 4;Context Menu Improvements;modeler;OSS;;open;7.0;camunda
-5;Enhence BPMN 2.0 Support;engine;OSS;;open;7.0;camunda
-6;Process Instances List View;cockpit;OSS;;open;7.0;camunda
-7;Process Instance List and Detail view;cockpit;OSS;;open;7.0;camunda
-8;BPMN 2.0 Model API;engine;OSS;;open;7.0;camunda
-9;Free Search Query;cockpit;OSS;;open;7.0;camunda
-10;Runtime influencing (on instance level);cockpit;OSS;;open;7.0;camunda
-11;Filter Mechanisms (inkl. Custom queries);cockpit;EE;;open;7.0;camunda
-12;Runtime influencing (bulk);cockpit;EE;;open;7.0;camunda
-13;Central User Management for all components;all;OSS;;open;7.0;camunda
-14;Java Script Remote API;engine;OSS;;open;7.1;camunda
-15;Definition and Monitoring of Errors;cockpit, engine, modeler;OSS;;open;7.1;camunda
-16;Fluent Process Testing;engine;OSS;;open;7.1;community (plexiti)
-17;OSGI Runtime Support;engine;OSS;;open;7.1;community (open)
-18;Webservice Support;engine;OSS;;open;7.1;camunda
-19;REST Service Support;engine;OSS;;open;7.1;camunda
-20;Custom Task Type;modeler;OSS;;open;7.1;camunda
-21;BPMN Shape Panel;modeler;OSS;;open;7.1;camunda
+5;Standalone Eclipse Distribution;modeler;OSS;;open;7.0;camunda
+6;Enhence BPMN 2.0 Support;engine;OSS;;open;7.0;camunda
+7;Process Instances List View;cockpit;OSS;;open;7.0;camunda
+8;Process Instance Detail view;cockpit;OSS;;open;7.0;camunda
+9;Runtime influencing (on instance level);cockpit;OSS;;open;7.0;camunda
+10;Plugin Concept;cockpit;OSS;;open;7.0;camunda
+11;Filter Mechanisms ;cockpit;EE;;open;7.0;camunda
+12;Central User Management for all components;all;OSS;;open;7.0;camunda
+13;Runtime influencing (bulk);cockpit;EE;;open;7.0;camunda
+14;Taskmanagement API Improvements;engine;OSS;;open;7.0;camunda
+15;Taskforms for rapid prototyping;tasklist, modeler;OSS;;open;07. Jan;camunda
+16;Custom Task Type;modeler;OSS;;open;07. Jan;camunda
+17;Java Script Remote API;engine;OSS;;open;07. Jan;camunda
+18;Definition and Monitoring of Errors;cockpit, engine, modeler;OSS;;open;07. Jan;camunda
+19;BPMN 2.0 Model API;engine;OSS;;open;07. Jan;camunda
+20;Free Search Query;cockpit;OSS;;open;07. Jan;camunda
