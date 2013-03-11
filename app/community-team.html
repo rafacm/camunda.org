@@ -26,154 +26,223 @@
 
       <style type="text/css">
         .team-core img {
-          
-          height:80px;
-          float:left;
-          margin-right:10px;
-          cursor: pointer;
+          max-height: 80px;
+          max-width: 80px;
           /*
-         filter: url(assets/css/filters.svg#grayscale); 
-         filter: gray;
-         -webkit-filter: grayscale(1); 
-         */      
-              }
-      .team-core img:hover {
-         filter: none;
-         -webkit-filter: grayscale(0);           
-       }        
+          filter: url(assets/css/filters.svg#grayscale); 
+          filter: gray;
+          -webkit-filter: grayscale(1); 
+          */
+        }
+
+        .team-core img:hover {
+           filter: none;
+           -webkit-filter: grayscale(0);
+         }
 
         .team-core .modal img {
-          
-          height:120px;
-          float:none;
-          margin-right:0px;
+          max-height: 120px;
+          max-width: 120px;
            filter: none;
-           -webkit-filter: grayscale(0);          
-        }        
+           -webkit-filter: grayscale(0);
+        }
+
+        h2 {
+          margin-top: 30px;
+        }
+
+        .team-core .media {
+          margin-top: 5px;
+        }
 
         .team-core h1 {
-          font-size:120%;
-          margin:0px;
-          padding-top:10px;
-          padding-bottom:10px;
+          font-size: 120%;
+          margin: 0px;
+          margin-top: 20px;
+          padding-bottom: 10px;
           line-height: 1;
         }     
 
         .partners img {
-          padding:15px;
-          max-width:170px;
+          padding: 15px;
+          max-width: 170px;
           cursor: pointer;
-       
-              }
-      .partners img:hover {
-         filter: none;
-         -webkit-filter: grayscale(0);           
-       } 
+        }
+
+        .partners img:hover {
+           filter: none;
+           -webkit-filter: grayscale(0);
+         } 
       </style>
 
       <div class="container">
-            <div style="padding-top:80px; text-align:center">            
-              <h1 style="color:#333">The Team</h1>
-              <h3>behind camunda BPM</h3>
-            </div>
-            <div class="row-fluid" style="position:relative; padding-top:10px;" >
-              <div class="span9 team-core">
-                <div class="row-fluid">
-                  <h2>Project Lead</h2>
-                  <div class="row-fluid">
-                    <div class="span3">
-                      <img class="img-circle" src="assets/img/app/community/team/core/daniel_meyer.jpg">
-                      <h1>Daniel Meyer</h1>
-                      Process Engine Freak
-                    </div>
-                  </div>
-                </div>
-                <div class="row-fluid" style="padding-top:10px;">
-                  <h2>Core Developers</h2>
-                  <!--<p>These are the guys working day in day out for making camunda the best BPM platform in the world:</p>-->
-                  <div class="row-fluid">                  
-                    <div class="span3">
-                      <img class="img-circle" src="assets/img/app/community/team/core/andreas_drobisch.jpg">
-                      <h1>Andreas Drobisch</h1>
-                      What am I?                    
-                    </div>
-                    <div class="span3">
-                      <img class="img-circle" src="assets/img/app/community/team/core/nico_rehwaldt.jpg">
-                      <h1>Nico Rehwaldt</h1>
-                      What am I?
-                    </div> 
-                    </div>                   
-                </div>
-              <div class="row-fluid" style="padding-top:10px;">                
-                <h2>Contributors</h2>    
-                  <div class="row-fluid">
-                   <div class="span3">
-                    <img class="img-circle" src="assets/img/app/community/team/core/bernd_ruecker.jpg">
-                    <h1>Bernd Rücker</h1>
-                    I am hot!                       
-                  </div>
-                  <div class="span3">
-                    <a href="#myModal" data-toggle="modal"><img class="img-circle" src="assets/img/app/community/team/core/falko_menge.jpg"></a>
-                    <h1>Falko Menge</h1>
-                    What am I?    
-                    <!-- Modal -->
-                    <div id="myModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-                      <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-                        <h3 id="myModalLabel">Falko Menge</h3>
-                      </div>
-                      <div class="modal-body">
-                        <div class="row-fluid">
-                          <div class="span4 center">
-                        <img class="img-circle" src="assets/img/app/community/team/core/falko_menge.jpg">
-                      </div>
-                      <div class="span8">
-                        <p>Falko Menge is consultant, trainer and software engineer at 
-                    camunda. He has a lot of experience with process automation and 
-                    application integration and is a co-founder and committer of several 
-                    Open Source projects in this area including camunda BPM. Moreover, Falko 
-                    directly contributes to the BPMN standard as a representative of camunda 
-                    at the OMG.
-                    </p>
-                    <p>
-                      <b>Profiles:</b>
-                    <ul>
-                      <li><a href="https://twitter.com/falko_menge">Twitter</a></li>
-                      <li><a href="https://www.ohloh.net/accounts/falko">Ohloh</a></li>
-                      <li><a href="https://github.com/falko">Github</a></li>
-                      <li><a href="https://bitbucket.org/_falko_">Bitbucket</a></li>
-                    </ul>
-                    </p>
-                    </div>
-                      </div>
-                    </div>
-                      <div class="modal-footer">
-                        <button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
-                      </div>
-                    </div>                                       
-                  </div>
-                  <div class="span3">
-                    <img class="img-circle" src="assets/img/app/community/team/core/jakob_freund.jpg">
-                    <h1>Jakob Freund</h1>
-                    BPM Addict                    
-                  </div>
-                </div>
-
+        <div style="padding-top: 80px; text-align:center">
+          <h1 style="color:#333">The Team</h1>
+          <h3>behind camunda BPM</h3>
+        </div>
+        <div class="row">
+          <!-- dev team column -->
+          <div class="span9 team-core">
+            <!-- row 1 -->
+            <div class="row">
+              <h2>Project Lead</h2>
+              <div class="row">
+                <div class="span3">
+                  <img class="img-circle" src="assets/img/app/community/team/core/daniel_meyer.jpg">
+                  <h1>Daniel Meyer</h1>
+                  Process Engine Freak
                 </div>
               </div>
-              <div class="span3 center partners" >
-                <h2>Partners involved</h2>
-                <!--<p>These companies back up our project:</p>-->
-                <a href="http://www.businessprocessincubator.com"><img src="assets/img/app/community/team/partners/bpi.gif"></a>
-                <a href="http://www.camunda.com"><img src="assets/img/app/community/team/partners/camunda.png"></a>
-                <a href="http://www.ibo.de"><img src="assets/img/app/community/team/partners/ibo.jpg"></a>
-                <a href="http://www.plexiti.com"><img src="assets/img/app/community/team/partners/plexiti.png"></a>                
-                <a href="http://www.signavio.com"><img src="assets/img/app/community/team/partners/signavio.png"></a>
-
-              </div>
-
             </div>
 
+            <!-- row 2 -->
+            <div class="row">
+              <h2>Core Developers</h2>
+              <!--<p>These are the guys working day in day out for making camunda the best BPM platform in the world:</p>-->
+              <div class="row">
+                <div class="span4">
+                  <div class="media">
+                    <a class="pull-left" href="#">
+                      <img class="media-object img-circle" src="assets/img/app/community/team/core/andreas_drobisch.jpg">
+                    </a>
+                    <div class="media-body">
+                      <h4 class="media-heading">Andreas Drobisch</h4>
+                      <p>
+                        What am I? asdasdasdasdasdasdds asdasasd asdasdasdasd asdas dasd asdasasdghasdghghasdghasd ghasd ghasdgh ghasd ghasd ghasd ghasd ghasd ghasd
+                      </p>
+                      <p>
+                        <a href="#andreas">Connect to me &raquo;</a>
+                      </p>
+                    </div>
+                  </div>
+                </div>
+                <div class="span4">
+                  <div class="media">
+                    <a class="pull-left" href="#nico-details" data-toggle="modal">
+                      <img class="media-object img-circle" src="assets/img/app/community/team/core/nico_rehwaldt.jpg">
+                    </a>
+                    <div class="media-body">
+                      <h4 class="media-heading">Nico Rehwaldt</h4>
+                      <p>
+                        Works at camunda as a software engineer. 
+                        When he does not spend time on the camunda modeler he reasons about software architectures and engineering on the web.
+                      </p>
+                      <p>
+                        <a href="#nico-details" data-toggle="modal">Connect to Nico &raquo;</a>
+                      </p>
+                    </div>
+                  </div>
+                  <!-- start modal -->
+                  <div id="nico-details" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="nico-details-label" aria-hidden="true">
+                    <div class="modal-header">
+                      <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                      <h3 id="nico-details-label">Nico Rehwaldt</h3>
+                    </div>
+                    <div class="modal-body">
+
+                      <div class="media">
+                        <a class="pull-left">
+                          <img class="media-object img-circle" src="assets/img/app/community/team/core/nico_rehwaldt.jpg">
+                        </a>
+                        <div class="media-body">
+                          <p>
+                            I work at camunda as a software engineer where I build the camunda modeler and contribute to the bpm platform. 
+                            Whenever I do something else it most probably has to do with software architectures and engineering and the web.
+                            Most of the stuff I do in code can be found on <a href="https://github.com/Nikku">github</a>. 
+                            Occasionally I <a href="http://tech.lefedt.de">write things</a>, too.
+                          </p>
+
+                          <p>
+                            <b>Find me on the web:</b>
+                          </p>
+
+                          <ul>
+                            <li><a href="https://github.com/Nikku">Github</a></li>
+                            <li><a href="http://tech.lefedt.de">Blog</a></li>
+                          </ul>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="modal-footer">
+                      <button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
+                    </div>
+                  </div>
+                  <!-- end modal -->
+                </div>
+              </div>
+            </div>
+
+            <!-- row 3 -->
+            <div class="row">                
+              <h2>Contributors</h2>    
+              <div class="row">
+               <div class="span3">
+                <img class="img-circle" src="assets/img/app/community/team/core/bernd_ruecker.jpg">
+                <h1>Bernd Rücker</h1>
+                I am hot!                       
+              </div>
+              <div class="span3">
+                <a href="#myModal" data-toggle="modal"><img class="img-circle" src="assets/img/app/community/team/core/falko_menge.jpg"></a>
+                <h1>Falko Menge</h1>
+                What am I?    
+                <!-- Modal -->
+                <div id="myModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                  <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                    <h3 id="myModalLabel">Falko Menge</h3>
+                  </div>
+                  <div class="modal-body">
+                    <div class="row">
+                      <div class="span4 center">
+                    <img class="img-circle" src="assets/img/app/community/team/core/falko_menge.jpg">
+                  </div>
+                  <div class="span8">
+                    <p>Falko Menge is consultant, trainer and software engineer at 
+                camunda. He has a lot of experience with process automation and 
+                application integration and is a co-founder and committer of several 
+                Open Source projects in this area including camunda BPM. Moreover, Falko 
+                directly contributes to the BPMN standard as a representative of camunda 
+                at the OMG.
+                </p>
+                <p>
+                  <b>Profiles:</b>
+                <ul>
+                  <li><a href="https://twitter.com/falko_menge">Twitter</a></li>
+                  <li><a href="https://www.ohloh.net/accounts/falko">Ohloh</a></li>
+                  <li><a href="https://github.com/falko">Github</a></li>
+                  <li><a href="https://bitbucket.org/_falko_">Bitbucket</a></li>
+                </ul>
+                </p>
+                </div>
+                  </div>
+                </div>
+                  <div class="modal-footer">
+                    <button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
+                  </div>
+                </div>                                       
+              </div>
+              <div class="span3">
+                <img class="img-circle" src="assets/img/app/community/team/core/jakob_freund.jpg">
+                <h1>Jakob Freund</h1>
+                BPM Addict                    
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- end dev team column -->
+        
+        <!-- partner column -->
+        <div class="span3 center partners" >
+          <h2>Partners involved</h2>
+          <!--<p>These companies back up our project:</p>-->
+          <a href="http://www.businessprocessincubator.com"><img src="assets/img/app/community/team/partners/bpi.gif"></a>
+          <a href="http://www.camunda.com"><img src="assets/img/app/community/team/partners/camunda.png"></a>
+          <a href="http://www.ibo.de"><img src="assets/img/app/community/team/partners/ibo.jpg"></a>
+          <a href="http://www.plexiti.com"><img src="assets/img/app/community/team/partners/plexiti.png"></a>                
+          <a href="http://www.signavio.com"><img src="assets/img/app/community/team/partners/signavio.png"></a>
+
+        </div>
+        <!-- end partner column -->
       </div>
       <div class="push-down"><!-- // --></div> 
     </div>

@@ -10,7 +10,7 @@
 }
 
 /* Prevent Modal Slide in, instead do a Fade in */
-.modal.fade{
+.modal.fade {
     -webkit-transition: opacity .2s linear, none;
     -moz-transition: opacity .2s linear, none;
     -ms-transition: opacity .2s linear, none;
@@ -50,7 +50,7 @@
   fill: white;
 }
 
-h1, h2, h3 {
+h1, h2, h3, h4 {
     font-family: 'VolkswagenTS-Regular';
     font-weight: normal;
 }

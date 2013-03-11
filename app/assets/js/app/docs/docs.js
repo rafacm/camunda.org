@@ -96,7 +96,7 @@
       $scope.search = "";
 
       if (bestMatch.rank && currentPage != bestMatchPage) {
-        $location.path($scope.bestMatch.page.url);
+        $location.url($scope.bestMatch.page.url);
       } else {
         updateSearch();
       }
