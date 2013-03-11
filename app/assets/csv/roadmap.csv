@@ -13,9 +13,9 @@ Prio;Item + Link;Component;OSS/EE;URL;Status;Release;Contributor
 12;Central User Management for all components;all;OSS;;open;7.0;camunda
 13;Runtime influencing (bulk);cockpit;EE;;open;7.0;camunda
 14;Taskmanagement API Improvements;engine;OSS;;open;7.0;camunda
-15;Taskforms for rapid prototyping;tasklist, modeler;OSS;;open;07. Jan;camunda
-16;Custom Task Type;modeler;OSS;;open;07. Jan;camunda
-17;Java Script Remote API;engine;OSS;;open;07. Jan;camunda
-18;Definition and Monitoring of Errors;cockpit, engine, modeler;OSS;;open;07. Jan;camunda
-19;BPMN 2.0 Model API;engine;OSS;;open;07. Jan;camunda
-20;Free Search Query;cockpit;OSS;;open;07. Jan;camunda
+15;Taskforms for rapid prototyping;tasklist, modeler;OSS;;open;7.1;camunda
+16;Custom Task Type;modeler;OSS;;open;7.1;camunda
+17;Java Script Remote API;engine;OSS;;open;7.1;camunda
+18;Definition and Monitoring of Errors;cockpit, engine, modeler;OSS;;open;7.1;camunda
+19;BPMN 2.0 Model API;engine;OSS;;open;7.1;camunda
+20;Free Search Query;cockpit;OSS;;open;7.1;camunda
