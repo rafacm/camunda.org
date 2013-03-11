@@ -64,7 +64,10 @@ CAM_PAGES = [
   { section: "implement", category: "Subprocesses", id: "event-subprocess", name: "Event Subprocess", url: "/subprocesses/event-subprocess", keywords: "subprocesses event subprocess" },
   { section: "implement", category: "Subprocesses", id: "transaction-subprocess", name: "Transaction Subprocess", url: "/subprocesses/transaction-subprocess", keywords: "subprocesses transaction subprocess" },
   
+  // rest api documentation
+  
   { section: "rest", category: "Overview", id: "rest-introduction", name: "Introduction", url: "/overview/introduction", keywords: "rest overview" },
+  { section: "rest", category: "Overview", id: "rest-embeddability", name: "Embedding the API", url: "/overview/embeddability", keywords: "rest embed embeddability application jaxrs" },
   
   { section: "rest", category: "Process Engine", id: "get-engine-names", name: "Get Engine Names", url: "/engine/get-names", keywords: "get process engine processengine name list all" },
   

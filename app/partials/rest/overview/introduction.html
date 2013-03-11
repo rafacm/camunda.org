@@ -29,7 +29,7 @@
   
   <h2>Engine Usage</h2>
   <p>
-    The methods as described work on the default process engine, i.e. the one that can be retrieved by <code>BpmPlatform.getDefaultProcessEngine()</code>.
+    The methods as described work on the default process engine as given by the available <code>ProcessEngineProvider</code> serivce.
   </p>
   <p>
     You may prepend <code>/engine/{name}</code> to any of the methods (unless otherwise documented) to access another engine. <code>name</code> is the name of the process engine
@@ -43,5 +43,10 @@
     there are problems with database access. <br/>
     <br/>
     Any of these undocumented errors will be translated to a HTTP 500 error.
+  </p>
+  
+  <h2>Authentication</h2>
+  <p>
+    For release <code>7.0.alpha1</code>, authentication is not part of the API yet. However, it is planned for the final release <code>7.0.0</code>.
   </p>
 </section>
