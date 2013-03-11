@@ -9,6 +9,16 @@
   display: none;
 }
 
+/* Prevent Modal Slide in, instead do a Fade in */
+.modal.fade{
+    -webkit-transition: opacity .2s linear, none;
+    -moz-transition: opacity .2s linear, none;
+    -ms-transition: opacity .2s linear, none;
+    -o-transition: opacity .2s linear, none;
+    transition: opacity .2s linear, none;
+    top: 10%;
+}
+
 .camunda-icon {
   background-image: url(../img/camunda_icon.png);
   width: 74px;
