@@ -97,8 +97,8 @@
           <div class="info" ng-show="{{roadmapErrorText!=''}}">{{roadmapErrorText}}</div>
           <table class="table">
             <tr>
-              <th>Prio</th>
-              <th>Item + Link</th>
+              <th>Priority</th>
+              <th>Topic</th>
               <th>Component</th>
               <th>OSS/EE</th>
               <th>Status</th>
@@ -106,10 +106,10 @@
               <th>Contributor</th>
             </tr>
             <tr ng-repeat="roadmapValue in roadmapRow" ng-show="isNotNull(roadmapValue['OSS/EE'])">
-              <td>{{roadmapValue.Prio}}</td>
+              <td>{{roadmapValue.Priority}}</td>
               <td>
-                <a style="color:lightblue;" href="{{roadmapValue.URL}}" target="_blank" ng-show="isNotNull(roadmapValue.URL)">{{roadmapValue["Item + Link"]}}</a>
-                <span ng-show="!isNotNull(roadmapValue.URL)">{{roadmapValue["Item + Link"]}}</span>
+                <a style="color:lightblue;" href="{{roadmapValue.URL}}" target="_blank" ng-show="isNotNull(roadmapValue.URL)">{{roadmapValue["Topic"]}}</a>
+                <span ng-show="!isNotNull(roadmapValue.URL)">{{roadmapValue["Topic"]}}</span>
               </td>
               <td>{{roadmapValue.Component}}</td>
               <td>{{roadmapValue["OSS/EE"]}}</td>

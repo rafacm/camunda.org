@@ -10,7 +10,7 @@
 }
 
 /* Prevent Modal Slide in, instead do a Fade in */
-.modal.fade{
+.modal.fade {
     -webkit-transition: opacity .2s linear, none;
     -moz-transition: opacity .2s linear, none;
     -ms-transition: opacity .2s linear, none;
@@ -50,9 +50,19 @@
   fill: white;
 }
 
-h1, h2, h3 {
+h1, h2, h3, h4 {
     font-family: 'VolkswagenTS-Regular';
     font-weight: normal;
+}
+
+.headline h2 {
+   color: #333;
+}
+
+.headline {
+  margin-top: 80px;
+  margin-bottom: 60px;
+  text-align: center;
 }
 
 a, a:visited {
@@ -60,7 +70,7 @@ a, a:visited {
   text-decoration: none;
 }
 
-a.btn-inverse, a.btn-primary {  
+a.btn-inverse, a.btn-primary, a.btn-success {  
   color: white;
 }
 
