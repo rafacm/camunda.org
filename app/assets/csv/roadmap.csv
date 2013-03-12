@@ -1,6 +1,6 @@
-Prio;Item + Link;Component;OSS/EE;URL;Status;Release;Contributor
-1;Glassfish Application Server distribution ;all;OSS;https://app.camunda.com/jira/secure/RapidBoard.jspa?rapidView=23&view=planning&selectedIssue=CAM-173&selectedEpic=CAM-397;open;7.0;camunda
-2;Websphere Application Server distribution ;all;EE;https://app.camunda.com/jira/secure/RapidBoard.jspa?rapidView=23&view=planning&selectedIssue=CAM-173&selectedEpic=CAM-398;open;7.0;camunda
+Priority;Topic;Component;OSS/EE;URL;Status;Release;Contributor
+1;Glassfish Application Server distribution ;all;OSS;https://app.camunda.com/jira/secure/RapidBoard.jspa?rapidView=23&view=planning&selectedIssue=CAM-173&selectedEpic=CAM-397;ongoing;7.0;camunda
+2;Websphere Application Server distribution ;all;EE;https://app.camunda.com/jira/secure/RapidBoard.jspa?rapidView=23&view=planning&selectedIssue=CAM-173&selectedEpic=CAM-398;ongoing;7.0;camunda
 3;New REST API for Process Applications;engine;OSS;https://app.camunda.com/jira/secure/RapidBoard.jspa?rapidView=23&view=planning&selectedIssue=CAM-249&selectedEpic=CAM-9;ongoing;7.0;camunda
 4;Spring process application support;engine;OSS;https://app.camunda.com/jira/secure/RapidBoard.jspa?rapidView=23&view=planning&selectedIssue=CAM-173&selectedEpic=CAM-399;open;7.0;camunda
 5;Modelling Convenience Improvements;modeler;OSS;https://app.camunda.com/jira/secure/RapidBoard.jspa?rapidView=23&view=planning&selectedIssue=CAM-249&selectedEpic=CAM-338;ongoing;7.0;camunda
