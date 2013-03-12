@@ -60,7 +60,7 @@ a, a:visited {
   text-decoration: none;
 }
 
-a.btn-inverse, a.btn-primary {  
+a.btn-inverse, a.btn-primary, a.btn-success {  
   color: white;
 }
 
