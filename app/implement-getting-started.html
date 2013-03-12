@@ -50,6 +50,7 @@
 				<div class="page-header" >
 					<h1>What will you learn?</h1>
 				</div>
+		
 				
 			</section>
 			<section id="download">
@@ -62,7 +63,8 @@
 						Make sure you have the following set of tools installed before starting the tutorial:
 					<ul>
 						<li>Java JDK 1.6+</li>
-						<li>A modern Webbrowser (recent Firefox, Chrome, or Internet Explorer 9+)</li>						
+						<li>Apache Maven (optional)</li>
+						<li>A modern Webbrowser (recent Firefox, Chrome, or Internet Explorer 9+ will work fine)</li>						
 					</ul>
 				</div>
 			
@@ -82,30 +84,41 @@
 					directory <code>$CAMUNDA_HOME</code>.
 				</p>
 				<p>
-					After you have sucessfully unpacked your distribution of camunda BPM platform, go to the folder 
-					named <code>server/apache-tomcat-7.0.x/bin</code> and start the <code>startup.{bat/sh}</code> script.
+					After you have sucessfully unpacked your distribution of camunda BPM platform, execute the script named 
+					<code>start-camunda.bat</code> (windows  users) or <code>start-camunda.sh</code> (unix users).
 				</p>
 				<p>
-					If starting the server is successful, the following webapplications are available:
-					<ul>
-						<li>
-							<a href="http://localhost:8080/tasklist">
-								http://localhost:8080/tasklist
-							</a>
-						</li>
-					</ul>
+					This script will start the application server and open a welcome screen in your webbrowser. If the page 
+					does not open, go to <a href="http://localhost:8080/camunda-welcome/index.html">http://localhost:8080/camunda-welcome/index.html</a>
+
+					<div class="alert alert-info">
+						<strong>Getting Help:</strong>
+						If you have trouble setting up camunda BPM platform, you can ask for assistance in the 
+						<a href="/app/community-forum.html">Process Application Development Forum</a>.
+					</div>
 
 				</p>
 
+				<h3>Install camunda modeler</h3>
 
+				TODO!
 			</section>
 			<section id="setup">
 				<div class="page-header" >
 					<h1>Setup your Project</h1>
 				</div>
 				<p>
-					In this section we will setup your first process application project.
+					Now you are ready for setting up your first process application project in eclipse. We'll discuss two alternative setup paths: In one we'll <a href="#setup/with-maven">use Apache Maven,</a> in the other one we'll <a href="#setup/without-maven">not use apache maven.</a>
 				</p>
+								
+				<div id="setup/without-maven">
+					<h3>Without Apache Maven</h3>
+				</div>
+
+				<div id="setup/with-maven">		
+					<h3>With Apache Maven</h3>
+				</div>
+				
 				
 			</section>
 			<section id="model">
