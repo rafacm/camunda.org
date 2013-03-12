@@ -41,7 +41,9 @@ angular
 					delim = args.delim;
 				}
 				
-				var csvLines = csvData.split("\r\n");
+        // Linux line ending check
+        var csvLines = (csvData.search("\r\n")) ? csvData.split("\r\n") : csvData.split("\n");
+        
 				var csvHeaders = this.splitCSV(csvLines[0], delim);
 				var csvRows = csvLines.slice(1, csvLines.length);
 	
