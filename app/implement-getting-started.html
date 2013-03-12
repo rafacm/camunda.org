@@ -36,14 +36,93 @@
 		<div class="row">
 	      <div id="navSide" class="span3 bs-docs-sidebar" >
 	        <ul class="nav nav-list bs-docs-sidenav" data-ca-affix>
-	          <li ><a href="#intro"><i class="icon-chevron-right"></i> What will I learn?</a></li>        
+	          <li ><a href="#intro"><i class="icon-chevron-right"></i> What will you learn?</a></li>        
+	          <li ><a href="#download"><i class="icon-chevron-right"></i> Download &amp; Install</a></li>
+	          <li ><a href="#setup"><i class="icon-chevron-right"></i> Setup your Project</a></li>	          
+	          <li ><a href="#model"><i class="icon-chevron-right"></i> Model a Process</a></li>	 
+	          <li ><a href="#taskform"><i class="icon-chevron-right"></i> Add a Task Form</a></li>
+	          <li ><a href="#servicetask"><i class="icon-chevron-right"></i> Add a Service Task</a></li>
 			</ul>
 	      </div>
 
 	     <div class="span9">
 			<section id="intro">
 				<div class="page-header" >
-					<h1>Hat will I learn?</h1>
+					<h1>What will you learn?</h1>
+				</div>
+				
+			</section>
+			<section id="download">
+				<div class="page-header" >
+					<h1>Download &amp; Install</h1>
+				</div>
+				
+				<div class="alert">
+						<p><strong>Before you start</strong></p>
+						Make sure you have the following set of tools installed before starting the tutorial:
+					<ul>
+						<li>Java JDK 1.6+</li>
+						<li>A modern Webbrowser (recent Firefox, Chrome, or Internet Explorer 9+)</li>						
+					</ul>
+				</div>
+			
+
+				<h3>Install camunda BPM platform</h3>
+				<p>
+					First, download a distribution of camunda BPM platform. You can chose from different application servers. 
+					In this tutorial, we will use the Apache Tomcat 7 based distribution.
+				</p>
+				<p>
+					<center>
+						<a href="#" class="btn btn-primary btn-large">Download</a>
+					</center>
+				</p>
+				<p>
+					After having downloaded the distribution, unpack it inside a directory of your choice. We will call that 
+					directory <code>$CAMUNDA_HOME</code>.
+				</p>
+				<p>
+					After you have sucessfully unpacked your distribution of camunda BPM platform, go to the folder 
+					named <code>server/apache-tomcat-7.0.x/bin</code> and start the <code>startup.{bat/sh}</code> script.
+				</p>
+				<p>
+					If starting the server is successful, the following webapplications are available:
+					<ul>
+						<li>
+							<a href="http://localhost:8080/tasklist">
+								http://localhost:8080/tasklist
+							</a>
+						</li>
+					</ul>
+
+				</p>
+
+
+			</section>
+			<section id="setup">
+				<div class="page-header" >
+					<h1>Setup your Project</h1>
+				</div>
+				<p>
+					In this section we will setup your first process application project.
+				</p>
+				
+			</section>
+			<section id="model">
+				<div class="page-header" >
+					<h1>Model a Process</h1>
+				</div>
+				
+			</section>
+			<section id="taskform">
+				<div class="page-header" >
+					<h1>Add a Task Form</h1>
+				</div>
+				
+			</section>
+			<section id="servicetask">
+				<div class="page-header" >
+					<h1>Add a Service Task</h1>
 				</div>
 				
 			</section>
