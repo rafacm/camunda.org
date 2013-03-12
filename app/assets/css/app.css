@@ -55,6 +55,16 @@ h1, h2, h3, h4 {
     font-weight: normal;
 }
 
+.headline h2 {
+   color: #333;
+}
+
+.headline {
+  margin-top: 80px;
+  margin-bottom: 60px;
+  text-align: center;
+}
+
 a, a:visited {
   color: #B5152B;
   text-decoration: none;
