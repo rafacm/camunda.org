@@ -67,7 +67,8 @@ CAM_PAGES = [
   // rest api documentation
   
   { section: "rest", category: "Overview", id: "rest-introduction", name: "Introduction", url: "/overview/introduction", keywords: "rest overview" },
-  { section: "rest", category: "Overview", id: "rest-embeddability", name: "Embedding the API", url: "/overview/embeddability", keywords: "rest embed embeddability application jaxrs" },
+  { section: "rest", category: "Overview", id: "rest-distro-use", name: "Use with a pre-built distro", url: "/overview/distro-use", keywords: "rest usage distro distribution tomcat jboss glassfish" },
+  { section: "rest", category: "Overview", id: "rest-embeddability", name: "Embedding the API", url: "/overview/embeddability", keywords: "rest usage embed embeddability application jaxrs" },
   
   { section: "rest", category: "Process Engine", id: "get-engine-names", name: "Get Engine Names", url: "/engine/get-names", keywords: "get process engine processengine name list all" },
   
