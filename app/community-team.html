@@ -28,6 +28,7 @@
         .team-core img {
           max-height: 80px;
           max-width: 80px;
+          background: white;
           /*
           filter: url(assets/css/filters.svg#grayscale); 
           filter: gray;
@@ -40,6 +41,12 @@
            -webkit-filter: grayscale(0);
          }
 
+        .team-core img.img-circle {
+          border-radius: 3px;
+          padding: 3px;
+          border: solid 1px #DDD;
+        }
+
         .team-core .modal img {
           max-height: 120px;
           max-width: 120px;
@@ -47,21 +54,26 @@
            -webkit-filter: grayscale(0);
         }
 
-        h2 {
-          margin-top: 30px;
+        .team-core .media {
+          margin-top: 10px;
         }
 
-        .team-core .media {
-          margin-top: 5px;
+        .team-core .media.pull-down {
+          margin-top: 55px;
         }
 
         .team-core h1 {
           font-size: 120%;
           margin: 0px;
-          margin-top: 20px;
+          padding-top: 20px;
           padding-bottom: 10px;
           line-height: 1;
-        }     
+        }
+
+        .team-core h2 {
+          padding-top: 5px;
+          margin-top: 0;
+        }
 
         .partners img {
           padding: 15px;
@@ -72,12 +84,25 @@
         .partners img:hover {
            filter: none;
            -webkit-filter: grayscale(0);
-         } 
+         }
+
+        .pl {
+          background-color: #eee;
+          border-radius: 3px;
+
+          margin: -15px 15px 0 -15px;
+          -moz-border-radius: 3px;
+          -webkit-border-radius: 3px;
+        }
+
+        .pl > div {
+          margin: 15px;
+        }
       </style>
 
       <div class="container">
-        <div style="padding-top: 80px; text-align:center">
-          <h1 style="color:#333">The Team</h1>
+        <div class="headline">
+          <h1>The Team</h1>
           <h3>behind camunda BPM</h3>
         </div>
         <div class="row">
@@ -85,22 +110,34 @@
           <div class="span9 team-core">
             <!-- row 1 -->
             <div class="row">
-              <h2>Project Lead</h2>
-              <div class="row">
-                <div class="span3">
-                  <img class="img-circle" src="assets/img/app/community/team/core/daniel_meyer.jpg">
-                  <h1>Daniel Meyer</h1>
-                  Process Engine Freak
-                </div>
-              </div>
             </div>
 
             <!-- row 2 -->
             <div class="row">
-              <h2>Core Developers</h2>
+              <div class="span3 pl">
+                <div>
+                  <h2>Project Lead</h2>
+                  <div class="media">
+                    <a class="pull-left" href="#">
+                      <img class="media-object img-circle" src="assets/img/app/community/team/core/daniel_meyer.jpg">
+                    </a>
+                    <div class="media-body">
+                      <h4 class="media-heading">Daniel Meyer</h4>
+                      <p>
+                        Dö daniel asdf
+                      </p>
+                      <p>
+                        <a href="#andreas">Connect to Daniel &raquo;</a>
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
               <!--<p>These are the guys working day in day out for making camunda the best BPM platform in the world:</p>-->
               <div class="row">
-                <div class="span4">
+                <div class="span3">
+                  <h2>Core Developers</h2>
                   <div class="media">
                     <a class="pull-left" href="#">
                       <img class="media-object img-circle" src="assets/img/app/community/team/core/andreas_drobisch.jpg">
@@ -116,8 +153,8 @@
                     </div>
                   </div>
                 </div>
-                <div class="span4">
-                  <div class="media">
+                <div class="span3">
+                  <div class="media pull-down">
                     <a class="pull-left" href="#nico-details" data-toggle="modal">
                       <img class="media-object img-circle" src="assets/img/app/community/team/core/nico_rehwaldt.jpg">
                     </a>
@@ -125,7 +162,7 @@
                       <h4 class="media-heading">Nico Rehwaldt</h4>
                       <p>
                         Works at camunda as a software engineer. 
-                        When he does not spend time on the camunda modeler he reasons about software architectures and engineering on the web.
+                        When not refactoring the modeler he reasons about software architectures and engineering on the web.
                       </p>
                       <p>
                         <a href="#nico-details" data-toggle="modal">Connect to Nico &raquo;</a>
