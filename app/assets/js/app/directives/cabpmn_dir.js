@@ -154,20 +154,17 @@ angular.module('camundaorg.directives')
       "April", "May", "June", "July", "August", "September", 
       "October", "November", "December");
 
-      $.getJSON('http://php.camunda.com/rest/meetings.php', function(data) {
+      $.getJSON('http://php.camunda.com/rest/meeting.php', function(data) {
       //$.get('assets/json/events.json', function(data) {
           
           $.each( data.events, function( key, value ) {
 
             var myDate = new Date(value.event.date);
-            var myHours = myDate.getHours();
-            if (myHours < 10) myHours = "0" + myHours;
-            var myMinutes = myDate.getMinutes();
-            if (myMinutes < 10) myMinutes = "0" + myMinutes;
-            var myDateString = myDate.getDate() + "-" + m_names[myDate.getMonth()] + "-" + myDate.getFullYear() + " " +  myHours + ":" + myMinutes;
+            var myDateString = value.event.date;
 
-            var myRow = "<tr><td>" + myDateString + "</td><td><img src='assets/img/app/community/meetings/" + value.event.country + ".png' > " + value.event.country + "</td><td>" + value.event.city + "</td><td>" + value.event.subject + "</td><td>" + value.event.attendees + " attendees</td><td>" + parseInt(value.event.seats - value.event.attendees)  + " seats left</td>";
-            var selectDate = '<td><a href="#myModal' + value.event.id +'" role="button" class="btn" data-toggle="modal">Register</a></td>';
+            var myRow = "<td>" + myDateString + "</td><td><img src='assets/img/app/community/meetings/" + value.event.country + ".png' > " + value.event.country + "</td><td>" + value.event.city + "</td><td>" + value.event.subject + "</td><td>" + value.event.attendees + " attendees</td><td>" + parseInt(value.event.seats - value.event.attendees)  + " seats left</td>";
+            var selectDate = '<td><a style="color:black;" href="community-meetings-single.html?id=' + value.event.id +'" role="button" class="btn">Register</a></td>';
+            /*
             var seatsInfo = "";
             var disabled_formelement = "";
             if (parseInt(value.event.seats - value.event.attendees) < 1) {
@@ -194,9 +191,10 @@ angular.module('camundaorg.directives')
               '</form></div>' + 
               '</div><div class="modal-footer"><button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>' + 
               '<button disabled id="submit_' + value.event.id + '" class="btn btn-primary registerForm_' + value.event.id +'">Register now</button></div></div>';
-            myRow = myRow + selectDate + "</td></tr>";
+            */
+            myRow = "<tr>" + selectDate + myRow + "</td></tr>";
             element.append(myRow);
-
+/*
             if (parseInt(value.event.seats - value.event.attendees) < 1) {
               $('.registerForm_' + value.event.id).attr('disabled', 'disabled');
             }
@@ -234,12 +232,85 @@ angular.module('camundaorg.directives')
                });
              
             });
+*/
             
           });
 
       });
     }
   }
+})
+.directive('meeting', function() {
+  return {
+    link: function(scope, element, attrs) {
+
+      // Helper for getting Get param
+      var HTTP_GET_VARS=new Array();
+      var strGET=document.location.search.substr(1,document.location.search.length);
+      if(strGET!='')
+          {
+          var gArr=strGET.split('&');
+          for(var i=0;i<gArr.length;++i)
+              {
+              var v='';var vArr=gArr[i].split('=');
+              if(vArr.length>1){v=vArr[1];}
+              HTTP_GET_VARS[unescape(vArr[0])]=unescape(v);
+              }
+          }
+        var meetingId = HTTP_GET_VARS["id"];
+
+var m_names = new Array("January", "February", "March", 
+      "April", "May", "June", "July", "August", "September", 
+      "October", "November", "December");
+
+        $.getJSON('http://php.camunda.com/rest/meeting.php?id=' + meetingId, function(data) {
+          $.each( data.events, function( key, value ) {
+          
+          $('.mCountry').append(value.event.country);
+          $('.mCity').text(value.event.city);
+          $('.mDate').text(value.event.date);
+          $('.mSubject').append(value.event.subject);
+          $('.mText').append(value.event.text);
+          $('.mPlace').append(value.event.place + ' (<a target="_blank" href="https://maps.google.de/maps?q=' + value.event.place + '">Google Maps</a>)');
+
+            if (parseInt(value.event.seats - value.event.attendees) < 1) {
+              $('.mSeats').text ('Sorry, there are no seats left :-(');
+              $('#mSubmit').attr('disabled', 'true');
+            } else {
+              $('.mSeats').text('Currently we have ' + value.event.attendees + ' attendees. There are still ' + parseInt(value.event.seats - value.event.attendees) + ' seats left!');
+            }
+
+            $('#mSubmit').on('click', function(event) {
+              var myName =  $('#mName').val();
+              var myEmail = $('#mEmail').val();
+
+              $('#formContainer').append('<p id="status">Processing...</p>');
+              // alert (myName + myEmail);
+             // HttpContext.Current.Response.AddHeader("Access-Control-Allow-Origin", "*");
+               $.ajax({
+               // pfad zur PHP Datei (ab HTML Datei)
+                    url: "http://php.camunda.com/rest/register.php",
+               // Daten, die an Server gesendet werden soll in JSON Notation
+                    data: {id: value.event.id, name: myName, email: myEmail},
+                    datatype: "jsonp",
+               // Methode POST oder GET
+               type: "POST",
+               // Callback-Funktion, die nach der Antwort des Servers ausgefuehrt wird
+                    success: function(data) { 
+                      //alert ("hi");
+                      $('#status').text("Thank you! You will get your confirmation via email. See you there!" + data);
+                    }
+               });
+             
+            });   
+
+          });
+
+      });
+
+     
+  }
+}
 })
 .directive('camTweets', function() {
   return {

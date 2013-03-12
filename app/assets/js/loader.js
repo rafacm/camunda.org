@@ -14,18 +14,16 @@ $script([
 	'lib/markdownjs/markdown',
 	'lib/jquery-1.7.2.min'],  function() {
 		$script([
-		    'lib/superscrollorama/js/greensock/TweenMax.min',
-		    'lib/superscrollorama/js/jquery.superscrollorama',
-      		'lib/tweet/jquery.tweet',
+   		'lib/tweet/jquery.tweet',
 			'lib/jquery-fastLiveFilter/jquery.fastLiveFilter',
 			'lib/bootstrap/bootstrap.min',			
 			'lib/angular/angular.min',
+      'lib/dojo/dojo/dojo',
 			'lib/jquery-validation/dist/jquery.validate.min',
 			'lib/analytics/analytics'
 			], function() {
-
 				$script([
-					'lib/angular/angular-resource.min',
+          'lib/angular/angular-resource.min',
 					'lib/angular/angular-bootstrap.min',
 					'app/app',
 					'app/cabpmn',
@@ -56,5 +54,4 @@ $script([
 					angular.bootstrap(document, ['camundaorg']);
 				});
 		});
-
 });

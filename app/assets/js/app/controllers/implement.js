@@ -2,6 +2,22 @@
 
 angular.module('camundaorg.controllers', []);
 
+function ImplementHeroUnit($scope) {
+
+	$scope.activeSection = "overview";
+
+	$scope.setAciveSection = function(newSection) {
+		$scope.activeSection = newSection;
+	}
+
+	$scope.isActiveSection = function(section) {
+		return $scope.activeSection == section ? "active" : "inactive";
+	}
+
+
+
+}
+
 function AnimateProjectSetupController($scope) {
 
 	function translateElement( element, distance, i)
