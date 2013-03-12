@@ -60,6 +60,10 @@ a, a:visited {
   text-decoration: none;
 }
 
+a.btn-inverse, a.btn-primary {  
+  color: white;
+}
+
 .hero-unit h2 {
   padding-top: 1.5em;
   padding-bottom: 1em;
