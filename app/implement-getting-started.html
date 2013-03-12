@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>camunda.org - the camunda bpm community homepage</title>
+    
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <meta name="author" content="camunda.org community" />
+        
+    <!-- loads all stylesheets -->
+    <link href="assets/css/loader.css" rel="stylesheet" />
+
+    <!-- For IE6-8 support of HTML5 elements -->
+    <!--[if lt IE 9]>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+     
+    <base app-base="" />
+
+  </head>
+  <body ng-controller="DefaultController" >
+    <div class="wrapper">
+      <!-- navigation -->
+      <div data-ng-include=" 'templates/navigation.html' "></div>
+
+	<div class="container">
+
+	    <div style="padding-top:80px; text-align:center">            
+	      <h1 style="color:#333">Getting Started</h1>
+	      <h3>Developping Process Applications</h3>
+	    </div>
+
+		<!--<div tutorial="partials/design/tutorial.md" />-->
+
+		<div class="row">
+	      <div id="navSide" class="span3 bs-docs-sidebar" >
+	        <ul class="nav nav-list bs-docs-sidenav" data-ca-affix>
+	          <li ><a href="#intro"><i class="icon-chevron-right"></i> What will I learn?</a></li>        
+			</ul>
+	      </div>
+
+	     <div class="span9">
+			<section id="intro">
+				<div class="page-header" >
+					<h1>Hat will I learn?</h1>
+				</div>
+				
+			</section>
+				
+		</div>
+	</div>
+		
+	</div>
+		
+      <div class="push-down"><!-- // --></div> 
+    </div>
+    <!-- footer -->
+    <footer class="footer">
+      <div data-ng-include=" 'templates/footer.html' "></div>
+
+      <!-- loads all javascript -->
+	<script src="assets/js/loader.js"></script>  
+    </footer>
+  </body>
+</html>
