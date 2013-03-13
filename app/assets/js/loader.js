@@ -18,16 +18,16 @@ $script([
 			'lib/jquery-fastLiveFilter/jquery.fastLiveFilter',
 			'lib/bootstrap/bootstrap.min',			
 			'lib/angular/angular.min',
-      'lib/dojo/dojo/dojo',
+      		'lib/dojo/dojo/dojo',
 			'lib/jquery-validation/dist/jquery.validate.min',
 			'lib/analytics/analytics'
 			], function() {
 				$script([
-          'lib/angular/angular-resource.min',
+         			'lib/angular/angular-resource.min',
 					'lib/angular/angular-bootstrap.min',
 					'app/app',
+					'app/bpmn/Executor',
 					'app/cabpmn',
-					'app/ca-bpmn',
 					'app/directives',
 					'app/directives/modalDialog',
 					'app/directives/windowCenter',
@@ -46,7 +46,7 @@ $script([
 					'app/controllers/home',
 					'app/controllers/numberguess',
 					'app/controllers/implement',
-          'app/controllers/roadmap',
+          			'app/controllers/roadmap',
 
 					'app/docs/pages',
 					'app/docs/docs'

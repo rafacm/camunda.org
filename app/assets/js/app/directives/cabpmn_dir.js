@@ -21,6 +21,7 @@ angular.module('camundaorg.directives')
                 height : 1,
                 overlayHtml : '<div style="position: relative; top:100%"></div>'
             }).then(function (bpmn){
+                scope.bpmn = bpmn;
                 //bpmn.zoom(0.8);
                 //bpmn.annotate("reviewInvoice", '<span class="bluebox"  style="position: relative; top:100%">New Text</span>', ["highlight"]);
             });

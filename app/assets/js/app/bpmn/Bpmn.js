@@ -29,6 +29,7 @@ define(["bpmn/Transformer", "bpmn/Renderer", "dojo/request", "dojo/Deferred", "d
     definitionRenderer.render(options);
 
     this.definitionRenderer = definitionRenderer;
+    this.processDefinitions = processDefinition;
     this.bpmnXml = bpmnXml;
     this.options = options;
 
@@ -69,6 +70,17 @@ define(["bpmn/Transformer", "bpmn/Renderer", "dojo/request", "dojo/Deferred", "d
     element.innerHTML = innerHTML;
 
     domClass.add(element, classesArray.join(" "));
+  };
+
+  Bpmn.prototype.clearAnnotations = function (id, classesArray) {
+    var element = query(".bpmnElement" + "#"+id)[0];
+    if (!element) {
+      return;
+    }
+
+    element.innerHTML = "";
+
+    domClass.remove(element, classesArray.join(" "));
   };
 
   Bpmn.prototype.clear = function (id, innerHTML, classesArray) {

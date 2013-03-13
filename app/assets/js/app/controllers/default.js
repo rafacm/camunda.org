@@ -42,8 +42,8 @@ function DefaultController($scope, $location) {
   });
   // end Bread Crumb
         var tokens = {};
-    CAM.parseListeners.push(function(activityDefinition){
-      if (activityDefinition.typeId != "process" && activityDefinition.typeId != "startEvent") {
+   /** CAM.parseListeners.push(function(activityDefinition){
+      if (activityDefinition.type != "process" && activityDefinition.type != "startEvent") {
 
 
 
@@ -111,7 +111,7 @@ function DefaultController($scope, $location) {
           
         };
       }
-    });  
+    });  **/
 
 
   $scope.scrollTo = function(elementId) {

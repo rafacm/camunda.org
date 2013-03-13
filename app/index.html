@@ -36,21 +36,148 @@
             <a href="design.html">Design</a> | <a href="implement.html">Implement and Run</a> your Processes.
           </div>
           
-          
-            <div data-bpmn-tutorial style="padding-top:40px;" class="center">
-            <div data-bpmn-src="homepage/numberGuessing" style="position:relative;"  >
-              <div class="tutPop" id="sid-595DE0B3-DDA3-411E-B16A-30675AAD4580" rel="popover" title="Number Guessing" data-content="Click me!">
+          <div style="padding-top:40px; width:100%"  data-ng-controller="NumberguessAppController">
+
+            <div style="position:relative; width:100%; height:200px">  
+              <div style="width:596px; margin: 0 auto; position:relative" id="numberGuess" data-bpmn-render="homepage/numberGuessing">    
               </div>
             </div>
+
+            <div style="position:relative; top:-200px ; width:100%; height:160px">
+
+              <div style="width:596px; margin: 0 auto; position:relative" >
+
+                <a class="btn btn-success" 
+                  data-ng-click="startProcess('numberGuess')"
+                  data-ng-show="inactive()"
+                  style="position:absolute; left:-70px; top: 49px;">
+                  <i class="icon-play"></i> Play!
+                </a>
+
+                <div data-ng-show="active('start')"
+                   style="position:absolute; left:-116px; top: -90px; display:none">
+                 <div class="popover top" style="display:block">
+                  <div class="arrow"></div>
+                  <h3 class="popover-title">Start Event
+                    <a  data-ng-click="cancel()" style="float:right">
+                      <i class="icon-remove"></i>
+                    </a>
+                  </h3>
+                  <div class="popover-content">
+                    <p>In <a href="design-tutorial.html" target="_blank">BPMN 2.0</a>, a Start Event marks the beginning of a process.</p>
+                    <p class="center">
+                      <a class="btn btn-success" data-ng-click="continue('start')">Start</a>
+                    </p>
+                  </div>
+                 </div>
+                </div>
+
+                <div data-ng-show="active('generateNumber')"
+                   style="position:absolute; left:-5px; top: -190px; display:none">
+                 <div class="popover top" style="display:block">
+                  <div class="arrow"></div>
+                  <h3 class="popover-title">Service Task
+                    <a  data-ng-click="cancel()" style="float:right">
+                      <i class="icon-remove"></i>
+                    </a>
+                  </h3>
+                  <div class="popover-content">
+                    <p>A <a href="implement-bpmn.html#/tasks/service-task" target="_blank">Service Task</a> allows triggering an automatic system function like a Web Service or a Method of a Java Class.</p>
+                    <p>This service task generates a random number between 0 and 5.</p>
+                    <p class="center">
+                      <a class="btn btn-success" data-ng-click="continue('generateNumber')">Continue</a>
+                    </p>
+                  </div>
+                 </div>
+                </div>
+
+                <div data-ng-show="active('guessNumber')"
+                   style="position:absolute; left:165px; top: -190px; display:none">
+                 <div class="popover top" style="display:block">
+                  <div class="arrow"></div>
+                  <h3 class="popover-title">User Task
+                    <a  data-ng-click="cancel()" style="float:right">
+                      <i class="icon-remove"></i>
+                    </a>
+                  </h3>
+                  <div class="popover-content">
+                    <div data-ng-show="isFirstGuess()">
+                      <p>The <a href="implement-bpmn.html#/tasks/user-task" target="_blank">User Task</a> allows you to make an input.</p>
+                    </div>
+                    <div data-ng-show="!isFirstGuess()">
+                      <p class="text-error">Your last guess ({{processInstance.variables.guess}}) was incorrect, try again!</p>
+                    </div>
+
+                    <p>Input a Number between 0 and 5:
+                      <input type="text" data-ng-model="guess" size="30"
+                         placeholder="Make a guess!"></input>
+                    </p>
+                    <p class="center">
+                      <a class="btn btn-success" data-ng-disabled="!isGuessValid()" data-ng-click="signal('guessNumber')">Complete</a>
+                    </p>
+                  </div>
+                 </div>
+                </div>
+
+                <div data-ng-show="active('exclusiveGW')"
+                   style="position:absolute; left:280px; top: -190px; display:none">
+                 <div class="popover top" style="display:block">
+                  <div class="arrow"></div>
+                  <h3 class="popover-title">Exclusive Gateway
+                    <a  data-ng-click="cancel()" style="float:right">
+                      <i class="icon-remove"></i>
+                    </a>
+                  </h3>
+                  <div class="popover-content">
+                    <p>The <a href="implement-bpmn.html#/gateways/exclusive-gateway" target="_blank">Exclusive Gateway</a> marks a decision.
+                       In BPMN 2.0, the <a href="implement-bpmn.html#/gateways/sequence-flow" target="_blank">Sequence Flows</a> (transitions) leaving 
+                       the Exclusive Gateway have Conditions that are evaluated.</p>
+                    <p>In this case, we check whether your guess was correct.</p>
+                    <p class="center">
+                      <a class="btn btn-success" data-ng-click="continue('exclusiveGW')">Continue</a>
+                    </p>
+                  </div>
+                 </div>
+                </div>
+
+
+                <div data-ng-show="active('end')"
+                   style="position:absolute; left:380px; top: -130px; display:none">
+                 <div class="popover top" style="display:block">
+                  <div class="arrow"></div>
+                  <h3 class="popover-title">End Event
+                    <a  data-ng-click="cancel()" style="float:right">
+                      <i class="icon-remove"></i>
+                    </a>
+                  </h3>
+                  <div class="popover-content" class="center">
+                    <p>Your last guess was correct, you've won!</p>                    
+                    <p>
+                      This amazing achievement is worth telling people about:
+                    </p>
+                    <p>
+                        <a href="https://twitter.com/share" class="twitter-share-button" data-url="http://www.camunda.org" data-text="Sweet! I just completed the #BPMN20 Numberguessing Game!" data-size="large" data-hashtags="camunda,bpm">Tweet</a>
+                        <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+                      </p>
+                    </p>
+                  </div>
+                 </div>
+                </div>
+
+              </div>
+
+            </div>
+
+            
           </div>
         
         
   
-          <div class="center" style="margin-top:50px; position:relative;">
-            <a class="btn btn-large btn-primary" href="http://fox.camunda.com/download/old/camunda-bpm-platform-tomcat7-7.0.0-SNAPSHOT.tar.gz">
-              <i class="icon-download-alt icon-large"></i> Download
-            </a>
-          </div>
+              <div class="center" style="position:relative; top:-160px">
+                <a class="btn btn-large btn-primary" href="http://fox.camunda.com/download/old/camunda-bpm-platform-tomcat7-7.0.0-SNAPSHOT.tar.gz">
+                  <i class="icon-download-alt icon-large"></i> Download
+                </a>
+              </div>
                     <section class="index_news" style="color:white;text-align:center" ng-controller="RuntimeContainers">
                       <style type="text/css">
                         .index_news p, .index_news div {font-size: 100%;}

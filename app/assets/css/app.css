@@ -521,3 +521,9 @@ a.caret-after {
   -moz-border-radius: 0 6px 6px 6px;
   border-radius: 0 6px 6px 6px;
 }
+
+/** numberguess **/
+
+.highlight-node {
+  border:solid;
+}

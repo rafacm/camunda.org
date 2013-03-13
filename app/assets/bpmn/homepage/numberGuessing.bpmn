@@ -1,108 +1,44 @@
 <?xml version="1.0" encoding="UTF-8"?><definitions xmlns="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:omgdc="http://www.omg.org/spec/DD/20100524/DC" xmlns:omgdi="http://www.omg.org/spec/DD/20100524/DI" xmlns:signavio="http://www.signavio.com" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" exporter="Signavio Process Editor, http://www.signavio.com" exporterVersion="6.7.0" expressionLanguage="http://www.w3.org/1999/XPath" id="sid-338cc59d-3e6b-4179-8742-9c92cfb4b0dd" targetNamespace="http://www.omg.org/spec/BPMN/20100524/MODEL" typeLanguage="http://www.w3.org/2001/XMLSchema" xsi:schemaLocation="http://www.omg.org/spec/BPMN/20100524/MODEL http://www.omg.org/spec/BPMN/2.0/20100501/BPMN20.xsd">
-   <process id="sid-e1ea135c-2eb5-42d9-91fe-6778398f3739" isClosed="false" isExecutable="true" processType="None">
-      <startEvent id="sid-595DE0B3-DDA3-411E-B16A-30675AAD4580">
-         <extensionElements>
-            <signavio:signavioMetaData metaKey="bgcolor" metaValue="#ffffff"/>
-            <signavio:signavioMetaData metaKey="userstory" metaValue=""/>
-         </extensionElements>
-         <outgoing>sid-CBA9A05E-AC41-43F8-991A-C965DDB0C45F</outgoing>
+
+   <process id="numberGuess" isExecutable="true">
+      <startEvent id="start">         
       </startEvent>
-      <serviceTask completionQuantity="1" id="sid-7174D25F-E272-411A-8D4F-9F1E9090D740" implementation="webService" isForCompensation="false" name="Generate random &#10;number" startQuantity="1">
-         <extensionElements>
-            <signavio:signavioMetaData metaKey="bgcolor" metaValue="#ffffcc"/>
-            <signavio:signavioMetaData metaKey="adaptereventtype" metaValue=""/>
-            <signavio:signavioMetaData metaKey="documentationlink" metaValue=""/>
-            <signavio:signavioMetaData metaKey="test" metaValue=""/>
-            <signavio:signavioMetaData metaKey="adaptertype" metaValue=""/>
-            <signavio:signavioMetaData metaKey="userstory" metaValue=""/>
-            <signavio:signavioMetaData metaKey="adapterconfiguration" metaValue=""/>
-            <signavio:signavioMetaData metaKey="adapterclassname" metaValue=""/>
-            <signavio:signavioMetaData metaKey="servicereferenz" metaValue=""/>
-            <signavio:signavioMetaData metaKey="risiko" metaValue=""/>
-            <signavio:signavioMetaData metaKey="erteiltfreigabe" metaValue=""/>
-         </extensionElements>
-         <incoming>sid-CBA9A05E-AC41-43F8-991A-C965DDB0C45F</incoming>
-         <outgoing>sid-06CEF76F-9F5D-4789-98E1-D1099D01C303</outgoing>
+      <serviceTask id="generateNumber" isForCompensation="false" name="Generate random &#10;number" startQuantity="1">        
       </serviceTask>
-      <exclusiveGateway gatewayDirection="Diverging" id="sid-680D5C2A-D8E2-4C11-BEFF-120ACA956F9C" name="Guess &#10;Correct?">
-         <extensionElements>
-            <signavio:signavioLabel align="center" bottom="false" left="false" ref="text_name" right="false" top="true" valign="bottom" x="21.0" y="-8.0"/>
-            <signavio:signavioMetaData metaKey="bgcolor" metaValue="#ffffff"/>
-            <signavio:signavioMetaData metaKey="adaptertype" metaValue=""/>
-            <signavio:signavioMetaData metaKey="userstory" metaValue=""/>
-            <signavio:signavioMetaData metaKey="adapterconfiguration" metaValue=""/>
-            <signavio:signavioMetaData metaKey="adapterclassname" metaValue=""/>
-         </extensionElements>
-         <incoming>sid-F70E0368-B6CE-4FAD-97D2-D89745012129</incoming>
-         <outgoing>sid-7B89A11E-AABC-4B5A-839E-4289502C3EE7</outgoing>
-         <outgoing>sid-B6F2AAD1-4BEB-445A-A563-F1BC0F660F67</outgoing>
+      <exclusiveGateway gatewayDirection="Diverging" id="exclusiveGW" name="Guess &#10;Correct?">         
       </exclusiveGateway>
-      <userTask completionQuantity="1" id="sid-4154DC9B-9152-49EA-9E71-5B69C0210B6E" implementation="webService" isForCompensation="false" name="Guess Number" startQuantity="1">
-         <extensionElements>
-            <signavio:signavioMetaData metaKey="bgcolor" metaValue="#ffffcc"/>
-            <signavio:signavioMetaData metaKey="adaptereventtype" metaValue=""/>
-            <signavio:signavioMetaData metaKey="documentationlink" metaValue=""/>
-            <signavio:signavioMetaData metaKey="test" metaValue=""/>
-            <signavio:signavioMetaData metaKey="adaptertype" metaValue=""/>
-            <signavio:signavioMetaData metaKey="userstory" metaValue=""/>
-            <signavio:signavioMetaData metaKey="adapterconfiguration" metaValue=""/>
-            <signavio:signavioMetaData metaKey="adapterclassname" metaValue=""/>
-            <signavio:signavioMetaData metaKey="servicereferenz" metaValue=""/>
-            <signavio:signavioMetaData metaKey="risiko" metaValue=""/>
-            <signavio:signavioMetaData metaKey="erteiltfreigabe" metaValue=""/>
-         </extensionElements>
-         <incoming>sid-06CEF76F-9F5D-4789-98E1-D1099D01C303</incoming>
-         <outgoing>sid-F70E0368-B6CE-4FAD-97D2-D89745012129</outgoing>
+      <userTask id="guessNumber" isForCompensation="false" name="Guess Number" startQuantity="1">        
       </userTask>
-      <endEvent id="sid-49B45776-F0BE-4B78-9AA2-E9309F5948A7" name="You won!">
-         <extensionElements>
-            <signavio:signavioMetaData metaKey="bgcolor" metaValue="#ffffff"/>
-            <signavio:signavioMetaData metaKey="userstory" metaValue=""/>
-         </extensionElements>
-         <incoming>sid-7B89A11E-AABC-4B5A-839E-4289502C3EE7</incoming>
+      <endEvent id="end" name="You won!">       
       </endEvent>
-      <sequenceFlow id="sid-CBA9A05E-AC41-43F8-991A-C965DDB0C45F" isImmediate="true" sourceRef="sid-595DE0B3-DDA3-411E-B16A-30675AAD4580" targetRef="sid-7174D25F-E272-411A-8D4F-9F1E9090D740">
-         <extensionElements>
-            <signavio:signavioMetaData metaKey="userstory" metaValue=""/>
-         </extensionElements>
+      <sequenceFlow id="sid-CBA9A05E-AC41-43F8-991A-C965DDB0C45F" sourceRef="start" targetRef="generateNumber">
       </sequenceFlow>
-      <sequenceFlow id="sid-F70E0368-B6CE-4FAD-97D2-D89745012129" isImmediate="true" sourceRef="sid-4154DC9B-9152-49EA-9E71-5B69C0210B6E" targetRef="sid-680D5C2A-D8E2-4C11-BEFF-120ACA956F9C">
-         <extensionElements>
-            <signavio:signavioMetaData metaKey="userstory" metaValue=""/>
-         </extensionElements>
+      <sequenceFlow id="sid-F70E0368-B6CE-4FAD-97D2-D89745012129" sourceRef="guessNumber" targetRef="exclusiveGW"> 
       </sequenceFlow>
-      <sequenceFlow id="sid-06CEF76F-9F5D-4789-98E1-D1099D01C303" isImmediate="true" sourceRef="sid-7174D25F-E272-411A-8D4F-9F1E9090D740" targetRef="sid-4154DC9B-9152-49EA-9E71-5B69C0210B6E">
-         <extensionElements>
-            <signavio:signavioMetaData metaKey="userstory" metaValue=""/>
-         </extensionElements>
+      <sequenceFlow id="sid-06CEF76F-9F5D-4789-98E1-D1099D01C303" sourceRef="generateNumber" targetRef="guessNumber">
       </sequenceFlow>
-      <sequenceFlow id="sid-7B89A11E-AABC-4B5A-839E-4289502C3EE7" isImmediate="true" name="yes" sourceRef="sid-680D5C2A-D8E2-4C11-BEFF-120ACA956F9C" targetRef="sid-49B45776-F0BE-4B78-9AA2-E9309F5948A7">
-         <extensionElements>
-            <signavio:signavioMetaData metaKey="userstory" metaValue=""/>
-         </extensionElements>
+      <sequenceFlow id="sid-7B89A11E-AABC-4B5A-839E-4289502C3EE7" name="yes" sourceRef="exclusiveGW" targetRef="end">
+         <conditionExpression xsi:type="tFormalExpression">this.secret == this.guess</conditionExpression> 
       </sequenceFlow>
-      <sequenceFlow id="sid-B6F2AAD1-4BEB-445A-A563-F1BC0F660F67" isImmediate="true" name="no" sourceRef="sid-680D5C2A-D8E2-4C11-BEFF-120ACA956F9C">
-         <extensionElements>
-            <signavio:signavioLabel align="left" bottom="false" distance="9.0" from="0" left="false" orientation="ul" ref="text_name" right="false" to="1" top="false" valign="top" x="433.0" y="99.0"/>
-            <signavio:signavioMetaData metaKey="userstory" metaValue=""/>
-         </extensionElements>
+      <sequenceFlow id="sid-B6F2AAD1-4BEB-445A-A563-F1BC0F660F67" name="no" sourceRef="exclusiveGW" targetRef="guessNumber">
+         <conditionExpression xsi:type="tFormalExpression">this.secret != this.guess</conditionExpression> 
       </sequenceFlow>
    </process>
    <bpmndi:BPMNDiagram id="sid-e613f5c7-07e8-4d2a-9c6d-7392ac99b650">
-      <bpmndi:BPMNPlane bpmnElement="sid-e1ea135c-2eb5-42d9-91fe-6778398f3739" id="sid-a77babb4-288d-4154-a925-d3b3dc1b1e97">
-         <bpmndi:BPMNShape bpmnElement="sid-595DE0B3-DDA3-411E-B16A-30675AAD4580" id="sid-595DE0B3-DDA3-411E-B16A-30675AAD4580_gui">
+      <bpmndi:BPMNPlane bpmnElement="numberGuess" id="sid-a77babb4-288d-4154-a925-d3b3dc1b1e97">
+         <bpmndi:BPMNShape bpmnElement="start" id="start_gui">
             <omgdc:Bounds height="30.0" width="30.0" x="19.0" y="50.0"/>
          </bpmndi:BPMNShape>
-         <bpmndi:BPMNShape bpmnElement="sid-7174D25F-E272-411A-8D4F-9F1E9090D740" id="sid-7174D25F-E272-411A-8D4F-9F1E9090D740_gui">
+         <bpmndi:BPMNShape bpmnElement="generateNumber" id="generateNumber_gui">
             <omgdc:Bounds height="80.0" width="100.0" x="98.0" y="24.0"/>
          </bpmndi:BPMNShape>
-         <bpmndi:BPMNShape bpmnElement="sid-680D5C2A-D8E2-4C11-BEFF-120ACA956F9C" id="sid-680D5C2A-D8E2-4C11-BEFF-120ACA956F9C_gui" isMarkerVisible="true">
+         <bpmndi:BPMNShape bpmnElement="exclusiveGW" id="exclusiveGW_gui" isMarkerVisible="true">
             <omgdc:Bounds height="40.0" width="40.0" x="413.0" y="44.0"/>
          </bpmndi:BPMNShape>
-         <bpmndi:BPMNShape bpmnElement="sid-4154DC9B-9152-49EA-9E71-5B69C0210B6E" id="sid-4154DC9B-9152-49EA-9E71-5B69C0210B6E_gui">
+         <bpmndi:BPMNShape bpmnElement="guessNumber" id="guessNumber_gui">
             <omgdc:Bounds height="80.0" width="100.0" x="268.0" y="24.0"/>
          </bpmndi:BPMNShape>
-         <bpmndi:BPMNShape bpmnElement="sid-49B45776-F0BE-4B78-9AA2-E9309F5948A7" id="sid-49B45776-F0BE-4B78-9AA2-E9309F5948A7_gui">
+         <bpmndi:BPMNShape bpmnElement="end" id="end_gui">
             <omgdc:Bounds height="28.0" width="28.0" x="518.0" y="50.0"/>
          </bpmndi:BPMNShape>
          <bpmndi:BPMNEdge bpmnElement="sid-06CEF76F-9F5D-4789-98E1-D1099D01C303" id="sid-06CEF76F-9F5D-4789-98E1-D1099D01C303_gui">
