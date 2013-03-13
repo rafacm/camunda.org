@@ -17,8 +17,6 @@ angular.module('camundaorg.directives')
       require(["bpmn/Bpmn"], function(Bpmn) {
             new Bpmn().renderUrl("assets/bpmn/" + bpmnResource + ".bpmn", {
                 diagramElement : element[0].id,
-                width : 1,
-                height : 1,
                 overlayHtml : '<div style="position: relative; top:100%"></div>'
             }).then(function (bpmn){
                 scope.bpmn = bpmn;

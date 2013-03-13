@@ -33,10 +33,10 @@
           </div>
 
           <div class="center" style="font-size:120%; position: relative;"> 
-            <a href="design.html">Design</a> | <a href="implement.html">Implement and Run</a> your Processes.
+            <a href="design-overview.html">Design</a> | <a href="implement.html">Implement and Run</a> your Processes.
           </div>
           
-          <div style="padding-top:40px; width:100%"  data-ng-controller="NumberguessAppController">
+          <div style="padding-top:40px; width:100%; height:200px"  data-ng-controller="NumberguessAppController">
 
             <div style="position:relative; width:100%; height:200px">  
               <div style="width:596px; margin: 0 auto; position:relative" id="numberGuess" data-bpmn-render="homepage/numberGuessing">    
@@ -51,7 +51,7 @@
                   data-ng-click="startProcess('numberGuess')"
                   data-ng-show="inactive()"
                   style="position:absolute; left:-70px; top: 49px;">
-                  <i class="icon-play"></i> Play!
+                  <i class="icon-play icon-white"></i> Play!
                 </a>
 
                 <div data-ng-show="active('start')"
@@ -156,7 +156,7 @@
                       This amazing achievement is worth telling people about:
                     </p>
                     <p>
-                        <a href="https://twitter.com/share" class="twitter-share-button" data-url="http://www.camunda.org" data-text="Sweet! I just completed the #BPMN20 Numberguessing Game!" data-size="large" data-hashtags="camunda,bpm">Tweet</a>
+                        <a href="https://twitter.com/share" class="twitter-share-button" data-url="http://www.camunda.org" data-text="Sweet! I just won the #BPMN20 Numberguessing Game!" data-size="large" data-hashtags="camunda,bpm">Tweet</a>
                         <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
                       </p>
                     </p>
@@ -173,11 +173,12 @@
         
         
   
-              <div class="center" style="position:relative; top:-160px">
+              <div class="center" style="position:relative;">
                 <a class="btn btn-large btn-primary" href="http://fox.camunda.com/download/old/camunda-bpm-platform-tomcat7-7.0.0-SNAPSHOT.tar.gz">
                   <i class="icon-download-alt icon-large"></i> Download
                 </a>
               </div>
+
                     <section class="index_news" style="color:white;text-align:center" ng-controller="RuntimeContainers">
                       <style type="text/css">
                         .index_news p, .index_news div {font-size: 100%;}
