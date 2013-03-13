@@ -296,8 +296,9 @@ var m_names = new Array("January", "February", "March",
                type: "POST",
                // Callback-Funktion, die nach der Antwort des Servers ausgefuehrt wird
                     success: function(data) { 
-                      //alert ("hi");
-                      $('#status').text("Thank you! You will get your confirmation via email. See you there!" + data);
+                      $('#status').text(myName + " has been registered - You will get your confirmation via email. See you there!" + data);
+                      $('#mName').val("");
+                      $('#mEmail').val("");
                     }
                });
              
