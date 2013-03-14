@@ -59,33 +59,40 @@ TODOs
  * Design
   * Fix Langing Page & make awesome
   * remove "run" directive
-  * Add Cycle Setup or remove
+  * Remove Cycle Setup Menu Entry
+  * Complete Cycle Tutorial
   * Add "Modeler setup"
   * Add „creating BPMN 2.0 diagrams“ or remove
-  * Remove "Shipment Process of a Hardware Retailer"
+  * Remove BPMN 2 by example chapters OR FIX RENDERER
 
 * Community 
-  * Add & embedd additional Forum boards
+  * Add & embedd additional Forum boards & make initial postings
   * Complete Team Page
   * Add Contributions Page
   * Fix Meeting Registration
   * Add Newsletter
+  * explain Vision 
  
 * Support 
   * Fix Links
 
 * Homepage 
   * Animate Numberguess
-  * Move Roadmap
   * Add social Media Links
   * Fix plogpost embedding or hard-link initial blogpost
-  * Secure Meetings
+  * Fix Meetings View (or hard-link)
 
 Footer
- * Fix Links einfügen
+ * Fix Links
 
 Others
  * Complete Google+ Page
- * Write initial Blogpost
- * Fix old browser compatibility
+ * Write initial Blogpost (incl. Added Value Overview)
+ * Fix browser compatibility
+   * IEx >= 9 (Number guessing, Meetings, Renderer?)
+   * IEx < 9 
+   * Mobile
+   * Remove Templating
  * Fix Javascript loading issue
+ * Blog Post: Activiti Migration Guide
+ 
