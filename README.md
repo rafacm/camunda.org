@@ -77,6 +77,7 @@ Support
 
 Homepage 
   * Animate Numberguess
+    * move gateway lable above GW
   * Add social Media Links
   * Fix plogpost embedding or hard-link initial blogpost
   * Fix Meetings View (or hard-link)
