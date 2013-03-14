@@ -56,7 +56,6 @@ Implement
   * cleanup Menu
   
 Design
-  * Fix Langing Page & make awesome
   * remove "run" directive
   * Remove Cycle Setup Menu Entry
   * Complete Cycle Tutorial
@@ -81,7 +80,7 @@ Homepage
   * Add social Media Links
   * Fix plogpost embedding or hard-link initial blogpost
   * Fix Meetings View (or hard-link)
-  * Add "Fork Me on Github"
+  * ~~Add "Fork Me on Github"~~
 
 Footer
   * Fix Links
