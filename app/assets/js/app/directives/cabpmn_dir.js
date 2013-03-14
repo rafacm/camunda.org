@@ -240,6 +240,21 @@ angular.module('camundaorg.directives')
   }
 })
 .directive('meeting', function() {
+    function updateAttendees  (meetingId) {
+       $.getJSON('http://php.camunda.com/rest/meeting.php?id=' + meetingId, function(data) {
+          $.each( data.events, function( key, value ) {
+            var freeSeats = parseInt(value.event.seats - value.event.attendees);
+            //alert (freeSeats);
+            if (freeSeats < 1) {
+              $('.mSeats').text ('Sorry, there are no seats left :-(');
+              $('#mSubmit').attr('disabled', 'true');
+            } else {
+              $('.mSeats').text('Currently we have ' + value.event.attendees + ' attendees. There are still ' + parseInt(value.event.seats - value.event.attendees) + ' seats left!');
+            }
+
+          });
+        });
+    }
   return {
     link: function(scope, element, attrs) {
 
@@ -314,6 +329,7 @@ var m_names = new Array("January", "February", "March",
                         $('#status').text(data);
                         $('#mName').val("");
                         $('#mEmail').val("");
+                        updateAttendees  (meetingId);
                       }
                  });
               }             
@@ -326,6 +342,47 @@ var m_names = new Array("January", "February", "March",
      
   }
 }
+})
+.directive('meetingsSubscribe', function() {
+  return {
+    link: function(scope, element, attrs) {
+  
+            jQuery.validator.setDefaults({
+              debug: false,
+              onsubmit: true,
+              success: "valid"
+            });;
+             
+                $("#subscribeForm").validate({
+              rules: {
+                email: "required email"
+              }
+            });
+
+            $('#submit').on('click', function(event) {
+              if ($("#subscribeForm").valid()) {
+                var myEmail = $('#email').val();
+
+                 $.ajax({
+                 // pfad zur PHP Datei (ab HTML Datei)
+                      url: "http://php.camunda.com/rest/subscribeMeetings.php",
+                 // Daten, die an Server gesendet werden soll in JSON Notation
+                      data: {email: myEmail},
+                      datatype: "jsonp",
+                 // Methode POST oder GET
+                 type: "POST",
+                 // Callback-Funktion, die nach der Antwort des Servers ausgefuehrt wird
+                      success: function(data) { 
+                        $('#status').text(data);
+                        $('#email').val("");
+                      }
+                 });
+              }             
+            });   
+
+     
+    }
+  }
 })
 .directive('camTweets', function() {
   return {
