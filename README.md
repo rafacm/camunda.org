@@ -81,6 +81,7 @@ Homepage
   * Add social Media Links
   * Fix plogpost embedding or hard-link initial blogpost
   * Fix Meetings View (or hard-link)
+  * Add "Fork Me on Github"
 
 Footer
   * Fix Links
