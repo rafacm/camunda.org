@@ -46,17 +46,16 @@ You can of course use any HTTP server that is able to serve static content. Sinc
 TODOs
 -----
 
+Add Downloads page
 
- * Add Downloads page
-
- * Implement
+Implement
   * Landing page: Add Links, comment „how does it work auskommentieren“
   * Complete "Getting started"
   * BPMN 2.0 Reference rename packages and fix dead Links
   * Add ProcessApplication development Reference
   * cleanup Menu
   
- * Design
+Design
   * Fix Langing Page & make awesome
   * remove "run" directive
   * Remove Cycle Setup Menu Entry
@@ -65,7 +64,7 @@ TODOs
   * Add „creating BPMN 2.0 diagrams“ or remove
   * Remove BPMN 2 by example chapters OR FIX RENDERER
 
-* Community 
+Community 
   * Add & embedd additional Forum boards & make initial postings
   * Complete Team Page
   * Add Contributions Page
@@ -73,17 +72,17 @@ TODOs
   * Add Newsletter
   * explain Vision 
  
-* Support 
+Support 
   * Fix Links
 
-* Homepage 
+Homepage 
   * Animate Numberguess
   * Add social Media Links
   * Fix plogpost embedding or hard-link initial blogpost
   * Fix Meetings View (or hard-link)
 
 Footer
- * Fix Links
+  * Fix Links
 
 Others
  * Complete Google+ Page
