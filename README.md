@@ -56,7 +56,6 @@ Implement
   * cleanup Menu
   
 Design
-  * Fix Langing Page & make awesome
   * remove "run" directive
   * Remove Cycle Setup Menu Entry
   * Complete Cycle Tutorial
