@@ -42,3 +42,57 @@ Another easy way to startup a webserver serving static content is the simplistic
 Using apache tomcat
 -------------------
 You can of course use any HTTP server that is able to serve static content. Since most of us come from a Java background, some might be tempted to use Apache Tomcat and copy the contents of the `app/` folder to the `webapps/ROOT` directory... but that is probably just a rumour.
+
+TODOs
+-----
+
+Add Downloads page
+
+Implement
+  * Landing page: Add Links, comment „how does it work auskommentieren“
+  * Complete "Getting started"
+  * BPMN 2.0 Reference rename packages and fix dead Links
+  * Add ProcessApplication development Reference
+  * cleanup Menu
+  
+Design
+  * Fix Langing Page & make awesome
+  * remove "run" directive
+  * Remove Cycle Setup Menu Entry
+  * Complete Cycle Tutorial
+  * Add "Modeler setup"
+  * Add „creating BPMN 2.0 diagrams“ or remove
+  * Remove BPMN 2 by example chapters OR FIX RENDERER
+
+Community 
+  * Add & embedd additional Forum boards & make initial postings
+  * Complete Team Page
+  * Add Contributions Page
+  * Fix Meeting Registration
+  * Add Newsletter
+  * explain Vision 
+ 
+Support 
+  * Fix Links
+
+Homepage 
+  * Animate Numberguess
+    * move gateway lable above GW
+  * Add social Media Links
+  * Fix plogpost embedding or hard-link initial blogpost
+  * Fix Meetings View (or hard-link)
+
+Footer
+  * Fix Links
+
+Others
+ * Complete Google+ Page
+ * Write initial Blogpost (incl. Added Value Overview)
+ * Fix browser compatibility
+   * IEx >= 9 (Number guessing, Meetings, Renderer?)
+   * IEx < 9 
+   * Mobile
+   * Remove Templating
+ * Fix Javascript loading issue
+ * Blog Post: Activiti Migration Guide
+ 
