@@ -279,29 +279,44 @@ var m_names = new Array("January", "February", "March",
               $('.mSeats').text('Currently we have ' + value.event.attendees + ' attendees. There are still ' + parseInt(value.event.seats - value.event.attendees) + ' seats left!');
             }
 
-            $('#mSubmit').on('click', function(event) {
-              var myName =  $('#mName').val();
-              var myEmail = $('#mEmail').val();
-
-              $('#formContainer').append('<p id="status">Processing...</p>');
-              // alert (myName + myEmail);
-             // HttpContext.Current.Response.AddHeader("Access-Control-Allow-Origin", "*");
-               $.ajax({
-               // pfad zur PHP Datei (ab HTML Datei)
-                    url: "http://php.camunda.com/rest/register.php",
-               // Daten, die an Server gesendet werden soll in JSON Notation
-                    data: {id: value.event.id, name: myName, email: myEmail},
-                    datatype: "jsonp",
-               // Methode POST oder GET
-               type: "POST",
-               // Callback-Funktion, die nach der Antwort des Servers ausgefuehrt wird
-                    success: function(data) { 
-                      $('#status').text(data);
-                      $('#mName').val("");
-                      $('#mEmail').val("");
-                    }
-               });
+            jQuery.validator.setDefaults({
+              debug: false,
+              onsubmit: true,
+              success: "valid"
+            });;
              
+                $("#registerForm_1").validate({
+              rules: {
+                mName: "required",
+                mEmail: "required email"
+              }
+            });
+
+
+            $('#mSubmit').on('click', function(event) {
+              if ($("#registerForm_1").valid()) {
+                var myName =  $('#mName').val();
+                var myEmail = $('#mEmail').val();
+
+                $('#formContainer').append('<p id="status">Processing...</p>');
+                // alert (myName + myEmail);
+               // HttpContext.Current.Response.AddHeader("Access-Control-Allow-Origin", "*");
+                 $.ajax({
+                 // pfad zur PHP Datei (ab HTML Datei)
+                      url: "http://php.camunda.com/rest/register.php",
+                 // Daten, die an Server gesendet werden soll in JSON Notation
+                      data: {id: value.event.id, name: myName, email: myEmail},
+                      datatype: "jsonp",
+                 // Methode POST oder GET
+                 type: "POST",
+                 // Callback-Funktion, die nach der Antwort des Servers ausgefuehrt wird
+                      success: function(data) { 
+                        $('#status').text(data);
+                        $('#mName').val("");
+                        $('#mEmail').val("");
+                      }
+                 });
+              }             
             });   
 
           });
