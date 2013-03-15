@@ -46,53 +46,55 @@ You can of course use any HTTP server that is able to serve static content. Sinc
 TODOs
 -----
 
-Add Downloads page
+Add Downloads page (Stefan am Samstag)
 
 Implement
-  * Landing page: Add Links, comment „how does it work auskommentieren“
-  * Complete "Getting started"
-  * BPMN 2.0 Reference rename packages and fix dead Links
-  * Add ProcessApplication development Reference
-  * cleanup Menu
+  * Landing page: Add Links, comment „how does it work auskommentieren“ - Daniel
+  * Complete "Getting started" - Daniel
+  * BPMN 2.0 Reference rename packages and fix dead Links 
+    * directive app-source (fix line numbers)
+    * (BPMN symbol reference) -> Nico
+  * Add ProcessApplication development Reference (-> Daniel)
+  * cleanup Menu (-> Roman)
   
 Design
   * ~~remove "run" directive~~
-  * Remove Cycle Setup Menu Entry
-  * Complete Cycle Tutorial
-  * Add "Modeler setup"
-  * Add „creating BPMN 2.0 diagrams“ or remove
-  * Remove BPMN 2 by example chapters OR FIX RENDERER
+  * Remove Cycle Setup Menu Entry (Jakob)
+  * Complete Cycle Tutorial (Jakob)
+  * Add „creating BPMN 2.0 diagrams“ (Jakob)
+  * Remove BPMN 2 by example chapters OR FIX RENDERER (Jakob)
 
 Community 
-  * Add & embedd additional Forum boards & make initial postings
-  * Complete Team Page
-  * Add Contributions Page
+  * Add & embedd additional Forum boards & make initial postings, Open in Google Link (Daniel, Handshake Jakob)
+  * Complete Team Page - Fix layout (Nico) Noch offen:  add Nastasja (Falko?)
+  * Add Contributions Page (-> Daniel)
   * ~~Fix Meeting Registration~~
-  * Add Newsletter
-  * explain Vision 
+  * Add Newsletter (Jakob)
+  * explain Vision (Jakob)
  
 Support 
-  * Fix Links
+  * Fix Links (Jakob)
 
 Homepage 
-  * Animate Numberguess
+  * Animate Numberguess  (Daniel)
     * move gateway lable above GW
-  * Add social Media Links
-  * Fix plogpost embedding or hard-link initial blogpost
-  * Fix Meetings View (or hard-link)
-  * ~~Add "Fork Me on Github"~~
+  * Add social Media Links (Roman)
+  * Fix Blogpost embedding or hard-link initial blogpost (Andreas)
+  * Fix Meetings View (or hard-link) (Jakob)
+  * Add "Fork Me on Github" -> Fixed layout, Nico
 
 Footer
-  * Fix Links
+  * Fix Links (Roman)
 
 Others
  * Complete Google+ Page
- * Write initial Blogpost (incl. Added Value Overview)
- * Fix browser compatibility
-   * IEx >= 9 (Number guessing, Meetings, Renderer?)
+ * Write initial Blogpost (incl. Added Value Overview) (Daniel & Jakob)
+ * Fix browser compatibility (Roman)
+   * IEx >= 9 (Number guessing, Meetings(Jakob), Renderer?)
    * IEx < 9 
    * Mobile
-   * Remove Templating
+ * Menubar resizing Issue! (Daniel)
+
  * Fix Javascript loading issue
  * Blog Post: Activiti Migration Guide
  
