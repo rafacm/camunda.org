@@ -58,7 +58,7 @@ function NumberguessAppController($scope, $http, $element) {
         if(activity.type != "userTask" && activity.type != "process") {
           activity.asyncCallback = function(activityExecution) {
             if(activityExecution.activityDefinition.id == "exclusiveGW" && $scope.guessCounter > 1) {
-             activityExecution.continue();
+             activityExecution.doContinue();
             } else {
              $scope.suspendedActivities.push(activityExecution);
             }            
@@ -93,10 +93,10 @@ function NumberguessAppController($scope, $http, $element) {
     $scope.guessCounter = 0;
   }
 
-  $scope.continue = function(activityId) {
+  $scope.doContinue = function(activityId) {
     for (var i = 0; i < $scope.suspendedActivities.length; i++) {
       if($scope.suspendedActivities[i].activityDefinition.id == activityId) {
-        $scope.suspendedActivities[i].continue();
+        $scope.suspendedActivities[i].doContinue();
         $scope.suspendedActivities.splice(i,1);
       }
     };

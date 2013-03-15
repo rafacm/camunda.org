@@ -78,7 +78,7 @@ Support
 Homepage 
   * Animate Numberguess  (Daniel)
     * move gateway lable above GW
-  * Add social Media Links (Roman)
+  * ~~Add social Media Links (Roman)~~
   * Fix Blogpost embedding or hard-link initial blogpost (Andreas)
   * Fix Meetings View (or hard-link) (Jakob)
   * Add "Fork Me on Github" -> Fixed layout, Nico

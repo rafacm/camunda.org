@@ -118,7 +118,7 @@ define([], function () {
             bpmnObject.outgoing.push(outgoingFlows[i].id);
           }
 
-          if(!!bpmnObject.default && isExecutable) {
+          if(!!bpmnObject["default"] && isExecutable) {
 
             var conditionalFlowFound = false;
 
@@ -137,7 +137,7 @@ define([], function () {
             }
 
             if(!conditionalFlowFound) {
-              throw "Activity with id '"+bpmnObject.id+"' declares default flow with id '" + bpmnObject.default + "' but has no conditional flows.";
+              throw "Activity with id '"+bpmnObject.id+"' declares default flow with id '" + bpmnObject["default"] + "' but has no conditional flows.";
             }
           }
         }
@@ -175,10 +175,12 @@ define([], function () {
       var child = element.firstChild;
       if(!!child) {
         do {
-          if(child.nodeName.indexOf("EventDefinition") != -1) {
-            eventObject.eventDefinitions.push({
-              type : child.nodeName
-            });
+          if (!!child.nodeName) {
+            if(child.nodeName.indexOf("EventDefinition") != -1) {
+              eventObject.eventDefinitions.push({
+                type : child.nodeName
+              });
+            }
           }
         } while(child = child.nextSibling);
       }
@@ -255,7 +257,7 @@ define([], function () {
     function transformExclusiveGateway(element, scopeActivity, sequenceFlows, bpmnDiElementIndex) {
       var bpmnObject = createFlowElement(element, scopeActivity, null, bpmnDiElementIndex);
       var outgoingFlows = bpmnObject.sequenceFlows;
-      var defaultFlowId = bpmnObject.default;
+      var defaultFlowId = bpmnObject["default"];
 
       // custom handling of sequence flows for exclusive GW:
       if(!!sequenceFlows && isExecutable) {

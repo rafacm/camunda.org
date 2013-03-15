@@ -164,15 +164,15 @@ var CAM = {};
 
       // if the activity is async, we do not execute it right away 
       // but simpley return. Execution can be continued using the 
-      // continue() function
+      // doContinue() function
       if(!!this.activityDefinition.asyncCallback) {
         this.activityDefinition.asyncCallback(this);
       } else {
-        this.continue();
+        this.doContinue();
       }
     };
 
-    ActivityExecution.prototype.continue = function() {
+    ActivityExecution.prototype.doContinue = function() {
    
       // execute activity type
       var activityType = getActivityType(this.activityDefinition);
@@ -331,7 +331,7 @@ var CAM = {};
     var sequenceFlowsToTake = [];
     var availableSequenceFlows = CAM.getSequenceFlows(activityExecution.activityDefinition, 
                                                   activityExecution.parentExecution.activityDefinition);
-    var defaultFlowId = activityExecution.activityDefinition.default;
+    var defaultFlowId = activityExecution.activityDefinition["default"];
 
     var defaultFlow = null;
     var noConditionalFlowActivated = true;    
