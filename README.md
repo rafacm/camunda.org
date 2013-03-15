@@ -90,7 +90,7 @@ Others
  * Complete Google+ Page
  * Write initial Blogpost (incl. Added Value Overview) (Daniel & Jakob)
  * Fix browser compatibility (Roman)
-   * IEx >= 9 (Number guessing, Meetings(Jakob), Renderer?)
+   * IEx >= 9 (Number guessing, ~~Meetings(Jakob)~~, Renderer?)
    * IEx < 9 
    * Mobile
  * Menubar resizing Issue! (Daniel)
