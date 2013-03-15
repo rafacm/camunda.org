@@ -33,6 +33,7 @@ $script([
 					'app/directives/windowCenter',
 					'app/directives/ngmif',
 					'app/directives/app-source',
+          'app/directives/pipe',
 					'app/directives/focused',
 					'app/directives/tutorial',
 					'app/directives/docLocationHighlight',
