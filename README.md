@@ -56,7 +56,7 @@ Implement
   * cleanup Menu
   
 Design
-  * remove "run" directive
+  * ~~remove "run" directive~~
   * Remove Cycle Setup Menu Entry
   * Complete Cycle Tutorial
   * Add "Modeler setup"
