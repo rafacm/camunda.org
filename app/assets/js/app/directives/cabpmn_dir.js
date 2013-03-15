@@ -155,10 +155,10 @@ angular.module('camundaorg.directives')
           
           $.each( data.events, function( key, value ) {
 
-            var myDateString = value.event.date;
+            var myDateString = value.meeting.date;
 
-            var myRow = "<td>" + myDateString + "</td><td><img src='assets/img/app/community/meetings/" + value.event.country + ".png' > " + value.event.country + "</td><td>" + value.event.city + "</td><td>" + value.event.subject + "</td><td>" + value.event.attendees + " attendees</td><td>" + parseInt(value.event.seats - value.event.attendees)  + " seats left</td>";
-            var selectDate = '<td><a style="color:black;" href="community-meetings-single.html?id=' + value.event.id +'" role="button" class="btn">Register</a></td>';
+            var myRow = "<td>" + myDateString + "</td><td><img src='assets/img/app/community/meetings/" + value.meeting.country + ".png' > " + value.meeting.country + "</td><td>" + value.meeting.city + "</td><td>" + value.meeting.subject + "</td><td>" + value.meeting.attendees + " attendees</td><td>" + parseInt(value.meeting.seats - value.meeting.attendees)  + " seats left</td>";
+            var selectDate = '<td><a style="color:black;" href="community-meetings-single.html?id=' + value.meeting.id +'" role="button" class="btn">Register</a></td>';
          
             myRow = "<tr>" + selectDate + myRow + "</td></tr>";
             element.append(myRow);
@@ -192,12 +192,12 @@ angular.module('camundaorg.directives')
     function updateAttendees  (meetingId) {
        $.getJSON('http://www.camunda.org/php/meeting.php?id=' + meetingId, function(data) {
           $.each( data.events, function( key, value ) {
-            var freeSeats = parseInt(value.event.seats - value.event.attendees);
+            var freeSeats = parseInt(value.meeting.seats - value.meeting.attendees);
             if (freeSeats < 1) {
               $('.mSeats').text ('Sorry, there are no seats left :-(');
               $('#mSubmit').attr('disabled', 'true');
             } else {
-              $('.mSeats').text('Currently we have ' + value.event.attendees + ' attendees. There are still ' + parseInt(value.event.seats - value.event.attendees) + ' seats left!');
+              $('.mSeats').text('Currently we have ' + value.meeting.attendees + ' attendees. There are still ' + parseInt(value.meeting.seats - value.meeting.attendees) + ' seats left!');
             }
 
           });
@@ -226,18 +226,18 @@ angular.module('camundaorg.directives')
         
           $.each( data.events, function( key, value ) {
           
-          $('.mCountry').append(value.event.country);
-          $('.mCity').text(value.event.city);
-          $('.mDate').text(value.event.date);
-          $('.mSubject').append(value.event.subject);
-          $('.mText').append(value.event.text);
-          $('.mPlace').append(value.event.place + ' (<a target="_blank" href="https://maps.google.de/maps?q=' + value.event.place + '">Google Maps</a>)');
+          $('.mCountry').append(value.meeting.country);
+          $('.mCity').text(value.meeting.city);
+          $('.mDate').text(value.meeting.date);
+          $('.mSubject').append(value.meeting.subject);
+          $('.mText').append(value.meeting.text);
+          $('.mPlace').append(value.meeting.place + ' (<a target="_blank" href="https://maps.google.de/maps?q=' + value.meeting.place + '">Google Maps</a>)');
 
-            if (parseInt(value.event.seats - value.event.attendees) < 1) {
+            if (parseInt(value.meeting.seats - value.meeting.attendees) < 1) {
               $('.mSeats').text ('Sorry, there are no seats left :-(');
               $('#mSubmit').attr('disabled', 'true');
             } else {
-              $('.mSeats').text('Currently we have ' + value.event.attendees + ' attendees. There are still ' + parseInt(value.event.seats - value.event.attendees) + ' seats left!');
+              $('.mSeats').text('Currently we have ' + value.meeting.attendees + ' attendees. There are still ' + parseInt(value.meeting.seats - value.meeting.attendees) + ' seats left!');
             }
 
             jQuery.validator.setDefaults({
@@ -254,7 +254,7 @@ angular.module('camundaorg.directives')
             });
 
 
-            $('#mSubmit').on('click', function(event) {
+            $('#mSubmit').on('click', function(meeting) {
               if ($("#registerForm_1").valid()) {
                 var myName =  $('#mName').val();
                 var myEmail = $('#mEmail').val();
@@ -266,7 +266,7 @@ angular.module('camundaorg.directives')
                  // pfad zur PHP Datei (ab HTML Datei)
                       url: "http://www.camunda.org/php/register.php",
                  // Daten, die an Server gesendet werden soll in JSON Notation
-                      data: {id: value.event.id, name: myName, email: myEmail},
+                      data: {id: value.meeting.id, name: myName, email: myEmail},
                       datatype: "jsonp",
                  // Methode POST oder GET
                  type: "POST",
