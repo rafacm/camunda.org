@@ -21,17 +21,17 @@
     <div class="span3">
       <h3>On this page</h3>
       <ul>            
-          <li><a href="#">Service Tasks<a></li>
-          <li><a href="#">Implementation</a></li>
-          <li><a href="#">Field Injections</a></li>
-          <li><a href="#">Service Results</a></li>
+          <li>Service Tasks</li>
+          <li>Implementation</li>
+          <li>Field Injections</li>
+          <li>Service Results</li>
       </ul>
       <h3>There's more...</h3>
       <ul>            
-          <li><a href="tasks.html">Tasks in the BPMN Tutorial<a></li>
+          <li><a href="design-reference.html#/activities/tasks">Tasks in the BPMN Tutorial<a></li>
           <li><a href="https://app.camunda.com/confluence/display/foxUserGuide/Error+Handling">Error Handling</a></li>
-          <li><a href="implement-concepts.html#/concepts/spring">Using Spring</a></li>
-          <li><a href="implement-concepts.html#/concepts/cdi">Using CDI</a></li>
+          <!--<li><a href="implement-concepts.html#/concepts/spring">Using Spring</a></li>-->
+          <!--<li><a href="implement-concepts.html#/concepts/cdi">Using CDI</a></li>-->
           <li><a href="http://www.bpm-guide.de/2010/12/09/how-to-call-a-webservice-from-bpmn/">How to call Web Services from BPMN</a></li>
           <!--
           <li><a href="">Asynchronous Service Tasks</a></li>
@@ -47,7 +47,7 @@
   <script type="text/xml" id="service-task-delegate">
 <serviceTask id="javaService" 
              name="My Java Service Task" 
-             activiti:class="org.activiti.MyJavaDelegate" />
+             activiti:class="org.camunda.bpm.MyJavaDelegate" />
 	</script>
 
 	<p>
@@ -117,7 +117,7 @@
   </div>  
 	<p>
 		To implement a class that can be called during process execution, this
-		class needs to implement the <code>org.activiti.engine.delegate.JavaDelegate</code>
+		class needs to implement the <code>org.camunda.bpm.engine.delegate.JavaDelegate</code>
 		interface and provide the required logic in the <code>execute</code>
 		method. When process execution arrives at this particular step, it
 		will execute this logic defined in that method and leave the activity
@@ -126,13 +126,13 @@
 	<p>
 		Let's create for example a Java class that can be used to change a
 		process variable String to uppercase. This class needs to implement
-		the <code>org.activiti.engine.delegate.JavaDelegate</code>
+		the <code>org.camunda.bpm.engine.delegate.JavaDelegate</code>
 		interface, which requires us to implement the <code>execute(DelegateExecution)</code>
 		method. It's this operation that will be called by the engine and
 		which needs to contain the business logic. Process instance
 		information such as process variables and other can be accessed and
 		manipulated through the <a class="ulink"
-			href="http://activiti.org/javadocs/org/activiti/engine/delegate/DelegateExecution.html"
+			href="http://activiti.org/javadocs/org/camunda/bpm/engine/delegate/DelegateExecution.html"
 			target="_top">DelegateExecution</a> interface (click on the link for
 		a detailed Javadoc of its operations).
 
@@ -174,7 +174,7 @@ public class ToUppercase implements JavaDelegate {
 		<a class="link" href="#internal"
 			title="Internal implementation classes"><span class="bold"><strong>[INTERNAL:
 					non-public implementation classes]</strong></span></a> It is also possible to provide a
-		class that implements the <code>org.activiti.engine.impl.pvm.delegate.ActivityBehavior</code>
+		class that implements the <code>org.camunda.bpm.engine.impl.pvm.delegate.ActivityBehavior</code>
 		interface. Implementations have then access to the more powerful <code>ActivityExecution</code> that for example
 		also allows to influence the control flow of the process. Note however
 		that this is not a very good practice, and should be avoided as much
@@ -201,7 +201,7 @@ public class ToUppercase implements JavaDelegate {
 		environments don't allow modifying private fields, so it's safer to
 		expose a public setter-method for the fields you want to have
 		injected. <strong>Regardless of the type of value declared in the process-definition, the type of the
-    setter/private field on the injection target should always be <code>org.activiti.engine.delegate.Expression</code></strong>.		
+    setter/private field on the injection target should always be <code>org.camunda.bpm.engine.delegate.Expression</code></strong>.		
 	</p>
 	<p>
 		The following code snippet shows how to inject a constant value into a field.
@@ -213,7 +213,7 @@ public class ToUppercase implements JavaDelegate {
     <script type="text/xml" id="service-task-field-injection">
 <serviceTask id="javaService" 
              name="Java service invocation" 
-             activiti:class="org.activiti.examples.bpmn.servicetask.ToUpperCaseFieldInjected">
+             activiti:class="org.camunda.bpm.examples.bpmn.servicetask.ToUpperCaseFieldInjected">
   <extensionElements>
       <activiti:field name="text" stringValue="Hello World" />
   </extensionElements>           
@@ -221,7 +221,7 @@ public class ToUppercase implements JavaDelegate {
     </script>
 
 		The class <code>ToUpperCaseFieldInjected</code>	has a field
-		<code>text</code>	which is of type <code>org.activiti.engine.delegate.Expression</code>.
+		<code>text</code>	which is of type <code>org.camunda.bpm.engine.delegate.Expression</code>.
     When calling <code>text.getValue(execution)</code>, the configured string value
 		<code>Hello World</code> will be returned.
 	</p>
@@ -233,7 +233,7 @@ public class ToUppercase implements JavaDelegate {
     <script type="text/xml" id="service-task-field-injection-2">
 <serviceTask id="javaService" 
              name="Java service invocation" 
-             activiti:class="org.activiti.examples.bpmn.servicetask.ToUpperCaseFieldInjected">
+             activiti:class="org.camunda.bpm.examples.bpmn.servicetask.ToUpperCaseFieldInjected">
   <extensionElements>   
     <activiti:field name="text">
         <activiti:string>
@@ -250,14 +250,14 @@ public class ToUppercase implements JavaDelegate {
 		beans. As already noted, an instance of the Java class is shared among
 		all process-instances in a service task. To have dynamic injection of
 		values in fields, you can inject value and method expressions in a
-		<code>org.activiti.engine.delegate.Expression</code>
+		<code>org.camunda.bpm.engine.delegate.Expression</code>
 		which can be evaluated/invoked using the <code>DelegateExecution</code>
 		passed in the	<code>execute</code> method.
 
     <div class="app-source" app-source-no-tabs="service-task-field-injection-3"></div>
     <script type="text/xml" id="service-task-field-injection-3">
 <serviceTask id="javaService" name="Java service invocation" 
-             activiti:class="org.activiti.examples.bpmn.servicetask.ReverseStringsFieldInjected">
+             activiti:class="org.camunda.bpm.examples.bpmn.servicetask.ReverseStringsFieldInjected">
   
   <extensionElements>
     <activiti:field name="text1">

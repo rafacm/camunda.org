@@ -70,7 +70,7 @@
 			</div>
 			<p>Let's have a look at a rather simple BPMN process diagram:</p>
 			<div class="label label-warning">Hover over orange symbols for explanation</div>
-				<div id="simple" style="position:relative" data-bpmn-src="tutorial/simple_flow" data-bpmn-run>
+				<div id="simple" style="position:relative" data-bpmn-src="tutorial/simple_flow" >
 					<div class="tutPop" id="sid-B04D1D48-F63A-440D-8354-072FEA072E41" rel="popover" title="Start Event" data-content="Start events show which event causes the process to start. Start Evens are always catching events.">
 					</div>
 					<div class="tutPop" id="sid-4A1FEF34-88D7-4845-940F-9C048C11B5A6" rel="popover" title="Task" data-content="Tasks are the heart of the process. Ultimately, something has to happen to bring about a desired outcome. In BPMN, a task technically is part of the activities category, which also includes the sub-process">
@@ -142,7 +142,7 @@ This gateway is called "exclusive", because only one of the following two branch
 			This example is about Business-To-Business-Collaboration. Because we want to model the interaction between a pizza customer and the vendor explicitly, we have classified them as "participants", therefore providing them with dedicated pools. :
 			</p>
 			<div style="width:100%; overflow:auto">
-<div id="pizza" style="position:relative" data-bpmn-render="tutorial/examples/pizza" ></div>
+<div id="pizza" style="position:relative" data-bpmn-src="tutorial/examples/pizza" ></div>
 </div>
 <p>
 Please note that there is no default semantics in this type of modeling, which means you can model collaboration diagrams to show the interaction between business partners, but also zoom into one company, modeling the interaction between different departments, teams or even single workers and software systems in collaboration diagrams. It is totally up to the purpose of the model and therefore a decision the modeler has to make, whether a collaboration diagram with different pools is useful, or whether one should stick to one pool with different lanes, as shown in the previous chapter.

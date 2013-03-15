@@ -29,15 +29,31 @@
               <h1 style="color:#333">Meetings</h1>
               <h3>in the camunda BPM Community</h3>
             </div>
-        <div class="row-fluid" >
-          <div class="span12">
-                        <p style="padding: 10px;">
-                          Meet the Team and other Users in our free Meeting Sessions.
-                        </p>
+        <div class="row-fluid" style="padding-top:40px;">
+          <div class="span2">
+            <form name="subscribeForm" id="subscribeForm" data-meetings-subscribe>
+              <fieldset>
+                
+                        <p >
+                          <b>Notify me</b>, when new meetings are scheduled:
+                          </p>  
+                          <input id="email" name="email" type="text" style="width:100%" length="80" placeholder="Email">
+                          <button type="submit" id="submit" class="btn btn-primary">Subscribe</button>
+                </fieldset>
+              </form>
+              <p id="status" style="color:red;">
+                
+              </p>
+                        
+          </div>
+
+          <div class="span9" >
+            
          <div id="meetingsContainer" >
-            <table class="table table-hover" data-camunda-events></table>
+            <table class="table table-hover table-striped" data-camunda-events></table>
           </div>
         </div>
+
       </div>
   
 
