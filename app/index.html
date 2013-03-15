@@ -214,12 +214,21 @@
 
                           <div class="span4" style="text-align:left;">
                             <h3>Blog Posts</h3>
-                            <div ></div>
-                            <p>Lirum Larum Bla Bla Bla</p>
+                            <!-- user data-pipe-url="http://pipes.yahoo.com/pipes/pipe.run?_id=00613d44ea58a5204f8898d2809fa85e&_render=json" for camundabpm.blogspot.de -->
+                            <!-- user data-pipe-url="http://pipes.yahoo.com/pipes/pipe.run?_id=3a1fa12b0f13d8ce32320b9dacc7dfc2&_render=json" for bpm-guide.de -->
+                            <div data-pipe data-truncate="150" data-pipe-url="http://pipes.yahoo.com/pipes/pipe.run?_id=00613d44ea58a5204f8898d2809fa85e&_render=json">
+                              <div data-ng-show="items.length > 0" style="height: 200px;overflow: auto;">
+                                <div data-ng-cloak="items.length==0" data-ng-repeat="item in items">
+                                  <a target="_blank" href="{{item.link}}">{{item.title}}</a>
+                                  <p>{{decode(item.description)}}</p>
+                                </div>
+                              </div>
+                              <div data-ng-show="items.length==0">Unable to load the cool camunda bpm blog posts, try to refresh the page!</div>
+                            </div>
                           </div>
                           <div class="span4" style="text-align:left;">
                             <h3>Meetings</h3>
-                            04-Apr | Berlin | <a href="" style="color:lightblue;">camunda BPM Launch Party </a>                           
+                            <div data-camunda-events-home></div>
                           </div>
                         </div>
                         
