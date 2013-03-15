@@ -13,11 +13,15 @@ angular.module('camundaorg.directives')
   return {
     link: function(scope, element, attrs) {
       var bpmnResource = attrs.bpmnRender;
+      var height = attrs.bpmnHeight;
+      var width = attrs.bpmnWidth;
 
       require(["bpmn/Bpmn"], function(Bpmn) {
             new Bpmn().renderUrl("assets/bpmn/" + bpmnResource + ".bpmn", {
                 diagramElement : element[0].id,
-                overlayHtml : '<div style="position: relative; top:100%"></div>'
+                overlayHtml : '<div style="position: relative; top:100%"></div>',
+                height: height,
+                width: width
             }).then(function (bpmn){
                 scope.bpmn = bpmn;
                 //bpmn.zoom(0.8);
