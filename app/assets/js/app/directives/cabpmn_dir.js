@@ -151,17 +151,10 @@ angular.module('camundaorg.directives')
   return {
     link: function(scope, element, attrs) {
 
-      var m_names = new Array("January", "February", "March", 
-      "April", "May", "June", "July", "August", "September", 
-      "October", "November", "December");
-
       $.getJSON('http://www.camunda.org/php/meeting.php', function(data) {
-      //  $.getJSON('http://php.camunda.com/rest/meeting.php', function(data) {
-      //$.get('assets/json/events.json', function(data) {
           
           $.each( data.events, function( key, value ) {
 
-            var myDate = new Date(value.event.date);
             var myDateString = value.event.date;
 
             var myRow = "<td>" + myDateString + "</td><td><img src='assets/img/app/community/meetings/" + value.event.country + ".png' > " + value.event.country + "</td><td>" + value.event.city + "</td><td>" + value.event.subject + "</td><td>" + value.event.attendees + " attendees</td><td>" + parseInt(value.event.seats - value.event.attendees)  + " seats left</td>";
@@ -177,13 +170,29 @@ angular.module('camundaorg.directives')
     }
   }
 })
+.directive('camundaEventsHome', function() {
+  return {
+    link: function(scope, element, attrs) {
+
+      $.getJSON('http://www.camunda.org/php/meeting.php', function(data) {
+          
+          $.each( data.events, function( key, value ) {
+
+            var myDateString = value.event.date.substring(0,6);
+            var myRow = myDateString + " | " + value.event.city + " | <a style='color:lightblue;' href='community-meetings-single.html?id=" + value.event.id + "'>" + value.event.subject + "</a><br/>";
+            element.append(myRow);
+            
+          });
+
+      });
+    }
+  }
+})
 .directive('meeting', function() {
     function updateAttendees  (meetingId) {
        $.getJSON('http://www.camunda.org/php/meeting.php?id=' + meetingId, function(data) {
-        //$.getJSON('http://php.camunda.com/rest/meeting.php?id=' + meetingId, function(data) {
           $.each( data.events, function( key, value ) {
             var freeSeats = parseInt(value.event.seats - value.event.attendees);
-            //alert (freeSeats);
             if (freeSeats < 1) {
               $('.mSeats').text ('Sorry, there are no seats left :-(');
               $('#mSubmit').attr('disabled', 'true');
@@ -212,9 +221,6 @@ angular.module('camundaorg.directives')
           }
         var meetingId = HTTP_GET_VARS["id"];
 
-var m_names = new Array("January", "February", "March", 
-      "April", "May", "June", "July", "August", "September", 
-      "October", "November", "December");
 
         $.getJSON('http://www.camunda.org/php/meeting.php?id=' + meetingId, function(data) {
         
