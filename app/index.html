@@ -39,7 +39,7 @@
           <div style="padding-top:40px; width:100%; height:200px"  data-ng-controller="NumberguessAppController">
 
             <div style="position:relative; width:100%; height:200px">  
-              <div style="width:596px; margin: 0 auto; position:relative" id="numberGuess" data-bpmn-render="homepage/numberGuessing">    
+              <div style="width:596px; margin: 0 auto; position:relative; height:100%;" id="numberGuess" data-bpmn-render="homepage/numberGuessing">    
               </div>
             </div>
 
@@ -157,7 +157,7 @@
                     </p>
                     <p>
                         <a href="https://twitter.com/share" class="twitter-share-button" data-url="http://www.camunda.org" data-text="Sweet! I just won the #BPMN20 Numberguessing Game!" data-size="large" data-hashtags="camunda,bpm">Tweet</a>
-                        <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+
                       </p>
                     </p>
                   </div>
@@ -177,6 +177,23 @@
                 <a class="btn btn-large btn-primary" href="http://fox.camunda.com/download/old/camunda-bpm-platform-tomcat7-7.0.0-SNAPSHOT.tar.gz">
                   <i class="icon-download-alt icon-large"></i> Download
                 </a>
+                <ul class="quick-links">
+                  <li class="google-follow">
+                    Follow +camunda BPM on
+                    <a href="https://plus.google.com/117216832875506558598?prsrc=3" rel="publisher" style="text-decoration:none;">
+                      <img src="https://ssl.gstatic.com/images/icons/gplus-32.png" alt="" style="border:0;width:20px;height:20px;">
+                    </a>
+                  </li>
+                  <li style="width: 150px; height: 25px;">
+                    <div class="g-plusone" data-size="medium" data-annotation="inline" data-width="300"></div>
+                  </li>
+                  <li style="width: 220px; height: 25px;">
+                    <a href="https://twitter.com/camundaBPM" class="twitter-follow-button" data-show-count="true" data-lang="en">Follow @camundaBPM</a>
+                  </li>
+                  <li style="width: 107px; height: 25px;">
+                   <a href="https://twitter.com/share" class="twitter-share-button" data-url="http://www.camunda.org" data-text="camunda BPM platform -" data-size="middle" data-hashtags="camunda,bpm" data-lang="en">Tweet</a>
+                  </li>
+                </ul>
               </div>
 
                     <section class="index_news" style="color:white;text-align:center" ng-controller="RuntimeContainers">
@@ -266,5 +283,13 @@
 
   <a href="https://github.com/camunda/camunda-bpm-platform"><img style="position: absolute; top: 40px; right: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_red_aa0000.png" alt="Fork me on GitHub"></a>
 
+  <script type="text/javascript">
+    (function() {
+      var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
+      po.src = 'https://apis.google.com/js/plusone.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
+    })();
+  </script>
+  <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
   </body>
 </html>
