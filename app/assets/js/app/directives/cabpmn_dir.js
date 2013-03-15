@@ -175,11 +175,11 @@ angular.module('camundaorg.directives')
     link: function(scope, element, attrs) {
 
       $.getJSON('http://www.camunda.org/php/meeting.php', function(data) {
-          
+
           $.each( data.events, function( key, value ) {
 
-            var myDateString = value.event.date.substring(0,6);
-            var myRow = myDateString + " | " + value.event.city + " | <a style='color:lightblue;' href='community-meetings-single.html?id=" + value.event.id + "'>" + value.event.subject + "</a><br/>";
+            var myDateString = value.meeting.date.substring(0,6);
+            var myRow = myDateString + " | " + value.meeting.city + " | <a style='color:lightblue;' href='community-meetings-single.html?id=" + value.meeting.id + "'>" + value.meeting.subject + "</a><br/>";
             element.append(myRow);
             
           });
