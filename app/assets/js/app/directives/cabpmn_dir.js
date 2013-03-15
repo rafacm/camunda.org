@@ -214,8 +214,8 @@ var m_names = new Array("January", "February", "March",
       "April", "May", "June", "July", "August", "September", 
       "October", "November", "December");
 
-       // $.getJSON('http://www.camunda.org/php/meeting.php?id=' + meetingId, function(data) {
-        $.getJSON('http://php.camunda.com/rest/meeting.php?id=' + meetingId, function(data) {
+        $.getJSON('http://www.camunda.org/php/meeting.php?id=' + meetingId, function(data) {
+        
           $.each( data.events, function( key, value ) {
           
           $('.mCountry').append(value.event.country);
