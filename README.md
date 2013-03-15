@@ -55,7 +55,7 @@ Implement
     * directive app-source (fix line numbers)
     * (BPMN symbol reference) -> Nico
   * Add ProcessApplication development Reference (-> Daniel)
-  * cleanup Menu (-> Roman)
+  * ~~cleanup Menu (-> Roman)~~
   
 Design
   * ~~remove "run" directive~~
@@ -84,7 +84,7 @@ Homepage
   * Add "Fork Me on Github" -> Fixed layout, Nico
 
 Footer
-  * Fix Links (Roman)
+  * ~~Fix Links (Roman)~~
 
 Others
  * Complete Google+ Page
