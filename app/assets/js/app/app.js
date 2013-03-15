@@ -244,7 +244,7 @@ angular.module('camundaorg.controllers', [])
         }
     }
 
-    $scope.class = function(container) {
+    $scope.cssClass = function(container) {
         return "container-" + (container == $scope.selectedContainer ? (container+"-glow") : container);
     }
 }) 
