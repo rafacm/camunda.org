@@ -67,7 +67,7 @@ Community
   * Add & embedd additional Forum boards & make initial postings
   * Complete Team Page
   * Add Contributions Page
-  * Fix Meeting Registration
+  * ~~Fix Meeting Registration~~
   * Add Newsletter
   * explain Vision 
  
