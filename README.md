@@ -69,7 +69,7 @@ Community
   * Complete Team Page - Fix layout (Nico) Noch offen:  add Nastasja (Falko?)
   * Add Contributions Page (-> Daniel)
   * ~~Fix Meeting Registration~~
-  * Add Newsletter (Jakob)
+  * ~~Add Newsletter (Jakob)~~
   * explain Vision (Jakob)
  
 Support 
