@@ -1,479 +1,493 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <title>camunda.org - the camunda bpm community homepage</title>
-    
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<head>
+<title>camunda.org - the camunda bpm community homepage</title>
 
-    <meta name="author" content="camunda.org community" />
-    
-    <!-- loads all stylesheets -->
-    <link href="assets/css/loader.css" rel="stylesheet" />
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <!-- For IE6-8 support of HTML5 elements -->
-    <!--[if lt IE 9]>
+<meta name="author" content="camunda.org community" />
+
+<!-- loads all stylesheets -->
+<link href="assets/css/loader.css" rel="stylesheet" />
+
+<!-- For IE6-8 support of HTML5 elements -->
+<!--[if lt IE 9]>
       <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
-     
-    <base app-base="." />
 
-  </head>
-  <body ng-controller="DefaultController" >
-    <div class="wrapper">
-      <!-- navigation -->
-      <div data-ng-include=" 'templates/navigation.html' "></div>
+<base app-base="." />
 
-      <style type="text/css">
-        .team-core img {
-          max-height: 80px;
-          max-width: 80px;
-          background: white;
-          /*
+</head>
+<body ng-controller="DefaultController">
+  <div class="wrapper">
+
+    <!-- ========================================================================== -->
+    <!-- navigation start                                                           -->
+
+    <div class="navbar navbar-inverse navbar-fixed-top">
+      <div class="navbar-inner">
+        <div class="container">
+          <button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+            <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span>
+          </button>
+          <!-- logo -->
+          <a class="brand ir" href="index.html"> camunda.org </a>
+          <div class="nav-collapse collapse">
+            <ul class="nav">
+              <ul class="nav" ng-controller="NavigationController">
+                <li ng-class="activeClass('/index.html')"><a href="index.html">Home</a></li>
+                <li ng-class="activeClass('/design-')"><a href="design-overview.html" class="caret-before">Design</a></li>
+                <li class="dropdown"><a class="dropdown-toggle caret-after" data-toggle="dropdown"> <b class="caret"></b></a>
+                  <ul class="dropdown-menu">
+                    <li ng-class="activeClass('/design-overview.html')"><a href="design-overview.html">Overview</a></li>
+                    <li class="divider"></li>
+                    <li class="nav-header">Tools</li>
+                    <li ng-class="activeClass('/design-modeler.html')"><a href="design-modeler.html">camunda Modeler</a></li>
+                    <li ng-class="activeClass('/design-cycle-tutorial.html')"><a href="design-cycle-tutorial.html">camunda Cycle</a></li>
+                    <li class="divider"></li>
+                    <li class="nav-header">Know-how</li>
+                    <li ng-class="activeClass('/design-tutorial.html')"><a href="design-tutorial.html">BPMN 2.0 Tutorial</a></li>
+                    <li ng-class="activeClass('/design-reference.html')"><a href="design-reference.html#/reference">BPMN 2.0 Reference</a></li>
+                  </ul></li>
+                <li ng-class="activeClass('/implement')"><a href="implement.html" class="caret-before">Implement</a></li>
+                <li class="dropdown"><a class="dropdown-toggle caret-after" data-toggle="dropdown"> <b class="caret"></b></a>
+                  <ul class="dropdown-menu">
+                    <li ng-class="activeClass('/implement.html')"><a href="implement.html">Overview</a></li>
+                    <li ng-class="activeClass('/implement-getting-started.html')"><a href="implement-getting-started.html">Getting Started</a></li>
+                    <li class="divider"></li>
+                    <li class="nav-header">Process Engine</li>
+                    <li ng-class="activeClass('/implement-bpmn.html')"><a href="implement-bpmn.html">BPMN 2.0 Reference</a></li>
+                    <li ng-class="activeClass('/implement-rest.html')"><a href="implement-rest.html#/overview/introduction">REST API</a></li>
+                  </ul></li>
+                <li ng-class="activeClass('/community')"><a href="community.html" class="caret-before">Community</a></li>
+                <li class="dropdown"><a class="dropdown-toggle caret-after" data-toggle="dropdown"> <b class="caret"></b></a>
+                  <ul class="dropdown-menu">
+                    <li ng-class="activeClass('/community.html')"><a href="community.html">Overview</a></li>
+                    <li class="nav-header">Users</li>
+                    <li ng-class="activeClass('/community-forum.html')"><a href="community-forum.html">Forum</a></li>
+                    <li ng-class="activeClass('/community-meetings')"><a href="community-meetings.html">Next Meetings</a></li>
+                    <li ng-class="activeClass('/community-users.html')"><a href="community-users.html">Who's using it?</a></li>
+                    <li class="divider"></li>
+                    <li class="nav-header">Contributors</li>
+                    <li ng-class="activeClass('/community-vision.html')"><a href="community-vision.html">Our Vision</a></li>
+                    <li ng-class="activeClass('/community-contribute.html')"><a href="community-contribute.html">How to Contribute</a></li>
+                    <li ng-class="activeClass('/community-team.html')"><a href="community-team.html">Team</a></li>
+                  </ul></li>
+                <li ng-class="activeClass('/support.html')"><a href="support.html">Support</a></li>
+              </ul>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ========================================================================== -->
+    <!-- navigation end                                                           -->
+
+    <style type="text/css">
+.team-core img {
+	max-height: 80px;
+	max-width: 80px;
+	background: white;
+	/*
           filter: url(assets/css/filters.svg#grayscale); 
           filter: gray;
           -webkit-filter: grayscale(1); 
           */
-        }
+}
 
-        .team-core img:hover {
-           filter: none;
-           -webkit-filter: grayscale(0);
-         }
+.team-core img:hover {
+	filter: none;
+	-webkit-filter: grayscale(0);
+}
 
-        .team-core img.img-circle {
-          border-radius: 3px;
-          padding: 3px;
-          border: solid 1px #DDD;
-        }
+.team-core img.img-circle {
+	border-radius: 3px;
+	padding: 3px;
+	border: solid 1px #DDD;
+}
 
-        h2 {
-          margin-top: 30px;
-        }
-        
-        .team-core .modal img {
-          max-height: 120px;
-          max-width: 120px;
-           filter: none;
-           -webkit-filter: grayscale(0);
-        }
+h2 {
+	margin-top: 30px;
+}
 
-        .team-core .media {
-          margin-top: 10px;
-        }
+.team-core .modal img {
+	max-height: 120px;
+	max-width: 120px;
+	filter: none;
+	-webkit-filter: grayscale(0);
+}
 
-        .team-core h1 {
-          font-size: 120%;
-          line-height: 1;
-        }
+.team-core .media {
+	margin-top: 10px;
+}
 
-        .team-core .row {
-          margin-bottom: 20px;
-        }
+.team-core h1 {
+	font-size: 120%;
+	line-height: 1;
+}
 
-        .partners img {
-          padding: 15px;
-          max-width: 170px;
-          cursor: pointer;
-        }
+.team-core .row {
+	margin-bottom: 20px;
+}
 
-        .partners img:hover {
-           filter: none;
-           -webkit-filter: grayscale(0);
-         }
+.partners img {
+	padding: 15px;
+	max-width: 170px;
+	cursor: pointer;
+}
 
-        .pl {
-          background-color: #eee;
-          border-radius: 3px;
+.partners img:hover {
+	filter: none;
+	-webkit-filter: grayscale(0);
+}
 
-          margin: 0px 0 0 15px;
-          padding-right: 15px;
-          -moz-border-radius: 3px;
-          -webkit-border-radius: 3px;
-        }
+.pl {
+	background-color: #eee;
+	border-radius: 3px;
+	margin: 0px 0 0 15px;
+	padding-right: 15px;
+	-moz-border-radius: 3px;
+	-webkit-border-radius: 3px;
+}
 
-        .pl > div {
-          margin: 15px;
-        }
-      </style>
+.pl>div {
+	margin: 15px;
+}
+</style>
 
-      <div class="container">
-        <div class="headline">
-          <h1>The Team</h1>
-          <h3>behind camunda BPM</h3>
-        </div>
-        <div class="row">
-          <!-- dev team column -->
-          <div class="span9 team-core">
+    <div class="container">
+      <div class="headline">
+        <h1>The Team</h1>
+        <h3>behind camunda BPM</h3>
+      </div>
+      <div class="row">
+        <!-- dev team column -->
+        <div class="span9 team-core">
 
-            <h2>Core Team</h2>
+          <h2>Core Team</h2>
 
-            <!-- row 1 -->
-            <div class="row">
-              <div class="span3 pl">
-                <div>
+          <!-- row 1 -->
+          <div class="row">
+            <div class="span3 pl">
+              <div>
+                <div class="media">
+                  <a class="pull-left" href="#daniel-details" data-toggle="modal"> <img class="media-object img-circle"
+                    src="assets/img/app/community/team/core/daniel_meyer.jpg">
+                  </a>
+                  <div class="media-body">
+                    <h4 class="media-heading">Daniel Meyer</h4>
+                    <p>Project Lead</p>
+                  </div>
+                </div>
+              </div>
+              <!-- start modal -->
+              <div id="daniel-details" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="daniel-details-label" aria-hidden="true">
+                <div class="modal-header">
+                  <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                  <h3 id="daniel-details-label">Daniel Meyer</h3>
+                </div>
+                <div class="modal-body">
                   <div class="media">
-                    <a class="pull-left" href="#daniel-details" data-toggle="modal">
-                      <img class="media-object img-circle" src="assets/img/app/community/team/core/daniel_meyer.jpg">
+                    <a class="pull-left"> <img class="media-object img-circle" src="assets/img/app/community/team/core/daniel_meyer.jpg">
                     </a>
                     <div class="media-body">
-                      <h4 class="media-heading">Daniel Meyer</h4>
-                      <p>
-                        Project Lead
-                      </p>
+                      <p>Daniel Meyer is passionate about BPM with a particular focus on process automation and process engines. His mission is to deliver
+                        the best possible experience to developers who want to use BPM technology in their applications. He is a Java EE 6 aficionado and
+                        believes in polyglot technology stacks based on open standards. What he likes best is writing about himself in the third person.</p>
                     </div>
                   </div>
                 </div>
-                <!-- start modal -->
-                <div id="daniel-details" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="daniel-details-label" aria-hidden="true">
-                  <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-                    <h3 id="daniel-details-label">Daniel Meyer</h3>
-                  </div>
-                  <div class="modal-body">
-                    <div class="media">
-                      <a class="pull-left">
-                        <img class="media-object img-circle" src="assets/img/app/community/team/core/daniel_meyer.jpg">
-                      </a>
-                      <div class="media-body">
-                        <p>
-                          Daniel Meyer is passionate about BPM with a particular focus on 
-                          process automation and process engines. His mission is to deliver the 
-                          best possible experience to developers who want to use BPM technology 
-                          in their applications. He is a Java EE 6 aficionado and believes in 
-                          polyglot technology stacks based on open standards. What he likes best 
-                          is writing about himself in the third person.
-                        </p>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="modal-footer">
-                    <button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
-                  </div>
+                <div class="modal-footer">
+                  <button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
                 </div>
-                <!-- end modal -->
               </div>
-
-              <div class="span3">
-                <div class="media">
-                  <a class="pull-left" href="#andreas-details" data-toggle="modal">
-                    <img class="media-object img-circle" src="assets/img/app/community/team/core/andreas_drobisch.jpg">
-                  </a>
-                  <div class="media-body">
-                    <h4 class="media-heading">Andreas Drobisch</h4>
-                    <p>
-                      Is primarily working on the web tools and the camunda modeler. Passionate about the JavaScript revolution.
-                    </p>
-                  </div>
-                </div>
-                <!-- start modal -->
-                <div id="andreas-details" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="andreas-details-label" aria-hidden="true">
-                  <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-                    <h3 id="andreas-details-label">Andreas Drobisch</h3>
-                  </div>
-                  <div class="modal-body">
-                    <div class="media">
-                      <a class="pull-left">
-                        <img class="media-object img-circle" src="assets/img/app/community/team/core/andreas_drobisch.jpg">
-                      </a>
-                      <div class="media-body">
-                        <p>
-                          I work at camunda as Scrum Master and software engineer, mostly touching the modeler and the web stack.
-                          I am also very excited about the new directions in the web and java world caused by JavaScript and Scala.
-                          You can clone my ideas at <a href="https://github.com/adrobisch">github</a> or read them at <a href="http://twitter.com/adrobisch">twitter</a>
-                          or in <a href="http://blog.drobisch.com">my blog</a>.
-                        </p>
-                        <p>
-                          <b>Find me on the web:</b>
-                        </p>
-                        <ul>
-                          <li><a href="https://github.com/adrobisch">Github</a></li>
-                          <li><a href="http://twitter.com/adrobisch">Twitter</a></li>
-                          <li><a href="http://blog.drobisch.com">Blog</a></li>
-                        </ul>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="modal-footer">
-                    <button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
-                  </div>
-                </div>
-                <!-- end modal -->
-              </div>
-
-              <div class="span3">
-                <div class="media">
-                  <a class="pull-left" href="#nico-details" data-toggle="modal">
-                    <img class="media-object img-circle" src="assets/img/app/community/team/core/nico_rehwaldt.jpg">
-                  </a>
-                  <div class="media-body">
-                    <h4 class="media-heading">Nico Rehwaldt</h4>
-                    <p>
-                      Is primarily working on the web tools and the camunda modeler. 
-                      Hacker and web enthusiast.
-                    </p>
-                  </div>
-                </div>
-                <!-- start modal -->
-                <div id="nico-details" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="nico-details-label" aria-hidden="true">
-                  <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-                    <h3 id="nico-details-label">Nico Rehwaldt</h3>
-                  </div>
-                  <div class="modal-body">
-                    <div class="media">
-                      <a class="pull-left">
-                        <img class="media-object img-circle" src="assets/img/app/community/team/core/nico_rehwaldt.jpg">
-                      </a>
-                      <div class="media-body">
-                        <p>
-                          I work at camunda as a software engineer where I build the camunda modeler and the web tool stack. 
-                          From time to time I contribute to the engine underlaying the platform.
-                        </p>
-                        <p>
-                          Whenever I do something else it most probably has to do with software architectures and engineering and the web.
-                          Most of the stuff I do in code can be found on <a href="https://github.com/Nikku">github</a>. 
-                          <!-- Occasionally I <a href="http://tech.lefedt.de">write things</a>, too. -->
-                        </p>
-                        <p>
-                          <b>Find me on the web:</b>
-                        </p>
-                        <ul>
-                          <li><a href="https://github.com/Nikku">Github</a></li>
-                          <!--<li><a href="http://tech.lefedt.de">Blog</a></li>-->
-                        </ul>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="modal-footer">
-                    <button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
-                  </div>
-                </div>
-                <!-- end modal -->
-              </div>
+              <!-- end modal -->
             </div>
-
-            <!-- row 2 -->
-            <div class="row">
-              <div class="span3">
-                <div class="media">
-                  <a class="pull-left" href="#roman-details" data-toggle="modal">
-                    <img class="media-object img-circle" src="assets/img/app/community/team/core/roman_smirnov.jpg">
-                  </a>
-                  <div class="media-body">
-                    <h4 class="media-heading">Roman Smirnov</h4>
-                    <p>
-                      Software Developer
-                    </p>
-                  </div>
-                </div>
-                <!-- start modal -->
-                <div id="roman-details" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="roman-details-label" aria-hidden="true">
-                  <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-                    <h3 id="roman-details-label">Roman Smirnov</h3>
-                  </div>
-                  <div class="modal-body">
-                    <div class="media">
-                      <a class="pull-left">
-                        <img class="media-object img-circle" src="assets/img/app/community/team/core/roman_smirnov.jpg">
-                      </a>
-                      <div class="media-body">
-                        <p>
-                          I am core camunda bpm platform and camunda modeler developer at camunda.
-                        </p>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="modal-footer">
-                    <button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
-                  </div>
-                </div>
-                <!-- end modal -->
-              </div>
-
-              <div class="span3">
-                <div class="media">
-                  <a class="pull-left" href="#stefan-details" data-toggle="modal">
-                    <img class="media-object img-circle" src="assets/img/app/community/team/core/stefan_hentschel.jpg">
-                  </a>
-                  <div class="media-body">
-                    <h4 class="media-heading">Stefan Hentschel</h4>
-                    <p>
-                      IT Administrator &amp; Infrastructure
-                    </p>
-                  </div>
-                </div>
-                <!-- start modal -->
-                <div id="stefan-details" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="stefan-details-label" aria-hidden="true">
-                  <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-                    <h3 id="stefan-details-label">Stefan Hentschel</h3>
-                  </div>
-                  <div class="modal-body">
-                    <div class="media">
-                      <a class="pull-left">
-                        <img class="media-object img-circle" src="assets/img/app/community/team/core/stefan_hentschel.jpg">
-                      </a>
-                      <div class="media-body">
-                        <p>
-                          I am the IT Administrator at camunda and have a lot of experience with quality assurance environments. 
-                          I contribute my knowledge of how to build up a scalable test, release and automation environments as well as my knowledge about IT infrastructure.
-                        </p>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="modal-footer">
-                    <button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
-                  </div>
-                </div>
-                <!-- end modal -->
-              </div>
-
-              <div class="span3">
-                <div class="media">
-                  <a class="pull-left" href="#robert-details" data-toggle="modal">
-                    <img class="media-object img-circle" src="assets/img/app/community/team/core/robert_gimbel_cropped.jpg">
-                  </a>
-                  <div class="media-body">
-                    <h4 class="media-heading">Robert Gimbel</h4>
-                    <p>
-                      Product Owner camunda BPM
-                    </p>
-                  </div>
-                </div>
-                <!-- start modal -->
-                <div id="robert-details" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="robert-details-label" aria-hidden="true">
-                  <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-                    <h3 id="robert-details-label">Robert Gimbel</h3>
-                  </div>
-                  <div class="modal-body">
-
-                    <div class="media">
-                      <a class="pull-left">
-                        <img class="media-object img-circle" src="assets/img/app/community/team/core/robert_gimbel.jpg">
-                      </a>
-                      <div class="media-body">
-                        <p>
-                          I work at camunda and take care of the roadmap, the product backlog and the requirements (user stories).
-                        </p>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="modal-footer">
-                    <button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
-                  </div>
-                </div>
-                <!-- end modal -->
-              </div>
-            </div>
-
-            <!-- row 3 -->
-            <div class="row">
-              <div class="span3">
-                <div class="media">
-                  <a class="pull-left" href="#michael-details" data-toggle="modal">
-                    <img class="media-object img-circle" src="assets/img/app/community/team/core/michael_schoettes.jpg">
-                  </a>
-                  <div class="media-body">
-                    <h4 class="media-heading">Michael Schöttes</h4>
-                    <p>
-                      QA Engineer
-                    </p>
-                  </div>
-                </div>
-                <!-- start modal -->
-                <div id="michael-details" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="michael-details-label" aria-hidden="true">
-                  <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-                    <h3 id="michael-details-label">Michael Schöttes</h3>
-                  </div>
-                  <div class="modal-body">
-
-                    <div class="media">
-                      <a class="pull-left">
-                        <img class="media-object img-circle" src="assets/img/app/community/team/core/michael_schoettes.jpg">
-                      </a>
-                      <div class="media-body">
-                        <p>
-                          I work as a QA Engineer at camunda where I am responsible for test development, automated testing and quality management for the camunda BPM project.
-                        </p>
-                        <p>
-                          In short: I'm test driven!
-                        </p>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="modal-footer">
-                    <button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
-                  </div>
-                </div>
-                <!-- end modal -->
-              </div>
-
-              <div class="span3">
-                <div class="media">
-                  <a class="pull-left" href="#thorben-details" data-toggle="modal">
-                    <img class="media-object img-circle" src="assets/img/app/community/team/core/thorben_lindhauer.jpg">
-                  </a>
-                  <div class="media-body">
-                    <h4 class="media-heading">Thorben Lindhauer</h4>
-                    <p>
-                      Developer &amp; Working Student
-                    </p>
-                  </div>
-                </div>
-                <!-- start modal -->
-                <div id="thorben-details" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="thorben-details-label" aria-hidden="true">
-                  <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-                    <h3 id="thorben-details-label">Thorben Lindhauer</h3>
-                  </div>
-                  <div class="modal-body">
-                    <div class="media">
-                      <a class="pull-left">
-                        <img class="media-object img-circle" src="assets/img/app/community/team/core/thorben_lindhauer.jpg">
-                      </a>
-                      <div class="media-body">
-                        <p>
-                          I am a Software Engineering Student in my Master studies at Hasso-Plattner-Institute Potsdam.
-                          BPM-related topics are the focus of my studies and I am particularly interested in process automation.
-                          I deepen my understanding of Java EE development at camunda.
-                        </p>
-                        <p>
-                          <b>Find me on the web:</b>
-                        </p>
-                        <ul>
-                          <li><a href="https://github.com/ThorbenLindhauer">Github</a></li>
-                        </ul>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="modal-footer">
-                    <button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
-                  </div>
-                </div>
-                <!-- end modal -->
-              </div>
-            </div>
-
-            <!-- row 3 -->
-            <h2>Contributors</h2>
-
-            <div class="row">
 
             <div class="span3">
               <div class="media">
-                <a class="pull-left" href="#bernd-details" data-toggle="modal">
-                  <img class="media-object img-circle" src="assets/img/app/community/team/core/bernd_ruecker.jpg">
+                <a class="pull-left" href="#andreas-details" data-toggle="modal"> <img class="media-object img-circle"
+                  src="assets/img/app/community/team/core/andreas_drobisch.jpg">
+                </a>
+                <div class="media-body">
+                  <h4 class="media-heading">Andreas Drobisch</h4>
+                  <p>Is primarily working on the web tools and the camunda modeler. Passionate about the JavaScript revolution.</p>
+                </div>
+              </div>
+              <!-- start modal -->
+              <div id="andreas-details" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="andreas-details-label" aria-hidden="true">
+                <div class="modal-header">
+                  <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                  <h3 id="andreas-details-label">Andreas Drobisch</h3>
+                </div>
+                <div class="modal-body">
+                  <div class="media">
+                    <a class="pull-left"> <img class="media-object img-circle" src="assets/img/app/community/team/core/andreas_drobisch.jpg">
+                    </a>
+                    <div class="media-body">
+                      <p>
+                        I work at camunda as Scrum Master and software engineer, mostly touching the modeler and the web stack. I am also very excited about the
+                        new directions in the web and java world caused by JavaScript and Scala. You can clone my ideas at <a
+                          href="https://github.com/adrobisch">github</a> or read them at <a href="http://twitter.com/adrobisch">twitter</a> or in <a
+                          href="http://blog.drobisch.com">my blog</a>.
+                      </p>
+                      <p>
+                        <b>Find me on the web:</b>
+                      </p>
+                      <ul>
+                        <li><a href="https://github.com/adrobisch">Github</a></li>
+                        <li><a href="http://twitter.com/adrobisch">Twitter</a></li>
+                        <li><a href="http://blog.drobisch.com">Blog</a></li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+                <div class="modal-footer">
+                  <button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
+                </div>
+              </div>
+              <!-- end modal -->
+            </div>
+
+            <div class="span3">
+              <div class="media">
+                <a class="pull-left" href="#nico-details" data-toggle="modal"> <img class="media-object img-circle"
+                  src="assets/img/app/community/team/core/nico_rehwaldt.jpg">
+                </a>
+                <div class="media-body">
+                  <h4 class="media-heading">Nico Rehwaldt</h4>
+                  <p>Is primarily working on the web tools and the camunda modeler. Hacker and web enthusiast.</p>
+                </div>
+              </div>
+              <!-- start modal -->
+              <div id="nico-details" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="nico-details-label" aria-hidden="true">
+                <div class="modal-header">
+                  <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                  <h3 id="nico-details-label">Nico Rehwaldt</h3>
+                </div>
+                <div class="modal-body">
+                  <div class="media">
+                    <a class="pull-left"> <img class="media-object img-circle" src="assets/img/app/community/team/core/nico_rehwaldt.jpg">
+                    </a>
+                    <div class="media-body">
+                      <p>I work at camunda as a software engineer where I build the camunda modeler and the web tool stack. From time to time I contribute
+                        to the engine underlaying the platform.</p>
+                      <p>
+                        Whenever I do something else it most probably has to do with software architectures and engineering and the web. Most of the stuff I do
+                        in code can be found on <a href="https://github.com/Nikku">github</a>.
+                        <!-- Occasionally I <a href="http://tech.lefedt.de">write things</a>, too. -->
+                      </p>
+                      <p>
+                        <b>Find me on the web:</b>
+                      </p>
+                      <ul>
+                        <li><a href="https://github.com/Nikku">Github</a></li>
+                        <!--<li><a href="http://tech.lefedt.de">Blog</a></li>-->
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+                <div class="modal-footer">
+                  <button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
+                </div>
+              </div>
+              <!-- end modal -->
+            </div>
+          </div>
+
+          <!-- row 2 -->
+          <div class="row">
+            <div class="span3">
+              <div class="media">
+                <a class="pull-left" href="#roman-details" data-toggle="modal"> <img class="media-object img-circle"
+                  src="assets/img/app/community/team/core/roman_smirnov.jpg">
+                </a>
+                <div class="media-body">
+                  <h4 class="media-heading">Roman Smirnov</h4>
+                  <p>Software Developer</p>
+                </div>
+              </div>
+              <!-- start modal -->
+              <div id="roman-details" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="roman-details-label" aria-hidden="true">
+                <div class="modal-header">
+                  <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                  <h3 id="roman-details-label">Roman Smirnov</h3>
+                </div>
+                <div class="modal-body">
+                  <div class="media">
+                    <a class="pull-left"> <img class="media-object img-circle" src="assets/img/app/community/team/core/roman_smirnov.jpg">
+                    </a>
+                    <div class="media-body">
+                      <p>I am core camunda bpm platform and camunda modeler developer at camunda.</p>
+                    </div>
+                  </div>
+                </div>
+                <div class="modal-footer">
+                  <button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
+                </div>
+              </div>
+              <!-- end modal -->
+            </div>
+
+            <div class="span3">
+              <div class="media">
+                <a class="pull-left" href="#stefan-details" data-toggle="modal"> <img class="media-object img-circle"
+                  src="assets/img/app/community/team/core/stefan_hentschel.jpg">
+                </a>
+                <div class="media-body">
+                  <h4 class="media-heading">Stefan Hentschel</h4>
+                  <p>IT Administrator &amp; Infrastructure</p>
+                </div>
+              </div>
+              <!-- start modal -->
+              <div id="stefan-details" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="stefan-details-label" aria-hidden="true">
+                <div class="modal-header">
+                  <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                  <h3 id="stefan-details-label">Stefan Hentschel</h3>
+                </div>
+                <div class="modal-body">
+                  <div class="media">
+                    <a class="pull-left"> <img class="media-object img-circle" src="assets/img/app/community/team/core/stefan_hentschel.jpg">
+                    </a>
+                    <div class="media-body">
+                      <p>I am the IT Administrator at camunda and have a lot of experience with quality assurance environments. I contribute my knowledge of
+                        how to build up a scalable test, release and automation environments as well as my knowledge about IT infrastructure.</p>
+                    </div>
+                  </div>
+                </div>
+                <div class="modal-footer">
+                  <button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
+                </div>
+              </div>
+              <!-- end modal -->
+            </div>
+
+            <div class="span3">
+              <div class="media">
+                <a class="pull-left" href="#robert-details" data-toggle="modal"> <img class="media-object img-circle"
+                  src="assets/img/app/community/team/core/robert_gimbel_cropped.jpg">
+                </a>
+                <div class="media-body">
+                  <h4 class="media-heading">Robert Gimbel</h4>
+                  <p>Product Owner camunda BPM</p>
+                </div>
+              </div>
+              <!-- start modal -->
+              <div id="robert-details" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="robert-details-label" aria-hidden="true">
+                <div class="modal-header">
+                  <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                  <h3 id="robert-details-label">Robert Gimbel</h3>
+                </div>
+                <div class="modal-body">
+
+                  <div class="media">
+                    <a class="pull-left"> <img class="media-object img-circle" src="assets/img/app/community/team/core/robert_gimbel.jpg">
+                    </a>
+                    <div class="media-body">
+                      <p>I work at camunda and take care of the roadmap, the product backlog and the requirements (user stories).</p>
+                    </div>
+                  </div>
+                </div>
+                <div class="modal-footer">
+                  <button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
+                </div>
+              </div>
+              <!-- end modal -->
+            </div>
+          </div>
+
+          <!-- row 3 -->
+          <div class="row">
+            <div class="span3">
+              <div class="media">
+                <a class="pull-left" href="#michael-details" data-toggle="modal"> <img class="media-object img-circle"
+                  src="assets/img/app/community/team/core/michael_schoettes.jpg">
+                </a>
+                <div class="media-body">
+                  <h4 class="media-heading">Michael Schöttes</h4>
+                  <p>QA Engineer</p>
+                </div>
+              </div>
+              <!-- start modal -->
+              <div id="michael-details" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="michael-details-label" aria-hidden="true">
+                <div class="modal-header">
+                  <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                  <h3 id="michael-details-label">Michael Schöttes</h3>
+                </div>
+                <div class="modal-body">
+
+                  <div class="media">
+                    <a class="pull-left"> <img class="media-object img-circle" src="assets/img/app/community/team/core/michael_schoettes.jpg">
+                    </a>
+                    <div class="media-body">
+                      <p>I work as a QA Engineer at camunda where I am responsible for test development, automated testing and quality management for the
+                        camunda BPM project.</p>
+                      <p>In short: I'm test driven!</p>
+                    </div>
+                  </div>
+                </div>
+                <div class="modal-footer">
+                  <button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
+                </div>
+              </div>
+              <!-- end modal -->
+            </div>
+
+            <div class="span3">
+              <div class="media">
+                <a class="pull-left" href="#thorben-details" data-toggle="modal"> <img class="media-object img-circle"
+                  src="assets/img/app/community/team/core/thorben_lindhauer.jpg">
+                </a>
+                <div class="media-body">
+                  <h4 class="media-heading">Thorben Lindhauer</h4>
+                  <p>Developer &amp; Working Student</p>
+                </div>
+              </div>
+              <!-- start modal -->
+              <div id="thorben-details" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="thorben-details-label" aria-hidden="true">
+                <div class="modal-header">
+                  <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                  <h3 id="thorben-details-label">Thorben Lindhauer</h3>
+                </div>
+                <div class="modal-body">
+                  <div class="media">
+                    <a class="pull-left"> <img class="media-object img-circle" src="assets/img/app/community/team/core/thorben_lindhauer.jpg">
+                    </a>
+                    <div class="media-body">
+                      <p>I am a Software Engineering Student in my Master studies at Hasso-Plattner-Institute Potsdam. BPM-related topics are the focus of
+                        my studies and I am particularly interested in process automation. I deepen my understanding of Java EE development at camunda.</p>
+                      <p>
+                        <b>Find me on the web:</b>
+                      </p>
+                      <ul>
+                        <li><a href="https://github.com/ThorbenLindhauer">Github</a></li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+                <div class="modal-footer">
+                  <button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
+                </div>
+              </div>
+              <!-- end modal -->
+            </div>
+          </div>
+
+          <!-- row 3 -->
+          <h2>Contributors</h2>
+
+          <div class="row">
+
+            <div class="span3">
+              <div class="media">
+                <a class="pull-left" href="#bernd-details" data-toggle="modal"> <img class="media-object img-circle"
+                  src="assets/img/app/community/team/core/bernd_ruecker.jpg">
                 </a>
                 <div class="media-body">
                   <h4 class="media-heading">Bernd Rücker</h4>
-                  <p>
-                    Technical Consultant &amp; Trainer
-                  </p>
+                  <p>Technical Consultant &amp; Trainer</p>
                 </div>
               </div>
               <!-- start modal -->
@@ -485,12 +499,15 @@
                 <div class="modal-body">
 
                   <div class="media">
-                    <a class="pull-left">
-                      <img class="media-object img-circle" src="assets/img/app/community/team/core/bernd_ruecker.jpg">
+                    <a class="pull-left"> <img class="media-object img-circle" src="assets/img/app/community/team/core/bernd_ruecker.jpg">
                     </a>
                     <div class="media-body">
                       <p>
-                        I am co-founder and CEO of camunda. But I am also software developer, trainer and consultant. I am committer of the Process Engine since almost 10 years now starting with jBPM 3. Over this time I coached countless BPM/process automation/workflow projects and I got really passionate about the whole BPM + Java story we finally can deliver fully Open Source with camunda BPM. When I have some spare time I give talks at conferences or write articles or books (check out our <a href="http://www.amazon.com/Real-Life-BPMN-Analyze-Automate-Processes/dp/1480034983/">Real-Life BPMN book</a>).
+                        I am co-founder and CEO of camunda. But I am also software developer, trainer and consultant. I am committer of the Process Engine since
+                        almost 10 years now starting with jBPM 3. Over this time I coached countless BPM/process automation/workflow projects and I got really
+                        passionate about the whole BPM + Java story we finally can deliver fully Open Source with camunda BPM. When I have some spare time I
+                        give talks at conferences or write articles or books (check out our <a
+                          href="http://www.amazon.com/Real-Life-BPMN-Analyze-Automate-Processes/dp/1480034983/">Real-Life BPMN book</a>).
                       </p>
 
                       <p>
@@ -514,14 +531,12 @@
 
             <div class="span3">
               <div class="media">
-                <a class="pull-left" href="#kristin-details" data-toggle="modal">
-                  <img class="media-object img-circle" src="assets/img/app/community/team/core/kristin_polenz.jpg">
+                <a class="pull-left" href="#kristin-details" data-toggle="modal"> <img class="media-object img-circle"
+                  src="assets/img/app/community/team/core/kristin_polenz.jpg">
                 </a>
                 <div class="media-body">
                   <h4 class="media-heading">Kristin Polenz</h4>
-                  <p>
-                    Technical Consultant
-                  </p>
+                  <p>Technical Consultant</p>
                 </div>
               </div>
               <!-- start modal -->
@@ -532,14 +547,11 @@
                 </div>
                 <div class="modal-body">
                   <div class="media">
-                    <a class="pull-left">
-                      <img class="media-object img-circle" src="assets/img/app/community/team/core/kristin_polenz.jpg">
+                    <a class="pull-left"> <img class="media-object img-circle" src="assets/img/app/community/team/core/kristin_polenz.jpg">
                     </a>
                     <div class="media-body">
-                      <p>
-                        I am a consultant and experienced developer at camunda in the area of BPM/SOA based on Java EE. 
-                        I have profound experience with process automation and a very deep knowledge in the Open Source stack from JBoss.
-                      </p>
+                      <p>I am a consultant and experienced developer at camunda in the area of BPM/SOA based on Java EE. I have profound experience with
+                        process automation and a very deep knowledge in the Open Source stack from JBoss.</p>
                     </div>
                   </div>
                 </div>
@@ -552,14 +564,12 @@
 
             <div class="span3">
               <div class="media">
-                <a class="pull-left" href="#falko-details" data-toggle="modal">
-                  <img class="media-object img-circle" src="assets/img/app/community/team/core/falko_menge.jpg">
+                <a class="pull-left" href="#falko-details" data-toggle="modal"> <img class="media-object img-circle"
+                  src="assets/img/app/community/team/core/falko_menge.jpg">
                 </a>
                 <div class="media-body">
                   <h4 class="media-heading">Falko Menge</h4>
-                  <p>
-                    Process Automator &amp; BPMN Nerd
-                  </p>
+                  <p>Process Automator &amp; BPMN Nerd</p>
                 </div>
               </div>
               <!-- start modal -->
@@ -570,18 +580,12 @@
                 </div>
                 <div class="modal-body">
                   <div class="media">
-                    <a class="pull-left">
-                      <img class="media-object img-circle" src="assets/img/app/community/team/core/falko_menge.jpg">
+                    <a class="pull-left"> <img class="media-object img-circle" src="assets/img/app/community/team/core/falko_menge.jpg">
                     </a>
                     <div class="media-body">
-                      <p>
-                        I'm consultant, trainer and software engineer at 
-                        camunda. I have a lot of experience with process automation and 
-                        application integration and am a co-founder and committer of several 
-                        Open Source projects in this area including camunda BPM. Moreover, I 
-                        directly contribute to the BPMN standard as a representative of camunda 
-                        at the OMG.
-                      </p>
+                      <p>I'm consultant, trainer and software engineer at camunda. I have a lot of experience with process automation and application
+                        integration and am a co-founder and committer of several Open Source projects in this area including camunda BPM. Moreover, I directly
+                        contribute to the BPMN standard as a representative of camunda at the OMG.</p>
                       <p>
                         <b>Find me on the web:</b>
                       </p>
@@ -605,14 +609,12 @@
           <div class="row">
             <div class="span3">
               <div class="media">
-                <a class="pull-left" href="#jakob-details" data-toggle="modal">
-                  <img class="media-object img-circle" src="assets/img/app/community/team/core/jakob_freund.jpg">
+                <a class="pull-left" href="#jakob-details" data-toggle="modal"> <img class="media-object img-circle"
+                  src="assets/img/app/community/team/core/jakob_freund.jpg">
                 </a>
                 <div class="media-body">
                   <h4 class="media-heading">Jakob Freund</h4>
-                  <p>
-                    BPM Addict
-                  </p>
+                  <p>BPM Addict</p>
                 </div>
               </div>
               <!-- start modal -->
@@ -623,18 +625,14 @@
                 </div>
                 <div class="modal-body">
                   <div class="media">
-                    <a class="pull-left">
-                      <img class="media-object img-circle" src="assets/img/app/community/team/core/jakob_freund.jpg">
+                    <a class="pull-left"> <img class="media-object img-circle" src="assets/img/app/community/team/core/jakob_freund.jpg">
                     </a>
                     <div class="media-body">
-                      <p>
-                        Together with Bernd I run camunda. Running a business is mostly fun, but not always. Sometimes it really sucks. I mean, completely. But then again, it's also fun.
-                      </p>
-                      <p>
-                        Anyway, I am doing BPM since 2004, and I know by first-hand experience: If you apply BPM in the right way, it will make your business suck less and more fun to run. 
-                      </p>
-                      <p>
-                        And isn't that what it's all about?
+                      <p>Together with Bernd I run camunda. Running a business is mostly fun, but not always. Sometimes it really sucks. I mean, completely.
+                        But then again, it's also fun.</p>
+                      <p>Anyway, I am doing BPM since 2004, and I know by first-hand experience: If you apply BPM in the right way, it will make your
+                        business suck less and more fun to run.</p>
+                      <p>And isn't that what it's all about?
                       <p>
                         <b>Find me on the web:</b>
                       </p>
@@ -650,34 +648,85 @@
                   <button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
                 </div>
               </div>
-              <!-- end modal -->              
+              <!-- end modal -->
             </div>
           </div>
         </div>
         <!-- end dev team column -->
-        
+
         <!-- partner column -->
-        <div class="span3 center partners" >
+        <div class="span3 center partners">
           <h2>Partners involved</h2>
           <!--<p>These companies back up our project:</p>-->
-          <a href="http://www.businessprocessincubator.com"><img src="assets/img/app/community/team/partners/bpi.gif"></a>
-          <a href="http://www.camunda.com"><img src="assets/img/app/community/team/partners/camunda.png"></a>
-          <a href="http://www.ibo.de"><img src="assets/img/app/community/team/partners/ibo.jpg"></a>
-          <a href="http://www.plexiti.com"><img src="assets/img/app/community/team/partners/plexiti.png"></a>                
-          <a href="http://www.signavio.com"><img src="assets/img/app/community/team/partners/signavio.png"></a>
+          <a href="http://www.businessprocessincubator.com"><img src="assets/img/app/community/team/partners/bpi.gif"></a> <a
+            href="http://www.camunda.com"><img src="assets/img/app/community/team/partners/camunda.png"></a> <a href="http://www.ibo.de"><img
+            src="assets/img/app/community/team/partners/ibo.jpg"></a> <a href="http://www.plexiti.com"><img
+            src="assets/img/app/community/team/partners/plexiti.png"></a> <a href="http://www.signavio.com"><img
+            src="assets/img/app/community/team/partners/signavio.png"></a>
 
         </div>
         <!-- end partner column -->
       </div>
-      <div class="push-down"><!-- // --></div> 
+      <div class="push-down">
+        <!-- // -->
+      </div>
     </div>
     <!-- footer -->
     <footer class="footer">
-      <div data-ng-include=" 'templates/footer.html' "></div>
+      <div class="container container-footer">
+        <p>
+          <a href="index.html">camunda.org</a> - created and maintained by <a href="http://www.camunda.com">camunda services GmbH</a> | This page is built with
+          <a href="http://angularjs.org/">angularjs</a>
+        </p>
+        <div class="row-fluid">
+          <div class="span3">
+            <h4>Design</h4>
+            <ul>
+              <li><a href="design-overiew.html">Overview</a></li>
+              <li><a href="design-modeler.html">camunda Modeler</a></li>
+              <li><a href="design-cycle-tutorial.html">camunda Cycle</a></li>
+              <li><a href="design-tutorial.html">BPMN 2.0 Tutorial</a></li>
+              <li><a href="design-reference.html#/reference">BPMN 2.0 Reference</a></li>
+
+            </ul>
+          </div>
+          <div class="span3">
+            <h4>Implement</h4>
+            <ul>
+              <li><a href="implement.html">Overview</a></li>
+              <li><a href="implement-getting-started.html">Getting Started</a></li>
+              <li><a href="implement-bpmn.html">BPMN 2.0 Reference</a></li>
+              <li><a href="implement-rest.html#/overview/introduction">REST API</a></li>
+            </ul>
+          </div>
+          <div class="span3">
+            <h4>Community</h4>
+            <ul>
+              <li><a href="community.html">Overview</a></li>
+              <li><a href="community-forum.html">Forum</a></li>
+              <li><a href="community-meetings.html">Next Meetings</a></li>
+              <li><a href="community-users.html">Who's using it?</a></li>
+              <li><a href="community-vision.html">Our Vision</a></li>
+              <li><a href="community-contribute.html">How to Contribute</a></li>
+              <li><a href="community-team.html">Team</a></li>
+            </ul>
+          </div>
+          <div class="span3">
+            <h4>Support</h4>
+            <ul>
+              <li><a href="">Overview</a></li>
+              <li><a href="">Enterprise Edition</a></li>
+              <li><a href="">Consulting</a></li>
+              <li><a href="">Training</a></li>
+            </ul>
+          </div>
+
+        </div>
+        <span class="spacer"></span>
+      </div>
 
       <!-- loads all javascript -->
       <script src="assets/js/loader.js"></script>
-    <script src="assets/js/app/cabpmn.js"></script>
     </footer>
-  </body>
+</body>
 </html>

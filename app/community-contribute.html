@@ -1,50 +1,158 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <title>camunda.org - the camunda bpm community homepage</title>
-    
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<head>
+<title>camunda.org - the camunda bpm community homepage</title>
 
-    <meta name="author" content="camunda.org community" />
-    
-    <!-- loads all stylesheets -->
-    <link href="assets/css/loader.css" rel="stylesheet" />
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <!-- For IE6-8 support of HTML5 elements -->
-    <!--[if lt IE 9]>
+<meta name="author" content="camunda.org community" />
+
+<!-- loads all stylesheets -->
+<link href="assets/css/loader.css" rel="stylesheet" />
+
+<!-- For IE6-8 support of HTML5 elements -->
+<!--[if lt IE 9]>
       <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
-     
-    <base app-base="." />
 
-  </head>
-  <body ng-controller="DefaultController" >
-    <div class="wrapper">
-      <!-- navigation -->
-      <div data-ng-include=" 'templates/navigation.html' "></div>
+<base app-base="." />
 
-      <div class="container">
-            <div style="padding-top:80px; text-align:center">            
-              <h1 style="color:#333">How to Contribute</h1>
-              <h3>to camunda BPM</h3>
-            </div>
-            <div class="row" style="position:relative; padding-top:10px;" >
+</head>
+<body ng-controller="DefaultController">
+  <div class="wrapper">
 
-                To Do!
+    <!-- ========================================================================== -->
+    <!-- navigation start                                                           -->
 
-            </div>
+    <div class="navbar navbar-inverse navbar-fixed-top">
+      <div class="navbar-inner">
+        <div class="container">
+          <button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+            <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span>
+          </button>
+          <!-- logo -->
+          <a class="brand ir" href="index.html"> camunda.org </a>
+          <div class="nav-collapse collapse">
+            <ul class="nav">
+              <ul class="nav" ng-controller="NavigationController">
+                <li ng-class="activeClass('/index.html')"><a href="index.html">Home</a></li>
+                <li ng-class="activeClass('/design-')"><a href="design-overview.html" class="caret-before">Design</a></li>
+                <li class="dropdown"><a class="dropdown-toggle caret-after" data-toggle="dropdown"> <b class="caret"></b></a>
+                  <ul class="dropdown-menu">
+                    <li ng-class="activeClass('/design-overview.html')"><a href="design-overview.html">Overview</a></li>
+                    <li class="divider"></li>
+                    <li class="nav-header">Tools</li>
+                    <li ng-class="activeClass('/design-modeler.html')"><a href="design-modeler.html">camunda Modeler</a></li>
+                    <li ng-class="activeClass('/design-cycle-tutorial.html')"><a href="design-cycle-tutorial.html">camunda Cycle</a></li>
+                    <li class="divider"></li>
+                    <li class="nav-header">Know-how</li>
+                    <li ng-class="activeClass('/design-tutorial.html')"><a href="design-tutorial.html">BPMN 2.0 Tutorial</a></li>
+                    <li ng-class="activeClass('/design-reference.html')"><a href="design-reference.html#/reference">BPMN 2.0 Reference</a></li>
+                  </ul></li>
+                <li ng-class="activeClass('/implement')"><a href="implement.html" class="caret-before">Implement</a></li>
+                <li class="dropdown"><a class="dropdown-toggle caret-after" data-toggle="dropdown"> <b class="caret"></b></a>
+                  <ul class="dropdown-menu">
+                    <li ng-class="activeClass('/implement.html')"><a href="implement.html">Overview</a></li>
+                    <li ng-class="activeClass('/implement-getting-started.html')"><a href="implement-getting-started.html">Getting Started</a></li>
+                    <li class="divider"></li>
+                    <li class="nav-header">Process Engine</li>
+                    <li ng-class="activeClass('/implement-bpmn.html')"><a href="implement-bpmn.html">BPMN 2.0 Reference</a></li>
+                    <li ng-class="activeClass('/implement-rest.html')"><a href="implement-rest.html#/overview/introduction">REST API</a></li>
+                  </ul></li>
+                <li ng-class="activeClass('/community')"><a href="community.html" class="caret-before">Community</a></li>
+                <li class="dropdown"><a class="dropdown-toggle caret-after" data-toggle="dropdown"> <b class="caret"></b></a>
+                  <ul class="dropdown-menu">
+                    <li ng-class="activeClass('/community.html')"><a href="community.html">Overview</a></li>
+                    <li class="nav-header">Users</li>
+                    <li ng-class="activeClass('/community-forum.html')"><a href="community-forum.html">Forum</a></li>
+                    <li ng-class="activeClass('/community-meetings')"><a href="community-meetings.html">Next Meetings</a></li>
+                    <li ng-class="activeClass('/community-users.html')"><a href="community-users.html">Who's using it?</a></li>
+                    <li class="divider"></li>
+                    <li class="nav-header">Contributors</li>
+                    <li ng-class="activeClass('/community-vision.html')"><a href="community-vision.html">Our Vision</a></li>
+                    <li ng-class="activeClass('/community-contribute.html')"><a href="community-contribute.html">How to Contribute</a></li>
+                    <li ng-class="activeClass('/community-team.html')"><a href="community-team.html">Team</a></li>
+                  </ul></li>
+                <li ng-class="activeClass('/support.html')"><a href="support.html">Support</a></li>
+              </ul>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ========================================================================== -->
+    <!-- navigation end                                                           -->
+
+    <div class="container">
+      <div style="padding-top: 80px; text-align: center">
+        <h1 style="color: #333">How to Contribute</h1>
+        <h3>to camunda BPM</h3>
+      </div>
+      <div class="row" style="position: relative; padding-top: 10px;">To Do!</div>
+
+    </div>
+    <div class="push-down">
+      <!-- // -->
+    </div>
+  </div>
+  <!-- footer -->
+  <footer class="footer">
+    <div class="container container-footer">
+      <p>
+        <a href="index.html">camunda.org</a> - created and maintained by <a href="http://www.camunda.com">camunda services GmbH</a> | This page is built with <a
+          href="http://angularjs.org/">angularjs</a>
+      </p>
+      <div class="row-fluid">
+        <div class="span3">
+          <h4>Design</h4>
+          <ul>
+            <li><a href="design-overiew.html">Overview</a></li>
+            <li><a href="design-modeler.html">camunda Modeler</a></li>
+            <li><a href="design-cycle-tutorial.html">camunda Cycle</a></li>
+            <li><a href="design-tutorial.html">BPMN 2.0 Tutorial</a></li>
+            <li><a href="design-reference.html#/reference">BPMN 2.0 Reference</a></li>
+
+          </ul>
+        </div>
+        <div class="span3">
+          <h4>Implement</h4>
+          <ul>
+            <li><a href="implement.html">Overview</a></li>
+            <li><a href="implement-getting-started.html">Getting Started</a></li>
+            <li><a href="implement-bpmn.html">BPMN 2.0 Reference</a></li>
+            <li><a href="implement-rest.html#/overview/introduction">REST API</a></li>
+          </ul>
+        </div>
+        <div class="span3">
+          <h4>Community</h4>
+          <ul>
+            <li><a href="community.html">Overview</a></li>
+            <li><a href="community-forum.html">Forum</a></li>
+            <li><a href="community-meetings.html">Next Meetings</a></li>
+            <li><a href="community-users.html">Who's using it?</a></li>
+            <li><a href="community-vision.html">Our Vision</a></li>
+            <li><a href="community-contribute.html">How to Contribute</a></li>
+            <li><a href="community-team.html">Team</a></li>
+          </ul>
+        </div>
+        <div class="span3">
+          <h4>Support</h4>
+          <ul>
+            <li><a href="">Overview</a></li>
+            <li><a href="">Enterprise Edition</a></li>
+            <li><a href="">Consulting</a></li>
+            <li><a href="">Training</a></li>
+          </ul>
+        </div>
 
       </div>
-      <div class="push-down"><!-- // --></div> 
+      <span class="spacer"></span>
     </div>
-    <!-- footer -->
-    <footer class="footer">
-      <div data-ng-include=" 'templates/footer.html' "></div>
 
-      <!-- loads all javascript -->
-      <script src="assets/js/loader.js"></script>
-    <script src="assets/js/app/cabpmn.js"></script>
-    </footer>
-  </body>
+    <!-- loads all javascript -->
+    <script src="assets/js/loader.js"></script>
+  </footer>
+</body>
 </html>

@@ -1,304 +1,428 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <title>camunda.org - the camunda bpm community homepage</title>
-    
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<head>
+<title>camunda.org - the camunda bpm community homepage</title>
 
-    <meta name="author" content="camunda.org community" />
-    
-    <!-- loads all stylesheets -->
-    <link href="assets/css/loader.css" rel="stylesheet" />
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <!-- For IE6-8 support of HTML5 elements -->
-    <!--[if lt IE 9]>
+<meta name="author" content="camunda.org community" />
+
+<!-- loads all stylesheets -->
+<link href="assets/css/loader.css" rel="stylesheet" />
+
+<!-- For IE6-8 support of HTML5 elements -->
+<!--[if lt IE 9]>
       <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
-     
-    <base app-base="." />
 
-  </head>
-  <body ng-controller="DefaultController" >
-    <div class="wrapper wrapper-dark">
+<base app-base="." />
 
-      <div style="position:absolute; width:100%; height:480px; background-color:white"> </div>
+</head>
+<body ng-controller="DefaultController">
+  <div class="wrapper wrapper-dark">
 
-      <div data-ng-include=" 'templates/navigation.html' "></div>
+    <div style="position: absolute; width: 100%; height: 480px; background-color: white"></div>
 
-        <div class="container" >
+    <!-- ========================================================================== -->
+    <!-- navigation start                                                           -->
 
-          <div class="center" style="padding-top:100px; position: relative;"> 
-            <i class="camunda-icon"></i><p> <h1>camunda BPM platform</h1></p>
+    <div class="navbar navbar-inverse navbar-fixed-top">
+      <div class="navbar-inner">
+        <div class="container">
+          <button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+            <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span>
+          </button>
+          <!-- logo -->
+          <a class="brand ir" href="index.html"> camunda.org </a>
+          <div class="nav-collapse collapse">
+            <ul class="nav">
+              <ul class="nav" ng-controller="NavigationController">
+                <li ng-class="activeClass('/index.html')"><a href="index.html">Home</a></li>
+                <li ng-class="activeClass('/design-')"><a href="design-overview.html" class="caret-before">Design</a></li>
+                <li class="dropdown"><a class="dropdown-toggle caret-after" data-toggle="dropdown"> <b class="caret"></b></a>
+                  <ul class="dropdown-menu">
+                    <li ng-class="activeClass('/design-overview.html')"><a href="design-overview.html">Overview</a></li>
+                    <li class="divider"></li>
+                    <li class="nav-header">Tools</li>
+                    <li ng-class="activeClass('/design-modeler.html')"><a href="design-modeler.html">camunda Modeler</a></li>
+                    <li ng-class="activeClass('/design-cycle-tutorial.html')"><a href="design-cycle-tutorial.html">camunda Cycle</a></li>
+                    <li class="divider"></li>
+                    <li class="nav-header">Know-how</li>
+                    <li ng-class="activeClass('/design-tutorial.html')"><a href="design-tutorial.html">BPMN 2.0 Tutorial</a></li>
+                    <li ng-class="activeClass('/design-reference.html')"><a href="design-reference.html#/reference">BPMN 2.0 Reference</a></li>
+                  </ul></li>
+                <li ng-class="activeClass('/implement')"><a href="implement.html" class="caret-before">Implement</a></li>
+                <li class="dropdown"><a class="dropdown-toggle caret-after" data-toggle="dropdown"> <b class="caret"></b></a>
+                  <ul class="dropdown-menu">
+                    <li ng-class="activeClass('/implement.html')"><a href="implement.html">Overview</a></li>
+                    <li ng-class="activeClass('/implement-getting-started.html')"><a href="implement-getting-started.html">Getting Started</a></li>
+                    <li class="divider"></li>
+                    <li class="nav-header">Process Engine</li>
+                    <li ng-class="activeClass('/implement-bpmn.html')"><a href="implement-bpmn.html">BPMN 2.0 Reference</a></li>
+                    <li ng-class="activeClass('/implement-rest.html')"><a href="implement-rest.html#/overview/introduction">REST API</a></li>
+                  </ul></li>
+                <li ng-class="activeClass('/community')"><a href="community.html" class="caret-before">Community</a></li>
+                <li class="dropdown"><a class="dropdown-toggle caret-after" data-toggle="dropdown"> <b class="caret"></b></a>
+                  <ul class="dropdown-menu">
+                    <li ng-class="activeClass('/community.html')"><a href="community.html">Overview</a></li>
+                    <li class="nav-header">Users</li>
+                    <li ng-class="activeClass('/community-forum.html')"><a href="community-forum.html">Forum</a></li>
+                    <li ng-class="activeClass('/community-meetings')"><a href="community-meetings.html">Next Meetings</a></li>
+                    <li ng-class="activeClass('/community-users.html')"><a href="community-users.html">Who's using it?</a></li>
+                    <li class="divider"></li>
+                    <li class="nav-header">Contributors</li>
+                    <li ng-class="activeClass('/community-vision.html')"><a href="community-vision.html">Our Vision</a></li>
+                    <li ng-class="activeClass('/community-contribute.html')"><a href="community-contribute.html">How to Contribute</a></li>
+                    <li ng-class="activeClass('/community-team.html')"><a href="community-team.html">Team</a></li>
+                  </ul></li>
+                <li ng-class="activeClass('/support.html')"><a href="support.html">Support</a></li>
+              </ul>
+            </ul>
           </div>
+        </div>
+      </div>
+    </div>
 
-          <div class="center" style="font-size:120%; position: relative;"> 
-            <a href="design-overview.html">Design</a> | <a href="implement.html">Implement and Run</a> your Processes.
-          </div>
-          
-          <div style="padding-top:40px; width:100%; height:200px"  data-ng-controller="NumberguessAppController">
+    <!-- ========================================================================== -->
+    <!-- navigation end                                                           -->
 
-            <div style="position:relative; width:100%; height:200px">  
-              <div style="width:596px; margin: 0 auto; position:relative; height:100%;" id="numberGuess" data-bpmn-render="homepage/numberGuessing">    
+    <div class="container">
+
+      <div class="center" style="padding-top: 100px; position: relative;">
+        <i class="camunda-icon"></i>
+        <p>
+        <h1>camunda BPM platform</h1>
+        </p>
+      </div>
+
+      <div class="center" style="font-size: 120%; position: relative;">
+        <a href="design-overview.html">Design</a> | <a href="implement.html">Implement and Run</a> your Processes.
+      </div>
+
+      <div style="padding-top: 40px; width: 100%; height: 200px" data-ng-controller="NumberguessAppController">
+
+        <div style="position: relative; width: 100%; height: 200px">
+          <div style="width: 596px; margin: 0 auto; position: relative; height: 100%;" id="numberGuess" data-bpmn-render="homepage/numberGuessing"></div>
+        </div>
+
+        <div style="position: relative; top: -200px; width: 100%; height: 160px">
+
+          <div style="width: 596px; margin: 0 auto; position: relative">
+
+            <a class="btn btn-success" data-ng-click="startProcess('numberGuess')" data-ng-show="inactive()" style="position: absolute; left: -70px; top: 49px;">
+              <i class="icon-play icon-white"></i> Play!
+            </a>
+
+            <div data-ng-show="active('start')" style="position: absolute; left: -116px; top: -90px; display: none">
+              <div class="popover top" style="display: block">
+                <div class="arrow"></div>
+                <h3 class="popover-title">
+                  Start Event <a data-ng-click="cancel()" style="float: right"> <i class="icon-remove"></i>
+                  </a>
+                </h3>
+                <div class="popover-content">
+                  <p>
+                    In <a href="design-tutorial.html" target="_blank">BPMN 2.0</a>, a Start Event marks the beginning of a process.
+                  </p>
+                  <p class="center">
+                    <a class="btn btn-success" data-ng-click="doContinue('start')">Start</a>
+                  </p>
+                </div>
               </div>
             </div>
 
-            <div style="position:relative; top:-200px ; width:100%; height:160px">
-
-              <div style="width:596px; margin: 0 auto; position:relative" >
-
-                <a class="btn btn-success" 
-                  data-ng-click="startProcess('numberGuess')"
-                  data-ng-show="inactive()"
-                  style="position:absolute; left:-70px; top: 49px;">
-                  <i class="icon-play icon-white"></i> Play!
-                </a>
-
-                <div data-ng-show="active('start')"
-                   style="position:absolute; left:-116px; top: -90px; display:none">
-                 <div class="popover top" style="display:block">
-                  <div class="arrow"></div>
-                  <h3 class="popover-title">Start Event
-                    <a  data-ng-click="cancel()" style="float:right">
-                      <i class="icon-remove"></i>
-                    </a>
-                  </h3>
-                  <div class="popover-content">
-                    <p>In <a href="design-tutorial.html" target="_blank">BPMN 2.0</a>, a Start Event marks the beginning of a process.</p>
-                    <p class="center">
-                      <a class="btn btn-success" data-ng-click="doContinue('start')">Start</a>
-                    </p>
-                  </div>
-                 </div>
+            <div data-ng-show="active('generateNumber')" style="position: absolute; left: -5px; top: -190px; display: none">
+              <div class="popover top" style="display: block">
+                <div class="arrow"></div>
+                <h3 class="popover-title">
+                  Service Task <a data-ng-click="cancel()" style="float: right"> <i class="icon-remove"></i>
+                  </a>
+                </h3>
+                <div class="popover-content">
+                  <p>
+                    A <a href="implement-bpmn.html#/tasks/service-task" target="_blank">Service Task</a> allows triggering an automatic system function like a
+                    Web Service or a Method of a Java Class.
+                  </p>
+                  <p>This service task generates a random number between 0 and 5.</p>
+                  <p class="center">
+                    <a class="btn btn-success" data-ng-click="doContinue('generateNumber')">Continue</a>
+                  </p>
                 </div>
-
-                <div data-ng-show="active('generateNumber')"
-                   style="position:absolute; left:-5px; top: -190px; display:none">
-                 <div class="popover top" style="display:block">
-                  <div class="arrow"></div>
-                  <h3 class="popover-title">Service Task
-                    <a  data-ng-click="cancel()" style="float:right">
-                      <i class="icon-remove"></i>
-                    </a>
-                  </h3>
-                  <div class="popover-content">
-                    <p>A <a href="implement-bpmn.html#/tasks/service-task" target="_blank">Service Task</a> allows triggering an automatic system function like a Web Service or a Method of a Java Class.</p>
-                    <p>This service task generates a random number between 0 and 5.</p>
-                    <p class="center">
-                      <a class="btn btn-success" data-ng-click="doContinue('generateNumber')">Continue</a>
-                    </p>
-                  </div>
-                 </div>
-                </div>
-
-                <div data-ng-show="active('guessNumber')"
-                   style="position:absolute; left:165px; top: -190px; display:none">
-                 <div class="popover top" style="display:block">
-                  <div class="arrow"></div>
-                  <h3 class="popover-title">User Task
-                    <a  data-ng-click="cancel()" style="float:right">
-                      <i class="icon-remove"></i>
-                    </a>
-                  </h3>
-                  <div class="popover-content">
-                    <div data-ng-show="isFirstGuess()">
-                      <p>The <a href="implement-bpmn.html#/tasks/user-task" target="_blank">User Task</a> allows you to make an input.</p>
-                    </div>
-                    <div data-ng-show="!isFirstGuess()">
-                      <p class="text-error">Your last guess ({{processInstance.variables.guess}}) was incorrect, try again!</p>
-                    </div>
-
-                    <p>Input a Number between 0 and 5:
-                      <input type="text" data-ng-model="guess" size="30"
-                         placeholder="Make a guess!"></input>
-                    </p>
-                    <p class="center">
-                      <a class="btn btn-success" data-ng-disabled="!isGuessValid()" data-ng-click="signal('guessNumber')">Complete</a>
-                    </p>
-                  </div>
-                 </div>
-                </div>
-
-                <div data-ng-show="active('exclusiveGW')"
-                   style="position:absolute; left:280px; top: -190px; display:none">
-                 <div class="popover top" style="display:block">
-                  <div class="arrow"></div>
-                  <h3 class="popover-title">Exclusive Gateway
-                    <a  data-ng-click="cancel()" style="float:right">
-                      <i class="icon-remove"></i>
-                    </a>
-                  </h3>
-                  <div class="popover-content">
-                    <p>The <a href="implement-bpmn.html#/gateways/exclusive-gateway" target="_blank">Exclusive Gateway</a> marks a decision.
-                       In BPMN 2.0, the <a href="implement-bpmn.html#/gateways/sequence-flow" target="_blank">Sequence Flows</a> (transitions) leaving 
-                       the Exclusive Gateway have Conditions that are evaluated.</p>
-                    <p>In this case, we check whether your guess was correct.</p>
-                    <p class="center">
-                      <a class="btn btn-success" data-ng-click="doContinue('exclusiveGW')">Continue</a>
-                    </p>
-                  </div>
-                 </div>
-                </div>
-
-
-                <div data-ng-show="active('end')"
-                   style="position:absolute; left:380px; top: -130px; display:none">
-                 <div class="popover top" style="display:block">
-                  <div class="arrow"></div>
-                  <h3 class="popover-title">End Event
-                    <a  data-ng-click="cancel()" style="float:right">
-                      <i class="icon-remove"></i>
-                    </a>
-                  </h3>
-                  <div class="popover-content" class="center">
-                    <p>Your last guess was correct, you've won!</p>                    
-                    <p>
-                      This amazing achievement is worth telling people about:
-                    </p>
-                    <p>
-                        <a href="https://twitter.com/share" class="twitter-share-button" data-url="http://www.camunda.org" data-text="Sweet! I just won the #BPMN20 Numberguessing Game!" data-size="large" data-hashtags="camunda,bpm">Tweet</a>
-
-                      </p>
-                    </p>
-                  </div>
-                 </div>
-                </div>
-
               </div>
-
             </div>
 
-            
-          </div>
-        
-        
-  
-              <div class="center" style="position:relative;">
-                <a class="btn btn-large btn-primary" href="http://fox.camunda.com/download/old/camunda-bpm-platform-tomcat7-7.0.0-SNAPSHOT.tar.gz">
-                  <i class="icon-download-alt icon-large"></i> Download
-                </a>
-                <ul class="quick-links">
-                  <li class="google-follow">
-                    Follow +camunda BPM on
-                    <a href="https://plus.google.com/117216832875506558598?prsrc=3" rel="publisher" style="text-decoration:none;">
-                      <img src="https://ssl.gstatic.com/images/icons/gplus-32.png" alt="" style="border:0;width:20px;height:20px;">
-                    </a>
-                  </li>
-                  <li style="width: 150px; height: 25px;">
-                    <div class="g-plusone" data-size="medium" data-annotation="inline" data-width="300"></div>
-                  </li>
-                  <li style="width: 220px; height: 25px;">
-                    <a href="https://twitter.com/camundaBPM" class="twitter-follow-button" data-show-count="true" data-lang="en">Follow @camundaBPM</a>
-                  </li>
-                  <li style="width: 107px; height: 25px;">
-                   <a href="https://twitter.com/share" class="twitter-share-button" data-url="http://www.camunda.org" data-text="camunda BPM platform -" data-size="middle" data-hashtags="camunda,bpm" data-lang="en">Tweet</a>
-                  </li>
-                </ul>
+            <div data-ng-show="active('guessNumber')" style="position: absolute; left: 165px; top: -190px; display: none">
+              <div class="popover top" style="display: block">
+                <div class="arrow"></div>
+                <h3 class="popover-title">
+                  User Task <a data-ng-click="cancel()" style="float: right"> <i class="icon-remove"></i>
+                  </a>
+                </h3>
+                <div class="popover-content">
+                  <div data-ng-show="isFirstGuess()">
+                    <p>
+                      The <a href="implement-bpmn.html#/tasks/user-task" target="_blank">User Task</a> allows you to make an input.
+                    </p>
+                  </div>
+                  <div data-ng-show="!isFirstGuess()">
+                    <p class="text-error">Your last guess ({{processInstance.variables.guess}}) was incorrect, try again!</p>
+                  </div>
+
+                  <p>
+                    Input a Number between 0 and 5: <input type="text" data-ng-model="guess" size="30" placeholder="Make a guess!"></input>
+                  </p>
+                  <p class="center">
+                    <a class="btn btn-success" data-ng-disabled="!isGuessValid()" data-ng-click="signal('guessNumber')">Complete</a>
+                  </p>
+                </div>
               </div>
+            </div>
 
-                    <section class="index_news" style="color:white;text-align:center" ng-controller="RuntimeContainers">
-                      <style type="text/css">
-                        .index_news p, .index_news div {font-size: 100%;}
+            <div data-ng-show="active('exclusiveGW')" style="position: absolute; left: 280px; top: -190px; display: none">
+              <div class="popover top" style="display: block">
+                <div class="arrow"></div>
+                <h3 class="popover-title">
+                  Exclusive Gateway <a data-ng-click="cancel()" style="float: right"> <i class="icon-remove"></i>
+                  </a>
+                </h3>
+                <div class="popover-content">
+                  <p>
+                    The <a href="implement-bpmn.html#/gateways/exclusive-gateway" target="_blank">Exclusive Gateway</a> marks a decision. In BPMN 2.0, the <a
+                      href="implement-bpmn.html#/gateways/sequence-flow" target="_blank">Sequence Flows</a> (transitions) leaving the Exclusive Gateway have
+                    Conditions that are evaluated.
+                  </p>
+                  <p>In this case, we check whether your guess was correct.</p>
+                  <p class="center">
+                    <a class="btn btn-success" data-ng-click="doContinue('exclusiveGW')">Continue</a>
+                  </p>
+                </div>
+              </div>
+            </div>
 
-                      </style>
-                      <h1>News</h1>
 
-                      <div style="width:90%; margin: 0 auto;">
+            <div data-ng-show="active('end')" style="position: absolute; left: 380px; top: -130px; display: none">
+              <div class="popover top" style="display: block">
+                <div class="arrow"></div>
+                <h3 class="popover-title">
+                  End Event <a data-ng-click="cancel()" style="float: right"> <i class="icon-remove"></i>
+                  </a>
+                </h3>
+                <div class="popover-content" class="center">
+                  <p>Your last guess was correct, you've won!</p>
+                  <p>This amazing achievement is worth telling people about:</p>
+                  <p>
+                    <a href="https://twitter.com/share" class="twitter-share-button" data-url="http://www.camunda.org"
+                      data-text="Sweet! I just won the #BPMN20 Numberguessing Game!" data-size="large" data-hashtags="camunda,bpm">Tweet</a>
 
-                        <div class="row-fluid">
+                  </p>
+                  </p>
+                </div>
+              </div>
+            </div>
 
-                          <div class="span4" style="text-align:left;" >
-                            <h3>#camunda Tweets</h3>
-                            <div data-cam-tweets></div>
-                          </div>
-
-                          <div class="span4" style="text-align:left;">
-                            <h3>Blog Posts</h3>
-                            <!-- user data-pipe-url="http://pipes.yahoo.com/pipes/pipe.run?_id=00613d44ea58a5204f8898d2809fa85e&_render=json" for camundabpm.blogspot.de -->
-                            <!-- user data-pipe-url="http://pipes.yahoo.com/pipes/pipe.run?_id=3a1fa12b0f13d8ce32320b9dacc7dfc2&_render=json" for bpm-guide.de -->
-                            <div data-pipe data-truncate="150" data-pipe-url="http://pipes.yahoo.com/pipes/pipe.run?_id=00613d44ea58a5204f8898d2809fa85e&_render=json">
-                              <div data-ng-show="items.length > 0" style="height: 200px;overflow: auto;">
-                                <div data-ng-cloak="items.length==0" data-ng-repeat="item in items">
-                                  <a target="_blank" href="{{item.link}}">{{item.title}}</a>
-                                  <p>{{decode(item.description)}}</p>
-                                </div>
-                              </div>
-                              <div data-ng-show="items.length==0">Unable to load the cool camunda bpm blog posts, try to refresh the page!</div>
-                            </div>
-                          </div>
-                          <div class="span4" style="text-align:left;">
-                            <h3>Meetings</h3>
-                            <div data-camunda-events-home></div>
-                          </div>
-                        </div>
-                        
-
-                        </div>
-                        </section>      
-                    <hr style="margin-top:30px; margin-bottom:30px;" class="soften">
-
-                 <section id="roadmap" style="color:white;text-align:center" >
-
- <div style="width:90%; margin: 0 auto;">
-
-                             <div class="row-fluid" ng-controller="RoadmapController">
-        <div class="span12" ng-repeat="roadmapRow in roadmapRows">
-          
-          <h1>Roadmap</h1>
-          <p>
-            Below you can find the features we plan to implement and their priorities. We always welcome additional Contributors, see <a style="color:lightblue;" href="">How to Contribute?</a>
-          </p>
-          <div class="info" ng-show="{{roadmapErrorText!=''}}" ng-bind-template="{{roadmapErrorText}}"></div>
-          <table class="table">
-            <tr>
-              <th>Priority</th>
-              <th>Topic</th>
-              <th>Component</th>
-              <th>OSS/EE</th>
-              <th>Status</th>
-              <th>Release</th>
-              <th>Contributor</th>
-            </tr>
-            <tr ng-repeat="roadmapValue in roadmapRow" ng-show="isNotNull(roadmapValue['OSS/EE'])">
-              <td ng-bind-template="{{roadmapValue.Priority}}"></td>
-              <td>
-                <a style="color:lightblue;" href="{{roadmapValue.URL}}" target="_blank" ng-show="isNotNull(roadmapValue.URL)" ng-bind-template="{{roadmapValue['Topic']}}"></a>
-                <span ng-show="!isNotNull(roadmapValue.URL)" ng-bind-template="{{roadmapValue['Topic']}}"></span>
-              </td>
-              <td ng-bind-template="{{roadmapValue.Component}}"></td>
-              <td ng-bind-template="{{roadmapValue['OSS/EE']}}"></td>
-              <td ng-bind-template="{{roadmapValue.Status}}"></td>
-              <td ng-bind-template="{{roadmapValue.Release.substr(1,roadmapValue.Release.length)}}"></td>
-              <td ng-bind-template="{{roadmapValue.Contributor}}"></td>
-            </tr>
-          </table>
-        </div>
-      </div> 
-    </div>
-</section>   
+          </div>
 
         </div>
-      <div class="push-down"><!-- // --></div> 
-    </div>
-    <!-- footer -->
-    <footer class="footer">
-      <div data-ng-include=" 'templates/footer.html' "></div>
 
-      <!-- loads all javascript -->
-      <script src="assets/js/loader.js"></script>
-    </footer>
+
+      </div>
+
+
+
+      <div class="center" style="position: relative;">
+        <a class="btn btn-large btn-primary" href="http://fox.camunda.com/download/old/camunda-bpm-platform-tomcat7-7.0.0-SNAPSHOT.tar.gz"> <i
+          class="icon-download-alt icon-large"></i> Download
+        </a>
+        <ul class="quick-links">
+          <li class="google-follow">Follow +camunda BPM on <a href="https://plus.google.com/117216832875506558598?prsrc=3" rel="publisher"
+            style="text-decoration: none;"> <img src="https://ssl.gstatic.com/images/icons/gplus-32.png" alt=""
+              style="border: 0; width: 20px; height: 20px;">
+          </a>
+          </li>
+          <li style="width: 150px; height: 25px;">
+            <div class="g-plusone" data-size="medium" data-annotation="inline" data-width="300"></div>
+          </li>
+          <li style="width: 220px; height: 25px;"><a href="https://twitter.com/camundaBPM" class="twitter-follow-button" data-show-count="true"
+            data-lang="en">Follow @camundaBPM</a></li>
+          <li style="width: 107px; height: 25px;"><a href="https://twitter.com/share" class="twitter-share-button" data-url="http://www.camunda.org"
+            data-text="camunda BPM platform -" data-size="middle" data-hashtags="camunda,bpm" data-lang="en">Tweet</a></li>
+        </ul>
+      </div>
+
+      <section class="index_news" style="color: white; text-align: center" ng-controller="RuntimeContainers">
+        <style type="text/css">
+.index_news p,.index_news div {
+	font-size: 100%;
+}
+</style>
+        <h1>News</h1>
+
+        <div style="width: 90%; margin: 0 auto;">
+
+          <div class="row-fluid">
+
+            <div class="span4" style="text-align: left;">
+              <h3>#camunda Tweets</h3>
+              <div data-cam-tweets></div>
+            </div>
+
+            <div class="span4" style="text-align: left;">
+              <h3>Blog Posts</h3>
+              <!-- user data-pipe-url="http://pipes.yahoo.com/pipes/pipe.run?_id=00613d44ea58a5204f8898d2809fa85e&_render=json" for camundabpm.blogspot.de -->
+              <!-- user data-pipe-url="http://pipes.yahoo.com/pipes/pipe.run?_id=3a1fa12b0f13d8ce32320b9dacc7dfc2&_render=json" for bpm-guide.de -->
+              <div data-pipe data-truncate="150" data-pipe-url="http://pipes.yahoo.com/pipes/pipe.run?_id=00613d44ea58a5204f8898d2809fa85e&_render=json">
+                <div data-ng-show="items.length > 0" style="height: 200px; overflow: auto;">
+                  <div data-ng-cloak="items.length==0" data-ng-repeat="item in items">
+                    <a target="_blank" href="{{item.link}}">{{item.title}}</a>
+                    <p>{{decode(item.description)}}</p>
+                  </div>
+                </div>
+                <div data-ng-show="items.length==0">Unable to load the cool camunda bpm blog posts, try to refresh the page!</div>
+              </div>
+            </div>
+            <div class="span4" style="text-align: left;">
+              <h3>Meetings</h3>
+              <div data-camunda-events-home></div>
+            </div>
+          </div>
+
+
+        </div>
+      </section>
+      <hr style="margin-top: 30px; margin-bottom: 30px;" class="soften">
+
+      <section id="roadmap" style="color: white; text-align: center">
+
+        <div style="width: 90%; margin: 0 auto;">
+
+          <div class="row-fluid" ng-controller="RoadmapController">
+            <div class="span12" ng-repeat="roadmapRow in roadmapRows">
+
+              <h1>Roadmap</h1>
+              <p>
+                Below you can find the features we plan to implement and their priorities. We always welcome additional Contributors, see <a
+                  style="color: lightblue;" href="">How to Contribute?</a>
+              </p>
+              <div class="info" ng-show="{{roadmapErrorText!=''}}" ng-bind-template="{{roadmapErrorText}}"></div>
+              <table class="table">
+                <tr>
+                  <th>Priority</th>
+                  <th>Topic</th>
+                  <th>Component</th>
+                  <th>OSS/EE</th>
+                  <th>Status</th>
+                  <th>Release</th>
+                  <th>Contributor</th>
+                </tr>
+                <tr ng-repeat="roadmapValue in roadmapRow" ng-show="isNotNull(roadmapValue['OSS/EE'])">
+                  <td ng-bind-template="{{roadmapValue.Priority}}"></td>
+                  <td><a style="color: lightblue;" href="{{roadmapValue.URL}}" target="_blank" ng-show="isNotNull(roadmapValue.URL)"
+                    ng-bind-template="{{roadmapValue['Topic']}}"></a> <span ng-show="!isNotNull(roadmapValue.URL)" ng-bind-template="{{roadmapValue['Topic']}}"></span>
+                  </td>
+                  <td ng-bind-template="{{roadmapValue.Component}}"></td>
+                  <td ng-bind-template="{{roadmapValue['OSS/EE']}}"></td>
+                  <td ng-bind-template="{{roadmapValue.Status}}"></td>
+                  <td ng-bind-template="{{roadmapValue.Release.substr(1,roadmapValue.Release.length)}}"></td>
+                  <td ng-bind-template="{{roadmapValue.Contributor}}"></td>
+                </tr>
+              </table>
+            </div>
+          </div>
+        </div>
+      </section>
+
+    </div>
+    <div class="push-down">
+      <!-- // -->
+    </div>
+  </div>
+  <!-- footer -->
+  <footer class="footer">
+
+    <div class="container container-footer">
+      <p>
+        <a href="index.html">camunda.org</a> - created and maintained by <a href="http://www.camunda.com">camunda services GmbH</a> | This page is built with <a
+          href="http://angularjs.org/">angularjs</a>
+      </p>
+      <div class="row-fluid">
+        <div class="span3">
+          <h4>Design</h4>
+          <ul>
+            <li><a href="design-overiew.html">Overview</a></li>
+            <li><a href="design-modeler.html">camunda Modeler</a></li>
+            <li><a href="design-cycle-tutorial.html">camunda Cycle</a></li>
+            <li><a href="design-tutorial.html">BPMN 2.0 Tutorial</a></li>
+            <li><a href="design-reference.html#/reference">BPMN 2.0 Reference</a></li>
+
+          </ul>
+        </div>
+        <div class="span3">
+          <h4>Implement</h4>
+          <ul>
+            <li><a href="implement.html">Overview</a></li>
+            <li><a href="implement-getting-started.html">Getting Started</a></li>
+            <li><a href="implement-bpmn.html">BPMN 2.0 Reference</a></li>
+            <li><a href="implement-rest.html#/overview/introduction">REST API</a></li>
+          </ul>
+        </div>
+        <div class="span3">
+          <h4>Community</h4>
+          <ul>
+            <li><a href="community.html">Overview</a></li>
+            <li><a href="community-forum.html">Forum</a></li>
+            <li><a href="community-meetings.html">Next Meetings</a></li>
+            <li><a href="community-users.html">Who's using it?</a></li>
+            <li><a href="community-vision.html">Our Vision</a></li>
+            <li><a href="community-contribute.html">How to Contribute</a></li>
+            <li><a href="community-team.html">Team</a></li>
+          </ul>
+        </div>
+        <div class="span3">
+          <h4>Support</h4>
+          <ul>
+            <li><a href="">Overview</a></li>
+            <li><a href="">Enterprise Edition</a></li>
+            <li><a href="">Consulting</a></li>
+            <li><a href="">Training</a></li>
+          </ul>
+        </div>
+
+      </div>
+      <span class="spacer"></span>
+    </div>
+
+    <!-- loads all javascript -->
+    <script src="assets/js/loader.js"></script>
+  </footer>
 
   <!-- github ribbon -->
 
-  <a href="https://github.com/camunda/camunda-bpm-platform"><img style="position: absolute; top: 40px; right: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_red_aa0000.png" alt="Fork me on GitHub"></a>
+  <a href="https://github.com/camunda/camunda-bpm-platform"><img style="position: absolute; top: 40px; right: 0; border: 0;"
+    src="https://s3.amazonaws.com/github/ribbons/forkme_right_red_aa0000.png" alt="Fork me on GitHub"></a>
 
   <script type="text/javascript">
-    (function() {
-      var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
-      po.src = 'https://apis.google.com/js/plusone.js';
-      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
-    })();
-  </script>
-  <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
-  </body>
+			(function() {
+				var po = document.createElement('script');
+				po.type = 'text/javascript';
+				po.async = true;
+				po.src = 'https://apis.google.com/js/plusone.js';
+				var s = document.getElementsByTagName('script')[0];
+				s.parentNode.insertBefore(po, s);
+			})();
+		</script>
+
+  <script>
+			!function(d, s, id) {
+				var js, fjs = d.getElementsByTagName(s)[0];
+				if (!d.getElementById(id)) {
+					js = d.createElement(s);
+					js.id = id;
+					js.src = "//platform.twitter.com/widgets.js";
+					fjs.parentNode.insertBefore(js, fjs);
+				}
+			}(document, "script", "twitter-wjs");
+		</script>
+
+</body>
 </html>

@@ -9,50 +9,32 @@
 $script.path('assets/js/');
 
 $script([
-	'lib/google-code-prettify/prettify.min',
-	'lib/raphaeljs/raphael',
-	'lib/markdownjs/markdown',
-	'lib/jquery-1.7.2.min'],  function() {
+	'lib/jquery-1.7.2.min',   					
+	'lib/angular/angular.min',		
+	'lib/raphaeljs/raphael',					
+	], function() {
 		$script([
-   		'lib/tweet/jquery.tweet',
-			'lib/jquery-fastLiveFilter/jquery.fastLiveFilter',
-			'lib/bootstrap/bootstrap.min',			
-			'lib/angular/angular.min',
-      		'lib/dojo/dojo/dojo',
+			'lib/bootstrap/bootstrap.min',	
+			'lib/tweet/jquery.tweet',					
 			'lib/jquery-validation/dist/jquery.validate.min',
-			'lib/analytics/analytics'
-			], function() {
-				$script([
-         			'lib/angular/angular-resource.min',
-					'lib/angular/angular-bootstrap.min',
-					'app/app',
-					'app/bpmn/Executor',
-					'app/cabpmn',
-					'app/directives',
-					'app/directives/modalDialog',
-					'app/directives/windowCenter',
-					'app/directives/ngmif',
-					'app/directives/app-source',
-          'app/directives/pipe',
-					'app/directives/focused',
-					'app/directives/tutorial',
-					'app/directives/docLocationHighlight',
-					'app/directives/cabpmn_dir',
+			'lib/google-code-prettify/prettify.min',
+			'lib/dojo/dojo/dojo',
+ 			'lib/angular/angular-resource.min',
+			'lib/angular/angular-bootstrap.min',
+			'app/app',
+			'app/bpmn/Executor',
+			'app/cabpmn',
+			'app/directives/ngmif',
+			'app/directives/focused',
+			'app/docs/docs',
+			'app/docs/pages'					
+		], function() {
+			
+			angular.bootstrap(document, ['camundaorg']);
 
-					'app/filters',
-
-					'app/services',
-					'app/controllers',
-					'app/controllers/default',
-					'app/controllers/home',
-					'app/controllers/numberguess',
-					'app/controllers/implement',
-          			'app/controllers/roadmap',
-
-					'app/docs/pages',
-					'app/docs/docs'
-				], function() {
-					angular.bootstrap(document, ['camundaorg']);
-				});
+			// post app bootstrap
+			$script([			
+				'lib/analytics/analytics',
+			]);
 		});
 });
