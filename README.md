@@ -65,7 +65,7 @@ Implement
 Design
   * ~~remove "run" directive~~
   * ~~Remove Cycle Setup Menu Entry (Jakob)~~
-  * Complete Cycle Tutorial (Jakob)
+  * ~~Complete Cycle Tutorial (Jakob)~~
   * Add „creating BPMN 2.0 diagrams“ (Jakob)
   * Remove BPMN 2 by example chapters OR FIX RENDERER (Jakob)
 
@@ -86,7 +86,7 @@ Homepage
   * Animate Numberguess  (Daniel)
     * move gateway lable above GW
   * ~~Add social Media Links (Roman)~~
-  * Fix Blogpost embedding or hard-link initial blogpost (Andreas)
+  * ~~Fix Blogpost embedding or hard-link initial blogpost (Andreas)~~
   * ~~Fix Meetings View (or hard-link) (Jakob)~~
   * ~~Add "Fork Me on Github" -> Fixed layout~~
 
@@ -99,7 +99,7 @@ Others
  * Fix browser compatibility (Roman)
    * IEx >= 9 (Number guessing, ~~Meetings(Jakob)~~, Renderer?)
    * IEx < 9 
-   * Mobile
+   * ~~Mobile~~
  * ~~Menubar resizing Issue! (Daniel)~~
 
  * ~~Fix Javascript loading issue~~
