@@ -600,7 +600,7 @@ angular.module('camundaorg.directives')
           // hack around incorrect tokenization
           content = content.replace('.done-true', 'doneTrue');
           if(filename.indexOf('Project-Layout')==-1) {
-            content = prettyPrintOne(escape(content), undefined, true);
+            content = prettyPrintOne(escape(content), undefined, false);
           }
           
           // hack around incorrect tokenization
@@ -668,6 +668,13 @@ angular.module('camundaorg.directives')
              
         };
 
+        var tabs = [],
+          panes = [],
+          annotation = attrs.annotate && angular.fromJson(fetchCode(attrs.annotate)) || {},
+          TEMPLATE = {             
+           
+        };
+
         element.css('clear', 'both');
         var filename = attrs.appSourceNoTabs;
         var content = fetchCode(filename);
@@ -681,7 +688,27 @@ angular.module('camundaorg.directives')
         // hack around incorrect tokenization
         content = content.replace('doneTrue', '.done-true');
 
+        var popovers = {},
+            counter = 0;
+
+        angular.forEach(annotation[filename], function(text, key) {
+          var regexp = new RegExp('(\\W|^)(' + key.replace(/([\W\-])/g, '\\$1') + ')(\\W|$)');
+
+          content = content.replace(regexp, function(_, before, token, after) {
+            var token = "__" + (counter++) + "__";
+            popovers[token] =
+              '<code class="nocode" rel="popover" data-trigger="hover" title="' + escape('<code>' + key + '</code>') +
+              '" data-content="' + escape(text) + '" data-html=\"true\">' + escape(key) + '</code>';
+            return before + token + after;
+          });
+        });
+
+        angular.forEach(popovers, function(text, token) {
+          content = content.replace(token, text);
+        });
+
         element.html('<pre class="linenums nocode">' + content +'</pre>'); 
+        element.find('[rel=popover]').popover();
       }
     }
   })

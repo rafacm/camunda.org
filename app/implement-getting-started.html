@@ -23,19 +23,16 @@
     'http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js',             
     'http://ajax.googleapis.com/ajax/libs/angularjs/1.0.1/angular.min.js',            
     ], function() {
-      $script([
-        
+      $script([        
         'lib/bootstrap/bootstrap.min',       
         'lib/angular/angular-resource.min',
         'lib/angular/angular-bootstrap.min',
         'lib/google-code-prettify/prettify.min',
-
+        'app/app'
         ], function() {
-          $script([        
-            'app/app',
+          $script([                   
             'app/directives/ngmif',
             'app/directives/focused',         
-
           ], function() {
             
             angular.bootstrap(document, ['camundaorg']);
@@ -126,6 +123,15 @@
     <!-- navigation end                                                           -->
 
 
+    <!-- customize modal for this page -->
+    <style type="text/css">
+    .modal {
+      width: 600px; /* SET THE WIDTH OF THE MODAL */
+      margin: 0px 0 0 -250px; /* CHANGE MARGINS TO ACCOMODATE THE NEW WIDTH (original = margin: -250px 0 0 -280px;) */
+    }
+    </style>
+
+
     <div class="container">
 
       <div style="padding-top: 80px; text-align: center">
@@ -142,6 +148,7 @@
             <li><a href="#download"><i class="icon-chevron-right"></i> Download &amp; Install</a></li>
             <li><a href="#setup"><i class="icon-chevron-right"></i> Setup your Project</a></li>
             <li><a href="#model"><i class="icon-chevron-right"></i> Model a Process</a></li>
+            <li><a href="#deploy"><i class="icon-chevron-right"></i> Deploy the Process Application</a></li>
             <li><a href="#taskform"><i class="icon-chevron-right"></i> Add a Task Form</a></li>
             <li><a href="#servicetask"><i class="icon-chevron-right"></i> Add a Service Task</a></li>
           </ul>
@@ -152,9 +159,8 @@
             <div class="page-header">
               <h1>What will you learn?</h1>
             </div>
-
-
           </section>
+
           <section id="download">
             <div class="page-header">
               <h1>Download &amp; Install</h1>
@@ -249,126 +255,27 @@
               <h3>Add camunda Maven Dependencies</h3>
               <div class="row-fluid">              
                 <div class="span12">
-                  The next step consists in setting up the maven dependencies for your new process application. 
+                  <p>
+                    The next step consists in setting up the maven dependencies for your new process application. 
+                    Add the following dependencies to the <code>pom.xml</code> file of your project:
+                  </p>
 
-                  Add the following dependencies to the <code>pom.xml</code> file of your project:
+                  <div class="app-source" app-source-no-tabs="pom.xml" annotate="code-annotations" ></div>
 
-                  <div class="app-source" app-source="pom.xml" annotate="pom.xml.annotation" ></div>
-
-                  <div class="bootstrap-code">
-<script type="text/xml" id="pom.xml">
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-  <modelVersion>4.0.0</modelVersion>
-  <groupId>org.camunda.bpm.example</groupId>
-  <artifactId>loan-approval</artifactId>
-  <version>0.0.1-SNAPSHOT</version>
-  <packaging>war</packaging>
-  <name>Loan approval example</name>
-
-  <dependencies>
-    <dependency>
-      <groupId>org.camunda.bpm</groupId>
-      <artifactId>camunda-engine</artifactId>
-      <version>7.0.0-alpha1</version>
-      <scope>provided</scope>
-    </dependency>
-    <dependency>
-      <groupId>javax.servlet</groupId>
-      <artifactId>javax.servlet-api</artifactId>
-      <version>3.0.1</version>
-      <scope>provided</scope>
-    </dependency>
-  </dependencies>
-
-  <build>
-    <plugins>
-      <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-war-plugin</artifactId>
-        <version>2.3</version>
-        <configuration>
-          <failOnMissingWebXml>false</failOnMissingWebXml>
-        </configuration>
-      </plugin>
-    </plugins>
-  </build>
-
-  <repositories>
-    <repository>
-      <id>camunda-bpm-nexus</id>
-      <name>camunda-bpm-nexus</name>
-      <url>https://app.camunda.com/nexus/content/groups/public</url>
-    </repository>
-  </repositories>
-</project>
-</script>
-
-                  <script type="text/ng-template" id="pom.xml.annotation">
-                  { 
-                   "pom.xml":
-                    { "war": "Process Applications are most commonly packaged as Java Web Applications (WAR files). Other deployment options are available. On the Java EE 6 platform, you can use plain JAR or advanced EAR deployments as well." ,
-                      "camunda-engine": "The process engine is the component responsible for picking up your BPMN 2.0 processes and executing them.",
-                      "provided": "The process engine can be either <ul><li>provided by the servlet container or</li><li>embedded inside your process application.</li></ul> <p />Here, we use a shared process engine that is provided by the servlet container.",
-                      "javax.servlet-api": "The servlet API is required for compilation",
-                      "false" : "With Servlet 3.0 we do not need a web.xml file. Maven needs to catch up.",
-                      "camunda-bpm-nexus" : "camunda nexus providing the maven artifacts."
-
-                    }
-                  }
-                  </script>
-                  </div>              
-                  Now you can perform the first build. Select the <code>pom.xml</code> in the Package Explorer, perform a Right Click and select <code>Run AS / Maven Install</code> 
+                  <p>
+                    Now you can perform the first build. Select the <code>pom.xml</code> in the Package Explorer, perform a Right Click and select <code>Run AS / Maven Install</code> 
+                  </p>
                 </div>
               </div>
             </section>
 
             <section id="setup/process-application">
               <h3>Add a Process Application Class</h3>
-              <div class="row-fluid">             
-                Next, you need to add a Process Application class. The Process Application class constitutes the interface between your application and the process engine. 
-               
-                <div class="app-source" app-source="LoanApprovalApplication" annotate="LoanApprovalApplication.annotation" ></div>
-
-<div class="bootstrap-code">
-<script type="text/xml" id="LoanApprovalApplication">
-package org.camunda.bpm.example.loanapproval;
-
-import org.camunda.bpm.application.ProcessApplication;
-import org.camunda.bpm.application.impl.ServletProcessApplication;
-
-@ProcessApplication("Loan Approval App")
-public class LoanApprovalApplication extends ServletProcessApplication {
-  // empty implementation
-}
-</script>
-
-<script type="text/ng-template" id="LoanApprovalApplication.annotation">
-{ 
- "LoanApprovalApplication":
-  { "@ProcessApplication": "The @ProcessApplication annotation makes sure the class is automatically picked up at deployment time."
-  }
-}
-</script>    
-<script type="text/xml" id="LoanApprovalEjbApplication">
-@ProcessApplication("Loan Approval App")
-@Singleton
-@Startup 
-@ConcurrencyManagement(ConcurrencyManagementType.BEAN) 
-@TransactionAttribute(TransactionAttributeType.SUPPORTS)
-public class DefaultEjbProcessApplication extends EjbProcessApplication {
-   
-  @PostConstruct
-  public void start() {
-    deploy();
-  }
-
-  @PreDestroy
-  public void stop() {
-    undeploy();
-  }
-}
-</script>   
+              <div class="row-fluid">   
+                <p>          
+                  Next, you need to add a Process Application class. The Process Application class constitutes the interface between your application and the process engine. 
+                </p>               
+                <div class="app-source" app-source-no-tabs="LoanApprovalApplication" annotate="code-annotations" ></div>
               </div>
                <div class="accordion" id="accSimple">
                   <div class="accordion-group">
@@ -381,7 +288,7 @@ public class DefaultEjbProcessApplication extends EjbProcessApplication {
                     <div id="collapseOne" class="accordion-body collapse">
                       <div class="accordion-inner">
                         <p>In an EJB Container, use an EJB Process Application:</p>    
-                        <div class="app-source" app-source="LoanApprovalEjbApplication" annotate="LoanApprovalApplication.annotation" ></div>             
+                        <div class="app-source" app-source-no-tabs="LoanApprovalEjbApplication" annotate="code-annotations" ></div>             
                       </div>
                     </div>
                   </div>
@@ -390,51 +297,18 @@ public class DefaultEjbProcessApplication extends EjbProcessApplication {
 
             <section id="setup/processes.xml">
               <h3>Add a META-INF/processes.xml deployment descriptor</h3>
-              <div class="row-fluid">       
+              <div class="row-fluid">   
+
                 <p>      
                   The last step for setting up the process application is adding the <code>META-INF/processes.xml</code> deployment descriptor file. This file allows us to provide a declarative configuration of the deployment(s) this process application makes to the process engine.
                 </p>
+
                 <p class="alert alert-info">
-
                   This file needs to be added to the <code>src/main/resources/META-INF</code> folder of the maven project.
-                </p>
-               
-                <div class="app-source" app-source="processes.xml" annotate="processes.xml.annotation" ></div>
+                </p> 
 
-<div class="bootstrap-code">
-<script type="text/xml" id="processes.xml">
-<?xml version="1.0" encoding="UTF-8" ?>
+                <div class="app-source" app-source-no-tabs="processes.xml" annotate="code-annotations" ></div>
 
-<process-application
-  xmlns="http://www.camunda.org/schema/1.0/ProcessApplication"
-  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-
-  <process-archive name="loan-approval">
-    <process-engine>default</process-engine>
-    <properties>
-      <property name="isDeleteUponUndeploy">false</property>
-      <property name="isScanForProcessDefinitions">true</property>
-    </properties>
-  </process-archive>
-
-</process-application>
-</script> 
-
-<script type="text/ng-template" id="processes.xml.annotation">
-{ 
- "processes.xml":
-  { 
-    "loan-approval": "The name of the process engine deployment to be constructed.",
-    "default": "The name of the process engine we want to use (you can start multiple process engines).",
-    "isDeleteUponUndeploy": "Controls whether the process engine deployment should be removed when the process application is undeployed. If set to true, all process instances are deleted in the database when the WAR file is removed from the server.",
-    "isScanForProcessDefinitions": "If set to true, the WAR file is automatically scanned for process definitions. All files ending in <code>.bpmn20.xml</code> or <code>.bpm</code> are automatically picked up."
-  }
-}
-</script> 
-</div>  
-                <p>
-                  At this point you have successfully setup the process application you can start modeling the first process. 
-                </p>
                 <div class="accordion" id="accProcessesXml">
                   <div class="accordion-group">
                     <div class="accordion-heading">
@@ -449,6 +323,11 @@ public class DefaultEjbProcessApplication extends EjbProcessApplication {
                     </div>
                   </div>
                 </div>
+
+                <p>
+                  At this point you have successfully setup the process application you can start modeling the first process. 
+                </p>
+
               </div>
             </section>
           </section>
@@ -456,8 +335,111 @@ public class DefaultEjbProcessApplication extends EjbProcessApplication {
             <div class="page-header">
               <h1>Model a Process</h1>
             </div>
+              In this section you learn to create your first BPMN 2.0 process with the camunda modeler.
+            <section id="model/create">
+              <h3>Create a new BPMN 2.0 Diagram</h3>
+              <div class="row-fluid">
+                <div class="thumbnail span2" data-img-thumb img-src="assets/img/implementation-getting-started/eclipse-new-bpmn-diagram.png" ></div>
+                <div class="span10">
+                  <p>
+                    In the eclipse <em>Package Explorer</em> select the <code>src/main/resources</code> folder. Right-click and select <code>New &gt; Other ...</code>. Go to the folder <code>Other</code> and select <em>BPMN 2.0 Diagram</em>. Click Next.
+                  </p>
+                  <p>
+                    On the second page, you must specify the file name of the process. Put in <em>load-approval.bpmn</em>. Click Finish.
+                  </p>                
+                </div>
+              </div> 
+            </section>
+            <section id="model/create">
+              <h3>Start with a Simple Process</h3>
+              <div class="row-fluid">
+                <div id="eclipse-simple-process" class="thumbnail span2" data-img-thumb img-src="assets/img/implementation-getting-started/eclipse-simple-process.png" ></div>
+                <div class="span10">
+                  <p>
+                    Start by modeling a simple process. From the Palette on the right hand side to the canvas, drag a <em>Start Event</em>
+                  </p>
+                  <p>
+                    Double Click on the Label of the Start Event. A text box opens. Type <em>&quot;Loan Request Received.&quot;</em>.
+                  </p>
+                  <p class="alert alert-info">
+                    When editing Labels, you can add line breaks by typing <code>Shift + Enter</code>.
+                  </p>
+                  <p> 
+                    Add a User Task to the process. Name it &quot;<em>Approve Loan</em>&quot;. Add an End Event named &quot;<em>Loan Approved</em>&quot;.
+                  </p>                
+                </div>
+              </div> 
+              <h3>Configure a User Task</h3>
+              <div class="row-fluid">                    
+                <div id="eclipse-simple-process-property" class="thumbnail span2" data-img-thumb img-src="assets/img/implementation-getting-started/eclipse-simple-process-property.png" ></div>
+                <div class="span10">
+                  <p>
+                    Next, Open the properties view. If the properties view is not visible, select it from the menu: <code>Window / Show View / Other ...</code> This opens a dialog. From the dialog select <code>Properties</code>.
+                  </p>
+                  <p>
+                    Select the User Task on the canvas. This updates the selection in the Properties View. Scroll to the Property named <code>Assignee</code>. Type <em>&quot;John&quot;</em>.
+                  </p>    
+                  <p>
+                    After you are done, save your changes.
+                  </p>                              
+                </div>
+              </div> 
+              <h3>Configure an executable Process</h3>
+              <div class="row-fluid">                    
+                <div id="eclipse-simple-process-config" class="thumbnail span2" data-img-thumb img-src="assets/img/implementation-getting-started/eclipse-simple-process-config.png" ></div>
+                <div class="span10">
+                  <p>
+                    Since we model an executable process, we should give it an ID and set the <code>isExecutable</code> property to <code>true</code>. Open the properties view and click on a free spot of the modeling canvas. This displays the properties of the process itself.
+                  </p>
+                  <ol>
+                    <li>First, configure an ID for the process. Type &quot;approve-loan&quot; in the property field <em>Process Id</em>. The ID property is used by the process engine as identifier for the executable process and it is best practice to set it to a human-readable name.
+                    </li>
+                    <li>Second, configure the Name of the process. Type &quot;Loan Approval&quot; in the property field <em>Name</em>.</li>
+                    <li>Finally, set check the box of the <em>Is Executable</em> property. If you do not check this box, the process definition is ignored by the process engine.</li>
+                  </ol>  
+                  <p>               
+                    After you are done, save your changes.
+                  </p>                                 
+                </div>
+              </div> 
+            </section>         
+          </section>
+          <section id="deploy">
+            <h1>Deploy the Process Application</h1>
+            <p>
+              A Process Application is an ordinary Java Web Application and is deployed in exactly the same way.
+            </p>         
+            <p>Select the <code>pom.xml</code> in the Package Explorer, perform a Right Click and select <code>Run AS / Maven Install</code>. This will generate a WAR file named <code>loan-approval-0.0.1-SNAPSHOT.war</code> In the <code>target/</code> folder of your maven project.</p>
+
+            <p class="alert alert-info">If the <code>loan-approval-0.0.1-SNAPSHOT.war</code> file is not visible after having performed the maven build, you need to refresh the project (F5) in eclipse.</p>
+
+            <p>In order to deploy the process application, copy-paste the <code>loan-approval-0.0.1-SNAPSHOT.war</code> from your maven project to the 
+            <code>$CAMUNDA_HOME/server/apache-tomcat/webapps</code> folder.</p>
+
+            <p>Check the log file of the Apache Tomcat server. If you see the following log message, the deployment was successful:</p>
+
+            <pre class="console">
+16.03.2013 22:42:11 org.camunda.bpm.application.impl.ServletProcessApplicationDeployer onStartup
+INFO: Detected @ProcessApplication class org.camunda.bpm.example.loanapproval.LoanApprovalApplication
+16.03.2013 22:42:11 org.camunda.bpm.container.impl.jmx.deployment.ParseProcessesXmlStep performOperationStep
+INFO: Found META-INF/processes.xml file at ...webapps/loan-approval-0.0.1-SNAPSHOT/WEB-INF/classes/META-INF/processes.xml
+16.03.2013 22:42:11 org.camunda.bpm.container.impl.jmx.deployment.DeployProcessArchiveStep logDeploymentSummary
+INFO: Deployment summary for process archive 'loan-approval':
+
+        loan-approval.png
+        loan-approval.bpmn
+
+16.03.2013 22:42:11 org.camunda.bpm.engine.impl.bpmn.deployer.BpmnDeployer deploy
+INFO: Processing resource loan-approval.png
+16.03.2013 22:42:11 org.camunda.bpm.engine.impl.bpmn.deployer.BpmnDeployer deploy
+INFO: Processing resource loan-approval.bpmn
+16.03.2013 22:42:11 org.camunda.bpm.container.impl.jmx.JmxRuntimeContainerDelegate deployProcessApplication
+INFO: Process Application Loan Approval App sucessfully deployed.
+            </pre>
 
           </section>
+
+          <!--
           <section id="taskform">
             <div class="page-header">
               <h1>Add a Task Form</h1>
@@ -470,6 +452,7 @@ public class DefaultEjbProcessApplication extends EjbProcessApplication {
             </div>
 
           </section>
+        -->
 
         </div>
       </div>
@@ -537,5 +520,150 @@ public class DefaultEjbProcessApplication extends EjbProcessApplication {
     </div>
 
   </footer>
+
+<!-- ==================================================================== -->
+<!-- ============================ Code, Yo! ============================= -->
+
+<div class="bootstrap-code">
+
+<script type="text/xml" id="pom.xml">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>org.camunda.bpm.example</groupId>
+  <artifactId>loan-approval</artifactId>
+  <version>0.0.1-SNAPSHOT</version>
+  <packaging>war</packaging>
+  <name>Loan approval example</name>
+
+  <dependencies>
+    <dependency>
+      <groupId>org.camunda.bpm</groupId>
+      <artifactId>camunda-engine</artifactId>
+      <version>7.0.0-alpha1</version>
+      <scope>provided</scope>
+    </dependency>
+    <dependency>
+      <groupId>javax.servlet</groupId>
+      <artifactId>javax.servlet-api</artifactId>
+      <version>3.0.1</version>
+      <scope>provided</scope>
+    </dependency>
+  </dependencies>
+
+  <build>
+    <plugins>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-war-plugin</artifactId>
+        <version>2.3</version>
+        <configuration>
+          <failOnMissingWebXml>false</failOnMissingWebXml>
+        </configuration>
+      </plugin>
+    </plugins>
+  </build>
+
+  <repositories>
+    <repository>
+      <id>camunda-bpm-nexus</id>
+      <name>camunda-bpm-nexus</name>
+      <url>https://app.camunda.com/nexus/content/groups/public</url>
+    </repository>
+  </repositories>
+</project>
+</script>
+
+<!-- ==================================================================== -->
+<!-- ==================================================================== -->
+
+<script type="text/xml" id="LoanApprovalApplication">
+package org.camunda.bpm.example.loanapproval;
+
+import org.camunda.bpm.application.ProcessApplication;
+import org.camunda.bpm.application.impl.ServletProcessApplication;
+
+@ProcessApplication("Loan Approval App")
+public class LoanApprovalApplication extends ServletProcessApplication {
+  // empty implementation
+}
+</script>
+
+<!-- ==================================================================== -->
+<!-- ==================================================================== -->
+   
+<script type="text/xml" id="LoanApprovalEjbApplication">
+@ProcessApplication("Loan Approval App")
+@Singleton
+@Startup 
+@ConcurrencyManagement(ConcurrencyManagementType.BEAN) 
+@TransactionAttribute(TransactionAttributeType.SUPPORTS)
+public class DefaultEjbProcessApplication extends EjbProcessApplication {
+   
+  @PostConstruct
+  public void start() {
+    deploy();
+  }
+
+  @PreDestroy
+  public void stop() {
+    undeploy();
+  }
+}
+</script>   
+
+<!-- ==================================================================== -->
+<!-- ==================================================================== -->
+
+<script type="text/xml" id="processes.xml">
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<process-application
+  xmlns="http://www.camunda.org/schema/1.0/ProcessApplication"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+
+  <process-archive name="loan-approval">
+    <process-engine>default</process-engine>
+    <properties>
+      <property name="isDeleteUponUndeploy">false</property>
+      <property name="isScanForProcessDefinitions">true</property>
+    </properties>
+  </process-archive>
+
+</process-application>
+</script> 
+
+<!-- ==================================================================== -->
+<!-- ==================================================================== -->
+
+<script type="text/ng-template" id="code-annotations">
+{ 
+ "pom.xml":
+  { "war": "Process Applications are most commonly packaged as Java Web Applications (WAR files). Other deployment options are available. On the Java EE 6 platform, you can use plain JAR or advanced EAR deployments as well." ,
+    "camunda-engine": "The process engine is the component responsible for picking up your BPMN 2.0 processes and executing them.",
+    "provided": "The process engine can be either <ul><li>provided by the servlet container or</li><li>embedded inside your process application.</li></ul> <p />Here, we use a shared process engine that is provided by the servlet container.",
+    "javax.servlet-api": "The servlet API is required for compilation",
+    "false" : "With Servlet 3.0 we do not need a web.xml file. Maven needs to catch up.",
+    "camunda-bpm-nexus" : "camunda nexus providing the maven artifacts."
+
+  },
+
+ "LoanApprovalApplication":
+  { "@ProcessApplication": "The @ProcessApplication annotation makes sure the class is automatically picked up at deployment time."
+  },
+
+ "processes.xml":
+  { 
+    "loan-approval": "The name of the process engine deployment to be constructed.",
+    "default": "The name of the process engine we want to use (you can start multiple process engines).",
+    "isDeleteUponUndeploy": "Controls whether the process engine deployment should be removed when the process application is undeployed. If set to true, all process instances are deleted in the database when the WAR file is removed from the server.",
+    "isScanForProcessDefinitions": "If set to true, the WAR file is automatically scanned for process definitions. All files ending in <code>.bpmn20.xml</code> or <code>.bpm</code> are automatically picked up."
+  }
+}
+</script> 
+</div>  
+
+
+
 </body>
 </html>
