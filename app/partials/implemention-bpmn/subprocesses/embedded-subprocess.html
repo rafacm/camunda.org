@@ -21,7 +21,7 @@ A subprocess creates a new scope for events. Events that are thrown during execu
 Using a subprocess does impose some constraints:
 <ul>
   <li>
-A subprocess can only have one none start event, no other start event types are allowed. A subprocess must at least have one end event. Note that the BPMN 2.0 specification allows to omit the start and end events in a subprocess, but the current Activiti implementation does not support this.
+A subprocess can only have one none start event, no other start event types are allowed. A subprocess must at least have one end event. Note that the BPMN 2.0 specification allows to omit the start and end events in a subprocess, but the current engine implementation does not support this.
   </li>
   <li>
 Sequence flow can not cross subprocess boundaries.
@@ -32,12 +32,11 @@ Sequence flow can not cross subprocess boundaries.
     <div class="span3">
       <h3>On this page</h3>
       <ul>            
-          <li>Service Task</li>
-          <li><a href="#">Implementation</a></li>
+          <li>Subprocess (embedded)</li>
       </ul>
       <h3>There's more...</h3>
       <ul>            
-          <li><a href="subprocesses.html">Subprocesses in the BPMN Tutorial</a></li>
+          <li><a href="design-reference.html#/activities/subprocess">Subprocesses in the BPMN Tutorial</a></li>
           <li><a href="https://app.camunda.com/confluence/display/foxUserGuide/Process+Decomposition">Process Decomposition</a></li>
       </ul>      
     </div>

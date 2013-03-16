@@ -1,7 +1,7 @@
 <section id="event-subprocess">
 
   <div class="page-header">
-      <h1>Event subprocess</h1>
+      <h1>Event Subprocess</h1>
   </div>
   
   <div class="row-fluid">
@@ -30,8 +30,8 @@ It is represented using XML in the same way as a an embedded subprocess. In addi
 <div class="alert">
 <strong>Current limitations:</strong>
 <ul>
-    <li>Activiti only supports interrupting Event subprocesses.</li>
-    <li>Activiti only supports Event subprocess triggered using an Error Start Event or Message Start Event.</li>
+    <li>Only interrupting Event subprocesses are supported.</li>
+    <li>Only Event subprocess triggered using an Error Start Event or Message Start Event are supported.</li>
 </ul>
 </div>
 </p>
@@ -40,12 +40,12 @@ It is represented using XML in the same way as a an embedded subprocess. In addi
     <div class="span3">
       <h3>On this page</h3>
       <ul>            
-          <li>Service Task</li>
-          <li><a href="#">Implementation</a></li>
+          <li>Event Subprocess</li>
+          <li>Example</li>
       </ul>
       <h3>There's more...</h3>
       <ul>            
-          <li><a href="design-reference.html#/design/activities/event">Event subprocess in the BPMN Tutorial</a></li>
+          <li><a href="design-reference.html#/activities/event">Event subprocess in the BPMN Tutorial</a></li>
       </ul>      
     </div>
   </div>
@@ -60,8 +60,8 @@ The following is an example of an Event subprocess triggered using an Error Star
 
 This is how the Event subprocess looks like in XML:
 
-    <div class="app-source" app-source-no-tabs="event-subprocess2"></div>
-    <script type="text/xml" id="event-subprocess2">
+    <div class="app-source" app-source-no-tabs="event-subprocess-code"></div>
+    <script type="text/xml" id="event-subprocess-code">
 <subProcess id="eventSubProcess" triggeredByEvent="true">
         <startEvent id="catchError">
                 <errorEventDefinition errorRef="error" /> 

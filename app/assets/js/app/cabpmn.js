@@ -2,6 +2,7 @@ var eventDefinitions = {
 			"messageCatch":" M7 10  L7 20  L23 20  L23 10  z M7 10  L15 16  L23 10 ",
 			"messageThrow":"M7 9  L15 15  L23 9  z M7 10  L7 20  L23 20  L23 10  L15 16  z",
 			"timer":" M15 5  L15 8  M20 6  L18.5 9  M24 10  L21 11.5  M25 15  L22 15  M24 20  L21 18.5  M20 24  L18.5 21  M15 25  L15 22  M10 24  L11.5 21  M6 20  L9 18.5  M5 15  L8 15  M6 10  L9 11.5  M10 6  L11.5 9  M17 8  L15 15  L19 15 ",
+			//"timer":" M15 5  L15 8  M20 6  L18.5 9  M24 10  L21 11.5  M25 15  L22 15  M24 20  L21 18.5  M20 24  L18.5 21  M15 25  L15 22  M10 24  L11.5 21  M6 20  L9 18.5  M5 15  L8 15  M6 10  L9 11.5  M10 6  L11.5 9  M17 8  L15 15  L19 15 ",
 			"error": " M21.820839 10.171502  L18.36734 23.58992  L12.541380000000002 13.281818999999999  L8.338651200000001 19.071607  L12.048949000000002 5.832305699999999  L17.996148000000005 15.132659  L21.820839 10.171502  z",
 			"escalation": "M15 7.75  L21 22.75  L15 16  L9 22.75  z",
 			"signal": "M7.7124971 20.247342  L22.333334 20.247342  L15.022915000000001 7.575951200000001  L7.7124971 20.247342  z",
@@ -299,7 +300,7 @@ function elementSVG (element, paper) {
 		// intermediate or boundary?
 		if ((element.type.toLowerCase().indexOf("intermediate") >= 0) || (element.type.toLowerCase().indexOf("boundary") >= 0)) {
 			// intermediate event border
-			var innerCircle = paper.circle(x, y, rad-2)
+			var innerCircle = paper.circle(x, y, rad * 0.8)
 			  .attr(generalStyle).attr(eventStyle).attr({fill:"none"});
 			// mark as non-interrupting if necessary
 			if (element.cancelActivity == false) {
@@ -321,7 +322,7 @@ function elementSVG (element, paper) {
 			if ((element.type.toLowerCase().indexOf("catch") >= 0)|| (element.type.toLowerCase().indexOf("boundary") >= 0) || (element.type.toLowerCase().indexOf("start") >= 0)) {
 				var myPathSpec = eventDefinitions["messageCatch"];
 				var myPath = paper.path(myPathSpec).attr(generalStyle).attr(eventStyle);
-				myPath.translate(x - rad, y-rad);
+				myPath.translate(x-7-8, y-10-5);
 			} else {
 				var myPathSpec = eventDefinitions["messageThrow"];
 				var myPath = paper.path(myPathSpec).attr(generalStyle).attr({"stroke":"none", "fill":regularStroke});
@@ -332,10 +333,11 @@ function elementSVG (element, paper) {
 			paper.circle(x, y, 10).attr(generalStyle).attr(eventStyle);
 			var myPathSpec = eventDefinitions[element.eventType];
 			var myPath = paper.path(myPathSpec).attr(generalStyle).attr(eventStyle);
-			myPath.translate(x - rad, y-rad);
+			myPath.translate(x-15, y-5-10);
+
 		// terminate?
 		} else if (element.eventType == "terminate") {
-			paper.circle(x, y, 8).attr(generalStyle).attr(eventStyle).attr({"fill":regularStroke});
+			paper.circle(x, y, rad * 0.7).attr(generalStyle).attr(eventStyle).attr({"fill":regularStroke});
 		// cancel?
 		} else if (element.eventType == "cancel") {
 			var myPathSpec = eventDefinitions[element.eventType];
@@ -544,6 +546,43 @@ function elementSVG (element, paper) {
 		var taskType = element.type.replace("task", "");
 		
 		if (taskType == "user") {
+/*
+         var path1String = "m 6.0095,22.5169 h 16.8581 v -5.4831 c 0,0 -1.6331,-2.7419 -4.9581,-3.6169 h -6.475 c -3.0919,0.9331 -5.4831,4.025 -5.4831,4.025 l 0.0581,5.075 z";
+          var path1 =  paper.path(path1String).attr(generalStyle).attr({"stroke-width":0.69999999, "fill":"#f4f6f7"});
+          path1.translate(element.x-element.width/2 + 13, element.y-element.height/2 + 1);
+          //path1.setStroke({color : "grey", width: 0.69999999});
+          //path1.setFill("#f4f6f7");
+
+         var path2String = "m 9.8,19.6 0,2.8";
+          var path2 =  paper.path(path2String).attr(generalStyle).attr({"stroke-width":0.69999999, "fill":"none"});
+          path2.translate(element.x-element.width/2 + 13, element.y-element.height/2 + 1);
+          //path1.setFill("none");
+          //path2.setStroke({color : "grey", width: 0.69999999});
+
+         var path3String = "m 19.6,19.6 0,2.8";
+         var path3 =  paper.path(path3String).attr(generalStyle).attr({"stroke-width":0.69999999, "fill":regularStroke});
+         path3.translate(element.x-element.width/2 + 13, element.y-element.height/2 + 1);
+          //path3.setStroke({color : "grey", width: 0.69999999});
+
+          var path4String = "m 18.419,5.9159999 c 0,2.9917264 -2.425274,5.4170001 -5.417,5.4170001 -2.991727,0 -5.417,-2.4252737 -5.417,-5.4170001 0,-2.9917264 2.425273,-5.41699983 5.417,-5.41699983 2.991726,0 5.417,2.42527343 5.417,5.41699983 z";
+          var path4 =  paper.path(path4String).attr(generalStyle).attr({"stroke-width":1.5, "fill":regularStroke});
+
+          //path4.setStroke({color : "grey", width: 1.5});
+          //path4.translate({dx: 5, dy:5, xx: 0.75, yy:0.75});
+          path4.scale(0.75, 0.75);
+          path4.translate(5, 5);
+		path4.translate(element.x-element.width/2 + 13, element.y-element.height/2 + 1);
+          //path4.setFill("grey");
+          
+
+         var path5String = "m 11.2301,10.5581 c 0,0 1.9698,-1.6982 3.7632,-1.2649 1.7934,0.4333 3.2368,-0.4851 3.2368,-0.4851 0.175,1.1816 0.0294,2.625 -1.0206,3.9088 0,0 0.7581,0.525 0.7581,1.05 0,0.525 0.0875,1.3125 -0.7,2.1 -0.7875,0.7875 -3.85,0.875 -4.725,0 -0.875,-0.875 -0.875,-1.2831 -0.875,-1.8669 0,-0.5838 0.4081,-0.875 0.875,-1.3419 -0.7581,-0.4081 -1.7493,-1.6625 -1.3125,-2.1 z";
+
+          var path5 = paper.path(path5String).attr(generalStyle).attr({"stroke-width":0.69999999, "fill":"#f0eff0"});
+path5.translate(element.x-element.width/2 + 13, element.y-element.height/2 + 1);          
+          //path5.setStroke({color : "grey", width: 0.69999999});
+          //path5.setFill("#f0eff0");
+*/
+
 			var pathSpec = taskDefinitions[taskType];
 			var drawnTaskType = paper.path(pathSpec).attr(generalStyle).attr({"stroke-width":1, "fill":regularStroke});
 			drawnTaskType.translate(element.x-element.width/2 + 13, element.y-element.height/2 + 1);
@@ -762,6 +801,7 @@ function elementSVG (element, paper) {
 
 function drawFlow (flow, pathSpec, paper) {
     var drawnFlow;
+    console.log(pathString);
 	var pathString = "M"+(pathSpec[0].x)+","+(pathSpec[0].y);
     for (var i=1; i<pathSpec.length; i++) { 
       if(i==1) {
@@ -880,9 +920,11 @@ function drawElement (element, elemXML, paper, container, xmlJQuery) {
 	
 		// if event, determine eventType
 		if ((element.type.toLowerCase().indexOf("event") >= 0) && (element.type.toLowerCase().indexOf("gateway") == -1)) {
+			//console.log(element.type);
 		// Containts Event Definitions?
 			$(elemXML).find("*").filter(function() {
 			    return this.nodeName.toLowerCase().match(/[^\d]eventdefinition/)}).each(function() {
+
 					// if already set, this is a muliple event
 					if (element.eventType) {
 						// is parallel Multiple?
@@ -893,6 +935,13 @@ function drawElement (element, elemXML, paper, container, xmlJQuery) {
 						}					
 					} else {
 						element.eventType = (this).nodeName.toLowerCase().replace("eventdefinition","").toLowerCase();
+						//console.log((this).nodeName.toLowerCase().replace("eventdefinition","").toLowerCase());
+						//console.log(element.eventType);
+						if (element.eventType.indexOf(":") > -1) {
+							// dirty hack for dirty namespaces
+							element.eventType = element.eventType.substr(element.eventType.indexOf(":") + 1);
+							//console.log(element.eventType);
+						}
 					}
 					
 					// would cancel Activity / interrupt eventSubProcess?
@@ -911,15 +960,15 @@ function drawElement (element, elemXML, paper, container, xmlJQuery) {
 		found = true;
 		
 		var $di = $(this);
-		element.x = parseFloat($(this).find('omgdc\\:Bounds, Bounds').attr("x"));
-		element.y = parseFloat($(this).find('omgdc\\:Bounds, Bounds').attr("y"));
-		element.width = parseFloat($(this).find('omgdc\\:Bounds, Bounds').attr("width"));
-		element.height = parseFloat($(this).find('omgdc\\:Bounds, Bounds').attr("height"));
+		element.x = parseFloat($(this).find('omgdc\\:Bounds, dc\\:Bounds, Bounds').attr("x"));
+		element.y = parseFloat($(this).find('omgdc\\:Bounds, dc\\:Bounds, Bounds').attr("y"));
+		element.width = parseFloat($(this).find('omgdc\\:Bounds, dc\\:Bounds, Bounds').attr("width"));
+		element.height = parseFloat($(this).find('omgdc\\:Bounds, dc\\:Bounds, Bounds').attr("height"));
 		
 		// get Label Position if existing
 		$(this).find("BPMNLabel").each(function() {
-			element.labelX = parseFloat($(this).find("omgdc\\:Bounds, Bounds").attr("x"));
-			element.labelY = parseFloat($(this).find("omgdc\\:Bounds, Bounds").attr("y"));
+			element.labelX = parseFloat($(this).find("omgdc\\:Bounds, dc\\:Bounds, Bounds").attr("x"));
+			element.labelY = parseFloat($(this).find("omgdc\\:Bounds, dc\\:Bounds, Bounds").attr("y"));
 		});		
 
 		// if exclusiveGateway, determine if marker should be visible
@@ -1010,7 +1059,9 @@ function parseBpmnXml (data, paper, container) {
 					var pathSpec = new Array();
 					$(xmlJQuery).find("bpmndi\\:BPMNEdge[bpmnElement='" + element.id + "'], BPMNEdge[bpmnElement='" + element.id + "']").each(function(){
 						var $di = $(this);
-						$di.find("omgdi\\:waypoint, waypoint").each(function(){
+						console.log("looking...");
+						$di.find("omgdi\\:waypoint, waypoint, di\\:waypoint").each(function(){
+							console.log("found!");
 							var waypoint = $(this);
 							pathSpecElem = new Object();
 							pathSpecElem.x = waypoint.attr("x");
@@ -1031,10 +1082,10 @@ function parseBpmnXml (data, paper, container) {
 	var maxY = 0; // maximum Y Value for Resizing Canvas later
 
 	$(xmlJQuery).find("bpmndi\\:BPMNShape, BPMNShape").each(function(){
-		myX = parseInt($(this).find("omgdc\\:Bounds, Bounds").attr("x")) + parseInt($(this).find("omgdc\\:Bounds, Bounds").attr("width"));
+		myX = parseInt($(this).find("omgdc\\:Bounds, dc\\:Bounds, Bounds").attr("x")) + parseInt($(this).find("omgdc\\:Bounds, dc\\:Bounds, Bounds").attr("width"));
 		if (myX > maxX) {maxX = myX;}
 
-		myY = parseInt($(this).find("omgdc\\:Bounds, Bounds").attr("y")) + parseInt($(this).find("omgdc\\:Bounds, Bounds").attr("height"));
+		myY = parseInt($(this).find("omgdc\\:Bounds, dc\\:Bounds, Bounds").attr("y")) + parseInt($(this).find("omgdc\\:Bounds, dc\\:Bounds, Bounds").attr("height"));
 		if (myY > maxY) {maxY = myY;}
 	});
 	

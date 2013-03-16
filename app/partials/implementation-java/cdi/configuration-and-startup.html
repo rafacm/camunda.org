@@ -36,25 +36,15 @@ Replace 'x' with your camunda BPM version.
     <div class="span3">
       <h3>On this page</h3>
       <ul>            
-          <li>Service Task</li>
-          <li><a href="#">Implementation</a></li>
+          <li>Engine Startup in CDI</li>
+          <li>Looking up a Process Engine</li>
+          <li>Configuring the Process Engine</li>
       </ul>
-      <h3>There's more...</h3>
-      <ul>            
-          <li><a href="tasks.html">Tasks in the BPMN Tutorial</a></li>
-          <li><a href="implement-concepts.html#/concepts/error-handling">Error Handling</a></li>
-      </ul>      
     </div>
 </div>
 
 
   
-
-
-<h1>Setting up activiti-cdi</h1>
-
-Activiti cdi can be setup in different environments. In this section we briefly walk through the configuration options.
-
 
 
 <h2>Looking up a Process Engine</h2>
@@ -63,11 +53,11 @@ The cdi extension needs to get access to a ProcessEngine. To achieve this, an im
 </p>
 
 <p>
-Activiti cdi uses a java.util.ServiceLoader SPI for resolving an instance of org.camunda.bpm.engine.cdi.spi.ProcessEngineLookup. In order to provide a custom implementation of the interface, we need to add a plain text file named META-INF/services/org.camunda.bpm.engine.cdi.spi.ProcessEngineLookup to our deployment, in which we specify the fully qualified classname of the implementation.
+camunda-engine-cdi uses a java.util.ServiceLoader SPI for resolving an instance of org.camunda.bpm.engine.cdi.spi.ProcessEngineLookup. In order to provide a custom implementation of the interface, we need to add a plain text file named META-INF/services/org.camunda.bpm.engine.cdi.spi.ProcessEngineLookup to our deployment, in which we specify the fully qualified classname of the implementation.
 </p>
 
 <p>
-<strong>Note:</strong> If you do not provide a custom org.camunda.bpm.engine.cdi.spi.ProcessEngineLookup implementation, activiti will use the default LocalProcessEngineLookup implementation. In that case, all you need to do is providing a activiti.cfg.xml file on the classpath (see next section).
+<strong>Note:</strong> If you do not provide a custom org.camunda.bpm.engine.cdi.spi.ProcessEngineLookup implementation, the engine will use the default LocalProcessEngineLookup implementation. In that case, all you need to do is providing a activiti.cfg.xml file on the classpath (see next section).
 </p>
 
 <h2>Configuring the Process Engine</h2>
@@ -77,10 +67,10 @@ Configuration depends on the selected ProcessEngineLookup-Strategy (cf. previous
 </p>
 
 <p>
-Activiti offers different ProcessEngineConfiguration implementations mostly dependent on the underlying transaction management strategy. The activiti-cdi module is not concerned with transactions, which means that potentially any transaction management strategy can be used (even the Spring transaction abstraction). As a convenience, the cdi-module provides two custom ProcessEngineConfiguration implementations:
+camunda offers different ProcessEngineConfiguration implementations mostly dependent on the underlying transaction management strategy. The camunda-engine-cdi module is not concerned with transactions, which means that potentially any transaction management strategy can be used (even the Spring transaction abstraction). As a convenience, the cdi-module provides two custom ProcessEngineConfiguration implementations:
 <ul>
-    <li>org.camunda.bpm.engine.cdi.CdiJtaProcessEngineConfiguration: a subclass of the activiti JtaProcessEngineConfiguration, can be used if JTA-managed transactions should be used for activiti</li>
-    <li>org.camunda.bpm.engine.cdi.CdiStandaloneProcessEngineConfiguration: a subclass of the activiti StandaloneProcessEngineConfiguration, can be used if plain JDBC transactions should be used for activiti</lI>
+    <li>org.camunda.bpm.engine.cdi.CdiJtaProcessEngineConfiguration: a subclass of the JtaProcessEngineConfiguration, can be used if JTA-managed transactions should be used for the engine.</li>
+    <li>org.camunda.bpm.engine.cdi.CdiStandaloneProcessEngineConfiguration: a subclass of the StandaloneProcessEngineConfiguration, can be used if plain JDBC transactions should be used for engine.</lI>
 </ul>
 </p>
 
@@ -115,7 +105,7 @@ Activiti offers different ProcessEngineConfiguration implementations mostly depe
 </beans>
 </script>
 
-And this is how it would look like for Glassfish 3.1.1 (assuming a datasource named jdbc/activiti is properly configured):
+And this is how it would look like for Glassfish 3.1.1 (assuming a datasource named jdbc/camunda is properly configured):
 
 <div class="app-source" app-source-no-tabs="cdi3"></div>
 <script type="text/xml" id="cdi3">   
@@ -133,7 +123,7 @@ And this is how it would look like for Glassfish 3.1.1 (assuming a datasource na
         <!-- process engine configuration -->
         <bean id="processEngineConfiguration"
                 class="org.camunda.bpm.engine.cdi.CdiJtaProcessEngineConfiguration">
-                <property name="dataSourceJndiName" value="jdbc/activiti" />
+                <property name="dataSourceJndiName" value="jdbc/camunda" />
                 <property name="transactionManager" ref="transactionManager" />
                 <!-- using externally managed transactions -->
                 <property name="transactionsExternallyManaged" value="true" />
@@ -155,25 +145,5 @@ Note that the above configuration requires the "spring-context" module:
 
 The configuration in a Java SE environment looks exactly like the examples provided in section Creating a ProcessEngine, substitute "CdiStandaloneProcessEngineConfiguration" for "StandaloneProcessEngineConfiguration".
 </p>
-
-
-
-
-<h2>Deploying Processes</h2>
-
-<p>
-Processes can be deployed using standard activiti-api (RepositoryService). In addition, activiti-cdi offers the possibility to auto-deploy processes listed in a file named processes.xml located top-level in the classpath. This is an example processes.xml file:
-
-<div class="app-source" app-source-no-tabs="cdi5"></div>
-<script type="text/xml" id="cdi5">   
-<?xml version="1.0" encoding="utf-8" ?>
-<!-- list the processes to be deployed -->
-<processes>
-        <process resource="diagrams/myProcess.bpmn20.xml" />
-        <process resource="diagrams/myOtherProcess.bpmn20.xml" />  
-</processes>
-</script>
-     
-
 	
 </section>

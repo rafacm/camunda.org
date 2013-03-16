@@ -4,8 +4,7 @@
       <h1>Expression Language</h1>
 </div>
   
-<div class="row-fluid">
-  <div class="span9">
+
       <p>
         
         When using the ProcessEngineFactoryBean, by default, all expressions in the BPMN processes will also 'see' all the Spring beans. It's possible to limit the beans you want to expose in expressions or even exposing no beans at all using a map that you can configure. The example below exposes a single bean (printer), available to use under the key "printer". To have NO beans exposed at all, just pass an empty list as 'beans' property on the SpringProcessEngineConfiguration. When no 'beans' property is set, all Spring beans in the context will be available.
@@ -74,13 +73,6 @@ And the Spring bean configuration (also shown above) looks like this:
 
 
       </p>
-    </div>
-    <div class="span3">
-      <h3>There's more...</h3>
-      <ul>            
-          <li><a href="implement-java.html#/engine/expressions">General Information on Expression Language</a></li>
-      </ul>      
-    </div>
-</div>
+
 	
 </section>

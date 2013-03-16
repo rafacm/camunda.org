@@ -13,7 +13,7 @@
 Note the sequence flows running out of an Event-based Gateway are different from ordinary sequence flows. These sequence flows are never actually "executed". On the contrary, they allow the process engine to determine which events an execution arriving at an Event-based Gateway needs to subscribe to. The following restrictions apply:
 <ul>
     <li>An Event-based Gateway must have two or more outgoing sequence flows.</li>
-    <li>An Event-based Gateway must only be to elements of type intermediateCatchEvent only. (Receive Tasks after an Event-based Gateway are not supported by Activiti.)</li>
+    <li>An Event-based Gateway must only be to elements of type intermediateCatchEvent only. (Receive Tasks after an Event-based Gateway are not yet supported by the engine.)</li>
     <li>An intermediateCatchEvent connected to an Event-based Gateway must have a single incoming sequence flow. </li>
 </ul>
 The following process is an example of a process with an Event-based Gateway. When the execution arrives at the Event-based Gateway, process execution is suspended. In addition, the process instance subscribes to the alert signal event and created a timer which fires after 10 minutes. This effectively causes the process engine to wait for ten minutes for a signal event. If the signal occurs within 10 minutes, the timer is cancelled and execution continues after the signal. If the signal is not fired, execution continues after the timer and the signal subscription is cancelled. 
@@ -29,7 +29,7 @@ The following process is an example of a process with an Event-based Gateway. Wh
       </ul>
       <h3>There's more...</h3>
       <ul>            
-          <li><a href="design-reference.html#/design/gateways/event">Event-based Gateways in the BPMN Tutorial</a></li>
+          <li><a href="design-reference.html#/gateways/event">Event-based Gateways in the BPMN Tutorial</a></li>
       </ul>      
     </div>
   </div>

@@ -21,23 +21,28 @@
       </ul>
       <h3>There's more...</h3>
       <ul>            
-          <li><a href="xxx">Expressions</a></li>
+          <li><a href="implement-java.html#/engine/expressions">Expression Language</a></li>
       </ul>      
     </div>
   </div>
 
+
+
+
+
 <h1>Conditional Sequence Flow</h1>  
-  <p>
+<p>
 
  A sequence flow can have a condition defined on it. When a BPMN 2.0 activity is left, the default behavior is to evaluate the conditions on the outgoing sequence flow. When a condition evaluates to true, that outgoing sequence flow is selected. When multiple sequence flow are selected that way, multiple executions will be generated and the process will be continued in a parallel way. Note: This is different for gateways. Gateways will handle sequence flow with conditions in specific ways, depending on the gateway type. 
 
-      <div id="flow2" style="position:relative" data-bpmn-src="implement/sequence-flow-conditional" />
+      <div id="flow2" style="position:relative" data-bpmn-src="implement/sequence-flow-conditional">
+      </div>
   
 
  A conditional sequence flow is represented in XML as a regular sequence flow, containing a conditionExpression sub-element. Note that for the moment only tFormalExpressions are supported, Omitting the xsi:type="" definition will simply default to this only supported type of expressions.
 
-  <div class="app-source" app-source-no-tabs="flow1" ></div>
-  <script type="text/xml" id="flow1">
+  <div class="app-source" app-source-no-tabs="flowXml1" ></div>
+  <script type="text/xml" id="flowXml1">
 <sequenceFlow id="flow" sourceRef="theStart" targetRef="theTask">
   <conditionExpression xsi:type="tFormalExpression">
     <![CDATA[${order.price > 100 && order.price < 250}]]>
@@ -51,8 +56,8 @@ Currently conditionalExpressions can only be used with UEL, detailed info about 
 <p>
 The example below references data of a process variable, in the typical JavaBean style through getters.
 
-  <div class="app-source" app-source-no-tabs="flow2" ></div>
-  <script type="text/xml" id="flow2">
+  <div class="app-source" app-source-no-tabs="flowXml2" ></div>
+  <script type="text/xml" id="flowXml2">
     <conditionExpression xsi:type="tFormalExpression">
       <![CDATA[${order.price > 100 && order.price < 250}]]>
     </conditionExpression> 
