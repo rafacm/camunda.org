@@ -33,8 +33,10 @@ CAM_PAGES = [
   { section: "design", category: "Events", id: "design-eventcancel", name: "Cancel", url: "/events/cancel", keywords: "cancel event" },
 
   // engine api documentation
-  { section: "implementation-java", category: "Bootstrapping", id: "impl-java-engine-bootstrap", name: "Startup and Configuration Options", url: "/engine/configuration-and-startup", keywords: "" },
-  { section: "implementation-java", category: "Bootstrapping", id: "impl-java-engine-bootstrap", name: "Container Integration", url: "/concepts/custom-extensions", keywords: "" },
+  { section: "implementation-java", category: "Introduction", id: "impl-java-engine-bootstrap", name: "Startup and Configuration Options", url: "/engine/configuration-and-startup", keywords: "" },
+  { section: "implementation-java", category: "Introduction", id: "impl-java-engine-bootstrap", name: "Container Integration", url: "/engine/container-integration", keywords: "" },
+  { section: "implementation-java", category: "Introduction", id: "impl-concepts", name: "Process Applications", url: "/engine/process-application", keywords: "" },
+  { section: "implementation-java", category: "Introduction", id: "impl-concepts", name: "Important Concepts", url: "/engine/concepts", keywords: "" },
   
   { section: "implementation-java", category: "Programming", id: "impl-java-services", name: "Services", url: "/engine/services", keywords: "" },
   { section: "implementation-java", category: "Programming", id: "impl-java-query-api", name: "Query API", url: "/engine/query-api", keywords: "" },
