@@ -60,7 +60,7 @@ Implement
     * Add Process Diagram API Link
     * Add Deployment Infos (skipped from user guide till now)
     * Add ProcessApplication development Reference (-> Daniel)
-  * ~~cleanup Menu (-> Roman)~~
+  * ~~cleanup Menu (-> Roman)~~  
   
 Design
   * ~~remove "run" directive~~
