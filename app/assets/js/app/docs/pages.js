@@ -36,10 +36,10 @@ CAM_PAGES = [
   { section: "implementation-java", category: "Bootstrapping", id: "impl-java-engine-bootstrap", name: "Startup and Configuration Options", url: "/engine/configuration-and-startup", keywords: "" },
   { section: "implementation-java", category: "Bootstrapping", id: "impl-java-engine-bootstrap", name: "Container Integration", url: "/concepts/custom-extensions", keywords: "" },
   
-  { section: "implementation-java", category: "Programming", id: "impl-java-services", name: "Services", url: "/concepts/listeners", keywords: "" },
-  { section: "implementation-java", category: "Programming", id: "impl-java-query-api", name: "Query API", url: "/concepts/listeners", keywords: "" },
-  { section: "implementation-java", category: "Programming", id: "impl-java-expressions", name: "Expression Language", url: "/concepts/listeners", keywords: "" },
-  { section: "implementation-java", category: "Programming", id: "impl-java-testing", name: "Testing", url: "/concepts/listeners", keywords: "" },
+  { section: "implementation-java", category: "Programming", id: "impl-java-services", name: "Services", url: "/engine/services", keywords: "" },
+  { section: "implementation-java", category: "Programming", id: "impl-java-query-api", name: "Query API", url: "/engine/query-api", keywords: "" },
+  { section: "implementation-java", category: "Programming", id: "impl-java-expressions", name: "Expression Language", url: "/engine/expressions", keywords: "" },
+  { section: "implementation-java", category: "Programming", id: "impl-java-testing", name: "Testing", url: "/engine/testing", keywords: "" },
 
   { section: "implementation-java", category: "Spring Integration", id: "impl-spring-engine-bootstrap", name: "Engine Startup via Spring", url: "/concepts/custom-extensions", keywords: "" },
   { section: "implementation-java", category: "Spring Integration", id: "impl-spring-expressions", name: "Expression Language", url: "/concepts/listeners", keywords: "" },
