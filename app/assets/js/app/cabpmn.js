@@ -322,7 +322,7 @@ function elementSVG (element, paper) {
 			if ((element.type.toLowerCase().indexOf("catch") >= 0)|| (element.type.toLowerCase().indexOf("boundary") >= 0) || (element.type.toLowerCase().indexOf("start") >= 0)) {
 				var myPathSpec = eventDefinitions["messageCatch"];
 				var myPath = paper.path(myPathSpec).attr(generalStyle).attr(eventStyle);
-				myPath.translate(x - rad, y-rad);
+				myPath.translate(x-7-8, y-10-5);
 			} else {
 				var myPathSpec = eventDefinitions["messageThrow"];
 				var myPath = paper.path(myPathSpec).attr(generalStyle).attr({"stroke":"none", "fill":regularStroke});
@@ -330,23 +330,14 @@ function elementSVG (element, paper) {
 			}
 		// timer?
 		} else if (element.eventType == "timer") {
-			var st = paper.set();
-			//var myCircle = paper.circle(x, y, 10).attr(generalStyle).attr(eventStyle);
-			//var myGroup = paper.group(0,myCircle);
 			paper.circle(x, y, 10).attr(generalStyle).attr(eventStyle);
 			var myPathSpec = eventDefinitions[element.eventType];
-			/*
-			st.push(
-				paper.circle(x, y, 10).attr(generalStyle).attr(eventStyle),
-				paper.path(myPathSpec).attr(generalStyle).attr(eventStyle)
-			);*/
-
 			var myPath = paper.path(myPathSpec).attr(generalStyle).attr(eventStyle);
 			myPath.translate(x-15, y-5-10);
-			//st.translate(x - rad + 2.5, y - rad + 2.5);
+
 		// terminate?
 		} else if (element.eventType == "terminate") {
-			paper.circle(x, y, 8).attr(generalStyle).attr(eventStyle).attr({"fill":regularStroke});
+			paper.circle(x, y, rad * 0.7).attr(generalStyle).attr(eventStyle).attr({"fill":regularStroke});
 		// cancel?
 		} else if (element.eventType == "cancel") {
 			var myPathSpec = eventDefinitions[element.eventType];
@@ -810,6 +801,7 @@ path5.translate(element.x-element.width/2 + 13, element.y-element.height/2 + 1);
 
 function drawFlow (flow, pathSpec, paper) {
     var drawnFlow;
+    console.log(pathString);
 	var pathString = "M"+(pathSpec[0].x)+","+(pathSpec[0].y);
     for (var i=1; i<pathSpec.length; i++) { 
       if(i==1) {
@@ -968,15 +960,15 @@ function drawElement (element, elemXML, paper, container, xmlJQuery) {
 		found = true;
 		
 		var $di = $(this);
-		element.x = parseFloat($(this).find('omgdc\\:Bounds, Bounds').attr("x"));
-		element.y = parseFloat($(this).find('omgdc\\:Bounds, Bounds').attr("y"));
-		element.width = parseFloat($(this).find('omgdc\\:Bounds, Bounds').attr("width"));
-		element.height = parseFloat($(this).find('omgdc\\:Bounds, Bounds').attr("height"));
+		element.x = parseFloat($(this).find('omgdc\\:Bounds, dc\\:Bounds, Bounds').attr("x"));
+		element.y = parseFloat($(this).find('omgdc\\:Bounds, dc\\:Bounds, Bounds').attr("y"));
+		element.width = parseFloat($(this).find('omgdc\\:Bounds, dc\\:Bounds, Bounds').attr("width"));
+		element.height = parseFloat($(this).find('omgdc\\:Bounds, dc\\:Bounds, Bounds').attr("height"));
 		
 		// get Label Position if existing
 		$(this).find("BPMNLabel").each(function() {
-			element.labelX = parseFloat($(this).find("omgdc\\:Bounds, Bounds").attr("x"));
-			element.labelY = parseFloat($(this).find("omgdc\\:Bounds, Bounds").attr("y"));
+			element.labelX = parseFloat($(this).find("omgdc\\:Bounds, dc\\:Bounds, Bounds").attr("x"));
+			element.labelY = parseFloat($(this).find("omgdc\\:Bounds, dc\\:Bounds, Bounds").attr("y"));
 		});		
 
 		// if exclusiveGateway, determine if marker should be visible
@@ -1067,7 +1059,9 @@ function parseBpmnXml (data, paper, container) {
 					var pathSpec = new Array();
 					$(xmlJQuery).find("bpmndi\\:BPMNEdge[bpmnElement='" + element.id + "'], BPMNEdge[bpmnElement='" + element.id + "']").each(function(){
 						var $di = $(this);
-						$di.find("omgdi\\:waypoint, waypoint").each(function(){
+						console.log("looking...");
+						$di.find("omgdi\\:waypoint, waypoint, di\\:waypoint").each(function(){
+							console.log("found!");
 							var waypoint = $(this);
 							pathSpecElem = new Object();
 							pathSpecElem.x = waypoint.attr("x");
@@ -1088,10 +1082,10 @@ function parseBpmnXml (data, paper, container) {
 	var maxY = 0; // maximum Y Value for Resizing Canvas later
 
 	$(xmlJQuery).find("bpmndi\\:BPMNShape, BPMNShape").each(function(){
-		myX = parseInt($(this).find("omgdc\\:Bounds, Bounds").attr("x")) + parseInt($(this).find("omgdc\\:Bounds, Bounds").attr("width"));
+		myX = parseInt($(this).find("omgdc\\:Bounds, dc\\:Bounds, Bounds").attr("x")) + parseInt($(this).find("omgdc\\:Bounds, dc\\:Bounds, Bounds").attr("width"));
 		if (myX > maxX) {maxX = myX;}
 
-		myY = parseInt($(this).find("omgdc\\:Bounds, Bounds").attr("y")) + parseInt($(this).find("omgdc\\:Bounds, Bounds").attr("height"));
+		myY = parseInt($(this).find("omgdc\\:Bounds, dc\\:Bounds, Bounds").attr("y")) + parseInt($(this).find("omgdc\\:Bounds, dc\\:Bounds, Bounds").attr("height"));
 		if (myY > maxY) {maxY = myY;}
 	});
 	
