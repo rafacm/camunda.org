@@ -1,0 +1,233 @@
+<section id="xxx">
+
+<div class="page-header">
+      <h1>Contextual Process Execution with CDI</h1>
+</div>
+  
+<div class="row-fluid">
+  <div class="span9">
+      <p>
+        In this section we briefly look at the contextual process execution model used by the activiti cdi extension. A BPMN business process is typically a long-running interaction, comprised of both user and system tasks. At runtime, a process is split-up into a set of individual units of work, performed by users and/or application logic. In activiti-cdi, a process instance can be associated with a cdi scope, the association representing a unit of work. This is particularly useful, if a unit of work is complex, for instance if the implementation of a UserTask is a complex sequence of different forms and "non-process-scoped" state needs to be kept during this interaction. In the default configuration, process instances are associated with the "broadest" active scope, starting with the conversation and falling back to the request if the conversation context is not active. 
+      </p>
+    </div>
+    <div class="span3">
+      <h3>On this page</h3>
+      <ul>            
+          <li>Associating a Conversation with a Process Instance</li>
+          <li>Declaratively controlling the Process</li>
+          <li>Referencing Beans from the Process</li>
+          <li>Working with @BusinessProcessScoped beans</li>
+          <li>Injecting Process Variables</li>
+          <li>Receiving Process Events</li>
+          <li>Additional Features</li>
+      </ul>
+    </div>
+</div>
+  
+
+
+
+
+<h1>Associating a Conversation with a Process Instance</h1>
+<p>
+When resolving @BusinessProcessScoped beans, or injecting process variables, we rely on an existing association between an active cdi scope and a process instance. camunda-engine-cdi provides the org.camunda.bpm.engine.cdi.BusinessProcess bean for controlling the association, most prominently:
+<ul>
+    <li>the startProcessBy*(...)-methods, mirroring the respective methods exposed by the activiti RuntimeService allowing to start and subsequently associating a business process,</li>
+    <li>resumeProcessById(String processInstanceId), allowing to associate the process instance with the provided id,</li>
+    <li>resumeTaskById(String taskId), allowing to associate the task with the provided id (and by extension, the corresponding process instance).</li>
+</ul>
+
+Once a unit of work (for example a UserTask) is completed, the completeTask() method can be called to disassociate the conversation/request from the process instance. This signals activiti that the current task is completed and makes the process instance proceed.
+</p>
+
+<p>
+Note that the BusinessProcess-bean is a @Named bean, which means that the exposed methods can be invoked using expression language, for example from a JSF page. The following JSF2 snippet begins a new conversation and associates it with a user task instance, the id of which is passed as a request parameter (e.g. pageName.jsf?taskId=XX):
+
+<div class="app-source" app-source-no-tabs="cdi1"></div>
+<script type="text/xml" id="cdi1">   
+<f:metadata>
+<f:viewParam name="taskId" />
+<f:event type="preRenderView" listener="#{businessProcess.startTask(taskId, true)}" />
+</f:metadata>
+</script>
+
+
+
+
+
+<h1>Declaratively controlling the Process</h1>
+<p>
+Activiti-cdi allows declaratively starting process instances and completing tasks using annotations. The @org.camunda.bpm.engine.cdi.annotation.StartProcess annotation allows to start a process instance either by "key" or by "name". Note that the process instance is started after the annotated method returns. Example:
+
+<div class="app-source" app-source-no-tabs="cdi2"></div>
+<script type="text/xml" id="cdi2">   
+@StartProcess("authorizeBusinessTripRequest")
+public String submitRequest(BusinessTripRequest request) {
+        // do some work
+        return "success";
+}               
+</script>
+                
+
+Depending on the configuration of activiti, the code of the annotated method and the starting of the process instance will be combined in the same transaction. The @org.camunda.bpm.engine.cdi.annotation.CompleteTask-annotation works in the same way:
+
+<div class="app-source" app-source-no-tabs="cdi3"></div>
+<script type="text/xml" id="cdi3">   
+@CompleteTask(endConversation=false)
+public String authorizeBusinessTrip() {
+        // do some work
+        return "success";
+}
+</script>
+
+The @CompleteTask annotation offers the possibility to end the current conversation. The default behavior is to end the conversation after the call to activiti returns. Ending the conversation can be disabled, as shown in the example above.
+</p>
+
+
+
+<h1>Referencing Beans from the Process</h1>
+<p>
+Activiti-cdi exposes CDI beans to activiti El, using a custom resolver. This makes it possible to reference beans from the process:
+
+<div class="app-source" app-source-no-tabs="cdi4"></div>
+<script type="text/xml" id="cdi4">   
+<userTask id="authorizeBusinessTrip" name="Authorize Business Trip"                      
+                        activiti:assignee="#{authorizingManager.account.username}" />
+</script>
+
+Where "authorizingManager" could be a bean provided by a producer method:
+
+<div class="app-source" app-source-no-tabs="cdi5"></div>
+<script type="text/xml" id="cdi5">   
+@Inject @ProcessVariable Object businessTripRequesterUsername;
+
+@Produces
+@Named
+public Employee authorizingManager() {
+        TypedQuery<Employee> query = entityManager.createQuery("SELECT e FROM Employee e WHERE e.account.username='"
+                + businessTripRequesterUsername + "'", Employee.class);
+        Employee employee = query.getSingleResult();
+        return employee.getManager();
+}
+</script>
+
+We can use the same feature to call a business method of an EJB in a service task, using the activiti:expression="myEjb.method()"-extension. Note that this requires a @Named-annotation on the MyEjb-class.
+
+</p>
+
+
+
+
+
+<h1>Working with @BusinessProcessScoped beans</h1>
+Using activiti-cdi, the lifecycle of a bean can be bound to a process instance. To this extend, a custom context implementation is provided, namely the BusinessProcessContext. Instances of BusinessProcessScoped beans are stored as process variables in the current process instance. BusinessProcessScoped beans need to be PassivationCapable (for example Serializable). The following is an example of a process scoped bean:
+
+<div class="app-source" app-source-no-tabs="cdi6"></div>
+<script type="text/xml" id="cdi6">   
+@Named
+@BusinessProcessScoped
+public class BusinessTripRequest implements Serializable {
+        private static final long serialVersionUID = 1L;
+        private String startDate;
+        private String endDate;
+        // ...
+}
+</script>
+
+Sometimes, we want to work with process scoped beans, in the absence of an association with a process instance, for example before starting a process. If no process instance is currently active, instances of BusinessProcessScoped beans are temporarily stored in a local scope (I.e. the Conversation or the Request, depending on the context. If this scope is later associated with a business process instance, the bean instances are flushed to the process instance.
+
+
+
+
+<h1>Injecting Process Variables</h1>
+
+Process variables are available for injection. Activiti-CDI supports
+<ul>
+    <li>type-safe injection of @BusinessProcessScoped beans using @Inject [additional qualifiers] Type fieldName</li>
+    <li>unsafe injection of other process variables using the @ProcessVariable(name?) qualifier:
+<div class="app-source" app-source-no-tabs="cdi7"></div>
+<script type="text/xml" id="cdi7">   
+    @Inject @ProcessVariable Object accountNumber;
+    @Inject @ProcessVariable("accountNumber") Object account    
+</script>
+    </li>
+</ul>
+
+In order to reference process variables using EL, we have similar options:
+
+<ul>
+    <li>@Named @BusinessProcessScoped beans can be referenced directly,</li>
+    <li>other process variables can be referenced using the ProcessVariables-bean:
+<div class="app-source" app-source-no-tabs="cdi8"></div>
+<script type="text/xml" id="cdi8">   
+    #{processVariables['accountNumber']}
+</script>
+    </li>
+</ul>
+
+
+
+
+<h1>Receiving Process Events</h1>
+
+Activiti can be hooked-up to the CDI event-bus. This allows us to be notified of process events using standard CDI event mechanisms. In order to enable CDI event support for activiti, enable the corresponding parse listener in the configuration:
+
+<div class="app-source" app-source-no-tabs="cdi9"></div>
+<script type="text/xml" id="cdi9">   
+<property name="postBpmnParseHandlers">
+        <list>
+                <bean class="org.camunda.bpm.engine.cdi.impl.event.CdiEventSupportBpmnParseHandler" />
+        </list>
+</property>
+</script>
+
+Now activiti is configured for publishing events using the CDI event bus. The following gives an overview of how process events can be received in CDI beans. In CDI, we can declaratively specify event observers using the @Observes-annotation. Event notification is type-safe. The type of process events is org.camunda.bpm.engine.cdi.BusinessProcessEvent. The following is an example of a simple event observer method:
+
+<div class="app-source" app-source-no-tabs="cdi10"></div>
+<script type="text/xml" id="cdi10">   
+public void onProcessEvent(@Observes BusinessProcessEvent businessProcessEvent) {
+        // handle event
+}
+</script>
+
+This observer would be notified of all events. If we want to restrict the set of events the observer receives, we can add qualifier annotations:
+<ul>
+    <li>@BusinessProcess: restricts the set of events to a certain process definition. Example: @Observes @BusinessProcess("billingProcess") BusinessProcessEvent evt.</li>
+    <li>@StartActivity: restricts the set of events by a certain activity. For example: @Observes @StartActivity("shipGoods") BusinessProcessEvent evt is invoke whenever an activity with the id "shipGoods" is entered.</li>
+    <li>@EndActivity: restricts the set of events by a certain activity. For example: @Observes @EndActivity("shipGoods") BusinessProcessEvent evt is invoke whenever an activity with the id "shipGoods" is left.</li>
+    <li>@TakeTransition: restricts the set of events by a certain transition. </li>
+</ul>
+
+The qualifiers named above can be combined freely. For example, in order to receive all events generated when leaving the "shipGoods" activity in the "shipmentProcess", we could write the following observer method:
+
+<div class="app-source" app-source-no-tabs="cdi11"></div>
+<script type="text/xml" id="cdi11">   
+public void beforeShippingGoods(@Observes @BusinessProcess("shippingProcess") @EndActivity("shipGoods") BusinessProcessEvent evt) {
+        // handle event
+}               
+</script>
+                
+
+In the default configuration, event listeners are invoked synchronously and in the context of the same transaction. CDI transactional observers (only available in combination with JavaEE / EJB), allow to control when the event is handed to the observer method. Using transactional observers, we can for example assure that an observer is only notified if the transaction in which the event is fired succeeds:
+
+<div class="app-source" app-source-no-tabs="cdi12"></div>
+<script type="text/xml" id="cdi12">   
+public void onShipmentSuceeded(@Observes(during=TransactionPhase.AFTER_SUCCESS) @BusinessProcess("shippingProcess") @EndActivity("shipGoods") BusinessProcessEvent evt) {
+        // send email to customer.
+}               
+</script>
+
+
+
+
+
+
+<h1>Additional Features</h1>
+<ul>
+    <li>The ProcessEngine as well as the services are available for injection: @Inject ProcessEngine, RepositoryService, TaskService, ...</li>
+    <li>The current process instance and task can be injected: @Inject ProcessInstance, Task,</li>
+    <li>The current business key can be injected: @Inject @BusinessKey String businessKey,</li>
+    <li>The current process instance id be injected: @Inject @ProcessInstanceId String pid.</li>
+</ul>
+	
+</section>

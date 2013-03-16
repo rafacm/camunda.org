@@ -45,9 +45,8 @@ CAM_PAGES = [
   { section: "implementation-java", category: "Spring Integration", id: "impl-spring-expressions", name: "Expression Language", url: "/spring/expressions", keywords: "" },
   { section: "implementation-java", category: "Spring Integration", id: "impl-spring-testing", name: "Testing", url: "/spring/testing", keywords: "" },
   
-  { section: "implementation-java", category: "CDI Integration", id: "impl-cdi-contextual", name: "Contextual Process Execution", url: "/concepts/listeners", keywords: "" },
-  { section: "implementation-java", category: "CDI Integration", id: "impl-cdi-expressions", name: "Expression Language", url: "/concepts/listeners", keywords: "" },
-  { section: "implementation-java", category: "CDI Integration", id: "impl-cdi-testing", name: "Testing", url: "/concepts/listeners", keywords: "" },
+  { section: "implementation-java", category: "CDI Integration", id: "impl-cdi-engine-bootstrap", name: "Engine Startup in CDI", url: "/cdi/configuration-and-startup", keywords: "" },
+  { section: "implementation-java", category: "CDI Integration", id: "impl-cdi-contextual", name: "Contextual Process Execution", url: "/cdi/contextual-process-execution", keywords: "" },
   
   // engine bpmn documentation
 
