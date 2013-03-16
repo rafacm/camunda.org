@@ -917,14 +917,14 @@
     <text
        xml:space="preserve"
        style="font-size:40px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#ffffff;fill-opacity:1;stroke:none;font-family:Sans"
-       x="1247.87"
-       y="185.81693"
+       x="1257.87"
+       y="179.81693"
        id="text4037"
        sodipodi:linespacing="125%"><tspan
          sodipodi:role="line"
          id="tspan4039"
-         x="1247.87"
-         y="185.81693"
+         x="1257.87"
+         y="179.81693"
          style="font-size:32px;fill:#ffffff;fill-opacity:1">JBoss AS 7</tspan></text>
     <text
        xml:space="preserve"
@@ -952,7 +952,7 @@
          style="font-size:32px;fill:#ffffff;fill-opacity:1">Glassfish</tspan></text>
     <path
        style="fill:none;stroke:#ffffff;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
-       d="m 1235.4989,174.47673 -77.3196,0"
+       d="m 1245.4989,168.47673 -77.3196,0"
        id="path4085"
        inkscape:connector-curvature="0" />
     <path
