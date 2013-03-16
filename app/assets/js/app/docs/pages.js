@@ -42,6 +42,7 @@ CAM_PAGES = [
   { section: "implementation-java", category: "Programming", id: "impl-java-query-api", name: "Query API", url: "/engine/query-api", keywords: "query api" },
   { section: "implementation-java", category: "Programming", id: "impl-java-expressions", name: "Expression Language", url: "/engine/expressions", keywords: "expression language el uel juel" },
   { section: "implementation-java", category: "Programming", id: "impl-java-testing", name: "Testing", url: "/engine/testing", keywords: "testing" },
+  { section: "implementation-java", category: "Programming", id: "impl-java-process-visualization", name: "Process Diagram API", url: "/engine/process-diagram-api", keywords: "process diagram api visualization" },
 
   { section: "implementation-java", category: "Spring Integration", id: "impl-spring-engine-bootstrap", name: "Engine Startup via Spring", url: "/spring/configuration-and-startup", keywords: "spring engine startup bootstrap" },
   { section: "implementation-java", category: "Spring Integration", id: "impl-spring-expressions", name: "Expression Language", url: "/spring/expressions", keywords: "spring expression language el uel juel" },
