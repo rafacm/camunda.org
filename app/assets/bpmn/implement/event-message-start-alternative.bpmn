@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<bpmn2:definitions targetNamespace="http://activiti.org/bpmn" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:bpmn2="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xsi:schemaLocation="http://www.omg.org/spec/BPMN/20100524/MODEL BPMN20.xsd" id="_O4dBUIQMEeKz0a9S9nXFLQ">
+<bpmn2:definitions xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:bpmn2="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xsi:schemaLocation="http://www.omg.org/spec/BPMN/20100524/MODEL BPMN20.xsd" id="_O4dBUIQMEeKz0a9S9nXFLQ" targetNamespace="http://activiti.org/bpmn">
   <bpmn2:process id="Process_1" isExecutable="false">
     <bpmn2:startEvent id="StartEvent_1" name="order from&#xD;&#xA;webshop received">
       <bpmn2:outgoing>SequenceFlow_1</bpmn2:outgoing>
@@ -22,14 +22,14 @@
       <bpmn2:outgoing>SequenceFlow_5</bpmn2:outgoing>
     </bpmn2:exclusiveGateway>
     <bpmn2:sequenceFlow id="SequenceFlow_5" sourceRef="ExclusiveGateway_1" targetRef="CallActivity_1"/>
-    <bpmn2:callActivity id="CallActivity_1" name="Call Activity">
+    <bpmn2:endEvent id="EndEvent_1" name="order&#xD;&#xA;fulfilled">
+      <bpmn2:incoming>SequenceFlow_6</bpmn2:incoming>
+    </bpmn2:endEvent>
+    <bpmn2:callActivity id="CallActivity_1" name="order fullfillment">
       <bpmn2:incoming>SequenceFlow_5</bpmn2:incoming>
       <bpmn2:outgoing>SequenceFlow_6</bpmn2:outgoing>
     </bpmn2:callActivity>
     <bpmn2:sequenceFlow id="SequenceFlow_6" name="" sourceRef="CallActivity_1" targetRef="EndEvent_1"/>
-    <bpmn2:endEvent id="EndEvent_1" name="order&#xD;&#xA;fulfilled">
-      <bpmn2:incoming>SequenceFlow_6</bpmn2:incoming>
-    </bpmn2:endEvent>
   </bpmn2:process>
   <bpmndi:BPMNDiagram id="BPMNDiagram_1">
     <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="Process_1">
@@ -89,14 +89,14 @@
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNShape id="_BPMNShape_EndEvent_41" bpmnElement="EndEvent_1">
-        <dc:Bounds height="36.0" width="36.0" x="550.0" y="102.0"/>
+        <dc:Bounds height="36.0" width="36.0" x="554.0" y="102.0"/>
         <bpmndi:BPMNLabel>
-          <dc:Bounds height="38.0" width="45.0" x="546.0" y="143.0"/>
+          <dc:Bounds height="38.0" width="45.0" x="550.0" y="143.0"/>
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNEdge id="BPMNEdge_SequenceFlow_6" bpmnElement="SequenceFlow_6" sourceElement="_BPMNShape_CallActivity_5" targetElement="_BPMNShape_EndEvent_41">
         <di:waypoint xsi:type="dc:Point" x="500.0" y="120.0"/>
-        <di:waypoint xsi:type="dc:Point" x="550.0" y="120.0"/>
+        <di:waypoint xsi:type="dc:Point" x="554.0" y="120.0"/>
         <bpmndi:BPMNLabel>
           <dc:Bounds height="6.0" width="6.0" x="517.0" y="120.0"/>
         </bpmndi:BPMNLabel>
