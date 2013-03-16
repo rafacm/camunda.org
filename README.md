@@ -52,11 +52,11 @@ Implement
   * Landing page: Add Links, comment „how does it work auskommentieren“ - Daniel
   * Complete "Getting started" - Daniel
   * BPMN 2.0 Reference rename packages and fix dead Links 
-    * Link has changed to http://localhost:8000/app/implement-bpmn.html
+    * ~~Link has changed to http://localhost:8000/app/implement-bpmn.html~~
     * directive app-source (fix line numbers)
     * ~~(BPMN symbol reference)~~ (won't fix)
   * Java Reference
-    * Add http://localhost:8000/app/implement-java.html to menu and footer  (Bernd)
+    * ~~Add http://localhost:8000/app/implement-java.html to menu and footer  (Bernd)~~
     * Add Process Diagram API Link
     * Add Deployment Infos (skipped from user guide till now)
     * Add ProcessApplication development Reference (-> Daniel)
