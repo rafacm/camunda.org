@@ -17,27 +17,29 @@
 
     $script([    
       'http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js',             
-      'http://ajax.googleapis.com/ajax/libs/angularjs/1.0.1/angular.min.js',         
-      ], function() {
-        $script([
-          'lib/bootstrap/bootstrap.min',   
-          'lib/angular/angular-resource.min',
-          'lib/angular/angular-bootstrap.min',
-          'app/app',
-          'app/directives/ngmif',
-          'app/directives/focused',
-          'app/docs/docs',
-          'app/docs/pages'          
+      'http://ajax.googleapis.com/ajax/libs/angularjs/1.0.1/angular.min.js',   
+    ], function() {
+      $script([                      
+        'lib/bootstrap/bootstrap.min',       
+        'lib/angular/angular-resource.min',
+        'lib/angular/angular-bootstrap.min',
+        'app/app'
         ], function() {
-          
-          angular.bootstrap(document, ['camundaorg']);
+          $script([                    
+            'app/directives/ngmif',
+            'app/directives/focused',     
+          ], function() {
+            
+            angular.bootstrap(document, ['camundaorg']);
 
-          // post app bootstrap
-          $script([     
-            'lib/analytics/analytics',
-          ]);
-        });
-    });
+            // post app bootstrap
+            $script([     
+              'lib/analytics/analytics',
+            ]);
+          });
+
+      });      
+  });
   </script>
 
   <!-- loads all stylesheets -->

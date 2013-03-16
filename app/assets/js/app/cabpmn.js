@@ -111,19 +111,19 @@ var endEventStyle = {
   
   function bpmn (diagram, container) {
 
-	var paper = Raphael(container.get(0), "100%");
+	var paper = Raphael(container[0], "100%");
 
 	$.get("../app/assets/bpmn/" + diagram + ".bpmn", function(data){
 		parseBpmnXml(data, paper, container);
 	});
 
-	caBpmnPapers[container.get(0).id] = paper;
+	caBpmnPapers[container[0].id] = paper;
 
 	}
 
   function bpmnDirect (xml, container) {
 
-	var paper = Raphael(container.get(0), "100%");
+	var paper = Raphael(container[0], "100%");
 	parseBpmnXml(xml, paper, container);
 
 	return paper;
@@ -214,7 +214,7 @@ var endEventStyle = {
 		}		
 	}
 
-	var paper = Raphael(container.get(0), element.width+paperBufferX, element.height+paperBufferY);	
+	var paper = Raphael(container[0], element.width+paperBufferX, element.height+paperBufferY);	
 	
 	var raphaelElementId = elementSVG(element, paper);
 	

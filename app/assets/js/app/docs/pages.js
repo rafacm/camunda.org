@@ -33,17 +33,18 @@ CAM_PAGES = [
   { section: "design", category: "Events", id: "design-eventcancel", name: "Cancel", url: "/events/cancel", keywords: "cancel event" },
 
   // engine api documentation
-  { section: "implementation-java", category: "Introduction", id: "impl-java-engine-bootstrap", name: "Engine Configuration and Startup", url: "/concepts/custom-extensions", keywords: "" },
-  { section: "implementation-java", category: "Introduction", id: "impl-java-services", name: "Services", url: "/concepts/listeners", keywords: "" },
-  { section: "implementation-java", category: "Introduction", id: "impl-java-query-api", name: "Query API", url: "/concepts/listeners", keywords: "" },
-  { section: "implementation-java", category: "Introduction", id: "impl-java-expressions", name: "Expression Language", url: "/concepts/listeners", keywords: "" },
-  { section: "implementation-java", category: "Introduction", id: "impl-java-testing", name: "Testing", url: "/concepts/listeners", keywords: "" },
+  { section: "implementation-java", category: "Bootstrapping", id: "impl-java-engine-bootstrap", name: "Startup and Configuration Options", url: "/engine/configuration-and-startup", keywords: "" },
+  { section: "implementation-java", category: "Bootstrapping", id: "impl-java-engine-bootstrap", name: "Container Integration", url: "/concepts/custom-extensions", keywords: "" },
+  
+  { section: "implementation-java", category: "Programming", id: "impl-java-services", name: "Services", url: "/engine/services", keywords: "" },
+  { section: "implementation-java", category: "Programming", id: "impl-java-query-api", name: "Query API", url: "/engine/query-api", keywords: "" },
+  { section: "implementation-java", category: "Programming", id: "impl-java-expressions", name: "Expression Language", url: "/engine/expressions", keywords: "" },
+  { section: "implementation-java", category: "Programming", id: "impl-java-testing", name: "Testing", url: "/engine/testing", keywords: "" },
 
-  { section: "implementation-java", category: "Spring Integration", id: "impl-spring-engine-bootstrap", name: "Engine Configuration and Startup", url: "/concepts/custom-extensions", keywords: "" },
+  { section: "implementation-java", category: "Spring Integration", id: "impl-spring-engine-bootstrap", name: "Engine Startup via Spring", url: "/concepts/custom-extensions", keywords: "" },
   { section: "implementation-java", category: "Spring Integration", id: "impl-spring-expressions", name: "Expression Language", url: "/concepts/listeners", keywords: "" },
   { section: "implementation-java", category: "Spring Integration", id: "impl-spring-testing", name: "Testing", url: "/concepts/listeners", keywords: "" },
   
-  { section: "implementation-java", category: "CDI Integration", id: "impl-cdi-engine-bootstrap", name: "Engine Configuration and Startup", url: "/concepts/listeners", keywords: "" },
   { section: "implementation-java", category: "CDI Integration", id: "impl-cdi-contextual", name: "Contextual Process Execution", url: "/concepts/listeners", keywords: "" },
   { section: "implementation-java", category: "CDI Integration", id: "impl-cdi-expressions", name: "Expression Language", url: "/concepts/listeners", keywords: "" },
   { section: "implementation-java", category: "CDI Integration", id: "impl-cdi-testing", name: "Testing", url: "/concepts/listeners", keywords: "" },
