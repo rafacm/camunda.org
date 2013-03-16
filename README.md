@@ -100,8 +100,8 @@ Others
    * IEx >= 9 (Number guessing, ~~Meetings(Jakob)~~, Renderer?)
    * IEx < 9 
    * Mobile
- * Menubar resizing Issue! (Daniel)
+ * ~~Menubar resizing Issue! (Daniel)~~
 
- * Fix Javascript loading issue
+ * ~~Fix Javascript loading issue~~
  * Blog Post: Activiti Migration Guide
  
