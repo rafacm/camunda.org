@@ -9,7 +9,7 @@
 <p>
  The Event-based Gateway allows to take a decision based on events. Each outgoing sequence flow of the gateway needs to be connected to an intermediate catching event. When process execution reaches an Event-based Gateway, the gateway acts like a wait state: execution is suspended. In addition, for each outgoing sequence flow, an event subscription is created.
 </p>
-<p>
+
 Note the sequence flows running out of an Event-based Gateway are different from ordinary sequence flows. These sequence flows are never actually "executed". On the contrary, they allow the process engine to determine which events an execution arriving at an Event-based Gateway needs to subscribe to. The following restrictions apply:
 <ul>
     <li>An Event-based Gateway must have two or more outgoing sequence flows.</li>
@@ -17,9 +17,8 @@ Note the sequence flows running out of an Event-based Gateway are different from
     <li>An intermediateCatchEvent connected to an Event-based Gateway must have a single incoming sequence flow. </li>
 </ul>
 The following process is an example of a process with an Event-based Gateway. When the execution arrives at the Event-based Gateway, process execution is suspended. In addition, the process instance subscribes to the alert signal event and created a timer which fires after 10 minutes. This effectively causes the process engine to wait for ten minutes for a signal event. If the signal occurs within 10 minutes, the timer is cancelled and execution continues after the signal. If the signal is not fired, execution continues after the timer and the signal subscription is cancelled. 
-      </p>
 
-      <div id="orgw" style="position:relative" data-bpmn-src="implement/event-based-gateway" />
+      <div id="orgw" style="position:relative" data-bpmn-src="implement/event-based-gateway" > </div>
 
     </div>
     <div class="span3">
@@ -34,9 +33,8 @@ The following process is an example of a process with an Event-based Gateway. Wh
     </div>
   </div>
   
-  <p>
-  <div class="app-source" app-source-no-tabs="or-gateway" ></div>
-  <script type="text/xml" id="or-gateway">
+<div class="app-source" app-source-no-tabs="or-gateway" ></div>
+<script type="text/xml" id="or-gateway">
 <definitions>
 <signal id="alertSignal" name="alert" />
 <process id="catchSignal">
@@ -72,8 +70,7 @@ The following process is an example of a process with an Event-based Gateway. Wh
   <endEvent id="end" />
 </process>
 </definitions>
-  </script>
+</script>
 	
-	</p>
 	
 </section>

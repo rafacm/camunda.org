@@ -7,6 +7,7 @@
 
       <p>
 When integrating with Spring, business processes can be tested very easily (in scope 2, see <a href="implement-java.html#/engine/testing">Testing Scopes</a>) using the standard camunda testing facilities. The following example shows how a business process is tested in a typical Spring-based unit test:
+</p>
 
     
 <div class="app-source" app-source-no-tabs="springTest1"></div>
@@ -39,18 +40,14 @@ public class MyBusinessProcessTest {
 }      
 </script>
     
-
 Note that for this to work, you need to define a org.camunda.bpm.engine.test.ActivitiRule bean in the Spring configuration (which is injected by auto-wiring in the example above).
+
   <div class="app-source" app-source-no-tabs="springTest2" ></div>
   <script type="text/xml" id="springTest2"> 
 <bean id="activitiRule" class="org.camunda.bpm.engine.test.ActivitiRule">
   <property name="processEngine" ref="processEngine" />
 </bean>        
 </script>
-              
-      </p>
-
-  
 
 	
 </section>

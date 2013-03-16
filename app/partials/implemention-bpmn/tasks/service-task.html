@@ -8,15 +8,19 @@
   <div class="span9">
       <p>A service task is used to invoke services. In camunda this is done by calling Java code.</p>
 
-      <div id="service-task" style="position:relative" data-bpmn-src="implement/service-task" />
+      <div data-bpmn-symbol="servicetask"  data-bpmn-symbol-name="Service Task"> </div>
 
-      <p>There are 4 ways of declaring how to invoke Java logic:
+      There are 4 ways of declaring how to invoke Java logic:
       <ul >
           <li>Specifying a class that implements JavaDelegate or ActivityBehavior</li>
           <li>Evaluating an expression that resolves to a delegation object</li>
           <li>Invoking a method expression</li>
           <li>Evaluating a value expression</li>
       </ul>
+
+
+
+
     </div>
     <div class="span3">
       <h3>On this page</h3>
@@ -40,20 +44,21 @@
       </ul>      
     </div>
   </div>
-  
+ 
+<p>  
   To specify a class that is called during process execution, the fully qualified classname needs to be provided by the <code>activiti:class</code> attribute.
+</p>
 
-  <div class="app-source" app-source-no-tabs="service-task-delegate" ></div>
-  <script type="text/xml" id="service-task-delegate">
+<div class="app-source" app-source-no-tabs="service-task-delegate" ></div>
+<script type="text/xml" id="service-task-delegate">
 <serviceTask id="javaService" 
              name="My Java Service Task" 
              activiti:class="org.camunda.bpm.MyJavaDelegate" />
-	</script>
+</script>
 
 	<p>
-		See <a class="link" href="#bpmnJavaServiceTaskImplementation" title="Implementation">the implementation section</a> for more details on how to use such a class.
+		See the implementation section further down for more details on how to use such a class.
 	</p>
-
 	<p>
 		It is also possible to use an expression that resolves to an object.
 		This object must follow the same rules as objects that are created
@@ -65,11 +70,14 @@
     </script>
 
 
+  <p>
 		Here, the	<code>delegateExpression</code> is an expression that resolves to a bean implementing the <code>JavaDelegate</code>
 		interface. Beans can be resolved for example via CDI or Spring (see below).
 	</p>
 	<p>
 		To specify an expression that should be evaluated, use attribute <class>activiti:expression</class>.
+  </p>
+
     <div class="app-source" app-source-no-tabs="service-task-expression"></div>
     <script type="text/xml" id="service-task-expression">
 <serviceTask id="javaService" 
@@ -77,9 +85,13 @@
              activiti:expression="#{printer.printMessage()}" />
     </script>
 
+  <p>
 		Method <code>printMessage</code> (without parameters) will be called on the named bean called <code>printer</code>.
 	</p>
-	<p>It's also possible to pass parameters with an method used in the expression.
+	<p>
+    It's also possible to pass parameters with an method used in the expression.
+  </p>
+
     <div class="app-source" app-source-no-tabs="service-task-expression-params"></div>
     <script type="text/xml" id="service-task-expression-params">
 <serviceTask id="javaService" 
@@ -87,6 +99,7 @@
              activiti:expression="#{printer.printMessage(execution, myVar)}" />
     </script>
 
+  <p>
 		Method <code>printMessage</code> will be called on the object named <code>printer</code>. 
     The first parameter passed is the	<code>DelegateExecution</code>, which is available in the expression context by default available as
 		<code>execution</code>. The second parameter passed, is the value of the variable with name	<code>myVar</code>
@@ -95,6 +108,8 @@
 	<p>
 		To specify a UEL value expression that should be evaluated, use
 		attribute <span class="bold"><strong>activiti:expression</strong></span>.
+  </p>
+
     <div class="app-source" app-source-no-tabs="service-task-expression-value"></div>
     <script type="text/xml" id="service-task-expression-value">
 <serviceTask id="javaService" 
@@ -106,15 +121,14 @@
 	<p>
 		The getter method of property <code>ready</code>,	<code>getReady</code>	(without parameters), will be called on the named bean called
 		<code>split</code>. The named objects are resolved in the execution's process variables	and (if applicable) in the CDI or Spring context.
-
+  </p>
+  <p>
     Note that you can store the return value of the method in a process variable by specifying the <code>activiti:resultVariable</code>
 	</p>
 
-</section>
-<section id="implementation">
-  <div class="page-header" >
-    <h1>Implementation</h1>
-  </div>  
+
+  <h1>Implementation</h1>
+
 	<p>
 		To implement a class that can be called during process execution, this
 		class needs to implement the <code>org.camunda.bpm.engine.delegate.JavaDelegate</code>
@@ -135,6 +149,7 @@
 			href="http://www.camunda.org/javadocs/org/camunda/bpm/engine/delegate/DelegateExecution.html"
 			target="_top">DelegateExecution</a> interface (click on the link for
 		a detailed Javadoc of its operations).
+  </p>
 
     <div class="app-source" app-source-no-tabs="java-delegate-example"></div>
     <script type="text/xml" id="java-delegate-example">
@@ -149,14 +164,13 @@ public class ToUppercase implements JavaDelegate {
 }
     </script>
 
+  <p>
 		Note: there will be <strong>only one instance of that Java class created for the serviceTask it is
     defined on</strong>. All process-instances share the same class instance that
 		will be used to call <class>execute(DelegateExecution)</class>.
 		This means that the class must not use any member variables and must
 		be thread-safe, since it can be executed simultaneously from different
-		threads. This also influences the way <a class="link"
-			href="#serviceTaskFieldInjection" title="Field Injection">Field
-			injection</a> is handled.
+		threads. This also influences the way Field injection is handled.
 	</p>
 	<p>
 		The classes that are referenced in the process definition (i.e. by using
@@ -179,9 +193,14 @@ public class ToUppercase implements JavaDelegate {
 		you're doing.
 	</p>
 
+
+
+
+
+
   <h2>Field Injection</h2>
 
-	<p>It's possible to inject values into the fields of the delegated
+	It's possible to inject values into the fields of the delegated
 		classes. The following types of injection are supported:
 
 		<ul>
@@ -189,6 +208,7 @@ public class ToUppercase implements JavaDelegate {
 			<li><p>Expressions</p></li>
 		</ul>
 
+  <p>
 		If available, the value is injected through a public setter method on
 		your delegated class, following the Java Bean naming conventions (e.g.
 		field <code>fistName</code>	has setter <code>setFirstName(...)</code>).
@@ -204,6 +224,7 @@ public class ToUppercase implements JavaDelegate {
     Field injection is supported when using the <class>class</class> attribute. Note that we need
 		to declare a <code>extensionElements</code> XML element before the actual field injection
 		declarations, which is a requirement of the BPMN 2.0 XML Schema.
+  </p>
 
     <div class="app-source" app-source-no-tabs="service-task-field-injection"></div>
     <script type="text/xml" id="service-task-field-injection">
@@ -216,6 +237,7 @@ public class ToUppercase implements JavaDelegate {
 </serviceTask>          
     </script>
 
+  <p>
 		The class <code>ToUpperCaseFieldInjected</code>	has a field
 		<code>text</code>	which is of type <code>org.camunda.bpm.engine.delegate.Expression</code>.
     When calling <code>text.getValue(execution)</code>, the configured string value
@@ -224,6 +246,7 @@ public class ToUppercase implements JavaDelegate {
 	<p>
 		Alternatively, for longs texts (e.g. an inline e-mail) the <cope>activiti:string</code> sub element can be
 		used:
+  </p>
 
     <div class="app-source" app-source-no-tabs="service-task-field-injection-2"></div>
     <script type="text/xml" id="service-task-field-injection-2">
@@ -239,7 +262,8 @@ public class ToUppercase implements JavaDelegate {
   </extensionElements>        
 </serviceTask>        
     </script>
-  </p>
+  
+
 	<p>
 		To inject values that are dynamically resolved at runtime, expressions
 		can be used. Those expressions can use process variables, CDI or Spring
@@ -249,6 +273,7 @@ public class ToUppercase implements JavaDelegate {
 		<code>org.camunda.bpm.engine.delegate.Expression</code>
 		which can be evaluated/invoked using the <code>DelegateExecution</code>
 		passed in the	<code>execute</code> method.
+  </p>
 
     <div class="app-source" app-source-no-tabs="service-task-field-injection-3"></div>
     <script type="text/xml" id="service-task-field-injection-3">
@@ -266,10 +291,10 @@ public class ToUppercase implements JavaDelegate {
 </ serviceTask>
     </script>
 
-  </p>
 	<p>
 		The example class below uses the injected expressions and resolves
 		them using the current <code>DelegateExecution</code>.
+  </p>
 
     <div class="app-source" app-source-no-tabs="service-task-field-injection-4"></div>
     <script type="text/xml" id="service-task-field-injection-4">
@@ -287,20 +312,28 @@ public class ReverseStringsFieldInjected implements JavaDelegate {
   }
 }
     </script>
+
+
+	<p>
+    Alternatively, you can also set the expressions as an attribute instead of a child-element, to make the XML less verbose.
   </p>
-	<p>Alternatively, you can also set the expressions as an attribute instead of a child-element, to make the XML less verbose.
 
     <div class="app-source" app-source-no-tabs="service-task-field-injection-5"></div>
     <script type="text/xml" id="service-task-field-injection-5">
 <activiti:field name="text1" expression="${genderBean.getGenderString(gender)}" />
 <activiti:field name="text1" expression="Hello ${gender == 'male' ? 'Mr.' : 'Mrs.'} ${name}" />
     </script>
-  </p>
+
 	<p>
 		<strong> Since the Java class instance is reused, the injection only happens once, when the
     serviceTask is called the first time. When the fields are altered by your code, the values won't be re-injected so you should treat them
 		as immutable and don't make any changes to them.</strong>
 	</p>
+
+
+
+
+
 
   <h2>Service task results</h2>
 
@@ -313,6 +346,7 @@ public class ReverseStringsFieldInjected implements JavaDelegate {
 		specific process variable will be overwritten by the result value of
 		the service execution. When not specifying a result variable name, the
 		service execution result value gets ignored.
+  </p>
 
     <div class="app-source" app-source-no-tabs="service-task-results"></div>
     <script type="text/xml" id="service-task-results">
@@ -321,6 +355,7 @@ public class ReverseStringsFieldInjected implements JavaDelegate {
              activiti:resultVariable="myVar" />
     </script>
 
+  <p>
 		In the example above, the result of the service execution (the return
 		value of the <code>doSomething()</code> method invocation on object 'myService') is set to the process variable named
     <code>myVar</code> after the service execution completes.

@@ -12,13 +12,15 @@
       </p>
       <p>
 The following is an example of two separate processes communicating using signals. The first process is started if an insurance policy is updated or changed. After the changes have been reviewed by a human participant, a signal event is thrown, signaling that a policy has changed:
+      </p>
 
-      <div id="bpmn1" style="position:relative" data-bpmn-src="implement/event-signal-throwing" />
+      <div id="bpmn1" style="position:relative" data-bpmn-src="implement/event-signal-throwing" > </div>
 
 This event can now be caught by all process instances which are interested. The following is an example of a process subscribing to the event.
 
-      <div id="bpmn2" style="position:relative" data-bpmn-src="implement/event-signal-catching" />
+      <div id="bpmn2" style="position:relative" data-bpmn-src="implement/event-signal-catching" > </div>
 
+      <p>
 Note: it is important to understand that a signal event is broadcast to all active handlers. This means in the case of the example given above, that all instances of the process catching the signal would receive the event. 
       </p>
 
@@ -39,11 +41,11 @@ Note: it is important to understand that a signal event is broadcast to all acti
     </div>
   </div>
   
-  <p>
 
 <h1>Signal Event Definition</h1>
-<P>
+<p>
 A signal event definition is declared using the signalEventDefinition element. The attribute signalRef references a signal element declared as a child element of the definitions root element. The following is an excerpt of a process where a signal event is thrown and caught by intermediate events. The signalEventDefinitions reference the 'global' signal element.
+</p>
 
 <div class="app-source" app-source-no-tabs="signal1"></div>
 <script type="text/xml" id="signal1">   
@@ -66,9 +68,11 @@ A signal event definition is declared using the signalEventDefinition element. T
 </definitions>
 </script>
 
+<p>
 <strong>Note:</strong> contrary to other events like an error event, a signal is not consumed if it is caught. If you have two active signal boundary events catching the same signal event, both boundary events are triggered, event if they are part of different process instances.
-
 </p>
+
+
 
 
 
@@ -76,6 +80,7 @@ A signal event definition is declared using the signalEventDefinition element. T
 <h1>Throwing Signal Events via API</h1>
 <p>
 A signal can either be thrown by a process instance using a bpmn construct or programmatically using java API. The following methods on the org.camunda.bpm.engine.RuntimeService can be used to throw a signal programmatically:
+</p>
 
 <div class="app-source" app-source-no-tabs="signal2"></div>
 <script type="text/xml" id="signal2">   
@@ -83,10 +88,11 @@ RuntimeService.signalEventReceived(String signalName);
 RuntimeService.signalEventReceived(String signalName, String executionId);  
 </script>
 
+<p>
 The difference between signalEventReceived(String signalName); and signalEventReceived(String signalName, String executionId); is that the first method throws the signal globally to all subscribed handlers (broadcast semantics) and the second method delivers the signal to a specific execution only.
-
+</p>
+<p>
 Note: the signal event does not perform any kind of correlation to a specific process instance. On the contrary, it is broadcast to all process instances. If you need to deliver a signal to a specific process instance only, do not use the throwing signal event but perform correlation manually and use signalEventReceived(String signalName, String executionId) using the appropriate query mechanisms.   
-
 </p>
 
 
@@ -96,6 +102,7 @@ Note: the signal event does not perform any kind of correlation to a specific pr
 <h1>Querying for Signal Event subscriptions</h1>
 <p>
 It is possible to query for all executions which have subscribed to a specific signal event:
+</p>
 
 <div class="app-source" app-source-no-tabs="signal3"></div>
 <script type="text/xml" id="signal3">   
@@ -104,6 +111,7 @@ It is possible to query for all executions which have subscribed to a specific s
       .list();
 </script>             
 
+<p>
 We could then use the signalEventReceived(String signalName, String executionId) method to deliver the signal to these executions.
 </p>
 
@@ -123,6 +131,7 @@ Note: contrary to other events like the boundary error event, a boundary signal 
 
 <p>
 This is straightforward in the XML:
+</p>
 
 <div class="app-source" app-source-no-tabs="signal4"></div>
 <script type="text/xml" id="signal4">   
@@ -138,8 +147,6 @@ or
 </script>
 
                         
-</p>
-
 
 
 
@@ -150,11 +157,11 @@ or
 <h1>Signal Intermediate Throwing Event</h1>
 <p>
 An intermediate throwing signal event throws a signal event for a defined signal.
-
-<div class="bpmnContainer"  data-bpmn-symbol="intermediatethrowevent/signal" />
 </p>
 
-<p>
+<div class="bpmnContainer"  data-bpmn-symbol="intermediatethrowevent/signal" > </div>
+
+
 The signal is a broadcast to all active handlers (i.e. all catching signal events). Signals can be published synchronous or asynchronous.
 <ul>
     <li>In the default configuration, the signal is delivered synchronously. This means that the throwing process instance waits until the signal is delivered to all catching process instances. The catching process instances are also notified in the same transaction as the throwing process instance, which means that if one of the notified instances produces a technical error (throws an exception), all involved instances fail.</li>
@@ -162,7 +169,9 @@ The signal is a broadcast to all active handlers (i.e. all catching signal event
     <li>A signal can also be delivered asynchronously. In that case it is determined which handlers are active at the time the throwing signal event is reached. For each active handler, an asynchronous notification message (Job) is stored and delivered by the JobExecutor. </li>
 </ul>
 
+<p>
 A signal intermediate event is defined as a intermediate throwing event. The specific type sub-element is in this case a signalEventDefinition element.
+</p>
 
 <div class="app-source" app-source-no-tabs="signal-throw1"></div>
 <script type="text/xml" id="signal-throw1">   
@@ -180,9 +189,6 @@ An asynchronous signal event would look like this:
         <signalEventDefinition signalRef="newCustomerSignal" activiti:async="true" />
 </intermediateThrowEvent>
 </script>
-
-
-</p>     
 
 	
 </section>

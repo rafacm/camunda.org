@@ -35,9 +35,10 @@ CAM_PAGES = [
   // engine api documentation
   { section: "implementation-java", category: "Introduction", id: "impl-java-engine-bootstrap", name: "Startup and Configuration Options", url: "/engine/configuration-and-startup", keywords: "engine startup configuration bootstrap overview ProcessEngineConfiguration" },
   { section: "implementation-java", category: "Introduction", id: "impl-java-engine-bootstrap", name: "Container Integration", url: "/engine/container-integration", keywords: "container integration jboss glassfish tomcat" },
-  { section: "implementation-java", category: "Introduction", id: "impl-concepts", name: "Process Applications", url: "/engine/process-application", keywords: "process application" },
-  { section: "implementation-java", category: "Introduction", id: "impl-concepts", name: "Important Concepts", url: "/engine/concepts", keywords: "concepts" },
-  
+  { section: "implementation-java", category: "Introduction", id: "impl-pa", name: "Process Applications", url: "/engine/process-application", keywords: "process application" },
+  { section: "implementation-java", category: "Introduction", id: "impl-concepts", name: "Important Concepts", url: "/engine/concepts", keywords: "concepts" },  
+  { section: "implementation-java", category: "Introduction", id: "impl-activiti-migration", name: "Activiti Migration Guide", url: "/engine/activiti-migration-guide", keywords: "activiti migration fox" },
+
   { section: "implementation-java", category: "Programming", id: "impl-java-services", name: "Services", url: "/engine/services", keywords: "services api" },
   { section: "implementation-java", category: "Programming", id: "impl-java-query-api", name: "Query API", url: "/engine/query-api", keywords: "query api" },
   { section: "implementation-java", category: "Programming", id: "impl-java-expressions", name: "Expression Language", url: "/engine/expressions", keywords: "expression language el uel juel" },
@@ -76,7 +77,7 @@ CAM_PAGES = [
   { section: "implemention-bpmn", category: "Events", id: "timer-event", name: "Timer Event", url: "/events/timer-events", keywords: "events timer event" },
   { section: "implemention-bpmn", category: "Events", id: "error-event", name: "Error Event", url: "/events/error-events", keywords: "events error event" },
   { section: "implemention-bpmn", category: "Events", id: "signal-event", name: "Signal Event", url: "/events/signal-events", keywords: "events signal event" },
-  { section: "implemention-bpmn", category: "Events", id: "compensation-event", name: "Compensation Event", url: "/events/cancel-and-compensation-events", keywords: "events compensation event" },
+  { section: "implemention-bpmn", category: "Events", id: "compensation-event", name: "Cancel and Compensation Event", url: "/events/cancel-and-compensation-events", keywords: "events compensation event" },
 
   { section: "implemention-bpmn", category: "Subprocesses", id: "embedded-subprocess", name: "Embedded Subprocess", url: "/subprocesses/embedded-subprocess", keywords: "subprocesses embedded subprocess" },
   { section: "implemention-bpmn", category: "Subprocesses", id: "call-activity", name: "Call Activity", url: "/subprocesses/call-activity", keywords: "subprocesses call activity" },
