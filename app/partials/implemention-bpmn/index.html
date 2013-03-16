@@ -5,17 +5,15 @@
 </div>
 <p>
 This page gives you an overview of BPMN 2.0 elements and the current coverage of the process engine. 
+</p>
 
-
-  <div class="alert">
+<div class="alert">
     <strong>Heads up!</strong> 
     If you are unfamilliar with BPMN 2.0 you might want to check out our <a href="http://localhost:8000/app/design-tutorial.html">BPMN Tutorial</a> first.
-  </div>
-</p>
+</div>
 
-<p>
 <div class="label label-warning">The elements marked in orange are <strong>supported</strong>. Hover over the element to see from which version on they are supported.</div>
-</p>
+
  
 <div class="row-fluid">
 
@@ -150,8 +148,10 @@ This page gives you an overview of BPMN 2.0 elements and the current coverage of
 		<h2>Artifacts</h2>
 		<div class="row-fluid">
 			<div class="span6 bpmnContainer" data-bpmn-symbol="textannotation" data-bpmn-symbol-name="Text <br>Annotation">
+          <div title="since 7.0" id="1" ></div>
 			</div>
 			<div class="span6 bpmnContainer" data-bpmn-symbol="group" data-bpmn-symbol-name="Group">
+          <div title="since 7.0" id="1" ></div>
 			</div>
 		</div>
 	</div>
@@ -168,14 +168,15 @@ This page gives you an overview of BPMN 2.0 elements and the current coverage of
 
 
 
-<p>
 <h2>Events</h2>
+<p>
 
         In BPMN there are Start events, intermediate events, and end events. Those three event types can be catching and/or throwing. Intermediate events might be used as boundary events on tasks, then they can be interrupting or non-interrupting. This gives you a lot of flexibility to use events in your processes.
-
-        <div class="alert">
-          <strong>Heads up!</strong> For understanding the principle behavior of events in BPMN we recommend to check out <a href="design-reference.html#/design/events/basics">Events: Basic Concepts</a>.
-        </div>
+</p>
+<div class="alert">
+    <strong>Heads up!</strong>
+    For understanding the principle behavior of events in BPMN we recommend to check out <a href="design-reference.html#/events/basics">Events: Basic Concepts</a>.
+</div>
 
 	
       <table class="table table-bordered bpmn-events">
@@ -536,5 +537,5 @@ This page gives you an overview of BPMN 2.0 elements and the current coverage of
       </table>
 
 	
-	</p>
+
 </section>

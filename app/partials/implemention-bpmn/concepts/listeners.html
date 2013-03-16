@@ -41,108 +41,98 @@
   
     
 
-<section id="execution-listener">
 <h2>Execution Listener</h2>
-  <p>
 
-
-    Execution listeners allow you to execute external Java code or evaluate an expression when certain events occur during process execution. The events that can be captured are:
-    <ul>
+  Execution listeners allow you to execute external Java code or evaluate an expression when certain events occur during process execution. The events that can be captured are:
+  <ul>
         <li>Start and ending of a process instance.</li>
         <li>Taking a transition.</li>
         <li>Start and ending of an activity.</li>
         <li>Start and ending of a gateway.</li>
         <li>Start and ending of intermediate events.</li>
         <li>Ending an start event or starting an end event.</li>
-    </ul>
+  </ul>
 
-    The following process definition contains 3 execution listeners:
+  The following process definition contains 3 execution listeners:
 
-        <div class="app-source" app-source-no-tabs="listeners1"></div>
-        <script type="text/xml" id="listeners1">    
-      <process id="executionListenersProcess">
-      
-        <extensionElements>
-          <activiti:executionListener event="start" 
-              class="org.camunda.bpm.examples.bpmn.executionlistener.ExampleExecutionListenerOne"/>
-        </extensionElements>
-        
-        <startEvent id="theStart" />
-        <sequenceFlow sourceRef="theStart" targetRef="firstTask" />
-        
-        <userTask id="firstTask" />
-        <sequenceFlow sourceRef="firstTask" targetRef="secondTask">
-        <extensionElements>
-          <activiti:executionListener 
-              class="org.camunda.bpm.examples.bpmn.executionListener.ExampleExecutionListenerTwo" />
-        </extensionElements>
-        </sequenceFlow>
-        
-        <userTask id="secondTask" >
-        <extensionElements>
-          <activiti:executionListener expression="${myPojo.myMethod(execution.event)}" event="end" />
-        </extensionElements>
-        </userTask>
-        <sequenceFlow sourceRef="secondTask" targetRef="thirdTask" />
-           
-        <userTask id="thirdTask" />
-        <sequenceFlow sourceRef="thirdTask" targetRef="theEnd" />
+  <div class="app-source" app-source-no-tabs="listeners1"></div>
+  <script type="text/xml" id="listeners1">    
+<process id="executionListenersProcess">
 
-        <endEvent id="theEnd" />
-        
-      </process> 
-      </script>
+  <extensionElements>
+    <activiti:executionListener event="start" 
+        class="org.camunda.bpm.examples.bpmn.executionlistener.ExampleExecutionListenerOne"/>
+  </extensionElements>
+  
+  <startEvent id="theStart" />
+  <sequenceFlow sourceRef="theStart" targetRef="firstTask" />
+  
+  <userTask id="firstTask" />
+  <sequenceFlow sourceRef="firstTask" targetRef="secondTask">
+  <extensionElements>
+    <activiti:executionListener 
+        class="org.camunda.bpm.examples.bpmn.executionListener.ExampleExecutionListenerTwo" />
+  </extensionElements>
+  </sequenceFlow>
+  
+  <userTask id="secondTask" >
+  <extensionElements>
+    <activiti:executionListener expression="${myPojo.myMethod(execution.event)}" event="end" />
+  </extensionElements>
+  </userTask>
+  <sequenceFlow sourceRef="secondTask" targetRef="thirdTask" />
+     
+  <userTask id="thirdTask" />
+  <sequenceFlow sourceRef="thirdTask" targetRef="theEnd" />
 
-    The first execution listener is notified when the process starts. The listener is an external Java-class (like ExampleExecutionListenerOne) and should implement org.camunda.bpm.engine.delegate.ExecutionListener interface. When the event occurs (in this case end event) the method notify(ExecutionListenerExecution execution) is called.
+  <endEvent id="theEnd" />
+  
+</process> 
+  </script>
 
-        <div class="app-source" app-source-no-tabs="listeners2"></div>
-        <script type="text/xml" id="listeners2">
-    public class ExampleExecutionListenerOne implements ExecutionListener {
+  The first execution listener is notified when the process starts. The listener is an external Java-class (like ExampleExecutionListenerOne) and should implement org.camunda.bpm.engine.delegate.ExecutionListener interface. When the event occurs (in this case end event) the method notify(ExecutionListenerExecution execution) is called.
 
-      public void notify(ExecutionListenerExecution execution) throws Exception {
-        execution.setVariable("variableSetInExecutionListener", "firstValue");
-        execution.setVariable("eventReceived", execution.getEventName());
-      }
-    }
-        </script>
-    </p>
-    <p>
+  <div class="app-source" app-source-no-tabs="listeners2"></div>
+  <script type="text/xml" id="listeners2">
+public class ExampleExecutionListenerOne implements ExecutionListener {
+
+  public void notify(ExecutionListenerExecution execution) throws Exception {
+    execution.setVariable("variableSetInExecutionListener", "firstValue");
+    execution.setVariable("eventReceived", execution.getEventName());
+  }
+}
+  </script>
+
+  <p>
     It is also possible to use a delegation class that implements the <code>org.camunda.bpm.engine.delegate.JavaDelegate</code> interface. These delegation classes can then be reused in other constructs, such as a delegation for a serviceTask.
-    </p>
-    <p>
+  </p>
+  <p>
     The second execution listener is called when the transition is taken. Note that the listener element doesn't define an event, since only take events are fired on transitions. Values in the event attribute are ignored when a listener is defined on a transition.
-    </p>
-    <p>
+  </p>
+  <p>
     The last execution listener is called when activity secondTask ends. Instead of using the class on the listener declaration, a expression is defined instead which is evaluated/invoked when the event is fired.
-
-        <div class="app-source" app-source-no-tabs="listeners3"></div>
-        <script type="text/xml" id="listeners3">
-    <activiti:executionListener expression="${myPojo.myMethod(execution.eventName)}" event="end" />    
-        </script>
-
-    As with other expressions, execution variables are resolved and can be used. Because the execution implementation object has a property that exposes the event name, it's possible to pass the event-name to your methods using execution.eventName.
-    </p>
-    <p>
+  </p>
+  <div class="app-source" app-source-no-tabs="listeners3"></div>
+  <script type="text/xml" id="listeners3">
+<activiti:executionListener expression="${myPojo.myMethod(execution.eventName)}" event="end" />    
+  </script>
+  <p>
+  As with other expressions, execution variables are resolved and can be used. Because the execution implementation object has a property that exposes the event name, it's possible to pass the event-name to your methods using execution.eventName.
+  </p>
+  <p>
     Execution listeners also support using a delegateExpression, similar to a service task.
-
-        <div class="app-source" app-source-no-tabs="listeners4"></div>
-        <script type="text/xml" id="listeners4">
-    <activiti:executionListener event="start" delegateExpression="${myExecutionListenerBean}" />    
-        </script>
-
-
-    </p>
-  </section>
+  </p>
+  <div class="app-source" app-source-no-tabs="listeners4"></div>
+  <script type="text/xml" id="listeners4">
+<activiti:executionListener event="start" delegateExpression="${myExecutionListenerBean}" />    
+  </script>
 
 
-
-
-<section id="task-listener">
-    <h2>Task listener</h2>
-    <p>
+<h2>Task listener</h2>
+  <p>
     A task listener is used to execute custom Java logic or an expression upon the occurrence of a certain task-related event.
-    </p>
-    <p>
+  </p>
+  <p>
     A task listener can only be added in the process definition as a child element of a user task. Note that this also must happen as a child of the BPMN 2.0 extensionElements and in the activiti namespace, since a task listener is a construct specific for the camunda engine.
 
         <div class="app-source" app-source-no-tabs="listeners8"></div>
@@ -153,7 +143,7 @@
       </extensionElements>
     </userTask>    
         </script>
-    </p>
+  </p>
 
 
     <p>
@@ -202,7 +192,7 @@
         </li>
       </ul>
       </p>
-  </section>
+  
 
 
 
