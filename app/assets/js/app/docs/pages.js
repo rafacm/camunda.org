@@ -41,9 +41,9 @@ CAM_PAGES = [
   { section: "implementation-java", category: "Programming", id: "impl-java-expressions", name: "Expression Language", url: "/engine/expressions", keywords: "" },
   { section: "implementation-java", category: "Programming", id: "impl-java-testing", name: "Testing", url: "/engine/testing", keywords: "" },
 
-  { section: "implementation-java", category: "Spring Integration", id: "impl-spring-engine-bootstrap", name: "Engine Startup via Spring", url: "/concepts/custom-extensions", keywords: "" },
-  { section: "implementation-java", category: "Spring Integration", id: "impl-spring-expressions", name: "Expression Language", url: "/concepts/listeners", keywords: "" },
-  { section: "implementation-java", category: "Spring Integration", id: "impl-spring-testing", name: "Testing", url: "/concepts/listeners", keywords: "" },
+  { section: "implementation-java", category: "Spring Integration", id: "impl-spring-engine-bootstrap", name: "Engine Startup via Spring", url: "/spring/configuration-and-startup", keywords: "" },
+  { section: "implementation-java", category: "Spring Integration", id: "impl-spring-expressions", name: "Expression Language", url: "/spring/expressions", keywords: "" },
+  { section: "implementation-java", category: "Spring Integration", id: "impl-spring-testing", name: "Testing", url: "/spring/testing", keywords: "" },
   
   { section: "implementation-java", category: "CDI Integration", id: "impl-cdi-contextual", name: "Contextual Process Execution", url: "/concepts/listeners", keywords: "" },
   { section: "implementation-java", category: "CDI Integration", id: "impl-cdi-expressions", name: "Expression Language", url: "/concepts/listeners", keywords: "" },
