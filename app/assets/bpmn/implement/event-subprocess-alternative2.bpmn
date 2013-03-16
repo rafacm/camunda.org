@@ -206,11 +206,11 @@
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNShape id="_BPMNShape_TextAnnotation_3" bpmnElement="TextAnnotation_1">
-        <dc:Bounds height="74.0" width="186.0" x="715.0" y="290.0"/>
+        <dc:Bounds height="74.0" width="186.0" x="720.0" y="277.0"/>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNEdge id="BPMNEdge_Association_2" bpmnElement="Association_2" sourceElement="_BPMNShape_TextAnnotation_3" targetElement="_BPMNShape_SubProcess_4">
-        <di:waypoint xsi:type="dc:Point" x="715.0" y="295.0"/>
-        <di:waypoint xsi:type="dc:Point" x="670.0" y="280.0"/>
+        <di:waypoint xsi:type="dc:Point" x="720.0" y="286.0"/>
+        <di:waypoint xsi:type="dc:Point" x="670.0" y="271.0"/>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNShape id="_BPMNShape_TextAnnotation_4" bpmnElement="TextAnnotation_2">
         <dc:Bounds height="61.0" width="152.0" x="702.0" y="480.0"/>
