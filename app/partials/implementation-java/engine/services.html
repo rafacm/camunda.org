@@ -1,19 +1,17 @@
-<section id="xxx">
+<section id="engine-services">
 
   <div class="page-header">
       <h1>Services</h1>
   </div>
   
-  <div class="row-fluid">
-  <div class="span9">
       <p>
           The Java API is the most common way of interacting with the engine. The central starting point is the ProcessEngine, which can be created in several ways as described in the configuration section. From the ProcessEngine, you can obtain the various services that contain the workflow/BPM methods. ProcessEngine and the services objects are thread safe. So you can keep a reference to 1 of those for a whole server. 
       </p>
       <img src="/app/assets/img/implementation-java/api.services.png">
 
 
-      <div class="app-source" app-source-no-tabs="xxxx" ></div>
-      <script type="text/xml" id="xxxx">
+      <div class="app-source" app-source-no-tabs="service1" ></div>
+      <script type="text/xml" id="service1">
 ProcessEngine processEngine = ProcessEngines.getDefaultProcessEngine();
 
 RuntimeService runtimeService = processEngine.getRuntimeService();
@@ -25,33 +23,22 @@ HistoryService historyService = processEngine.getHistoryService();
 FormService formService = processEngine.getFormService();
       </script>
 
-    </div>
-    <div class="span3">
-      <h3>On this page</h3>
-      <ul>            
-          <li>Service Task</li>
-          <li><a href="#">Implementation</a></li>
-      </ul>
-      <h3>There's more...</h3>
-      <ul>            
-          <li><a href="tasks.html">Tasks in the BPMN Tutorial</a></li>
-          <li><a href="implement-concepts.html#/concepts/error-handling">Error Handling</a></li>
-      </ul>      
-    </div>
-  </div>
+
   
 <p>
-ProcessEngines.getDefaultProcessEngine() will initialize and build a process engine the first time it is called and afterwards always return the same process engine. Proper creation and closing of all process engines can be done with ProcessEngines.init() and ProcessEngines.destroy().
+<code>ProcessEngines.getDefaultProcessEngine()</code> will initialize and build a process engine the first time it is called and afterwards always return the same process engine. Proper creation and closing of all process engines can be done with <code>ProcessEngines.init()</code> and <code>ProcessEngines.destroy()</code>.
 </p>
 <P>
-The ProcessEngines class will scan for all activiti.cfg.xml and activiti-context.xml files. For all activiti.cfg.xml files, the process engine will be built in the typical Activiti way: ProcessEngineConfiguration.createProcessEngineConfigurationFromInputStream(inputStream).buildProcessEngine(). For all activiti-context.xml files, the process engine will be built in the Spring way: First the Spring application context is created and then the process engine is obtained from that application context.
+The ProcessEngines class will scan for all activiti.cfg.xml and activiti-context.xml files. For all activiti.cfg.xml files, the process engine will be built in the typical way: <code>ProcessEngineConfiguration.createProcessEngineConfigurationFromInputStream(inputStream).buildProcessEngine()</code>. For all activiti-context.xml files, the process engine will be built in the Spring way: First the Spring application context is created and then the process engine is obtained from that application context.
 </p>
 <P>
 All services are stateless. This means that you can easily run camunda BPM on multiple nodes in a cluster, each going to the same database, without having to worry about which machine actually executed previous calls. Any call to any service is idempotent regardless of where it is executed.
 </p>
 <P>
-The RepositoryService is probably the first service needed when working with the camunda engine. This service offers operations for managing and manipulating deployments and process definitions. Without going into much detail here, a process definition is a Java counterpart of BPMN 2.0 process. It is a representation of the structure and behaviour of each of the steps of a process. A deployment is the unit of packaging within the engine. A deployment can contain multiple BPMN 2.0 xml files and any other resource. The choice of what is included in one deployment is up to the developer. It can range from a single process BPMN 2.0 xml file to a whole package of processes and relevant resources (for example the deployment 'hr-processes' could contain everything related to hr processes). The RepositoryService allows to deploy such packages. Deploying a deployment means it is uploaded to the engine, where all processes are inspected and parsed before being stored in the database. From that point on, the deployment is known to the system and any process included in the deployment can now be started.
+The <strong>RepositoryService</strong> is probably the first service needed when working with the camunda engine. This service offers operations for managing and manipulating deployments and process definitions. Without going into much detail here, a process definition is a Java counterpart of BPMN 2.0 process. It is a representation of the structure and behaviour of each of the steps of a process. A deployment is the unit of packaging within the engine. A deployment can contain multiple BPMN 2.0 xml files and any other resource. The choice of what is included in one deployment is up to the developer. It can range from a single process BPMN 2.0 xml file to a whole package of processes and relevant resources (for example the deployment 'hr-processes' could contain everything related to hr processes). The RepositoryService allows to deploy such packages. Deploying a deployment means it is uploaded to the engine, where all processes are inspected and parsed before being stored in the database. From that point on, the deployment is known to the system and any process included in the deployment can now be started.
 </p>
+
+
 <P>
 Furthermore, this service allows to
 <ul>
@@ -60,11 +47,12 @@ Furthermore, this service allows to
     <li>Retrieve various resources such as files contained within the deployment or process diagrams that were auto generated by the engine.</li>
     <li>Retrieve a pojo version of the process definition which can be used to introspect the process using Java rather than xml.</li>
 </ul>
-Wile the RepositoryService is rather about static information (ie. data that doesn't change, or at least not a lot), the RuntimeService is quite the opposite. It deals with starting new process instances of process definitions. As said above, a process definition defines the structure and behaviour of the different steps in a process. A process instance is one execution of such a process definition. For each process definition there typically are many instances running at the same time. The RuntimeService also is the service which is used to retrieve and store process variables. This is data which is specific to the given process instance and can be used by various constructs in the process (eg. an exclusive gateway often uses process variables to determine which path is chosen to continue the process). The Runtimeservice also allows to query on process instances and executions. Executions are a representation of the 'token' concept of BPMN 2.0. Basically an execution is a pointer pointing to where the process instance currently is. Lastly, the RuntimeService is used whenever a process instance is waiting for an external trigger and the process needs to be continued. A process instance can have various wait states and this service contains various operations to 'signal' the instance that the external trigger is received and the process instance can be continued.
+
+Wile the RepositoryService is rather about static information (ie. data that doesn't change, or at least not a lot), the <strong>RuntimeService</strong> is quite the opposite. It deals with starting new process instances of process definitions. As said above, a process definition defines the structure and behaviour of the different steps in a process. A process instance is one execution of such a process definition. For each process definition there typically are many instances running at the same time. The RuntimeService also is the service which is used to retrieve and store process variables. This is data which is specific to the given process instance and can be used by various constructs in the process (eg. an exclusive gateway often uses process variables to determine which path is chosen to continue the process). The Runtimeservice also allows to query on process instances and executions. Executions are a representation of the 'token' concept of BPMN 2.0. Basically an execution is a pointer pointing to where the process instance currently is. Lastly, the RuntimeService is used whenever a process instance is waiting for an external trigger and the process needs to be continued. A process instance can have various wait states and this service contains various operations to 'signal' the instance that the external trigger is received and the process instance can be continued.
 </p>
 
 <P>
-Tasks that need to be performed by actual human users of the system are core to a BPM engine such as Activiti. Everything around tasks is grouped in the TaskService, such as
+Tasks that need to be performed by actual human users of the system are core to the process engine. Everything around tasks is grouped in the TaskService, such as
 <ul>
     <li>Querying tasks assigned to users or groups.</li>
     <li>Creating new standalone tasks. These are tasks that are not related to a process instances.</li>
@@ -73,19 +61,22 @@ Tasks that need to be performed by actual human users of the system are core to 
 </ul>
 </p>
 <P>
-The IdentityService is pretty simple. It allows the management (creation, update, deletion, querying, ...) of groups and users. It is important to understand that Activiti actually doesn't do any checking on users at runtime. For example, a task could be assigned to any user, but the engine does not verify if that user is known to the system. This is because the Activiti engine can also used in conjunction with services such as ldap, active directory, etc.
+The <strong>IdentityService</strong> is pretty simple. It allows the management (creation, update, deletion, querying, ...) of groups and users. It is important to understand that the core engine actually doesn't do any checking on users at runtime. For example, a task could be assigned to any user, but the engine does not verify if that user is known to the system. This is because the engine can also used in conjunction with services such as ldap, active directory, etc.
 </p>
 <P>
-The FormService is an optional service. Meaning that Activiti can perfectly be used without it, without sacrificing any functionality. This service introduces the concept of a start form and a task form. A start form is a form that is shown to the user before the process instance is started, while a task form is the form that is displayed when a user wants to complete a form. Activiti allows to define these forms in the BPMN 2.0 process definition. This service exposes this data in an easy way to work with. But again, this is optional as forms don't need to be embedded in the process definition.
+The <strong>FormService</strong> is an optional service. Meaning that the camunda engine can perfectly be used without it, without sacrificing any functionality. This service introduces the concept of a start form and a task form. A start form is a form that is shown to the user before the process instance is started, while a task form is the form that is displayed when a user wants to complete a form. You can define these forms in the BPMN 2.0 process definition. This service exposes this data in an easy way to work with. But again, this is optional as forms don't need to be embedded in the process definition.
 </p>
 <P>
-The HistoryService exposes all historical data gathered by the Activiti engine. When executing processes, a lot of data can be kept by the engine (this is configurable) such as process instance start times, who did which tasks, how long it took to complete the tasks, which path was followed in each process instance, etc. This service exposes mainly query capabilities to access this data.
+The <strong>HistoryService</strong> exposes all historical data gathered by the engine. When executing processes, a lot of data can be kept by the engine (this is configurable) such as process instance start times, who did which tasks, how long it took to complete the tasks, which path was followed in each process instance, etc. This service exposes mainly query capabilities to access this data.
 </p>
 <P>
-The ManagementService is typically not needed when coding custom application using Activiti. It allows to retrieve information about the database tables and table metadata. Furthermore, it exposes query capabilities and management operations for jobs. Jobs are used in Activiti for various things such as timers, asynchronous continuations, delayed suspension/activation, etc. Later on, these topics will be discussed in more detail.
+The <strong>ManagementService</strong> is typically not needed when coding custom application. It allows to retrieve information about the database tables and table metadata. Furthermore, it exposes query capabilities and management operations for jobs. Jobs are used in the engine for various things such as timers, asynchronous continuations, delayed suspension/activation, etc. Later on, these topics will be discussed in more detail.
 </p>
 <p>
-For more detailed information on the service operations and the engine API, see the <a href="http://www.camunda.org/javadocs/">javadocs</a>.
+<div class="alert">
+   <strong>Javadocs: </strong> 
+  For more detailed information on the service operations and the engine API, see the <a href="http://www.camunda.org/javadocs/">javadocs</a>.
+</div>
 </p>
 	
 </section>

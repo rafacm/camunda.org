@@ -116,7 +116,7 @@ Another way to define the number of instances, is to specify the name of a proce
 
 Suppose the variable assigneeList contains the values [kermit, gonzo, foziee]. In the snippet above, three user tasks will be created in parallel. Each of the executions will have a process variable named assignee containing one value of the collection, which is used to assign the user task in this example.
 
-The downside of the loopDataInputRef and inputDataItem is that 1) the names are pretty hard to remember and 2) due to the BPMN 2.0 schema restrictions they can't contain expressions. Activiti solves this by offering the collection and elementVariable attributes on the multiInstanceCharacteristics:
+The downside of the loopDataInputRef and inputDataItem is that 1) the names are pretty hard to remember and 2) due to the BPMN 2.0 schema restrictions they can't contain expressions. We solve this by offering the collection and elementVariable attributes on the multiInstanceCharacteristics:
 
   <div class="app-source" app-source-no-tabs="mi5" ></div>
   <script type="text/xml" id="mi5">
@@ -184,8 +184,8 @@ A compensation handler must be associated with a compensation boundary event usi
 <p>
 In order to declare an activity to be a compensation handler, we need to set the attribute isForCompensation to true:
 
-    <div class="app-source" app-source-no-tabs="xxxx"></div>
-    <script type="text/xml" id="xxxx">
+    <div class="app-source" app-source-no-tabs="compensation7"></div>
+    <script type="text/xml" id="compensation7">
 <serviceTask id="undoBookHotel" isForCompensation="true" activiti:class="..." />
     </script>
 

@@ -92,7 +92,7 @@ Triggering compensation: Compensation can either be triggered for a designated a
 
     <li>Compensation is triggered hierarchically: if an activity to be compensated is a subprocess, compensation is triggered for all activities contained in the subprocess. If the subprocess has nested activities, compensation is thrown recursively. However, compensation is not propagated to the "upper levels" of the process: if compensation is triggered within a subprocess, it is not propagated to activities outside of the subprocess scope. The bpmn specification states that compensation is triggered for activities at "the same level of subprocess".</li>
 
-    <li>In Activiti compensation is performed in reverse order of execution. This means that whichever activity completed last is compensated first, etc.</li>
+    <li>Compensation is performed in reverse order of execution. This means that whichever activity completed last is compensated first, etc.</li>
 
     <li>The intermediate throwing compensation event can be used to compensate transaction subprocesses which competed successfully. </li>
 </ul>

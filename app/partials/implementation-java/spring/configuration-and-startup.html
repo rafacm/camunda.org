@@ -1,4 +1,4 @@
-<section id="xxx">
+<section id="spring-bootstrap">
 
 <div class="page-header">
       <h1>Engine Startup via Spring</h1>
@@ -29,25 +29,21 @@ Note that the processEngineConfiguration bean uses the <a href="http://www.camun
     <div class="span3">
       <h3>On this page</h3>
       <ul>            
-          <li>Service Task</li>
-          <li><a href="#">Implementation</a></li>
+          <li>Engine Startup via Spring</li>
+          <li>Transactions</li>
+          <li>Automatic resource deployment</li>
       </ul>
-      <h3>There's more...</h3>
-      <ul>            
-          <li><a href="tasks.html">Tasks in the BPMN Tutorial</a></li>
-          <li><a href="implement-concepts.html#/concepts/error-handling">Error Handling</a></li>
-      </ul>      
     </div>
 </div>
 
 <h1>Transactions</h1>
   
 <p>
-  We'll explain the SpringTransactionIntegrationTest found in the Spring examples of the distribution step by step. Below is the Spring configuration file that we use in this example (you can find it in SpringTransactionIntegrationTest-context.xml). The section shown below contains the dataSource, transactionManager, processEngine and the Activiti Engine services.
+  We'll explain the SpringTransactionIntegrationTest found in the Spring examples of the distribution step by step. Below is the Spring configuration file that we use in this example (you can find it in SpringTransactionIntegrationTest-context.xml). The section shown below contains the dataSource, transactionManager, processEngine and the process engine services.
 </p>
 
 <p>
-When passing the DataSource to the SpringProcessEngineConfiguration (using property "dataSource"), Activiti uses a org.springframework.jdbc.datasource.TransactionAwareDataSourceProxy internally, which wraps the passed DataSource. This is done to make sure the SQL connections retrieved from the DataSource and the Spring transactions play well together. This implies that it's no longer needed to proxy the dataSource yourself in Spring configuration, although it's still allowed to pass a TransactionAwareDataSourceProxy into the SpringProcessEngineConfiguration. In this case no additional wrapping will occur.
+When passing the DataSource to the SpringProcessEngineConfiguration (using property "dataSource"), the camunda engine uses a org.springframework.jdbc.datasource.TransactionAwareDataSourceProxy internally, which wraps the passed DataSource. This is done to make sure the SQL connections retrieved from the DataSource and the Spring transactions play well together. This implies that it's no longer needed to proxy the dataSource yourself in Spring configuration, although it's still allowed to pass a TransactionAwareDataSourceProxy into the SpringProcessEngineConfiguration. In this case no additional wrapping will occur.
 </p>
 
 <p>
@@ -63,7 +59,7 @@ Make sure when declaring a TransactionAwareDataSourceProxy in Spring configurati
 
   <bean id="dataSource" class="org.springframework.jdbc.datasource.SimpleDriverDataSource">
     <property name="driverClass" value="org.h2.Driver" />
-    <property name="url" value="jdbc:h2:mem:activiti;DB_CLOSE_DELAY=1000" />
+    <property name="url" value="jdbc:h2:mem:camunda;DB_CLOSE_DELAY=1000" />
     <property name="username" value="sa" />
     <property name="password" value="" />
   </bean>
@@ -103,11 +99,11 @@ The remainder of that Spring configuration file contains the beans and configura
   ...
   <tx:annotation-driven transaction-manager="transactionManager"/>
 
-  <bean id="userBean" class="org.activiti.spring.test.UserBean">
+  <bean id="userBean" class="org.camunda.bpm.engine.spring.test.UserBean">
     <property name="runtimeService" ref="runtimeService" />
   </bean>
 
-  <bean id="printer" class="org.activiti.spring.test.Printer" />
+  <bean id="printer" class="org.camunda.bpm.engine.spring.test.Printer" />
 
 </beans>
 </script>
@@ -145,7 +141,7 @@ String deploymentId = repositoryService
 </script>
     
 
-The other way around also works. In this case, the Spring transaction will be around the userBean.hello() method and the Activiti service method invocation will join that same transaction.
+The other way around also works. In this case, the Spring transaction will be around the userBean.hello() method and the engine service method invocation will join that same transaction.
 
     <div class="app-source" app-source-no-tabs="spring7"></div>
 <script type="text/xml" id="spring7">   
@@ -166,7 +162,7 @@ public class UserBean {
   public void hello() {
     // here you can do transactional stuff in your domain model
     // and it will be combined in the same transaction as 
-    // the startProcessInstanceByKey to the Activiti RuntimeService
+    // the startProcessInstanceByKey to the RuntimeService
     runtimeService.startProcessInstanceByKey("helloProcess");
   }
   
@@ -184,7 +180,7 @@ public class UserBean {
 
 <h1>Automatic resource deployment</h1>
 <p>
-Spring integration also has a special feature for deploying resources. In the process engine configuration, you can specify a set of resources. When the process engine is created, all those resources will be scanned and deployed. There is filtering in place that prevents duplicate deployments. Only when the resources actually have changed, will new deployments be deployed to the Activiti DB. This makes sense in a lot of use case, where the Spring container is rebooted often (e.g. testing).
+Spring integration also has a special feature for deploying resources. In the process engine configuration, you can specify a set of resources. When the process engine is created, all those resources will be scanned and deployed. There is filtering in place that prevents duplicate deployments. Only when the resources actually have changed, will new deployments be deployed to the engine database. This makes sense in a lot of use case, where the Spring container is rebooted often (e.g. testing).
 </p>
 <p>
 Here's an example:

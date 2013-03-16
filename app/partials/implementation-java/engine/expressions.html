@@ -4,10 +4,8 @@
       <h1>Expression Language</h1>
 </div>
   
-<div class="row-fluid">
-  <div class="span9">
-      <p>
-Activiti uses Unified Expression Language (UEL) for expression-resolving. This is part of the <a href="http://docs.oracle.com/javaee/6/tutorial/doc/gjddd.html">Java EE 6 specification</a>. To support all features of latest UEL spec on ALL environments, we use a modified version of <a href="http://juel.sourceforge.net/">JUEL</a>.
+<p>
+The camunda engine uses Unified Expression Language (UEL) for expression-resolving. This is part of the <a href="http://docs.oracle.com/javaee/6/tutorial/doc/gjddd.html">Java EE 6 specification</a>. To support all features of latest UEL spec on ALL environments, we use a modified version of <a href="http://juel.sourceforge.net/">JUEL</a>.
 </p>
 <p>
 Expressions can be used in for example Java Service tasks, Execution Listeners, Task Listeners and Conditional sequence flows. Although there are 2 types of expressions, value-expression and method-expression, the engine abstracts this so they can both be used where an expression is needed.
@@ -43,14 +41,6 @@ On top of all process variables, there are a few default objects available to be
     <li><strong>authenticatedUserId:</strong> The id of the user that is currently authenticated. If no user is authenticated, the variable is not available.</li>
 </ul>
 For more concrete usage and examples, check out Expressions in Spring, Java Service tasks, Execution Listeners, Task Listeners or Conditional sequence flows.         
-      </p>
-    </div>
-    <div class="span3">
-      <h3>There's more...</h3>
-      <ul>            
-          <li><a href="http://docs.oracle.com/javaee/6/tutorial/doc/gjddd.html">Expression Language Tutorial</a></li>
-      </ul>      
-    </div>
-</div>
+</p>
 	
 </section>
