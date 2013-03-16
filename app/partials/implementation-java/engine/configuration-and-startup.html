@@ -1,0 +1,381 @@
+<section id="engine-bootstrap">
+
+<div class="page-header">
+  <h1>Process Engine Startup Options</h1>
+</div>
+  
+<div class="row-fluid">
+  <div class="span9">
+      <p>
+        There are two basic modes of the Process Engine:
+        <ul>
+          <li>Shared Process Engine: </li>
+          <li>Embedded Process Engine: </li>
+        </ul>
+        See <a href="https://app.camunda.com/confluence/display/foxUserGuide/Architecture+Overview">Architecture Overview</a> for more details on the differences on this.
+      </p>
+      <p>
+        In order to configure and create a Process Engine you have different options:
+        <ul>
+          <li><strong>Container manages shared Process Engine:</strong> The container of your choice (e.g. Tomcat, JBoss, Glassfish or WebSphere) completly manages the Process Engine for you. 
+              Configuration is done in a container specific way, see <a href="">Container Integration</a> for details.</li>
+          <li><strong>Create Process Engine via Java API:</strong> You can startup a Process Engine (shared or embedded) completly by plain Java code, more details below.</li>
+          <li><strong>Create Process Engine using XML configuration:</strong> You can use an XML configuration (Spring) to configure and startup your Engine, more details below.</li>
+          <li><strong>Create Process Engine using Spring:</strong> Spring can manage your Process Engine for you, see <a href="">Engine Startup via Spring</a> for details.</li>
+        </ul>
+      </p>
+  </div>
+  <div class="span3">
+      <h3>On this page</h3>
+      <ul>            
+          <li>Options</li>
+          <li><a href="#">ProcessEngineConfiguration bean</a></li>
+          <li><a href="#">Create Process Engine via Java API</a></li>
+          <li><a href="#">Configure Process Engine via XML</a></li>
+          <li><a href="#">Database Configuration</a></li>
+          <li><a href="#">Job Executor</a></li>
+          <li><a href="#">History</a></li>
+          <li><a href="#">Process Definition</a></li>
+      </ul>
+      <h3>There's more...</h3>
+      <ul>            
+          <li><a href="https://app.camunda.com/confluence/display/foxUserGuide/Architecture+Overview">Architecture Overview</a></li>
+          <li><a href="https://app.camunda.com/confluence/display/foxUserGuide/Database+Setup">Database Setup</a></li>
+          <li><a href="https://app.camunda.com/confluence/display/foxUserGuide/The+Job+Executor">Job Executor</a></li>
+          <li><a href="https://app.camunda.com/confluence/display/foxUserGuide/History">History</a></li>
+          <li><a href="https://app.camunda.com/confluence/display/foxUserGuide/Supported+environments">Supported Environments</a></li>
+      </ul>      
+    </div>
+</div>
+          
+
+<h1>ProcessEngineConfiguration bean</h1>
+
+The camunda engine uses the <a href="http://www.camunda.org/javadocs/index.html?org/camunda/bpm/engine/ProcessEngineConfiguration.html">ProcessEngineConfiguration bean</a> to configure and construct a standalone Process Engine. There are multiple subclasses available that can be used to define the processEngineConfiguration. These classes represent different environments, and set defaults accordingly. It's a best practice to select the class the matches (the most) your environment, to minimalise the number of properties needed to configure the engine. The following classes are currently available:
+<ul>
+    <li>org.camunda.bpm.engine.impl.cfg.StandaloneProcessEngineConfiguration: the process engine is used in a standalone way. Activiti will take care of the transactions. By default, the database will only be checked when the engine boots (and an exception is thrown if there is no Activiti schema or the schema version is incorrect).</li>
+
+    <li>org.camunda.bpm.engine.impl.cfg.StandaloneInMemProcessEngineConfiguration: this is a convenience class for unit testing purposes. Activiti will take care of the transactions. An H2 in-memory database is used by default. The database will be created and dropped when the engine boots and shuts down. When using this, probably no additional configuration is needed (except when using for example the job executor or mail capabilities).</li>
+
+    <li>org.camunda.bpm.engine.spring.SpringProcessEngineConfiguration: To be used when the process engine is used in a Spring environment. See the Spring integration section for more information.</li>
+
+    <li>org.camunda.bpm.engine.impl.cfg.JtaProcessEngineConfiguration: To be used when the engine runs in standalone mode, with JTA transactions.</li>
+
+</ul>
+
+
+
+
+
+
+
+
+
+
+
+<h1>Create Process Engine via Java API</h1>
+
+You can completly configure the engine programatically by creating the right ProcessEngineConffiguration object or use some pre-defined one:
+    
+<div class="app-source" app-source-no-tabs="api2"></div>
+<script type="text/xml" id="api2">   
+ProcessEngineConfiguration.createStandaloneProcessEngineConfiguration();
+ProcessEngineConfiguration.createStandaloneInMemProcessEngineConfiguration();
+</script>
+
+Now you can call the buildProcessEngine() operation to create a Process Engine:
+
+<div class="app-source" app-source-no-tabs="api3"></div>
+<script type="text/xml" id="api3">   
+ProcessEngine processEngine = ProcessEngineConfiguration.createStandaloneInMemProcessEngineConfiguration()
+  .setDatabaseSchemaUpdate(ProcessEngineConfiguration.DB_SCHEMA_UPDATE_FALSE)
+  .setJdbcUrl("jdbc:h2:mem:my-own-db;DB_CLOSE_DELAY=1000")
+  .setJobExecutorActivate(true)
+  .buildProcessEngine();
+</script>
+
+
+
+
+
+
+
+
+<h1>Configure Process Engine via XML</h1>
+
+The easiest way to configure your Process Engine is via through an XML file called activiti.cfg.xml. Using that you can simply do:
+
+<div class="app-source" app-source-no-tabs="xml1"></div>
+<script type="text/xml" id="xml1">   
+ProcessEngine processEngine = ProcessEngines.getDefaultProcessEngine()
+</script>
+
+The activiti.cfg.xml must contain a bean that has the id 'processEngineConfiguration', select the best fitting ProcessEngineConfiguration class suiting your needs:
+
+<div class="app-source" app-source-no-tabs="xml2"></div>
+<script type="text/xml" id="xml2">   
+ <bean id="processEngineConfiguration" class="org.activiti.engine.impl.cfg.StandaloneProcessEngineConfiguration">
+</script>
+
+
+This will look for an activiti.cfg.xml file on the classpath and construct an engine based on the configuration in that file. The following snippet shows an example configuration:
+
+<div class="app-source" app-source-no-tabs="cxfXml"></div>
+<script type="text/xml" id="cxfXml">   
+<beans xmlns="http://www.springframework.org/schema/beans" 
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans   http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+  <bean id="processEngineConfiguration" class="org.activiti.engine.impl.cfg.StandaloneProcessEngineConfiguration">
+  
+    <property name="jdbcUrl" value="jdbc:h2:mem:activiti;DB_CLOSE_DELAY=1000" />
+    <property name="jdbcDriver" value="org.h2.Driver" />
+    <property name="jdbcUsername" value="sa" />
+    <property name="jdbcPassword" value="" />
+    
+    <property name="databaseSchemaUpdate" value="true" />
+    
+    <property name="jobExecutorActivate" value="false" />
+    
+    <property name="mailServerHost" value="mail.my-corp.com" /> 
+    <property name="mailServerPort" value="5025" />    
+  </bean>
+
+</beans>
+</script>
+
+Note that the configuration XML is in fact a Spring configuration. This does not mean that Activiti can only be used in a Spring environment! We are simply leveraging the parsing and dependency injection capabilities of Spring internally for building up the engine.
+
+The ProcessEngineConfiguration object can also be created programmatically using the configuration file. It is also possible to use a different bean id:
+
+<div class="app-source" app-source-no-tabs="xml3"></div>
+<script type="text/xml" id="xml3">   
+ProcessEngineConfiguration.createProcessEngineConfigurationFromResourceDefault();
+ProcessEngineConfiguration.createProcessEngineConfigurationFromResource(String resource);
+ProcessEngineConfiguration.createProcessEngineConfigurationFromResource(String resource, String beanName);
+ProcessEngineConfiguration.createProcessEngineConfigurationFromInputStream(InputStream inputStream);
+ProcessEngineConfiguration.createProcessEngineConfigurationFromInputStream(InputStream inputStream, String beanName);
+</script>
+
+It is also possible not to use a configuration file, and create a configuration based on defaults (see the different supported classes for more information).
+
+<div class="app-source" app-source-no-tabs="xml4"></div>
+<script type="text/xml" id="xml4">   
+ProcessEngineConfiguration.createStandaloneProcessEngineConfiguration();
+ProcessEngineConfiguration.createStandaloneInMemProcessEngineConfiguration();
+</script>
+
+All these ProcessEngineConfiguration.createXXX() methods return a ProcessEngineConfiguration that can further be tweaked if needed. After calling the buildProcessEngine() operation, a ProcessEngine is created as explained above.
+
+
+
+
+
+
+
+
+<h1>Database configuration</h1>
+
+There are two ways to configure the database that the camunda engine will use. The first option is to define the JDBC properties of the database:
+<ul>
+    <li>jdbcUrl: JDBC URL of the database.</li>
+    <li>jdbcDriver: implementation of the driver for the specific database type.</li>
+    <li>jdbcUsername: username to connect to the database.</li>
+    <li>jdbcPassword: password to connect to the database. </li>
+</ul>
+
+Note that internally the engine uses <a href="http://www.mybatis.org/">Apache MyBatis</a> for persistence. 
+
+The data source that is constructed based on the provided JDBC properties will have the default MyBatis connection pool settings. The following attributes can optionally be set to tweak that connection pool (taken from the MyBatis documentation):
+
+
+<ul>
+    <li>jdbcMaxActiveConnections: The number of active connections that the connection pool at maximum at any time can contain. Default is 10.</li>
+    <li>jdbcMaxIdleConnections: The number of idle connections that the connection pool at maximum at any time can contain.</li>
+    <li>jdbcMaxCheckoutTime: The amount of time in milliseconds a connection can be 'checked out' from the connection pool before it is forcefully returned. Default is 20000 (20 seconds).</li>
+    <li>jdbcMaxWaitTime: This is a low level setting that gives the pool a chance to print a log status and re-attempt the acquisition of a connection in the case that it’s taking unusually long (to avoid failing silently forever if the pool is misconfigured) Default is 20000 (20 seconds).</li>
+</ul>
+
+
+
+<p>    
+Example database configuration:
+
+<div class="app-source" app-source-no-tabs="db1"></div>
+<script type="text/xml" id="db1">   
+<property name="jdbcUrl" value="jdbc:h2:mem:activiti;DB_CLOSE_DELAY=1000" />
+<property name="jdbcDriver" value="org.h2.Driver" />
+<property name="jdbcUsername" value="sa" />
+<property name="jdbcPassword" value="" />
+</script>
+      
+
+Alternatively, a javax.sql.DataSource implementation can be used (e.g. DBCP from Apache Commons):
+    
+<div class="app-source" app-source-no-tabs="db2"></div>
+<script type="text/xml" id="db2">   
+<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource" >
+  <property name="driverClassName" value="com.mysql.jdbc.Driver" />
+  <property name="url" value="jdbc:mysql://localhost:3306/activiti" />
+  <property name="username" value="activiti" />
+  <property name="password" value="activiti" />
+  <property name="defaultAutoCommit" value="false" />
+</bean>      
+
+<bean id="processEngineConfiguration" class="org.activiti.engine.impl.cfg.StandaloneProcessEngineConfiguration">
+  
+    <property name="dataSource" ref="dataSource" />
+    ...
+</script>
+      
+
+Note that camunda does not ship with a library that allows to define such a data source. So you have to make sure that the libraries (e.g. from DBCP) are on your classpath.
+</p>
+<p>
+The following properties can be set, regardless of whether you are using the JDBC or data source approach:
+<ul>
+    <li>databaseType: it's normally not necessary to specify this property as it is automatically analyzed from the database connection meta data. Should only be specified in case automatic detection fails. Possible values: {h2, mysql, oracle, postgres, mssql, db2}. This property is required when not using the default H2 database. This setting will determine which create/drop scripts and queries will be used. See the 'supported databases' section for an overview of which types are supported.</li>
+
+    <li>databaseSchemaUpdate: allows to set the strategy to handle the database schema on process engine boot and shutdown.
+    <ul>
+        <li>false (default): Checks the version of the DB schema against the library when the process engine is being created and throws an exception if the versions don't match.
+        <li>true: Upon building the process engine, a check is performed and an update of the schema is performed if it is necessary. If the schema doesn't exist, it is created.
+        <li>create-drop: Creates the schema when the process engine is being created and drops the schema when the process engine is being closed. 
+    </ul>
+</ul>
+</p>
+<p>
+<div class="label label-warning">For information on supported databases please refer to <a href="https://app.camunda.com/confluence/display/foxUserGuide/Supported+environments">Supported Environments</a>.</div>
+</p>
+<p>
+Here are some sample JDBC urls:
+
+<ul>
+  <li>h2: jdbc:h2:tcp://localhost/camunda</li>
+  <li>mysql: jdbc:mysql://localhost:3306/camunda?autoReconnect=true</li>
+  <li>oracle: jdbc:oracle:thin:@localhost:1521:xe </li>
+  <li>postgres: jdbc:postgresql://localhost:5432/camunda</li>
+  <li>db2: jdbc:db2://localhost:50000/camunda</li>
+  <li>mssql: jdbc:sqlserver://localhost:1433/camunda</li>
+</ul>  
+
+For more information on the database setup please refer to <a href="https://app.camunda.com/confluence/display/foxUserGuide/Database+Setup">Database Setup</a>
+</p>
+
+
+
+
+
+
+<h2>Database table names explained</h2>
+
+The database names of Activiti all start with ACT_. The second part is a two-character identification of the use case of the table. This use case will also roughly match the service API.</li>
+<ul>
+    <li>ACT_RE_*: 'RE' stands for repository. Tables with this prefix contain 'static' information such as process definitions and process resources (images, rules, etc.).</li>
+    <li>ACT_RU_*: 'RU' stands for runtime. These are the runtime tables, that contain the runtime data of process instances, user tasks, variables, jobs, etc. Activiti only stores the runtime data during process instance execution, and removes the records when a process instance ends. This keeps the runtime tables small and fast.</li>
+    <li>ACT_ID_*: 'ID' stands for identity. These tables contain identity information, such as users, groups, etc.</li>
+    <li>ACT_HI_*: 'HI' stands for history. These are the tables that contain historic data, such as past process instances, variables, tasks, etc.</li>
+    <li>ACT_GE_*: general data, which is used in various use cases.</li>
+</ul>
+
+
+
+
+
+<h2>Database upgrade</h2>
+<p>
+Make sure you make a backup of your database (using your database backup capabilities) before you run an upgrade.
+</p>
+<p>
+By default, a version check will be performed each time a process engine is created. This typically happens once at boot time of your application or of the Activiti webapps. If the Activiti library notices a difference between the library version and the version of the Activiti database tables, then an exception is thrown.
+</p>
+<p>
+To upgrade, you have to start with putting the following configuration property in your activiti.cfg.xml configuration file:
+
+    
+<div class="app-source" app-source-no-tabs="db3"></div>
+<script type="text/xml" id="db3">   
+<beans ... >
+
+  <bean id="processEngineConfiguration" class="org.activiti.engine.impl.cfg.StandaloneProcessEngineConfiguration">
+    <!-- ... -->
+    <property name="databaseSchemaUpdate" value="true" />    
+    <!-- ... -->
+  </bean>
+
+</beans>
+</script>
+</p>
+<p>
+Also, include a suitable database driver for your database to the classpath. Upgrade the Activiti libraries in your application. Or start up a new version of Activiti and point it to a database that contains an older version. With databaseSchemaUpdate set to true, Activiti will automatically upgrade the DB schema to the newer version the first time when it notices that libraries and DB schema are out of sync.
+</p>
+<p>
+As an alternative you can also run the upgrade DDL statements. It's also possible to run the upgrade database scripts, linked above.
+
+
+
+
+
+
+
+
+
+
+<h1>Job executor activation</h1>
+
+<a href="https://app.camunda.com/confluence/display/foxUserGuide/The+Job+Executor">The JobExecutor</a> is a component that manages a couple of threads to fire timers (and later also asynchronous messages). For unit testing scenarios, it is cumbersome to work with multiple threads. Therefore the API allows to query for (ManagementService.createJobQuery) and execute jobs (ManagementService.executeJob) through the API so that job execution can be controlled from within a unit test. To avoid interference by the job executor, it can be turned off.
+
+By default, the JobExecutor is activated when the process engine boots. Specify
+    
+<div class="app-source" app-source-no-tabs="conf5"></div>
+<script type="text/xml" id="conf5">   
+<property name="jobExecutorActivate" value="false" />
+</script>
+
+when you don't want the JobExecutor to be activated upon booting the process engine.
+
+
+
+
+<h1>History configuration</h1>
+
+Customizing the configuration of <a href="https://app.camunda.com/confluence/display/foxUserGuide/History">history</a> is optional. This allows you to tweak settings that influence the history capabilities of the engine. 
+
+<div class="app-source" app-source-no-tabs="conf6"></div>
+<script type="text/xml" id="conf6">   
+<property name="history" value="audit" />
+</script>
+
+
+
+
+<h1>Process Definition Cache</h1>
+<p>
+
+All process definition are cached (after they're parsed) to avoid hitting the database every time a process definition is needed and because process definition data doesn't change. By default, there is no limit on this cache. To limit the process definition cache, add following property
+
+    
+<div class="app-source" app-source-no-tabs="conf7"></div>
+<script type="text/xml" id="conf7">   
+<property name="processDefinitionCacheLimit" value="10" />
+</script>
+
+Setting this property will swap the default hashmap cache with a LRU cache that has the provided hard limit. Of course, the 'best' value of this property depends on the total amount of process definitions stored and the number of process definitions actually used at runtime by all the runtime process instances.
+</p>
+<p>
+You can also inject your own cache implementation. This must be a bean that implements the org.camunda.bpm.engine.impl.persistence.deploy.DeploymentCache interface:
+
+<div class="app-source" app-source-no-tabs="conf8"></div>
+<script type="text/xml" id="conf8">   
+<property name="processDefinitionCache">
+  <bean class="org.camunda.demo.MyCache" />
+</property>
+</script>
+
+
+<h1>Logging</h1>
+
+We use <a href="http://docs.oracle.com/javase/6/docs/api/java/util/logging/package-summary.html">Java Logging</a> to avoid any third party logging requirements. 
+
+	
+</section>
