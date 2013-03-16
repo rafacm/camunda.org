@@ -316,10 +316,14 @@ section {
 }
 
 .form-search .search {
-  width: auto;
+  position: relative;
+  width: 100%;
 }
 
 .form-search input {
+  position: absolute;
+  left: 27px;
+  right: 0px;
   width: auto;
 }
 
