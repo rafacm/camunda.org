@@ -20,33 +20,35 @@
   $script.path('assets/js/');
 
   $script([    
-      'http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js',             
-      'http://ajax.googleapis.com/ajax/libs/angularjs/1.0.1/angular.min.js',         
+    'http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js',             
+    'http://ajax.googleapis.com/ajax/libs/angularjs/1.0.1/angular.min.js',            
     ], function() {
       $script([
-        'lib/dojo/dojo/dojo',
-        'lib/bootstrap/bootstrap.min',  
-        'lib/tweet/jquery.tweet',         
-        'lib/jquery-validation/dist/jquery.validate.min',  
+        
+        'lib/bootstrap/bootstrap.min',       
         'lib/angular/angular-resource.min',
         'lib/angular/angular-bootstrap.min',
-        'app/app',
-        'app/bpmn/Executor',
-        'app/cabpmn',
-        'app/directives/ngmif',
-        'app/directives/focused',
-        'app/docs/docs',
-        'app/docs/pages'          
-      ], function() {
-        
-        angular.bootstrap(document, ['camundaorg']);
 
-        // post app bootstrap
-        $script([     
-          'lib/analytics/analytics',
-        ]);
-      });
+        ], function() {
+          $script([        
+         
+            'app/directives/ngmif',
+            'app/directives/focused',         
+
+          ], function() {
+            
+            angular.bootstrap(document, ['camundaorg']);
+
+            // post app bootstrap
+            $script([     
+              'lib/analytics/analytics',
+            ]);
+          });
+
+        });
+      
   });
+
 </script>
 
 <!-- loads all stylesheets -->
@@ -304,8 +306,6 @@
       <span class="spacer"></span>
     </div>
 
-    <!-- loads all javascript -->
-    <script src="assets/js/loader.js"></script>
   </footer>
 </body>
 </html>
