@@ -148,13 +148,17 @@ var endEventStyle = {
 	var paperBufferX = 10;
 	var paperBufferY = 10;
 	
-	if (type == "task" || type == "subprocess" || type == "callactivity" || type == "eventsubprocess" || type == "transaction" ) {
+	if (type.indexOf("task") > -1 || type == "subprocess" || type == "callactivity" || type == "eventsubprocess" || type == "transaction" ) {
 		element.width=100;
 		element.height=80;
 		element.collapsed=true;
 		if (type == "eventsubprocess") {
 			element.type = "subprocess";
 			element.triggeredByEvent = true;
+		}
+		if (type.indexOf("instantiate") > -1) {
+			element.isInstantiate = true;
+			element.type = "receivetask";
 		}
 	} else 
 	if (element.type == "participant") {
@@ -869,7 +873,9 @@ function drawElement (element, elemXML, paper, container, xmlJQuery) {
 
 		// if Textannotation, get Text
 		if (element.type == "textannotation") {
-			element.textAnnotation = elemXML.find("text").text();
+			
+			element.textAnnotation = elemXML.find("bpmn2\\:text,text").text();
+			
 		}
 	
 		// if Pool, determine whether it is collapsed
