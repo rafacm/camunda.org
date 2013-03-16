@@ -120,76 +120,93 @@
     <!-- navigation end                                                           -->
 
     <style type="text/css">
-.team-core img {
-	max-height: 80px;
-	max-width: 80px;
-	background: white;
-	/*
-          filter: url(assets/css/filters.svg#grayscale); 
-          filter: gray;
-          -webkit-filter: grayscale(1); 
-          */
-}
+    .team-core img {
+    	max-height: 80px;
+    	max-width: 80px;
+    	background: white;
+    	/*
+              filter: url(assets/css/filters.svg#grayscale); 
+              filter: gray;
+              -webkit-filter: grayscale(1); 
+              */
+    }
 
-.team-core img:hover {
-	filter: none;
-	-webkit-filter: grayscale(0);
-}
+    .team-core img:hover {
+    	filter: none;
+    	-webkit-filter: grayscale(0);
+    }
 
-.team-core img.img-circle {
-	border-radius: 3px;
-	padding: 3px;
-	border: solid 1px #DDD;
-}
+    .team-core img.img-circle {
+    	border-radius: 3px;
+    	padding: 3px;
+    	border: solid 1px #DDD;
+    }
 
-h2 {
-	margin-top: 30px;
-}
+    h2 {
+    	margin-top: 30px;
+    }
 
-.team-core .modal img {
-	max-height: 120px;
-	max-width: 120px;
-	filter: none;
-	-webkit-filter: grayscale(0);
-}
+    .team-core .modal img {
+    	max-height: 120px;
+    	max-width: 120px;
+    	filter: none;
+    	-webkit-filter: grayscale(0);
+    }
 
-.team-core .media {
-	margin-top: 10px;
-}
+    .team-core .media {
+    	margin-top: 10px;
+    }
 
-.team-core h1 {
-	font-size: 120%;
-	line-height: 1;
-}
+    .team-core h1 {
+    	font-size: 120%;
+    	line-height: 1;
+    }
 
-.team-core .row {
-	margin-bottom: 20px;
-}
+    .team-core .row {
+    	margin-bottom: 20px;
+    }
 
-.partners img {
-	padding: 15px;
-	max-width: 170px;
-	cursor: pointer;
-}
+    .partners img {
+    	padding: 15px;
+    	max-width: 170px;
+    	cursor: pointer;
+    }
 
-.partners img:hover {
-	filter: none;
-	-webkit-filter: grayscale(0);
-}
+    .partners img:hover {
+    	filter: none;
+    	-webkit-filter: grayscale(0);
+    }
 
-.pl {
-	background-color: #eee;
-	border-radius: 3px;
-	margin: 0px 0 0 15px;
-	padding-right: 15px;
-	-moz-border-radius: 3px;
-	-webkit-border-radius: 3px;
-}
+    .pl {
+    	background-color: #eee;
+      margin: 0px 0 0 5px;
+    	border-radius: 3px;
+    	padding-right: 15px;
+    	-moz-border-radius: 3px;
+    	-webkit-border-radius: 3px;
+    }
 
-.pl>div {
-	margin: 15px;
-}
-</style>
+    .pl > div {
+      margin: 15px;
+    }
+
+    @media (min-width: 1200px) {
+      .pl {
+        margin: 0 0 0 15px;
+      }
+    }
+
+    @media (max-width: 767px) {
+      .pl {
+        margin: 0 -10px 20px -10px;
+      }
+
+      .pl > div {
+        margin: 0;
+        padding: 10px;
+      }
+    }
+    </style>
 
     <div class="container">
       <div class="headline">
