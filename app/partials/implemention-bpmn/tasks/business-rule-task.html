@@ -10,17 +10,18 @@
         A Business Rule task is used to synchronously execute one or more rules. 
       </p>
 
-      <div id="service-task" style="position:relative" data-bpmn-src="implement/business-rule-task" ></div>
+      <div id="rule-task" style="position:relative" data-bpmn-src="implement/business-rule-task" > </div>
+      
       <p>
         You might use the rule engine of your choice, on the open source side we 
         made good experiences with JBoss Drools. Therefor You have to plug in your implementation of the rule task exactly like in a Service Task.
         So the difference is only that it has a different icon in the BPMN process model - but this can make already a huge difference for acceptance 
         of the process model.
       </p>
-        <div class="app-source" app-source-no-tabs="xxxx" ></div>
-        <script type="text/xml" id="xxxx">
-          <businessRuleTask id="businessRuleTask" activiti:class="${MyRuleServiceDelegate}" /> 
-        </script>
+      <div class="app-source" app-source-no-tabs="xxxx" ></div>
+      <script type="text/xml" id="xxxx">
+<businessRuleTask id="businessRuleTask" activiti:class="${MyRuleServiceDelegate}" /> 
+      </script>
 
 
     </div>

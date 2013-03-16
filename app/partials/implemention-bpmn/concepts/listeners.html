@@ -5,16 +5,16 @@
   </div>
   
   <div class="row-fluid">
-  <div class="span9">
+    <div class="span9">
       <p>
         Listeners allow you to execute external Java code or evaluate an expression when certain events occur during process execution. There are two basic types of listeners:
-
+      </p>
+      <p>
         <ul>
           <li><strong>Execution Listeners</strong> can be attached to any event within the normal token flow, e.g. starting a process instance or entering an activity.</li>
           <li><strong>Task Listeners</strong> can be attached to events within the user task lifecycle, e.g. creation or completion of a user task.</li>
         </ul>
       </p>
-
 
     </div>
     <div class="span3">
@@ -55,8 +55,8 @@
 
   The following process definition contains 3 execution listeners:
 
-  <div class="app-source" app-source-no-tabs="listeners1"></div>
-  <script type="text/xml" id="listeners1">    
+<div class="app-source" app-source-no-tabs="listeners1"></div>
+<script type="text/xml" id="listeners1">    
 <process id="executionListenersProcess">
 
   <extensionElements>
@@ -88,12 +88,12 @@
   <endEvent id="theEnd" />
   
 </process> 
-  </script>
+</script>
 
   The first execution listener is notified when the process starts. The listener is an external Java-class (like ExampleExecutionListenerOne) and should implement org.camunda.bpm.engine.delegate.ExecutionListener interface. When the event occurs (in this case end event) the method notify(ExecutionListenerExecution execution) is called.
 
-  <div class="app-source" app-source-no-tabs="listeners2"></div>
-  <script type="text/xml" id="listeners2">
+<div class="app-source" app-source-no-tabs="listeners2"></div>
+<script type="text/xml" id="listeners2">
 public class ExampleExecutionListenerOne implements ExecutionListener {
 
   public void notify(ExecutionListenerExecution execution) throws Exception {
@@ -101,7 +101,7 @@ public class ExampleExecutionListenerOne implements ExecutionListener {
     execution.setVariable("eventReceived", execution.getEventName());
   }
 }
-  </script>
+</script>
 
   <p>
     It is also possible to use a delegation class that implements the <code>org.camunda.bpm.engine.delegate.JavaDelegate</code> interface. These delegation classes can then be reused in other constructs, such as a delegation for a serviceTask.
@@ -134,19 +134,18 @@ public class ExampleExecutionListenerOne implements ExecutionListener {
   </p>
   <p>
     A task listener can only be added in the process definition as a child element of a user task. Note that this also must happen as a child of the BPMN 2.0 extensionElements and in the activiti namespace, since a task listener is a construct specific for the camunda engine.
-
-        <div class="app-source" app-source-no-tabs="listeners8"></div>
-        <script type="text/xml" id="listeners8">
+  </p>
+  
+<div class="app-source" app-source-no-tabs="listeners8"></div>
+<script type="text/xml" id="listeners8">
     <userTask id="myTask" name="My Task" >
       <extensionElements>
         <activiti:taskListener event="create" class="org.camunda.bpm.MyTaskCreateListener" />
       </extensionElements>
     </userTask>    
-        </script>
-  </p>
+</script>
 
 
-    <p>
     A task listener supports following attributes:
     <ul>
       <li><strong>event (required)</strong>: the type of task event on which the task listener will be invoked. Possible events are
@@ -163,13 +162,13 @@ public class ExampleExecutionListenerOne implements ExecutionListener {
 
         <div class="app-source" app-source-no-tabs="listeners9"></div>
         <script type="text/xml" id="listeners9">
-        public class MyTaskCreateListener implements TaskListener {
+public class MyTaskCreateListener implements TaskListener {
 
-          public void notify(DelegateTask delegateTask) {
-            // Custom logic goes here
-          }
+  public void notify(DelegateTask delegateTask) {
+    // Custom logic goes here
+  }
 
-        }    
+}    
         </script>
 
         It is also possible to use field injection to pass process variables or the execution to the delegation class. Note that an instance of the delegation class is created upon process deployment (as is the case with any class delegation in the engine), which means that the instance is shared between all process instance executions.
@@ -180,53 +179,50 @@ public class ExampleExecutionListenerOne implements ExecutionListener {
 
         <div class="app-source" app-source-no-tabs="listeners10"></div>
         <script type="text/xml" id="listeners10">
-    <activiti:taskListener event="create" expression="${myObject.callMethod(task, task.eventName)}" />    
+<activiti:taskListener event="create" expression="${myObject.callMethod(task, task.eventName)}" />    
         </script>
 
         <li><strong>delegateExpression</strong> allows to specify an expression that resolves to an object implementing the TaskListener interface, similar to a service task.
 
         <div class="app-source" app-source-no-tabs="listeners11"></div>
         <script type="text/xml" id="listeners11">
-    <activiti:taskListener event="create" delegateExpression="${myTaskListenerBean}" />    
+<activiti:taskListener event="create" delegateExpression="${myTaskListenerBean}" />    
         </script>
         </li>
       </ul>
-      </p>
   
-
-
-
 
 
 <h2>Field injection on Listeners</h2>
 <p>
 When using an listener (execution or task) that is configured with the class attribute, field injection can be applied. This is exactly the same mechanism as used Service task field injection, which contains an overview of the possibilities provided by field injection.
+  </p>
 
 The fragment below shows a simple example process with an execution listener with fields injected.
 
-    <div class="app-source" app-source-no-tabs="listeners5"></div>
-    <script type="text/xml" id="listeners5">
- <process id="executionListenersProcess">
-    <extensionElements>
-      <activiti:executionListener class="org.camunda.bpm.examples.bpmn.executionListener.ExampleFieldInjectedExecutionListener" event="start">
-        <activiti:field name="fixedValue" stringValue="Yes, I am " />
-        <activiti:field name="dynamicValue" expression="${myVar}" />
-      </activiti:executionListener>
-    </extensionElements>
-    
-    <startEvent id="theStart" />
-    <sequenceFlow sourceRef="theStart" targetRef="firstTask" />
-    
-    <userTask id="firstTask" />
-    <sequenceFlow sourceRef="firstTask" targetRef="theEnd" />
-    
-    <endEvent id="theEnd" />
-  </process>
-    </script>
+<div class="app-source" app-source-no-tabs="listeners5"></div>
+<script type="text/xml" id="listeners5">
+<process id="executionListenersProcess">
+  <extensionElements>
+    <activiti:executionListener class="org.camunda.bpm.examples.bpmn.executionListener.ExampleFieldInjectedExecutionListener" event="start">
+      <activiti:field name="fixedValue" stringValue="Yes, I am " />
+      <activiti:field name="dynamicValue" expression="${myVar}" />
+    </activiti:executionListener>
+  </extensionElements>
+  
+  <startEvent id="theStart" />
+  <sequenceFlow sourceRef="theStart" targetRef="firstTask" />
+  
+  <userTask id="firstTask" />
+  <sequenceFlow sourceRef="firstTask" targetRef="theEnd" />
+  
+  <endEvent id="theEnd" />
+</process>
+</script>
 
 
-    <div class="app-source" app-source-no-tabs="listeners6"></div>
-    <script type="text/xml" id="listeners6">
+<div class="app-source" app-source-no-tabs="listeners6"></div>
+<script type="text/xml" id="listeners6">
 public class ExampleFieldInjectedExecutionListener implements ExecutionListener {
 
   private Expression fixedValue;
@@ -237,12 +233,12 @@ public class ExampleFieldInjectedExecutionListener implements ExecutionListener 
     execution.setVariable("var", fixedValue.getValue(execution).toString() + dynamicValue.getValue(execution).toString());
   }
 }    
-    </script>         
+</script>         
 
 The class ExampleFieldInjectedExecutionListener concatenates the 2 injected fields (one fixed an the other dynamic) and stores this in the process variable 'var'.
 
-    <div class="app-source" app-source-no-tabs="listeners7"></div>
-    <script type="text/xml" id="listeners7">
+<div class="app-source" app-source-no-tabs="listeners7"></div>
+<script type="text/xml" id="listeners7">
 @Deployment(resources = {"org/camunda/bpm/examples/bpmn/executionListener/ExecutionListenersFieldInjectionProcess.bpmn20.xml"})
 public void testExecutionListenerFieldInjection() {
   Map<String, Object> variables = new HashMap<String, Object>();
@@ -257,9 +253,7 @@ public void testExecutionListenerFieldInjection() {
   // Result is a concatenation of fixed injected field and injected expression
   assertEquals("Yes, I am listening!", varSetByListener);
 }    
-    </script>
-    
-</p>
+</script>
 
   
 </section>

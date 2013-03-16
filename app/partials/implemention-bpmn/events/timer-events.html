@@ -8,9 +8,9 @@
   <div class="span9">
       <p>
 Timer events are events which are triggered by defined timer. They can be used as start event, intermediate event or boundary event. Boundary events can be interrupting or not.
+</p>
 
-<div style="width:100%; overflow:auto">
-<div id="event-rimer" style="position:relative" data-bpmn-src="implement/event-timer" ></div>
+<div id="event-rimer" style="position:relative" data-bpmn-src="implement/event-timer" >
 </div>
 
 A timer definition must have exactly one element from the following:
@@ -35,6 +35,7 @@ A timer definition must have exactly one element from the following:
 </script>
 
     </li>
+
     <li><strong>timeCycle</strong>. Specifies repeating interval, which can be useful for starting process periodically, or for sending multiple reminders for overdue user task. Time cycle element can be in two formats. First is the format of recurring time duration, as specified by <a href="http://en.wikipedia.org/wiki/ISO_8601#Repeating_intervals">ISO 8601</a> standard. Example (3 repeating intervals, each lasting 10 hours):
 
 <div class="app-source" app-source-no-tabs="timer3" ></div>
@@ -51,14 +52,16 @@ A timer definition must have exactly one element from the following:
 0 0/5 * * * ?
 </script>
 
-    Please see <a href="http://www.quartz-scheduler.org/docs/tutorials/crontrigger.html">tutorial</a> for using cron expressions.
+    <p>Please see <a href="http://www.quartz-scheduler.org/docs/tutorials/crontrigger.html">tutorial</a> for using cron expressions.</p>
 
-    Note: The first symbol denotes seconds, not minutes as in normal Unix cron.
+    <p>Note: The first symbol denotes seconds, not minutes as in normal Unix cron.</p>
 
-    The recurring time duration is better suited for handling relative timers, which are calculated with respect to some particular point in time (e.g. time when user task was started), while cron expressions can handle absolute timers - which is particularly useful for timer start events.</li>
+    <p>The recurring time duration is better suited for handling relative timers, which are calculated with respect to some particular point in time (e.g. time when user task was started), while cron expressions can handle absolute timers - which is particularly useful for timer start events.</p></li>
 </ul>
 
+<p>
 You can use expressions for the timer event definitions, by doing so you can influence the timer definition based on process variables. The process variables must contain the <a href="http://en.wikipedia.org/wiki/ISO_8601">ISO 8601</a> (or cron for cycle type) string for appropriate timer type.
+</p>
 
 <div class="app-source" app-source-no-tabs="timer5" ></div>
 <script type="text/xml" id="timer5"> 
@@ -69,8 +72,11 @@ You can use expressions for the timer event definitions, by doing so you can inf
 </boundaryEvent>
 </script>
   
+  <p>
 Note: timers are only fired when the Job Executor is enabled. 
-      </p>
+  </p>
+
+
     </div>
     <div class="span3">
       <h3>On this page</h3>
@@ -94,8 +100,9 @@ Note: timers are only fired when the Job Executor is enabled.
 
 
 
-  <h1>Timer Start Event</h1>
-  <p>
+<h1>Timer Start Event</h1>
+
+<p>
    A timer start event is used to create process instance at given time. It can be used both for processes which should start only once and for processes that should start in specific time intervals.
 </p>
 <p>
@@ -105,8 +112,9 @@ Note: a subprocess cannot have a timer start event.
 Note: start timer event is scheduled as soon as process is deployed. There is no need to call startProcessInstanceByXXX, although calling start process methods is not restricted and will cause one more starting of the process at the time of startProcessInstanceByXXX Invocation.
 </p>
 <p>
-
 The XML representation of a timer start event is the normal start event declaration, with timer definition sub-element. The following ecample process will start 4 times, in 5 minute intervals, starting on 11th march 2011, 12:13:
+</p>
+
 
 <div class="app-source" app-source-no-tabs="timer6" ></div>
 <script type="text/xml" id="timer6"> 
@@ -117,7 +125,9 @@ The XML representation of a timer start event is the normal start event declarat
         </startEvent>
 </script>   
 
+<p>
 and this process will start once, on a selected date:
+</p>
 
 <div class="app-source" app-source-no-tabs="timer7" ></div>
 <script type="text/xml" id="timer7"> 
@@ -128,7 +138,6 @@ and this process will start once, on a selected date:
         </startEvent>
 </script>           
 
-	</p>
 	
 
 
@@ -136,9 +145,12 @@ and this process will start once, on a selected date:
 
 
 <h1>Timer Intermediate Catching Event</h1>
+<p>
 A timer intermediate event acts as a stopwatch. When an execution arrives in catching event activity, a timer is started. When the timer fires (e.g. after a specified interval), the sequence flow going out of the timer intermediate event is followed.
-
+</p>
+<p>
 A timer intermediate event is defined as a intermediate catching event. The specific type sub-element is in this case a timerEventDefinition element.
+</p>
 
 <div class="app-source" app-source-no-tabs="timer8" ></div>
 <script type="text/xml" id="timer8"> 
@@ -162,6 +174,7 @@ A timer boundary event acts as a stopwatch and alarm clock. When an execution ar
 </p>
 <p>
 There is the difference between the interrupting and non interrupting timer event. The interrupting is the default. The non-interrupting leads to the original activity is not interrupted but the activity stays there. Instead an additional executions is created and send over the outgoing transition of the event. In the XML representation, the cancelActivity attribute is set to false:
+</p>
 
 <div class="app-source" app-source-no-tabs="timer9" ></div>
 <script type="text/xml" id="timer9"> 
@@ -173,15 +186,14 @@ There is the difference between the interrupting and non interrupting timer even
 </script>
 
 
+<p>
 Note: boundary timer events are only fired when the job executor is enabled.
 </p>
 
-<p>
 <div class="alert">
   <strong>Known issue with boundary events</strong> There is a known issue regarding concurrency when using boundary events of any type. Currently, it is not possible to have multiple outgoing sequence flow attached to a boundary event. A solution to this problem is to use one outgoing sequence flow that goes to a parallel gateway.
 </div>
 
-<div id="event-timer-issue" style="position:relative" data-bpmn-src="implement/event-timer-multiple-flows" />
-</p>
+<div id="event-timer-issue" style="position:relative" data-bpmn-src="implement/event-timer-multiple-flows"> </div>
 
 </section>
