@@ -9,6 +9,7 @@ The camunda engine uses Unified Expression Language (UEL) for expression-resolvi
 </p>
 <p>
 Expressions can be used in for example Java Service tasks, Execution Listeners, Task Listeners and Conditional sequence flows. Although there are 2 types of expressions, value-expression and method-expression, the engine abstracts this so they can both be used where an expression is needed.
+</p>
 
 <ul>
     <li><strong>Value expression:</strong> resolves to a value. By default, all process variables are available to use. Also all spring-beans (if using Spring) or CDI beans (if using CDI) are available to use in expressions. Some examples:
@@ -31,9 +32,11 @@ Expressions can be used in for example Java Service tasks, Execution Listeners, 
     </li>
 </ul>
 
+<P>
 Note that these expressions support resolving primitives (incl. comparing them), beans, lists, arrays and maps.
 </p>
-<p>
+
+
 On top of all process variables, there are a few default objects available to be used in expressions:
 <ul>
     <li><strong>execution:</strong> The DelegateExecution that holds additional information about the ongoing execution.</li>
@@ -41,6 +44,5 @@ On top of all process variables, there are a few default objects available to be
     <li><strong>authenticatedUserId:</strong> The id of the user that is currently authenticated. If no user is authenticated, the variable is not available.</li>
 </ul>
 For more concrete usage and examples, check out Expressions in Spring, Java Service tasks, Execution Listeners, Task Listeners or Conditional sequence flows.         
-</p>
 	
 </section>

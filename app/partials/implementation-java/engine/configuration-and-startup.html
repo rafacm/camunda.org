@@ -6,15 +6,14 @@
   
 <div class="row-fluid">
   <div class="span9">
-      <p>
         There are two basic modes of the Process Engine:
         <ul>
           <li>Shared Process Engine: </li>
           <li>Embedded Process Engine: </li>
         </ul>
+        <p>
         See <a href="https://app.camunda.com/confluence/display/foxUserGuide/Architecture+Overview">Architecture Overview</a> for more details on the differences on this.
       </p>
-      <p>
         In order to configure and create a Process Engine you have different options:
         <ul>
           <li><strong>Container manages shared Process Engine:</strong> The container of your choice (e.g. Tomcat, JBoss, Glassfish or WebSphere) completly manages the Process Engine for you. 
@@ -23,7 +22,8 @@
           <li><strong>Create Process Engine using XML configuration:</strong> You can use an XML configuration (Spring) to configure and startup your Engine, more details below.</li>
           <li><strong>Create Process Engine using Spring:</strong> Spring can manage your Process Engine for you, see <a href="">Engine Startup via Spring</a> for details.</li>
         </ul>
-      </p>
+
+
   </div>
   <div class="span3">
       <h3>On this page</h3>
@@ -51,7 +51,9 @@
 
 <h1>ProcessEngineConfiguration bean</h1>
 
+<p>
 The camunda engine uses the <a href="http://www.camunda.org/javadocs/index.html?org/camunda/bpm/engine/ProcessEngineConfiguration.html">ProcessEngineConfiguration bean</a> to configure and construct a standalone Process Engine. There are multiple subclasses available that can be used to define the processEngineConfiguration. These classes represent different environments, and set defaults accordingly. It's a best practice to select the class the matches (the most) your environment, to minimalise the number of properties needed to configure the engine. The following classes are currently available:
+</p>
 <ul>
     <li>org.camunda.bpm.engine.impl.cfg.StandaloneProcessEngineConfiguration: the process engine is used in a standalone way. The engine itself will take care of the transactions. By default, the database will only be checked when the engine boots (and an exception is thrown if there is no database schema or the schema version is incorrect).</li>
 
@@ -104,6 +106,7 @@ ProcessEngine processEngine = ProcessEngineConfiguration.createStandaloneInMemPr
 <h1>Configure Process Engine via XML</h1>
 <p>
 The easiest way to configure your Process Engine is via through an XML file called activiti.cfg.xml. Using that you can simply do:
+</p>
 
 <div class="app-source" app-source-no-tabs="xml1"></div>
 <script type="text/xml" id="xml1">   
@@ -144,10 +147,12 @@ This will look for an activiti.cfg.xml file on the classpath and construct an en
 </beans>
 </script>
 
+<p>
 Note that the configuration XML is in fact a Spring configuration. This does not mean that the camunda engine can only be used in a Spring environment! We are simply leveraging the parsing and dependency injection capabilities of Spring internally for building up the engine.
 </p>
 <p>
 The ProcessEngineConfiguration object can also be created programmatically using the configuration file. It is also possible to use a different bean id:
+</p>
 
 <div class="app-source" app-source-no-tabs="xml3"></div>
 <script type="text/xml" id="xml3">   
@@ -185,9 +190,12 @@ There are two ways to configure the database that the camunda engine will use. T
     <li>jdbcPassword: password to connect to the database. </li>
 </ul>
 
+<p>
 Note that internally the engine uses <a href="http://www.mybatis.org/">Apache MyBatis</a> for persistence. 
-
+</p>
+<p>
 The data source that is constructed based on the provided JDBC properties will have the default MyBatis connection pool settings. The following attributes can optionally be set to tweak that connection pool (taken from the MyBatis documentation):
+</p>
 
 
 <ul>
@@ -201,6 +209,7 @@ The data source that is constructed based on the provided JDBC properties will h
 
 <p>    
 Example database configuration:
+</p>
 
 <div class="app-source" app-source-no-tabs="db1"></div>
 <script type="text/xml" id="db1">   
@@ -229,10 +238,10 @@ Alternatively, a <code>javax.sql.DataSource</code> implementation can be used (e
     ...
 </script>
       
-
+</>
 Note that camunda does not ship with a library that allows to define such a data source. So you have to make sure that the libraries (e.g. from DBCP) are on your classpath.
 </p>
-<p>
+
 The following properties can be set, regardless of whether you are using the JDBC or data source approach:
 <ul>
     <li>databaseType: it's normally not necessary to specify this property as it is automatically analyzed from the database connection meta data. Should only be specified in case automatic detection fails. Possible values: {h2, mysql, oracle, postgres, mssql, db2}. This property is required when not using the default H2 database. This setting will determine which create/drop scripts and queries will be used. See the 'supported databases' section for an overview of which types are supported.</li>
@@ -244,15 +253,15 @@ The following properties can be set, regardless of whether you are using the JDB
         <li>create-drop: Creates the schema when the process engine is being created and drops the schema when the process engine is being closed. 
     </ul>
 </ul>
-</p>
-<p>
-  <div class="alert">
+
+
+<div class="alert">
     <strong>Supported Databases: </strong> 
+    <p>
     For information on supported databases please refer to <a href="https://app.camunda.com/confluence/display/foxUserGuide/Supported+environments">Supported Environments</a>.
-  </div>  
-<div class="label label-warning"></div>
-</p>
-<p>
+  </p>
+</div>  
+
 Here are some sample JDBC urls:
 
 <ul>
@@ -265,7 +274,6 @@ Here are some sample JDBC urls:
 </ul>  
 
 For more information on the database setup please refer to <a href="https://app.camunda.com/confluence/display/foxUserGuide/Database+Setup">Database Setup</a>
-</p>
 
 
 
@@ -296,7 +304,7 @@ By default, a version check will be performed each time a process engine is crea
 </p>
 <p>
 To upgrade, you have to start with putting the following configuration property in your activiti.cfg.xml configuration file:
-
+</p>
     
 <div class="app-source" app-source-no-tabs="db3"></div>
 <script type="text/xml" id="db3">   
@@ -310,13 +318,14 @@ To upgrade, you have to start with putting the following configuration property 
 
 </beans>
 </script>
-</p>
+
+
 <p>
 Also, include a suitable database driver for your database to the classpath. Upgrade the camunda engine libraries in your application. Or start up a new version of the engine and point it to a database that contains an older version. With databaseSchemaUpdate set to true, the engine will automatically upgrade the DB schema to the newer version the first time when it notices that libraries and DB schema are out of sync.
 </p>
 <p>
 As an alternative you can also run the upgrade DDL statements. It's also possible to run the upgrade database scripts, linked above.
-
+</p>
 
 
 
@@ -327,17 +336,20 @@ As an alternative you can also run the upgrade DDL statements. It's also possibl
 
 
 <h1>Job executor activation</h1>
-
+<p>
 <a href="https://app.camunda.com/confluence/display/foxUserGuide/The+Job+Executor">The JobExecutor</a> is a component that manages a couple of threads to fire timers (and later also asynchronous messages). For unit testing scenarios, it is cumbersome to work with multiple threads. Therefore the API allows to query for (ManagementService.createJobQuery) and execute jobs (ManagementService.executeJob) through the API so that job execution can be controlled from within a unit test. To avoid interference by the job executor, it can be turned off.
-
+</p>
+<p>
 By default, the JobExecutor is activated when the process engine boots. Specify
-    
+</p>
+
 <div class="app-source" app-source-no-tabs="conf5"></div>
 <script type="text/xml" id="conf5">   
 <property name="jobExecutorActivate" value="false" />
 </script>
 
 when you don't want the JobExecutor to be activated upon booting the process engine.
+
 
 
 
@@ -356,19 +368,21 @@ Customizing the configuration of <a href="https://app.camunda.com/confluence/dis
 
 <h1>Process Definition Cache</h1>
 <p>
-
 All process definition are cached (after they're parsed) to avoid hitting the database every time a process definition is needed and because process definition data doesn't change. By default, there is no limit on this cache. To limit the process definition cache, add following property
-
+</p>
     
 <div class="app-source" app-source-no-tabs="conf7"></div>
 <script type="text/xml" id="conf7">   
 <property name="processDefinitionCacheLimit" value="10" />
 </script>
 
+
+<p>
 Setting this property will swap the default hashmap cache with a LRU cache that has the provided hard limit. Of course, the 'best' value of this property depends on the total amount of process definitions stored and the number of process definitions actually used at runtime by all the runtime process instances.
 </p>
 <p>
 You can also inject your own cache implementation. This must be a bean that implements the org.camunda.bpm.engine.impl.persistence.deploy.DeploymentCache interface:
+</p>
 
 <div class="app-source" app-source-no-tabs="conf8"></div>
 <script type="text/xml" id="conf8">   
@@ -378,9 +392,9 @@ You can also inject your own cache implementation. This must be a bean that impl
 </script>
 
 
+
 <h1>Logging</h1>
 
 We use <a href="http://docs.oracle.com/javase/6/docs/api/java/util/logging/package-summary.html">Java Logging</a> to avoid any third party logging requirements. 
-
 	
 </section>

@@ -6,7 +6,6 @@
   
 <div class="row-fluid">
   <div class="span9">
-      <p>
         
 The camunda-engine-cdi modules leverages both the configurability of the camunda engine and the extensibility of CDI. The most prominent features  are:
 <ul>
@@ -31,7 +30,7 @@ In order to include the module in a maven project, we add the following maven de
 
 Replace 'x' with your camunda BPM version.
 
-      </p>
+
     </div>
     <div class="span3">
       <h3>On this page</h3>
@@ -60,6 +59,11 @@ camunda-engine-cdi uses a java.util.ServiceLoader SPI for resolving an instance 
 <strong>Note:</strong> If you do not provide a custom org.camunda.bpm.engine.cdi.spi.ProcessEngineLookup implementation, the engine will use the default LocalProcessEngineLookup implementation. In that case, all you need to do is providing a activiti.cfg.xml file on the classpath (see next section).
 </p>
 
+
+
+
+
+
 <h2>Configuring the Process Engine</h2>
 
 <p>
@@ -68,14 +72,15 @@ Configuration depends on the selected ProcessEngineLookup-Strategy (cf. previous
 
 <p>
 camunda offers different ProcessEngineConfiguration implementations mostly dependent on the underlying transaction management strategy. The camunda-engine-cdi module is not concerned with transactions, which means that potentially any transaction management strategy can be used (even the Spring transaction abstraction). As a convenience, the cdi-module provides two custom ProcessEngineConfiguration implementations:
+</p>
 <ul>
     <li>org.camunda.bpm.engine.cdi.CdiJtaProcessEngineConfiguration: a subclass of the JtaProcessEngineConfiguration, can be used if JTA-managed transactions should be used for the engine.</li>
     <li>org.camunda.bpm.engine.cdi.CdiStandaloneProcessEngineConfiguration: a subclass of the StandaloneProcessEngineConfiguration, can be used if plain JDBC transactions should be used for engine.</lI>
 </ul>
-</p>
 
 <p>
   The following is an example activiti.cfg.xml file for JBoss 7:
+</p>
 
 
 <div class="app-source" app-source-no-tabs="cdi2"></div>
@@ -143,6 +148,7 @@ Note that the above configuration requires the "spring-context" module:
 </dependency>
 </script>
 
+<p>
 The configuration in a Java SE environment looks exactly like the examples provided in section Creating a ProcessEngine, substitute "CdiStandaloneProcessEngineConfiguration" for "StandaloneProcessEngineConfiguration".
 </p>
 	

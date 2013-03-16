@@ -7,6 +7,7 @@
       <p>
           The Java API is the most common way of interacting with the engine. The central starting point is the ProcessEngine, which can be created in several ways as described in the configuration section. From the ProcessEngine, you can obtain the various services that contain the workflow/BPM methods. ProcessEngine and the services objects are thread safe. So you can keep a reference to 1 of those for a whole server. 
       </p>
+
       <img src="/app/assets/img/implementation-java/api.services.png">
 
 
@@ -39,7 +40,6 @@ The <strong>RepositoryService</strong> is probably the first service needed when
 </p>
 
 
-<P>
 Furthermore, this service allows to
 <ul>
     <li>query on deployments and process definitions known to the engine.</li>
@@ -48,10 +48,10 @@ Furthermore, this service allows to
     <li>Retrieve a pojo version of the process definition which can be used to introspect the process using Java rather than xml.</li>
 </ul>
 
+<p>
 Wile the RepositoryService is rather about static information (ie. data that doesn't change, or at least not a lot), the <strong>RuntimeService</strong> is quite the opposite. It deals with starting new process instances of process definitions. As said above, a process definition defines the structure and behaviour of the different steps in a process. A process instance is one execution of such a process definition. For each process definition there typically are many instances running at the same time. The RuntimeService also is the service which is used to retrieve and store process variables. This is data which is specific to the given process instance and can be used by various constructs in the process (eg. an exclusive gateway often uses process variables to determine which path is chosen to continue the process). The Runtimeservice also allows to query on process instances and executions. Executions are a representation of the 'token' concept of BPMN 2.0. Basically an execution is a pointer pointing to where the process instance currently is. Lastly, the RuntimeService is used whenever a process instance is waiting for an external trigger and the process needs to be continued. A process instance can have various wait states and this service contains various operations to 'signal' the instance that the external trigger is received and the process instance can be continued.
 </p>
 
-<P>
 Tasks that need to be performed by actual human users of the system are core to the process engine. Everything around tasks is grouped in the TaskService, such as
 <ul>
     <li>Querying tasks assigned to users or groups.</li>
@@ -59,24 +59,24 @@ Tasks that need to be performed by actual human users of the system are core to 
     <li> Manipulating to which user a task is assigned or which users are in some way involved with the task.</li>
     <li>Claiming and completing a task. Claiming means that someone decided to be the assigee for the task, meaning that this user will complete the task. Completing means 'doing the work of the tasks'. Typically this is filling in a form of sorts. </li>
 </ul>
-</p>
-<P>
+
+<p>
 The <strong>IdentityService</strong> is pretty simple. It allows the management (creation, update, deletion, querying, ...) of groups and users. It is important to understand that the core engine actually doesn't do any checking on users at runtime. For example, a task could be assigned to any user, but the engine does not verify if that user is known to the system. This is because the engine can also used in conjunction with services such as ldap, active directory, etc.
 </p>
-<P>
+<p>
 The <strong>FormService</strong> is an optional service. Meaning that the camunda engine can perfectly be used without it, without sacrificing any functionality. This service introduces the concept of a start form and a task form. A start form is a form that is shown to the user before the process instance is started, while a task form is the form that is displayed when a user wants to complete a form. You can define these forms in the BPMN 2.0 process definition. This service exposes this data in an easy way to work with. But again, this is optional as forms don't need to be embedded in the process definition.
 </p>
-<P>
+<p>
 The <strong>HistoryService</strong> exposes all historical data gathered by the engine. When executing processes, a lot of data can be kept by the engine (this is configurable) such as process instance start times, who did which tasks, how long it took to complete the tasks, which path was followed in each process instance, etc. This service exposes mainly query capabilities to access this data.
 </p>
-<P>
+<p>
 The <strong>ManagementService</strong> is typically not needed when coding custom application. It allows to retrieve information about the database tables and table metadata. Furthermore, it exposes query capabilities and management operations for jobs. Jobs are used in the engine for various things such as timers, asynchronous continuations, delayed suspension/activation, etc. Later on, these topics will be discussed in more detail.
 </p>
-<p>
+
 <div class="alert">
    <strong>Javadocs: </strong> 
-  For more detailed information on the service operations and the engine API, see the <a href="http://www.camunda.org/javadocs/">javadocs</a>.
+  <p>For more detailed information on the service operations and the engine API, see the <a href="http://www.camunda.org/javadocs/">javadocs</a>.</p>
 </div>
-</p>
+
 	
 </section>
