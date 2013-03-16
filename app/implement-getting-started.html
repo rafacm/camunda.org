@@ -28,10 +28,11 @@
         'lib/bootstrap/bootstrap.min',       
         'lib/angular/angular-resource.min',
         'lib/angular/angular-bootstrap.min',
+        'lib/google-code-prettify/prettify.min',
 
         ], function() {
           $script([        
-         
+            'app/app',
             'app/directives/ngmif',
             'app/directives/focused',         
 
@@ -187,9 +188,7 @@
             <p>
               After you have successfully unpacked your distribution of camunda BPM platform, execute the script named
               <code>start-camunda.bat</code>
-              (windows users) or
-              <code>start-camunda.sh</code>
-              (unix users).
+              (windows users). Unix users need to use the tomcat startup script located at 
             </p>
             <p>
               This script will start the application server and open a welcome screen in your webbrowser. If the page does not open, go to <a
@@ -205,24 +204,252 @@
 
             TODO!
           </section>
+
           <section id="setup">
             <div class="page-header">
               <h1>Setup your Project</h1>
             </div>
             <p>
-              Now you are ready for setting up your first process application project in eclipse. We'll discuss two alternative setup paths: In one we'll <a
-                href="#setup/with-maven">use Apache Maven,</a> in the other one we'll <a href="#setup/without-maven">not use apache maven.</a>
+              Now you are ready for setting up your first process application project in eclipse. Setting up a process application project consists of 4 steps:
+              <ol>
+                <li><a href="#setup/eclipse">Create a new Maven Project in Eclipse</a></li>
+                <li><a href="#setup/maven">Add the camunda dependencies</a></li>
+                <li><a href="#setup/process-application">Add a <code>@ProcessApplication</code> class</a></li>
+                <li><a href="#setup/processes.xml">Add a META-INF/processes.xml deployment descriptor</a></li>             
+              </ol>
+              In the following, we go through this process step by step.
             </p>
 
-            <div id="setup/without-maven">
-              <h3>Without Apache Maven</h3>
-            </div>
+            <section id="setup/eclipse">
+              <h3>Create a new Maven Project in Eclipse</h3>
+              <div class="row-fluid">
+                <div class="thumbnail span2" data-img-thumb img-src="assets/img/implementation-getting-started/eclipse-new-maven-project.png" ></div>
+                <div class="span10">
+                  <p>
+                    In eclipse, go to <code>File / New / Other ...</code>. This opens the <em>New Project Wizard</em>. In the <em>New Project Wizard</em> select <code>Maven / Maven Project</code>. Click Next.
+                  </p>
+                  <p>
+                    On the first page of the <em>New Maven Project Wizard</em> select &quot;<em>Create a simple project (skip archetype selection)</em>&quot;. Click Next.
+                  </p>
+                  <p>
+                    On the second page (see screenshot), configure the maven coordinates for the project. 
+                  </p>
+                  <p class="alert">
+                    Since we are setting up a WAR Project, make sure to select <code>Packaging: war</code>.
+                  </p>
+                  <p>
+                    When you are done, click Finish. Eclipse sets up a new maven project. The project appears in the <em>Project Explorer</em> View.
+                  </p>
+                </div>
+              </div>
+            </section>
 
-            <div id="setup/with-maven">
-              <h3>With Apache Maven</h3>
-            </div>
+            <section id="setup/maven">
+              <h3>Add camunda Maven Dependencies</h3>
+              <div class="row-fluid">              
+                <div class="span12">
+                  The next step consists in setting up the maven dependencies for your new process application. 
 
+                  Add the following dependencies to the <code>pom.xml</code> file of your project:
 
+                  <div class="app-source" app-source="pom.xml" annotate="pom.xml.annotation" ></div>
+
+                  <div class="bootstrap-code">
+<script type="text/xml" id="pom.xml">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>org.camunda.bpm.example</groupId>
+  <artifactId>loan-approval</artifactId>
+  <version>0.0.1-SNAPSHOT</version>
+  <packaging>war</packaging>
+  <name>Loan approval example</name>
+
+  <dependencies>
+    <dependency>
+      <groupId>org.camunda.bpm</groupId>
+      <artifactId>camunda-engine</artifactId>
+      <version>7.0.0-alpha1</version>
+      <scope>provided</scope>
+    </dependency>
+    <dependency>
+      <groupId>javax.servlet</groupId>
+      <artifactId>javax.servlet-api</artifactId>
+      <version>3.0.1</version>
+      <scope>provided</scope>
+    </dependency>
+  </dependencies>
+
+  <build>
+    <plugins>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-war-plugin</artifactId>
+        <version>2.3</version>
+        <configuration>
+          <failOnMissingWebXml>false</failOnMissingWebXml>
+        </configuration>
+      </plugin>
+    </plugins>
+  </build>
+
+  <repositories>
+    <repository>
+      <id>camunda-bpm-nexus</id>
+      <name>camunda-bpm-nexus</name>
+      <url>https://app.camunda.com/nexus/content/groups/public</url>
+    </repository>
+  </repositories>
+</project>
+</script>
+
+                  <script type="text/ng-template" id="pom.xml.annotation">
+                  { 
+                   "pom.xml":
+                    { "war": "Process Applications are most commonly packaged as Java Web Applications (WAR files). Other deployment options are available. On the Java EE 6 platform, you can use plain JAR or advanced EAR deployments as well." ,
+                      "camunda-engine": "The process engine is the component responsible for picking up your BPMN 2.0 processes and executing them.",
+                      "provided": "The process engine can be either <ul><li>provided by the servlet container or</li><li>embedded inside your process application.</li></ul> <p />Here, we use a shared process engine that is provided by the servlet container.",
+                      "javax.servlet-api": "The servlet API is required for compilation",
+                      "false" : "With Servlet 3.0 we do not need a web.xml file. Maven needs to catch up.",
+                      "camunda-bpm-nexus" : "camunda nexus providing the maven artifacts."
+
+                    }
+                  }
+                  </script>
+                  </div>              
+                  Now you can perform the first build. Select the <code>pom.xml</code> in the Package Explorer, perform a Right Click and select <code>Run AS / Maven Install</code> 
+                </div>
+              </div>
+            </section>
+
+            <section id="setup/process-application">
+              <h3>Add a Process Application Class</h3>
+              <div class="row-fluid">             
+                Next, you need to add a Process Application class. The Process Application class constitutes the interface between your application and the process engine. 
+               
+                <div class="app-source" app-source="LoanApprovalApplication" annotate="LoanApprovalApplication.annotation" ></div>
+
+<div class="bootstrap-code">
+<script type="text/xml" id="LoanApprovalApplication">
+package org.camunda.bpm.example.loanapproval;
+
+import org.camunda.bpm.application.ProcessApplication;
+import org.camunda.bpm.application.impl.ServletProcessApplication;
+
+@ProcessApplication("Loan Approval App")
+public class LoanApprovalApplication extends ServletProcessApplication {
+  // empty implementation
+}
+</script>
+
+<script type="text/ng-template" id="LoanApprovalApplication.annotation">
+{ 
+ "LoanApprovalApplication":
+  { "@ProcessApplication": "The @ProcessApplication annotation makes sure the class is automatically picked up at deployment time."
+  }
+}
+</script>    
+<script type="text/xml" id="LoanApprovalEjbApplication">
+@ProcessApplication("Loan Approval App")
+@Singleton
+@Startup 
+@ConcurrencyManagement(ConcurrencyManagementType.BEAN) 
+@TransactionAttribute(TransactionAttributeType.SUPPORTS)
+public class DefaultEjbProcessApplication extends EjbProcessApplication {
+   
+  @PostConstruct
+  public void start() {
+    deploy();
+  }
+
+  @PreDestroy
+  public void stop() {
+    undeploy();
+  }
+}
+</script>   
+              </div>
+               <div class="accordion" id="accSimple">
+                  <div class="accordion-group">
+                    <div class="accordion-heading">
+                      <a class="accordion-toggle collapsed" data-toggle="collapse" data-parent="#accSimple" href="#collapseOne"> 
+                        <i class="icon-question-sign"></i> 
+                        What about EJB Containers?
+                      </a>
+                    </div>
+                    <div id="collapseOne" class="accordion-body collapse">
+                      <div class="accordion-inner">
+                        <p>In an EJB Container, use an EJB Process Application:</p>    
+                        <div class="app-source" app-source="LoanApprovalEjbApplication" annotate="LoanApprovalApplication.annotation" ></div>             
+                      </div>
+                    </div>
+                  </div>
+                </div>
+            </section>
+
+            <section id="setup/processes.xml">
+              <h3>Add a META-INF/processes.xml deployment descriptor</h3>
+              <div class="row-fluid">       
+                <p>      
+                  The last step for setting up the process application is adding the <code>META-INF/processes.xml</code> deployment descriptor file. This file allows us to provide a declarative configuration of the deployment(s) this process application makes to the process engine.
+                </p>
+                <p class="alert alert-info">
+
+                  This file needs to be added to the <code>src/main/resources/META-INF</code> folder of the maven project.
+                </p>
+               
+                <div class="app-source" app-source="processes.xml" annotate="processes.xml.annotation" ></div>
+
+<div class="bootstrap-code">
+<script type="text/xml" id="processes.xml">
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<process-application
+  xmlns="http://www.camunda.org/schema/1.0/ProcessApplication"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+
+  <process-archive name="loan-approval">
+    <process-engine>default</process-engine>
+    <properties>
+      <property name="isDeleteUponUndeploy">false</property>
+      <property name="isScanForProcessDefinitions">true</property>
+    </properties>
+  </process-archive>
+
+</process-application>
+</script> 
+
+<script type="text/ng-template" id="processes.xml.annotation">
+{ 
+ "processes.xml":
+  { 
+    "loan-approval": "The name of the process engine deployment to be constructed.",
+    "default": "The name of the process engine we want to use (you can start multiple process engines).",
+    "isDeleteUponUndeploy": "Controls whether the process engine deployment should be removed when the process application is undeployed. If set to true, all process instances are deleted in the database when the WAR file is removed from the server.",
+    "isScanForProcessDefinitions": "If set to true, the WAR file is automatically scanned for process definitions. All files ending in <code>.bpmn20.xml</code> or <code>.bpm</code> are automatically picked up."
+  }
+}
+</script> 
+</div>  
+                <p>
+                  At this point you have successfully setup the process application you can start modeling the first process. 
+                </p>
+                <div class="accordion" id="accProcessesXml">
+                  <div class="accordion-group">
+                    <div class="accordion-heading">
+                      <a class="accordion-toggle collapsed" data-toggle="collapse" data-parent="#accProcessesXml" href="#accProcessesXmlCollapsed"> <i class="icon-thumbs-up"></i> 
+                        Empty META-INF/processes.xml
+                      </a>
+                    </div>
+                    <div id="accProcessesXmlCollapsed" class="accordion-body collapse">
+                      <div class="accordion-inner">
+                        <p>You can leave the META-INF/processes.xml file empty. In that case, default values are used.</p>                       
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </section>
           </section>
           <section id="model">
             <div class="page-header">
@@ -254,6 +481,7 @@
   </div>
   <!-- footer -->
   <footer class="footer">
+
     <div class="container container-footer">
       <p>
         <a href="index.html">camunda.org</a> - created and maintained by <a href="http://www.camunda.com">camunda services GmbH</a> | This page is built with <a
