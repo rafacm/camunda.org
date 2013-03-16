@@ -53,7 +53,7 @@ Implement
   * Complete "Getting started" - Daniel
   * BPMN 2.0 Reference rename packages and fix dead Links 
     * directive app-source (fix line numbers)
-    * (BPMN symbol reference) -> Nico
+    * ~~(BPMN symbol reference)~~ (won't fix)
   * Add ProcessApplication development Reference (-> Daniel)
   * ~~cleanup Menu (-> Roman)~~
   
@@ -66,7 +66,9 @@ Design
 
 Community 
   * Add & embedd additional Forum boards & make initial postings, Open in Google Link (Daniel, Handshake Jakob)
-  * Complete Team Page - Fix layout (Nico) Noch offen:  add Nastasja (Falko?)
+  * ~~Team Page~~
+    * ~~Complete~~
+    * ~~Fix layout~~
   * Add Contributions Page (-> Daniel)
   * ~~Fix Meeting Registration~~
   * ~~Add Newsletter (Jakob)~~
@@ -81,7 +83,7 @@ Homepage
   * ~~Add social Media Links (Roman)~~
   * Fix Blogpost embedding or hard-link initial blogpost (Andreas)
   * ~~Fix Meetings View (or hard-link) (Jakob)~~
-  * Add "Fork Me on Github" -> Fixed layout, Nico
+  * ~~Add "Fork Me on Github" -> Fixed layout~~
 
 Footer
   * ~~Fix Links (Roman)~~

@@ -55,8 +55,9 @@
 
 </head>
 <body ng-controller="DefaultController">
-  <div class="wrapper">
+  <div class="wrapper wrapper-dark">
 
+<div style="position:absolute; width:100%; height:480px; background-color:white"> </div>
 
     <!-- ========================================================================== -->
     <!-- navigation start                                                           -->
@@ -125,60 +126,56 @@
 
     <div class="container">
       <div class="row">
-        <div class="span12" style="margin-top: 80px; text-align: center">
-          <h1 style="color: #333">Design your Processes</h1>
-          <h3>using camunda BPM</h3>
+        <div style="position:relative; top:80px; text-align:center">  
+           <h1 style="color:#333">Design your Processes</h1>
+           <h3>aligning Business and IT</h3>
         </div>
-      </div>
-      <div class="row" style="margin-top: 40px;">
-        <div class="span3">
-          <div class="popover right" style="margin-top: 20px; margin-right: 20px; max-width: 100%; display: block; position: relative">
-            <h3 class="popover-title">
-              Learn how to use BPMN 2.0 in our step-by-step <b>Tutorial</b>
-            </h3>
 
-            <div class="popover-content">
-              <p>
-                <a href="design-tutorial.html">Introduction</a> | <a href="design-reference.html#/design/reference">BPMN 2.0 Symbol Reference</a>
-              </p>
+          <div class="row center" style="margin-top:100px; position:relative;">
+            <div class="span3">
+              <div class="popover left"  style="margin-top: 20px; margin-right: 20px; max-width: 100%; display:block; position: relative">
+                <div class="arrow"></div>
+                <h3 class="popover-title">Learn how to use BPMN 2.0</h3>
+                <div class="popover-content">
+                  <p>
+<ul><li>
+                    <a href="design-tutorial.html">BPMN 2.0 Tutorial »</a></li><li> <a
+                      href="design-reference.html#/reference">BPMN
+                    2.0 Reference »</a></li></ul></p>
+                </div>
+              </div>
+            </div>
+            <div class="span6">
+              <img src="assets/img/design_land.png" style="min-width: 530px"/>
+            </div>
+            <div class="span1" style="text-align:center">
+              <div class="popover right" style="max-width:240px;margin-left: 5px; margin-top: 110px; display:block; position: relative">
+                <div class="arrow"></div>
+                <h3 class="popover-title">Create BPMN 2.0 Diagrams</h3>
+
+                <div class="popover-content">
+                  <p><a href="design-modeler.html">camunda Modeler »</a></p>
+                </div>
+              </div>
+            </div>
+            <div class="span2">
             </div>
           </div>
-        </div>
-        <div class="span6">
-          <img src="assets/img/design_land.png" style="min-width: 530px" />
-        </div>
-        <div class="span1" style="text-align: center">
-          <div class="popover right" style="max-width: 240px; margin-left: 5px; margin-top: 170px; display: block; position: relative">
-            <h3 class="popover-title">
-              Create BPMN 2.0 Diagrams with our easy to use <b>camunda Modeler</b>
-            </h3>
 
-            <div class="popover-content">
-              <p>
-                <a href="">Setup Modeler</a> | <a href="">Create BPMN 2.0 Diagrams</a>
-              </p>
+          <div class="row" style="margin-top:40px;">
+            <div class="span3">
+            </div>
+            <div class="span9">
+              <div class="popover bottom" style="min-width:400px; margin-top: 0px; margin-left: 60px; display:block; position: relative">
+                <div class="arrow"></div>
+                <h3 class="popover-title">Do the roundtrip with any BPMN 2.0 compliant Modeler</h3>
+
+                <div class="popover-content">
+                  <p><a href="design-cycle-tutorial.html">camunda Cycle »</a></p>
+                </div>
+              </div>
             </div>
           </div>
-        </div>
-        <div class="span2"></div>
-      </div>
-
-      <div class="row" style="margin-top: 40px;">
-        <div class="span3"></div>
-        <div class="span9">
-          <div class="popover right" style="min-width: 400px; margin-top: 0px; margin-left: 60px; display: block; position: relative">
-            <h3 class="popover-title">
-              Do the roundtrip with any BPMN 2.0 compliant Modeler using <b>camunda Cycle</b>
-            </h3>
-
-            <div class="popover-content">
-              <p>
-                <a href="">Setup Cycle</a> | <a href="">Work with different Modelers</a>
-              </p>
-            </div>
-          </div>
-        </div>
-      </div>
 
       <!--div class="row-fluid" style="position:relative; padding-top:60px">
               <div class="span4 center" style="padding-top:10px;" >

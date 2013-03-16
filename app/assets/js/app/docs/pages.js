@@ -51,7 +51,7 @@ CAM_PAGES = [
   
   // engine bpmn documentation
 
-  { section: "implemention-bpmn", category: "Introduction", id: "bpmn-overview", name: "BPMN 2.0 Overview and Coverage", url: "/", keywords: "concept bpmn 2.0 introduction overview coverage" },
+  { section: "implemention-bpmn", category: "Introduction", id: "bpmn-overview", name: "BPMN 2.0 Overview and Coverage", url: "/index", keywords: "concept bpmn 2.0 introduction overview coverage" },
   { section: "implemention-bpmn", category: "Introduction", id: "extensions", name: "Custom Extensions", url: "/concepts/custom-extensions", keywords: "concept custom extensions" },
   { section: "implemention-bpmn", category: "Introduction", id: "listeners", name: "Listeners", url: "/concepts/listeners", keywords: "concept task execution listeners" },
   { section: "implemention-bpmn", category: "Tasks", id: "service-task", name: "Service Task", url: "/tasks/service-task", keywords: "tasks service task" },
