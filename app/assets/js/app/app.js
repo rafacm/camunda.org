@@ -303,41 +303,34 @@ angular.module('camundaorg.controllers', [])
                   }
                 };
 
-                var c = $scope.paper.ellipse(0, 0, 8, 8);
-
-                c.attr({"fill":"#d45500", "stroke":"none"}).attr({
-                  along: [0,c.id]
+                var set = $scope.paper.set();
+                
+                var token = $scope.paper.ellipse(0, 0, 8, 8);
+                token.attr({"fill":"#d45500", "stroke":"none"}).attr({
+                  along: [0,token.id]
                 });
+                set.push(token);
 
-                var timeout = (e.getTotalLength() * 10000) / 800;
+                // adding Robert's idea with the guess 
+                // being displayed inside the token!
+                if(!!$scope.lastGuess) {
+                  var guessNumner = $scope.paper.text(0, 0, $scope.lastGuess);
+                  guessNumner.attr({"stroke":"white", "fill":"none", "font-size":"14pt"}).attr({
+                    along: [0,guessNumner.id]
+                  });
+                  set.push(guessNumner);
+                }
 
-                c.animate({
-                  along: [to,c.id]
+                var timeout = 1500;
+
+                set.animate({
+                  along: [to,set.id]
                 }, timeout, function() {
-
-                c.remove();
+                  set.remove();
                   if(isSkip) {
                     activityExecution.doContinue();                    
                   }
                 });       
-
-
-                // adding Robert's idea with the number being displayed inside the token.
-                if(!!$scope.lastGuess) {
-
-                  var x = $scope.paper.text(0, 0, $scope.lastGuess);
-
-                  x.attr({"stroke":"white", "fill":"none", "font-size":"14pt"}).attr({
-                    along: [0,x.id]
-                  });
-
-                  x.animate({
-                    along: [to,x.id]
-                  }, timeout, function() {
-                    x.remove();                    
-                  });       
-
-                }
 
                 // do this via angular timeout function 
                 // to make sure scope rerenders itself
