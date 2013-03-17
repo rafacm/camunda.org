@@ -532,7 +532,13 @@ var CAM = {};
 
   Transformer.prototype.transform =  function(source) {
 
-    var doc = getXmlObject(source);
+    var doc;
+    if( source instanceof Document) {
+      doc = source;
+    } else {
+      doc = getXmlObject(source);
+    }
+
     var definitions = doc.getElementsByTagNameNS(NS_BPMN_SEMANTIC, "definitions");
 
     if(definitions.length == 0) {
