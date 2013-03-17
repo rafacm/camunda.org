@@ -253,7 +253,7 @@ angular.module('camundaorg.controllers', [])
  * numberguess controller 
  */
 
-.controller('NumberguessAppController',  function ($scope, $http, $element) {
+.controller('NumberguessAppController',  function ($scope, $http, $element, $timeout) {
 
   // list of currently suspended activities (activites waiting in an async continuation 
   // ie. waiting for a trigger. Could be more than one even though we do not have concurrency 
@@ -288,7 +288,52 @@ angular.module('camundaorg.controllers', [])
           listeners.push({
             "start" : function(activityExecution) {
               var actId = activityExecution.activityDefinition.id;
-              $scope.$emit("activityStart", actId);
+              var isSkip = actId == "exclusiveGW" && $scope.guessCounter > 1;
+
+              // if we have an incoming sequence flow: animate!
+              if(!!activityExecution.incomingSequenceFlowId) {
+                var e = $scope.paper.getById(activityExecution.incomingSequenceFlowId);     
+
+                $scope.paper.customAttributes.along = function (a, cid) {                          
+                  l = e.getTotalLength();
+                  to = 1;                  
+                  var p = e.getPointAtLength(a * l);  
+                  return {                                  
+                    transform: "t" + [p.x, p.y] 
+                  }
+                };
+
+                var c = $scope.paper.ellipse(0, 0, 8, 8);
+                console.log ("c.id is " + c.id);
+
+                c.attr({"stroke":"none", "fill":"orange"}).attr({
+                  along: [0,c.id]
+                });
+
+                c.animate({
+                  along: [to,c.id]
+                }, 1000, function() {
+
+                  c.remove();
+                  if(isSkip) {
+                    activityExecution.doContinue();                    
+                  }
+
+                });       
+
+                // do this via angular timeout function 
+                // to make sure scope rerenders itself
+                if(!isSkip) {
+                  $timeout(function(){               
+                    $scope.$emit("activityStart", actId);                                     
+                  },1000);         
+                }
+
+              } else {
+                $scope.$emit("activityStart", actId);
+              }
+
+              
             },
             "end" : function(activityExecution) {
               var actId = activityExecution.activityDefinition.id;
@@ -300,11 +345,7 @@ angular.module('camundaorg.controllers', [])
         // make activities async
         if(activity.type != "userTask" && activity.type != "process") {
           activity.asyncCallback = function(activityExecution) {
-            if(activityExecution.activityDefinition.id == "exclusiveGW" && $scope.guessCounter > 1) {
-             activityExecution.doContinue();
-            } else {
-             $scope.suspendedActivities.push(activityExecution);
-            }            
+            $scope.suspendedActivities.push(activityExecution);                    
           }
         }      
       }
@@ -331,9 +372,15 @@ angular.module('camundaorg.controllers', [])
 
   $scope.cancel = function() {
     $scope.processInstance = undefined;
-    $scope.suspendedActivities = [];
+    $scope.suspendedActivities = [];    
     $scope.activeActivities = [];
     $scope.guessCounter = 0;
+
+    // remove remaining highlights
+    for (var i = 0; i < $scope.processDefinition.baseElements.length; i++) {
+      var activity = $scope.processDefinition.baseElements[i];
+      $scope.paper.getById(activity.id).attr({"stroke":"#808080"});
+    }
   }
 
   $scope.doContinue = function(activityId) {
@@ -365,7 +412,7 @@ angular.module('camundaorg.controllers', [])
   };
 
   $scope.inactive = function() {
-    return $scope.activeActivities.length == 0;
+    return !$scope.processInstance;
   };
 
   $scope.active = function(activityId) {
@@ -373,13 +420,17 @@ angular.module('camundaorg.controllers', [])
   }
 
   /* here we get notified when an activity is started */
-  $scope.$on("activityStart", function(event, activityId) {
-    $scope.activeActivities.push(activityId);   
+  $scope.$on("activityStart", function(event, activityId, execution) {
+    // add activity to list of active activites
+    $scope.activeActivities.push(activityId);  
+    $scope.paper.getById(activityId).attr({"stroke":"orange"});
+    $scope.$render();
   });
 
   /* here we get notified when an activity is ended */
   $scope.$on("activityEnd", function(event, activityId) {
     $scope.activeActivities.splice($scope.activeActivities.indexOf(activityId), 1);
+    $scope.paper.getById(activityId).attr({"stroke":"#808080"});
   });
 
 })
@@ -781,8 +832,8 @@ angular.module('camundaorg.directives')
         // create process definition
         scope.processDefinition = new CAM.Transformer().transform(data)[0];
 
-        // render process
-        bpmnDirect(data, element);
+        // render process & add paper to scope
+        scope.paper = bpmnDirect(data, element);
 
       });
     }
