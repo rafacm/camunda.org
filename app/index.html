@@ -1,4 +1,8 @@
-<!DOCTYPE html>
+<!doctype html>
+<!--[if lt IE 7]> <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="en"> <![endif]-->
+<!--[if IE 7]>    <html class="no-js lt-ie9 lt-ie8" lang="en"> <![endif]-->
+<!--[if IE 8]>    <html class="no-js lt-ie9" lang="en"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en"> <!--<![endif]-->
 <html lang="en">
 <head>
 <title>camunda.org - the camunda bpm community homepage</title>
@@ -21,7 +25,7 @@
 
   $script.path('assets/js/');
 
-  $script([    
+  $script([
       'http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js',             
       'http://ajax.googleapis.com/ajax/libs/angularjs/1.0.1/angular.min.js',  
     ], function() {
@@ -30,10 +34,11 @@
         'lib/dojo/dojo/dojo',
       ], function() {
           $script([        
-            'lib/bootstrap/bootstrap.min',            
+            'lib/bootstrap/bootstrap.min', 
             'lib/jquery-validation/dist/jquery.validate.min',
             'lib/angular/angular-resource.min',
-            'lib/angular/angular-bootstrap.min',
+            'lib/angular/angular-bootstrap',
+            // 'lib/angular/angular-bootstrap.min',
             'app/app',
             'app/bpmn/Executor',
             'app/directives/ngmif',
@@ -72,47 +77,101 @@
           <a class="brand ir" href="index.html"> camunda.org </a>
           <div class="nav-collapse collapse">
             <ul class="nav">
+
               <ul class="nav" ng-controller="NavigationController">
-                <li ng-class="activeClass('/index.html')"><a href="index.html">Home</a></li>
-                <li ng-class="activeClass('/design-')"><a href="design-overview.html" class="caret-before">Design</a></li>
-                <li class="dropdown"><a class="dropdown-toggle caret-after" data-toggle="dropdown"> <b class="caret"></b></a>
+                <li ng-class="activeClass('/index.html')">
+                  <a href="index.html">Home</a>
+                </li>
+                
+                <li class="dropdown" ng-class="activeClass('/design-')">
+                  <a href="design-overview.html" class="dropdown-toggle">
+                    Design <b class="caret"></b>
+                  </a>
                   <ul class="dropdown-menu">
-                    <li ng-class="activeClass('/design-overview.html')"><a href="design-overview.html">Overview</a></li>
+                    <li ng-class="activeClass('/design-overview.html')">
+                      <a href="design-overview.html">Overview</a>
+                    </li>
                     <li class="divider"></li>
                     <li class="nav-header">Tools</li>
-                    <li ng-class="activeClass('/design-modeler.html')"><a href="design-modeler.html">camunda Modeler</a></li>
-                    <li ng-class="activeClass('/design-cycle-tutorial.html')"><a href="design-cycle-tutorial.html">camunda Cycle</a></li>
+                    <li ng-class="activeClass('/design-modeler.html')">
+                      <a href="design-modeler.html">camunda Modeler</a>
+                    </li>
+                    <li ng-class="activeClass('/design-cycle-tutorial.html')">
+                      <a href="design-cycle-tutorial.html">camunda Cycle</a>
+                    </li>
                     <li class="divider"></li>
                     <li class="nav-header">Know-how</li>
-                    <li ng-class="activeClass('/design-tutorial.html')"><a href="design-tutorial.html">BPMN 2.0 Tutorial</a></li>
-                    <li ng-class="activeClass('/design-reference.html')"><a href="design-reference.html#/reference">BPMN 2.0 Reference</a></li>
-                  </ul></li>
-                <li ng-class="activeClass('/implement')"><a href="implement.html" class="caret-before">Implement</a></li>
-                <li class="dropdown"><a class="dropdown-toggle caret-after" data-toggle="dropdown"> <b class="caret"></b></a>
+                    <li ng-class="activeClass('/design-tutorial.html')">
+                      <a href="design-tutorial.html">BPMN 2.0 Tutorial</a>
+                    </li>
+                    <li ng-class="activeClass('/design-reference.html')">
+                      <a href="design-reference.html#/reference">BPMN 2.0 Reference</a>
+                    </li>
+                  </ul>
+                </li>
+
+                <li class="dropdown" ng-class="activeClass('/implement')">
+                  <a href="implement.html" class="dropdown-toggle">
+                    Implement <b class="caret"></b>
+                  </a>
                   <ul class="dropdown-menu">
-                    <li ng-class="activeClass('/implement.html')"><a href="implement.html">Overview</a></li>
-                    <li ng-class="activeClass('/implement-getting-started.html')"><a href="implement-getting-started.html">Getting Started</a></li>
+                    <li ng-class="activeClass('/implement.html')">
+                      <a href="implement.html">Overview</a>
+                    </li>
+                    <li ng-class="activeClass('/implement-getting-started.html')">
+                      <a href="implement-getting-started.html">Getting Started</a>
+                    </li>
                     <li class="divider"></li>
                     <li class="nav-header">Process Engine</li>
-                    <li ng-class="activeClass('/implement-java.html')"><a href="implement-java.html#/engine/configuration-and-startup">Java Reference</a></li>
-                    <li ng-class="activeClass('/implement-bpmn.html')"><a href="implement-bpmn.html#/index">BPMN 2.0 Reference</a></li>
-                    <li ng-class="activeClass('/implement-rest.html')"><a href="implement-rest.html#/overview/introduction">REST API</a></li>
-                  </ul></li>
-                <li ng-class="activeClass('/community')"><a href="community.html" class="caret-before">Community</a></li>
-                <li class="dropdown"><a class="dropdown-toggle caret-after" data-toggle="dropdown"> <b class="caret"></b></a>
+                    <li ng-class="activeClass('/implement-java.html')">
+                      <a href="implement-java.html#/engine/configuration-and-startup">
+                        Java Reference
+                      </a>
+                    </li>
+                    <li ng-class="activeClass('/implement-bpmn.html')">
+                      <a href="implement-bpmn.html#/index">BPMN 2.0 Reference</a>
+                    </li>
+                    <li ng-class="activeClass('/implement-rest.html')">
+                      <a href="implement-rest.html#/overview/introduction">REST API</a>
+                    </li>
+                  </ul>
+                </li>
+                
+                <li class="dropdown" ng-class="activeClass('/community')">
+                  <a href="#" class="dropdown-toggle">
+                    Community <b class="caret"></b>
+                  </a>
                   <ul class="dropdown-menu">
-                    <li ng-class="activeClass('/community.html')"><a href="community.html">Overview</a></li>
+                    <li ng-class="activeClass('/community.html')">
+                      <a href="community.html">Overview</a>
+                    </li>
                     <li class="nav-header">Users</li>
-                    <li ng-class="activeClass('/community-forum.html')"><a href="community-forum.html">Forum</a></li>
-                    <li ng-class="activeClass('/community-meetings')"><a href="community-meetings.html">Next Meetings</a></li>
-                    <li ng-class="activeClass('/community-users.html')"><a href="community-users.html">Who's using it?</a></li>
+                    <li ng-class="activeClass('/community-forum.html')">
+                      <a href="community-forum.html">Forum</a>
+                    </li>
+                    <li ng-class="activeClass('/community-meetings')">
+                      <a href="community-meetings.html">Next Meetings</a>
+                    </li>
+                    <li ng-class="activeClass('/community-users.html')">
+                      <a href="community-users.html">Who's using it?</a>
+                    </li>
                     <li class="divider"></li>
                     <li class="nav-header">Contributors</li>
-                    <li ng-class="activeClass('/community-vision.html')"><a href="community-vision.html">Our Vision</a></li>
-                    <li ng-class="activeClass('/community-contribute.html')"><a href="community-contribute.html">How to Contribute</a></li>
-                    <li ng-class="activeClass('/community-team.html')"><a href="community-team.html">Team</a></li>
-                  </ul></li>
-                <li ng-class="activeClass('/support.html')"><a href="support.html">Support</a></li>
+                    <li ng-class="activeClass('/community-vision.html')">
+                      <a href="community-vision.html">Our Vision</a>
+                    </li>
+                    <li ng-class="activeClass('/community-contribute.html')">
+                      <a href="community-contribute.html">How to Contribute</a>
+                    </li>
+                    <li ng-class="activeClass('/community-team.html')">
+                      <a href="community-team.html">Team</a>
+                    </li>
+                  </ul>
+                </li>
+
+                <li ng-class="activeClass('/support.html')">
+                  <a href="support.html">Support</a>
+                </li>
               </ul>
             </ul>
           </div>

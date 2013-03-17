@@ -23,6 +23,10 @@ directive.dropdownToggle =
           close && close();
         });
 
+        if (attrs.href) {
+          return;
+        }
+
         element.bind('click', function(event) {
           event.preventDefault();
           event.stopPropagation();
