@@ -68,7 +68,7 @@ CAM_PAGES = [
   { section: "implemention-bpmn", category: "Gateways and Sequence Flows", id: "exclusive-gateway", name: "Exclusive Gateway (XOR)", url: "/gateways/exclusive-gateway", keywords: "exclusive gateways xor" },
   { section: "implemention-bpmn", category: "Gateways and Sequence Flows", id: "sequence-flow", name: "Conditional and default Sequence Flows", url: "/gateways/sequence-flow", keywords: "sequence flows conditional default" },
   { section: "implemention-bpmn", category: "Gateways and Sequence Flows", id: "parallel-gateway", name: "Parallel Gateway (AND)", url: "/gateways/parallel-gateway", keywords: "parallel gateways and" },
-  { section: "implemention-bpmn", category: "Gateways and Sequence Flows", id: "inclusive-gateway", name: "Inclusive Gateway", url: "/gateways/inclusive-gateway", keywords: "inclusive gateways or" },
+  { section: "implemention-bpmn", category: "Gateways and Sequence Flows", id: "inclusive-gateway", name: "Inclusive Gateway (OR)", url: "/gateways/inclusive-gateway", keywords: "inclusive gateways or" },
   { section: "implemention-bpmn", category: "Gateways and Sequence Flows", id: "event-based-gateway", name: "Event Based Gateway", url: "/gateways/event-based-gateway", keywords: "event based gateways" },
 
 //  { section: "implemention-bpmn", category: "Events", id: "events-overview", name: "Overview and Basic Concepts", shortName: "Events Overview", url: "/events/event-overview", keywords: "events event overview concept" },
