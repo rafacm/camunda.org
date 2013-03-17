@@ -426,6 +426,29 @@ angular.module('camundaorg.controllers', [])
             return true;
         }
     };
+})
+
+/** forum boards controller */
+.controller('ForumController', function ($scope) {
+
+  var FORUM_1 = "forum1";
+  var FORUM_2 = "forum2";
+  var FORUM_3 = "forum3";
+
+  $scope.activeForum = FORUM_2;
+
+  $scope.activeClass = function(test) {
+    return $scope.isActive(test) ? '' : '-false';
+  };
+
+  $scope.setActive = function(forum) {
+    $scope.activeForum = forum;
+  };
+
+  $scope.isActive = function(test) {
+    return test == $scope.activeForum;
+  };
+
 });
 
 
