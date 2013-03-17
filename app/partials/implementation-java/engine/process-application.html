@@ -135,19 +135,12 @@ Typically you will add the processes.xml to your <code>src/main/resources/META-I
 <h1>Migration from camunda fox 6.x</h1>
 
 <div class="alert">
-    <strong>Note that the Process Application logic has slightly changed from camunda fox 6.x (the predecessor to camunda BPM 7.0)</strong>
+    <strong>Note that the Process Application logic has slightly changed from camunda fox 6.x (the predecessor to camunda BPM 7.0), you need to migrate your applications.</strong>
 </div>
 
 <p>
-  Process Applications in camunda fox 6.x are descriped around "<a href="https://app.camunda.com//confluence/display/foxUserGuide/What+is+a+Process+Application">What is a Process Application</a>". In order to migrate the applications you have to
+  Please follow the instructions in the <a href="implement-java.html#/engine/activiti-migration-guide">Activiti Migration Guide</a> which contains a section about camunda fox at the end.
 </p>
-
-<ul>
-  <li>Remove the <code>fox-platform-client.x.jar</code> from your deployment - it is not needed anymore.</li>
-  <li>Add a Process Application Class.</li>
-  <li>Adjust the <code>processes.xml</code> to the new format.</li>
-  <li>Follow the <a href="implement-java.html#/engine/activiti-migration-guide">Activiti Migration Guide</a> especially for package renaming instructions.</li>
-</ul>
 
 
 </section>
