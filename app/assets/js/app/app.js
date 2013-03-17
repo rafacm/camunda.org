@@ -424,7 +424,6 @@ angular.module('camundaorg.controllers', [])
     // add activity to list of active activites
     $scope.activeActivities.push(activityId);  
     $scope.paper.getById(activityId).attr({"stroke":"orange"});
-    $scope.$render();
   });
 
   /* here we get notified when an activity is ended */
@@ -860,7 +859,7 @@ angular.module('camundaorg.directives')
           }
         }
 
-    });
+    }, "text");
   }
 }
 })
