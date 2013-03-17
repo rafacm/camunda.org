@@ -70,9 +70,15 @@ a, a:visited {
   text-decoration: none;
 }
 
+
+a.btn {
+  color:#333;
+}
+
 a.btn-inverse, a.btn-primary, a.btn-success {  
   color: white;
 }
+
 
 .hero-unit h2 {
   padding-top: 1.5em;

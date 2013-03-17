@@ -306,7 +306,7 @@ angular.module('camundaorg.controllers', [])
                 var set = $scope.paper.set();
                 
                 var token = $scope.paper.ellipse(0, 0, 8, 8);
-                token.attr({"fill":"#d45500", "stroke":"none"}).attr({
+                token.attr({"fill":"#b72a37", "stroke":"none"}).attr({
                   along: [0,token.id]
                 });
                 set.push(token);
@@ -436,7 +436,7 @@ angular.module('camundaorg.controllers', [])
   $scope.$on("activityStart", function(event, activityId, execution) {
     // add activity to list of active activites
     $scope.activeActivities.push(activityId);  
-    $scope.paper.getById(activityId).attr({"stroke":"orange"});
+    $scope.paper.getById(activityId).attr({"stroke":"#b72a37"});
   });
 
   /* here we get notified when an activity is ended */

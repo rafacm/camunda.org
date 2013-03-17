@@ -142,8 +142,8 @@
       <div style="padding-top: 40px; width: 100%; height: 200px" data-ng-controller="NumberguessAppController">
 
         <div style="position: relative; width: 100%; height: 200px">          
-          <div style="width: 200px; margin: 0 auto; position: relative;" class="alert alert-info center" data-ng-show="false">
-            <img src="assets/img/ajax-loader.gif"></img> <p>Awesome BPMN 2.0 App loading!</p>            
+          <div style="width: 200px; margin: 0 auto; position: relative;" class="center" data-ng-show="false">
+            <img src="assets/img/ajax-loader.gif"></img> <p>Awesome BPMN 2.0 App loading!</p><p>Please wait.</p>
           </div>
           <div style="width: 596px; margin: 0 auto; position: relative; height: 100%" id="numberGuess" data-bpmn-src2="homepage/numberGuessing"></div>
         </div>
@@ -274,12 +274,8 @@
 
       </div>
 
+      <div class="center" style="margin-top:-40px">
 
-
-      <div class="center">
-
-        <a class="btn btn-large btn-primary" href="download.html"><i class="icon-download-alt icon-large icon-white"></i> Download</a>
-          
         <ul class="quick-links">
           <li class="google-follow">Follow +camunda BPM on <a href="https://plus.google.com/117216832875506558598?prsrc=3" rel="publisher"
             style="text-decoration: none;"> <img src="https://ssl.gstatic.com/images/icons/gplus-32.png" alt=""
@@ -294,6 +290,11 @@
           <li style="width: 107px; height: 25px;"><a href="https://twitter.com/share" class="twitter-share-button" data-url="http://www.camunda.org"
             data-text="camunda BPM platform -" data-size="middle" data-hashtags="camunda,bpm" data-lang="en">Tweet</a></li>
         </ul>
+
+        <p style="margin-top:40px">
+          <a class="btn btn-large btn-primary" href="download.html"><i class="icon-download-alt icon-large icon-white"></i> Download</a>
+          <a href="implement-getting-started.html" class="btn btn-large">Getting Started</a>
+        </p>
       </div>
 
       <section class="index_news" style="color: white; text-align: center" ng-controller="RuntimeContainers">
@@ -302,7 +303,6 @@
 	font-size: 100%;
 }
 </style>
-        <h1>News</h1>
 
         <div style="width: 90%; margin: 0 auto;">
 
@@ -348,10 +348,10 @@
               <h1>Roadmap</h1>
               <p>
                 Below you can find the features we plan to implement and their priorities. We always welcome additional Contributors, see <a
-                  style="color: lightblue;" href="">How to Contribute?</a>
+                  style="color: lightblue;" href="community-contribute.html">How to Contribute?</a>
               </p>
               <div class="info" ng-show="{{roadmapErrorText!=''}}" ng-bind-template="{{roadmapErrorText}}"></div>
-              <table class="table">
+              <table class="table table-condensed">
                 <tr>
                   <th>Priority</th>
                   <th>Topic</th>
