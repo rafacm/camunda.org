@@ -230,7 +230,7 @@
             <section id="setup/eclipse">
               <h3>Create a new Maven Project in Eclipse</h3>
               <div class="row-fluid">
-                <div class="thumbnail span2" data-img-thumb img-src="assets/img/implementation-getting-started/eclipse-new-maven-project.png" ></div>
+                <div class="thumbnail span2" data-img-thumb img-src="assets/img/implementation-getting-started/eclipse-new-project.png" ></div>
                 <div class="span10">
                   <p>
                     In eclipse, go to <code>File / New / Other ...</code>. This opens the <em>New Project Wizard</em>. In the <em>New Project Wizard</em> select <code>Maven / Maven Project</code>. Click Next.
@@ -339,7 +339,7 @@
             <section id="model/create">
               <h3>Create a new BPMN 2.0 Diagram</h3>
               <div class="row-fluid">
-                <div class="thumbnail span2" data-img-thumb img-src="assets/img/implementation-getting-started/eclipse-new-bpmn-diagram.png" ></div>
+                <div id="eclipse-new-bpmn-diagram" class="thumbnail span2" data-img-thumb img-src="assets/img/implementation-getting-started/eclipse-new-bpmn-diagram.png" ></div>
                 <div class="span10">
                   <p>
                     In the eclipse <em>Package Explorer</em> select the <code>src/main/resources</code> folder. Right-click and select <code>New &gt; Other ...</code>. Go to the folder <code>Other</code> and select <em>BPMN 2.0 Diagram</em>. Click Next.
@@ -409,16 +409,19 @@
             <p>
               A Process Application is an ordinary Java Web Application and is deployed in exactly the same way.
             </p>         
+
             <p>Select the <code>pom.xml</code> in the Package Explorer, perform a Right Click and select <code>Run AS / Maven Install</code>. This will generate a WAR file named <code>loan-approval-0.0.1-SNAPSHOT.war</code> In the <code>target/</code> folder of your maven project.</p>
 
             <p class="alert alert-info">If the <code>loan-approval-0.0.1-SNAPSHOT.war</code> file is not visible after having performed the maven build, you need to refresh the project (F5) in eclipse.</p>
 
-            <p>In order to deploy the process application, copy-paste the <code>loan-approval-0.0.1-SNAPSHOT.war</code> from your maven project to the 
-            <code>$CAMUNDA_HOME/server/apache-tomcat/webapps</code> folder.</p>
+            <h3>Deploy to Apache Tomcat</h3>
+              <div class="row-fluid"> 
+               <p>In order to deploy the process application, copy-paste the <code>loan-approval-0.0.1-SNAPSHOT.war</code> from your maven project to the 
+               <code>$CAMUNDA_HOME/server/apache-tomcat/webapps</code> folder.</p>
 
-            <p>Check the log file of the Apache Tomcat server. If you see the following log message, the deployment was successful:</p>
+               <p>Check the log file of the Apache Tomcat server. If you see the following log message, the deployment was successful:</p>
 
-            <pre class="console">
+               <pre class="console">
 16.03.2013 22:42:11 org.camunda.bpm.application.impl.ServletProcessApplicationDeployer onStartup
 INFO: Detected @ProcessApplication class org.camunda.bpm.example.loanapproval.LoanApprovalApplication
 16.03.2013 22:42:11 org.camunda.bpm.container.impl.jmx.deployment.ParseProcessesXmlStep performOperationStep
@@ -435,15 +438,46 @@ INFO: Processing resource loan-approval.png
 INFO: Processing resource loan-approval.bpmn
 16.03.2013 22:42:11 org.camunda.bpm.container.impl.jmx.JmxRuntimeContainerDelegate deployProcessApplication
 INFO: Process Application Loan Approval App sucessfully deployed.
-            </pre>
+                </pre>                   
+            </div> 
+        
+            <h3>Check with camunda Cockpit and Tasklist</h3>
+            <div class="row-fluid">                    
+              <div id="check-cockpit" class="thumbnail span2" data-img-thumb img-src="assets/img/implementation-getting-started/check-cockpit.png" ></div>
+              <div class="span10">
+                <p>
+                  Now use cockpit to check whether the process is successfully deployed. 
+                  Go to <a href="http://localhost:8080/cockpit" target="_blank">http://localhost:8080/cockpit</a>. Your process is visible on the start screen. 
+                </p>    
+                <p>
+                  Next, go to camunda Tasklist (<a href="http://localhost:8080/tasklist" target="_blank">http://localhost:8080/tasklist</a>). Log in with demo / demo. After you have logged in, click on the <em>Start a Process</em> Button. Select <em>Loan Approval</em> from the list. This opens a page which explains that no form has been defined for starting the process. Click on <em>Start process using generic form</em>.
+                </p>                              
+              </div>
+            </div> 
+            <div class="row-fluid">                    
+              <div id="tasklist-generic" class="thumbnail span2" data-img-thumb img-src="assets/img/implementation-getting-started/tasklist-generic.png" ></div>
+              <div class="span10">
+                <p>
+                  The generic form can be used whenever you have not added a dedicated form for a User Task or a Start Event. Click on the <button class="btn btn-mini"><i class="icon-plus"> </i></button> Button to get a new row. Fill in the form as shown in the screenshot. When you are done, click <button class="btn btn-primary" type="submit">Start Process</button>.
+                </p>    
+                <p>
+                  If you now go back to <a href="http://localhost:8080/cockpit" target="_blank">camunda Cockpit</a>, you see the newly created process instance that is waiting in the User Task.
+                </p>        
+                <p>
+                  Log out of the tasklist and log back in with the user credentials "John / John". Now you see the <em>Approve Loan</em> task in your inbox. Click on the <button class="btn btn-small" title="Display BPMN Diagram"><i class="icon-search"></i></button> Button. This displays the process diagram highlighting the User Task that is waiting for you to work on it. 
+                </p>                              
+                <p>
+                  To work on the task, click the <button class="btn btn-small"><i class="icon-play"></i> </button> button. Again, there is no task form associated with the process. Click on <em>Work on task using generic form</em>. This displays the variables you have put in in the first step.
+              </div>
+            </div>
 
           </section>
 
-          <!--
           <section id="taskform">
             <div class="page-header">
               <h1>Add a Task Form</h1>
             </div>
+            <p>As a next step, we want to add an actual Task Form.</p>
 
           </section>
           <section id="servicetask">
@@ -452,7 +486,6 @@ INFO: Process Application Loan Approval App sucessfully deployed.
             </div>
 
           </section>
-        -->
 
         </div>
       </div>
