@@ -237,9 +237,10 @@ html, body {
   display: block;
   background-image: url(../img/camunda_org.png);
   background-size: contain;
-  width: 200px;
-  height: 35px;
+  width: 169px;
+  height: 30px;
   padding: 0px;
+  margin-top:5px;
 }
 
 /**
