@@ -1228,9 +1228,32 @@ angular.module('camundaorg.directives')
   $('#explainScalable').popover({
     "title":"Scalable Business Model",
     "trigger": "hover",
-    "content": "<div class='explain' ><p>BPM cannot help you inventing a great product or persuading your customers to buy it.</p><p>But if you do have the right product and a market to conquer, BPM can provide you with the infrastructure you need to turn a corner shop into a big yet profitable business.</p><p>Why BPM? To scale up your business model!</p></div>",
+    "content": "<div class='explain' ><p>BPM can <b>not</b> help you inventing a great product or persuading your customers to buy it.</p><p>But if you do have the right product and a market to conquer, BPM can provide you with the infrastructure you need to turn a corner shop into a big yet profitable business.</p><p>Why BPM? To scale up your business model!</p></div>",
     "html": true
   });
+
+  $('#explainBPM').popover({
+    "title":"BPM",
+    "trigger": "hover",
+    "content": "<div class='explain' ><p>Business Process Management (BPM) is about the daily doing of your company, how to organize it in a smart and efficient way, and how to support it appropriately with IT solutions.</p><p>If you like it when things run smoothly, you are a potential BPM addict.</p></div>",
+    "html": true
+  });
+
+  $('#explainAlign').popover({
+    "title":"Business-IT-Alignment",
+    "trigger": "hover",
+    "content": "<div class='explain' ><p>Aligning people does not mean that one party commands and the other obeys. It neither means that one party gets rid of the other, thanks to fancy tools that suggest they could implement a complex application without programming.</p><p>Aligning is about communication. And if it comes to business processes, we can count on BPMN 2.0 as an excellent global standard for process diagrams that can serve both business people and software developers.</p><p>This is why BPMN 2.0 is a central element in our stack.</p></div>",
+    "html": true
+  });
+
+  $('#explainIndividual').popover({
+    "title":"Individual Process Applications",
+    "trigger": "hover",
+    "placement":"right",
+    "content": "<div class='explain' ><p>We talk about scaling up your business model. Did you get your business model off-the-shelf?</p><p>So how could you possibly implement the process applications that actually execute your business model in some off-the-shelf BPM suite? Did the BPM vendor foresee all the software requirements that your business model demands?</p><p>We believe in the power of an open, flexible framework that allows your developers to implement what ever you need, and in what ever way you need.</p></div>",
+    "html": true
+  });
+
     }
   }
 })
