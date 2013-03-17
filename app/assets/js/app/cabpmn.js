@@ -392,20 +392,26 @@ function elementSVG (element, paper) {
 		if (element.type == "exclusivegateway") {
 			// Should marker be visible?
 			if (element.isMarkerVisible == "true") {
-			var myPathSpec = " M13.25 12.05  L17.25 12.05  L27.65 28.95  L23.75 28.95  z";
+			
+			var myPathSpec = d="m 13.25,12.0625 5.25,8.4375 -5.25,8.4375 4,0 3.25,-5.25 3.25,5.25 3.90625,0 -5.21875,-8.4375 5.21875,-8.4375 -3.90625,0 -3.25,5.25 -3.25,-5.25 -4,0 z";
 			var myPath = paper.path(myPathSpec).attr(gatewayMarkerStyle).attr({"stroke-width":"1", "fill":regularStroke});
-			myPath.translate(x, y - radHeight);
+			var h_center = element.x + element.width / 2; 
+			var v_center = element.y + element.height / 2;
+			myPath.translate(h_center - 20, v_center - 20);
+			scaleFactor = element.width / 40;
+			myPath.scale(scaleFactor);
 
-			myPathSpec = " M13.25 28.95  L23.75 12.05  L27.65 12.05  L17.25 28.95  z";
-			myPath = paper.path(myPathSpec).attr(gatewayMarkerStyle).attr({"stroke-width":"1", "fill":regularStroke});
-			myPath.translate(x, y - radHeight);
 			}
 
 		// Parallel?
 		} else if (element.type == "parallelgateway") {
 			var myPathSpec = " M11.25 20.5  L30.25 20.5  M20.5 11.25  L20.5 30.25 ";
 			var myPath = paper.path(myPathSpec).attr(gatewayMarkerStyle);
-			myPath.translate(x, y - radHeight);
+			var h_center = element.x + element.width / 2; 
+			var v_center = element.y + element.height / 2;
+			myPath.translate(h_center - 20, v_center - 20);
+			scaleFactor = element.width / 40;
+			myPath.scale(scaleFactor);
 
 		// Inclusive?
 		} else if (element.type == "inclusivegateway") {
@@ -424,7 +430,13 @@ function elementSVG (element, paper) {
 			
 			var pathSpec = "M24.827514 26.844972  L15.759248000000001 26.844216  L12.957720300000002 18.219549  L20.294545 12.889969  L27.630481000000003 18.220774  L24.827514 26.844972  z";
 			var myPath = paper.path(pathSpec).attr(generalStyle).attr({"stroke-width":1.5});
-			myPath.translate(element.x , element.y);
+			var h_center = element.x + element.width / 2; 
+			var v_center = element.y + element.height / 2;
+			myPath.translate(h_center - 20, v_center - 20);
+			scaleFactor = element.width / 40;
+			myPath.scale(scaleFactor);
+
+
 
 		// Complex?
 		} else if (element.type == "complexgateway") {
@@ -805,7 +817,6 @@ path5.translate(element.x-element.width/2 + 13, element.y-element.height/2 + 1);
 
 function drawFlow (flow, pathSpec, paper) {
     var drawnFlow;
-    console.log(pathString);
 	var pathString = "M"+(pathSpec[0].x)+","+(pathSpec[0].y);
     for (var i=1; i<pathSpec.length; i++) { 
       if(i==1) {
@@ -926,7 +937,7 @@ function drawElement (element, elemXML, paper, container, xmlJQuery) {
 	
 		// if event, determine eventType
 		if ((element.type.toLowerCase().indexOf("event") >= 0) && (element.type.toLowerCase().indexOf("gateway") == -1)) {
-			//console.log(element.type);
+
 		// Containts Event Definitions?
 			$(elemXML).find("*").filter(function() {
 			    return this.nodeName.toLowerCase().match(/[^\d]eventdefinition/)}).each(function() {
@@ -941,12 +952,12 @@ function drawElement (element, elemXML, paper, container, xmlJQuery) {
 						}					
 					} else {
 						element.eventType = (this).nodeName.toLowerCase().replace("eventdefinition","").toLowerCase();
-						//console.log((this).nodeName.toLowerCase().replace("eventdefinition","").toLowerCase());
-						//console.log(element.eventType);
+
+						
 						if (element.eventType.indexOf(":") > -1) {
 							// dirty hack for dirty namespaces
 							element.eventType = element.eventType.substr(element.eventType.indexOf(":") + 1);
-							//console.log(element.eventType);
+
 						}
 					}
 					
@@ -1065,9 +1076,9 @@ function parseBpmnXml (data, paper, container) {
 					var pathSpec = new Array();
 					$(xmlJQuery).find("bpmndi\\:BPMNEdge[bpmnElement='" + element.id + "'], BPMNEdge[bpmnElement='" + element.id + "']").each(function(){
 						var $di = $(this);
-						console.log("looking...");
+
 						$di.find("omgdi\\:waypoint, waypoint, di\\:waypoint").each(function(){
-							console.log("found!");
+
 							var waypoint = $(this);
 							pathSpecElem = new Object();
 							pathSpecElem.x = waypoint.attr("x");
