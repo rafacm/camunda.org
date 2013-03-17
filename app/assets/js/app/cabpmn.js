@@ -392,20 +392,26 @@ function elementSVG (element, paper) {
 		if (element.type == "exclusivegateway") {
 			// Should marker be visible?
 			if (element.isMarkerVisible == "true") {
-			var myPathSpec = " M13.25 12.05  L17.25 12.05  L27.65 28.95  L23.75 28.95  z";
+			
+			var myPathSpec = d="m 13.25,12.0625 5.25,8.4375 -5.25,8.4375 4,0 3.25,-5.25 3.25,5.25 3.90625,0 -5.21875,-8.4375 5.21875,-8.4375 -3.90625,0 -3.25,5.25 -3.25,-5.25 -4,0 z";
 			var myPath = paper.path(myPathSpec).attr(gatewayMarkerStyle).attr({"stroke-width":"1", "fill":regularStroke});
-			myPath.translate(x, y - radHeight);
+			var h_center = element.x + element.width / 2; 
+			var v_center = element.y + element.height / 2;
+			myPath.translate(h_center - 20, v_center - 20);
+			scaleFactor = element.width / 40;
+			myPath.scale(scaleFactor);
 
-			myPathSpec = " M13.25 28.95  L23.75 12.05  L27.65 12.05  L17.25 28.95  z";
-			myPath = paper.path(myPathSpec).attr(gatewayMarkerStyle).attr({"stroke-width":"1", "fill":regularStroke});
-			myPath.translate(x, y - radHeight);
 			}
 
 		// Parallel?
 		} else if (element.type == "parallelgateway") {
 			var myPathSpec = " M11.25 20.5  L30.25 20.5  M20.5 11.25  L20.5 30.25 ";
 			var myPath = paper.path(myPathSpec).attr(gatewayMarkerStyle);
-			myPath.translate(x, y - radHeight);
+			var h_center = element.x + element.width / 2; 
+			var v_center = element.y + element.height / 2;
+			myPath.translate(h_center - 20, v_center - 20);
+			scaleFactor = element.width / 40;
+			myPath.scale(scaleFactor);
 
 		// Inclusive?
 		} else if (element.type == "inclusivegateway") {
@@ -424,7 +430,13 @@ function elementSVG (element, paper) {
 			
 			var pathSpec = "M24.827514 26.844972  L15.759248000000001 26.844216  L12.957720300000002 18.219549  L20.294545 12.889969  L27.630481000000003 18.220774  L24.827514 26.844972  z";
 			var myPath = paper.path(pathSpec).attr(generalStyle).attr({"stroke-width":1.5});
-			myPath.translate(element.x , element.y);
+			var h_center = element.x + element.width / 2; 
+			var v_center = element.y + element.height / 2;
+			myPath.translate(h_center - 20, v_center - 20);
+			scaleFactor = element.width / 40;
+			myPath.scale(scaleFactor);
+
+
 
 		// Complex?
 		} else if (element.type == "complexgateway") {
@@ -550,53 +562,63 @@ function elementSVG (element, paper) {
 		var taskType = element.type.replace("task", "");
 		
 		if (taskType == "user") {
-/*
+
          var path1String = "m 6.0095,22.5169 h 16.8581 v -5.4831 c 0,0 -1.6331,-2.7419 -4.9581,-3.6169 h -6.475 c -3.0919,0.9331 -5.4831,4.025 -5.4831,4.025 l 0.0581,5.075 z";
           var path1 =  paper.path(path1String).attr(generalStyle).attr({"stroke-width":0.69999999, "fill":"#f4f6f7"});
-          path1.translate(element.x-element.width/2 + 13, element.y-element.height/2 + 1);
-          //path1.setStroke({color : "grey", width: 0.69999999});
-          //path1.setFill("#f4f6f7");
+          path1.translate(element.x, element.y);
+
 
          var path2String = "m 9.8,19.6 0,2.8";
           var path2 =  paper.path(path2String).attr(generalStyle).attr({"stroke-width":0.69999999, "fill":"none"});
-          path2.translate(element.x-element.width/2 + 13, element.y-element.height/2 + 1);
-          //path1.setFill("none");
-          //path2.setStroke({color : "grey", width: 0.69999999});
+          path2.translate(element.x, element.y);
+
 
          var path3String = "m 19.6,19.6 0,2.8";
          var path3 =  paper.path(path3String).attr(generalStyle).attr({"stroke-width":0.69999999, "fill":regularStroke});
-         path3.translate(element.x-element.width/2 + 13, element.y-element.height/2 + 1);
-          //path3.setStroke({color : "grey", width: 0.69999999});
+         path3.translate(element.x, element.y);
 
-          var path4String = "m 18.419,5.9159999 c 0,2.9917264 -2.425274,5.4170001 -5.417,5.4170001 -2.991727,0 -5.417,-2.4252737 -5.417,-5.4170001 0,-2.9917264 2.425273,-5.41699983 5.417,-5.41699983 2.991726,0 5.417,2.42527343 5.417,5.41699983 z";
-          var path4 =  paper.path(path4String).attr(generalStyle).attr({"stroke-width":1.5, "fill":regularStroke});
+          var path4 = paper.circle(element.x + 14.5,element.y + 8.5, 5).attr(generalStyle).attr({"stroke-width":1.5, "fill":regularStroke});
 
-          //path4.setStroke({color : "grey", width: 1.5});
-          //path4.translate({dx: 5, dy:5, xx: 0.75, yy:0.75});
           path4.scale(0.75, 0.75);
-          path4.translate(5, 5);
-		path4.translate(element.x-element.width/2 + 13, element.y-element.height/2 + 1);
-          //path4.setFill("grey");
-          
 
          var path5String = "m 11.2301,10.5581 c 0,0 1.9698,-1.6982 3.7632,-1.2649 1.7934,0.4333 3.2368,-0.4851 3.2368,-0.4851 0.175,1.1816 0.0294,2.625 -1.0206,3.9088 0,0 0.7581,0.525 0.7581,1.05 0,0.525 0.0875,1.3125 -0.7,2.1 -0.7875,0.7875 -3.85,0.875 -4.725,0 -0.875,-0.875 -0.875,-1.2831 -0.875,-1.8669 0,-0.5838 0.4081,-0.875 0.875,-1.3419 -0.7581,-0.4081 -1.7493,-1.6625 -1.3125,-2.1 z";
 
           var path5 = paper.path(path5String).attr(generalStyle).attr({"stroke-width":0.69999999, "fill":"#f0eff0"});
-path5.translate(element.x-element.width/2 + 13, element.y-element.height/2 + 1);          
-          //path5.setStroke({color : "grey", width: 0.69999999});
-          //path5.setFill("#f0eff0");
-*/
+		path5.translate(element.x, element.y);          	
 
+
+/*
 			var pathSpec = taskDefinitions[taskType];
 			var drawnTaskType = paper.path(pathSpec).attr(generalStyle).attr({"stroke-width":1, "fill":regularStroke});
 			drawnTaskType.translate(element.x-element.width/2 + 13, element.y-element.height/2 + 1);
 			drawnTaskType.scale(0.25,0.25);
-			
+*/			
 		} else if (taskType == "service") {
+         var path1String = "m 20.347,4.895 -2.561,2.56 0.943,2.277 3.624,0 0,3.383 -3.622,0 -0.943,2.277 2.563,2.563 -2.393,2.392 -2.561,-2.561 -2.277,0.943 0,3.624 -3.383,0 0,-3.622 L 7.46,17.788 4.897,20.35 2.506,17.958 5.066,15.397 4.124,13.12 l -3.624,0 0,-3.383 3.621,0 0.944,-2.276 -2.562,-2.563 2.392,-2.392 2.56,2.56 2.277,-0.941 0,-3.625 3.384,0 0,3.621 2.276,0.943 2.562,-2.562 z";
+          var path1 = paper.path(path1String).attr(generalStyle).attr({"stroke-width":1.2, "fill":"white"});
+          path1.translate(element.x, element.y);
+          path1.scale(0.8);
+
+         var path2String = "m 15.141,11.426 c 0,2.051185 -1.662814,3.714 -3.714,3.714 -2.0511855,0 -3.7139999,-1.662815 -3.7139999,-3.714 0,-2.0511859 1.6628144,-3.7140003 3.7139999,-3.7140003 2.051186,0 3.714,1.6628144 3.714,3.7140003 z";
+          var path2 = paper.path(path2String).attr(generalStyle).attr({"stroke-width":1.2, "fill":"white"});
+          path2.translate(element.x, element.y);
+          path2.scale(0.8);          
+
+         var path3String = "m 26.347,10.895 -2.561,2.56 0.943,2.277 3.624,0 0,3.383 -3.622,0 -0.943,2.277 2.563,2.563 -2.393,2.392 -2.561,-2.561 -2.277,0.943 0,3.624 -3.383,0 0,-3.622 -2.277,-0.943 -2.563,2.562 -2.391,-2.392 2.56,-2.561 -0.942,-2.277 -3.624,0 0,-3.383 3.621,0 0.944,-2.276 -2.562,-2.563 2.392,-2.392 2.56,2.56 2.277,-0.941 0,-3.625 3.384,0 0,3.621 2.276,0.943 2.562,-2.562 z";
+          var path3 = paper.path(path3String).attr(generalStyle).attr({"stroke-width":1.2, "fill":"white"});
+          path3.translate(element.x, element.y);
+          path3.scale(0.8);          
+
+         var path4String = "m 21.141,17.426001 c 0,2.051185 -1.662814,3.714 -3.714,3.714 -2.051186,0 -3.714,-1.662815 -3.714,-3.714 0,-2.051186 1.662814,-3.714 3.714,-3.714 2.051186,0 3.714,1.662814 3.714,3.714 z";
+         var path4 = paper.path(path4String).attr(generalStyle).attr({"stroke-width":1.2, "fill":"white"});
+          path4.translate(element.x, element.y);    
+          path4.scale(0.8);
+/*
 			var pathSpec = taskDefinitions[taskType];
 			drawnTaskType = paper.path(pathSpec).attr(generalStyle).attr({"stroke-width":1, "fill":regularStroke});
 			drawnTaskType.translate(element.x-element.width/2 + 13, element.y-element.height/2 + 1);
 			drawnTaskType.scale(0.15,0.15);
+*/
 		} else if (taskType == "manual") {
 			var pathSpec1 = "M0.5,3.751l4.083-3.25c0,0,11.166,0.083,12.083,0.083s-2.417,2.917-1.5,2.917 s11.667,0,12.584,0c1.166,1.708-0.168,3.167-0.834,3.667s0.875,1.917-1,4.417c-0.75,0.25,0.75,1.875-1.333,3.333     c-1.167,0.583,0.583,1.542-1.25,2.833c-1.167,0-20.833,0.083-20.833,0.083l-2-1.333V3.751z";
 			pathSpec1 = pathSpec1 + " M 13.5 7 L 27 7 M 13.5 11 L 26 11 M 14 14.5 L 25 14.5 M 8.2 3.1 L 15 3.1";
@@ -805,7 +827,6 @@ path5.translate(element.x-element.width/2 + 13, element.y-element.height/2 + 1);
 
 function drawFlow (flow, pathSpec, paper) {
     var drawnFlow;
-    console.log(pathString);
 	var pathString = "M"+(pathSpec[0].x)+","+(pathSpec[0].y);
     for (var i=1; i<pathSpec.length; i++) { 
       if(i==1) {
@@ -926,7 +947,7 @@ function drawElement (element, elemXML, paper, container, xmlJQuery) {
 	
 		// if event, determine eventType
 		if ((element.type.toLowerCase().indexOf("event") >= 0) && (element.type.toLowerCase().indexOf("gateway") == -1)) {
-			//console.log(element.type);
+
 		// Containts Event Definitions?
 			$(elemXML).find("*").filter(function() {
 			    return this.nodeName.toLowerCase().match(/[^\d]eventdefinition/)}).each(function() {
@@ -941,12 +962,12 @@ function drawElement (element, elemXML, paper, container, xmlJQuery) {
 						}					
 					} else {
 						element.eventType = (this).nodeName.toLowerCase().replace("eventdefinition","").toLowerCase();
-						//console.log((this).nodeName.toLowerCase().replace("eventdefinition","").toLowerCase());
-						//console.log(element.eventType);
+
+						
 						if (element.eventType.indexOf(":") > -1) {
 							// dirty hack for dirty namespaces
 							element.eventType = element.eventType.substr(element.eventType.indexOf(":") + 1);
-							//console.log(element.eventType);
+
 						}
 					}
 					
@@ -1065,9 +1086,9 @@ function parseBpmnXml (data, paper, container) {
 					var pathSpec = new Array();
 					$(xmlJQuery).find("bpmndi\\:BPMNEdge[bpmnElement='" + element.id + "'], BPMNEdge[bpmnElement='" + element.id + "']").each(function(){
 						var $di = $(this);
-						console.log("looking...");
+
 						$di.find("omgdi\\:waypoint, waypoint, di\\:waypoint").each(function(){
-							console.log("found!");
+
 							var waypoint = $(this);
 							pathSpecElem = new Object();
 							pathSpecElem.x = waypoint.attr("x");
