@@ -157,8 +157,27 @@
         <div class="span9">
           <section id="intro">
             <div class="page-header">
-              <h1>What will you learn?</h1>
+              <h1>What will you learn?</h1>              
             </div>
+
+            This tutorial guides you through setting up camunda BPM and developing your first process application.
+            You will learn to
+              
+            <dl class="dl-horizontal">
+              <dt>Install</dt>
+              <dd>
+                camunda BPM platform and camunda Modeler on your machine. In this tutorial we use the Apache Tomcat based distribution.
+              </dd>
+              <dt>Setup</dt>
+              <dd>An apache maven-based process application inside eclipse and deploy it to the camunda BPM platform.</dd>
+              <dt>Model</dt>
+              <dd>We cover the basics of handling the camunda modeler for eclipse and you will learn how to model and configure a fully executable process.</dd>
+              <dt>Create Taskforms</dt>
+              <dd>We will explore the simplest possible kind of task forms available in camunda BPM. This will give you a jump start for bootstrapping simple processes.</dd>
+              <dt>Add Java Services</dt>
+              <dd>You will learn how to add a Java class to your process application and reference it from a BPMN Service Task in the process.</dd>
+            </dl>
+
           </section>
 
           <section id="download">
@@ -506,7 +525,7 @@ INFO: Process Application Loan Approval App sucessfully deployed.
               <div id="tasklist-startform" class="thumbnail span2" data-img-thumb img-src="assets/img/implementation-getting-started/tasklist-startform.png" ></div>
               <div class="span10">
                 <p>
-                  <p>The Task Form can be added and configured in the same way. Add a file named <code>review-loan.html</code> and add the following content.</p> 
+                  <p>The Task Form can be added and configured in the same way. Add a file named <code>approve-loan.html</code> and add the following content.</p> 
 
                   <div class="app-source" app-source-no-tabs="ReviewLoan.html" annotate="code-annotations"></div>
                 </p>                    
@@ -517,9 +536,79 @@ INFO: Process Application Loan Approval App sucessfully deployed.
             <div class="page-header">
               <h1>Add a Service Task</h1>
             </div>
+            <p>
+              In the last section of the tutorial we add some code to the process.
+            </p>
+            <h3>Add a Service Task to the Process</h3>
+            <div class="row-fluid">                    
+              <div id="eclipse-add-service-task" class="thumbnail span2" data-img-thumb img-src="assets/img/implementation-getting-started/eclipse-add-service-task.png" ></div>
+              <div class="span10">
+                <p>
+                  <p>Use the camunda modeler plugin in eclipse to add a service task after the user task. The service task can be dropped on a sequence flow (see screenshot).</p> 
+                </p>                    
+              </div>
+            </div>  
+            <h3>Add a JavaDelegate Implementation</h3>
+            <p>Now we need to add the actual service task implementation. Add a class named <code>ProcessRequestDelegate</code> implementing the <code>JavaDelegate</code> interface:</p>
+
+            <div class="app-source" app-source-no-tabs="ProcessRequestDelegate" annotate="code-annotations"></div>
+
+            <h3>Configure the Class in the Process</h3>
+            <div class="row-fluid">                    
+              <div id="eclipse-configure-service" class="thumbnail span2" data-img-thumb img-src="assets/img/implementation-getting-started/eclipse-configure-service.png" ></div>
+              <div class="span10">
+                <p>
+                  <p>Use the properties view for referencing the Service Task in the process (See Screenshot). You need to provide the fully qualified classname of you class in the <code>class</code> property field.</p> 
+                </p>     
+                <p>
+                  <p>Build, deploy and execute the process. After completing the <em>Approve Application</em> step, check the logfile of the Apache Tomcat server: </p> 
+                </p>                     
+                <pre class="console">
+17.03.2013 08:42:14 org.camunda.bpm.example.loanapproval.ProcessRequestDelegate execute
+INFO: Processing request by 'AC-343422'...
+                </pre>
+
+                <div class="accordion" id="accClassloading">
+                  <div class="accordion-group">
+                    <div class="accordion-heading">
+                      <a class="accordion-toggle collapsed" data-toggle="collapse" data-parent="#accClassloading" href="#accClassloadingCollapsed"> <i class="icon-thumbs-up"></i> 
+                        Classloading in camunda BPM
+                      </a>
+                    </div>
+                    <div id="accClassloadingCollapsed" class="accordion-body collapse">
+                      <div class="accordion-inner">
+                        <p>The process engine resolves the ProcessRequestDelegate class from the process application classloader. This allows you to
+                          <ul>
+                            <li>have a different Classloader for each Process Application,</li>
+                            <li>bundle libraries inside your application,</li>
+                            <li>(re-)deploy the application at runtime (without stopping / restarting the process engine).</li>
+                          </ul> 
+                        </p>                       
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>  
 
           </section>
-
+          <section id="done">
+            <div class="page-header">
+              <h1>You made it!</h1>
+              <p>
+                Congratulations, you have now sucessfully deployed your first Process Application!
+              </p> 
+              <p class="center">
+                 <a href="https://twitter.com/share" class="twitter-share-button" data-url="http://www.camunda.org/app/implement-getting-started.html"
+                      data-text="Whohoo! I just developed my first #BPMN Process Application." data-size="large" data-hashtags="camunda">Tweet</a>
+              </p>
+              <h3>Where to go from here?</h3>
+              <p class="center">
+                <a href="design-tutorial.html" class="btn btn-large"><span style="font-size:200%">Learn</span> <br>about BPMN</a>
+                <!--<a href="design-tutorial.html" class="btn btn-large"><span style="font-size:200%">Add</span> <br>Spring or CDI<br></a>-->
+                <a href="implement-bpmn.html#/index" class="btn btn-large"><span style="font-size:200%">Explore</span> <br>the BPMN Reference<br></a>
+              </p>
+            </div>
         </div>
       </div>
 
@@ -727,7 +816,7 @@ public class DefaultEjbProcessApplication extends EjbProcessApplication {
   <div class="control-group">
     <label class="control-label">Customer ID</label>
     <div class="controls">
-      <input form-field type="string" name="customerId" read-only="true"></input>      
+      <input form-field type="string" name="customerId" readonly="true"></input>      
     </div>
   </div>
   <div class="control-group">
@@ -737,6 +826,22 @@ public class DefaultEjbProcessApplication extends EjbProcessApplication {
     </div>
   </div> 
 </form>
+</script>
+
+<!-- ==================================================================== -->
+<!-- ==================================================================== -->
+
+<script type="text/xml" id="ProcessRequestDelegate">
+
+public class ProcessRequestDelegate implements JavaDelegate {
+
+  private final static Logger LOGGER = Logger.getLogger("LOAN-REQUESTS");
+  
+  public void execute(DelegateExecution execution) throws Exception {   
+    LOGGER.info("Processing request by '"+execution.getVariable("customerId")+"'...");
+  }
+
+}
 </script>
 
 <!-- ==================================================================== -->
@@ -753,11 +858,14 @@ public class DefaultEjbProcessApplication extends EjbProcessApplication {
     "camunda-bpm-nexus" : "camunda nexus providing the maven artifacts."
 
   },
-
  "LoanApprovalApplication":
-  { "@ProcessApplication": "The @ProcessApplication annotation makes sure the class is automatically picked up at deployment time."
+  { "@ProcessApplication": "The @ProcessApplication annotation makes sure the process application is discovered and deployed by the servlet container integration."
+  },  
+  "LoanApprovalEjbApplication":
+  { 
+    "ConcurrencyManagement": "The process engine uses this bean for performing callbacks inside this application. Make sure the container does not synchronize access to this process application.",
+    "TransactionAttribute": "Make sure the application participates in transactions but does not manadate own transactions."
   },
-
  "processes.xml":
   { 
     "loan-approval": "The name of the process engine deployment to be constructed.",
@@ -773,12 +881,29 @@ public class DefaultEjbProcessApplication extends EjbProcessApplication {
   },
   "ReviewLoan.html":
   {
-    "read-only": "AangularJS directive allowing you to make the variable read-only."
+    "readonly": "AangularJS directive allowing you to make the variable read-only."
+  },
+  "ProcessRequestDelegate":
+  {
+    "JavaDelegate": "Interface provided by the Process Engine. Useful for writing Service Implementation Delegates.",
+    "DelegateExecution":"Object representing the currently active process execution. Provides access to process variables."
   }
-
 }
 </script> 
 </div>  
+
+
+<script>
+!function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (!d.getElementById(id)) {
+    js = d.createElement(s);
+    js.id = id;
+    js.src = "//platform.twitter.com/widgets.js";
+    fjs.parentNode.insertBefore(js, fjs);
+  }
+}(document, "script", "twitter-wjs");
+</script>
 
 
 
