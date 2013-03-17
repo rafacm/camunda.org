@@ -270,16 +270,9 @@ angular.module('camundaorg.controllers', [])
   $scope.guessCounter = 0;
 
   $scope.startProcess = function(processId) {
-    var processDefinitions = $scope.bpmn.processDefinitions;
-    
-    // find the process definition with the given Id
-    var processDefinition;
-    for (var i = 0; i < processDefinitions.length; i++) {
-      if(processDefinitions[i].id == processId) {
-        processDefinition = processDefinitions[i];
-        break;
-      }
-    };
+
+    var processDefinition = $scope.processDefinition;
+
     if(!processDefinition) {
       throw "could not find process definition with id " + processId +" in current scope.";
     }
@@ -288,7 +281,6 @@ angular.module('camundaorg.controllers', [])
       // configure the process definition
       for (var i = 0; i < processDefinition.baseElements.length; i++) {
         var activity = processDefinition.baseElements[i];
-
 
         // attach execution listener to all activities in the process definition
         var listeners = activity.listeners;
@@ -775,6 +767,24 @@ angular.module('camundaorg.directives')
         
         bpmn(bpmnResource, element);
         //$('body').scrollspy('refresh');
+    }
+  }
+})
+.directive('bpmnSrc2', function() {
+  return {
+    link: function(scope, element, attrs) {
+
+      var bpmnResource = attrs.bpmnSrc2;
+      
+      $.get("../app/assets/bpmn/" + bpmnResource + ".bpmn", function(data){
+      
+        // create process definition
+        scope.processDefinition = new CAM.Transformer().transform(data)[0];
+
+        // render process
+        bpmnDirect(data, element);
+
+      });
     }
   }
 })

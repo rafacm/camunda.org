@@ -24,20 +24,19 @@
   $script([    
       'http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js',             
       'http://ajax.googleapis.com/ajax/libs/angularjs/1.0.1/angular.min.js',  
+      'lib/raphaeljs/raphael'
     ], function() {
     $script([
-        'lib/tweet/jquery.tweet',  
-        'lib/dojo/dojo/dojo',
+        'lib/tweet/jquery.tweet',          
+        'lib/bootstrap/bootstrap.min',            
+        'lib/jquery-validation/dist/jquery.validate.min',
+        'lib/angular/angular-resource.min',
+        'lib/angular/angular-bootstrap.min',
+        'app/bpmn/Executor',
+        'app/cabpmn',
       ], function() {
-          $script([        
-            'lib/bootstrap/bootstrap.min',            
-            'lib/jquery-validation/dist/jquery.validate.min',
-            'lib/angular/angular-resource.min',
-            'lib/angular/angular-bootstrap.min',
-            'app/app',
-            'app/bpmn/Executor',
-            'app/directives/ngmif',
-            'app/directives/focused',        
+          $script([               
+            'app/app'             
           ], function() {
             
             angular.bootstrap(document, ['camundaorg']);
@@ -143,7 +142,7 @@
       <div style="padding-top: 40px; width: 100%; height: 200px" data-ng-controller="NumberguessAppController">
 
         <div style="position: relative; width: 100%; height: 200px">
-          <div style="width: 596px; margin: 0 auto; position: relative; height: 100%;" id="numberGuess" data-bpmn-render="homepage/numberGuessing"></div>
+          <div style="width: 596px; margin: 0 auto; position: relative; height: 100%;" id="numberGuess" data-bpmn-src2="homepage/numberGuessing"></div>
         </div>
 
         <div style="position: relative; top: -200px; width: 100%; height: 160px">
