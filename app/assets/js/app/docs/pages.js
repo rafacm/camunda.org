@@ -34,7 +34,7 @@ CAM_PAGES = [
 
   // engine api documentation
   { section: "implementation-java", category: "Introduction", id: "impl-java-engine-bootstrap", name: "Startup and Configuration Options", url: "/engine/configuration-and-startup", keywords: "engine startup configuration bootstrap overview ProcessEngineConfiguration" },
-  { section: "implementation-java", category: "Introduction", id: "impl-java-engine-bootstrap", name: "Container Integration", url: "/engine/container-integration", keywords: "container integration jboss glassfish tomcat" },
+  //{ section: "implementation-java", category: "Introduction", id: "impl-java-engine-bootstrap", name: "Container Integration", url: "/engine/container-integration", keywords: "container integration jboss glassfish tomcat" },
   { section: "implementation-java", category: "Introduction", id: "impl-pa", name: "Process Applications", url: "/engine/process-application", keywords: "process application" },
   { section: "implementation-java", category: "Introduction", id: "impl-concepts", name: "Important Concepts", url: "/engine/concepts", keywords: "concepts" },  
   { section: "implementation-java", category: "Introduction", id: "impl-activiti-migration", name: "Activiti Migration Guide", url: "/engine/activiti-migration-guide", keywords: "activiti migration fox" },
