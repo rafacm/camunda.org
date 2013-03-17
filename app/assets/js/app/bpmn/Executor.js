@@ -533,7 +533,7 @@ var CAM = {};
   Transformer.prototype.transform =  function(source) {
 
     var doc;
-    if(source.hasOwnProperty('documentElement')) {
+    if( source instanceof Document) {
       doc = source;
     } else {
       doc = getXmlObject(source);

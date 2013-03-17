@@ -834,7 +834,7 @@ angular.module('camundaorg.directives')
         // render process & add paper to scope
         scope.paper = bpmnDirect(data, element);
 
-      });
+      }, "text");
     }
   }
 })
