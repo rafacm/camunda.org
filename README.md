@@ -53,7 +53,7 @@ Implement
   * ~~Complete "Getting started" - Daniel~~
   * BPMN 2.0 Reference rename packages and fix dead Links 
     * ~~Link has changed to http://localhost:8000/app/implement-bpmn.html~~
-    * directive app-source (fix line numbers)
+    * ~~directive app-source (fix line numbers)~~
     * ~~(BPMN symbol reference)~~ (won't fix)
   * Java Reference
     * ~~Add http://localhost:8000/app/implement-java.html to menu and footer  (Bernd)~~
