@@ -562,75 +562,55 @@ function elementSVG (element, paper) {
 		var taskType = element.type.replace("task", "");
 		
 		if (taskType == "user") {
-/*
+
          var path1String = "m 6.0095,22.5169 h 16.8581 v -5.4831 c 0,0 -1.6331,-2.7419 -4.9581,-3.6169 h -6.475 c -3.0919,0.9331 -5.4831,4.025 -5.4831,4.025 l 0.0581,5.075 z";
           var path1 =  paper.path(path1String).attr(generalStyle).attr({"stroke-width":0.69999999, "fill":"#f4f6f7"});
-          path1.translate(element.x-element.width/2 + 13, element.y-element.height/2 + 1);
-          //path1.setStroke({color : "grey", width: 0.69999999});
-          //path1.setFill("#f4f6f7");
+          path1.translate(element.x, element.y);
+
 
          var path2String = "m 9.8,19.6 0,2.8";
           var path2 =  paper.path(path2String).attr(generalStyle).attr({"stroke-width":0.69999999, "fill":"none"});
-          path2.translate(element.x-element.width/2 + 13, element.y-element.height/2 + 1);
-          //path1.setFill("none");
-          //path2.setStroke({color : "grey", width: 0.69999999});
+          path2.translate(element.x, element.y);
+
 
          var path3String = "m 19.6,19.6 0,2.8";
          var path3 =  paper.path(path3String).attr(generalStyle).attr({"stroke-width":0.69999999, "fill":regularStroke});
-         path3.translate(element.x-element.width/2 + 13, element.y-element.height/2 + 1);
-          //path3.setStroke({color : "grey", width: 0.69999999});
+         path3.translate(element.x, element.y);
 
-          var path4String = "m 18.419,5.9159999 c 0,2.9917264 -2.425274,5.4170001 -5.417,5.4170001 -2.991727,0 -5.417,-2.4252737 -5.417,-5.4170001 0,-2.9917264 2.425273,-5.41699983 5.417,-5.41699983 2.991726,0 5.417,2.42527343 5.417,5.41699983 z";
-          var path4 =  paper.path(path4String).attr(generalStyle).attr({"stroke-width":1.5, "fill":regularStroke});
+          var path4 = paper.circle(element.x + 14.5,element.y + 8.5, 5).attr(generalStyle).attr({"stroke-width":1.5, "fill":regularStroke});
 
-          //path4.setStroke({color : "grey", width: 1.5});
-          //path4.translate({dx: 5, dy:5, xx: 0.75, yy:0.75});
           path4.scale(0.75, 0.75);
-          path4.translate(5, 5);
-		path4.translate(element.x-element.width/2 + 13, element.y-element.height/2 + 1);
-          //path4.setFill("grey");
-          
 
          var path5String = "m 11.2301,10.5581 c 0,0 1.9698,-1.6982 3.7632,-1.2649 1.7934,0.4333 3.2368,-0.4851 3.2368,-0.4851 0.175,1.1816 0.0294,2.625 -1.0206,3.9088 0,0 0.7581,0.525 0.7581,1.05 0,0.525 0.0875,1.3125 -0.7,2.1 -0.7875,0.7875 -3.85,0.875 -4.725,0 -0.875,-0.875 -0.875,-1.2831 -0.875,-1.8669 0,-0.5838 0.4081,-0.875 0.875,-1.3419 -0.7581,-0.4081 -1.7493,-1.6625 -1.3125,-2.1 z";
 
           var path5 = paper.path(path5String).attr(generalStyle).attr({"stroke-width":0.69999999, "fill":"#f0eff0"});
-path5.translate(element.x-element.width/2 + 13, element.y-element.height/2 + 1);          
-          //path5.setStroke({color : "grey", width: 0.69999999});
-          //path5.setFill("#f0eff0");
-*/
+		path5.translate(element.x, element.y);          	
 
+
+/*
 			var pathSpec = taskDefinitions[taskType];
 			var drawnTaskType = paper.path(pathSpec).attr(generalStyle).attr({"stroke-width":1, "fill":regularStroke});
 			drawnTaskType.translate(element.x-element.width/2 + 13, element.y-element.height/2 + 1);
 			drawnTaskType.scale(0.25,0.25);
-			
+*/			
 		} else if (taskType == "service") {
          var path1String = "m 20.347,4.895 -2.561,2.56 0.943,2.277 3.624,0 0,3.383 -3.622,0 -0.943,2.277 2.563,2.563 -2.393,2.392 -2.561,-2.561 -2.277,0.943 0,3.624 -3.383,0 0,-3.622 L 7.46,17.788 4.897,20.35 2.506,17.958 5.066,15.397 4.124,13.12 l -3.624,0 0,-3.383 3.621,0 0.944,-2.276 -2.562,-2.563 2.392,-2.392 2.56,2.56 2.277,-0.941 0,-3.625 3.384,0 0,3.621 2.276,0.943 2.562,-2.562 z";
           var path1 = paper.path(path1String).attr(generalStyle).attr({"stroke-width":1.2, "fill":"white"});
-//          path1.setStroke({color : style.stroke, width: 1.5});
-          //path1.setTransform({dx: 5, dy:5, xx: 0.7, yy:0.7});
           path1.translate(element.x, element.y);
           path1.scale(0.8);
 
          var path2String = "m 15.141,11.426 c 0,2.051185 -1.662814,3.714 -3.714,3.714 -2.0511855,0 -3.7139999,-1.662815 -3.7139999,-3.714 0,-2.0511859 1.6628144,-3.7140003 3.7139999,-3.7140003 2.051186,0 3.714,1.6628144 3.714,3.7140003 z";
-          var path2 = paper.path(path2String).attr(generalStyle).attr({"stroke-width":1.2, "fill":"grey"});
-          //path2.setStroke({color : style.stroke, width: 1.5});
-         // path2.setTransform({dx: 5, dy:5, xx: 0.7, yy:0.7});
+          var path2 = paper.path(path2String).attr(generalStyle).attr({"stroke-width":1.2, "fill":"white"});
           path2.translate(element.x, element.y);
           path2.scale(0.8);          
 
          var path3String = "m 26.347,10.895 -2.561,2.56 0.943,2.277 3.624,0 0,3.383 -3.622,0 -0.943,2.277 2.563,2.563 -2.393,2.392 -2.561,-2.561 -2.277,0.943 0,3.624 -3.383,0 0,-3.622 -2.277,-0.943 -2.563,2.562 -2.391,-2.392 2.56,-2.561 -0.942,-2.277 -3.624,0 0,-3.383 3.621,0 0.944,-2.276 -2.562,-2.563 2.392,-2.392 2.56,2.56 2.277,-0.941 0,-3.625 3.384,0 0,3.621 2.276,0.943 2.562,-2.562 z";
           var path3 = paper.path(path3String).attr(generalStyle).attr({"stroke-width":1.2, "fill":"white"});
-          //path3.setStroke({'fill':'#ffffff', color : style.stroke, width: 1.5});
-          //path3.setTransform({dx: 5, dy:5, xx: 0.7, yy:0.7});
-         // path3.setFill("#ffffff");
           path3.translate(element.x, element.y);
           path3.scale(0.8);          
 
          var path4String = "m 21.141,17.426001 c 0,2.051185 -1.662814,3.714 -3.714,3.714 -2.051186,0 -3.714,-1.662815 -3.714,-3.714 0,-2.051186 1.662814,-3.714 3.714,-3.714 2.051186,0 3.714,1.662814 3.714,3.714 z";
          var path4 = paper.path(path4String).attr(generalStyle).attr({"stroke-width":1.2, "fill":"white"});
-          //path4.setStroke({color : style.stroke, width: 1.5});
-         // path4.setTransform({dx: 5, dy:5, xx: 0.7, yy:0.7});
           path4.translate(element.x, element.y);    
           path4.scale(0.8);
 /*
