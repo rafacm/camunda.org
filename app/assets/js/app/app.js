@@ -299,34 +299,52 @@ angular.module('camundaorg.controllers', [])
                   to = 1;                  
                   var p = e.getPointAtLength(a * l);  
                   return {                                  
-                    transform: "t" + [p.x, p.y] 
+                    transform: "t" + [p.x, p.y-8] 
                   }
                 };
 
                 var c = $scope.paper.ellipse(0, 0, 8, 8);
-                console.log ("c.id is " + c.id);
 
-                c.attr({"stroke":"none", "fill":"orange"}).attr({
+                c.attr({"fill":"#d45500", "stroke":"none"}).attr({
                   along: [0,c.id]
                 });
 
+                var timeout = (e.getTotalLength() * 10000) / 800;
+
                 c.animate({
                   along: [to,c.id]
-                }, 1000, function() {
+                }, timeout, function() {
 
-                  c.remove();
+                c.remove();
                   if(isSkip) {
                     activityExecution.doContinue();                    
                   }
-
                 });       
+
+
+                // adding Robert's idea with the number being displayed inside the token.
+                if(!!$scope.lastGuess) {
+
+                  var x = $scope.paper.text(0, 0, $scope.lastGuess);
+
+                  x.attr({"stroke":"white", "fill":"none", "font-size":"14pt"}).attr({
+                    along: [0,x.id]
+                  });
+
+                  x.animate({
+                    along: [to,x.id]
+                  }, timeout, function() {
+                    x.remove();                    
+                  });       
+
+                }
 
                 // do this via angular timeout function 
                 // to make sure scope rerenders itself
                 if(!isSkip) {
                   $timeout(function(){               
                     $scope.$emit("activityStart", actId);                                     
-                  },1000);         
+                  },timeout);         
                 }
 
               } else {
@@ -375,6 +393,7 @@ angular.module('camundaorg.controllers', [])
     $scope.suspendedActivities = [];    
     $scope.activeActivities = [];
     $scope.guessCounter = 0;
+    $scope.lastGuess = undefined;
 
     // remove remaining highlights
     for (var i = 0; i < $scope.processDefinition.baseElements.length; i++) {
@@ -402,6 +421,7 @@ angular.module('camundaorg.controllers', [])
       var execution = $scope.processInstance.activityExecutions[i];
       if(execution.activityDefinition.id == activityId && !execution.isEnded) {
         $scope.processInstance.variables.guess = $scope.guess;
+        $scope.lastGuess = $scope.guess;
         $scope.guess = undefined;
         $scope.guessCounter++;
         execution.signal();
