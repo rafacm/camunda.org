@@ -22,6 +22,7 @@
     $script([    
       'http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js',             
       'http://ajax.googleapis.com/ajax/libs/angularjs/1.0.1/angular.min.js',   
+      'lib/google-code-prettify/prettify.min'
     ], function() {
       $script([                
         'lib/bootstrap/bootstrap.min',       
@@ -30,9 +31,7 @@
         'app/app'
         ], function() {
           $script([        
-            
-            'lib/google-code-prettify/prettify.min',
-
+        
             'app/directives/ngmif',
             'app/directives/focused',
             'app/docs/docs',

@@ -19,29 +19,35 @@
 
     $script.path('assets/js/');
 
-    $script([    
-      'http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js',             
-      'http://ajax.googleapis.com/ajax/libs/angularjs/1.0.1/angular.min.js',        
+     $script([    
+        'http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js',             
+        'http://ajax.googleapis.com/ajax/libs/angularjs/1.0.1/angular.min.js'
       ], function() {
-        $script([
-          'lib/bootstrap/bootstrap.min',  
-          'lib/tweet/jquery.tweet',         
-          'lib/jquery-validation/dist/jquery.validate.min',  
+        $script([                
+          'lib/bootstrap/bootstrap.min',       
           'lib/angular/angular-resource.min',
           'lib/angular/angular-bootstrap.min',
-          'lib/google-code-prettify/prettify.min',
-          'app/app',
-          'app/directives/ngmif',
-          'app/directives/focused',      
-        ], function() {
+          'app/app'
+          ], function() {
+            $script([        
           
-          angular.bootstrap(document, ['camundaorg']);
+              'app/directives/ngmif',
+              'app/directives/focused',
+              'app/docs/docs',
+              'app/docs/pages'          
 
-          // post app bootstrap
-          $script([     
-            'lib/analytics/analytics',
-          ]);
-        });
+            ], function() {
+              
+              angular.bootstrap(document, ['camundaorg']);
+
+              // post app bootstrap
+              $script([     
+                'lib/analytics/analytics',
+              ]);
+            });
+
+          });
+        
     });
   </script>
   
@@ -125,16 +131,9 @@
     <!-- ========================================================================== -->
     <!-- navigation end                                                           -->
 
+    <div class="stage"></div>
 
-    <div class="container stage" ng-controller="ImplementHeroUnit">
-
-      <div style="position: absolute; right: 50px; top: 200px; text-align: center; font-weight: bold; color: black">
-
-        <div data-ng-show="activeSection=='howDoesItWork'" style="display: none">
-          <a href="#" ng-click="setAciveSection('overview')">Back to overview</a>
-        </div>
-
-      </div>
+    <div class="container">
 
 
       <div style="position: relative; top: 80px; text-align: center">
@@ -142,27 +141,26 @@
         <h3>with camunda BPM</h3>
       </div>
 
-        <div style="position: relative; text-align: center; top: 120px; height: 380px">
+        <div style="position: relative; text-align: center; top: 120px;">
 
           <div style="width: 543; margin: 0 auto">
 
             <div style="margin-top:-20px">
 
               <img src="assets/img/implementation/stack.png" usemap="#stack-map" />
-              <map name="click-map">
-
+     
               <map id="stack-map" name="stack-map">
-                <area shape="poly" coords="6,78,5,130,40,162,104,130,105,76,124,49,58,26,7,50,9,77," href="https://github.com/camunda/camunda-bpm-incubation" alt="camunda BPM incubation space" title="camunda BPM incubation space"   />
-                <area shape="poly" coords="115,153,192,114,262,159,179,202," href="design-cycle-tutorial.html" alt="cymunda cycle" title="cymunda cycle"   />
-                <area shape="poly" coords="191,215,276,166,344,213,258,260,197,219," href="implement-cockpit.html" alt="camunda cockpit" title="camunda cockpit"   />
-                <area shape="poly" coords="377,209,449,172,520,213,448,256," href="implement-java.html#/spring/configuration-and-startup" alt="process engine Spring and CDI integrations" title="process engine Spring and CDI integrations"   />
-                <area shape="poly" coords="297,156,370,117,435,157,362,199," href="implement-java.html#/engine/process-application" alt="Process Applications" title="Process Applications"   />
-                <area shape="poly" coords="156,24,367,23,367,60,155,59," href="implement-java.html#/engine/process-application" alt="Process Applications" title="Process Applications"   />
-                <area shape="poly" coords="385,107,457,69,520,110,452,147,390,113," href="implement-rest.html#/overview/introduction" alt="Process Engine REST API" title="Process Engine REST API"   />
-                <area shape="poly" coords="469,154,538,117,614,157,543,201,474,159," href="implement-bpmn.html#/index" alt="Process Engine" title="Process Engine"   />
-                <area shape="poly" coords="524,84,523,63,538,63,540,7,625,10,625,34,545,35,546,63,556,64,545,94,533,88," href="https://github.com/camunda/camunda-bpmn.js" alt="camunda-bpmn.js" title="camunda-bpmn.js"   />
-                <area shape="rect" coords="622,41,730,178" href="design-modeler.html" alt="camunda modeler for eclipse" title="camunda modeler for eclipse"    />
-                <area shape="poly" coords="214,98,286,63,355,104,283,145,222,106," href="implement-tasklist.html" alt="camunda tasklist" title="camunda tasklist"   />
+                <area shape="poly" coords="6,78,5,130,40,162,104,130,105,76,124,49,58,26,7,50,9,77," href="https://github.com/camunda/camunda-bpm-incubation" alt="camunda BPM incubation space" title="camunda BPM incubation space" ></area>
+                <area shape="poly" coords="115,153,192,114,262,159,179,202," href="design-cycle-tutorial.html" alt="cymunda cycle" title="cymunda cycle" ></area>
+                <area shape="poly" coords="191,215,276,166,344,213,258,260,197,219," href="implement-cockpit.html" alt="camunda cockpit" title="camunda cockpit"  ></area>
+                <area shape="poly" coords="377,209,449,172,520,213,448,256," href="implement-java.html#/spring/configuration-and-startup" alt="process engine Spring and CDI integrations" title="process engine Spring and CDI integrations"   ></area>
+                <area shape="poly" coords="297,156,370,117,435,157,362,199," href="implement-java.html#/engine/process-application" alt="Process Applications" title="Process Applications"  > </area>
+                <area shape="poly" coords="156,24,367,23,367,60,155,59," href="implement-java.html#/engine/process-application" alt="Process Applications" title="Process Applications"   ></area>
+                <area shape="poly" coords="385,107,457,69,520,110,452,147,390,113," href="implement-rest.html#/overview/introduction" alt="Process Engine REST API" title="Process Engine REST API"   ></area>
+                <area shape="poly" coords="469,154,538,117,614,157,543,201,474,159," href="implement-bpmn.html#/index" alt="Process Engine" title="Process Engine"   ></area>
+                <area shape="poly" coords="524,84,523,63,538,63,540,7,625,10,625,34,545,35,546,63,556,64,545,94,533,88," href="https://github.com/camunda/camunda-bpmn.js" alt="camunda-bpmn.js" title="camunda-bpmn.js"   ></area>
+                <area shape="rect" coords="622,41,730,178" href="design-modeler.html" alt="camunda modeler for eclipse" title="camunda modeler for eclipse"    ></area>
+                <area shape="poly" coords="214,98,286,63,355,104,283,145,222,106," href="implement-tasklist.html" alt="camunda tasklist" title="camunda tasklist"   ></area>
 
               </map>      
 
@@ -181,14 +179,13 @@
                 integrates with Java EE 6 and is a perfect match for the Spring Framework. On top of the process engine, choose from a stack of tools for human
                 workflow management, operations &amp; monitoring.</p>
 
-              </p>
             </div>
 
           </div>
 
-        </div>
+       </div>
+    </div>
 
-   </div>
     <div class="push-down">
       <!-- // -->
     </div>
