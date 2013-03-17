@@ -605,10 +605,40 @@ path5.translate(element.x-element.width/2 + 13, element.y-element.height/2 + 1);
 			drawnTaskType.scale(0.25,0.25);
 			
 		} else if (taskType == "service") {
+         var path1String = "m 20.347,4.895 -2.561,2.56 0.943,2.277 3.624,0 0,3.383 -3.622,0 -0.943,2.277 2.563,2.563 -2.393,2.392 -2.561,-2.561 -2.277,0.943 0,3.624 -3.383,0 0,-3.622 L 7.46,17.788 4.897,20.35 2.506,17.958 5.066,15.397 4.124,13.12 l -3.624,0 0,-3.383 3.621,0 0.944,-2.276 -2.562,-2.563 2.392,-2.392 2.56,2.56 2.277,-0.941 0,-3.625 3.384,0 0,3.621 2.276,0.943 2.562,-2.562 z";
+          var path1 = paper.path(path1String).attr(generalStyle).attr({"stroke-width":1.2, "fill":"white"});
+//          path1.setStroke({color : style.stroke, width: 1.5});
+          //path1.setTransform({dx: 5, dy:5, xx: 0.7, yy:0.7});
+          path1.translate(element.x, element.y);
+          path1.scale(0.8);
+
+         var path2String = "m 15.141,11.426 c 0,2.051185 -1.662814,3.714 -3.714,3.714 -2.0511855,0 -3.7139999,-1.662815 -3.7139999,-3.714 0,-2.0511859 1.6628144,-3.7140003 3.7139999,-3.7140003 2.051186,0 3.714,1.6628144 3.714,3.7140003 z";
+          var path2 = paper.path(path2String).attr(generalStyle).attr({"stroke-width":1.2, "fill":"grey"});
+          //path2.setStroke({color : style.stroke, width: 1.5});
+         // path2.setTransform({dx: 5, dy:5, xx: 0.7, yy:0.7});
+          path2.translate(element.x, element.y);
+          path2.scale(0.8);          
+
+         var path3String = "m 26.347,10.895 -2.561,2.56 0.943,2.277 3.624,0 0,3.383 -3.622,0 -0.943,2.277 2.563,2.563 -2.393,2.392 -2.561,-2.561 -2.277,0.943 0,3.624 -3.383,0 0,-3.622 -2.277,-0.943 -2.563,2.562 -2.391,-2.392 2.56,-2.561 -0.942,-2.277 -3.624,0 0,-3.383 3.621,0 0.944,-2.276 -2.562,-2.563 2.392,-2.392 2.56,2.56 2.277,-0.941 0,-3.625 3.384,0 0,3.621 2.276,0.943 2.562,-2.562 z";
+          var path3 = paper.path(path3String).attr(generalStyle).attr({"stroke-width":1.2, "fill":"white"});
+          //path3.setStroke({'fill':'#ffffff', color : style.stroke, width: 1.5});
+          //path3.setTransform({dx: 5, dy:5, xx: 0.7, yy:0.7});
+         // path3.setFill("#ffffff");
+          path3.translate(element.x, element.y);
+          path3.scale(0.8);          
+
+         var path4String = "m 21.141,17.426001 c 0,2.051185 -1.662814,3.714 -3.714,3.714 -2.051186,0 -3.714,-1.662815 -3.714,-3.714 0,-2.051186 1.662814,-3.714 3.714,-3.714 2.051186,0 3.714,1.662814 3.714,3.714 z";
+         var path4 = paper.path(path4String).attr(generalStyle).attr({"stroke-width":1.2, "fill":"white"});
+          //path4.setStroke({color : style.stroke, width: 1.5});
+         // path4.setTransform({dx: 5, dy:5, xx: 0.7, yy:0.7});
+          path4.translate(element.x, element.y);    
+          path4.scale(0.8);
+/*
 			var pathSpec = taskDefinitions[taskType];
 			drawnTaskType = paper.path(pathSpec).attr(generalStyle).attr({"stroke-width":1, "fill":regularStroke});
 			drawnTaskType.translate(element.x-element.width/2 + 13, element.y-element.height/2 + 1);
 			drawnTaskType.scale(0.15,0.15);
+*/
 		} else if (taskType == "manual") {
 			var pathSpec1 = "M0.5,3.751l4.083-3.25c0,0,11.166,0.083,12.083,0.083s-2.417,2.917-1.5,2.917 s11.667,0,12.584,0c1.166,1.708-0.168,3.167-0.834,3.667s0.875,1.917-1,4.417c-0.75,0.25,0.75,1.875-1.333,3.333     c-1.167,0.583,0.583,1.542-1.25,2.833c-1.167,0-20.833,0.083-20.833,0.083l-2-1.333V3.751z";
 			pathSpec1 = pathSpec1 + " M 13.5 7 L 27 7 M 13.5 11 L 26 11 M 14 14.5 L 25 14.5 M 8.2 3.1 L 15 3.1";
