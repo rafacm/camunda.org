@@ -67,7 +67,7 @@ Design
   * ~~Remove Cycle Setup Menu Entry (Jakob)~~
   * ~~Complete Cycle Tutorial (Jakob)~~
   * Add „creating BPMN 2.0 diagrams“ (Jakob)
-  * ~~ Remove BPMN 2 by example chapters OR FIX RENDERER (Jakob) ~~
+  * ~~Remove BPMN 2 by example chapters OR FIX RENDERER (Jakob)~~
 
 Community 
   * Add & embedd additional Forum boards & make initial postings, Open in Google Link (Daniel, Handshake Jakob)
