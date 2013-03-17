@@ -66,7 +66,7 @@ Design
   * ~~remove "run" directive~~
   * ~~Remove Cycle Setup Menu Entry (Jakob)~~
   * ~~Complete Cycle Tutorial (Jakob)~~
-  * Add „creating BPMN 2.0 diagrams“ (Jakob)
+  * ~~Add „creating BPMN 2.0 diagrams“ (Jakob: won't fix, just modeler setup included)~~
   * ~~Remove BPMN 2 by example chapters OR FIX RENDERER (Jakob)~~
 
 Community 
