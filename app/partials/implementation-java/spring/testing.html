@@ -24,7 +24,7 @@ public class MyBusinessProcessTest {
   
   @Autowired
   @Rule
-  public ActivitiRule activitiSpringRule;
+  public ProcessEngineRule processEngineRule;
   
   @Test
   @Deployment
@@ -40,11 +40,11 @@ public class MyBusinessProcessTest {
 }      
 </script>
     
-Note that for this to work, you need to define a org.camunda.bpm.engine.test.ActivitiRule bean in the Spring configuration (which is injected by auto-wiring in the example above).
+Note that for this to work, you need to define a <a href="http://www.camunda.org/javadocs/org/camunda/bpm/engine/test/ProcessEngineRule.html">ProcessEngineRule</a> bean in the Spring configuration (which is injected by auto-wiring in the example above).
 
   <div class="app-source" app-source-no-tabs="springTest2" ></div>
   <script type="text/xml" id="springTest2"> 
-<bean id="activitiRule" class="org.camunda.bpm.engine.test.ActivitiRule">
+<bean id="activitiRule" class="org.camunda.bpm.engine.test.ProcessEngineRule">
   <property name="processEngine" ref="processEngine" />
 </bean>        
 </script>

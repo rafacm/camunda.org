@@ -78,10 +78,10 @@ class MyBusinessProcessTest extends ActivitiTestCase {
 </script>
 
 <p>
-To get the same functionality when using the JUnit 4 style of writing unit tests, the org.camunda.bpm.engine.test.ActivitiRule Rule must be used. Through this rule, the process engine and services are available through getters. As with the ActivitiTestCase (see above), including this Rule will enable the use of the org.camunda.bpm.engine.test.Deployment annotation (see above for an explanation of its use and configuration) and it will look for the default configuration file on the classpath. Process engines are statically cached over multiple unit tests when using the same configuration resource.
+To get the same functionality when using the JUnit 4 style of writing unit tests, the <a href="http://www.camunda.org/javadocs/org/camunda/bpm/engine/test/ProcessEngineRule.html">ProcessEngineRule</a> Rule must be used. Through this rule, the process engine and services are available through getters. As with the ActivitiTestCase (see above), including this Rule will enable the use of the org.camunda.bpm.engine.test.Deployment annotation (see above for an explanation of its use and configuration) and it will look for the default configuration file on the classpath. Process engines are statically cached over multiple unit tests when using the same configuration resource.
 </p>
 <p>
-The following code snippet shows an example of using the JUnit 4 style of testing and the usage of the ActivitiRule.
+The following code snippet shows an example of using the JUnit 4 style of testing and the usage of the ProcessEngineRule.
 </p>
 
 
@@ -90,15 +90,15 @@ The following code snippet shows an example of using the JUnit 4 style of testin
 public class MyBusinessProcessTest {
   
   @Rule
-  public ActivitiRule activitiRule = new ActivitiRule();
+  public ProcessEngineRule processEngineRule = new ProcessEngineRule();
   
   @Test
   @Deployment
   public void ruleUsageExample() {
-    RuntimeService runtimeService = activitiRule.getRuntimeService();
+    RuntimeService runtimeService = processEngineRule.getRuntimeService();
     runtimeService.startProcessInstanceByKey("ruleUsage");
     
-    TaskService taskService = activitiRule.getTaskService();
+    TaskService taskService = processEngineRule.getTaskService();
     Task task = taskService.createTaskQuery().singleResult();
     assertEquals("My Task", task.getName());
     
