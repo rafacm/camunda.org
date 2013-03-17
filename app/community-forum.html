@@ -119,25 +119,34 @@
     <!-- ========================================================================== -->
     <!-- navigation end                                                           -->
 
-    <div class="container">
+    <div class="container" data-ng-controller="ForumController">
       <div style="position: relative; top: 80px; text-align: center">
         <h1 style="color: #333">Forum Boards</h1>
         <h3>in the camunda BPM Community</h3>
       </div>
       <div style="position: relative; padding-top: 120px">
         <ul class="nav nav-pills">
-          <li><a href="#">BPMN 2.0 Process Design</a></li>
-          <li><a href="#">Process Application Development</a></li>
-          <li class="active"><a href="#">camunda BPM Contributors</a></li>
+          <li class="active{{activeClass('forum1')}}"><a href="#" data-ng-click="setActive('forum1')">BPMN 2.0 Process Design</a></li>
+          <li class="active{{activeClass('forum2')}}"><a href="#" data-ng-click="setActive('forum2')">Users &amp; Process Application Development</a></li>
+          <li class="active{{activeClass('forum3')}}"><a href="#" data-ng-click="setActive('forum3')">camunda BPM Contributors</a></li>
         </ul>
       </div>
 
       <hr />
+ 
+      <div class="row" style="position: relative; padding-top: 10px; display:none" data-ng-show="isActive('forum1')">
+        <iframe id="forum_embed" src="https://groups.google.com/forum/embed/?place=forum/camunda-bpmn20&showsearch=true&showpopout=true" scrolling="no"
+          frameborder="0" style="width: 100%; height: 1000px;"> </iframe>
+      </div>
 
-      <div class="row" style="position: relative; padding-top: 10px;">
+      <div class="row" style="position: relative; padding-top: 10px;" data-ng-show="isActive('forum2')">
+        <iframe id="forum_embed" src="https://groups.google.com/forum/embed/?place=forum/camunda-bpm-users&showsearch=true&showpopout=true" scrolling="no"
+          frameborder="0" style="width: 100%; height: 1000px;"> </iframe>
+      </div>
+
+      <div class="row" style="position: relative; padding-top: 10px; display:none" data-ng-show="isActive('forum3')">
         <iframe id="forum_embed" src="https://groups.google.com/forum/embed/?place=forum/camunda-bpm-dev&showsearch=true&showpopout=true" scrolling="no"
           frameborder="0" style="width: 100%; height: 1000px;"> </iframe>
-
       </div>
 
     </div>
@@ -200,8 +209,6 @@
       <span class="spacer"></span>
     </div>
 
-    <!-- loads all javascript -->
-    <script src="assets/js/loader.js"></script>
   </footer>
 </body>
 </html>
