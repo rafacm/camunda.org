@@ -27,14 +27,14 @@
           <dc:Bounds height="0.0" width="0.0" x="30.0" y="73.0"/>
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="_BPMNShape_CallActivity_3" bpmnElement="CallActivity_1" isExpanded="true">
+      <bpmndi:BPMNShape id="_BPMNShape_CallActivity_3" bpmnElement="CallActivity_1" isExpanded="false">
         <dc:Bounds height="80.0" width="100.0" x="98.0" y="10.0"/>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNEdge id="BPMNEdge_SequenceFlow_1" bpmnElement="SequenceFlow_1" sourceElement="_BPMNShape_StartEvent_9" targetElement="_BPMNShape_CallActivity_3">
         <di:waypoint xsi:type="dc:Point" x="48.0" y="50.0"/>
         <di:waypoint xsi:type="dc:Point" x="98.0" y="50.0"/>
       </bpmndi:BPMNEdge>
-      <bpmndi:BPMNShape id="_BPMNShape_CallActivity_4" bpmnElement="CallActivity_2" isExpanded="true">
+      <bpmndi:BPMNShape id="_BPMNShape_CallActivity_4" bpmnElement="CallActivity_2" isExpanded="false">
         <dc:Bounds height="80.0" width="100.0" x="250.0" y="10.0"/>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNEdge id="BPMNEdge_SequenceFlow_2" bpmnElement="SequenceFlow_2" sourceElement="_BPMNShape_CallActivity_3" targetElement="_BPMNShape_CallActivity_4">
