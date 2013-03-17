@@ -183,7 +183,7 @@
                     A <a href="implement-bpmn.html#/tasks/service-task" target="_blank">Service Task</a> allows triggering an automatic system function like a
                     Web Service or a Method of a Java Class.
                   </p>
-                  <p>This service task generates a random number between 0 and 5.</p>
+                  <p>This service task generates a random number between 1 and 5.</p>
                   <p class="center">
                     <a class="btn btn-success" data-ng-click="doContinue('generateNumber')">Continue</a>
                   </p>
@@ -204,16 +204,20 @@
                       The <a href="implement-bpmn.html#/tasks/user-task" target="_blank">User Task</a> allows you to make an input.
                     </p>
                   </div>
-                  <div data-ng-show="!isFirstGuess()">
-                    <p class="text-error">Your last guess ({{processInstance.variables.guess}}) was incorrect, try again!</p>
+                  <div data-ng-show="!isFirstGuess() && guessCounter<5">
+                    <p class="alert alert-error"><i class="icon-thumbs-down"></i> Wrong guess, try again!</p>
                   </div>
-
+                  <div data-ng-show="guessCounter>=5">
+                    <p class="alert alert-error"><i class="icon-remove"></i> Whow! You need more than 5 guesses to get this!? Something wrong?</p>
+                  </div>
+                  <form style="display:inline">
                   <p>
-                    Input a Number between 0 and 5: <input type="text" data-ng-model="guess" size="30" placeholder="Make a guess!"></input>
+                    Input a Number between 1 and 5: <input type="text" data-ng-model="guess" size="30" placeholder="Make a guess!"></input>
                   </p>
                   <p class="center">
-                    <a class="btn btn-success" data-ng-disabled="!isGuessValid()" data-ng-click="signal('guessNumber')">Complete</a>
+                    <button class="btn btn-success" data-ng-disabled="!isGuessValid()" data-ng-click="signal('guessNumber')">Complete</button>
                   </p>
+                </form>
                 </div>
               </div>
             </div>
@@ -228,10 +232,10 @@
                 <div class="popover-content">
                   <p>
                     The <a href="implement-bpmn.html#/gateways/exclusive-gateway" target="_blank">Exclusive Gateway</a> marks a decision. In BPMN 2.0, the <a
-                      href="implement-bpmn.html#/gateways/sequence-flow" target="_blank">Sequence Flows</a> (transitions) leaving the Exclusive Gateway have
+                      href="implement-bpmn.html#/gateways/sequence-flow" target="_blank">Sequence Flows</a> that leave an Exclusive Gateway have
                     Conditions that are evaluated.
                   </p>
-                  <p>In this case, we check whether your guess was correct.</p>
+                  <p>In this case, we check whether your guess is correct.</p>
                   <p class="center">
                     <a class="btn btn-success" data-ng-click="doContinue('exclusiveGW')">Continue</a>
                   </p>
@@ -248,7 +252,7 @@
                   </a>
                 </h3>
                 <div class="popover-content" class="center">
-                  <p>Your last guess was correct, you've won!</p>
+                  <p>Your last guess was correct, you win!</p>
                   <p>This amazing achievement is worth telling people about:</p>
                   <p>
                     <a href="https://twitter.com/share" class="twitter-share-button" data-url="http://www.camunda.org"

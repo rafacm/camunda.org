@@ -374,7 +374,7 @@ angular.module('camundaorg.controllers', [])
   }
 
   $scope.isGuessValid = function() {
-    return !!$scope.guess && $scope.guess >= 0 && $scope.guess <= 5;
+    return !!$scope.guess && $scope.guess >= 1 && $scope.guess <= 5;
   }
 
   $scope.isFirstGuess = function() {
