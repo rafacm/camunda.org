@@ -77,10 +77,10 @@ Community
   * Add Contributions Page (-> Daniel)
   * ~~Fix Meeting Registration~~
   * ~~Add Newsletter (Jakob)~~
-  * explain Vision (Jakob)
+  * ~~explain Vision (Jakob)~~
  
 Support 
-  * Fix Links (Jakob)
+  * ~~Fix Links (Jakob)~~
 
 Homepage 
   * Animate Numberguess  (Daniel)
