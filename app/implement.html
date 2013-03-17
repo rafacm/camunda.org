@@ -96,6 +96,9 @@
                     <li ng-class="activeClass('/implement-java.html')"><a href="implement-java.html#/engine/configuration-and-startup">Java Reference</a></li>
                     <li ng-class="activeClass('/implement-bpmn.html')"><a href="implement-bpmn.html#/index">BPMN 2.0 Reference</a></li>
                     <li ng-class="activeClass('/implement-rest.html')"><a href="implement-rest.html#/overview/introduction">REST API</a></li>
+                    <li class="nav-header">Tools</li>
+                    <li ng-class="activeClass('/implement-tasklist.html')"><a href="implement-tasklist.html">camunda tasklist</a></li>
+                    <li ng-class="activeClass('/implement-cockpit.html')"><a href="implement-cockpit.html">camunda cockpit</a></li>
                   </ul></li>
                 <li ng-class="activeClass('/community')"><a href="community.html" class="caret-before">Community</a></li>
                 <li class="dropdown"><a class="dropdown-toggle caret-after" data-toggle="dropdown"> <b class="caret"></b></a>
@@ -139,9 +142,7 @@
         <h3>with camunda BPM</h3>
       </div>
 
-      <section id="overview" data-ng-show="activeSection == 'overview'">
-
-        <div style="position: relative; text-align: center; top: 80px; height: 380px">
+        <div style="position: relative; text-align: center; top: 120px; height: 380px">
 
           <div style="width: 543; margin: 0 auto">
 
@@ -170,12 +171,12 @@
             <div style="color: white; width: 70%; margin: 0 auto; margin-top: 50px;">
 
               <p>
-                <a href="#" class="btn btn-inverse btn-large" ng-click="setAciveSection('howDoesItWork')">How does it work?</a> 
+                <!--<a href="#" class="btn btn-inverse btn-large" ng-click="setAciveSection('howDoesItWork')">How does it work?</a> -->
                 <a class="btn btn-large btn-primary" href="download.html"><i class="icon-download-alt icon-large icon-white"></i> Download</a> 
                 <a href="implement-getting-started.html" class="btn btn-success btn-large">Getting Started</a>
               </p>
 
-              <p style="margin-top: 40px">camunda BPM platform is a flexible framework for workflow and process automation. It's core is a native BPMN 2.0
+              <p style="margin-top: 40px; font-size:120%">camunda BPM platform is a flexible framework for workflow and process automation. It's core is a native BPMN 2.0
                 process engine that runs inside the Java Virtual Machine. It can be enbedded inside any Java application and any Runtime Container. It
                 integrates with Java EE 6 and is a perfect match for the Spring Framework. On top of the process engine, choose from a stack of tools for human
                 workflow management, operations &amp; monitoring.</p>
@@ -187,793 +188,71 @@
 
         </div>
 
-      </section>
-
-      <section id="HowDoesItWork" data-ng-show="activeSection == 'howDoesItWork'" style="display: none">
-
-        <div style="position: relative; top: 80px" ng-controller="AnimateProjectSetupController">
-
-          <div class="tab-content" style="position: relative;">
-
-            <div style="position: relative; width: 500px; height: 400px;">
-
-              <div style="left: 130px; position: relative; top: 25px;">
-
-                <svg xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns="http://www.w3.org/2000/svg" version="1.1" width="500" height="269" id="svg1">
-
-                              
-                              <g transform="translate(0,-783.36218)" id="layer1">
-                                <g id="g3040"
-                    style="fill:none;stroke:#000000;stroke-width:1;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0">
-                                  <path d="m 60.912503,1024.6048 26.526573,23.2288 77.084544,-11.9869 -34.30433,-20.33 z" id="path3050"
-                    style="fill:none;stroke:#000000;stroke-width:1;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0" />
-                                  <path d="m 60.912503,961.84988 0,62.75492 69.306787,-9.0881 0,-58.87909 z" id="path3042"
-                    style="fill:none;stroke:#000000;stroke-width:1;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0" />
-                                  <path d="m 130.21929,956.63761 34.30433,12.13696 0,67.07213 -34.30433,-20.33 z" id="path3052"
-                    style="fill:none;stroke:#000000;stroke-width:1;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0" />
-                                  <path d="m 60.912503,961.84988 26.526573,13.83565 77.084544,-6.91096 -34.30433,-12.13696 z" id="path3044"
-                    style="fill:none;stroke:#000000;stroke-width:1;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0" />
-                                  <path d="m 87.439076,975.68553 0,72.14807 77.084544,-11.9869 0,-67.07213 z" id="path3048"
-                    style="fill:#b72a38;fill-opacity:1;stroke:#000000;stroke-width:1;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0" />
-                                  <path d="m 60.912503,961.84988 26.526573,13.83565 0,72.14807 -26.526573,-23.2288 z" id="path3046"
-                    style="fill:#92222d;fill-opacity:1;stroke:#000000;stroke-width:1;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0" />
-                                </g>
-                                <g id="g3040-4" style="fill:none;stroke:none">
-                                  <path d="m 314.60936,1022.7718 73.96096,26.3886 102.41973,-22.1778 -78.95465,-20.549 z" id="path3044-7"
-                    style="fill:#aa0000;fill-rule:evenodd;stroke:none" />
-                                  <path d="m 314.60936,1022.7718 0,-21.4477 97.42604,-13.93138 0,19.04088 z" id="path3042-5"
-                    style="fill:#353564;fill-rule:evenodd;stroke:none" />
-                                  <path d="m 412.0354,1006.4336 78.95465,20.549 0,-21.8808 -78.95465,-17.70908 z" id="path3052-1"
-                    style="fill:#e9e9ff;fill-rule:evenodd;stroke:none" />
-                                  <path d="m 314.60936,1001.3241 73.96096,22.7162 102.41973,-18.9385 -78.95465,-17.70908 z" id="path3050-5"
-                    style="fill:#bdbdbd;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-opacity:1" />
-                                  <path d="m 388.57032,1049.1604 0,-25.1201 102.41973,-18.9385 0,21.8808 z" id="path3048-1"
-                    style="fill:#9c9c9c;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-opacity:1" />
-                                  <path d="m 314.60936,1022.7718 73.96096,26.3886 0,-25.1201 -73.96096,-22.7162 z" id="path3046-1"
-                    style="fill:#606060;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-opacity:1" />
-                                </g>
-                                <g id="g3040-4-1-9" style="fill:none;stroke:none">
-                                  <path d="m 394.11829,995.01488 18.37063,4.53652 21.40741,-3.59878 -18.60297,-4.29399 z" id="path3044-7-6-2"
-                    style="fill:#aa0000;fill-rule:evenodd;stroke:none" />
-                                  <path d="m 394.11829,995.01488 0,-25.27554 21.17507,-2.68176 0,24.60105 z" id="path3042-5-8-7"
-                    style="fill:#353564;fill-rule:evenodd;stroke:none" />
-                                  <path d="m 415.29336,991.65863 18.60297,4.29399 0,-25.46043 -18.60297,-3.43461 z" id="path3052-1-5-9"
-                    style="fill:#e9e9ff;fill-rule:evenodd;stroke:none" />
-                                  <path d="m 394.11829,969.73934 18.37063,3.6285 21.40741,-2.87565 -18.60297,-3.43461 z" id="path3050-5-7-5"
-                    style="fill:#ffffff;fill-rule:evenodd;stroke:#000000;stroke-opacity:1" />
-                                  <path d="m 412.48892,999.5514 0,-26.18356 21.40741,-2.87565 0,25.46043 z" id="path3048-1-6-4"
-                    style="fill:#f9f9f9;fill-rule:evenodd;stroke:#000000;stroke-opacity:1" />
-                                  <path d="m 394.11829,995.01488 18.37063,4.53652 0,-26.18356 -18.37063,-3.6285 z" id="path3046-1-1-3"
-                    style="fill:#f2f2f2;fill-rule:evenodd;stroke:#000000;stroke-opacity:1" />
-                                </g>
-                                <g id="g3040-4-1" style="fill:none;stroke:none">
-                                  <path d="m 426.34045,1003.147 19.48545,4.7912 20.52884,-3.8217 -19.65839,-4.53441 z" id="path3044-7-6"
-                    style="fill:#aa0000;fill-rule:evenodd;stroke:none" />
-                                  <path d="m 426.34045,1003.147 0,-25.27554 20.3559,-2.89042 0,24.60105 z" id="path3042-5-8"
-                    style="fill:#353564;fill-rule:evenodd;stroke:none" />
-                                  <path d="m 446.69635,999.58209 19.65839,4.53441 0,-25.46046 -19.65839,-3.675 z" id="path3052-1-5"
-                    style="fill:#e9e9ff;fill-rule:evenodd;stroke:none" />
-                                  <path d="m 426.34045,977.87146 19.48545,3.88322 20.52884,-3.09864 -19.65839,-3.675 z" id="path3050-5-7"
-                    style="fill:#ffffff;fill-rule:evenodd;stroke:#000000;stroke-opacity:1" />
-                                  <path d="m 445.8259,1007.9382 0,-26.18352 20.52884,-3.09864 0,25.46046 z" id="path3048-1-6"
-                    style="fill:#f9f9f9;fill-rule:evenodd;stroke:#000000;stroke-opacity:1" />
-                                  <path d="m 426.34045,1003.147 19.48545,4.7912 0,-26.18352 -19.48545,-3.88322 z" id="path3046-1-1"
-                    style="fill:#f2f2f2;fill-rule:evenodd;stroke:#000000;stroke-opacity:1" />
-                                </g>
-                                <g id="g3040-4-1-3"
-                    style="fill:none;stroke:#000000;stroke-width:1;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0">
-                                  <path d="m 354.06677,1007.311 19.99434,5.8676 21.566,-3.83 -20.33967,-5.5667 z" id="path3044-7-6-3"
-                    style="fill:none;stroke:#000000;stroke-width:1;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0" />
-                                  <path d="m 354.06677,1007.311 0,-27.00364 21.22067,-2.84269 0,26.31723 z" id="path3042-5-8-4"
-                    style="fill:none;stroke:#000000;stroke-width:1;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0" />
-                                  <path d="m 375.28744,1003.7819 20.33967,5.5667 0,-27.40176 -20.33967,-4.48217 z" id="path3052-1-5-1"
-                    style="fill:none;stroke:#000000;stroke-width:1;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0" />
-                                  <path d="m 354.06677,980.30736 19.99434,4.72438 21.566,-3.0849 -20.33967,-4.48217 z" id="path3050-5-7-1"
-                    style="fill:#d85460;fill-opacity:1;stroke:#000000;stroke-width:1;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0" />
-                                  <path d="m 374.06111,1013.1786 0,-28.14686 21.566,-3.0849 0,27.40176 z" id="path3048-1-6-3"
-                    style="fill:#b72a38;fill-opacity:1;stroke:#000000;stroke-width:1;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0" />
-                                  <path d="m 354.06677,1007.311 19.99434,5.8676 0,-28.14686 -19.99434,-4.72438 z" id="path3046-1-1-8"
-                    style="fill:#92222d;fill-opacity:1;stroke:#000000;stroke-width:1;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0" />
-                                </g>                             
-                               </g>
-                            </svg>
-
-              </div>
-
-            </div>
-            <div>
-              <div style="left: 0px; position: absolute; top: 25px;">
-
-                <svg xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:svg="http://www.w3.org/2000/svg" xmlns="http://www.w3.org/2000/svg" version="1.1"
-                  width="630" height="269" id="svg2">
-
-
-                          <g
-                    style="font-size:14px;font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;text-align:start;line-height:125%;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;font-family:
-                            Helvetica Neue,Helvetica,Arial,sans-serif">
-
-                          <g id="bpmn-container" transform="translate(0,0)">
-
-                            <g transform="translate(137,-983.36218)">
-                              <path d="m -272.40908,76.71386 a 25.901192,25.901192 0 1 1 -51.80238,0 25.901192,25.901192 0 1 1 51.80238,0 z"
-                    transform="matrix(0.51591799,0,0,0.51591799,225.85543,895.78412)" id="path7841" style="fill:#b78e2a;fill-opacity:1;stroke:none"></path>
-                              <text x="803.68054" y="-60.351563" transform="matrix(0,1,-1,0,0,0)" id="bpmn-text" xml:space="preserve">
-                  <tspan x="813.68054" y="-63.351563" id="tspan8038">Bpmn 2.0 Xml</tspan></text>
-                            </g>
-
-                          </g>
-
-                          <g id="java-container" transform="translate(0,0)">
-
-                            <g transform="translate(137,-983.36218)">
-                              <path d="m -272.40908,76.71386 a 25.901192,25.901192 0 1 1 -51.80238,0 25.901192,25.901192 0 1 1 51.80238,0 z"
-                    transform="matrix(0.51591799,0,0,0.51591799,258.90364,888.78412)" id="path7841-7" style="fill:#2a69b7;fill-opacity:1;stroke:none"></path>
-                              <text x="808.23914" y="-104.64111" transform="matrix(0,1,-1,0,0,0)" id="java-classes-text" xml:space="preserve">
-                  <tspan x="808.23914" y="-98.64111" id="tspan8038-0">Java Classes</tspan></text>
-                            </g>
-
-                          </g>
-
-
-                          <g id="taskForms-container" transform="translate(0,0)">
-
-                            <g transform="translate(137,-983.36218)">
-                             <path d="m -272.40908,76.71386 a 25.901192,25.901192 0 1 1 -51.80238,0 25.901192,25.901192 0 1 1 51.80238,0 z"
-                    transform="matrix(0.51591799,0,0,0.51591799,290.90364,881.78412)" id="path7841-7-2" style="fill:#000000;fill-opacity:1;stroke:none"></path>
-                              <text x="817.33289" y="-145.55762" transform="matrix(0,1,-1,0,0,0)" id="task-forms-text" xml:space="preserve">
-                  <tspan x="817.33289" y="-135.55762" id="tspan8038-0-0">Task Forms</tspan></text>
-                            </g>
-
-                          </g>
-
-
-                         <g id="maven-container" transform="translate(0,0)">
-
-                            <g transform="translate(130,-781.36218)">
-                            <path
-                    d="m 171.30116,976.30577 c 167.18161,-113.34846 203.5701,-39.32173 202.82376,-8.15749 -0.11063,4.61932 -0.11032,8.26691 -0.11032,8.26691 m 6.82308,-10.00929 c -2.22207,1.98676 -6.68814,10.72839 -6.7909,10.85268 -3.70997,-6.44928 -5.02012,-7.55645 -7.75172,-9.53022"
-                    id="path5697"
-                    style="fill:none;stroke:#000000;stroke-width:2;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none" />
-
-                            </g> 
-
-                          </g>
-
-                        </g>
-                      </svg>
-              </div>
-
-              <div style="position: absolute; top: 300px; left: 150px; color: white">
-                <center>
-                  <p>
-                    <strong>Process Application</strong>
-                  </p>
-                  <p>JAR | WAR | EAR | BUNDLE*</p>
-                </center>
-              </div>
-
-              <div style="position: absolute; top: 300px; left: 430px; color: white">
-                <center>
-                  <p>
-                    <strong>Runtime Container</strong>
-                  </p>
-                  <p>Servlet | Application Server | OSGi*</p>
-                  <p>
-                    <em style="font-size: 80%">*coming soon</em>
-                  </p>
-                </center>
-              </div>
-
-              <div style="position: absolute; top: 200px; left: 50px;">
-                <center>
-                  <p>
-                    <strong>maven pom.xml</strong>
-                  </p>
-                </center>
-              </div>
-            </div>
-
-            <div class="tab-pane" id="tab2">
-
-
-              <div style="left: 165px; position: absolute; top: 11px;">
-
-                <svg xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#"
-                  xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:svg="http://www.w3.org/2000/svg" xmlns="http://www.w3.org/2000/svg"
-                  version="1.1" width="500" height="300" id="svg2">
-                      <defs id="defs4">
-                        <linearGradient id="linearGradient5691">
-                          <stop id="stop5693" style="stop-color:#000000;stop-opacity:1" offset="0" />
-                        </linearGradient>
-                        <clipPath id="clipPath16">
-                          <path d="m 0,85.039 85.039,0 L 85.039,0 0,0 0,85.039 z" id="path18" />
-                        </clipPath>
-                      </defs>
-                      <metadata id="metadata7">
-                        <rdf:RDF>
-                          <cc:Work rdf:about="">
-                            <dc:format>image/svg+xml</dc:format>
-                            <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-                            <dc:title></dc:title>
-                          </cc:Work>
-                        </rdf:RDF>
-                      </metadata>
-                      <g transform="translate(0,153)" id="layer2" />
-                      <g transform="translate(0,-752.36218)" id="layer1">
-                        <g id="g3040-4-1-1" style="fill:none;stroke:none">
-                          <path d="m 353.46464,1031.893 29.3655,10.5364 104.27222,-24.7285 -30.54888,-7.9854 z" id="path3044-7-6-4"
-                    style="fill:#aa0000;fill-rule:evenodd;stroke:none" />
-                          <path d="m 353.46464,1031.893 0,-25.05 103.08884,-18.92761 0,21.80011 z" id="path3042-5-8-46"
-                    style="fill:#353564;fill-rule:evenodd;stroke:none" />
-                          <path d="m 456.55348,1009.7155 30.54888,7.9854 0,-22.89656 -30.54888,-6.88895 z" id="path3052-1-5-7"
-                    style="fill:#e9e9ff;fill-rule:evenodd;stroke:none" />
-                          <path d="m 353.46464,1006.843 29.3655,9.0779 104.27222,-21.11656 -30.54888,-6.88895 z" id="path3050-5-7-11"
-                    style="fill:#3f81d3;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-opacity:1" />
-                          <path d="m 382.83014,1042.4294 0,-26.5085 104.27222,-21.11656 0,22.89656 z" id="path3048-1-6-8"
-                    style="fill:#2a69b7;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-opacity:1" />
-                          <path d="m 353.46464,1031.893 29.3655,10.5364 0,-26.5085 -29.3655,-9.0779 z" id="path3046-1-1-6"
-                    style="fill:#255b9f;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-opacity:1" />
-                        </g>
-                        <path d="m 348.85057,978.8708 44.44445,10.76389 0,16.66671" id="path4626"
-                    style="fill:none;stroke:#000000;stroke-width:3;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none" />
-                        <path d="m 421.76724,975.7458 25.34722,5.20834 0,15.97222" id="path4628"
-                    style="fill:none;stroke:#000000;stroke-width:3;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none" />
-                        <g id="g3040-4-1-1-0" style="fill:none;stroke:none">
-                          <path d="m 49.35688,947.87458 13.024537,5.58817 40.790143,-3.44038 -14.952136,-5.18898 z" id="path3044-7-6-4-1"
-                    style="fill:#aa0000;fill-rule:evenodd;stroke:none" />
-                          <path d="m 49.35688,947.87458 0,-48.43891 38.862544,-1.32717 0,46.72489 z" id="path3042-5-8-46-6"
-                    style="fill:#353564;fill-rule:evenodd;stroke:none" />
-                          <path d="m 88.219424,944.83339 14.952136,5.18898 0,-49.63104 -14.952136,-2.28283 z" id="path3052-1-5-7-0"
-                    style="fill:#e9e9ff;fill-rule:evenodd;stroke:none" />
-                          <path d="m 49.35688,899.43567 13.024537,2.45775 40.790143,-1.50209 -14.952136,-2.28283 z" id="path3050-5-7-11-5"
-                    style="fill:#3f81d3;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-opacity:1" />
-                          <path d="m 62.381417,953.46275 0,-51.56933 40.790143,-1.50209 0,49.63104 z" id="path3048-1-6-8-8"
-                    style="fill:#2a69b7;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-opacity:1" />
-                          <path d="m 49.35688,947.87458 13.024537,5.58817 0,-51.56933 -13.024537,-2.45775 z" id="path3046-1-1-6-2"
-                    style="fill:#255b9f;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-opacity:1" />
-                        </g>
-                      </g>
-                    </svg>
-
-              </div>
-
-
-
-              <div style="position: absolute; top: 300px; left: 120px; color: white">
-                <center>
-                  <p>
-                    <strong>Embedded</strong> Process Engine
-                  </p>
-                  <p>
-                    Deployed as <strong>library</strong> inside application.
-                  </p>
-                </center>
-              </div>
-
-              <div style="position: absolute; top: 300px; left: 420px; color: white">
-                <center>
-                  <p>
-                    <strong>Shared</strong> Process Engnine
-                  </p>
-                  <p>
-                    Deployed as <strong>service</strong> inside container.
-                  </p>
-                </center>
-              </div>
-            </div>
-
-          </div>
-
-        </div>
-
-      </section>
-
-      <div data-ng-show="activeSection == 'howDoesItWork'" style="display: none">
-
-        <hr style="margin-top: 80px" class="soften">
-
-        <section id="container" style="color: white; text-align: center" ng-controller="RuntimeContainers">
-
-          <img src="assets/img/runtime-container.png" />
-
-          <h1>Selecting a Runtime Container</h1>
-
-          <div style="width: 70%; margin: 0 auto;">
-            <p>
-              <strong>Camunda gives you the coice</strong> of your favorite runtime, be it a standalone Java Virtual Machine, a Servlet Container, a Java EE
-              Application Server or even OSGi.
-            </p>
-
-            <p>Use unique features and innovations delivered by state of the art containers like JBoss AS 7 and combine them with our rock-solid BPM process
-              engine.</p>
-
-          </div>
-
-          <p class="tile-link">
-            <a> <i class="container-tile {{class('jvm')}}" ng-click="toggleContainer('jvm')"></i>
-            </a> <a> <i class="container-tile {{class('tomcat')}}" ng-click="toggleContainer('tomcat')"></i>
-            </a> <a> <i class="container-tile {{class('glassfish')}}" ng-click="toggleContainer('glassfish')"></i>
-            </a> <a> <i class="container-tile {{class('as7')}}" ng-click="toggleContainer('as7')"></i>
-            </a>
-          </p>
-
-          <div data-ng-show="selectedContainer == 'NOTHING'">
-            <p>
-              <em>(Click on the icons above to discover the runtimes)</em>
-            </p>
-          </div>
-
-          <div data-ng-show="selectedContainer == 'jvm'" class="dark-selection">
-            <h2>camunda BPM in a standalone JVM</h2>
-            <p>The JVM is an aswesome platform. Integrating camunda BPM with nothing but the bare metal gives you maximal flexibility when it comes to your
-              integration requirements. Yet, it already gives you advanced features like integration with the JMX management container, asynchronous processing
-              and much more. And it's great for unit testing!</p>
-            <div class="row-fluid">
-              <div class="span7" style="text-align: center">
-                <div style="margin: 0 auto; text-align: left; width: 220px">
-                  <h3>Core Features</h3>
-                  <p>
-                    <i class="icon-ok"></i> Native BPMN 2.0 execution
-                  </p>
-                  <p>
-                    <i class="icon-ok"></i> Embedded Process Engine
-                  </p>
-                  <p>
-                    <i class="icon-ok"></i> Asynchronous Processing
-                  </p>
-                  <p>
-                    <i class="icon-ok"></i> JMX Container integration
-                  </p>
-                </div>
-              </div>
-
-              <div class="span5" style="text-align: center">
-                <div style="margin: 0 auto; text-align: left; width: 200px">
-                  <h3>Stack</h3>
-                  <p>
-                    <i class="icon-remove"></i> camunda cycle
-                  </p>
-                  <p>
-                    <i class="icon-remove"></i> camunda cockpit
-                  </p>
-                  <p>
-                    <i class="icon-remove"></i> camunda tasklist
-                  </p>
-                  <p>
-                    <i class="icon-ok"></i> <a data-toggle="tooltip" title="Using embedded REST server">camunda REST Api</a>
-                  </p>
-                </div>
-              </div>
-            </div>
-            <div style="margin-top: 30px">
-              <a class="btn btn-large" href="http://fox.camunda.com/download/old/camunda-bpm-platform-tomcat7-7.0.0-SNAPSHOT.tar.gz"> <i
-                class="icon-download-alt icon-large"></i> Download
-              </a>
-            </div>
-          </div>
-
-          <div data-ng-show="selectedContainer == 'tomcat'" class="dark-selection">
-            <h2>camunda BPM in Apache Tomcat</h2>
-            <p>Apache Tomcat is the ideal runtime if you are looking for a simple, easy to use runtime container for delivering web-based process
-              applications. Use the process engine embedded inside you application or go with our advanced shared process engine deployment model. Use it with
-              Spring or a framework of your choice.</p>
-            <div class="row-fluid">
-              <div class="span7" style="text-align: center">
-                <div style="margin: 0 auto; text-align: left; width: 220px">
-
-                  <h3>Advanced Features</h3>
-                  <p>
-                    <i class="icon-ok"></i> Shared Process Engine
-                  </p>
-                  <p>
-                    <i class="icon-ok"></i> Redeployment at Runtime
-                  </p>
-
-                  <h3 style="margin-top: 30px">Core Features</h3>
-                  <p>
-                    <i class="icon-ok"></i> Native BPMN 2.0 execution
-                  </p>
-                  <p>
-                    <i class="icon-ok"></i> Embedded Process Engine
-                  </p>
-                  <p>
-                    <i class="icon-ok"></i> Asynchronous Processing
-                  </p>
-                  <p>
-                    <i class="icon-ok"></i> JMX Container integration
-                  </p>
-
-
-                </div>
-              </div>
-
-              <div class="span5" style="text-align: center">
-                <div style="margin: 0 auto; text-align: left; width: 200px">
-                  <h3>Stack</h3>
-                  <p>
-                    <i class="icon-ok"></i> camunda cycle
-                  </p>
-                  <p>
-                    <i class="icon-ok"></i> camunda cockpit
-                  </p>
-                  <p>
-                    <i class="icon-ok"></i> camunda tasklist
-                  </p>
-                  <p>
-                    <i class="icon-ok"></i> camunda REST Api
-                  </p>
-
-                  <div style="margin-top: 60px">
-                    <a class="btn btn-large" href="http://fox.camunda.com/download/old/camunda-bpm-platform-tomcat7-7.0.0-SNAPSHOT.tar.gz"> <i
-                      class="icon-download-alt icon-large"></i> Download
-                    </a>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-          </div>
-
-          <div data-ng-show="selectedContainer == 'glassfish'" class="dark-selection">
-            <h2>camunda BPM in GlassFish Application Server</h2>
-            <p>Java EE 6 at it's best. Use the camunda BPM Java EE 6 Integration inside a lightweight runtime container. We provide integration with
-              application server threading through JCA, allowing you to leverage container-managed threads and proper Java EE context management for
-              asynchronous background processing.</p>
-            <div class="row-fluid">
-              <div class="span7" style="text-align: center">
-                <div style="margin: 0 auto; text-align: left; width: 220px">
-                  <h3>Advanced Features</h3>
-                  <p>
-                    <i class="icon-ok"></i> Shared Process Engine
-                  </p>
-                  <p>
-                    <i class="icon-ok"></i> Redeployment at Runtime
-                  </p>
-                  <p>
-                    <i class="icon-ok"></i> Java EE 6 Integration
-                  </p>
-
-                  <h3 style="margin-top: 30px">Core Features</h3>
-                  <p>
-                    <i class="icon-ok"></i> Native BPMN 2.0 execution
-                  </p>
-                  <p>
-                    <i class="icon-ok"></i> Embedded Process Engine
-                  </p>
-                  <p>
-                    <i class="icon-ok"></i> Asynchronous Processing
-                  </p>
-                  <p>
-                    <i class="icon-ok"></i> JMX Container integration
-                  </p>
-                </div>
-              </div>
-
-              <div class="span5" style="text-align: center">
-                <div style="margin: 0 auto; text-align: left; width: 200px">
-                  <h3>Stack</h3>
-                  <p>
-                    <i class="icon-ok"></i> camunda cycle
-                  </p>
-                  <p>
-                    <i class="icon-ok"></i> camunda cockpit
-                  </p>
-                  <p>
-                    <i class="icon-ok"></i> camunda tasklist
-                  </p>
-                  <p>
-                    <i class="icon-ok"></i> camunda REST Api
-                  </p>
-
-                  <div style="margin-top: 70px">
-                    <a class="btn btn-large" href="http://fox.camunda.com/download/old/camunda-bpm-platform-tomcat7-7.0.0-SNAPSHOT.tar.gz"> <i
-                      class="icon-download-alt icon-large"></i> Download
-                    </a>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div data-ng-show="selectedContainer == 'as7'" class="dark-selection">
-            <h2>camunda BPM in JBoss AS 7</h2>
-            <p>Experience BPM in a full-fledged Java EE Application Server with powerful, best in class middleware services for transacitons, messaging and
-              web services while still being light-weight and modular. camunda BPM integrates natively with JBoss AS 7, uses container-managed threads, native
-              deployment and provides hooks into the application server management model.</p>
-            <div class="row-fluid">
-              <div class="span7" style="text-align: center">
-                <div style="margin: 0 auto; text-align: left; width: 220px">
-                  <h3>Advanced Features</h3>
-                  <p>
-                    <i class="icon-ok"></i> Shared Process Engine
-                  </p>
-                  <p>
-                    <i class="icon-ok"></i> Redeployment at Runtime
-                  </p>
-                  <p>
-                    <i class="icon-ok"></i> Java EE 6 Integration
-                  </p>
-                  <p>
-                    <i class="icon-ok"></i> Native Container Integration
-                  </p>
-
-                  <h3 style="margin-top: 30px">Core Features</h3>
-                  <p>
-                    <i class="icon-ok"></i> Native BPMN 2.0 execution
-                  </p>
-                  <p>
-                    <i class="icon-ok"></i> Embedded Process Engine
-                  </p>
-                  <p>
-                    <i class="icon-ok"></i> Asynchronous Processing
-                  </p>
-                  <p>
-                    <i class="icon-ok"></i> JMX Container integration
-                  </p>
-                </div>
-              </div>
-
-              <div class="span5" style="text-align: center">
-                <div style="margin: 0 auto; text-align: left; width: 200px">
-                  <h3>Stack</h3>
-                  <p>
-                    <i class="icon-ok"></i> camunda cycle
-                  </p>
-                  <p>
-                    <i class="icon-ok"></i> camunda cockpit
-                  </p>
-                  <p>
-                    <i class="icon-ok"></i> camunda tasklist
-                  </p>
-                  <p>
-                    <i class="icon-ok"></i> camunda REST Api
-                  </p>
-
-                  <div style="margin-top: 80px">
-                    <a class="btn btn-large" href="http://fox.camunda.com/download/old/camunda-bpm-platform-tomcat7-7.0.0-SNAPSHOT.tar.gz"> <i
-                      class="icon-download-alt icon-large"></i> Download
-                    </a>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-
-        </section>
-
-        <hr class="soften">
-
-        <div style="color: white; text-align: center">
-
-          <img src="assets/img/process-application.png" />
-
-          <h1>Setting up a Process Application Project</h1>
-
-          <p>A process application is a Java application that interacts with BPMN 2.0 processes. This means that part of the behavior and the functionality
-            of the process application is described by one or multiple BPMN 2.0 process models. On this page you can discover the necessary steps that allow you
-            to turn a Java Application into a Process Application.</p>
-
-          <div class="dark-selection">
-
-
-            <div style="text-align: left">
-              <div class="app-source" app-source="Project-Layout pom.xml web.xml processes.xml" annotate="hello.annotation"></div>
-            </div>
-
-          </div>
-
-
-          <div>
-            <h3>Watch</h3>
-            Watch as we setup this project in eclipse
-          </div>
-
-          <div>
-            <h3>There's more</h3>
-            <p>
-              <a href="">Documentation on Process Applications</a>
-            </p>
-            <p>
-              <a href="">Java EE 6 Process Applications</a>
-            </p>
-          </div>
-
-        </div>
-
-
-        <div style="margin-top: 200px"></div>
-
-      </div>
-
+   </div>
+    <div class="push-down">
+      <!-- // -->
     </div>
-
   </div>
-
-
-  </section>
-
   <!-- footer -->
   <footer class="footer">
-    <div data-ng-include=" 'templates/footer.html' "></div>
+
+    <div class="container container-footer">
+      <p>
+        <a href="index.html">camunda.org</a> - created and maintained by <a href="http://www.camunda.com">camunda services GmbH</a> | This page is built with <a
+          href="http://angularjs.org/">angularjs</a>
+      </p>
+      <div class="row-fluid">
+        <div class="span3">
+          <h4>Design</h4>
+          <ul>
+            <li><a href="design-overiew.html">Overview</a></li>
+            <li><a href="design-modeler.html">camunda Modeler</a></li>
+            <li><a href="design-cycle-tutorial.html">camunda Cycle</a></li>
+            <li><a href="design-tutorial.html">BPMN 2.0 Tutorial</a></li>
+            <li><a href="design-reference.html#/reference">BPMN 2.0 Reference</a></li>
+
+          </ul>
+        </div>
+        <div class="span3">
+          <h4>Implement</h4>
+          <ul>
+            <li><a href="implement.html">Overview</a></li>
+            <li><a href="implement-getting-started.html">Getting Started</a></li>
+            <li><a href="implement-java.html#/engine/configuration-and-startup">Java Reference</a></li>
+            <li><a href="implement-bpmn.html#/index">BPMN 2.0 Reference</a></li>
+            <li><a href="implement-rest.html#/overview/introduction">REST API</a></li>
+            <li><a href="implement-tasklist.html">camunda Tasklist</a></li>
+            <li><a href="implement-cockpit.html">camunda Cockpit</a></li>
+          </ul>
+        </div>
+        <div class="span3">
+          <h4>Community</h4>
+          <ul>
+            <li><a href="community.html">Overview</a></li>
+            <li><a href="community-forum.html">Forum</a></li>
+            <li><a href="community-meetings.html">Next Meetings</a></li>
+            <li><a href="community-users.html">Who's using it?</a></li>
+            <li><a href="community-vision.html">Our Vision</a></li>
+            <li><a href="community-contribute.html">How to Contribute</a></li>
+            <li><a href="community-team.html">Team</a></li>
+          </ul>
+        </div>
+        <div class="span3">
+          <h4>Support</h4>
+          <ul>
+            <li><a href="">Overview</a></li>
+            <li><a href="">Enterprise Edition</a></li>
+            <li><a href="">Consulting</a></li>
+            <li><a href="">Training</a></li>
+          </ul>
+        </div>
+
+      </div>
+      <span class="spacer"></span>
+    </div>
+
   </footer>
 
-
-
-
-  <div class="bootstrap-code">
-    <!-- ============== Hello ============== -->
-    <script type="text/xml" id="Project-Layout">
-  my-application/
-  ├── src/
-  │   └─ main/
-  │      ├── java/
-  │      ├── resources/        
-  │      │   ├── META-INF/
-  │      │   │   └── processes.xml
-  │      │   └── oneTaskProcess.bpmn20.xml
-  │      └─  webapp/
-  │          └─  WEB-INF/
-  │              └── web.xml
-  └──  pom.xml
-</script>
-
-
-    <!-- ======================================================= -->
-    <script type="text/xml" id="pom.xml">
-<project xmlns="http://maven.apache.org/POM/4.0.0" 
-  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
-  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-  <modelVersion>4.0.0</modelVersion>
-
-  <name>camunda bpm platform - examples - simple servlet process application</name>
-  
-  <groupId>org.camunda.bpm</groupId>
-  <artifactId>simple-process-application</artifactId>
-  <packaging>war</packaging>
-
-  <dependencies>
-    <dependency>
-      <groupId>org.camunda.bpm</groupId>
-      <artifactId>camunda-engine</artifactId>
-      <version>7.0.0-SNAPSHOT</version>
-      <scope>provided</scope>
-    </dependency>
-  </dependencies>
-
-</project>
-</script>
-
-    <!-- ======================================================= -->
-    <script type="text/xml" id="processes.xml">
-<process-application 
-  xmlns="http://www.camunda.org/schema/1.0/ProcessApplication" 
-  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-
-  <process-archive name="example">  
-    <process-engine>default</process-engine>
-    <properties>
-      <property name="isScanningEnabled">true</property>
-    </properties>
-  </process-archive>
-
-</process-application>
-</script>
-
-    <!-- ======================================================= -->
-    <script type="text/xml" id="oneTaskProcess.bpmn20.xml">
-<?xml version="1.0" encoding="UTF-8"?>
-<definitions
-  xmlns="http://www.omg.org/spec/BPMN/20100524/MODEL"
-  xmlns:activiti="http://activiti.org/bpmn"
-  targetNamespace="Examples">
-
-  <process id="oneTaskProcess" name="The One Task Process">
-  
-    <startEvent id="theStart" />
-    <sequenceFlow id="flow1" sourceRef="theStart" targetRef="theTask" />
-    <userTask id="theTask" name="My User Task" />    
-    <sequenceFlow id="flow2" sourceRef="theTask" targetRef="theEnd" />
-    <endEvent id="theEnd" />
-    
-  </process>
-
-</definitions>
-</script>
-
-    <!-- ======================================================= -->
-    <script type="text/xml" id="web.xml">
-<web-app xmlns="http://java.sun.com/xml/ns/javaee"
-  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xsi:schemaLocation="http://java.sun.com/xml/ns/javaee 
-                      http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd" version="3.0"> 
-    
-  <listener>
-    <listener-class>
-      org.camunda.bpm.application.spi.servlet.ServletProcessApplication
-    </listener-class>
-  </listener>
-    
-</web-app>
-</script>
-
-    <!-- ============== Hello ============== -->
-    <script type="text/xml" id="Project-Layout-with-Service-Task">
-  my-application/
-  ├── src/
-  │   └─ main/
-  │      ├── java/
-  │      │   └── GenerateRandomNumberDelegate.java
-  │      ├── resources/        
-  │      │   ├── META-INF/
-  │      │   │   └── processes.xml
-  │      │   └── oneTaskProcess.bpmn20.xml
-  │      └─  webapp/
-  │          └─  WEB-INF/
-  │              └── web.xml
-  └──  pom.xml
-</script>
-
-    <script type="text/xml" id="GenerateRandomNumberDelegate.java">
-public class GenerateRandomNumberDelegate implements JavaDelegate {
-
-  public void execute(DelegateExecution execution) throws Exception {
-    
-    Random random = new Random();
-    int secretNumber = random.nextInt(100);
-    
-    execution.setVariable("secretNumber", secretNumber);
-    
-    System.out.println("Random number generated: "+secretNumber);
-    
-  }
-
-}
-</script>
-
-    <script type="text/xml" id="inputGuessTaskform.html">
-<task-form>
-  <input type="text" ng-model="processVariables.guess" />
-</task-form>
-<button type="submit" />
-</script>
-
-    <!-- ======================================================= -->
-    <script type="text/ng-template" id="hello.annotation">
-{ "Project-Layout":
-  { "pom.xml": "Decriptor file required by apache maven. Maven is the de-facto standard for declarative dependency management in the Java World.", 
-    "processes.xml": "Deployment descriptor for the Process Application deployment.",
-    "web.xml": "Deployment Descriptor for Java Web Applications.",
-    "oneTaskProcess.bpmn20.xml": "This is the BPMN 2.0 Process Definition!"
-  },
- "pom.xml":
-  { "war": "Process Applications are most commonly packaged as Java Web Applications (WAR files). Other deployment options are available. On the Java EE 6 platform, you can use plain JAR or advanced EAR deployments as well." ,
-    "camunda-engine": "The process engine is the component responsible for picking up your BPMN 2.0 processes and executing them.",
-    "provided": "The process engine can be either <ul><li>provided by the servlet container or</li><li>embedded inside your process application.</li></ul> <p />Here, we use a shared process engine that is provided by the servlet container."
-  },
-  "web.xml":
-  { "ServletProcessApplication": "A Servlet Process Application is a process application running inside a Servlet Container like Apache Tomcat. The Servlet Process Application is bootrapped using a servlet listener. This means that when your application starts, all BPMN 2.0 processes are automatically picked up (as defined in your <code>processes.xml</code> file) and deployed to the process engine."
-  },
-  "processes.xml":
-  {
-    "process-archive": "A process archive collects a set of process definitions and performs a deployment to the process engine. Process definitions can either be listed explicitly or discovered automatically using scanning (see <code>isScanningEnabled</code> below). You can define multiple process archives in your processes.xml.",
-    "default" : "You can define which process engine the process archive should be deployed to.",
-    "isScanningEnabled" : "If set to true, your application is automatically scanned for process definitions."
-  },
-  "GenerateRandomNumberDelegate.java":
-  { "JavaDelegate" : "The JavaDelegate interface is provided by the process engine and needs to be implemented by Java Service Tasks.",
-    "DelegateExecution" : "The DelegateExecution object allows your class to communicate with the current process instance. It can be used for accessing and manipulating process variables.",
-    "setVariable" : "Here, we create a new process variable named <code>secretNumber</code> and assign it a randomly generated number between 0 and 100. The value of the process variable will be available to all subsequently executed tasks in the process instance."
-
-  },
-  "Project-Layout-with-Service-Task":
-  {
-    "GenerateRandomNumberDelegate" : "The java class is added as a Java source file to the project. Now your project contains both Java Code and a BPMN 2.0 process that are deployed side-by-side."
-  }
-
-}
-</script>
-
-  </div>
 
   <!-- github ribbon -->
 

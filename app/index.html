@@ -97,6 +97,9 @@
                     <li ng-class="activeClass('/implement-java.html')"><a href="implement-java.html#/engine/configuration-and-startup">Java Reference</a></li>
                     <li ng-class="activeClass('/implement-bpmn.html')"><a href="implement-bpmn.html#/index">BPMN 2.0 Reference</a></li>
                     <li ng-class="activeClass('/implement-rest.html')"><a href="implement-rest.html#/overview/introduction">REST API</a></li>
+                    <li class="nav-header">Tools</li>
+                    <li ng-class="activeClass('/implement-tasklist.html')"><a href="implement-tasklist.html">camunda tasklist</a></li>
+                    <li ng-class="activeClass('/implement-cockpit.html')"><a href="implement-cockpit.html">camunda cockpit</a></li>
                   </ul></li>
                 <li ng-class="activeClass('/community')"><a href="community.html" class="caret-before">Community</a></li>
                 <li class="dropdown"><a class="dropdown-toggle caret-after" data-toggle="dropdown"> <b class="caret"></b></a>
@@ -142,8 +145,8 @@
       <div style="padding-top: 40px; width: 100%; height: 200px" data-ng-controller="NumberguessAppController">
 
         <div style="position: relative; width: 100%; height: 200px">          
-          <div style="width: 200px; margin: 0 auto; position: relative;" class="center" data-ng-show="false">
-            <img src="assets/img/ajax-loader.gif"></img> <p>Awesome BPMN 2.0 App loading!</p><p>Please wait.</p>
+          <div style="width: 200px; margin: 0 auto; position: relative;" class="well center" data-ng-show="false">
+            <img src="assets/img/ajax-loader.gif"></img> <p>Awesome BPMN 2.0 App loading!</p><p>Please wait...</p>
           </div>
           <div style="width: 596px; margin: 0 auto; position: relative; height: 100%" id="numberGuess" data-bpmn-src2="homepage/numberGuessing"></div>
         </div>
@@ -411,6 +414,8 @@
             <li><a href="implement-java.html#/engine/configuration-and-startup">Java Reference</a></li>
             <li><a href="implement-bpmn.html#/index">BPMN 2.0 Reference</a></li>
             <li><a href="implement-rest.html#/overview/introduction">REST API</a></li>
+            <li><a href="implement-tasklist.html">camunda Tasklist</a></li>
+            <li><a href="implement-cockpit.html">camunda Cockpit</a></li>
           </ul>
         </div>
         <div class="span3">
@@ -438,8 +443,6 @@
       </div>
       <span class="spacer"></span>
     </div>
-
-    <!-- loads all javascript -->
 
   </footer>
 

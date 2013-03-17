@@ -54,7 +54,7 @@
 </head>
 <body ng-controller="DefaultController">
   <div class="wrapper">
-    <!-- navigation -->
+
     <!-- ========================================================================== -->
     <!-- navigation start                                                           -->
 
@@ -123,36 +123,30 @@
     <!-- ========================================================================== -->
     <!-- navigation end                                                           -->
 
-    <div class="container" data-ng-controller="ForumController">
-      <div style="position: relative; top: 80px; text-align: center">
-        <h1 style="color: #333">Forum Boards</h1>
-        <h3>in the camunda BPM Community</h3>
+    <div class="container">
+      <div style="padding-top: 80px; text-align: center">
+        <h1 style="color: #333">Taskmanagement</h1>
+        <h3>with camunda BPM</h3>
       </div>
-      <div style="position: relative; padding-top: 120px">
-        <ul class="nav nav-pills">
-          <li class="active{{activeClass('forum1')}}"><a href="#" data-ng-click="setActive('forum1')">BPMN 2.0 Process Design</a></li>
-          <li class="active{{activeClass('forum2')}}"><a href="#" data-ng-click="setActive('forum2')">Users &amp; Process Application Development</a></li>
-          <li class="active{{activeClass('forum3')}}"><a href="#" data-ng-click="setActive('forum3')">camunda BPM Contributors</a></li>
-        </ul>
-      </div>
+      
+      <div class="wrapper" style="position: relative; padding-top: 10px;">
+      
+        <section id="welcome">
+          <p class="span5 offset3 center alert">
+            <em><i class="icon-ban-circle"></i> <strong>Under Construction:</strong> We are currently working on the Tasklist documentation.</em>
+            Read the <a href="implement-getting-started.html#taskform">Getting started</a> Page to learn how to use the tasklist.
+          </p>
+        </section>      
 
-      <hr />
- 
-      <div class="row" style="position: relative; padding-top: 10px; display:none" data-ng-show="isActive('forum1')">
-        <iframe id="forum_embed" src="https://groups.google.com/forum/embed/?place=forum/camunda-bpmn20&showsearch=true&showpopout=true" scrolling="no"
-          frameborder="0" style="width: 100%; height: 1000px;"> </iframe>
-      </div>
-
-      <div class="row" style="position: relative; padding-top: 10px;" data-ng-show="isActive('forum2')">
-        <iframe id="forum_embed" src="https://groups.google.com/forum/embed/?place=forum/camunda-bpm-users&showsearch=true&showpopout=true" scrolling="no"
-          frameborder="0" style="width: 100%; height: 1000px;"> </iframe>
-      </div>
-
-      <div class="row" style="position: relative; padding-top: 10px; display:none" data-ng-show="isActive('forum3')">
-        <iframe id="forum_embed" src="https://groups.google.com/forum/embed/?place=forum/camunda-bpm-dev&showsearch=true&showpopout=true" scrolling="no"
-          frameborder="0" style="width: 100%; height: 1000px;"> </iframe>
-      </div>
-
+        <div class="row-fluid">
+          <div class="span6">         
+              <img src="assets/img/implementation-tasklist/tasklist1.png"></img>         
+          </div>
+          <div class="span6">         
+              <img src="assets/img/implementation-tasklist/tasklist2.png"></img>         
+          </div>            
+        </div>   
+      </div>    
     </div>
     <div class="push-down">
       <!-- // -->
