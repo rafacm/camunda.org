@@ -235,11 +235,11 @@ html, body {
 */
 .navbar .brand {
   display: block;
-  float: left;
-
-  width: 130px;
-  height: 39px;
-  padding: 0;
+  background-image: url(../img/camunda_org.png);
+  background-size: contain;
+  width: 200px;
+  height: 35px;
+  padding: 0px;
 }
 
 /**
