@@ -332,6 +332,9 @@ function elementSVG (element, paper) {
 				var myPath = paper.path(myPathSpec).attr(generalStyle).attr({"stroke":"none", "fill":regularStroke});
 				myPath.translate(x - rad, y-rad);
 			}
+			var scaleFactor = element.width / 32;
+			myPath.scale(scaleFactor);
+			
 		// timer?
 		} else if (element.eventType == "timer") {
 			paper.circle(x, y, 10).attr(generalStyle).attr(eventStyle);
@@ -355,7 +358,9 @@ function elementSVG (element, paper) {
 		} else if ((element.eventType == "error") || (element.eventType == "multipleParallel") || (element.eventType == "multiple") || (element.eventType == "escalation") || (element.eventType == "link") || (element.eventType == "signal") || (element.eventType == "cancel") || (element.eventType == "conditional") || (element.eventType == "compensate")) {
 			var myPathSpec = eventDefinitions[element.eventType];
 			var myPath = paper.path(myPathSpec).attr(generalStyle).attr(eventStyle);
-			myPath.translate(x - rad, y-rad);
+			myPath.translate(x - 15, y-15);
+			var scaleFactor = element.width / 32;
+			myPath.scale(scaleFactor);
 			// throwing?
 			if ((element.type.toLowerCase().indexOf("throw") >= 0) || element.type.toLowerCase().indexOf("end") >= 0){
 				myPath.attr({"stroke":"none", "fill":regularStroke});
