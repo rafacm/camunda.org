@@ -126,8 +126,8 @@
     <!-- customize modal for this page -->
     <style type="text/css">
     .modal {
-      width: 600px; /* SET THE WIDTH OF THE MODAL */
-      margin: 0px 0 0 -250px; /* CHANGE MARGINS TO ACCOMODATE THE NEW WIDTH (original = margin: -250px 0 0 -280px;) */
+      width: 800px; /* SET THE WIDTH OF THE MODAL */
+      margin: -250 auto; /* CHANGE MARGINS TO ACCOMODATE THE NEW WIDTH (original = margin: -250px 0 0 -280px;) */
     }
     </style>
 
@@ -149,7 +149,7 @@
             <li><a href="#setup"><i class="icon-chevron-right"></i> Setup your Project</a></li>
             <li><a href="#model"><i class="icon-chevron-right"></i> Model a Process</a></li>
             <li><a href="#deploy"><i class="icon-chevron-right"></i> Deploy the Process Application</a></li>
-            <li><a href="#taskform"><i class="icon-chevron-right"></i> Add a Task Form</a></li>
+            <li><a href="#taskform"><i class="icon-chevron-right"></i> Add Task Forms</a></li>
             <li><a href="#servicetask"><i class="icon-chevron-right"></i> Add a Service Task</a></li>
           </ul>
         </div>
@@ -468,6 +468,7 @@ INFO: Process Application Loan Approval App sucessfully deployed.
                 </p>                              
                 <p>
                   To work on the task, click the <button class="btn btn-small"><i class="icon-play"></i> </button> button. Again, there is no task form associated with the process. Click on <em>Work on task using generic form</em>. This displays the variables you have put in in the first step.
+                </p>
               </div>
             </div>
 
@@ -475,10 +476,42 @@ INFO: Process Application Loan Approval App sucessfully deployed.
 
           <section id="taskform">
             <div class="page-header">
-              <h1>Add a Task Form</h1>
+              <h1>Add Task Forms</h1>
             </div>
             <p>As a next step, we want to add an actual Task Form.</p>
 
+            <h3>Add a Start Form</h3>
+            <p>Back to eclipse, add a folder named <code>src/main/webapp/forms</code>. Inside this folder add a file named <code>request-loan.html</code>. Add the following content:</p> 
+
+            <div class="app-source" app-source-no-tabs="RequestLoan.html" annotate="code-annotations"></div>
+
+            <h3>Configure the Start Form in the Process</h3>
+
+            <div class="row-fluid">                    
+              <div id="eclipse-configure-start-form" class="thumbnail span2" data-img-thumb img-src="assets/img/implementation-getting-started/eclipse-configure-start-form.png" ></div>
+              <div class="span10">
+                <p>
+                  Open the process with the modeler plugin. Click on the start event. In the properties view, put in <code>embedded:app:forms/request-loan.html</code> This means that we want to use an <code>embedded</code> form inside the tasklist and that the form is loaded from the <code>app</code>lication.
+                </p>    
+                <p>
+                  When you are done, save all resources and perform a maven build and redeploy the process application.
+                </p>
+                <p class="alert"><i class="icon-info-sign"></i> <strong>Maven:</strong> It is best to perform a <code>clean install</code> build to make sure all resources are replaced with their newest version.</p>
+                <p>If you open the tasklist and start a new process instance for the loan approval process, the custom form us displayed.</p>
+              </div>
+            </div>   
+            
+            <h3>Add a Task Form</h3>
+            <div class="row-fluid">                    
+              <div id="tasklist-startform" class="thumbnail span2" data-img-thumb img-src="assets/img/implementation-getting-started/tasklist-startform.png" ></div>
+              <div class="span10">
+                <p>
+                  <p>The Task Form can be added and configured in the same way. Add a file named <code>review-loan.html</code> and add the following content.</p> 
+
+                  <div class="app-source" app-source-no-tabs="ReviewLoan.html" annotate="code-annotations"></div>
+                </p>                    
+              </div>
+            </div>  
           </section>
           <section id="servicetask">
             <div class="page-header">
@@ -669,6 +702,46 @@ public class DefaultEjbProcessApplication extends EjbProcessApplication {
 <!-- ==================================================================== -->
 <!-- ==================================================================== -->
 
+<script type="text/xml" id="RequestLoan.html">
+<form class="form-horizontal">
+  <div class="control-group">
+    <label class="control-label">Customer ID</label>
+    <div class="controls">
+      <input form-field type="string" name="customerId"></input>      
+    </div>
+  </div>
+  <div class="control-group">
+    <label class="control-label">Amount</label>
+    <div class="controls">
+      <input form-field type="number" name="amount"></input>
+    </div>
+  </div> 
+</form>
+</script>
+
+<!-- ==================================================================== -->
+<!-- ==================================================================== -->
+
+<script type="text/xml" id="ReviewLoan.html">
+<form class="form-horizontal">
+  <div class="control-group">
+    <label class="control-label">Customer ID</label>
+    <div class="controls">
+      <input form-field type="string" name="customerId" read-only="true"></input>      
+    </div>
+  </div>
+  <div class="control-group">
+    <label class="control-label">Amount</label>
+    <div class="controls">
+      <input form-field type="number" name="amount"></input>
+    </div>
+  </div> 
+</form>
+</script>
+
+<!-- ==================================================================== -->
+<!-- ==================================================================== -->
+
 <script type="text/ng-template" id="code-annotations">
 { 
  "pom.xml":
@@ -691,7 +764,18 @@ public class DefaultEjbProcessApplication extends EjbProcessApplication {
     "default": "The name of the process engine we want to use (you can start multiple process engines).",
     "isDeleteUponUndeploy": "Controls whether the process engine deployment should be removed when the process application is undeployed. If set to true, all process instances are deleted in the database when the WAR file is removed from the server.",
     "isScanForProcessDefinitions": "If set to true, the WAR file is automatically scanned for process definitions. All files ending in <code>.bpmn20.xml</code> or <code>.bpm</code> are automatically picked up."
+  },
+  "RequestLoan.html":
+  {
+    "form-field": "AangularJS directive needs to be placed on form fields that should be converted into process variables.",
+    "type": "Allows specifying the type of the process variable.",
+    "name": "Allows specifying the name of the process variable."
+  },
+  "ReviewLoan.html":
+  {
+    "read-only": "AangularJS directive allowing you to make the variable read-only."
   }
+
 }
 </script> 
 </div>  
