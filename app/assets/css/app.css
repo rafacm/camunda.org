@@ -475,6 +475,13 @@ hr.soften {
   height:135px;
 }
 
+.container-small {
+  display: inline-block;
+  width:80px;
+  height:80px;
+  background-size:contain;
+}
+
 .container-as7 {
   background-image: url("/app/assets/img/as7-tile.png");
 }
@@ -580,4 +587,8 @@ a.caret-after {
 pre.console {
   background-color: #333;
   color:white;
+}
+
+table.download-bpm-platform {
+  margin-top:-50px;
 }
