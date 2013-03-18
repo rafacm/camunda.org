@@ -28,6 +28,7 @@ var docpadConfig = {
         "assets/vendor/bootstrap/css/bootstrap.min.css",
         "assets/vendor/bootstrap/css/bootstrap-responsive.min.css",
         "assets/css/cabpmn.css",
+        "assets/vendor/tweet/jquery.tweet.css",
         "assets/css/app.css"
       ],
 
