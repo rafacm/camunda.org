@@ -3,7 +3,7 @@
 <!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8" ng-app="camundaorg> <![endif]-->
 <!--[if IE 8]>         <html class="no-js lt-ie9" ng-app="camundaorg> <![endif]-->
 <!--[if gt IE 8]><!--> <html class="no-js" ng-app="camundaorg"> <!--<![endif]-->
-<head>
+<head ng-app="camundaorg">
   <!-- meta -->
   <meta charset="utf-8" />
 

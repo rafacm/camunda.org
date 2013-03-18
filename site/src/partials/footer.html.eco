@@ -3,7 +3,7 @@
 
   <div class="container container-footer">
     <p>
-      <a href="@docUrl('index.html')">camunda.org</a> - 
+      <a href="<% @docUrl('index.html') %>">camunda.org</a> - 
       created and maintained by <a href="http://www.camunda.com">camunda services GmbH</a> | 
       This page is built with <a href="http://angularjs.org/">angularjs</a>. 
     </p>
@@ -11,41 +11,41 @@
       <div class="span3">
         <h4>Design</h4>
         <ul>
-          <li><a href="design-overiew.html">Overview</a></li>
-          <li><a href="design-modeler.html">camunda Modeler</a></li>
-          <li><a href="design-cycle-tutorial.html">camunda Cycle</a></li>
-          <li><a href="design-tutorial.html">BPMN 2.0 Tutorial</a></li>
-          <li><a href="design-reference.html#/reference">BPMN 2.0 Reference</a></li>
+          <li><a href="<%= @docUrl('design.html') %>">Overview</a></li>
+          <li><a href="<%= @docUrl('design/modeler.html') %>">camunda Modeler</a></li>
+          <li><a href="<%= @docUrl('design/cycle-tutorial.html') %>">camunda Cycle</a></li>
+          <li><a href="<%= @docUrl('design/tutorial.html') %>">BPMN 2.0 Tutorial</a></li>
+          <li><a href="<%= @docUrl('design/reference.html#/reference') %>">BPMN 2.0 Reference</a></li>
         </ul>
       </div>
       <div class="span3">
         <h4>Implement</h4>
         <ul>
-          <li><a href="implement.html">Overview</a></li>
-          <li><a href="implement-getting-started.html">Getting Started</a></li>
-          <li><a href="implement-java.html#/engine/configuration-and-startup">Java Reference</a></li>
-          <li><a href="implement-bpmn.html#/index">BPMN 2.0 Reference</a></li>
-          <li><a href="implement-rest.html#/overview/introduction">REST API</a></li>
-          <li><a href="implement-tasklist.html">camunda Tasklist</a></li>
-          <li><a href="implement-cockpit.html">camunda Cockpit</a></li>
+          <li><a href="<%= @docUrl('implement.html') %>">Overview</a></li>
+          <li><a href="<%= @docUrl('implement/getting-started.html') %>">Getting Started</a></li>
+          <li><a href="<%= @docUrl('implement/java.html#/engine/configuration-and-startup') %>">Java Reference</a></li>
+          <li><a href="<%= @docUrl('implement/bpmn.html#/index') %>">BPMN 2.0 Reference</a></li>
+          <li><a href="<%= @docUrl('implement/rest.html#/overview/introduction') %>">REST API</a></li>
+          <li><a href="<%= @docUrl('implement/tasklist.html') %>">camunda Tasklist</a></li>
+          <li><a href="<%= @docUrl('implement/cockpit.html') %>">camunda Cockpit</a></li>
         </ul>
       </div>
       <div class="span3">
         <h4>Community</h4>
         <ul>
-          <li><a href="community.html">Overview</a></li>
-          <li><a href="community-forum.html">Forum</a></li>
-          <li><a href="community-meetings.html">Next Meetings</a></li>
-          <li><a href="community-users.html">Who's using it?</a></li>
-          <li><a href="community-vision.html">Our Vision</a></li>
-          <li><a href="community-contribute.html">How to Contribute</a></li>
-          <li><a href="community-team.html">Team</a></li>
+          <li><a href="<%= @docUrl('community.html') %>">Overview</a></li>
+          <li><a href="<%= @docUrl('community/forum.html') %>">Forum</a></li>
+          <li><a href="<%= @docUrl('community/meetings.html') %>">Next Meetings</a></li>
+          <li><a href="<%= @docUrl('community/users.html') %>">Who's using it?</a></li>
+          <li><a href="<%= @docUrl('community/vision.html') %>">Our Vision</a></li>
+          <li><a href="<%= @docUrl('community/contribute.html') %>">How to Contribute</a></li>
+          <li><a href="<%= @docUrl('community/team.html') %>">Team</a></li>
         </ul>
       </div>
       <div class="span3">
         <h4>Support</h4>
         <ul>
-          <li><a href="support.html">Overview</a></li>
+          <li><a href="<%= @docUrl('support.html') %>">Overview</a></li>
           <li><a href="http://www.camunda.com/fox/product/community-vs-enterprise/">Enterprise Edition</a></li>
           <li><a href="http://www.camunda.com/fox/services/consulting-training/">Consulting</a></li>
           <li><a href="http://www.camunda.com/fox/training/camunda-bpm-basics/">Training</a></li>
