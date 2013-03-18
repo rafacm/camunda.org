@@ -11,7 +11,7 @@ layout: 'dark'
 </div>
 
 <div class="row community-menu" style="position: relative; padding-top: 120px">
-  <a href="community-forum.html">
+  <a href="community/forum.html">
     <div class="span4 center" style="padding-top: 10px;">
       <div style="max-height: 90px">
         <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="Camada_1" x="0px" y="0px" width="100px"
@@ -31,7 +31,7 @@ layout: 'dark'
       <p style="color: #B5152B;">Forum Boards »</p>
     </div>
   </a>
-  <a href="community-meetings.html">
+  <a href="community/meetings.html">
     <div class="span4 center" style="padding-top: 10px;">
       <div style="max-height: 90px;">
         <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="Livello_1" x="0px" y="0px" width="100px"
@@ -57,7 +57,7 @@ layout: 'dark'
       <p style="color: #B5152B;">Next Meetings »</p>
     </div>
   </a>
-  <a href="community-users.html">
+  <a href="community/users.html">
     <div class="span4 center" style="padding-top: 10px;">
       <div style="max-height: 90px;">
         <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="Layer_1" x="0px" y="0px" width="100px"
@@ -84,7 +84,7 @@ layout: 'dark'
     Meet other users in our forum boards<br/> and discuss all your questions around BPM.
   </p>
   <p>
-     <a href="community-forum.html">Forum Boards »</a>
+     <a href="community/forum.html">Forum Boards »</a>
    </p>
 </div>
 <div class="span4 center">
@@ -93,7 +93,7 @@ layout: 'dark'
     Visit our free community meetings<br/>and get in touch with other BPM enthusiasts.
   </p>
   <p>
-    <a href="community-meetings.html">Next Meetings »</a>
+    <a href="community/meetings.html">Next Meetings »</a>
   </p>
 </div>
 <div class="span4 center">
@@ -108,7 +108,7 @@ layout: 'dark'
 </div>
 -->
 <div class="row community-menu-invert" style="position: relative; padding-top: 60px">
-  <a href="community-vision.html">
+  <a href="community/vision.html">
     <div class="span4 center" style="padding-top: 10px;">
       <div style="max-height: 90px">
         <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="Layer_1" x="0px" y="0px" width="100px"
@@ -128,7 +128,7 @@ layout: 'dark'
       <p style="color: lightblue;">Our Vision »</p>
     </div>
   </a>
-  <a href="community-contribute.html">
+  <a href="community/contribute.html">
     <div class="span4 center" style="padding-top: 10px;">
       <div style="max-height: 90px">
         <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.2" baseProfile="tiny" id="Layer_1" x="0px" y="0px"
@@ -175,7 +175,7 @@ layout: 'dark'
       Why are we doing this?<br/> Learn our Vision and get infected.
     </p>
     <p>
-       <a href="community-vision.html">Our Vision »</a>
+       <a href="community/vision.html">Our Vision »</a>
      </p>
   </div>
   <div class="span4 center">
