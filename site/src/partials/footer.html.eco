@@ -3,7 +3,7 @@
 
   <div class="container container-footer">
     <p>
-      <a href="<% @docUrl('index.html') %>">camunda.org</a> - 
+      <a href="<%= @docUrl('index.html') %>">camunda.org</a> - 
       created and maintained by <a href="http://www.camunda.com">camunda services GmbH</a> | 
       This page is built with <a href="http://angularjs.org/">angularjs</a>. 
     </p>

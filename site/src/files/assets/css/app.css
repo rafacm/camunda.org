@@ -25,6 +25,7 @@
   display: block;
   background-image: url(../img/camunda_org.png);
   background-size: contain;
+  background-position: center;
   width: 155px;
   height: 20px;
 }
@@ -50,6 +51,19 @@
   .nav .dropdown-menu {
     margin-top: 0;
   }
+}
+
+@media (max-width: 979px) {
+  .fork-me-ribbon {
+    display: none;
+  }
+}
+
+.fork-me-ribbon {
+  position: fixed; 
+  top: 40px; 
+  right: 0; 
+  border: 0;
 }
 
 .camunda-icon {
@@ -627,7 +641,7 @@ pre.console {
   border: solid 1px #DDD;
 }
 
-.team-core h2 {
+.team-core h2, .partners h2 {
   margin-top: 30px;
 }
 
@@ -651,13 +665,13 @@ pre.console {
   margin-bottom: 20px;
 }
 
-.team-core .partners img {
+.partners img {
   padding: 15px;
   max-width: 170px;
   cursor: pointer;
 }
 
-.team-core .partners img:hover {
+.partners img:hover {
   filter: none;
   -webkit-filter: grayscale(0);
 }
