@@ -66,11 +66,12 @@
             <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span>
           </button>
           <!-- logo -->
-          <a class="brand ir" href="index.html"> camunda.org </a>
+          <a class="brand ir" href="index.html"> </a>
           <div class="nav-collapse collapse">
             <ul class="nav">
               <ul class="nav" ng-controller="NavigationController">
                 <li ng-class="activeClass('/index.html')"><a href="index.html">Home</a></li>
+                <li ng-class="activeClass('/download.html')"><a href="download.html">Download</a></li>
                 <li ng-class="activeClass('/design-')"><a href="design-overview.html" class="caret-before">Design</a></li>
                 <li class="dropdown"><a class="dropdown-toggle caret-after" data-toggle="dropdown"> <b class="caret"></b></a>
                   <ul class="dropdown-menu">
@@ -94,6 +95,9 @@
                     <li ng-class="activeClass('/implement-java.html')"><a href="implement-java.html#/engine/configuration-and-startup">Java Reference</a></li>
                     <li ng-class="activeClass('/implement-bpmn.html')"><a href="implement-bpmn.html#/index">BPMN 2.0 Reference</a></li>
                     <li ng-class="activeClass('/implement-rest.html')"><a href="implement-rest.html#/overview/introduction">REST API</a></li>
+                    <li class="nav-header">Tools</li>
+                    <li ng-class="activeClass('/implement-tasklist.html')"><a href="implement-tasklist.html">camunda tasklist</a></li>
+                    <li ng-class="activeClass('/implement-cockpit.html')"><a href="implement-cockpit.html">camunda cockpit</a></li>
                   </ul></li>
                 <li ng-class="activeClass('/community')"><a href="community.html" class="caret-before">Community</a></li>
                 <li class="dropdown"><a class="dropdown-toggle caret-after" data-toggle="dropdown"> <b class="caret"></b></a>
@@ -250,6 +254,15 @@
                       best possible experience to developers who want to use BPM technology
                       in their applications. I'm a Java EE 6 aficionado and believe in
                       polyglot technology stacks based on open standards.</p>
+                      <p>I like cooking, eating, travelling, drumming and -ing words.</p>
+                      <p>
+                        <b>Find me on the web:</b>
+                      </p>
+                      <ul>
+                        <li><a href="https://github.com/meyerdan">Github</a></li>
+                        <li><a href="http://twitter.com/meyerdan">Twitter</a></li>
+                        <li><a href="http://camundabpm.blogspot.de/">Blog</a></li>
+                      </ul>
                     </div>
                   </div>
                 </div>
@@ -775,18 +788,119 @@
               <!-- end modal -->
             </div>
 
-
-            <div class="span3">
-              <div class="media">
-                <div class="pull-left media-body">
-                  <h4 class="media-heading">Want to join our team?</h4>
-                  <p><a href="http://www.camunda.com/company/jobs/technical-consultant-mw/" target="_blank">Become Technical Consultant (German speaking)</a></p>
-                </div>
-              </div>              
+             <div class="span3">
+                  <div class="media">
+                      <a class="pull-left" href="#martin-details" data-toggle="modal">
+                          <img class="media-object img-circle" src="assets/img/app/community/team/contributors/martin_schimak.jpg">
+                      </a>
+                      <div class="media-body">
+                          <h4 class="media-heading">Martin Schimak</h4>
+                          <p>
+                              Founder &amp; Developer at plexiti GmbH
+                          </p>
+                      </div>
+                  </div>
+                  <!-- start modal -->
+                  <div id="martin-details" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="andreas-details-label" aria-hidden="true">
+                      <div class="modal-header">
+                          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                          <h3 id="martin-details-label">Martin Schimak</h3>
+                      </div>
+                      <div class="modal-body">
+                          <div class="media">
+                              <a class="pull-left">
+                                  <img class="media-object img-circle" src="assets/img/app/community/team/contributors/martin_schimak.jpg">
+                              </a>
+                              <div class="media-body">
+                                  <p>I am the founder and CEO of the Vienna based <strong>plexiti</strong> GmbH.
+                                      I am a business applications developer. To the bone. Because my studies of business
+                                      as well as law automagically drive me on the <a href="http://www.acdc.com/us/video/highway-hell">highway
+                                      to, well</a>, the Business/IT danger zone of any project! But developers need to
+                                      move out of their comfort zone and right into that danger zone. Success or failure
+                                      is decided there.
+                                  </p>
+                                  <p>
+                                      BPM(N) is an important and underestimated tool. It's fun when it's applied right.
+                                      But when I find analysts parked on the fast lane, I prefer to overtake on the right-hand
+                                      side and create a working software feature. After more than a decade of delivering
+                                      products and B2B integrations between <a href="http://www.youtube.com/watch?v=lt2sEFs0AgE">Vienna and Berlin</a> I still need my daily dose of <a href="http://plexiti.com">plexiti</a>&#0153;.
+                                  </p>
+                                  <p>
+                                      <b>Find me on the web:</b>
+                                  </p>
+                                  <ul>
+                                      <li><a href="http://twitter.com/martinschimak">Twitter</a></li>
+                                      <li><a href="https://github.com/martinschimak">GitHub</a></li>
+                                      <li><a href="https://www.xing.com/profile/Martin_Schimak">XING</a></li>
+                                  </ul>
+                              </div>
+                          </div>
+                      </div>
+                      <div class="modal-footer">
+                          <button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
+                      </div>
+                  </div>
+                  <!-- end modal -->
+              </div>
             </div>
 
-
-          </div>
+            <div class="row">
+              <div class="span3">
+                  <div class="media">
+                      <a class="pull-left" href="#rafael-details" data-toggle="modal">
+                          <img class="media-object img-circle" src="assets/img/app/community/team/contributors/rafael_cordones.jpg">
+                      </a>
+                      <div class="media-body">
+                          <h4 class="media-heading">Rafael Cordones</h4>
+                          <p>
+                              Software Developer &amp; Partner at plexiti GmbH
+                          </p>
+                      </div>
+                  </div>
+                  <!-- start modal -->
+                  <div id="rafael-details" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="andreas-details-label" aria-hidden="true">
+                      <div class="modal-header">
+                          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                          <h3 id="rafael-details-label">Rafael Cordones</h3>
+                      </div>
+                      <div class="modal-body">
+                          <div class="media">
+                              <a class="pull-left">
+                                  <img class="media-object img-circle" src="assets/img/app/community/team/contributors/rafael_cordones.jpg">
+                              </a>
+                              <div class="media-body">
+                                  <p>
+                                      I consider myself a full-stack software developer with the business value of the product on top of that stack.<br/>
+                                      Since the (hidden) com<a href="http://plexiti.com">plexiti</a> of most software projects lies in understanding the business domain,
+                                      I have a passion for whole&#8209;team specification involvement, processes as first&#8209;class application citizens and
+                                      application <a href="http://camel.apache.org">integration</a> <a href="http://www.springsource.org/spring-integration">frameworks</a>. Topped with a <a href="http://www.youtube.com/watch?v=eQsM6u0a038#t=07m03s">music-driven</a> implementation.
+                                  </p>
+                                  <p>
+                                      I believe myself inoculated against the Not Invented Here syndrome preferring instead to
+                                      fully embrace a Proudly Found Elsewhere attitude.
+                                  </p>
+                                  <p>
+                                      <a href="http://www.youtube.com/watch?v=3Wi1d0FNgdQ">I'm from Barcelona</a> by birth and European by choice. Currently living in Vienna.
+                                  </p>
+                                  <p>
+                                      <b>Find me on the web:</b>
+                                  </p>
+                                  <ul>
+                                      <li><a href="https://github.com/rafacm">GitHub</a></li>
+                                      <li><a href="http://twitter.com/rafacm">Twitter</a></li>
+                                      <li><a href="http://www.linkedin.com/in/rafaelcordones">LinkedIn</a></li>
+                                  </ul>
+                              </div>
+                          </div>
+                      </div>
+                      <div class="modal-footer">
+                          <button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
+                      </div>
+                  </div>
+                  <!-- end modal -->
+              </div>
+           </div>
+           <!-- end Rafael -->           
         </div>
         <!-- end dev team column -->
 
@@ -796,13 +910,28 @@
           <!--<p>These companies back up our project:</p>-->
           <a href="http://www.businessprocessincubator.com"><img src="assets/img/app/community/team/partners/bpi.gif"></a> <a
             href="http://www.camunda.com"><img src="assets/img/app/community/team/partners/camunda.png"></a> <a href="http://www.ibo.de"><img
-            src="assets/img/app/community/team/partners/ibo.jpg"></a> <a href="http://www.plexiti.com"><img
+            src="assets/img/app/community/team/partners/ibo.jpg"></a> <a href="http://plexiti.com"><img
             src="assets/img/app/community/team/partners/plexiti.png"></a> <a href="http://www.signavio.com"><img
             src="assets/img/app/community/team/partners/signavio.png"></a>
-
         </div>
         <!-- end partner column -->
       </div>
+
+      
+      <h2>We are hiring.</h2>
+
+      <div class="row">
+
+        <div class="span3">
+          <div class="media">
+            <div class="pull-left media-body">
+              <h4 class="media-heading">Want to join our team?</h4>
+              <p><a href="http://www.camunda.com/company/jobs/technical-consultant-mw/" target="_blank">Become Technical Consultant (German speaking)</a></p>
+            </div>
+          </div>              
+        </div>
+      </div>
+
       <div class="push-down">
         <!-- // -->
       </div>
@@ -831,9 +960,11 @@
             <ul>
               <li><a href="implement.html">Overview</a></li>
               <li><a href="implement-getting-started.html">Getting Started</a></li>
-            <li><a href="implement-java.html#/engine/configuration-and-startup">Java Reference</a></li>
-            <li><a href="implement-bpmn.html#/index">BPMN 2.0 Reference</a></li>
+              <li><a href="implement-java.html#/engine/configuration-and-startup">Java Reference</a></li>
+              <li><a href="implement-bpmn.html#/index">BPMN 2.0 Reference</a></li>
               <li><a href="implement-rest.html#/overview/introduction">REST API</a></li>
+              <li><a href="implement-tasklist.html">camunda Tasklist</a></li>
+              <li><a href="implement-cockpit.html">camunda Cockpit</a></li>
             </ul>
           </div>
           <div class="span3">
@@ -861,7 +992,43 @@
         </div>
         <span class="spacer"></span>
       </div>
+<!-- WiredMinds eMetrics tracking with Enterprise Edition V6.0 START -->
+    <script type="text/javascript">
+    <!--
+    var wiredminds = [];
+    wiredminds.push(["setTrackParam", "wm_custnum", "eca343094da1ee95"]);
+    // Begin own parameters.
+    wiredminds.push(["setTrackParam", "wm_campaign_key", "wmc"]);
+    wiredminds.push(["registerHeatmapEvent", "mousedown"]);// End own parameters.
+    wiredminds.push(["count"]);
 
+    (function() {
+        function wm_async_load() {
+            var wm = document.createElement("script");
+            wm.type = "text/javascript";
+            wm.async = true;
+            wm.src = "http://test.wiredminds.de/track/count.js";
+            var el = document.getElementsByTagName('script')[0];
+            el.parentNode.insertBefore(wm, el);
+        }
+
+        if (window.addEventListener) {
+            window.addEventListener('load', wm_async_load, false);
+        } else if (window.attachEvent){
+            window.attachEvent('onload', wm_async_load);
+        }
+    })();
+    // -->           
+    </script>
+
+    <noscript>
+    <div>
+    <a href="http://www.wiredminds.de"><img
+     src="http://test.wiredminds.de/track/ctin.php?wm_custnum=eca343094da1ee95&amp;nojs=1"
+     alt="" style="border:0px;"/></a>
+    </div>
+    </noscript>
+<!-- WiredMinds eMetrics tracking with Enterprise Edition V6.0 END -->
     </footer>
 </body>
 </html>

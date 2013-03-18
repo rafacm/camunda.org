@@ -28,21 +28,19 @@
   $script([
       'http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js',             
       'http://ajax.googleapis.com/ajax/libs/angularjs/1.0.1/angular.min.js',  
+      'lib/raphaeljs/raphael'
     ], function() {
     $script([
-        'lib/tweet/jquery.tweet',  
-        'lib/dojo/dojo/dojo',
+        'lib/tweet/jquery.tweet',          
+        'lib/bootstrap/bootstrap.min',            
+        'lib/jquery-validation/dist/jquery.validate.min',
+        'lib/angular/angular-resource.min',
+        'lib/angular/angular-bootstrap.min',
+        'app/bpmn/Executor',
+        'app/cabpmn',
       ], function() {
-          $script([        
-            'lib/bootstrap/bootstrap.min', 
-            'lib/jquery-validation/dist/jquery.validate.min',
-            'lib/angular/angular-resource.min',
-            'lib/angular/angular-bootstrap',
-            // 'lib/angular/angular-bootstrap.min',
-            'app/app',
-            'app/bpmn/Executor',
-            'app/directives/ngmif',
-            'app/directives/focused',        
+          $script([               
+            'app/app'
           ], function() {
             
             angular.bootstrap(document, ['camundaorg']);
@@ -74,19 +72,17 @@
             <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span>
           </button>
           <!-- logo -->
-          <a class="brand ir" href="index.html"> camunda.org </a>
+          <a class="brand ir" href="<%= docUrl('index.html') %>">camunda.org</a>
           <div class="nav-collapse collapse">
-            <ul class="nav">
-
-              <ul class="nav" ng-controller="NavigationController">
-                <li ng-class="activeClass('/index.html')">
-                  <a href="index.html">Home</a>
-                </li>
-                
-                <li class="dropdown" ng-class="activeClass('/design-')">
-                  <a href="design-overview.html" class="dropdown-toggle">
-                    Design <b class="caret"></b>
-                  </a>
+            <ul class="nav" ng-controller="NavigationController">
+              <li ng-class="activeClass('/index.html')">
+                <a href="download.html">Download</a>
+              </li>
+              
+              <li class="dropdown" ng-class="activeClass('/design-')">
+                <a href="design-overview.html" class="dropdown-toggle">
+                  Design <b class="caret"></b>
+                </a>
                   <ul class="dropdown-menu">
                     <li ng-class="activeClass('/design-overview.html')">
                       <a href="design-overview.html">Overview</a>
@@ -129,10 +125,21 @@
                       </a>
                     </li>
                     <li ng-class="activeClass('/implement-bpmn.html')">
-                      <a href="implement-bpmn.html#/index">BPMN 2.0 Reference</a>
+                      <a href="implement-bpmn.html#/index">
+                        BPMN 2.0 Reference
+                      </a>
                     </li>
                     <li ng-class="activeClass('/implement-rest.html')">
-                      <a href="implement-rest.html#/overview/introduction">REST API</a>
+                      <a href="implement-rest.html#/overview/introduction">
+                        REST API
+                      </a>
+                    </li>
+                    <li class="nav-header">Tools</li>
+                    <li ng-class="activeClass('/implement-tasklist.html')">
+                      <a href="implement-tasklist.html">camunda tasklist</a>
+                    </li>
+                    <li ng-class="activeClass('/implement-cockpit.html')">
+                      <a href="implement-cockpit.html">camunda cockpit</a>
                     </li>
                   </ul>
                 </li>
@@ -200,15 +207,18 @@
 
       <div style="padding-top: 40px; width: 100%; height: 200px" data-ng-controller="NumberguessAppController">
 
-        <div style="position: relative; width: 100%; height: 200px">
-          <div style="width: 596px; margin: 0 auto; position: relative; height: 100%;" id="numberGuess" data-bpmn-render="homepage/numberGuessing"></div>
+        <div style="position: relative; width: 100%; height: 200px">          
+          <div style="width: 200px; margin: 0 auto; position: relative;" class="well center" data-ng-show="false">
+            <img src="assets/img/ajax-loader.gif"></img> <p>Awesome BPMN 2.0 App loading!</p><p>Please wait...</p>
+          </div>
+          <div style="width: 596px; margin: 0 auto; position: relative; height: 100%" id="numberGuess" data-bpmn-src2="homepage/numberGuessing"></div>
         </div>
 
         <div style="position: relative; top: -200px; width: 100%; height: 160px">
 
           <div style="width: 596px; margin: 0 auto; position: relative">
 
-            <a class="btn btn-success" data-ng-click="startProcess('numberGuess')" data-ng-show="inactive()" style="position: absolute; left: -70px; top: 49px;">
+            <a class="btn btn-success" data-ng-click="startProcess('numberGuess')" data-ng-show="inactive()" style="position: absolute; left: -70px; top: 49px; display:none">
               <i class="icon-play icon-white"></i> Play!
             </a>
 
@@ -242,7 +252,7 @@
                     A <a href="implement-bpmn.html#/tasks/service-task" target="_blank">Service Task</a> allows triggering an automatic system function like a
                     Web Service or a Method of a Java Class.
                   </p>
-                  <p>This service task generates a random number between 0 and 5.</p>
+                  <p>This service task generates a random number between 1 and 5.</p>
                   <p class="center">
                     <a class="btn btn-success" data-ng-click="doContinue('generateNumber')">Continue</a>
                   </p>
@@ -263,16 +273,20 @@
                       The <a href="implement-bpmn.html#/tasks/user-task" target="_blank">User Task</a> allows you to make an input.
                     </p>
                   </div>
-                  <div data-ng-show="!isFirstGuess()">
-                    <p class="text-error">Your last guess ({{processInstance.variables.guess}}) was incorrect, try again!</p>
+                  <div data-ng-show="!isFirstGuess() && guessCounter<6">
+                    <p class="alert alert-error"><i class="icon-thumbs-down"></i> Wrong guess, try again!</p>
                   </div>
-
+                  <div data-ng-show="guessCounter>=6">
+                    <p class="alert alert-error"><i class="icon-remove"></i> Whow! How many guesses you need to get this!? Something wrong?</p>
+                  </div>
+                  <form style="display:inline">
                   <p>
-                    Input a Number between 0 and 5: <input type="text" data-ng-model="guess" size="30" placeholder="Make a guess!"></input>
+                    Input a Number between 1 and 5: <input type="text" data-ng-model="guess" size="30" placeholder="Make a guess!"></input>
                   </p>
                   <p class="center">
-                    <a class="btn btn-success" data-ng-disabled="!isGuessValid()" data-ng-click="signal('guessNumber')">Complete</a>
+                    <button class="btn btn-success" data-ng-disabled="!isGuessValid()" data-ng-click="signal('guessNumber')">Complete</button>
                   </p>
+                </form>
                 </div>
               </div>
             </div>
@@ -287,10 +301,10 @@
                 <div class="popover-content">
                   <p>
                     The <a href="implement-bpmn.html#/gateways/exclusive-gateway" target="_blank">Exclusive Gateway</a> marks a decision. In BPMN 2.0, the <a
-                      href="implement-bpmn.html#/gateways/sequence-flow" target="_blank">Sequence Flows</a> (transitions) leaving the Exclusive Gateway have
+                      href="implement-bpmn.html#/gateways/sequence-flow" target="_blank">Sequence Flows</a> that leave an Exclusive Gateway have
                     Conditions that are evaluated.
                   </p>
-                  <p>In this case, we check whether your guess was correct.</p>
+                  <p>In this case, we check whether your guess is correct.</p>
                   <p class="center">
                     <a class="btn btn-success" data-ng-click="doContinue('exclusiveGW')">Continue</a>
                   </p>
@@ -307,7 +321,7 @@
                   </a>
                 </h3>
                 <div class="popover-content" class="center">
-                  <p>Your last guess was correct, you've won!</p>
+                  <p>Your last guess was correct, you win!</p>
                   <p>This amazing achievement is worth telling people about:</p>
                   <p>
                     <a href="https://twitter.com/share" class="twitter-share-button" data-url="http://www.camunda.org"
@@ -326,12 +340,8 @@
 
       </div>
 
+      <div class="center" style="margin-top:-40px">
 
-
-      <div class="center" style="position: relative;">
-        <a class="btn btn-large btn-primary" href="http://fox.camunda.com/download/old/camunda-bpm-platform-tomcat7-7.0.0-SNAPSHOT.tar.gz"> <i
-          class="icon-download-alt icon-large"></i> Download
-        </a>
         <ul class="quick-links">
           <li class="google-follow">Follow +camunda BPM on <a href="https://plus.google.com/117216832875506558598?prsrc=3" rel="publisher"
             style="text-decoration: none;"> <img src="https://ssl.gstatic.com/images/icons/gplus-32.png" alt=""
@@ -346,6 +356,11 @@
           <li style="width: 107px; height: 25px;"><a href="https://twitter.com/share" class="twitter-share-button" data-url="http://www.camunda.org"
             data-text="camunda BPM platform -" data-size="middle" data-hashtags="camunda,bpm" data-lang="en">Tweet</a></li>
         </ul>
+
+        <p style="margin-top:40px">
+          <a class="btn btn-large btn-primary" href="download.html"><i class="icon-download-alt icon-large icon-white"></i> Download</a>
+          <a href="implement-getting-started.html" class="btn btn-large">Getting Started</a>
+        </p>
       </div>
 
       <section class="index_news" style="color: white; text-align: center" ng-controller="RuntimeContainers">
@@ -354,7 +369,6 @@
 	font-size: 100%;
 }
 </style>
-        <h1>News</h1>
 
         <div style="width: 90%; margin: 0 auto;">
 
@@ -400,10 +414,10 @@
               <h1>Roadmap</h1>
               <p>
                 Below you can find the features we plan to implement and their priorities. We always welcome additional Contributors, see <a
-                  style="color: lightblue;" href="">How to Contribute?</a>
+                  style="color: lightblue;" href="community-contribute.html">How to Contribute?</a>
               </p>
               <div class="info" ng-show="{{roadmapErrorText!=''}}" ng-bind-template="{{roadmapErrorText}}"></div>
-              <table class="table">
+              <table class="table table-condensed">
                 <tr>
                   <th>Priority</th>
                   <th>Topic</th>
@@ -463,6 +477,8 @@
             <li><a href="implement-java.html#/engine/configuration-and-startup">Java Reference</a></li>
             <li><a href="implement-bpmn.html#/index">BPMN 2.0 Reference</a></li>
             <li><a href="implement-rest.html#/overview/introduction">REST API</a></li>
+            <li><a href="implement-tasklist.html">camunda Tasklist</a></li>
+            <li><a href="implement-cockpit.html">camunda Cockpit</a></li>
           </ul>
         </div>
         <div class="span3">
@@ -490,9 +506,43 @@
       </div>
       <span class="spacer"></span>
     </div>
+<!-- WiredMinds eMetrics tracking with Enterprise Edition V6.0 START -->
+    <script type="text/javascript">
+    <!--
+    var wiredminds = [];
+    wiredminds.push(["setTrackParam", "wm_custnum", "eca343094da1ee95"]);
+    // Begin own parameters.
+    wiredminds.push(["setTrackParam", "wm_campaign_key", "wmc"]);
+    wiredminds.push(["registerHeatmapEvent", "mousedown"]);// End own parameters.
+    wiredminds.push(["count"]);
 
-    <!-- loads all javascript -->
+    (function() {
+        function wm_async_load() {
+            var wm = document.createElement("script");
+            wm.type = "text/javascript";
+            wm.async = true;
+            wm.src = "http://test.wiredminds.de/track/count.js";
+            var el = document.getElementsByTagName('script')[0];
+            el.parentNode.insertBefore(wm, el);
+        }
 
+        if (window.addEventListener) {
+            window.addEventListener('load', wm_async_load, false);
+        } else if (window.attachEvent){
+            window.attachEvent('onload', wm_async_load);
+        }
+    })();
+    // -->           
+    </script>
+
+    <noscript>
+    <div>
+    <a href="http://www.wiredminds.de"><img
+     src="http://test.wiredminds.de/track/ctin.php?wm_custnum=eca343094da1ee95&amp;nojs=1"
+     alt="" style="border:0px;"/></a>
+    </div>
+    </noscript>
+<!-- WiredMinds eMetrics tracking with Enterprise Edition V6.0 END -->
   </footer>
 
   <!-- github ribbon -->

@@ -34,7 +34,7 @@ CAM_PAGES = [
 
   // engine api documentation
   { section: "implementation-java", category: "Introduction", id: "impl-java-engine-bootstrap", name: "Startup and Configuration Options", url: "/engine/configuration-and-startup", keywords: "engine startup configuration bootstrap overview ProcessEngineConfiguration" },
-  { section: "implementation-java", category: "Introduction", id: "impl-java-engine-bootstrap", name: "Container Integration", url: "/engine/container-integration", keywords: "container integration jboss glassfish tomcat" },
+  //{ section: "implementation-java", category: "Introduction", id: "impl-java-engine-bootstrap", name: "Container Integration", url: "/engine/container-integration", keywords: "container integration jboss glassfish tomcat" },
   { section: "implementation-java", category: "Introduction", id: "impl-pa", name: "Process Applications", url: "/engine/process-application", keywords: "process application" },
   { section: "implementation-java", category: "Introduction", id: "impl-concepts", name: "Important Concepts", url: "/engine/concepts", keywords: "concepts" },  
   { section: "implementation-java", category: "Introduction", id: "impl-activiti-migration", name: "Activiti Migration Guide", url: "/engine/activiti-migration-guide", keywords: "activiti migration fox" },
@@ -68,7 +68,7 @@ CAM_PAGES = [
   { section: "implemention-bpmn", category: "Gateways and Sequence Flows", id: "exclusive-gateway", name: "Exclusive Gateway (XOR)", url: "/gateways/exclusive-gateway", keywords: "exclusive gateways xor" },
   { section: "implemention-bpmn", category: "Gateways and Sequence Flows", id: "sequence-flow", name: "Conditional and default Sequence Flows", url: "/gateways/sequence-flow", keywords: "sequence flows conditional default" },
   { section: "implemention-bpmn", category: "Gateways and Sequence Flows", id: "parallel-gateway", name: "Parallel Gateway (AND)", url: "/gateways/parallel-gateway", keywords: "parallel gateways and" },
-  { section: "implemention-bpmn", category: "Gateways and Sequence Flows", id: "inclusive-gateway", name: "Inclusive Gateway", url: "/gateways/inclusive-gateway", keywords: "inclusive gateways or" },
+  { section: "implemention-bpmn", category: "Gateways and Sequence Flows", id: "inclusive-gateway", name: "Inclusive Gateway (OR)", url: "/gateways/inclusive-gateway", keywords: "inclusive gateways or" },
   { section: "implemention-bpmn", category: "Gateways and Sequence Flows", id: "event-based-gateway", name: "Event Based Gateway", url: "/gateways/event-based-gateway", keywords: "event based gateways" },
 
 //  { section: "implemention-bpmn", category: "Events", id: "events-overview", name: "Overview and Basic Concepts", shortName: "Events Overview", url: "/events/event-overview", keywords: "events event overview concept" },

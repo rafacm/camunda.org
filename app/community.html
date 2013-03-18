@@ -65,11 +65,12 @@
             <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span>
           </button>
           <!-- logo -->
-          <a class="brand ir" href="index.html"> camunda.org </a>
+          <a class="brand ir" href="index.html"> </a>
           <div class="nav-collapse collapse">
             <ul class="nav">
               <ul class="nav" ng-controller="NavigationController">
                 <li ng-class="activeClass('/index.html')"><a href="index.html">Home</a></li>
+                <li ng-class="activeClass('/download.html')"><a href="download.html">Download</a></li>
                 <li ng-class="activeClass('/design-')"><a href="design-overview.html" class="caret-before">Design</a></li>
                 <li class="dropdown"><a class="dropdown-toggle caret-after" data-toggle="dropdown"> <b class="caret"></b></a>
                   <ul class="dropdown-menu">
@@ -93,6 +94,9 @@
                     <li ng-class="activeClass('/implement-java.html')"><a href="implement-java.html#/engine/configuration-and-startup">Java Reference</a></li>
                     <li ng-class="activeClass('/implement-bpmn.html')"><a href="implement-bpmn.html#/index">BPMN 2.0 Reference</a></li>
                     <li ng-class="activeClass('/implement-rest.html')"><a href="implement-rest.html#/overview/introduction">REST API</a></li>
+                    <li class="nav-header">Tools</li>
+                    <li ng-class="activeClass('/implement-tasklist.html')"><a href="implement-tasklist.html">camunda tasklist</a></li>
+                    <li ng-class="activeClass('/implement-cockpit.html')"><a href="implement-cockpit.html">camunda cockpit</a></li>
                   </ul></li>
                 <li ng-class="activeClass('/community')"><a href="community.html" class="caret-before">Community</a></li>
                 <li class="dropdown"><a class="dropdown-toggle caret-after" data-toggle="dropdown"> <b class="caret"></b></a>
@@ -128,7 +132,7 @@
         <h3>in the camunda BPM Community</h3>
       </div>
 
-      <div class="row-fluid community-menu" style="position: relative; padding-top: 120px">
+      <div class="row community-menu" style="position: relative; padding-top: 120px">
         <a href="community-forum.html">
           <div class="span4 center" style="padding-top: 10px;">
             <div style="max-height: 90px">
@@ -223,7 +227,7 @@
       </div>
     </div>
 -->
-      <div class="row-fluid community-menu-invert" style="position: relative; padding-top: 60px">
+      <div class="row community-menu-invert" style="position: relative; padding-top: 60px">
         <a href="community-vision.html">
           <div class="span4 center" style="padding-top: 10px;">
             <div style="max-height: 90px">
@@ -392,6 +396,8 @@
             <li><a href="implement-java.html#/engine/configuration-and-startup">Java Reference</a></li>
             <li><a href="implement-bpmn.html#/index">BPMN 2.0 Reference</a></li>
             <li><a href="implement-rest.html#/overview/introduction">REST API</a></li>
+            <li><a href="implement-tasklist.html">camunda Tasklist</a></li>
+            <li><a href="implement-cockpit.html">camunda Cockpit</a></li>
           </ul>
         </div>
         <div class="span3">
@@ -419,6 +425,43 @@
       </div>
       <span class="spacer"></span>
     </div>
+<!-- WiredMinds eMetrics tracking with Enterprise Edition V6.0 START -->
+    <script type="text/javascript">
+    <!--
+    var wiredminds = [];
+    wiredminds.push(["setTrackParam", "wm_custnum", "eca343094da1ee95"]);
+    // Begin own parameters.
+    wiredminds.push(["setTrackParam", "wm_campaign_key", "wmc"]);
+    wiredminds.push(["registerHeatmapEvent", "mousedown"]);// End own parameters.
+    wiredminds.push(["count"]);
+
+    (function() {
+        function wm_async_load() {
+            var wm = document.createElement("script");
+            wm.type = "text/javascript";
+            wm.async = true;
+            wm.src = "http://test.wiredminds.de/track/count.js";
+            var el = document.getElementsByTagName('script')[0];
+            el.parentNode.insertBefore(wm, el);
+        }
+
+        if (window.addEventListener) {
+            window.addEventListener('load', wm_async_load, false);
+        } else if (window.attachEvent){
+            window.attachEvent('onload', wm_async_load);
+        }
+    })();
+    // -->           
+    </script>
+
+    <noscript>
+    <div>
+    <a href="http://www.wiredminds.de"><img
+     src="http://test.wiredminds.de/track/ctin.php?wm_custnum=eca343094da1ee95&amp;nojs=1"
+     alt="" style="border:0px;"/></a>
+    </div>
+    </noscript>
+<!-- WiredMinds eMetrics tracking with Enterprise Edition V6.0 END -->
   </footer>
 </body>
 </html>

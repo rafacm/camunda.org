@@ -71,11 +71,12 @@
             <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span>
           </button>
           <!-- logo -->
-          <a class="brand ir" href="index.html"> camunda.org </a>
+          <a class="brand ir" href="index.html"> </a>
           <div class="nav-collapse collapse">
             <ul class="nav">
               <ul class="nav" ng-controller="NavigationController">
                 <li ng-class="activeClass('/index.html')"><a href="index.html">Home</a></li>
+                <li ng-class="activeClass('/download.html')"><a href="download.html">Download</a></li>
                 <li ng-class="activeClass('/design-')"><a href="design-overview.html" class="caret-before">Design</a></li>
                 <li class="dropdown"><a class="dropdown-toggle caret-after" data-toggle="dropdown"> <b class="caret"></b></a>
                   <ul class="dropdown-menu">
@@ -99,6 +100,9 @@
                     <li ng-class="activeClass('/implement-java.html')"><a href="implement-java.html#/engine/configuration-and-startup">Java Reference</a></li>
                     <li ng-class="activeClass('/implement-bpmn.html')"><a href="implement-bpmn.html#/index">BPMN 2.0 Reference</a></li>
                     <li ng-class="activeClass('/implement-rest.html')"><a href="implement-rest.html#/overview/introduction">REST API</a></li>
+                    <li class="nav-header">Tools</li>
+                    <li ng-class="activeClass('/implement-tasklist.html')"><a href="implement-tasklist.html">camunda tasklist</a></li>
+                    <li ng-class="activeClass('/implement-cockpit.html')"><a href="implement-cockpit.html">camunda cockpit</a></li>
                   </ul></li>
                 <li ng-class="activeClass('/community')"><a href="community.html" class="caret-before">Community</a></li>
                 <li class="dropdown"><a class="dropdown-toggle caret-after" data-toggle="dropdown"> <b class="caret"></b></a>
@@ -156,30 +160,28 @@
 </style>
 
           <p>
-            We believe in <a href="">Business Process Management</a> as the perfect instrument to create <a href="" id="explainScalable">scalable business
+            We believe in <a href="#" id="explainBPM">Business Process Management</a> as the perfect instrument to create <a href="#" id="explainScalable">scalable business
               models</a>.
+              <div class="tutPop" id="sid-BC888BAA-90B0-4173-ACAA-F1621EE71B2D" rel="popover" title="Intermediate Event"
+                data-content="Intermediate events stand for a status that is reached in the process and that is modeled explicitly. They are used infrequently, but intermediate events can be useful, for example, if you regard reaching a certain status as a milestone and you want to measure the time until the milestone is reached. Intermeidate none events are always throwing events.">
+              </div>              
           </p>
           <p>We strive to create the best BPM platform in the world.</p>
           <p>We think that the best BPM platform in the world must fulfill two top level requirements:</p>
           <p>
-            1st: <a href="">Align Business and IT</a>.
+            1st: <a href="#" id="explainAlign">Align Business and IT</a>.
           </p>
-          <!--p>
-                           2nd: <a href="">Enabling individual process solutions</a> supporting individual business models.</li>
-                         </p-->
           <p>
-            2nd:
-            <!--Flexible Process Automation-->
-            <a href="">Automate Individual Processes</a>.
+            2nd: <a href="#" id="explainIndividual">Automate Individual Processes</a>.
           </p>
 
           <p>
-            This is what we build, and it is <a href="">Open Source</a>.
+            This is what we build, and it is Open Source.
           </p>
         </div>
       </div>
-
     </div>
+
     <div class="push-down">
       <!-- // -->
     </div>
@@ -211,6 +213,8 @@
             <li><a href="implement-java.html#/engine/configuration-and-startup">Java Reference</a></li>
             <li><a href="implement-bpmn.html#/index">BPMN 2.0 Reference</a></li>
             <li><a href="implement-rest.html#/overview/introduction">REST API</a></li>
+            <li><a href="implement-tasklist.html">camunda Tasklist</a></li>
+            <li><a href="implement-cockpit.html">camunda Cockpit</a></li>
           </ul>
         </div>
         <div class="span3">
@@ -238,6 +242,43 @@
       </div>
       <span class="spacer"></span>
     </div>
+<!-- WiredMinds eMetrics tracking with Enterprise Edition V6.0 START -->
+    <script type="text/javascript">
+    <!--
+    var wiredminds = [];
+    wiredminds.push(["setTrackParam", "wm_custnum", "eca343094da1ee95"]);
+    // Begin own parameters.
+    wiredminds.push(["setTrackParam", "wm_campaign_key", "wmc"]);
+    wiredminds.push(["registerHeatmapEvent", "mousedown"]);// End own parameters.
+    wiredminds.push(["count"]);
+
+    (function() {
+        function wm_async_load() {
+            var wm = document.createElement("script");
+            wm.type = "text/javascript";
+            wm.async = true;
+            wm.src = "http://test.wiredminds.de/track/count.js";
+            var el = document.getElementsByTagName('script')[0];
+            el.parentNode.insertBefore(wm, el);
+        }
+
+        if (window.addEventListener) {
+            window.addEventListener('load', wm_async_load, false);
+        } else if (window.attachEvent){
+            window.attachEvent('onload', wm_async_load);
+        }
+    })();
+    // -->           
+    </script>
+
+    <noscript>
+    <div>
+    <a href="http://www.wiredminds.de"><img
+     src="http://test.wiredminds.de/track/ctin.php?wm_custnum=eca343094da1ee95&amp;nojs=1"
+     alt="" style="border:0px;"/></a>
+    </div>
+    </noscript>
+<!-- WiredMinds eMetrics tracking with Enterprise Edition V6.0 END -->
   </footer>
 </body>
 </html>

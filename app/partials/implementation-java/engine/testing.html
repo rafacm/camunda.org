@@ -49,10 +49,10 @@
 Business processes are an integral part of software projects and they should be tested in the same way normal application logic is tested: with unit tests. Since the camunda engine is an embeddable Java engine, writing unit tests for business processes is as simple as writing regular unit tests.
 </p>
 <p>
-camunda supports both JUnit versions 3 and 4 styles of unit testing. In the JUnit 3 style, the org.camunda.bpm.engine.test.ActivitiTestCase must be extended. This will make the ProcessEngine and the services available through protected member fields. In the setup() of the test, the processEngine will be initialized by default with the activiti.cfg.xml resource on the classpath. To specify a different configuration file, override the getConfigurationResource() method. Process engines are cached statically over multiple unit tests when the configuration resource is the same.
+camunda supports both JUnit versions 3 and 4 styles of unit testing. In the JUnit 3 style, the <a href="http://www.camunda.org/javadocs/org/camunda/bpm/engine/test/ProcessEngineTestCase.html">ProcessEngineTestCase</a> must be extended. This will make the ProcessEngine and the services available through protected member fields. In the setup() of the test, the processEngine will be initialized by default with the activiti.cfg.xml resource on the classpath. To specify a different configuration file, override the getConfigurationResource() method. Process engines are cached statically over multiple unit tests when the configuration resource is the same.
 </p>
 <p>
-By extending ActivitiTestCase, you can annotate test methods with org.camunda.bpm.engine.test.Deployment. Before the test is run, a resource file of the form testClassName.testMethod.bpmn20.xml in the same package as the test class, will be deployed. At the end of the test, the deployment will be deleted, including all related process instances, tasks, etc. The Deployment annotation also supports setting the resource location explicitly. See the Javadocs for more details.
+By extending ProcessEngineTestCase, you can annotate test methods with <a href="http://www.camunda.org/javadocs/org/camunda/bpm/engine/test/Deployment.html">Deployment</a>. Before the test is run, a resource file of the form testClassName.testMethod.bpmn20.xml in the same package as the test class, will be deployed. At the end of the test, the deployment will be deleted, including all related process instances, tasks, etc. The Deployment annotation also supports setting the resource location explicitly. See the Javadocs for more details.
 </p>
 <p>
 Taking all that in account, a JUnit 3 style test looks as follows.
@@ -62,7 +62,7 @@ Taking all that in account, a JUnit 3 style test looks as follows.
 <div class="app-source" app-source-no-tabs="test1"></div>
 <script type="text/xml" id="test1">   
 public 
-class MyBusinessProcessTest extends ActivitiTestCase {
+class MyBusinessProcessTest extends ProcessEngineTestCase {
    
   @Deployment
   public void testSimpleProcess() {
@@ -78,10 +78,10 @@ class MyBusinessProcessTest extends ActivitiTestCase {
 </script>
 
 <p>
-To get the same functionality when using the JUnit 4 style of writing unit tests, the org.camunda.bpm.engine.test.ActivitiRule Rule must be used. Through this rule, the process engine and services are available through getters. As with the ActivitiTestCase (see above), including this Rule will enable the use of the org.camunda.bpm.engine.test.Deployment annotation (see above for an explanation of its use and configuration) and it will look for the default configuration file on the classpath. Process engines are statically cached over multiple unit tests when using the same configuration resource.
+To get the same functionality when using the JUnit 4 style of writing unit tests, the <a href="http://www.camunda.org/javadocs/org/camunda/bpm/engine/test/ProcessEngineRule.html">ProcessEngineRule</a> Rule must be used. Through this rule, the process engine and services are available through getters. As with the ProcessEngineTestCase (see above), including this Rule will enable the use of the Deployment annotation (see above for an explanation of its use and configuration) and it will look for the default configuration file on the classpath. Process engines are statically cached over multiple unit tests when using the same configuration resource.
 </p>
 <p>
-The following code snippet shows an example of using the JUnit 4 style of testing and the usage of the ActivitiRule.
+The following code snippet shows an example of using the JUnit 4 style of testing and the usage of the ProcessEngineRule.
 </p>
 
 
@@ -90,15 +90,15 @@ The following code snippet shows an example of using the JUnit 4 style of testin
 public class MyBusinessProcessTest {
   
   @Rule
-  public ActivitiRule activitiRule = new ActivitiRule();
+  public ProcessEngineRule processEngineRule = new ProcessEngineRule();
   
   @Test
   @Deployment
   public void ruleUsageExample() {
-    RuntimeService runtimeService = activitiRule.getRuntimeService();
+    RuntimeService runtimeService = processEngineRule.getRuntimeService();
     runtimeService.startProcessInstanceByKey("ruleUsage");
     
-    TaskService taskService = activitiRule.getTaskService();
+    TaskService taskService = processEngineRule.getTaskService();
     Task task = taskService.createTaskQuery().singleResult();
     assertEquals("My Task", task.getName());
     

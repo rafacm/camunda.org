@@ -93,9 +93,15 @@ a, a:visited {
   text-decoration: none;
 }
 
+
+a.btn {
+  color:#333;
+}
+
 a.btn-inverse, a.btn-primary, a.btn-success {  
   color: white;
 }
+
 
 .hero-unit h2 {
   padding-top: 1.5em;
@@ -258,11 +264,12 @@ html, body {
 */
 .navbar .brand {
   display: block;
-  float: left;
-
-  width: 130px;
-  height: 39px;
-  padding: 0;
+  background-image: url(../img/camunda_org.png);
+  background-size: contain;
+  width: 169px;
+  height: 30px;
+  padding: 0px;
+  margin-top:5px;
 }
 
 /**
@@ -498,36 +505,43 @@ hr.soften {
   height:135px;
 }
 
+.container-small {
+  display: inline-block;
+  width:80px;
+  height:80px;
+  background-size:contain;
+}
+
 .container-as7 {
-  background-image: url("/app/assets/img/as7-tile.png");
+  background-image: url("../img/as7-tile.png");
 }
 
 .container-as7-glow {
-  background-image: url("/app/assets/img/as7-tile-glow.png");
+  background-image: url("../img/as7-tile-glow.png");
 }
 
 .container-jvm {
-  background-image: url("/app/assets/img/jvm-tile.png");
+  background-image: url("../img/jvm-tile.png");
 }
 
 .container-jvm-glow {
-  background-image: url("/app/assets/img/jvm-tile-glow.png");
+  background-image: url("../img/jvm-tile-glow.png");
 }
 
 .container-glassfish {
-  background-image: url("/app/assets/img/glassfish-tile.png");
+  background-image: url("../img/glassfish-tile.png");
 }
 
 .container-glassfish-glow {
-  background-image: url("/app/assets/img/glassfish-tile-glow.png");
+  background-image: url("../img/glassfish-tile-glow.png");
 }
 
 .container-tomcat {
-  background-image: url("/app/assets/img/tomcat-tile.png");
+  background-image: url("../img/tomcat-tile.png");
 }
 
 .container-tomcat-glow {
-  background-image: url("/app/assets/img/tomcat-tile-glow.png");
+  background-image: url("../img/tomcat-tile-glow.png");
 }
 
 .wrapper-dark {
@@ -603,4 +617,8 @@ a.caret-after {
 pre.console {
   background-color: #333;
   color:white;
+}
+
+table.download-bpm-platform {
+  margin-top:-50px;
 }

@@ -9,7 +9,7 @@
       </exclusiveGateway>
       <userTask id="guessNumber" isForCompensation="false" name="Guess Number" startQuantity="1">        
       </userTask>
-      <endEvent id="end" name="You won!">       
+      <endEvent id="end" name="You win!">       
       </endEvent>
       <sequenceFlow id="sid-CBA9A05E-AC41-43F8-991A-C965DDB0C45F" sourceRef="start" targetRef="generateNumber">
       </sequenceFlow>

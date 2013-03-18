@@ -253,7 +253,7 @@ angular.module('camundaorg.controllers', [])
  * numberguess controller 
  */
 
-.controller('NumberguessAppController',  function ($scope, $http, $element) {
+.controller('NumberguessAppController',  function ($scope, $http, $element, $timeout) {
 
   // list of currently suspended activities (activites waiting in an async continuation 
   // ie. waiting for a trigger. Could be more than one even though we do not have concurrency 
@@ -270,16 +270,9 @@ angular.module('camundaorg.controllers', [])
   $scope.guessCounter = 0;
 
   $scope.startProcess = function(processId) {
-    var processDefinitions = $scope.bpmn.processDefinitions;
-    
-    // find the process definition with the given Id
-    var processDefinition;
-    for (var i = 0; i < processDefinitions.length; i++) {
-      if(processDefinitions[i].id == processId) {
-        processDefinition = processDefinitions[i];
-        break;
-      }
-    };
+
+    var processDefinition = $scope.processDefinition;
+
     if(!processDefinition) {
       throw "could not find process definition with id " + processId +" in current scope.";
     }
@@ -289,14 +282,69 @@ angular.module('camundaorg.controllers', [])
       for (var i = 0; i < processDefinition.baseElements.length; i++) {
         var activity = processDefinition.baseElements[i];
 
-
         // attach execution listener to all activities in the process definition
         var listeners = activity.listeners;
         if(!!activity.listeners) {
           listeners.push({
             "start" : function(activityExecution) {
               var actId = activityExecution.activityDefinition.id;
-              $scope.$emit("activityStart", actId);
+              var isSkip = actId == "exclusiveGW" && $scope.guessCounter > 1;
+
+              // if we have an incoming sequence flow: animate!
+              if(!!activityExecution.incomingSequenceFlowId) {
+                var e = $scope.paper.getById(activityExecution.incomingSequenceFlowId);     
+
+                $scope.paper.customAttributes.along = function (a, cid) {                          
+                  l = e.getTotalLength();
+                  to = 1;                  
+                  var p = e.getPointAtLength(a * l);  
+                  return {                                  
+                    transform: "t" + [p.x, p.y-8] 
+                  }
+                };
+
+                var set = $scope.paper.set();
+                
+                var token = $scope.paper.ellipse(0, 0, 8, 8);
+                token.attr({"fill":"#b72a37", "stroke":"none"}).attr({
+                  along: [0,token.id]
+                });
+                set.push(token);
+
+                // adding Robert's idea with the guess 
+                // being displayed inside the token!
+                if(!!$scope.lastGuess) {
+                  var guessNumner = $scope.paper.text(0, 0, $scope.lastGuess);
+                  guessNumner.attr({"stroke":"white", "fill":"none", "font-size":"14pt"}).attr({
+                    along: [0,guessNumner.id]
+                  });
+                  set.push(guessNumner);
+                }
+
+                var timeout = 1500;
+
+                set.animate({
+                  along: [to,set.id]
+                }, timeout, function() {
+                  set.remove();
+                  if(isSkip) {
+                    activityExecution.doContinue();                    
+                  }
+                });       
+
+                // do this via angular timeout function 
+                // to make sure scope rerenders itself
+                if(!isSkip) {
+                  $timeout(function(){               
+                    $scope.$emit("activityStart", actId);                                     
+                  },timeout);         
+                }
+
+              } else {
+                $scope.$emit("activityStart", actId);
+              }
+
+              
             },
             "end" : function(activityExecution) {
               var actId = activityExecution.activityDefinition.id;
@@ -308,11 +356,7 @@ angular.module('camundaorg.controllers', [])
         // make activities async
         if(activity.type != "userTask" && activity.type != "process") {
           activity.asyncCallback = function(activityExecution) {
-            if(activityExecution.activityDefinition.id == "exclusiveGW" && $scope.guessCounter > 1) {
-             activityExecution.doContinue();
-            } else {
-             $scope.suspendedActivities.push(activityExecution);
-            }            
+            $scope.suspendedActivities.push(activityExecution);                    
           }
         }      
       }
@@ -330,7 +374,7 @@ angular.module('camundaorg.controllers', [])
   }
 
   $scope.isGuessValid = function() {
-    return !!$scope.guess && $scope.guess >= 0 && $scope.guess <= 5;
+    return !!$scope.guess && $scope.guess >= 1 && $scope.guess <= 5;
   }
 
   $scope.isFirstGuess = function() {
@@ -339,9 +383,16 @@ angular.module('camundaorg.controllers', [])
 
   $scope.cancel = function() {
     $scope.processInstance = undefined;
-    $scope.suspendedActivities = [];
+    $scope.suspendedActivities = [];    
     $scope.activeActivities = [];
     $scope.guessCounter = 0;
+    $scope.lastGuess = undefined;
+
+    // remove remaining highlights
+    for (var i = 0; i < $scope.processDefinition.baseElements.length; i++) {
+      var activity = $scope.processDefinition.baseElements[i];
+      $scope.paper.getById(activity.id).attr({"stroke":"#808080"});
+    }
   }
 
   $scope.doContinue = function(activityId) {
@@ -363,6 +414,7 @@ angular.module('camundaorg.controllers', [])
       var execution = $scope.processInstance.activityExecutions[i];
       if(execution.activityDefinition.id == activityId && !execution.isEnded) {
         $scope.processInstance.variables.guess = $scope.guess;
+        $scope.lastGuess = $scope.guess;
         $scope.guess = undefined;
         $scope.guessCounter++;
         execution.signal();
@@ -373,7 +425,7 @@ angular.module('camundaorg.controllers', [])
   };
 
   $scope.inactive = function() {
-    return $scope.activeActivities.length == 0;
+    return !$scope.processInstance;
   };
 
   $scope.active = function(activityId) {
@@ -381,13 +433,16 @@ angular.module('camundaorg.controllers', [])
   }
 
   /* here we get notified when an activity is started */
-  $scope.$on("activityStart", function(event, activityId) {
-    $scope.activeActivities.push(activityId);   
+  $scope.$on("activityStart", function(event, activityId, execution) {
+    // add activity to list of active activites
+    $scope.activeActivities.push(activityId);  
+    $scope.paper.getById(activityId).attr({"stroke":"#b72a37"});
   });
 
   /* here we get notified when an activity is ended */
   $scope.$on("activityEnd", function(event, activityId) {
     $scope.activeActivities.splice($scope.activeActivities.indexOf(activityId), 1);
+    $scope.paper.getById(activityId).attr({"stroke":"#808080"});
   });
 
 })
@@ -426,6 +481,29 @@ angular.module('camundaorg.controllers', [])
             return true;
         }
     };
+})
+
+/** forum boards controller */
+.controller('ForumController', function ($scope) {
+
+  var FORUM_1 = "forum1";
+  var FORUM_2 = "forum2";
+  var FORUM_3 = "forum3";
+
+  $scope.activeForum = FORUM_2;
+
+  $scope.activeClass = function(test) {
+    return $scope.isActive(test) ? '' : '-false';
+  };
+
+  $scope.setActive = function(forum) {
+    $scope.activeForum = forum;
+  };
+
+  $scope.isActive = function(test) {
+    return test == $scope.activeForum;
+  };
+
 });
 
 
@@ -755,6 +833,24 @@ angular.module('camundaorg.directives')
     }
   }
 })
+.directive('bpmnSrc2', function() {
+  return {
+    link: function(scope, element, attrs) {
+
+      var bpmnResource = attrs.bpmnSrc2;
+      
+      $.get("assets/bpmn/" + bpmnResource + ".bpmn", function(data){
+      
+        // create process definition
+        scope.processDefinition = new CAM.Transformer().transform(data)[0];
+
+        // render process & add paper to scope
+        scope.paper = bpmnDirect(data, element);
+
+      }, "text");
+    }
+  }
+})
 .directive('bpmnRun', function() {
   return {
     scope: true,
@@ -764,7 +860,7 @@ angular.module('camundaorg.directives')
 
       var bpmnResource = attrs.bpmnSrc;
 
-      $.get("../app/assets/bpmn/" + bpmnResource + ".bpmn", function(data){
+      $.get("assets/bpmn/" + bpmnResource + ".bpmn", function(data){
         
         scope.processDefinition = CAM.transform(data)[0];
 
@@ -776,7 +872,7 @@ angular.module('camundaorg.directives')
           }
         }
 
-    });
+    }, "text");
   }
 }
 })
@@ -1132,9 +1228,32 @@ angular.module('camundaorg.directives')
   $('#explainScalable').popover({
     "title":"Scalable Business Model",
     "trigger": "hover",
-    "content": "<div class='explain' ><p>BPM cannot help you inventing a great product or persuading your customers to buy it.</p><p>But if you do have the right product and a market to conquer, BPM can provide you with the infrastructure you need to turn a corner shop into a big yet profitable business.</p><p>Why BPM? To scale up your business model!</p></div>",
+    "content": "<div class='explain' ><p>BPM can <b>not</b> help you inventing a great product or persuading your customers to buy it.</p><p>But if you do have the right product and a market to conquer, BPM can provide you with the infrastructure you need to turn a corner shop into a big yet profitable business.</p><p>Why BPM? To scale up your business model!</p></div>",
     "html": true
   });
+
+  $('#explainBPM').popover({
+    "title":"BPM",
+    "trigger": "hover",
+    "content": "<div class='explain' ><p>Business Process Management (BPM) is about the daily doing of your company, how to organize it in a smart and efficient way, and how to support it appropriately with IT solutions.</p><p>If you like it when things run smoothly, you are a potential BPM addict.</p></div>",
+    "html": true
+  });
+
+  $('#explainAlign').popover({
+    "title":"Business-IT-Alignment",
+    "trigger": "hover",
+    "content": "<div class='explain' ><p>Aligning people does not mean that one party commands and the other obeys. It neither means that one party gets rid of the other, thanks to fancy tools that suggest they could implement a complex application without programming.</p><p>Aligning is about communication. And if it comes to business processes, we can count on BPMN 2.0 as an excellent global standard for process diagrams that can serve both business people and software developers.</p><p>This is why BPMN 2.0 is a central element in our stack.</p></div>",
+    "html": true
+  });
+
+  $('#explainIndividual').popover({
+    "title":"Individual Process Applications",
+    "trigger": "hover",
+    "placement":"right",
+    "content": "<div class='explain' ><p>We talk about scaling up your business model. Did you get your business model off-the-shelf?</p><p>So how could you possibly implement the process applications that actually execute your business model in some off-the-shelf BPM suite? Did the BPM vendor foresee all the software requirements that your business model demands?</p><p>We believe in the power of an open, flexible framework that allows your developers to implement what ever you need, and in what ever way you need.</p></div>",
+    "html": true
+  });
+
     }
   }
 })

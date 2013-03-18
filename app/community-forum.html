@@ -65,11 +65,12 @@
             <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span>
           </button>
           <!-- logo -->
-          <a class="brand ir" href="index.html"> camunda.org </a>
+          <a class="brand ir" href="index.html"> </a>
           <div class="nav-collapse collapse">
             <ul class="nav">
               <ul class="nav" ng-controller="NavigationController">
                 <li ng-class="activeClass('/index.html')"><a href="index.html">Home</a></li>
+                <li ng-class="activeClass('/download.html')"><a href="download.html">Download</a></li>
                 <li ng-class="activeClass('/design-')"><a href="design-overview.html" class="caret-before">Design</a></li>
                 <li class="dropdown"><a class="dropdown-toggle caret-after" data-toggle="dropdown"> <b class="caret"></b></a>
                   <ul class="dropdown-menu">
@@ -93,6 +94,9 @@
                     <li ng-class="activeClass('/implement-java.html')"><a href="implement-java.html#/engine/configuration-and-startup">Java Reference</a></li>
                     <li ng-class="activeClass('/implement-bpmn.html')"><a href="implement-bpmn.html#/index">BPMN 2.0 Reference</a></li>
                     <li ng-class="activeClass('/implement-rest.html')"><a href="implement-rest.html#/overview/introduction">REST API</a></li>
+                    <li class="nav-header">Tools</li>
+                    <li ng-class="activeClass('/implement-tasklist.html')"><a href="implement-tasklist.html">camunda tasklist</a></li>
+                    <li ng-class="activeClass('/implement-cockpit.html')"><a href="implement-cockpit.html">camunda cockpit</a></li>
                   </ul></li>
                 <li ng-class="activeClass('/community')"><a href="community.html" class="caret-before">Community</a></li>
                 <li class="dropdown"><a class="dropdown-toggle caret-after" data-toggle="dropdown"> <b class="caret"></b></a>
@@ -119,25 +123,34 @@
     <!-- ========================================================================== -->
     <!-- navigation end                                                           -->
 
-    <div class="container">
+    <div class="container" data-ng-controller="ForumController">
       <div style="position: relative; top: 80px; text-align: center">
         <h1 style="color: #333">Forum Boards</h1>
         <h3>in the camunda BPM Community</h3>
       </div>
       <div style="position: relative; padding-top: 120px">
         <ul class="nav nav-pills">
-          <li><a href="#">BPMN 2.0 Process Design</a></li>
-          <li><a href="#">Process Application Development</a></li>
-          <li class="active"><a href="#">camunda BPM Contributors</a></li>
+          <li class="active{{activeClass('forum1')}}"><a href="#" data-ng-click="setActive('forum1')">BPMN 2.0 Process Design</a></li>
+          <li class="active{{activeClass('forum2')}}"><a href="#" data-ng-click="setActive('forum2')">Users &amp; Process Application Development</a></li>
+          <li class="active{{activeClass('forum3')}}"><a href="#" data-ng-click="setActive('forum3')">camunda BPM Contributors</a></li>
         </ul>
       </div>
 
       <hr />
+ 
+      <div class="row" style="position: relative; padding-top: 10px; display:none" data-ng-show="isActive('forum1')">
+        <iframe id="forum_embed" src="https://groups.google.com/forum/embed/?place=forum/camunda-bpmn20&showsearch=true&showpopout=true" scrolling="no"
+          frameborder="0" style="width: 100%; height: 1000px;"> </iframe>
+      </div>
 
-      <div class="row" style="position: relative; padding-top: 10px;">
+      <div class="row" style="position: relative; padding-top: 10px;" data-ng-show="isActive('forum2')">
+        <iframe id="forum_embed" src="https://groups.google.com/forum/embed/?place=forum/camunda-bpm-users&showsearch=true&showpopout=true" scrolling="no"
+          frameborder="0" style="width: 100%; height: 1000px;"> </iframe>
+      </div>
+
+      <div class="row" style="position: relative; padding-top: 10px; display:none" data-ng-show="isActive('forum3')">
         <iframe id="forum_embed" src="https://groups.google.com/forum/embed/?place=forum/camunda-bpm-dev&showsearch=true&showpopout=true" scrolling="no"
           frameborder="0" style="width: 100%; height: 1000px;"> </iframe>
-
       </div>
 
     </div>
@@ -172,6 +185,8 @@
             <li><a href="implement-java.html#/engine/configuration-and-startup">Java Reference</a></li>
             <li><a href="implement-bpmn.html#/index">BPMN 2.0 Reference</a></li>
             <li><a href="implement-rest.html#/overview/introduction">REST API</a></li>
+            <li><a href="implement-tasklist.html">camunda Tasklist</a></li>
+            <li><a href="implement-cockpit.html">camunda Cockpit</a></li>
           </ul>
         </div>
         <div class="span3">
@@ -199,9 +214,43 @@
       </div>
       <span class="spacer"></span>
     </div>
+<!-- WiredMinds eMetrics tracking with Enterprise Edition V6.0 START -->
+    <script type="text/javascript">
+    <!--
+    var wiredminds = [];
+    wiredminds.push(["setTrackParam", "wm_custnum", "eca343094da1ee95"]);
+    // Begin own parameters.
+    wiredminds.push(["setTrackParam", "wm_campaign_key", "wmc"]);
+    wiredminds.push(["registerHeatmapEvent", "mousedown"]);// End own parameters.
+    wiredminds.push(["count"]);
 
-    <!-- loads all javascript -->
-    <script src="assets/js/loader.js"></script>
+    (function() {
+        function wm_async_load() {
+            var wm = document.createElement("script");
+            wm.type = "text/javascript";
+            wm.async = true;
+            wm.src = "http://test.wiredminds.de/track/count.js";
+            var el = document.getElementsByTagName('script')[0];
+            el.parentNode.insertBefore(wm, el);
+        }
+
+        if (window.addEventListener) {
+            window.addEventListener('load', wm_async_load, false);
+        } else if (window.attachEvent){
+            window.attachEvent('onload', wm_async_load);
+        }
+    })();
+    // -->           
+    </script>
+
+    <noscript>
+    <div>
+    <a href="http://www.wiredminds.de"><img
+     src="http://test.wiredminds.de/track/ctin.php?wm_custnum=eca343094da1ee95&amp;nojs=1"
+     alt="" style="border:0px;"/></a>
+    </div>
+    </noscript>
+<!-- WiredMinds eMetrics tracking with Enterprise Edition V6.0 END -->
   </footer>
 </body>
 </html>
