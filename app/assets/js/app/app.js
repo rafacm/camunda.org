@@ -1150,7 +1150,7 @@ angular.module('camundaorg.directives')
           join_text: "auto",
           query: "#camunda",
           avatar_size: 30,
-          count: 3,
+          count: 18,
           loading_text: "loading tweets..."
         });      
      
