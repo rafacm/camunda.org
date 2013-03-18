@@ -298,7 +298,6 @@ section {
   color: lightblue;
 }
 
-
 .carousel .item {
   height:362px;
 }
@@ -603,4 +602,9 @@ pre.console {
 
 table.download-bpm-platform {
   margin-top:-50px;
+}
+
+div.content-box {
+  height: 350px;
+  overflow: auto;
 }
