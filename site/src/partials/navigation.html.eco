@@ -12,7 +12,7 @@
       <!-- navigation items -->
       <div class="nav-collapse collapse">
         <ul class="nav" ng-controller="NavigationController">
-          <li ng-class="activeClass('/index.html')">
+          <li ng-class="activeClass('/download.html')">
             <a href="<%= @docUrl('download.html') %>">Download</a>
           </li>
           

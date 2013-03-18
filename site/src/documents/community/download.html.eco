@@ -1,0 +1,87 @@
+---
+
+title: 'Download'
+layout: 'default'
+
+---
+
+<div class="headline">
+  <h1>Download</h1>
+  <h3>camunda BPM platform &amp; camunda modeler</h3>
+</div>
+
+<div class="row">
+  <div class="span12">
+    <p class="alert alert-success"><i class=" icon-leaf"></i>
+      <strong>Community Distribution:</strong> You are downloading a community distribution of camunda BPM which is not supported by an SLA (service level agreement). 
+      <a href="support.html">Click here</a> if you need a fully supported enterprise edition of camunda BPM.
+    </p>
+  </div>
+</div>
+
+<div class="row">
+  <!-- dev team column -->
+  <div>
+    <h2>camunda BPM platform</h2>
+    <table class="table download-bpm-platform">
+      <caption></caption>
+      <thead>
+        <tr>
+          <th>Distribution</th>
+          <th>Version</th>
+          <th><span class="container-tomcat container-small"></span><br>Apache Tomcat 7</th>
+          <th><span class="container-as7 container-small"></span><br>JBoss AS 7</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>camunda BPM platform</td>
+          <td>7.0.0-alpha1</td>
+          <td>
+            <a href="/download/camunda-bpm/tomcat/7.0.0-alpha1/zip/">zip</a> | 
+            <a href="/download/camunda-bpm/tomcat/7.0.0-alpha1/tar.gz/">tar.gz</a>
+          </td>
+          <td>
+            <a href="/download/camunda-bpm/jboss/7.0.0-alpha1/zip/">zip</a> | 
+            <a href="/download/camunda-bpm/jboss/7.0.0-alpha1/tar.gz/">tar.gz</a>
+          </td>                
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<div class="row">
+  <!-- dev team column -->
+  <div>
+    <h2>camunda modeler</h2>
+  </div>
+
+  <div class="row-fluid">
+    <div class="span8">
+      <div class="alert alert-info">
+        <div class="row-fluid">
+          <div class="span1">
+            <img src="assets/img/modeler/eclipse.png">
+          </div>
+          <div class="span10">
+            <h3 style="margin-top:0px; margin-bottom:5px;">Eclipse Update Site:</h3>
+            <a style="font-size:120%;" href="http://camunda.org/release/camunda-modeler/update-sites/latest/site/">http://camunda.org/release/camunda-modeler/update-sites/latest/site/</a>
+          </div>
+        </div>
+      </div>            
+    </div>
+
+    <div class="span4 well"><h3>Prepackaged Modeler</h3>
+      <p>
+        You can download a prepackaged camunda modeler (Windows only). 
+      </p>
+      <p class="center">
+        <a href="/download/camunda-modeler/indigo/latest/zip/" class="btn btn-primary btn-large"><i class="icon-download-alt icon-large icon-white"></i>   Download
+        </a>
+      </p>
+      <p>This distribution includes camunda Modeler installed inside eclipse Indigo (32bit, Windows).</p>
+    </div>
+
+  </div>
+</div>
