@@ -308,13 +308,17 @@ section {
 }
 
 .tweet_list .tweet_odd {
-  background-color: #2f2f2f;
+  background-color: #333;
   color:white;
 }
 
 .tweet_list .tweet_even {
-  background-color: #2f2f2f;
+  background-color: #333;
   color:white;
+}
+
+.blog-list a, .blog-list a:visited {
+  color: lightblue;
 }
 
 .carousel .item {
@@ -621,4 +625,9 @@ pre.console {
 
 table.download-bpm-platform {
   margin-top:-50px;
+}
+
+div.content-box {
+  height: 350px;
+  overflow: auto;
 }
