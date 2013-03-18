@@ -657,12 +657,12 @@ div.content-box {
   height: 350px;
   overflow: auto;
 }
-<<<<<<< HEAD
 
 .team-core img.img-circle {
   border-radius: 3px;
   padding: 3px;
   border: solid 1px #DDD;
+  max-width: 80px;
 }
 
 .team-core h2, .partners h2 {
@@ -729,5 +729,3 @@ div.content-box {
     padding: 10px;
   }
 }
-=======
->>>>>>> 1d87050938c9c15a8d3efeb231488dc3b3504cc6
