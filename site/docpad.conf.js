@@ -28,12 +28,20 @@ var docpadConfig = {
         "assets/vendor/bootstrap/css/bootstrap.min.css",
         "assets/vendor/bootstrap/css/bootstrap-responsive.min.css",
         "assets/css/cabpmn.css",
+        "assets/vendor/tweet/jquery.tweet.css",
         "assets/css/app.css"
       ],
 
       scripts: [
         // todo make path separator aware
         "assets/vendor/jquery.min.js",
+
+        "assets/vendor/raphaeljs/raphael.js",
+        "assets/app/bpmn/Executor.js",
+        "assets/app/cabpmn.js",
+        
+        "assets/vendor/tweet/jquery.tweet.js",
+
         "assets/vendor/bootstrap/js/bootstrap.min.js",
         "assets/vendor/log.js",
         "assets/vendor/angular/angular.min.js",
