@@ -114,7 +114,7 @@ var endEventStyle = {
 
 	var paper = Raphael(container[0], "100%");
 
-	$.get("../app/assets/bpmn/" + diagram + ".bpmn", function(data){
+	$.get("assets/bpmn/" + diagram + ".bpmn", function(data){
 		parseBpmnXml(data, paper, container);
 	});
 
@@ -237,7 +237,7 @@ function makeHoverEffect (container, element, paper, raphaelElementId) {
 			"height": element.height + "px",
 			"left": element.x + "px",
 			"top": element.y + "px",
-			"background": "url(/app/assets/img/transparent.gif) repeat" // I need this workaround to make hover effect work in IEx :-(
+			"background": "url(assets/img/transparent.gif) repeat" // I need this workaround to make hover effect work in IEx :-(
 			});
 		
 		// Get Raphael Element

@@ -839,7 +839,7 @@ angular.module('camundaorg.directives')
 
       var bpmnResource = attrs.bpmnSrc2;
       
-      $.get("../app/assets/bpmn/" + bpmnResource + ".bpmn", function(data){
+      $.get("assets/bpmn/" + bpmnResource + ".bpmn", function(data){
       
         // create process definition
         scope.processDefinition = new CAM.Transformer().transform(data)[0];
@@ -860,7 +860,7 @@ angular.module('camundaorg.directives')
 
       var bpmnResource = attrs.bpmnSrc;
 
-      $.get("../app/assets/bpmn/" + bpmnResource + ".bpmn", function(data){
+      $.get("assets/bpmn/" + bpmnResource + ".bpmn", function(data){
         
         scope.processDefinition = CAM.transform(data)[0];
 
