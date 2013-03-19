@@ -6,7 +6,6 @@ layout: 'default'
 ---
 
 <div class="row-fluid doc">
-
   <div class="span3">
     <form class="well form-search" section="rest" ng-submit="submitForm()" ng-cloak>
       <div class="input-prepend dropdown search" ng-class="{ open: focused && bestMatch.rank > 0 && bestMatch.page != currentPage}">

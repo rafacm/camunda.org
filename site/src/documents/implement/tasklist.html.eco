@@ -21,10 +21,10 @@ layout: 'default'
 
   <div class="row-fluid">
     <div class="span6">         
-        <img src="<%= @docUrl('assets/img/implementation-tasklist/tasklist1.png') %>"></img>         
+      <img src="<%= @docUrl('assets/img/implementation-tasklist/tasklist1.png') %>"></img> 
     </div>
     <div class="span6">         
-        <img src="<%= @docUrl('assets/img/implementation-tasklist/tasklist2.png') %>"></img>         
+      <img src="<%= @docUrl('assets/img/implementation-tasklist/tasklist2.png') %>"></img>         
     </div>            
   </div>   
 </div>
