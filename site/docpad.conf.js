@@ -27,8 +27,9 @@ var docpadConfig = {
       styles: [
         "assets/vendor/bootstrap/css/bootstrap.min.css",
         "assets/vendor/bootstrap/css/bootstrap-responsive.min.css",
-        "assets/css/cabpmn.css",
         "assets/vendor/jquery/tweet/jquery.tweet.css",
+        "assets/vendor/google-code-prettify/prettify.css",
+        "assets/css/cabpmn.css",
         "assets/css/app.css"
       ],
 
@@ -39,6 +40,8 @@ var docpadConfig = {
         "assets/vendor/raphaeljs/raphael.js",
         "assets/app/bpmn/Executor.js",
         "assets/app/cabpmn.js",
+
+        "assets/vendor/google-code-prettify/prettify.min.js",
 
         "assets/vendor/jquery/tweet/jquery.tweet.js",
         "assets/vendor/jquery/validate/jquery.validate.min.js",
