@@ -1,0 +1,48 @@
+---
+
+title: 'Register for a Meeting'
+layout: 'default'
+
+---
+
+<div style="padding-top: 80px; text-align: center">
+  <h1 style="color: #333" class="mSubject"></h1>
+  <h3>
+    <span class="mCity"></span>, <span class="mDate"></span>
+  </h3>
+  <p>
+    <a href="<%= @docUrl('community/meetings.html') %>">Meetings Overview »</a>
+  </p>
+</div>
+
+<div class="row" style="padding-top: 40px; padding-bottom: 100px;">
+  <div class="span3">
+    <form id="registerForm_1" style="width: 80%">
+      <fieldset>
+        <legend>Register Now:</legend>
+        <p class="mSeats"></p>
+        
+        <input name="mName" id="mName" type="text" placeholder="Name">
+        <input name="mEmail" id="mEmail" type="text" placeholder="Email">
+      </fieldset>
+      <button type="submit" id="mSubmit" class="btn btn-primary registerForm_">Register now</button>
+    </form>
+    <p id="status" style="color: red;"></p>
+
+  </div>
+  <div class="span6" data-meeting>
+    <h3 style="margin-top: 0px;">Where we meet</h3>
+    <p class="mPlace"></p>
+    <h3 style="margin-top: 0px;">Why you should come</h3>
+    <div class="mText"></div>
+  </div>
+  <div class="span2" style="font-size: 90%">
+    <legend>Questions?</legend>
+    <img style="width: 60%" src="<%= @docUrl('assets/img/app/community/team/core/nastasja_johnston.jpg') %>" class="img-polaroid" />
+    <address style="padding-top: 10px;">
+      Nastasja Johnston<br /> Community Manager<br /> +49-30-664 04 09-00 <a href="mailto:community@camunda.org">community@camunda.org</a>
+    </address>
+  </div>
+</div>
+
+<% @addScript("assets/vendor/jquery-validate/jquery.validate.min.js") %>

@@ -658,6 +658,9 @@ div.content-box {
   overflow: auto;
 }
 
+/**
+ * community/team
+ */
 .team-core img.img-circle {
   border-radius: 3px;
   padding: 3px;
@@ -728,4 +731,38 @@ div.content-box {
     margin: 0;
     padding: 10px;
   }
+}
+
+/**
+ * community/users
+ */
+.community-users .span3 {
+  text-align: center;
+  border: 1px solid lightgrey;
+  height: 140px;
+  margin-right: 10px;
+  margin-bottom: 10px;
+  cursor: pointer;
+  color: black;
+  /*
+         filter: gray;
+         -webkit-filter: grayscale(1);            
+         */
+}
+
+.community-users .span3:hover {
+  background-color: lightgrey;
+  filter: none;
+  -webkit-filter: grayscale(0);
+}
+
+.community-users img,.modal img {
+  max-width: 200px;
+  max-height: 70px;
+  padding: 10px;
+}
+
+.community-users .modal img {
+  filter: none;
+  -webkit-filter: grayscale(0);
 }
