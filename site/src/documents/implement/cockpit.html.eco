@@ -4,24 +4,23 @@ title: 'camunda Cockpit'
 layout: 'default'
 
 ---
+
 <div style="padding-top: 80px; text-align: center">
   <h1 style="color: #333">Process Operations</h1>
   <h3>with camunda Cockpit</h3>
 </div>
 
-<div class="wrapper" style="position: relative; padding-top: 10px;">
+<section id="welcome">
+  <p class="span5 offset3 center alert">
+    <em><i class="icon-ban-circle"></i> <strong>Under Construction:</strong> We are completely redesigning this component. What you see here is what we believe to be the smallest possible increment of our vision: "Process Operations with BPMN"</em>
+  </p>
+</section>
 
-  <section id="welcome">
-    <p class="span5 offset3 center alert">
-      <em><i class="icon-ban-circle"></i> <strong>Under Construction:</strong> We are completely redesigning this component. What you see here is what we believe to be the smallest possible increment of our vision: "Process Operations with BPMN"</em>
-    </p>
-  </section>      
-  <div class="row-fluid">
-    <div class="span6">         
-      <img src="<%= @docUrl('assets/img/implementation-cockpit/cockpit2.png') %>"></img>         
-    </div>
-    <div class="span6">         
-      <img src="<%= @docUrl('assets/img/implementation-cockpit/cockpit1.png') %>"></img>         
-    </div>            
-  </div>   
+<div class="row">
+  <div class="span6">
+    <img src="<%= @docUrl('assets/img/implementation-cockpit/cockpit2.png') %>"></img>         
+  </div>
+  <div class="span6">         
+    <img src="<%= @docUrl('assets/img/implementation-cockpit/cockpit1.png') %>"></img>         
+  </div>
 </div>
