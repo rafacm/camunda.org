@@ -514,6 +514,16 @@ angular.module('camundaorg.controllers', [])
 
 angular
   .module('camundaorg.services', [])
+  .factory("App", function() {
+
+    function getAppBase() {
+      return $("base").attr("app-base");
+    }
+
+    return {
+      appBase: getAppBase
+    };
+  })
   .factory('CSV', function() {  
         return {
             /**
@@ -958,25 +968,21 @@ angular.module('camundaorg.directives')
     }
   }
 })
-.directive('camundaEvents', function() {
+.directive('camundaEvents', function(App) {
   return {
     link: function(scope, element, attrs) {
 
       $.getJSON('http://www.camunda.org/php/meeting.php', function(data) {
-          
           $.each( data.events, function( key, value ) {
 
             var myDateString = value.meeting.date;
 
-            var myRow = "<td>" + myDateString + "</td><td><img src='assets/img/app/community/meetings/" + value.meeting.country + ".png' > " + value.meeting.country + "</td><td>" + value.meeting.city + "</td><td>" + value.meeting.subject + "</td><td>" + value.meeting.attendees + " attendees</td><td>" + parseInt(value.meeting.seats - value.meeting.attendees)  + " seats left</td>";
-            var selectDate = '<td><a style="color:black;" href="community-meetings-single.html?id=' + value.meeting.id +'" role="button" class="btn">Register</a></td>';
+            var myRow = "<td>" + myDateString + "</td><td><img src='" + App.appBase() + "assets/img/app/community/meetings/" + value.meeting.country + ".png' > " + value.meeting.country + "</td><td>" + value.meeting.city + "</td><td>" + value.meeting.subject + "</td><td>" + value.meeting.attendees + " attendees</td><td>" + parseInt(value.meeting.seats - value.meeting.attendees)  + " seats left</td>";
+            var selectDate = '<td><a style="color:black;" href="' + App.appBase() + 'community/meetings/register.html?id=' + value.meeting.id +'" role="button" class="btn">Register</a></td>';
          
             myRow = "<tr>" + selectDate + myRow + "</td></tr>";
             element.append(myRow);
-
-            
           });
-
       });
     }
   }

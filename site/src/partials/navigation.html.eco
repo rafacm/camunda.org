@@ -93,7 +93,7 @@
                 <li ng-class="activeClass('/community/forum.html')">
                   <a href="<%= @docUrl('community/forum.html') %>">Forum</a>
                 </li>
-                <li ng-class="activeClass('/community-meetings')">
+                <li ng-class="activeClass('/community/meetings')">
                   <a href="<%= @docUrl('community/meetings.html') %>">Next Meetings</a>
                 </li>
                 <li ng-class="activeClass('/community/users.html')">
