@@ -89,6 +89,9 @@ layout: 'default'
         </div>
       </div>
     </div>
+    <div class="alert alert-warning">    
+      <b>Heads up!</b> If you are using the fox-designer, please deinstall the fox-designer plugin before using the camunda Modeler. You can deinstall already installed plugins under  <em>Help</em> -->  <em>Install New Software...</em> -->  <em>What is already installed?</em>
+    </div>
     <div class="row">
      <div id="modeler_plugin_01" class="thumbnail span2" data-img-thumb
           img-src="<%= @docUrl('assets/img/modeler/modeler_plugin_01.png') %>"></div>      
