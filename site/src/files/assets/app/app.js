@@ -3,7 +3,7 @@
 // =========================================================================== //
 
 angular
-  .module('camundaorg', ['ng', 'bootstrap', 'ngResource', 'camundaorg.controllers', 'camundaorg.filters', 'camundaorg.services', 'camundaorg.directives'])
+  .module('camundaorg', ['ng', 'bootstrap', 'ngResource', 'camundaorg.controllers', 'camundaorg.filters', 'camundaorg.services', 'camundaorg.directives', 'camundaorg.pages'])
 
   .config(function ($routeProvider) {
 
@@ -832,24 +832,24 @@ angular.module('camundaorg.directives')
     }
   }
 })
-.directive('bpmnSrc', function() {
+.directive('bpmnSrc', function(App) {
   return {
     link: function(scope, element, attrs) {
 
-        var bpmnResource = attrs.bpmnSrc;
+        var bpmnResource = App.appBase() + "assets/bpmn/" + attrs.bpmnSrc;
         
         bpmn(bpmnResource, element);
         //$('body').scrollspy('refresh');
     }
   }
 })
-.directive('bpmnSrc2', function() {
+.directive('bpmnSrc2', function(App) {
   return {
     link: function(scope, element, attrs) {
 
       var bpmnResource = attrs.bpmnSrc2;
       
-      $.get("assets/bpmn/" + bpmnResource + ".bpmn", function(data){
+      $.get(App.appBase() + "assets/bpmn/" + bpmnResource + ".bpmn", function(data){
       
         // create process definition
         scope.processDefinition = new CAM.Transformer().transform(data)[0];
@@ -870,7 +870,7 @@ angular.module('camundaorg.directives')
 
       var bpmnResource = attrs.bpmnSrc;
 
-      $.get("assets/bpmn/" + bpmnResource + ".bpmn", function(data){
+      $.get(App.appBase() + "assets/bpmn/" + bpmnResource + ".bpmn", function(data){
         
         scope.processDefinition = CAM.transform(data)[0];
 

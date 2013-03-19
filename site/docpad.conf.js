@@ -51,7 +51,11 @@ var docpadConfig = {
 
         "assets/app/directives/ngmif.js",
         "assets/app/directives/focused.js",
+
         "assets/app/app.js",
+
+        "assets/app/docs/docs.js",
+        "assets/app/docs/pages.js",
 
         // not important, load last
         "assets/vendor/analytics/analytics.js"
