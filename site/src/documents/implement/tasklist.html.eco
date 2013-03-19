@@ -27,5 +27,4 @@ layout: 'default'
         <img src="<%= @docUrl('assets/img/implementation-tasklist/tasklist2.png') %>"></img>         
     </div>            
   </div>   
-</div>    
 </div>

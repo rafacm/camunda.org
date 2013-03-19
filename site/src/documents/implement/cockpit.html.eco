@@ -25,5 +25,4 @@ layout: 'default'
         <img src="<%= @docUrl('assets/img/implementation-cockpit/cockpit1.png') %>"></img>         
     </div>            
   </div>   
-</div>    
 </div>
