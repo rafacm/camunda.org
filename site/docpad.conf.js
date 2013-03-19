@@ -51,6 +51,7 @@ var docpadConfig = {
 
         "assets/app/directives/ngmif.js",
         "assets/app/directives/focused.js",
+
         "assets/app/app.js",
 
         "assets/app/docs/docs.js",

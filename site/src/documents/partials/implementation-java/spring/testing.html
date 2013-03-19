@@ -1,0 +1,53 @@
+<section id="xxx">
+
+<div class="page-header">
+      <h1>Testing</h1>
+</div>
+
+
+      <p>
+When integrating with Spring, business processes can be tested very easily (in scope 2, see <a href="implement-java.html#/engine/testing">Testing Scopes</a>) using the standard camunda testing facilities. The following example shows how a business process is tested in a typical Spring-based unit test:
+</p>
+
+    
+<div class="app-source" app-source-no-tabs="springTest1"></div>
+<script type="text/xml" id="springTest1">   
+@RunWith(SpringJUnit4ClassRunner.class)
+@ContextConfiguration("classpath:org/camunda/bpm/engine/spring/test/junit4/springTypicalUsageTest-context.xml")
+public class MyBusinessProcessTest {
+  
+  @Autowired
+  private RuntimeService runtimeService;
+  
+  @Autowired
+  private TaskService taskService;
+  
+  @Autowired
+  @Rule
+  public ProcessEngineRule processEngineRule;
+  
+  @Test
+  @Deployment
+  public void simpleProcessTest() {
+    runtimeService.startProcessInstanceByKey("simpleProcess");
+    Task task = taskService.createTaskQuery().singleResult();
+    assertEquals("My Task", task.getName());
+  
+    taskService.complete(task.getId());
+    assertEquals(0, runtimeService.createProcessInstanceQuery().count());
+   
+  }
+}      
+</script>
+    
+Note that for this to work, you need to define a <a href="http://www.camunda.org/javadocs/org/camunda/bpm/engine/test/ProcessEngineRule.html">ProcessEngineRule</a> bean in the Spring configuration (which is injected by auto-wiring in the example above).
+
+  <div class="app-source" app-source-no-tabs="springTest2" ></div>
+  <script type="text/xml" id="springTest2"> 
+<bean id="activitiRule" class="org.camunda.bpm.engine.test.ProcessEngineRule">
+  <property name="processEngine" ref="processEngine" />
+</bean>        
+</script>
+
+	
+</section>
