@@ -5,8 +5,8 @@ layout: 'default'
 
 ---
 
-<div style="padding-top: 80px; text-align: center">
-  <h1 style="color: #333">Typical Users</h1>
+<div class="row headline">
+  <h1>Typical Users</h1>
   <h3>of camunda BPM</h3>
 </div>
 

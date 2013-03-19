@@ -5,17 +5,17 @@ layout: 'default'
 
 ---
 
-<div style="padding-top: 80px; text-align: center">
-  <h1 style="color: #333">Taskmanagement</h1>
+<div class="row headline">
+  <h1>Taskmanagement</h1>
   <h3>with camunda BPM</h3>
 </div>
 
-<section id="welcome">
-  <p class="span5 offset3 center alert">
+<div class="row">
+  <div class="span8 offset2 center alert">
     <em><i class="icon-ban-circle"></i> <strong>Under Construction:</strong> We are currently working on the Tasklist documentation.</em>
     Read the <a href="<%= @docUrl('implement/getting-started.html#taskform') %>">Getting started</a> Page to learn how to use the tasklist.
-  </p>
-</section>      
+  </div>
+</div>
 
 <div class="row">
   <div class="span6">         

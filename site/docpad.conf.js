@@ -50,7 +50,9 @@ var docpadConfig = {
         "assets/vendor/log.js",
         "assets/vendor/angular/angular.min.js",
         "assets/vendor/angular/angular-resource.min.js",
-        "assets/vendor/angular/angular-bootstrap.min.js",
+
+        // with fix for menues
+        "assets/vendor/angular/angular-bootstrap.js",
 
         "assets/app/directives/ngmif.js",
         "assets/app/directives/focused.js",

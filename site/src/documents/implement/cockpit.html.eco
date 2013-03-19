@@ -5,8 +5,8 @@ layout: 'default'
 
 ---
 
-<div style="padding-top: 80px; text-align: center">
-  <h1 style="color: #333">Process Operations</h1>
+<div class="row headline">
+  <h1>Process Operations</h1>
   <h3>with camunda Cockpit</h3>
 </div>
 
