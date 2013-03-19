@@ -21,4 +21,6 @@ In order to start hacking the camunda.org homepage, you first need to setup docp
 2. inside your terminal, navigate to the root of the repository. Type `npm update`
 3. run docpad using `docpad run`
 
+Go to http://localhost:9778/
+
 Have fun.
