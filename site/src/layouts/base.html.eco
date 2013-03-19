@@ -36,6 +36,9 @@
 
   <!-- styles -->
   <%- @getBlock('styles').add(@commonStyles()).toHTML() %>
+
+  <!-- favicon -->
+  <link rel="shortcut icon" type="image/x-icon" href="<%= @docUrl('assets/img/favicon.ico') %>" />
 </head>
 <body>
 
