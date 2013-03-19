@@ -1,7 +1,7 @@
 ---
 
 title: 'Implement your processes'
-layout: 'default'
+layout: 'dark'
 
 ---
 
@@ -39,7 +39,7 @@ layout: 'default'
 
       <p>
         <!--<a href="#" class="btn btn-inverse btn-large" ng-click="setAciveSection('howDoesItWork')">How does it work?</a> -->
-        <a class="btn btn-large btn-primary" href="<%= @docUrl('download.html') %>"><i class="icon/download-alt icon-large icon-white"></i> Download</a> 
+        <a class="btn btn-large btn-primary" href="<%= @docUrl('download.html') %>"><i class="icon-download-alt icon-large icon-white"></i> Download</a> 
         <a href="<%= @docUrl('implement/getting-started.html') %>" class="btn btn-large">Getting Started</a>
       </p>
 
