@@ -1,0 +1,146 @@
+<section id="concepts">
+
+<div class="page-header">
+      <h1>Process Applications</h1>
+</div>
+
+<div class="row-fluid">
+  <div class="span9">
+    <p>      
+      A process application is an application that provides a set of process definitions and uses the container-managed process engine. It can provides both Java classes and BPMN process definitions.
+    </p>
+
+    <div class="alert">
+      <p>
+        <strong>Heads-up!</strong>
+        You might want to checkout the <a href="http://localhost:8000/app/implement-getting-started.html">Getting Started Tutorial</a> first as it explaines the creation of a process application step by step.
+      </p>
+    </div>
+
+    You can transform every normal Java application (jar, war or ear) into a Process Application! You simply have to add:
+    <ul>
+      <li><strong>A Process Application class:</strong> The Process Application class constitutes the interface between your application and the process engine. There are different base classes you can extent to reflect different environments (e.g. Servlet vs. EJB Container).</li>
+      <li><strong>A processes.xml file to META-INF:</strong> The deployment descriptor file allows  to provide a declarative configuration of the deployment(s) this process application makes to the process engine. It can be exmpty and serve as simple marker file - but it must be present.</li>
+    </ul>
+
+    That's it! 
+
+    </div>
+    <div class="span3">
+      <h3>On this page</h3>
+      <ul>            
+          <li>What is a Process Application?</li>
+          <li>Process Application class</li>
+          <li>processes.xml</li>
+      </ul>
+      <h3>There's more...</h3>
+      <ul>            
+          <li><a href="http://localhost:8000/app/implement-getting-started.html">Getting Started Tutorial</a></li>
+      </ul>      
+    </div>
+</div>
+
+
+
+
+
+
+
+<h1>Process Application class</h1>
+
+<p>
+  You need to have the Process Application class on your classpath - and it has to be annotated with @ProcessApplication. This class constitutes the interface between your application and the process engine. 
+</p>
+
+There are different base classes you might want to subclass depending on your environment:
+<ul>
+  <li><strong><a href="http://www.camunda.org/javadocs/org/camunda/bpm/application/impl/ServletProcessApplication.html">ServletProcessApplication</a>:</strong> Use this in a Servlet Container like Tomcat.</li>
+  <li><strong><a href="http://www.camunda.org/javadocs/org/camunda/bpm/application/impl/EjbProcessApplication.html">EjbProcessApplication</a>:</strong> Use this in a Java EE environment and application servers like JBoss, Glassfish or WebSphere Application Server.</li>
+  <li><strong><a href="http://www.camunda.org/javadocs/org/camunda/bpm/application/impl/EmbeddedProcessApplication.html">EmbeddedProcessApplication</a>:</strong> Use this in any Java environment which does not have a special container.</li>
+</ul>
+
+Examples:
+
+<div class="app-source" app-source="ServletContainer EjbContainer" annotate="code-annotations" ></div>
+
+<script type="text/xml" id="ServletContainer">
+package org.camunda.bpm.example.loanapproval;
+
+import org.camunda.bpm.application.ProcessApplication;
+import org.camunda.bpm.application.impl.ServletProcessApplication;
+
+@ProcessApplication("Loan Approval App")
+public class LoanApprovalApplication extends ServletProcessApplication {
+  // empty implementation
+}
+</script>
+
+<script type="text/xml" id="EjbContainer">
+@ProcessApplication("Loan Approval App")
+@Singleton
+@Startup 
+@ConcurrencyManagement(ConcurrencyManagementType.BEAN) 
+@TransactionAttribute(TransactionAttributeType.SUPPORTS)
+public class DefaultEjbProcessApplication extends EjbProcessApplication {
+   
+  @PostConstruct
+  public void start() {
+    deploy();
+  }
+
+  @PreDestroy
+  public void stop() {
+    undeploy();
+  }
+}
+</script>   
+
+
+
+
+<h1>processes.xml</h1>
+
+The deployment descriptor allows to configure which process definitions are deployed to which engine.
+
+<p class="alert">
+  You need to have an processes.xml in META-INF/processes.xml. It can be an empty file but it must be there. Otherwiese your Process Application is not recognized as Process Application!
+</p> 
+
+Typically you will add the processes.xml to your <code>src/main/resources/META-INF</code> folder.
+
+<div class="app-source" app-source-no-tabs="processes.xml" annotate="code-annotations" ></div>
+<script type="text/xml" id="processes.xml">
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<process-application
+  xmlns="http://www.camunda.org/schema/1.0/ProcessApplication"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+
+  <process-archive name="loan-approval">
+    <process-engine>default</process-engine>
+    <properties>
+      <property name="isDeleteUponUndeploy">false</property>
+      <property name="isScanForProcessDefinitions">true</property>
+    </properties>
+  </process-archive>
+
+</process-application>
+</script> 
+
+
+
+
+
+
+<h1>Migration from camunda fox 6.x</h1>
+
+<div class="alert">
+    <strong>Note that the Process Application logic has slightly changed from camunda fox 6.x (the predecessor to camunda BPM 7.0), you need to migrate your applications.</strong>
+</div>
+
+<p>
+  Please follow the instructions in the <a href="<%= @docUrl('implement/java.html') %>#/engine/activiti-migration-guide">Activiti Migration Guide</a> which contains a section about camunda fox at the end.
+</p>
+
+
+</section>

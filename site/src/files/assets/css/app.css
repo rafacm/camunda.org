@@ -750,16 +750,24 @@ div.content-box {
          */
 }
 
+img {
+  max-width: 100%;
+}
+
 .community-users .span3:hover {
   background-color: lightgrey;
   filter: none;
   -webkit-filter: grayscale(0);
 }
 
-.community-users img,.modal img {
+.community-users img, .modal img.logo {
   max-width: 200px;
   max-height: 70px;
   padding: 10px;
+}
+
+.modal img.logo {
+  max-width: 100%;
 }
 
 .community-users .modal img {

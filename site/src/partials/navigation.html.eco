@@ -44,7 +44,7 @@
             </li>
 
             <li class="dropdown" ng-class="activeClass('/implement')">
-              <a href="implement.html" class="dropdown-toggle">
+              <a href="<%= @docUrl('implement.html') %>" class="dropdown-toggle">
                 Implement <b class="caret"></b>
               </a>
               <ul class="dropdown-menu">

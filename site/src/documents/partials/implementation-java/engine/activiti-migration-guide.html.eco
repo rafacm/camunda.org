@@ -1,0 +1,283 @@
+<section id="migration">
+
+<div class="page-header">
+      <h1>Activiti Migration Guide</h1>
+</div>
+  
+<div class="row-fluid">
+  <div class="span9">
+      Migration an existing application from Activiti 5.x (or camunda fox 6.x - see below) is very easy. This page describes the necessary steps.
+
+      <div class="alert alert-info">
+        <strong>Getting Help:</strong> If you have any trouble ask for assistance in the <a href="/app/community-forum.html">Forum</a>.
+       </div>      
+
+      <p>The changes in short are:</p>
+      <ul>
+          <li>Maven <strong>Dependencies</strong>, e.g. <code>activiti.jar</code> changed to <code>camunda-engine.jar</code>.</li>
+          <li><strong>Package Names</strong> changed from <code>org.activiti</code> to <code>org.camunda.bpm</code> for all modules (including engine, cdi and spring).</li>
+          <li>A couple of (internal) classes are renamed - see list below.</li>
+      </ul>
+
+      <p>There are some thing which have not changed yet:</p>
+      <ul>
+        <li>Database schema and table names. Note that we based our fork on Activiti 5.11 and the tables existant in this version.</p></li>
+        <li>The <code>activiti:</code> <a href="<%= @docUrl('implement/bpmn.html') %>#/concepts/custom-extensions">Custom Extensions</a> are kept. We will introduce our own namespace soon but keep backwards compatibility here anyway.</li>
+        <li>We still read the <code>activiti.cfg.xml</code> for the configuration of the Process Engine</li>
+      </ul>
+
+
+    </div>
+    <div class="span3">
+      <h3>On this page</h3>
+      <ul>            
+          <li>Migrating from Activiti</li>
+          <li>Migrating from camunda fox</li>
+      </ul>
+      <!--
+      <h3>There's more...</h3>
+      <ul>            
+          <li><a href="https://app.camunda.com/confluence/display/foxUserGuide/Test+Types+and+Scopes">Test Types and Scopes</a></li>
+      </ul>      
+    -->
+    </div>
+</div>
+  
+
+<h1>Migration Step by Step</h1>
+
+
+<dl class="dl-horizontal">
+
+    <dt>Migrate to Activiti 5.11</dt>
+    <dd>
+      We base our fork on the database schema of Activiti 5.11. So please <a href="http://www.activiti.org/userguide/index.html#databaseUpgrade">upgrade</a> your project to this database using the upgrade scripts provided by Activiti. If you are using a newer version best ask for assistence in the <a href="/app/community-forum.html">forum</a>.
+    </dd>
+
+    <dt>Exchange Library.</dt>
+    <dd>
+      
+      Exchange the existing library (here shown as Maven dependency)
+
+<div class="app-source" app-source-no-tabs="mvn1"></div>
+<script type="text/xml" id="mvn1">   
+<dependency>
+  <groupId>org.activiti</groupId>
+  <artifactId>activiti</artifactId>
+  <version>5.11</version>
+</dependency>      
+</script>
+
+      to
+
+<div class="app-source" app-source-no-tabs="mvn2"></div>
+<script type="text/xml" id="mvn2">   
+<dependency>
+  <groupId>org.camunda.bpm</groupId>
+  <artifactId>camunda-engine</artifactId>
+  <version>7.0.0-alpha1</version>
+</dependency>
+</script>
+
+      Make sure that you have the camunda Maven Repostory set correctly:
+
+<div class="app-source" app-source-no-tabs="mvn3"></div>
+<script type="text/xml" id="mvn3">        
+<repository>
+  <id>camunda-bpm-nexus</id>
+  <name>camunda-bpm-nexus</name>
+  <url>https://app.camunda.com/nexus/content/groups/public</url>
+</repository>
+</script>
+    </dd>
+
+    <dt>Adjust package names</dt>
+    <dd>
+      <p>
+        Just do an <strong>Organize Import</strong> in your IDE, that should do the trick as API class names have not changed. Your IDE should figure out the rest for you
+      </p>
+      <p>For Eclipse this can be done by clicking on the project and hit <code>Ctrl-Shift-O</code>.</p>
+    </dd>
+    
+</dl>
+
+
+<div class="accordion" id="accClassloading">
+  <div class="accordion-group">
+    <div class="accordion-heading">
+      <a class="accordion-toggle collapsed" data-toggle="collapse" data-parent="#accClassloading" href="#accClassloadingCollapsed"> <i class="icon-question-sign"></i> 
+        Which Activiti class names have changed?
+      </a>
+    </div>
+    <div id="accClassloadingCollapsed" class="accordion-body collapse">
+      <div class="accordion-inner">
+
+
+        <p>Only a few class names have changed.</p>
+
+          <table class="table table-striped">
+            <thead>
+              <tr>
+                <th>component</th>
+                <th>Activiti class name</th>
+                <th>camunda class name</th>
+              </tr>
+            </thead>
+            <tbody>          
+              <tr>
+                <td>engine</td>
+                <td>ActivitiException</td>
+                <td>ProcessEngineException</td>
+              </tr>
+              <tr>
+                <td></td>
+                <td>ActivitiClassLoadingException</td>
+                <td>ClassLoadingException</td>
+              </tr>
+              <tr>
+                <td></td>
+                <td>ActivitiOptimisticLockingException</td>
+                <td>OptimisticLockingException</td>
+              </tr>
+              <tr>
+                <td></td>
+                <td>ActivitiTaskAlreadyClaimedException</td>
+                <td>TaskAlreadyClaimedException</td>
+              </tr>
+              <tr>
+                <td></td>
+                <td>ActivitiWrongDbException</td>
+                <td>WrongDbException</td>
+              </tr>
+              <tr>
+                <td></td>
+                <td>ActivitRule</td>
+                <td>ProcessEngineRule</td>
+              </tr>
+              <tr>
+                <td></td>
+                <td>ActivitiTestCase</td>
+                <td>ProcessEngineTestCase</td>
+              </tr>
+              <tr>
+                <td></td>
+                <td>PluggableActivitiTestCase</td>
+                <td>PluggableProcessEngineTestCase</td>
+              </tr>
+              <tr>
+                <td></td>
+                <td>AbstractActivitiTestCase</td>
+                <td>AbstractProcessEngineTestCase</td>
+              </tr>
+              <tr>
+                <td></td>
+                <td>ResourceActivitiTestCase</td>
+                <td>ResourceProcessEngineTestCase</td>
+              </tr>
+              <tr>
+                <td>spring</td>
+                <td>ActivitiComponent</td>
+                <td>ProcessEngineComponent</td>
+              </tr>
+              <tr>
+                <td></td>
+                <td>SpringActivitiTestCase</td>
+                <td>SpringProcessEngineTestCase</td>
+              </tr>
+              <tr>
+                <td>cdi</td>
+                <td>ActivitiCdiException</td>
+                <td>ProcessEngineCdiException</td>
+              </tr>
+              <tr>
+                <td></td>
+                <td>ActivitiExtension</td>
+                <td>ProcessEngineExtension</td>
+              </tr>
+              <tr>
+                <td></td>
+                <td>CdiActivitiTestCase</td>
+                <td>CdiProcessEngineTestCase</td>
+              </tr>
+          </table>
+
+
+      </div>
+    </div>
+  </div>
+</div>
+
+<p>That's it - your application should run again.</p>
+
+
+
+
+
+<h1>Migrate from camunda fox</h1>
+
+<p>As camunda fox included the Activiti engine you have to do the steps above as well. Note that <strong>camunda fox EE 6.2</strong> or <strong>camunda fox CE 1.34</strong> has the same database structure as camunda BPM 7.0.</p>
+
+
+<p>You have to follow these steps:</p>
+<ul>
+  <li>
+    Do the Activiti migration as described above as camunda fox included the Activiti engine. Note that camunda fox EE 6.2 or camunda fox CE 1.34 has the same database structure as camunda BPM 7.0.
+  </li>
+  <li>Remove the <code>fox-platform-client.x.jar</code> from your deployment - it is not needed anymore.</li>
+  <li>Add a Process Application Class, see <a href="<%= @docUrl('implement/java.html') %>#/engine/process-application">Process Applications</a>.</li>
+  <li>Adjust the processes.xml to the new format, see <a href="<%= @docUrl('implement/java.html') %>#/engine/process-application">Process Applications</a>.</li>
+  <li>If you use the new camunda Tasklist component you have to adjust the <code>formKey</code>, as described in the <a href="http://localhost:8000/app/implement-getting-started.html">Getting Started Tutorial</a>. We provide more information soon.</li>
+  <li>
+    <p>
+      If you use the <code>fox.taskForm</code> bean as described in <a href="https://app.camunda.com/confluence/display/foxUserGuide/Add+forms+to+your+Process+Application">Add forms to your Process Application</a> you have to make sure to have the <code>camunda-engine-cdi</code> dependency on your classpath:
+    </p>
+
+<div class="app-source" app-source-no-tabs="mvnCdi"></div>
+<script type="text/xml" id="mvnCdi">   
+<dependency>
+  <groupId>com.camunda.bpm</groupId>
+  <artifactId>camunda-engine-cdi</artifactId>
+  <version>7.0.0-alpha1</version>
+</dependency>      
+</script>
+
+  </li>
+</ul>
+
+<div class="accordion" id="foxClasses">
+  <div class="accordion-group">
+    <div class="accordion-heading">
+      <a class="accordion-toggle collapsed" data-toggle="collapse" data-parent="#foxClasses" href="#foxClassesCollapsed"> <i class="icon-question-sign"></i> 
+        Which camunda fox class names have changed?
+      </a>
+    </div>
+    <div id="foxClassesCollapsed" class="accordion-body collapse">
+      <div class="accordion-inner">
+
+
+        <p>Only a few class names have changed:</p>
+
+        <table class="table table-striped">
+          <thead>
+            <tr>
+              <th>component</th>
+              <th>camunda fox class name</th>
+              <th>camunda BPM class name</th>
+            </tr>
+          </thead>
+          <tbody>          
+            <tr>
+              <td>fox-platform-client</td>
+              <td>ProcessArchiveSupport</td>
+              <td>DefaultEjbProcessApplication</td>
+            </tr>            
+        </table>
+
+
+      </div>
+    </div>
+  </div>
+</div>
+
+
+</section>

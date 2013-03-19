@@ -5,8 +5,6 @@ layout: 'default'
 
 ---
 
-<div data-ng-include=" 'templates/breadcrumbs.html' "></div>
-
 <div class="row-fluid doc">
 
   <div class="span3">
