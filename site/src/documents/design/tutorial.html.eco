@@ -1,0 +1,464 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>camunda.org - the camunda bpm community homepage</title>
+
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+<meta name="author" content="camunda.org community" />
+
+
+<!-- For IE6-8 support of HTML5 elements -->
+<!--[if lt IE 9]>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+<![endif]-->
+
+<script type="text/javascript">
+
+(function(a,b){typeof module!="undefined"?module.exports=b():typeof define=="function"&&define.amd?define(a,b):this[a]=b()})("$script",function(){function q(a,b,c){for(c=0,j=a.length;c<j;++c)if(!b(a[c]))return k;return 1}function r(a,b){q(a,function(a){return!b(a)})}function s(a,b,i){function o(a){return a.call?a():d[a]}function p(){if(!--n){d[m]=1,k&&k();for(var a in f)q(a.split("|"),o)&&!r(f[a],o)&&(f[a]=[])}}a=a[l]?a:[a];var j=b&&b.call,k=j?b:i,m=j?a.join(""):b,n=a.length;return setTimeout(function(){r(a,function(a){if(h[a])return m&&(e[m]=1),h[a]==2&&p();h[a]=1,m&&(e[m]=1),t(!c.test(a)&&g?g+a+".js":a,p)})},0),s}function t(c,d){var e=a.createElement("script"),f=k;e.onload=e.onerror=e[p]=function(){if(e[n]&&!/^c|loade/.test(e[n])||f)return;e.onload=e[p]=null,f=1,h[c]=2,d()},e.async=1,e.src=c,b.insertBefore(e,b.firstChild)}var a=document,b=a.getElementsByTagName("head")[0],c=/^https?:\/\//,d={},e={},f={},g,h={},i="string",k=!1,l="push",m="DOMContentLoaded",n="readyState",o="addEventListener",p="onreadystatechange";return!a[n]&&a[o]&&(a[o](m,function u(){a.removeEventListener(m,u,k),a[n]="complete"},k),a[n]="loading"),s.get=t,s.order=function(a,b,c){(function d(e){e=a.shift(),a.length?s(e,d):s(e,b,c)})()},s.path=function(a){g=a},s.ready=function(a,b,c){a=a[l]?a:[a];var e=[];return!r(a,function(a){d[a]||e[l](a)})&&q(a,function(a){return d[a]})?b():!function(a){f[a]=f[a]||[],f[a][l](b),c&&c(e)}(a.join("|")),s},s})
+
+  $script.path('assets/js/');
+
+  $script([    
+    'http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js',             
+    'http://ajax.googleapis.com/ajax/libs/angularjs/1.0.1/angular.min.js',       
+    'lib/raphaeljs/raphael',       
+    ], function() {
+      $script([
+        
+        'app/cabpmn', 
+        'lib/bootstrap/bootstrap.min',       
+        'lib/angular/angular-resource.min',
+        'lib/angular/angular-bootstrap.min',
+        'app/app'
+
+        ], function() {
+          $script([        
+            'app/directives/ngmif',
+            'app/directives/focused',
+            'app/docs/docs',
+            'app/docs/pages'          
+
+          ], function() {
+            
+            angular.bootstrap(document, ['camundaorg']);
+
+            // post app bootstrap
+            $script([     
+              'lib/analytics/analytics',
+            ]);
+          });
+
+        });      
+  });
+</script>
+
+<!-- loads all stylesheets -->
+<link href="assets/css/loader.css" rel="stylesheet" />
+
+<base app-base="" />
+
+</head>
+<body ng-controller="DefaultController">
+  <div class="wrapper">
+    <!-- navigation -->
+
+
+
+    <!-- ========================================================================== -->
+    <!-- navigation start                                                           -->
+
+    <div class="navbar navbar-inverse navbar-fixed-top">
+      <div class="navbar-inner">
+        <div class="container">
+          <button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+            <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span>
+          </button>
+          <!-- logo -->
+          <a class="brand ir" href="index.html"> </a>
+          <div class="nav-collapse collapse">
+            <ul class="nav">
+              <ul class="nav" ng-controller="NavigationController">
+                <li ng-class="activeClass('/index.html')"><a href="index.html">Home</a></li>
+                <li ng-class="activeClass('/download.html')"><a href="download.html">Download</a></li>
+                <li ng-class="activeClass('/design-')"><a href="design-overview.html" class="caret-before">Design</a></li>
+                <li class="dropdown"><a class="dropdown-toggle caret-after" data-toggle="dropdown"> <b class="caret"></b></a>
+                  <ul class="dropdown-menu">
+                    <li ng-class="activeClass('/design-overview.html')"><a href="design-overview.html">Overview</a></li>
+                    <li class="divider"></li>
+                    <li class="nav-header">Tools</li>
+                    <li ng-class="activeClass('/design-modeler.html')"><a href="design-modeler.html">camunda Modeler</a></li>
+                    <li ng-class="activeClass('/design-cycle-tutorial.html')"><a href="design-cycle-tutorial.html">camunda Cycle</a></li>
+                    <li class="divider"></li>
+                    <li class="nav-header">Know-how</li>
+                    <li ng-class="activeClass('/design-tutorial.html')"><a href="design-tutorial.html">BPMN 2.0 Tutorial</a></li>
+                    <li ng-class="activeClass('/design-reference.html')"><a href="design-reference.html#/reference">BPMN 2.0 Reference</a></li>
+                  </ul></li>
+                <li ng-class="activeClass('/implement')"><a href="implement.html" class="caret-before">Implement</a></li>
+                <li class="dropdown"><a class="dropdown-toggle caret-after" data-toggle="dropdown"> <b class="caret"></b></a>
+                  <ul class="dropdown-menu">
+                    <li ng-class="activeClass('/implement.html')"><a href="implement.html">Overview</a></li>
+                    <li ng-class="activeClass('/implement-getting-started.html')"><a href="implement-getting-started.html">Getting Started</a></li>
+                    <li class="divider"></li>
+                    <li class="nav-header">Process Engine</li>
+                    <li ng-class="activeClass('/implement-java.html')"><a href="implement-java.html#/engine/configuration-and-startup">Java Reference</a></li>
+                    <li ng-class="activeClass('/implement-bpmn.html')"><a href="implement-bpmn.html#/index">BPMN 2.0 Reference</a></li>
+                    <li ng-class="activeClass('/implement-rest.html')"><a href="implement-rest.html#/overview/introduction">REST API</a></li>
+                    <li class="nav-header">Tools</li>
+                    <li ng-class="activeClass('/implement-tasklist.html')"><a href="implement-tasklist.html">camunda tasklist</a></li>
+                    <li ng-class="activeClass('/implement-cockpit.html')"><a href="implement-cockpit.html">camunda cockpit</a></li>
+                  </ul></li>
+                <li ng-class="activeClass('/community')"><a href="community.html" class="caret-before">Community</a></li>
+                <li class="dropdown"><a class="dropdown-toggle caret-after" data-toggle="dropdown"> <b class="caret"></b></a>
+                  <ul class="dropdown-menu">
+                    <li ng-class="activeClass('/community.html')"><a href="community.html">Overview</a></li>
+                    <li class="nav-header">Users</li>
+                    <li ng-class="activeClass('/community-forum.html')"><a href="community-forum.html">Forum</a></li>
+                    <li ng-class="activeClass('/community-meetings')"><a href="community-meetings.html">Next Meetings</a></li>
+                    <li ng-class="activeClass('/community-users.html')"><a href="community-users.html">Who's using it?</a></li>
+                    <li class="divider"></li>
+                    <li class="nav-header">Contributors</li>
+                    <li ng-class="activeClass('/community-vision.html')"><a href="community-vision.html">Our Vision</a></li>
+                    <li ng-class="activeClass('/community-contribute.html')"><a href="community-contribute.html">How to Contribute</a></li>
+                    <li ng-class="activeClass('/community-team.html')"><a href="community-team.html">Team</a></li>
+                  </ul></li>
+                <li ng-class="activeClass('/support.html')"><a href="support.html">Support</a></li>
+              </ul>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ========================================================================== -->
+    <!-- navigation end                                                           -->
+
+
+
+    <div class="container">
+
+      <div style="padding-top: 80px; text-align: center">
+        <h1 style="color: #333">BPMN 2.0</h1>
+        <h3>Tutorial</h3>
+      </div>
+      <!--<div tutorial="partials/design/tutorial.md" />-->
+      <div class="row">
+        <div id="navSide" class="span3 bs-docs-sidebar">
+          <ul class="nav nav-list bs-docs-sidenav" data-ca-affix>
+            <li><a href="#intro"><i class="icon-chevron-right"></i> Why should I care?</a></li>
+            <li><a href="#simpleSect"><i class="icon-chevron-right"></i> A simple flow</a></li>
+            <li><a href="#shipmentSect"><i class="icon-chevron-right"></i> Example: Shipment Process</a></li>
+            <li><a href="#pizzaSect"><i class="icon-chevron-right"></i> Example: Pizza Collaboration</a></li>
+            <li><a href="#aboutSect"><i class="icon-chevron-right"></i> Want to learn more?</a></li>
+          </ul>
+        </div>
+
+        <div class="span9" data-bpmn-tutorial>
+          <section id="intro">
+            <div class="page-header">
+              <h1>Why should I care about BPMN 2.0?</h1>
+            </div>
+            <p>Business Process Model and Notation (BPMN) is the global standard for process modelling and one of the most important components of a
+              successful Business-IT-Alignment.</p>
+            <p>More and more organisations are using BPMN and in more and more universities BPMN is taught as a subject. These are the reasons:</p>
+            <dl class="dl-horizontal">
+              <dt>Standard</dt>
+              <dd>
+                BPMN is not owned by a certain enterprise but by an institution (<a href="http://www.omg.org">OMG</a>), which is already established through
+                other world-wide standards, e.g. UML. The standard is supported by many software products; you are less dependent on any particular vendor's
+                products.
+              </dd>
+              <dt>Simplicity</dt>
+              <dd>The principle behind BPMN is rather simple which is why you can very quickly work with this notation.</dd>
+              <dt>Power of expression</dt>
+              <dd>If necessary, with BPMN you can describe precisely how a process functions. This is however more difficult than describing the process
+                only roughly. This way of precise modelling is possible, but not mandatory.</dd>
+              <dt>Implementation in IT</dt>
+              <dd>BPMN has been primarily developed to support a technical implementation of processes ("Process Automation"). The more important the IT is
+                in a company, the more helpful is the use of BPMN.</dd>
+            </dl>
+          </section>
+          <section id="simpleSect">
+            <div class="page-header">
+              <h1>A simple flow</h1>
+            </div>
+            <p>Let's have a look at a rather simple BPMN process diagram:</p>
+            <div class="label label-warning">Hover over orange symbols for explanation</div>
+            <div id="simple" style="position: relative" data-bpmn-src="tutorial/simple_flow">
+              <div class="tutPop" id="sid-B04D1D48-F63A-440D-8354-072FEA072E41" rel="popover" title="Start Event"
+                data-content="Start events show which event causes the process to start. Start Evens are always catching events."></div>
+              <div class="tutPop" id="sid-4A1FEF34-88D7-4845-940F-9C048C11B5A6" rel="popover" title="Task"
+                data-content="Tasks are the heart of the process. Ultimately, something has to happen to bring about a desired outcome. In BPMN, a task technically is part of the activities category, which also includes the sub-process">
+              </div>
+              <div class="tutPop" id="sid-BC888BAA-90B0-4173-ACAA-F1621EE71B2D" rel="popover" title="Intermediate Event"
+                data-content="Intermediate events stand for a status that is reached in the process and that is modeled explicitly. They are used infrequently, but intermediate events can be useful, for example, if you regard reaching a certain status as a milestone and you want to measure the time until the milestone is reached. Intermeidate none events are always throwing events.">
+              </div>
+              <div class="tutPop" id="sid-153C934A-CC9F-4169-A816-6CBE7B159D1E" rel="popover" title="End Event"
+                data-content="End events mark the status reached at the end of the process path. End events are always throwing events."></div>
+
+            </div>
+            <p>This diagram shows a simple process triggered by someone being hungry. The result is that someone must shop for groceries and prepare a meal.
+              After that, someone will eat the meal and have his or her hunger satisfied.</p>
+            <div class="accordion" id="accSimple">
+              <div class="accordion-group">
+                <div class="accordion-heading">
+                  <a class="accordion-toggle" data-toggle="collapse" data-parent="#accSimple" href="#collapseOne"> <i class="icon-thumbs-up"></i> Best
+                    Practice: Naming Conventions
+                  </a>
+                </div>
+                <div id="collapseOne" class="accordion-body collapse">
+                  <div class="accordion-inner">
+                    <p>When naming tasks, we try to adhere to the object-orientated design principle of using the [verb] + [object] pattern. We would say
+                      "acquire groceries," for example, not "first take care of shopping for groceries."</p>
+                    <p>
+                      Events refer to something that has already happened regardless of the process (if they are catching events) and as a result of the process
+                      (if they are throwing events). For this reason, we use the [object] and make the [verb] passive in voice, so we write "hunger noticed."
+                      BPMN does not require you to model start and end events for a process - you can leave them out - but <b>if</b> you model a start event,
+                      you must model an end event for each path. The same is true for end events that require start events. We always create our models with
+                      start and end events for two reasons: first, that way it's possible to determine the process trigger, and second, you can describe the
+                      final status of each path end. We only sometimes abandon this practice with sub-processes. More on this later.
+                    </p>
+                  </div>
+                </div>
+              </div>
+              <div class="accordion-group">
+                <div class="accordion-heading">
+                  <a class="accordion-toggle" data-toggle="collapse" data-parent="#accSimple" href="#collapseTwo"> <i class="icon-question-sign"></i> FAQ:
+                    Is it obligatory to draw BPMN diagrams horizontally? What if I prefer to draw them vertically?
+                  </a>
+                </div>
+                <div id="collapseTwo" class="accordion-body collapse">
+                  <div class="accordion-inner">You could always draw your diagrams from top to bottom instead fom left to right - the BPMN 2.0 standard
+                    does not forbid it. However we do not recommend it: It is very uncommon, and experience has proven that people tend to understand the
+                    process flow better if it is described in the same way like written text (from left to right, at least in the western world).</div>
+                </div>
+              </div>
+            </div>
+          </section>
+          <section id="shipmentSect">
+            <div class="page-header">
+              <h1>Shipment Process of a Hardware Retailer</h1>
+            </div>
+            <div class="alert alert-info">
+              This and the next examples are based on the contributions we made to the document "BPMN 2.0 by example", the BPMN tutorial provided by OMG (<a href="http://www.omg.org/cgi-bin/doc?dtc/10-06-02.pdf">Download as PDF</a>).
+            </div>
+            <p>In this diagram you can find the preparing steps a hardware retailer has to fulfill before the ordered goods can actually be shipped to the
+              customer:</p>
+            <div class="label label-warning">Hover over orange symbols for explanation</div>
+            <div style="width: 100%; overflow-x:scroll;  ">
+              <div id="shipment" style="position: relative" data-bpmn-src="tutorial/examples/shipment">
+                <div class="tutPop" data-placement="right" id="StartEvent_1" rel="popover" title="Start Event"
+                  data-content="The plain start event 'goods to ship' indicates that this preparation should be done now.">
+                </div>
+                <div class="tutPop" id="ParallelGateway_1" rel="popover" title="Parallel Gateway"
+                  data-content="Right after the instantiation of the process, there are two things done in parallel, as the parallel gateway indicates: While the clerk has to decide whether this is a normal postal or a special shipment (we do not define the criteria how to decide this inside the process model), the warehouse worker can already start packaging the goods.">
+                </div>
+                <div class="tutPop" data-placement="right" id="Task_1" rel="popover" title="Task"
+                  data-content="This clerk's task, which is followed by the exclusive gateway 'mode of delivery', is a good example for clarifying the recommended usage of an exclusive data-based gateway: The gateway is not responsible for the decision whether this is a special or a postal shipment. Instead, this decision is undertaken in the activity before. The gateway only works as a router, which is based on the result of the previous task, and provides alternative paths. A task represents an actual unit of work, while a gateway is only routing the sequence flow.">
+                </div>
+                <div class="tutPop" id="ExclusiveGateway_1" rel="popover" title="Exclusive Gateway"
+                  data-content="This gateway is called 'exclusive', because only one of the following two branches can be traversed: If we need a special shipment, the clerk requests quotes from different carriers, then assigns a carrier and prepares the paperwork. But if a normal post shipment is fine, the clerk needs to check if an extra insurance is necessary.">
+                </div>
+                <div class="tutPop" id="InclusiveGateway_1" rel="popover" title="Inclusive Gateway"
+                  data-content="If an extra insurance is required, the logistics manager has to take out that insurance. In any
+              case, the clerk has to fill in a postal label for the shipment. For this scenario, the shown inclusive gateway is helpful, because we can show that one branch is always taken, while the other one only if the extra insurance is required, but IF it is taken, this can happen in parallel to the first branch. Because of this parallelism, we need the synchronizing inclusive gateway right behind 'Fill in a Post label' and 'Take out extra insurance'.">
+                </div>                
+                <div class="tutPop" id="InclusiveGateway_2" rel="popover" title="Inclusive Gateway (Synchronizing)"
+                  data-content="In this scenario, the inclusive gateway will always wait for 'Fill in a Post label' to be completed, because that is always started. If an extra insurance was required, the inclusive gateway will also wait for 'Take out extra insurance' to be finished.">
+                </div>                
+                <div class="tutPop" data-placement="top" id="ParallelGateway_2" rel="popover" title="Parallel Gateway (Synchronizing)"
+                  data-content="Furthermore, we also need the synchronizing parallel gateway before the last task 'add paperwork and move package to pick area', because we want to make sure that everything has been fulfilled before the last task is executed.">
+                </div>                
+
+              </div>
+            </div>
+            <p style="padding-top:30px;">In this example, we used only one pool and different lanes for the people involved in this process, which automatically means that we blank out the communication between those people: We just assume that they are communicating with each other somehow. If we had a process engine driving this process, that engine would assign user tasks and therefore be responsible for the communication between those people. If we do not have such a process engine, but want to model the communication between the people involved explicitly, we would have to use a collaboration diagram as in the next chapter.</p>
+            </p>
+          </section>
+          <section id="pizzaSect">
+            <div class="page-header">
+              <h1>The Pizza Collaboration</h1>
+            </div>
+            <p>This example is about Business-To-Business-Collaboration. Because we want to model the interaction between a pizza customer and the vendor  explicitly, we have classified them as "participants", therefore providing them with dedicated pools:</p>
+            <div class="label label-warning">Hover over orange symbols for explanation</div>            
+            <div style="width: 100%; overflow-x: scroll">
+              <div id="pizza" style="position: relative" data-bpmn-src="tutorial/examples/pizza">
+                <div class="tutPop" data-placement="right" id="StartEvent_1" rel="popover" title="Start Event"
+                  data-content="If we step through the diagram, we should start with the pizza customer, who has noticed her stomach growling. The customer therefore selects a pizza and orders it. ">
+                </div> 
+                <div class="tutPop" data-placement="bottom" id="EventBasedGateway_1" rel="popover" title="Event-based Gateway"
+                  data-content="The customer waits for the pizza to be delivered. The event-based gateway indicates that the customer actually waits for two different events that could happen next: Either the pizza is delivered, as indicated with the following message event, or there is no delivery for 60 minutes, i.e., after one hour the customer skips waiting and calls the vendor, asking for the pizza. We now assume that the clerk promises the pizza to be delivered soon, and the customers waits for the pizza again,
+              asking again after the next 60 minutes, and so on. ">
+                </div>    
+                <div class="tutPop" data-placement="right" id="StartEvent_2" rel="popover" title="Start Event"
+                  data-content="Let's have a closer look at the vendor process now. It is triggered by the order of the customer, as shown with the message start event and the message flow going from 'order a pizza' to that event After baking the pizza, the delivery boy will deliver the pizza and receive the payment.">
+                </div>  
+                <div class="tutPop" data-placement="bottom" id="IntermediateCatchEvent_1" rel="popover" title="Message Event"
+                  data-content="In this example, we use message events not only for informational objects, as the pizza order, but also for physical objects, like the pizza. We can do this, because those physical objects actually act as informational objects inherently: When the pizza arrives at the customer's door, she will recognize this arrival and therefore know that the pizza has arrived, which is exactly the purpose of the accordant message event in the customer's pool. Of course, we can only use the model in that way because this example is not meant to be executed by a process engine.">
+                </div>                  
+              </div>
+            </div>
+            <p style="padding-top:30px;">Please note that there is no default semantics in this type of modeling, which means you can model collaboration diagrams to show the interaction between business partners, but also zoom into one company, modeling the interaction between different departments, teams or even single workers and software systems in collaboration diagrams. It is totally up to the purpose of the model and therefore a decision the modeler has to make, whether a collaboration diagram with different pools is useful, or whether one should stick to one pool with different lanes, as shown in the previous chapter. 
+               </p>
+          </section>
+          <section id="aboutSect" style="padding-bottom: 100px;">
+            <div class="page-header">
+              <h1>Want to learn more?</h1>
+            </div>
+            <p>
+              If you want to get a deeper understanding of BPMN 2.0, you can
+              <ul>
+                <li>check out our BPMN handbook (see below),</li>
+                <li><a href="http://www.camunda.com/consulting/bpmn/overview/">attend/book a training</a> or</li>
+                <li>read our <a href="design-reference.html#/reference">BPMN 2.0 Reference</a> online.</li>
+              </ul>
+            </p>
+            <hr />
+            <div class="row-fluid">
+              <div class="span4">
+                <div class="span4">
+                  <img src="http://ecx.images-amazon.com/images/I/41XSes77XSL._SL135_.jpg" />
+                </div>
+                <div class="span8">
+                  <p>
+                    <img src="http://www.bpm-guide.de/wp-content/plugins/polyglot2/polyglot_flags/uk.png"> English Edition<br /> <b>Real Life BPMN</b>
+                  </p>
+                  <p>
+                    <a c href="http://www.amazon.com/Real-Life-BPMN-Analyze-Automate-Processes/dp/1480034983">Get at Amazon.com</a>
+                </div>
+              </div>
+              <div class="span4">
+                <div class="span4">
+                  <img src="http://ecx.images-amazon.com/images/I/414DcF8OJaL._SL135_.jpg" />
+                </div>
+                <div class="span8">
+                  <p>
+                    <img src="http://www.bpm-guide.de/wp-content/plugins/polyglot2/polyglot_flags/es.png"> Spanish Edition<br /> <b>BPMN 2.0 Manual</b>
+                  </p>
+                  <p>
+                    <a href="http://www.amazon.com/BPMN-Manual-Referencia-Pr�ctica-Spanish/dp/1460903935">Get at Amazon.com</a>
+                </div>
+
+              </div>
+              <div class="span4">
+                <div class="span4">
+                  <img src="http://files.hanser.de/hanser/pics/978-3-446-42986-4_2122714399-110.jpg" />
+                </div>
+                <div class="span8">
+                  <p>
+                    <img src="http://www.bpm-guide.de/wp-content/plugins/polyglot2/polyglot_flags/de.png"> German Edition<br /> <b>Praxishandbuch
+                      BPMN</b>
+                  </p>
+                  <p>
+                    <a href="http://www.amazon.de/Praxishandbuch-BPMN-2-0-Jakob-Freund/dp/3446429867">Get at Amazon.de</a>
+                </div>
+              </div>
+            </div>
+          </section>
+
+
+        </div>
+      </div>
+    </div>
+
+    <div class="push-down">
+      <!-- // -->
+    </div>
+  </div>
+  <!-- footer -->
+  <footer class="footer">
+    <div class="container container-footer">
+      <p>
+        <a href="index.html">camunda.org</a> - created and maintained by <a href="http://www.camunda.com">camunda services GmbH</a> | This page is built with <a
+          href="http://angularjs.org/">angularjs</a>
+      </p>
+      <div class="row-fluid">
+        <div class="span3">
+          <h4>Design</h4>
+          <ul>
+            <li><a href="design-overiew.html">Overview</a></li>
+            <li><a href="design-modeler.html">camunda Modeler</a></li>
+            <li><a href="design-cycle-tutorial.html">camunda Cycle</a></li>
+            <li><a href="design-tutorial.html">BPMN 2.0 Tutorial</a></li>
+            <li><a href="design-reference.html#/reference">BPMN 2.0 Reference</a></li>
+
+          </ul>
+        </div>
+        <div class="span3">
+          <h4>Implement</h4>
+          <ul>
+            <li><a href="implement.html">Overview</a></li>
+            <li><a href="implement-getting-started.html">Getting Started</a></li>
+            <li><a href="implement-java.html#/engine/configuration-and-startup">Java Reference</a></li>
+            <li><a href="implement-bpmn.html#/index">BPMN 2.0 Reference</a></li>
+            <li><a href="implement-rest.html#/overview/introduction">REST API</a></li>
+            <li><a href="implement-tasklist.html">camunda Tasklist</a></li>
+            <li><a href="implement-cockpit.html">camunda Cockpit</a></li>
+          </ul>
+        </div>
+        <div class="span3">
+          <h4>Community</h4>
+          <ul>
+            <li><a href="community.html">Overview</a></li>
+            <li><a href="community-forum.html">Forum</a></li>
+            <li><a href="community-meetings.html">Next Meetings</a></li>
+            <li><a href="community-users.html">Who's using it?</a></li>
+            <li><a href="community-vision.html">Our Vision</a></li>
+            <li><a href="community-contribute.html">How to Contribute</a></li>
+            <li><a href="community-team.html">Team</a></li>
+          </ul>
+        </div>
+        <div class="span3">
+          <h4>Support</h4>
+          <ul>
+            <li><a href="support.html">Overview</a></li>
+            <li><a href="http://www.camunda.com/fox/product/community-vs-enterprise/">Enterprise Edition</a></li>
+            <li><a href="http://www.camunda.com/fox/services/consulting-training/">Consulting</a></li>
+            <li><a href="http://www.camunda.com/fox/training/camunda-bpm-basics/">Training</a></li>
+          </ul>
+        </div>
+
+      </div>
+      <span class="spacer"></span>
+    </div>
+<!-- WiredMinds eMetrics tracking with Enterprise Edition V6.0 START -->
+    <script type="text/javascript">
+    <!--
+    var wiredminds = [];
+    wiredminds.push(["setTrackParam", "wm_custnum", "eca343094da1ee95"]);
+    // Begin own parameters.
+    wiredminds.push(["setTrackParam", "wm_campaign_key", "wmc"]);
+    wiredminds.push(["registerHeatmapEvent", "mousedown"]);// End own parameters.
+    wiredminds.push(["count"]);
+
+    (function() {
+        function wm_async_load() {
+            var wm = document.createElement("script");
+            wm.type = "text/javascript";
+            wm.async = true;
+            wm.src = "http://test.wiredminds.de/track/count.js";
+            var el = document.getElementsByTagName('script')[0];
+            el.parentNode.insertBefore(wm, el);
+        }
+
+        if (window.addEventListener) {
+            window.addEventListener('load', wm_async_load, false);
+        } else if (window.attachEvent){
+            window.attachEvent('onload', wm_async_load);
+        }
+    })();
+    // -->           
+    </script>
+
+    <noscript>
+    <div>
+    <a href="http://www.wiredminds.de"><img
+     src="http://test.wiredminds.de/track/ctin.php?wm_custnum=eca343094da1ee95&amp;nojs=1"
+     alt="" style="border:0px;"/></a>
+    </div>
+    </noscript>
+<!-- WiredMinds eMetrics tracking with Enterprise Edition V6.0 END -->
+  </footer>
+</body>
+</html>
