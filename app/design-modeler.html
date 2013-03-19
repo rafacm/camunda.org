@@ -210,9 +210,11 @@
         <h3 style="margin-top:0px; margin-bottom:5px;">Eclipse Update Site:</h3>
         <a style="font-size:120%;" href="http://camunda.org/release/camunda-modeler/update-sites/latest/site/">http://camunda.org/release/camunda-modeler/update-sites/latest/site/</a>
         </div>
-
        </div>
      </div>
+	  <div class="alert alert-warning">    
+        <b>Heads up!</b> If you are using the fox-designer, please deinstall the fox-designer plugin before using the camunda Modeler. You can deinstall already installed plugins under  <em>Help</em> -->  <em>Install New Software...</em> -->  <em>What is already installed?</em>
+      </div>	 
      <div class="row">
         <div id="modeler_plugin_01" class="thumbnail span2" data-img-thumb img-src="./assets/img/modeler/modeler_plugin_01.png" ></div>      
       <div class="span4">
@@ -309,11 +311,14 @@
       In this case we suggest to reset the equinox secure storage. In order to do so you should look for the equinox secure storage location and delete it, as a result Eclipse creates the secure storage with the right permissions and format, generally the secure storage directory is in ~/.eclipse/org.eclipse.equinox.security.
       </p>
     -->
+	  <div class="alert alert-warning">    
+        <b>Heads up!</b> Please note that you cannot install the Activiti Designer and the camunda Modeler in the same Eclipse. It will cause both designers to not work properly.
+      </div>
       <h3>NoClassDefFoundError: graphiti</h3>
     <div class="row">
         <div id="exception-graphiti" class="thumbnail span2" data-img-thumb img-src="./assets/img/modeler/exception-graphiti.png" ></div>      
       <div class="span6">
-If you experience NoClassDefFoundErrors like the one shown here, graphiti was not properly installed. Graphiti is a framework used by the camunda modeler. This rarely happens when you had some other plug-ins using different versions of graphiti installed before the camunda modeler (one common example would be the Activiti Designer).
+		If you experience NoClassDefFoundErrors like the one shown here, graphiti was not properly installed. Graphiti is a framework used by the camunda modeler. This rarely happens when you had some other plug-ins using different versions of graphiti installed before the camunda modeler (one common example would be the Activiti Designer).
       </div>  
      </div>
     <div class="row" style="margin-top: 10px;">
