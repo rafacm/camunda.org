@@ -315,11 +315,11 @@ input.ng-invalid-required {
 }
 
 section {
-  padding-bottom: 30px;
+  padding-top: 30px;
 }
 
 .app-source {
-  margin-top:20px;
+  margin-top: 20px;
 }
 
 #continue-game {
