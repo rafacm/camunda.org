@@ -27,8 +27,6 @@
         section.pages.push(p);
         section.pageById[p.id] = p;
 
-        console.log(App.appBase());
-
         p.partialUrl = App.appBase() + "partials/" + p.section + p.url + ".html";
       }
 
