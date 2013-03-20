@@ -7,7 +7,7 @@
 				that are technically executable. Task types are applied infrequently in practice. We know from experience, however, that task types can be particularly useful when modeling engineering requirements. 
 			</p>
 			<div class="label label-warning">Hover over orange symbols for explanation</div>
-			<div id="task_types" style="position:relative" data-bpmn-src="tutorial/task_types">
+			<div id="task_types" style="position:relative;" data-bpmn-src="tutorial/task_types">
 
 				<div class="tutPop" id="sid-1077EBAA-70D6-47EE-9510-DF4479FAD35F" rel="popover" title="Manual Task" data-content="
 					Tasks executed by a human being that do not affect the completion of a task assigned by the process engine. All the tasks from our various pizza processes are manual types.
@@ -58,7 +58,7 @@
 			<p>
 				A loop task repeats until a defined condition either applies or ceases to apply. Perhaps we suggest various dishes to our dinner guests until everyone agrees. Then, we can prepare the meal:
 			</p>
-			<div id="task_loop" style="position:relative" data-bpmn-src="tutorial/task_loop">
+			<div id="task_loop" data-bpmn-src="tutorial/task_loop">
 			</div>
 			<p>
 				In the example, we executed the task first and checked afterwards to see if we needed it to execute again. Programmers know the principle as the "do-while" construct. 
@@ -76,7 +76,7 @@
 				they choose a pizza together. You can model this process using the "multiple task" (see below). 
 				A multiple task instantiates repeatedly and can be executed in sequence or in parallel, with the latter being the more interesting case.
 			</p>
-			<div id="task_mi" style="position:relative" data-bpmn-src="tutorial/task_mi">
+			<div id="task_mi" data-bpmn-src="tutorial/task_mi">
 			</div>
 		
 			<p>
@@ -94,6 +94,6 @@
 				As with the other markers, the compensation can be combined with the task types already introduced. A manual compensation task that repeats until it succeeds or that 
 				executes repeatedly and in parallel as far as possible, is therefore eminently practical. 
 			</p>
-			<div id="task_combinations" style="position:relative" data-bpmn-src="tutorial/task_combinations">
+			<div id="task_combinations" data-bpm-src="tutorial/task_combinations">
 			</div>	
 </div>

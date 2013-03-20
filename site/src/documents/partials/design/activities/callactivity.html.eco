@@ -18,7 +18,7 @@
 				A good example is the procurement of an item because a customer ordered it or you need to re-stock supply. Another example is invoicing because you've delivered or repaired an item as shown in 
 				the diagram below. In the example, notice that call activities differ from regular activities by their considerably thicker borders:
 			</p>
-			<div id="callActivities" style="position:relative" data-bpmn-src="tutorial/callActivities">
+			<div id="callActivities" data-bpmn-src="tutorial/callActivities">
 			</div>			
 			<p>
 				The connection a global subprocesses has to its parent is considerably less close, and they can have their own pools and lanes. You can think of the participant responsible for a subprocess as a 

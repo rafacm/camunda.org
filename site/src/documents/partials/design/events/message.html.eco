@@ -8,7 +8,7 @@
 				and represents or contains information for the addressee is a message. 
 			</p>
 				<div class="label label-warning">Hover over orange symbols for explanation</div>
-				<div id="message" style="position:relative" data-bpmn-src="tutorial/message">
+				<div id="message" style="position:relative;" data-bpmn-src="tutorial/message">
 					<div class="tutPop" id="sid-052EC62A-7B81-430F-A27A-821F7758C181" rel="popover" title="Intermediate Message Event" data-content="
 						In this example, the pizza ordering issue has been fully modeled: We choose a pizza, and we order it. We then wait for the pizza to be delivered. After delivery, we eat. 
 					">
@@ -27,7 +27,7 @@
 							<p>
 							Yes, you could:
 							</p>
-								<div id="message_throw" style="position:relative" data-bpmn-src="tutorial/message_throw">
+								<div id="message_throw" data-bpmn-src="tutorial/message_throw">
 								</div>			
 							<p>
 								<b>Heads up!</b> We are not always happy with the throwing intermediate event. Implying a "send message" task without modeling it explicitly can easily confuse 
@@ -45,6 +45,6 @@
 				the error, we can swear at the user for a different reason. If the user is not at fault, however, we thank him or her graciously for letting us know about the problem. 				
 			</p>
 
-			  <div id="message_boundary" style="position:relative" data-bpmn-src="tutorial/message_boundary">
+			  <div id="message_boundary" data-bpmn-src="tutorial/message_boundary">
 			</div>	
 </div>

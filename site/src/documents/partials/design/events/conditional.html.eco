@@ -10,6 +10,6 @@
 				We can enhance our pizza process with conditions. If we want to have frozen pizza, the process starts as shown in the diagram below. We take the pizza from the freezer and turn on the oven. 
 				But only after the temperature in the oven reaches 180 C do we put the pizza in, and only after it is done do we take it out to eat.  
 			</p>
-			<div id="conditional" style="position:relative" data-bpmn-src="tutorial/conditional">
+			<div id="conditional" data-bpmn-src="tutorial/conditional">
 			</div>
 </div>
