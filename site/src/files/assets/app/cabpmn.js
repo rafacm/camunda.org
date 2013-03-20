@@ -116,7 +116,7 @@ var endEventStyle = {
 
 	$.get(diagram + ".bpmn", function(data){
 		parseBpmnXml(data, paper, container);
-	});
+	}, "text");
 
 	caBpmnPapers[container[0].id] = paper;
 
