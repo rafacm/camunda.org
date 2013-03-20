@@ -5,12 +5,12 @@ layout: 'dark'
 
 ---
 
-<div style="position: relative; top: 80px; text-align: center">
+<div style="position: relative; margin-top: 90px; text-align: center">
   <h1 style="color: #333">Implement and Run your Processes</h1>
   <h3>with camunda BPM</h3>
 </div>
 
-<div style="position: relative; text-align: center; top: 120px;">
+<div style="position: relative; text-align: center; margin-top: 50px;">
 
   <div style="width: 543; margin: 0 auto">
 
