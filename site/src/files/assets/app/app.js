@@ -895,7 +895,7 @@ angular.module('camundaorg.directives')
           $.each( data.events, function( key, value ) {
 
             var myDateString = value.meeting.date.substring(0,6);
-            var myRow = myDateString + " | " + value.meeting.city + " | <a style='color:lightblue;' href='community-meetings-single.html?id=" + value.meeting.id + "'>" + value.meeting.subject + "</a><br/>";
+            var myRow = myDateString + " | " + value.meeting.city + " | <a style='color:lightblue;' href='community/meetings/register.html?id=" + value.meeting.id + "'>" + value.meeting.subject + "</a><br/>";
             element.append(myRow);
             
           });
