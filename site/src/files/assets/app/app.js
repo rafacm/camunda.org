@@ -1182,12 +1182,13 @@ angular.module('camundaorg.directives')
 
       // get pipe content via jsonp, using jquery because angular http seems to have a bug here:
       // getting a syntax error for our pipes
-      $.getJSON(url,
+      $.getJSON(url+"&_callback=?",
         function(data) {
           scope.items = data.value.items;
           scope.$digest();
         }
       );
+
     }
   };
 });
