@@ -1,0 +1,86 @@
+<section id="rest-embeddability">
+
+  <div class="page-header">
+      <h1>Embedding the API</h1>
+  </div>
+  
+  <div class="row-fluid">
+  <div class="span9">
+  <p>
+    The REST API is an artifact of its own, which means that it can be embedded in any other JAX-RS application independently of the engine.
+  </p>
+  
+  <h2>Prerequisites</h2>
+  <p>
+    We recommend to use the REST API classes with <a href="http://www.jboss.org/resteasy/">Resteasy</a> as the JAX-RS implementation.
+    Furthermore the engine classes and Jackson's <code>jackson-jaxrs</code> artifact have to be on the classpath.
+  </p>
+  
+  <h2>Required steps</h2>
+  <ul>
+    <li>
+      <p>
+        Add the REST API as a Maven dependency to your project.
+      </p>
+      <div class="app-source" app-source-no-tabs="maven-coordinates"></div>
+      <script type="application/json" id="maven-coordinates">
+        <dependency>
+          <groupId>org.camunda.bpm</groupId>
+          <artifactId>camunda-engine-rest</artifactId>
+          <classifier>classes</classifier>
+          <version>7.0.0</version>
+        </dependency>
+      </script>
+    </li>
+    <li>
+      <p>
+        Add those REST resources to your JAX-RS application that you need. Example:
+      </p>
+      <div class="app-source" app-source-no-tabs="example-application"></div>
+      <script type="application/json" id="example-application">
+        @ApplicationPath("/")
+        public class MyApplication extends Application {
+          
+          @Override
+          public Set<Class<?>> getClasses() {
+            Set<Class<?>> classes = new HashSet<Class<?>>();
+            
+            // add your own classes
+            ...
+
+            // add camunda engine rest classes that you need
+            classes.add(ProcessEngineRestServiceImpl.class);
+            classes.add(ProcessDefinitionRestServiceImpl.class);
+            classes.add(ProcessInstanceRestServiceImpl.class);
+            classes.add(TaskRestServiceImpl.class);
+            
+            // mandatory
+            classes.add(EngineQueryDtoGetReader.class);
+            classes.add(JacksonConfigurator.class);
+            return classes;
+          }
+        }
+      </script>
+      <p>
+        The classes <code>ProcessDefinitionRestServiceImpl</code>, <code>ProcessInstanceRestServiceImpl</code> and <code>TaskRestServiceImpl</code>
+        contain the methods as structured in this documentation. <code>ProcessEngineRestServiceImpl</code> adds the functionality that different engines may be addressed.
+        If it is not included the default engine will always be used and <code>/engine/{name}</code> URLs will not be available.
+        
+        <p>
+          <code>EngineQueryDtoReader</code> is a mandatory message body reader, if you use any of the resources.
+          <code>JacksonConfigurator</code> is required to configure the serialization of date fields correctly.
+          You may also have to add the following Jackson providers: <code>org.codehaus.jackson.jaxrs.JacksonJsonProvider</code>,
+          <code>org.codehaus.jackson.jaxrs.JsonMappingExceptionMapper</code> and <code>org.codehaus.jackson.jaxrs.JsonParseExceptionMapper</code>.
+          Depending on the runtime environment, this may not be necessary. On JBoss AS 7 these should be automatically added as an implicit module dependency.
+        </p>
+      </p>
+    </li>
+    <li>
+      <p>
+        Next is the wiring of the REST API and the process engine(s). This requires to create a Service Provider that implements the interface <code>ProcessEngineProvider</code>
+        and declare it in a file <code>META-INF/services/org.camunda.bpm.engine.rest.spi.ProcessEngineProvider</code>.
+        You may also declare the class <code>org.camunda.bpm.engine.rest.impl.application.ContainerManagedProcessEngineProvider</code> which comes with the REST API
+        and uses the methods <code>BpmPlatform</code> provides.
+      </p></li>
+  </ul>
+</section>

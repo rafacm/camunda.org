@@ -1,7 +1,5 @@
 
-@font-face { 
-  font-family: VolkswagenTS-Regular; src: url(VolkswagenTS-Regular.otf); 
-}
+@font-face { font-family: VolkswagenTS-Regular; src: url(VolkswagenTS-Regular.otf); }
 
 /** 
  * loaded to remove angular template flicker on site load
@@ -13,18 +11,19 @@
 
 /* Prevent Modal Slide in, instead do a Fade in */
 .modal.fade {
-  -webkit-transition: opacity .2s linear, none;
-  -moz-transition: opacity .2s linear, none;
-  -ms-transition: opacity .2s linear, none;
-  -o-transition: opacity .2s linear, none;
-  transition: opacity .2s linear, none;
-  top: 10%;
+    -webkit-transition: opacity .2s linear, none;
+    -moz-transition: opacity .2s linear, none;
+    -ms-transition: opacity .2s linear, none;
+    -o-transition: opacity .2s linear, none;
+    transition: opacity .2s linear, none;
+    top: 10%;
 }
 
 .navbar .brand {
   display: block;
   background-image: url(../img/camunda_org.png);
   background-size: contain;
+  background-position: center;
   width: 155px;
   height: 20px;
 }
@@ -50,6 +49,19 @@
   .nav .dropdown-menu {
     margin-top: 0;
   }
+}
+
+@media (max-width: 979px) {
+  .fork-me-ribbon {
+    display: none;
+  }
+}
+
+.fork-me-ribbon {
+  position: fixed; 
+  top: 40px; 
+  right: 0; 
+  border: 0;
 }
 
 .camunda-icon {
@@ -84,7 +96,7 @@
 }
 
 h1, h2, h3, h4 {
-    font-family: 'VolkswagenTS-Regular', Tahoma;
+    font-family: 'VolkswagenTS-Regular';
     font-weight: normal;
 }
 
@@ -103,9 +115,15 @@ a, a:visited {
   text-decoration: none;
 }
 
+
+a.btn {
+  color:#333;
+}
+
 a.btn-inverse, a.btn-primary, a.btn-success {  
   color: white;
 }
+
 
 .hero-unit h2 {
   padding-top: 1.5em;
@@ -131,13 +149,13 @@ a.btn-inverse, a.btn-primary, a.btn-success {
 }
 
 div.token {
-  border: 8px solid green;
-  border-radius: 50%;
-  width: 10px; 
-  height: 10px;
-  -moz-box-sizing: border-box;
-  box-sizing: border-box;
-}
+    border: 8px solid green;
+    border-radius: 50%;
+    width: 10px; 
+    height: 10px;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+  }
 
 /**
  * fix for inline code popovers
@@ -147,6 +165,7 @@ div.popover {
   word-break: normal;
   color: #111;
 }
+
 
 code.nocode {
   display: inline-block;
@@ -169,7 +188,7 @@ code.nocode {
   width: 16px; 
   height: 16px;
   line-height: 16px;
-  background-position: 0 0;
+  background-position: 0px 0px;
 }
 
 /** help system */
@@ -221,14 +240,14 @@ html, body {
 }
 
 @media (max-width: 480px) {
-  .footer {
+  footer {
     padding-top: 20px;
     padding-bottom: 20px;
   }
 }
 
 @media (max-width: 767px) {
-  .footer {
+  footer {
     margin-left: -20px;
     margin-right: -20px;
     padding-left: 20px;
@@ -236,11 +255,15 @@ html, body {
   }
 }
 
-.footer {
+footer {
   padding-top: 2em;
   background-color: #2f2f2f;
   color: white;
   padding-bottom: 2em;
+}
+
+footer ul li {
+  font-size: 0.9em; 
 }
 
 .container-footer a {
@@ -260,6 +283,19 @@ html, body {
 
 .push-down {
   height: 60px;
+}
+
+/**
+ * Logo styling
+*/
+.navbar .brand {
+  display: block;
+  background-image: url(../img/camunda_org.png);
+  background-size: contain;
+  width: 169px;
+  height: 30px;
+  padding: 0px;
+  margin-top:5px;
 }
 
 /**
@@ -283,14 +319,13 @@ section {
 }
 
 .app-source {
-  margin-top:20px;
+  margin-top: 20px;
 }
 
 #continue-game {
-  right:10px;  
-  top:50px;
-  position:fixed;
-
+  right: 10px;  
+  top: 50px;
+  position: fixed;
 }
 
 .tweet_list a {
@@ -298,19 +333,22 @@ section {
 }
 
 .tweet_list .tweet_odd {
-  background-color: #2f2f2f;
+  background-color: #333;
   color:white;
 }
 
 .tweet_list .tweet_even {
-  background-color: #2f2f2f;
+  background-color: #333;
   color:white;
+}
+
+.content-box a, .content-box a:visited {
+  color: lightblue;
 }
 
 .carousel .item {
   height:362px;
 }
-
 
 /* =============================== */
 /* FORM SEARCH */
@@ -407,6 +445,7 @@ section {
      -moz-box-shadow: 0 1px 4px rgba(0,0,0,.065);
           box-shadow: 0 1px 4px rgba(0,0,0,.065);
 }
+
 .bs-docs-sidenav > li > a {
   display: block;
   width: 190px \9;
@@ -414,16 +453,19 @@ section {
   padding: 8px 14px;
   border: 1px solid #e5e5e5;
 }
+
 .bs-docs-sidenav > li:first-child > a {
   -webkit-border-radius: 6px 6px 0 0;
      -moz-border-radius: 6px 6px 0 0;
           border-radius: 6px 6px 0 0;
 }
+
 .bs-docs-sidenav > li:last-child > a {
   -webkit-border-radius: 0 0 6px 6px;
      -moz-border-radius: 0 0 6px 6px;
           border-radius: 0 0 6px 6px;
 }
+
 .bs-docs-sidenav > .active > a {
   position: relative;
   z-index: 2;
@@ -434,6 +476,7 @@ section {
      -moz-box-shadow: inset 1px 0 0 rgba(0,0,0,.1), inset -1px 0 0 rgba(0,0,0,.1);
           box-shadow: inset 1px 0 0 rgba(0,0,0,.1), inset -1px 0 0 rgba(0,0,0,.1);
 }
+
 /* Chevrons */
 .bs-docs-sidenav .icon-chevron-right {
   float: right;
@@ -495,36 +538,43 @@ hr.soften {
   height:135px;
 }
 
+.container-small {
+  display: inline-block;
+  width:80px;
+  height:80px;
+  background-size:contain;
+}
+
 .container-as7 {
-  background-image: url("/app/assets/img/as7-tile.png");
+  background-image: url("../img/as7-tile.png");
 }
 
 .container-as7-glow {
-  background-image: url("/app/assets/img/as7-tile-glow.png");
+  background-image: url("../img/as7-tile-glow.png");
 }
 
 .container-jvm {
-  background-image: url("/app/assets/img/jvm-tile.png");
+  background-image: url("../img/jvm-tile.png");
 }
 
 .container-jvm-glow {
-  background-image: url("/app/assets/img/jvm-tile-glow.png");
+  background-image: url("../img/jvm-tile-glow.png");
 }
 
 .container-glassfish {
-  background-image: url("/app/assets/img/glassfish-tile.png");
+  background-image: url("../img/glassfish-tile.png");
 }
 
 .container-glassfish-glow {
-  background-image: url("/app/assets/img/glassfish-tile-glow.png");
+  background-image: url("../img/glassfish-tile-glow.png");
 }
 
 .container-tomcat {
-  background-image: url("/app/assets/img/tomcat-tile.png");
+  background-image: url("../img/tomcat-tile.png");
 }
 
 .container-tomcat-glow {
-  background-image: url("/app/assets/img/tomcat-tile-glow.png");
+  background-image: url("../img/tomcat-tile-glow.png");
 }
 
 .wrapper-dark {
@@ -532,10 +582,11 @@ hr.soften {
 }
 
 .stage {
-  background-color: white;
+  /*background-color:#f2f2f2;*/
+  background-color:#fff;
   position: absolute;
   width: 100%;
-  height: 480px;
+  height:480px;
 }
 
 .dark-selection {
@@ -601,29 +652,26 @@ pre.console {
   color:white;
 }
 
-.team-core img {
-  max-height: 80px;
-  max-width: 80px;
-  background: white;
-  /*
-          filter: url(assets/css/filters.svg#grayscale); 
-          filter: gray;
-          -webkit-filter: grayscale(1); 
-          */
+table.download-bpm-platform {
+  margin-top:-50px;
 }
 
-.team-core img:hover {
-  filter: none;
-  -webkit-filter: grayscale(0);
+div.content-box {
+  height: 350px;
+  overflow: auto;
 }
 
+/**
+ * community/team
+ */
 .team-core img.img-circle {
   border-radius: 3px;
   padding: 3px;
   border: solid 1px #DDD;
+  max-width: 80px;
 }
 
-.team-core h2 {
+.team-core h2, .partners h2 {
   margin-top: 30px;
 }
 
@@ -647,13 +695,13 @@ pre.console {
   margin-bottom: 20px;
 }
 
-.team-core .partners img {
+.partners img {
   padding: 15px;
   max-width: 170px;
   cursor: pointer;
 }
 
-.team-core .partners img:hover {
+.partners img:hover {
   filter: none;
   -webkit-filter: grayscale(0);
 }
@@ -686,4 +734,46 @@ pre.console {
     margin: 0;
     padding: 10px;
   }
+}
+
+/**
+ * community/users
+ */
+.community-users .span3 {
+  text-align: center;
+  border: 1px solid lightgrey;
+  height: 140px;
+  margin-right: 10px;
+  margin-bottom: 10px;
+  cursor: pointer;
+  color: black;
+  /*
+         filter: gray;
+         -webkit-filter: grayscale(1);            
+         */
+}
+
+img {
+  max-width: 100%;
+}
+
+.community-users .span3:hover {
+  background-color: lightgrey;
+  filter: none;
+  -webkit-filter: grayscale(0);
+}
+
+.community-users img, .modal img.logo {
+  max-width: 200px;
+  max-height: 70px;
+  padding: 10px;
+}
+
+.modal img.logo {
+  max-width: 100%;
+}
+
+.community-users .modal img {
+  filter: none;
+  -webkit-filter: grayscale(0);
 }

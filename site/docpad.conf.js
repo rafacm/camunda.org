@@ -27,22 +27,40 @@ var docpadConfig = {
       styles: [
         "assets/vendor/bootstrap/css/bootstrap.min.css",
         "assets/vendor/bootstrap/css/bootstrap-responsive.min.css",
+        "assets/vendor/jquery/tweet/jquery.tweet.css",
+        "assets/vendor/google-code-prettify/prettify.css",
         "assets/css/cabpmn.css",
         "assets/css/app.css"
       ],
 
       scripts: [
         // todo make path separator aware
-        "assets/vendor/jquery.min.js",
+        "assets/vendor/jquery/jquery.min.js",
+
+        "assets/vendor/raphaeljs/raphael.js",
+        "assets/app/bpmn/Executor.js",
+        "assets/app/cabpmn.js",
+
+        "assets/vendor/google-code-prettify/prettify.min.js",
+
+        "assets/vendor/jquery/tweet/jquery.tweet.js",
+        "assets/vendor/jquery/validate/jquery.validate.min.js",
+
         "assets/vendor/bootstrap/js/bootstrap.min.js",
         "assets/vendor/log.js",
         "assets/vendor/angular/angular.min.js",
         "assets/vendor/angular/angular-resource.min.js",
-        "assets/vendor/angular/angular-bootstrap.min.js",
+
+        // with fix for menues
+        "assets/vendor/angular/angular-bootstrap.js",
 
         "assets/app/directives/ngmif.js",
         "assets/app/directives/focused.js",
+
         "assets/app/app.js",
+
+        "assets/app/docs/docs.js",
+        "assets/app/docs/pages.js",
 
         // not important, load last
         "assets/vendor/analytics/analytics.js"
@@ -138,7 +156,10 @@ var docpadConfig = {
     },
 
     commonScripts: function() {
-      return this.relativize(this.site.scripts, this.pathSeparator());
+      var site = this.site,
+          document = this.document;
+
+      return this.relativize(document.scripts || site.scripts, this.pathSeparator());
     }
   },
 

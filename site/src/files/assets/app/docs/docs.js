@@ -9,9 +9,9 @@
 (function(angular, $) {
   "use strict";
 
-  var module = angular.module("camundaorg.directives");
+  var module = angular.module("camundaorg.pages", []);
 
-  var PagesProducer = function() {
+  var PagesProducer = function(App) {
 
     var Pages = function(pages) {
       this.pages = pages;
@@ -27,7 +27,7 @@
         section.pages.push(p);
         section.pageById[p.id] = p;
 
-        p.partialUrl = "partials/" + p.section + p.url + ".html";
+        p.partialUrl = App.appBase() + "partials/" + p.section + p.url + ".html";
       }
 
       function getSection(name) {

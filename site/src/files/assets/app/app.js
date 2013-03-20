@@ -3,123 +3,22 @@
 // =========================================================================== //
 
 angular
-  .module('camundaorg', ['ng', 'bootstrap', 'ngResource', 'camundaorg.controllers', 'camundaorg.filters', 'camundaorg.services', 'camundaorg.directives'])
-
-  .config(function ($routeProvider) {
-
-        $routeProvider.when('/design/reference', {
-            templateUrl: 'partials/design/reference.html',
-            controller: 'DefaultController'
-        });
-
-        $routeProvider.when('/design/activities/tasks', {
-            templateUrl: 'partials/design/activities/tasks.html',
-            controller: 'DefaultController'
-        });
-
-        $routeProvider.when('/design/gateways/xor', {
-            templateUrl: 'partials/design/gateways/xor.html',
-            controller: 'DefaultController'
-        });
-        $routeProvider.when('/design/gateways/and', {
-            templateUrl: 'partials/design/gateways/and.html',
-            controller: 'DefaultController'
-        });
-        $routeProvider.when('/design/gateways/or', {
-            templateUrl: 'partials/design/gateways/or.html',
-            controller: 'DefaultController'
-        });
-        $routeProvider.when('/design/gateways/event', {
-            templateUrl: 'partials/design/gateways/event.html',
-            controller: 'DefaultController'
-        });
-
-        $routeProvider.when('/design/participants/lanes', {
-            templateUrl: 'partials/design/participants/lanes.html',
-            controller: 'DefaultController'
-        });
-
-        $routeProvider.when('/design/events/basics', {
-            templateUrl: 'partials/design/events/basics.html',
-            controller: 'DefaultController'
-        });        
-        $routeProvider.when('/design/events/message', {
-            templateUrl: 'partials/design/events/message.html',
-            controller: 'DefaultController'
-        });        
-        $routeProvider.when('/design/events/timer', {
-            templateUrl: 'partials/design/events/timer.html',
-            controller: 'DefaultController'
-        });        
-        $routeProvider.when('/design/events/error', {
-            templateUrl: 'partials/design/events/error.html',
-            controller: 'DefaultController'
-        });  
-        $routeProvider.when('/design/events/conditional', {
-            templateUrl: 'partials/design/events/conditional.html',
-            controller: 'DefaultController'
-        });        
-        $routeProvider.when('/design/events/signal', {
-            templateUrl: 'partials/design/events/signal.html',
-            controller: 'DefaultController'
-        });        
-        $routeProvider.when('/design/events/termination', {
-            templateUrl: 'partials/design/events/termination.html',
-            controller: 'DefaultController'
-        });        
-        $routeProvider.when('/design/events/link', {
-            templateUrl: 'partials/design/events/link.html',
-            controller: 'DefaultController'
-        });        
-        $routeProvider.when('/design/events/compensation', {
-            templateUrl: 'partials/design/events/compensation.html',
-            controller: 'DefaultController'
-        });        
-        $routeProvider.when('/design/events/multiple', {
-            templateUrl: 'partials/design/events/multiple.html',
-            controller: 'DefaultController'
-        });        
-        $routeProvider.when('/design/events/parallel', {
-            templateUrl: 'partials/design/events/parallel.html',
-            controller: 'DefaultController'
-        });        
-        $routeProvider.when('/design/events/escalation', {
-            templateUrl: 'partials/design/events/escalation.html',
-            controller: 'DefaultController'
-        });    
-        $routeProvider.when('/design/events/cancel', {
-            templateUrl: 'partials/design/events/cancel.html',
-            controller: 'DefaultController'
-        });   
-
-        $routeProvider.when('/design/activities/subprocess', {
-            templateUrl: 'partials/design/activities/subprocess.html',
-            controller: 'DefaultController'
-        }); 
-        $routeProvider.when('/design/activities/callactivity', {
-            templateUrl: 'partials/design/activities/callactivity.html',
-            controller: 'DefaultController'
-        }); 
-        $routeProvider.when('/design/activities/adhoc', {
-            templateUrl: 'partials/design/activities/adhoc.html',
-            controller: 'DefaultController'
-        }); 
-        $routeProvider.when('/design/activities/event', {
-            templateUrl: 'partials/design/activities/event.html',
-            controller: 'DefaultController'
-        }); 
-        $routeProvider.when('/design/participants/pool', {
-            templateUrl: 'partials/design/participants/pool.html',
-            controller: 'DefaultController'
-        });
-    });
+  .module('camundaorg', [
+    'ng',
+    'bootstrap',
+    'ngResource',
+    'camundaorg.controllers',
+    'camundaorg.filters',
+    'camundaorg.services',
+    'camundaorg.directives',
+    'camundaorg.pages' ]);
 
 /** ============================================================== */
 /** ============================================================== */
 
 angular.module('camundaorg.controllers', [])
 .controller("DefaultController", function ($scope, $location) {
-  
+
   // Bread Crumb 
   var breadCrumbs = $scope.breadCrumbs = [];
 
@@ -514,6 +413,16 @@ angular.module('camundaorg.controllers', [])
 
 angular
   .module('camundaorg.services', [])
+  .factory("App", function() {
+
+    function getAppBase() {
+      return $("base").attr("app-base");
+    }
+
+    return {
+      appBase: getAppBase
+    };
+  })
   .factory('CSV', function() {  
         return {
             /**
@@ -822,24 +731,24 @@ angular.module('camundaorg.directives')
     }
   }
 })
-.directive('bpmnSrc', function() {
+.directive('bpmnSrc', function(App) {
   return {
     link: function(scope, element, attrs) {
 
-        var bpmnResource = attrs.bpmnSrc;
+        var bpmnResource = App.appBase() + "assets/bpmn/" + attrs.bpmnSrc;
         
         bpmn(bpmnResource, element);
         //$('body').scrollspy('refresh');
     }
   }
 })
-.directive('bpmnSrc2', function() {
+.directive('bpmnSrc2', function(App) {
   return {
     link: function(scope, element, attrs) {
 
       var bpmnResource = attrs.bpmnSrc2;
       
-      $.get("assets/bpmn/" + bpmnResource + ".bpmn", function(data){
+      $.get(App.appBase() + "assets/bpmn/" + bpmnResource + ".bpmn", function(data){
       
         // create process definition
         scope.processDefinition = new CAM.Transformer().transform(data)[0];
@@ -860,7 +769,7 @@ angular.module('camundaorg.directives')
 
       var bpmnResource = attrs.bpmnSrc;
 
-      $.get("assets/bpmn/" + bpmnResource + ".bpmn", function(data){
+      $.get(App.appBase() + "assets/bpmn/" + bpmnResource + ".bpmn", function(data){
         
         scope.processDefinition = CAM.transform(data)[0];
 
@@ -890,11 +799,11 @@ angular.module('camundaorg.directives')
 .directive('bpmnTutorial', function($location) {
   return {
     link: function(scope, element, attrs) {
-        
-        $('.tutPop', element).popover({
-            "trigger": "hover",
-            "placement": "bottom"
-        });
+    
+    $('.tutPop', element).popover({
+        "trigger": "hover",
+        "placement": "bottom"
+    });
 
     // update active entry in Breadcrumb
 
@@ -910,7 +819,7 @@ angular.module('camundaorg.directives')
     } else {
 
       $('#breadcrumbOverview').removeClass('active');
-      $('#breadcrumbOverview').html('<a href="design-reference.html#/design/reference">Symbol Reference</a> <span class="divider">/</span>');
+      $('#breadcrumbOverview').html('<a href="#/design/reference">Symbol Reference</a> <span class="divider">/</span>');
       // Highlight active entry in list
       $('a[href="' + link + '"]').parent().addClass("active");
       // update Breadcrumb active entry
@@ -958,25 +867,21 @@ angular.module('camundaorg.directives')
     }
   }
 })
-.directive('camundaEvents', function() {
+.directive('camundaEvents', function(App) {
   return {
     link: function(scope, element, attrs) {
 
       $.getJSON('http://www.camunda.org/php/meeting.php', function(data) {
-          
           $.each( data.events, function( key, value ) {
 
             var myDateString = value.meeting.date;
 
-            var myRow = "<td>" + myDateString + "</td><td><img src='assets/img/app/community/meetings/" + value.meeting.country + ".png' > " + value.meeting.country + "</td><td>" + value.meeting.city + "</td><td>" + value.meeting.subject + "</td><td>" + value.meeting.attendees + " attendees</td><td>" + parseInt(value.meeting.seats - value.meeting.attendees)  + " seats left</td>";
-            var selectDate = '<td><a style="color:black;" href="community-meetings-single.html?id=' + value.meeting.id +'" role="button" class="btn">Register</a></td>';
+            var myRow = "<td>" + myDateString + "</td><td><img src='" + App.appBase() + "assets/img/app/community/meetings/" + value.meeting.country + ".png' > " + value.meeting.country + "</td><td>" + value.meeting.city + "</td><td>" + value.meeting.subject + "</td><td>" + value.meeting.attendees + " attendees</td><td>" + parseInt(value.meeting.seats - value.meeting.attendees)  + " seats left</td>";
+            var selectDate = '<td><a style="color:black;" href="' + App.appBase() + 'community/meetings/register.html?id=' + value.meeting.id +'" role="button" class="btn">Register</a></td>';
          
             myRow = "<tr>" + selectDate + myRow + "</td></tr>";
             element.append(myRow);
-
-            
           });
-
       });
     }
   }
@@ -1259,21 +1164,6 @@ angular.module('camundaorg.directives')
 })
 
 //======================================================= //
-
-
-.directive('docLocationHighlight', function($location) {
-  return {
-    link: function(scope, element, attrs) {
-
-        var href = $(element).attr("href");
-
-        if(href.indexOf($location.path())>0) {
-            $(element).css("background-color", "blue");
-        }
-
-    }
-  }
-})
 
 .directive('pipe', function ($http) {
   return {

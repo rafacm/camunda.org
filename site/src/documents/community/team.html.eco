@@ -21,8 +21,8 @@ layout: 'default'
       <div class="span3 pl">
         <div>
           <div class="media">
-            <a class="pull-left" href="#daniel-details" data-toggle="modal"> <img class="media-object img-circle"
-              src="assets/img/app/community/team/core/daniel_meyer.jpg">
+            <a class="pull-left" href="#daniel-details" data-toggle="modal">
+              <img class="media-object img-circle" src="<%= @docUrl('assets/img/app/community/team/core/daniel_meyer.jpg') %>" />
             </a>
             <div class="media-body">
               <h4 class="media-heading">Daniel Meyer</h4>
@@ -38,7 +38,7 @@ layout: 'default'
           </div>
           <div class="modal-body">
             <div class="media">
-              <a class="pull-left"> <img class="media-object img-circle" src="assets/img/app/community/team/core/daniel_meyer.jpg">
+              <a class="pull-left"> <img class="media-object img-circle" src="<%= @docUrl('assets/img/app/community/team/core/daniel_meyer.jpg') %>">
               </a>
               <div class="media-body">
                 <p>I'm passionate about BPM with a particular focus on
@@ -113,7 +113,7 @@ layout: 'default'
       <div class="span3">
         <div class="media">
           <a class="pull-left" href="#nico-details" data-toggle="modal"> <img class="media-object img-circle"
-            src="assets/img/app/community/team/core/nico_rehwaldt.jpg">
+            src="<%= @docUrl('assets/img/app/community/team/core/nico_rehwaldt.jpg') %>">
           </a>
           <div class="media-body">
             <h4 class="media-heading">Nico Rehwaldt</h4>
@@ -128,7 +128,7 @@ layout: 'default'
           </div>
           <div class="modal-body">
             <div class="media">
-              <a class="pull-left"> <img class="media-object img-circle" src="assets/img/app/community/team/core/nico_rehwaldt.jpg">
+              <a class="pull-left"> <img class="media-object img-circle" src="<%= @docUrl('assets/img/app/community/team/core/nico_rehwaldt.jpg') %>">
               </a>
               <div class="media-body">
                 <p>I work at camunda as a software engineer where I build the camunda modeler and the web tool stack. From time to time I contribute
@@ -161,7 +161,7 @@ layout: 'default'
       <div class="span3">
         <div class="media">
           <a class="pull-left" href="#roman-details" data-toggle="modal"> <img class="media-object img-circle"
-            src="assets/img/app/community/team/core/roman_smirnov.jpg">
+            src="<%= @docUrl('assets/img/app/community/team/core/roman_smirnov.jpg') %>">
           </a>
           <div class="media-body">
             <h4 class="media-heading">Roman Smirnov</h4>
@@ -176,7 +176,7 @@ layout: 'default'
           </div>
           <div class="modal-body">
             <div class="media">
-              <a class="pull-left"> <img class="media-object img-circle" src="assets/img/app/community/team/core/roman_smirnov.jpg">
+              <a class="pull-left"> <img class="media-object img-circle" src="<%= @docUrl('assets/img/app/community/team/core/roman_smirnov.jpg') %>">
               </a>
               <div class="media-body">
                 <p>I am core camunda bpm platform and camunda modeler developer at camunda.</p>
@@ -193,7 +193,7 @@ layout: 'default'
       <div class="span3">
         <div class="media">
           <a class="pull-left" href="#stefan-details" data-toggle="modal"> <img class="media-object img-circle"
-            src="assets/img/app/community/team/core/stefan_hentschel.jpg">
+            src="<%= @docUrl('assets/img/app/community/team/core/stefan_hentschel.jpg') %>">
           </a>
           <div class="media-body">
             <h4 class="media-heading">Stefan Hentschel</h4>
@@ -208,7 +208,7 @@ layout: 'default'
           </div>
           <div class="modal-body">
             <div class="media">
-              <a class="pull-left"> <img class="media-object img-circle" src="assets/img/app/community/team/core/stefan_hentschel.jpg">
+              <a class="pull-left"> <img class="media-object img-circle" src="<%= @docUrl('assets/img/app/community/team/core/stefan_hentschel.jpg') %>">
               </a>
               <div class="media-body">
                 <p>I am IT Administrator at camunda and have a lot of experience with quality assurance environments. I contribute my knowledge of
@@ -226,7 +226,7 @@ layout: 'default'
       <div class="span3">
         <div class="media">
           <a class="pull-left" href="#robert-details" data-toggle="modal"> <img class="media-object img-circle"
-            src="assets/img/app/community/team/core/robert_gimbel_cropped.jpg">
+            src="<%= @docUrl('assets/img/app/community/team/core/robert_gimbel_cropped.jpg') %>">
           </a>
           <div class="media-body">
             <h4 class="media-heading">Robert Gimbel</h4>
@@ -242,7 +242,7 @@ layout: 'default'
           <div class="modal-body">
 
             <div class="media">
-              <a class="pull-left"> <img class="media-object img-circle" src="assets/img/app/community/team/core/robert_gimbel.jpg">
+              <a class="pull-left"> <img class="media-object img-circle" src="<%= @docUrl('assets/img/app/community/team/core/robert_gimbel.jpg') %>">
               </a>
               <div class="media-body">
                 <p>I work at camunda and take care of the roadmap, the product backlog and the requirements (user stories).</p>
@@ -261,8 +261,8 @@ layout: 'default'
     <div class="row">
       <div class="span3">
         <div class="media">
-          <a class="pull-left" href="#michael-details" data-toggle="modal"> <img class="media-object img-circle"
-            src="assets/img/app/community/team/core/michael_schoettes.jpg">
+          <a class="pull-left" href="#michael-details" data-toggle="modal">
+            <img class="media-object img-circle" src="<%= @docUrl('assets/img/app/community/team/core/michael_schoettes.jpg') %>">
           </a>
           <div class="media-body">
             <h4 class="media-heading">Michael Schöttes</h4>
@@ -278,7 +278,8 @@ layout: 'default'
           <div class="modal-body">
 
             <div class="media">
-              <a class="pull-left"> <img class="media-object img-circle" src="assets/img/app/community/team/core/michael_schoettes.jpg">
+              <a class="pull-left">
+                <img class="media-object img-circle" src="<%= @docUrl('assets/img/app/community/team/core/michael_schoettes.jpg') %>">
               </a>
               <div class="media-body">
                 <p>I work as a QA Engineer at camunda where I am responsible for test development, automated testing and quality management for the
@@ -296,8 +297,8 @@ layout: 'default'
 
       <div class="span3">
         <div class="media">
-          <a class="pull-left" href="#thorben-details" data-toggle="modal"> <img class="media-object img-circle"
-            src="assets/img/app/community/team/core/thorben_lindhauer.jpg">
+          <a class="pull-left" href="#thorben-details" data-toggle="modal">
+            <img class="media-object img-circle" src="<%= @docUrl('assets/img/app/community/team/core/thorben_lindhauer.jpg') %>">
           </a>
           <div class="media-body">
             <h4 class="media-heading">Thorben Lindhauer</h4>
@@ -312,7 +313,8 @@ layout: 'default'
           </div>
           <div class="modal-body">
             <div class="media">
-              <a class="pull-left"> <img class="media-object img-circle" src="assets/img/app/community/team/core/thorben_lindhauer.jpg">
+              <a class="pull-left">
+                <img class="media-object img-circle" src="<%= @docUrl('assets/img/app/community/team/core/thorben_lindhauer.jpg') %>">
               </a>
               <div class="media-body">
                 <p>I am a Software Engineering Student in my Master studies at Hasso-Plattner-Institute Potsdam. BPM-related topics are the focus of
@@ -335,8 +337,8 @@ layout: 'default'
 
       <div class="span3">
         <div class="media">
-          <a class="pull-left" href="#christian-details" data-toggle="modal"> <img class="media-object img-circle"
-            src="assets/img/app/community/team/core/christian_lipphardt.jpg">
+          <a class="pull-left" href="#christian-details" data-toggle="modal">
+            <img class="media-object img-circle" src="<%= @docUrl('assets/img/app/community/team/core/christian_lipphardt.jpg') %>">
           </a>
           <div class="media-body">
             <h4 class="media-heading">Christian Lipphardt</h4>
@@ -351,7 +353,8 @@ layout: 'default'
           </div>
           <div class="modal-body">
             <div class="media">
-              <a class="pull-left"> <img class="media-object img-circle" src="assets/img/app/community/team/core/christian_lipphardt.jpg">
+              <a class="pull-left">
+                <img class="media-object img-circle" src="<%= @docUrl('assets/img/app/community/team/core/christian_lipphardt.jpg') %>">
               </a>
               <div class="media-body">
                 <p>I am a software engineer at camunda and take care of the test and build automation infrastructure.</p>
@@ -373,8 +376,8 @@ layout: 'default'
 
       <div class="span3">
         <div class="media">
-          <a class="pull-left" href="#bernd-details" data-toggle="modal"> <img class="media-object img-circle"
-            src="assets/img/app/community/team/core/bernd_ruecker.jpg">
+          <a class="pull-left" href="#bernd-details" data-toggle="modal">
+            <img class="media-object img-circle" src="<%= @docUrl('assets/img/app/community/team/core/bernd_ruecker.jpg') %>">
           </a>
           <div class="media-body">
             <h4 class="media-heading">Bernd Rücker</h4>
@@ -390,7 +393,8 @@ layout: 'default'
           <div class="modal-body">
 
             <div class="media">
-              <a class="pull-left"> <img class="media-object img-circle" src="assets/img/app/community/team/core/bernd_ruecker.jpg">
+              <a class="pull-left">
+                <img class="media-object img-circle" src="<%= @docUrl('assets/img/app/community/team/core/bernd_ruecker.jpg') %>">
               </a>
               <div class="media-body">
                 <p>
@@ -424,8 +428,8 @@ layout: 'default'
 
       <div class="span3">
         <div class="media">
-          <a class="pull-left" href="#kristin-details" data-toggle="modal"> <img class="media-object img-circle"
-            src="assets/img/app/community/team/core/kristin_polenz.jpg">
+          <a class="pull-left" href="#kristin-details" data-toggle="modal">
+            <img class="media-object img-circle" src="<%= @docUrl('assets/img/app/community/team/core/kristin_polenz.jpg') %>">
           </a>
           <div class="media-body">
             <h4 class="media-heading">Kristin Polenz</h4>
@@ -440,7 +444,8 @@ layout: 'default'
           </div>
           <div class="modal-body">
             <div class="media">
-              <a class="pull-left"> <img class="media-object img-circle" src="assets/img/app/community/team/core/kristin_polenz.jpg">
+              <a class="pull-left">
+                <img class="media-object img-circle" src="<%= @docUrl('assets/img/app/community/team/core/kristin_polenz.jpg') %>">
               </a>
               <div class="media-body">
                 <p>I am a consultant and experienced developer at camunda in the area of BPM/SOA based on Java EE. I have profound experience with
@@ -457,8 +462,8 @@ layout: 'default'
 
       <div class="span3">
         <div class="media">
-          <a class="pull-left" href="#falko-details" data-toggle="modal"> <img class="media-object img-circle"
-            src="assets/img/app/community/team/core/falko_menge.jpg">
+          <a class="pull-left" href="#falko-details" data-toggle="modal">
+            <img class="media-object img-circle" src="<%= @docUrl('assets/img/app/community/team/core/falko_menge.jpg') %>">
           </a>
           <div class="media-body">
             <h4 class="media-heading">Falko Menge</h4>
@@ -473,7 +478,8 @@ layout: 'default'
           </div>
           <div class="modal-body">
             <div class="media">
-              <a class="pull-left"> <img class="media-object img-circle" src="assets/img/app/community/team/core/falko_menge.jpg">
+              <a class="pull-left">
+                <img class="media-object img-circle" src="<%= @docUrl('assets/img/app/community/team/core/falko_menge.jpg') %>">
               </a>
               <div class="media-body">
                 <p>I'm consultant, trainer and software engineer at camunda. I have a lot of experience with process automation and application
@@ -502,8 +508,8 @@ layout: 'default'
     <div class="row">
       <div class="span3">
         <div class="media">
-          <a class="pull-left" href="#jakob-details" data-toggle="modal"> <img class="media-object img-circle"
-            src="assets/img/app/community/team/core/jakob_freund.jpg">
+          <a class="pull-left" href="#jakob-details" data-toggle="modal">
+            <img class="media-object img-circle" src="<%= @docUrl('assets/img/app/community/team/core/jakob_freund.jpg') %>">
           </a>
           <div class="media-body">
             <h4 class="media-heading">Jakob Freund</h4>
@@ -518,7 +524,8 @@ layout: 'default'
           </div>
           <div class="modal-body">
             <div class="media">
-              <a class="pull-left"> <img class="media-object img-circle" src="assets/img/app/community/team/core/jakob_freund.jpg">
+              <a class="pull-left">
+                <img class="media-object img-circle" src="<%= @docUrl('assets/img/app/community/team/core/jakob_freund.jpg') %>">
               </a>
               <div class="media-body">
                 <p>Together with Bernd I run camunda. Running a business is mostly fun, but not always. Sometimes it really sucks. I mean, completely.
@@ -548,7 +555,7 @@ layout: 'default'
       <div class="span3">
         <div class="media">
           <a class="pull-left" href="#nastasja-details" data-toggle="modal"> <img class="media-object img-circle"
-            src="assets/img/app/community/team/core/nastasja_johnston.jpg">
+            src="<%= @docUrl('assets/img/app/community/team/core/nastasja_johnston.jpg') %>">
           </a>
           <div class="media-body">
             <h4 class="media-heading">Nastasja Johnston</h4>
@@ -563,7 +570,7 @@ layout: 'default'
           </div>
           <div class="modal-body">
             <div class="media">
-              <a class="pull-left"> <img class="media-object img-circle" src="assets/img/app/community/team/core/nastasja_johnston.jpg">
+              <a class="pull-left"> <img class="media-object img-circle" src="<%= @docUrl('assets/img/app/community/team/core/nastasja_johnston.jpg') %>">
               </a>
               <div class="media-body">
                 <p>I work at camunda as the Assistant to the CEOs and will take on the role of 
@@ -583,7 +590,7 @@ layout: 'default'
        <div class="span3">
             <div class="media">
                 <a class="pull-left" href="#martin-details" data-toggle="modal">
-                    <img class="media-object img-circle" src="assets/img/app/community/team/contributors/martin_schimak.jpg">
+                    <img class="media-object img-circle" src="<%= @docUrl('assets/img/app/community/team/contributors/martin_schimak.jpg') %>">
                 </a>
                 <div class="media-body">
                     <h4 class="media-heading">Martin Schimak</h4>
@@ -601,7 +608,7 @@ layout: 'default'
                 <div class="modal-body">
                     <div class="media">
                         <a class="pull-left">
-                            <img class="media-object img-circle" src="assets/img/app/community/team/contributors/martin_schimak.jpg">
+                            <img class="media-object img-circle" src="<%= @docUrl('assets/img/app/community/team/contributors/martin_schimak.jpg') %>">
                         </a>
                         <div class="media-body">
                             <p>I am the founder and CEO of the Vienna based <strong>plexiti</strong> GmbH.
@@ -640,7 +647,7 @@ layout: 'default'
         <div class="span3">
             <div class="media">
                 <a class="pull-left" href="#rafael-details" data-toggle="modal">
-                    <img class="media-object img-circle" src="assets/img/app/community/team/contributors/rafael_cordones.jpg">
+                    <img class="media-object img-circle" src="<%= @docUrl('assets/img/app/community/team/contributors/rafael_cordones.jpg') %>">
                 </a>
                 <div class="media-body">
                     <h4 class="media-heading">Rafael Cordones</h4>
@@ -658,7 +665,7 @@ layout: 'default'
                 <div class="modal-body">
                     <div class="media">
                         <a class="pull-left">
-                            <img class="media-object img-circle" src="assets/img/app/community/team/contributors/rafael_cordones.jpg">
+                            <img class="media-object img-circle" src="<%= @docUrl('assets/img/app/community/team/contributors/rafael_cordones.jpg') %>">
                         </a>
                         <div class="media-body">
                             <p>
@@ -700,30 +707,36 @@ layout: 'default'
   <div class="span3 center partners">
     <h2>Partners involved</h2>
     <!--<p>These companies back up our project:</p>-->
-    <a href="http://www.businessprocessincubator.com"><img src="assets/img/app/community/team/partners/bpi.gif"></a> <a
-      href="http://www.camunda.com"><img src="assets/img/app/community/team/partners/camunda.png"></a> <a href="http://www.ibo.de"><img
-      src="assets/img/app/community/team/partners/ibo.jpg"></a> <a href="http://plexiti.com"><img
-      src="assets/img/app/community/team/partners/plexiti.png"></a> <a href="http://www.signavio.com"><img
-      src="assets/img/app/community/team/partners/signavio.png"></a>
+    <a href="http://www.businessprocessincubator.com">
+      <img src="<%= @docUrl('assets/img/app/community/team/partners/bpi.gif') %>">
+    </a>
+    <a href="http://www.camunda.com">
+      <img src="<%= @docUrl('assets/img/app/community/team/partners/camunda.png') %>">
+    </a>
+    <a href="http://www.ibo.de">
+      <img src="<%= @docUrl('assets/img/app/community/team/partners/ibo.jpg') %>">
+    </a>
+    <a href="http://plexiti.com">
+      <img src="<%= @docUrl('assets/img/app/community/team/partners/plexiti.png') %>">
+    </a>
+    <a href="http://www.signavio.com">
+      <img src="<%= @docUrl('assets/img/app/community/team/partners/signavio.png') %>">
+    </a>
   </div>
   <!-- end partner column -->
 </div>
-
 
 <h2>We are hiring.</h2>
 
 <div class="row">
 
-  <div class="span3">
-    <div class="media">
-      <div class="pull-left media-body">
-        <h4 class="media-heading">Want to join our team?</h4>
-        <p>
-          <a href="http://www.camunda.com/company/jobs/technical-consultant-mw/" target="_blank">
-            Become a camunda BPM hacker.
-          </a>
-        </p>
-      </div>
-    </div>
+  <div class="span12">
+    <p>
+      Want to join our team? 
+      Become a camunda BPM hacker as a
+      <a href="http://www.camunda.com/company/jobs/technical-consultant-mw/" target="_blank">
+        technical consultant (german speaking)
+      </a>.
+    </p>
   </div>
 </div>
