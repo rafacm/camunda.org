@@ -1,0 +1,57 @@
+<section id="rest-task-post-unclaim">
+
+  <div class="page-header">
+      <h1>Unclaim Task</h1>
+  </div>
+  <p>
+    Resets a task's assignee. If successful, the task is not assigned to a user.
+  </p>
+  
+  <h2>Method</h2>  
+  <p>POST <code>/task/{id}/unclaim</code></p>
+  
+  <h2>Parameters</h2>  
+  <h4>Path Parameters</h4>
+  <table class="table table-striped">
+    <tr>
+      <th>Name</th>
+      <th>Description</th>
+    </tr>
+    <tr>
+      <td>id</td>
+      <td>The id of the task to unclaim.</td>
+    </tr>
+  </table>
+  
+  <h2>Result</h2>  
+  <p>
+    This method returns no content.
+  </p>
+  
+  <h2>Response codes</h2>  
+  <table class="table table-striped">
+    <tr>
+      <th>Code</th>
+      <th>Media type</th>
+      <th>Description</th>
+    </tr>
+    <tr>
+      <td>204</td>
+      <td></td>
+      <td>Request successful.</td>
+    </tr>
+    <tr>
+      <td>400</td>
+      <td></td>
+      <td>Task with given id does not exist.</td>
+    </tr>
+  </table>
+  
+  <h2>Example</h2>
+  <h4>Request</h4>
+  <p>
+    POST <code>/task/anId/unclaim</code>
+  </p>
+  <h4>Response</h4>
+  Status 204. No content.
+</section>

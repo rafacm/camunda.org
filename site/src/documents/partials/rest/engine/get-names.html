@@ -1,0 +1,65 @@
+<section id="rest-engine-get-names">
+
+  <div class="page-header">
+      <h1>Get Engine Names</h1>
+  </div>
+  <p>
+    Retrieves the names of all process engines available on your platform.
+  </p>
+  <p>
+    <strong>Note:</strong> You cannot prepend <code>/engine/{name}</code> to this method.
+  </p>
+  
+  <h2>Method</h2>  
+  <p>GET <code>/engine</code></p>
+  
+  <h2>Parameters</h2>  
+  <p>
+    This method takes no parameters.
+  </p>
+  
+  <h2>Result</h2>  
+  <p>
+    A json array consisting of engine objects.
+    Each engine object has the following properties:
+  </p>
+  <table class="table table-striped">
+    <tr>
+      <th>Name</th>
+      <th>Value</th>
+      <th>Description</th>
+    </tr>
+    <tr>
+      <td>name</td>
+      <td>String</td>
+      <td>The name of the process engine.</td>
+    </tr>
+  </table>
+  
+  <h2>Response codes</h2>  
+  <table class="table table-striped">
+    <tr>
+      <th>Code</th>
+      <th>Media type</th>
+      <th>Description</th>
+    </tr>
+    <tr>
+      <td>200</td>
+      <td>application/json</td>
+      <td>Request successful.</td>
+    </tr>
+  </table>
+  
+  <h2>Example</h2>
+  <h4>Request</h4>
+  <p>
+    GET <code>/engine</code>
+  </p>
+  <h4>Response</h4>
+  <div class="app-source" app-source-no-tabs="get-engines-result"></div>
+  <script type="application/json" id="get-engines-result">
+    [{"name":"default"},
+     {"name":"anotherEngineName"}]
+  </script>
+     
+</section>

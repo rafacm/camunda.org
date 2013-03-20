@@ -19,6 +19,29 @@
     top: 10%;
 }
 
+@media (min-width: 980px) {
+  .navbar-inverse .nav > li:hover > a, .navbar-inverse .nav > li > a:hover {
+    color: white;
+    background-color: #111;
+    border-right: solid 1px #222;
+    border-left: solid 1px #1A1A1A;
+    margin-left: -1px;
+    margin-right: -1px;
+  }
+
+  .dropdown-menu li:hover .sub-menu {
+      visibility: visible;
+  }
+
+  .dropdown:hover .dropdown-menu {
+      display: block;
+  }
+
+  .nav .dropdown-menu {
+    margin-top: 0;
+  }
+}
+
 .camunda-icon {
   background-image: url(../img/camunda_icon.png);
   width: 74px;

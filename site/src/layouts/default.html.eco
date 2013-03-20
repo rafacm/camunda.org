@@ -1,0 +1,15 @@
+---
+
+layout: 'base'
+
+---
+
+<!-- wrap / push footer down -->
+<div class="wrapper">
+
+  <div class="container">
+    <%- @content %>
+  </div>
+
+  <div class="push-down" />
+</div>
