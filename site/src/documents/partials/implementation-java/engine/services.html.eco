@@ -8,7 +8,7 @@
           The Java API is the most common way of interacting with the engine. The central starting point is the ProcessEngine, which can be created in several ways as described in the configuration section. From the ProcessEngine, you can obtain the various services that contain the workflow/BPM methods. ProcessEngine and the services objects are thread safe. So you can keep a reference to 1 of those for a whole server. 
       </p>
 
-      <img src="assets/img/implementation-java/api.services.png">
+      <img src="<%= @docUrl('assets/img/implementation-java/api.services.png') %>">
 
 
       <div class="app-source" app-source-no-tabs="service1" ></div>

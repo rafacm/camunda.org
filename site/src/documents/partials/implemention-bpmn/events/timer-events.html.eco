@@ -9,10 +9,8 @@
       <p>
 Timer events are events which are triggered by defined timer. They can be used as start event, intermediate event or boundary event. Boundary events can be interrupting or not.
 </p>
-<div style="width:100%; overflow:auto">
-<div id="event-timer" style="position:relative" data-bpmn-src="implement/event-timer" >
-</div>
-</div>
+
+<div id="event-timer" style="overflow-x: scroll; overflow-y: hidden; position:relative" data-bpmn-src="implement/event-timer" ></div>
 
 A timer definition must have exactly one element from the following:
 
