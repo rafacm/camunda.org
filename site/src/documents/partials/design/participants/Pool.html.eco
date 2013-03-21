@@ -81,5 +81,5 @@
 			<p>
 				We could go a step further and collapse the customer's pool too. Now we see only the messages to be exchanged, assuming that we label the arrows to give us the general idea. The downside is that we can't recognize interdependencies any more. We can't see if the inquiry always goes out, or only takes place under certain conditions - the actual case:
 			</p>
-			<div data-bpmn-src="tutorial/collab_collapsed_both">div>				
+			<div data-bpmn-src="tutorial/collab_collapsed_both"></div>				
 </div>
