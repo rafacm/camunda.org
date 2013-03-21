@@ -114,12 +114,16 @@ layout: 'dark'
       .providers .span3 a {
         color: lightblue;
       }
+
+      div.span3 div {
+        /*height: 42px;*/
+      }
     </style>
     <div class="row-fluid">
       <div class="span3">
         <div>
           <a href="http://www.holisticon.de">
-            <img src="assets/img/app/community/logos/holisticon-logo.png" />
+            <img src="<%= @docUrl('assets/img/app/community/logos/holisticon-logo.png') %>" />
           </a>
         </div>
         <p>
@@ -129,7 +133,7 @@ layout: 'dark'
       <div class="span3">
         <div>
           <a href="http://www.novatec-gmbh.de">
-            <img src="assets/img/app/community/logos/novatec.jpg" />
+            <img src="<%= @docUrl('assets/img/app/community/logos/novatec.jpg') %>" />
           </a>
         </div>
 
@@ -140,7 +144,7 @@ layout: 'dark'
       <div class="span3">
         <div>
           <a href="http://www.opitz-consulting.de">
-            <img src="assets/img/app/community/logos/opitz.jpg" />
+            <img src="<%= @docUrl('assets/img/app/community/logos/opitz.jpg') %>" />
           </a>
         </div>
 
@@ -151,7 +155,7 @@ layout: 'dark'
       <div class="span3">
         <div>
           <a href="http://plexiti.com">
-            <img src="assets/img/app/community/logos/plexiti.png" />
+            <img src="<%= @docUrl('assets/img/app/community/logos/plexiti.png') %>" />
           </a>
         </div>
         <p>

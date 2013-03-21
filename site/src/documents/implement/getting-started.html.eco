@@ -540,7 +540,7 @@ INFO: Processing request by 'AC-343422'...
               <a href="<%= @docUrl('implement/bpmn.html#/index') %>">Explore the BPMN Reference</a>
             </li>
             <li>
-              <a href="https://twitter.com/share" class="twitter-share-button" data-url="http://www.camunda.org/app/implement-getting-started.html"
+              <a href="https://twitter.com/share" class="twitter-share-button" data-url="http://www.camunda.org/implement/getting-started.html"
                   data-text="Whohoo! I just developed my first #BPMN Process Application." data-size="large" data-hashtags="camunda">Tweet</a>
             </li>
           </ul>
