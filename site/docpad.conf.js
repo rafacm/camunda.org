@@ -13,7 +13,14 @@ var docpadConfig = {
       return database.findAllLive({ relativeOutDirPath: 'pages/' });
     }
   },
-
+  
+  plugins: {
+    livereload: {
+      enabled: false,
+      inject: false
+    }
+  },
+  
   // Use to define your own template data and helpers that will be accessible to your templates
   // Complete listing of default values can be found here: http://docpad.org/docs/template-data
   templateData: {
