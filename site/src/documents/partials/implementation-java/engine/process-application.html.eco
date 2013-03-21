@@ -13,7 +13,7 @@
     <div class="alert">
       <p>
         <strong>Heads-up!</strong>
-        You might want to checkout the <a href="http://localhost:8000/app/implement-getting-started.html">Getting Started Tutorial</a> first as it explaines the creation of a process application step by step.
+        You might want to checkout the <a href="<%= @docUrl('implement/getting-started.html') %>">Getting Started Tutorial</a> first as it explaines the creation of a process application step by step.
       </p>
     </div>
 
@@ -35,7 +35,7 @@
       </ul>
       <h3>There's more...</h3>
       <ul>            
-          <li><a href="http://localhost:8000/app/implement-getting-started.html">Getting Started Tutorial</a></li>
+          <li><a href="<%= @docUrl('implement/getting-started.html') %>">Getting Started Tutorial</a></li>
       </ul>      
     </div>
 </div>
