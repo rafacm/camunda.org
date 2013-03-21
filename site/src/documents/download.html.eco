@@ -13,7 +13,7 @@ layout: 'default'
 <div class="row">
   <p class="alert alert-success"><i class=" icon-leaf"></i>
     <strong>Community Distribution:</strong> You are downloading a community distribution of camunda BPM which is not supported by an SLA (service level agreement). 
-    <a href="support.html">Click here</a> if you need a fully supported enterprise edition of camunda BPM.
+    <a href="<%= @docUrl('support.html') %>">Click here</a> if you need a fully supported enterprise edition of camunda BPM.
   </p>
 </div>
 
