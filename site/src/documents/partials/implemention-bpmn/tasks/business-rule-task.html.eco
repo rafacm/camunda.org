@@ -32,8 +32,8 @@
       </ul>
       <h3>There's more...</h3>
       <ul>            
-          <li><a href="<%= @docUrl('implement/bpmn.html') %>#/tasks/service-task">Service Task</a></li>
-          <li><a href="<%= @docUrl('design/reference.html') %>#/activities/tasks">Tasks in the BPMN Tutorial</a></li>
+          <li><a href="<%= @docUrl('implement/bpmn.html') %>#!/tasks/service-task">Service Task</a></li>
+          <li><a href="<%= @docUrl('design/reference.html') %>#!/activities/tasks">Tasks in the BPMN Tutorial</a></li>
           <li><a href="https://app.camunda.com/confluence/display/foxUserGuide/Order+Confirmation+Rules">Demo using Drools on the Business Rule Task</a></li>
       </ul>      
     </div>

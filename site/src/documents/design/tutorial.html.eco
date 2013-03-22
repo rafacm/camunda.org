@@ -178,7 +178,7 @@ layout: 'default'
         <ul>
           <li>check out our BPMN handbook (see below),</li>
           <li><a href="http://www.camunda.com/consulting/bpmn/overview/">attend/book a training</a> or</li>
-          <li>read our <a href="<%= @docUrl('design/reference.html') %>#/reference">BPMN 2.0 Reference</a> online.</li>
+          <li>read our <a href="<%= @docUrl('design/reference.html') %>#!/reference">BPMN 2.0 Reference</a> online.</li>
         </ul>
       </p>
       <hr />

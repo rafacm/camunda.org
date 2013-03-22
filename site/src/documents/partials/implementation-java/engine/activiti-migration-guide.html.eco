@@ -22,7 +22,7 @@
       <p>There are some thing which have not changed yet:</p>
       <ul>
         <li>Database schema and table names. Note that we based our fork on Activiti 5.11 and the tables existant in this version.</p></li>
-        <li>The <code>activiti:</code> <a href="<%= @docUrl('implement/bpmn.html') %>#/concepts/custom-extensions">Custom Extensions</a> are kept. We will introduce our own namespace soon but keep backwards compatibility here anyway.</li>
+        <li>The <code>activiti:</code> <a href="<%= @docUrl('implement/bpmn.html') %>#!/concepts/custom-extensions">Custom Extensions</a> are kept. We will introduce our own namespace soon but keep backwards compatibility here anyway.</li>
         <li>We still read the <code>activiti.cfg.xml</code> for the configuration of the Process Engine</li>
       </ul>
 
@@ -224,8 +224,8 @@
     Do the Activiti migration as described above as camunda fox included the Activiti engine. Note that camunda fox EE 6.2 or camunda fox CE 1.34 has the same database structure as camunda BPM 7.0.
   </li>
   <li>Remove the <code>fox-platform-client.x.jar</code> from your deployment - it is not needed anymore.</li>
-  <li>Add a Process Application Class, see <a href="<%= @docUrl('implement/java.html') %>#/engine/process-application">Process Applications</a>.</li>
-  <li>Adjust the processes.xml to the new format, see <a href="<%= @docUrl('implement/java.html') %>#/engine/process-application">Process Applications</a>.</li>
+  <li>Add a Process Application Class, see <a href="<%= @docUrl('implement/java.html') %>#!/engine/process-application">Process Applications</a>.</li>
+  <li>Adjust the processes.xml to the new format, see <a href="<%= @docUrl('implement/java.html') %>#!/engine/process-application">Process Applications</a>.</li>
   <li>If you use the new camunda Tasklist component you have to adjust the <code>formKey</code>, as described in the <a href="http://localhost:8000/app/implement-getting-started.html">Getting Started Tutorial</a>. We provide more information soon.</li>
   <li>
     <p>

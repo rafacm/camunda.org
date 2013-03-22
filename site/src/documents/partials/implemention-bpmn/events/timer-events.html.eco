@@ -89,7 +89,7 @@ Note: timers are only fired when the Job Executor is enabled.
       </ul>
       <h3>There's more...</h3>
       <ul>            
-          <li><a href="<%= @docUrl('design/reference.html') %>#/events/timer">Timer Events in the BPMN Tutorial</a></li>
+          <li><a href="<%= @docUrl('design/reference.html') %>#!/events/timer">Timer Events in the BPMN Tutorial</a></li>
           <li><a href="https://app.camunda.com/confluence/display/foxUserGuide/The+Job+Executor">Details on the Job Executor (handling Timers)</a></li>
           <li><a href="http://en.wikipedia.org/wiki/ISO_8601">ISO 8601</a></li>
       </ul>      

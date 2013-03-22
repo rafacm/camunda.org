@@ -537,7 +537,7 @@ INFO: Processing request by 'AC-343422'...
               <a href="<%= @docUrl('design/tutorial.html') %>">Learn more about BPMN</a>
             </li>
             <li>
-              <a href="<%= @docUrl('implement/bpmn.html#/index') %>">Explore the BPMN Reference</a>
+              <a href="<%= @docUrl('implement/bpmn.html#!/index') %>">Explore the BPMN Reference</a>
             </li>
             <li>
               <a href="https://twitter.com/share" class="twitter-share-button" data-url="http://www.camunda.org/app/implement-getting-started.html"

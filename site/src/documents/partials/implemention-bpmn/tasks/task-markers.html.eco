@@ -45,8 +45,8 @@
       </ul>
       <h3>There's more...</h3>
       <ul>            
-          <li><a href="<%= @docUrl('design/reference.html') %>#/activities/tasks">Task Markers in the BPMN Tutorial</a></li>
-          <li><a href="#/subprocesses/transaction-subprocess">Transaction Subprocess</a></li>
+          <li><a href="<%= @docUrl('design/reference.html') %>#!/activities/tasks">Task Markers in the BPMN Tutorial</a></li>
+          <li><a href="#!/subprocesses/transaction-subprocess">Transaction Subprocess</a></li>
           <!--
           Tutorials!
       -->         

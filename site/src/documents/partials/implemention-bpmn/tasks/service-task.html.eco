@@ -6,20 +6,17 @@
   
   <div class="row-fluid">
   <div class="span9">
-      <p>A service task is used to invoke services. In camunda this is done by calling Java code.</p>
+    <p>A service task is used to invoke services. In camunda this is done by calling Java code.</p>
 
-      <div data-bpmn-symbol="servicetask"  data-bpmn-symbol-name="Service Task"> </div>
+    <div data-bpmn-symbol="servicetask"  data-bpmn-symbol-name="Service Task"> </div>
 
-      There are 4 ways of declaring how to invoke Java logic:
-      <ul >
-          <li>Specifying a class that implements JavaDelegate or ActivityBehavior</li>
-          <li>Evaluating an expression that resolves to a delegation object</li>
-          <li>Invoking a method expression</li>
-          <li>Evaluating a value expression</li>
-      </ul>
-
-
-
+    There are 4 ways of declaring how to invoke Java logic:
+    <ul >
+      <li>Specifying a class that implements JavaDelegate or ActivityBehavior</li>
+      <li>Evaluating an expression that resolves to a delegation object</li>
+      <li>Invoking a method expression</li>
+      <li>Evaluating a value expression</li>
+    </ul>
 
     </div>
     <div class="span3">
@@ -32,10 +29,10 @@
       </ul>
       <h3>There's more...</h3>
       <ul>            
-          <li><a href="<%= @docUrl('design/reference.html') %>#/activities/tasks">Tasks in the BPMN Tutorial<a></li>
+          <li><a href="<%= @docUrl('design/reference.html') %>#!/activities/tasks">Tasks in the BPMN Tutorial<a></li>
           <li><a href="https://app.camunda.com/confluence/display/foxUserGuide/Error+Handling">Error Handling</a></li>
-          <!--<li><a href="implement-concepts.html#/concepts/spring">Using Spring</a></li>-->
-          <!--<li><a href="implement-concepts.html#/concepts/cdi">Using CDI</a></li>-->
+          <!--<li><a href="<%= @docUrl('implement/concepts.html') %>#!/concepts/spring">Using Spring</a></li>-->
+          <!--<li><a href="<%= @docUrl('implement/concepts.html') %>#!/concepts/cdi">Using CDI</a></li>-->
           <li><a href="http://www.bpm-guide.de/2010/12/09/how-to-call-a-webservice-from-bpmn/">How to call Web Services from BPMN</a></li>
           <!--
           <li><a href="">Asynchronous Service Tasks</a></li>

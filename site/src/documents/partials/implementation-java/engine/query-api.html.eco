@@ -59,7 +59,7 @@
 
 <h1>REST Query API</h1>
 
-The Java Query API is exposed as REST service as well, see <a href="<%= @docUrl('implement/rest.html') %>#/overview/introduction">REST documentation</a> for details.
+The Java Query API is exposed as REST service as well, see <a href="<%= @docUrl('implement/rest.html') %>#!/overview/introduction">REST documentation</a> for details.
 
 
 

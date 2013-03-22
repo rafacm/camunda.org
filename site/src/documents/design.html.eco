@@ -23,7 +23,7 @@ layout: 'dark'
       			    <a href="<%= @docUrl('design/tutorial.html') %>">BPMN 2.0 Tutorial »</a>
               </li>
               <li>
-                <a href="<%= @docUrl('design/reference.html#/reference') %>">BPMN 2.0 Reference »</a>
+                <a href="<%= @docUrl('design/reference.html#!/reference') %>">BPMN 2.0 Reference »</a>
               </li>
             </ul>
           </p>

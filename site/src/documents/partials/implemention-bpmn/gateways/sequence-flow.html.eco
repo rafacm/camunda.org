@@ -21,7 +21,7 @@
       </ul>
       <h3>There's more...</h3>
       <ul>            
-          <li><a href="<%= @docUrl('implement/java.html') %>#/engine/expressions">Expression Language</a></li>
+          <li><a href="<%= @docUrl('implement/java.html') %>#!/engine/expressions">Expression Language</a></li>
       </ul>      
     </div>
   </div>

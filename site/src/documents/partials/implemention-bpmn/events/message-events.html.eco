@@ -52,7 +52,7 @@ A message event definition is declared using the messageEventDefinition element.
       </ul>
       <h3>There's more...</h3>
       <ul>            
-          <li><a href="<%= @docUrl('design/reference.html') %>#/events/message">Message Events in the BPMN Tutorial</a></li>
+          <li><a href="<%= @docUrl('design/reference.html') %>#!/events/message">Message Events in the BPMN Tutorial</a></li>
           <!-- Correlation tutorial? -->          
       </ul>      
     </div>
@@ -243,7 +243,7 @@ A process can be started using one of two different messages, this is useful if 
  
 <p>
 
-   Instead of the message intermediate catching event you might want to think about a <a href="#/tasks/receive-task">Receive Task</a> instead which can serve similar purposes, but is able to be used in combination with boundary events. Together with the  message intermediate catching event you might want to use the <a href="#/gateways/event-based-gateway">Event-based Gateway</a>.
+   Instead of the message intermediate catching event you might want to think about a <a href="#!/tasks/receive-task">Receive Task</a> instead which can serve similar purposes, but is able to be used in combination with boundary events. Together with the  message intermediate catching event you might want to use the <a href="#!/gateways/event-based-gateway">Event-based Gateway</a>.
 </p>
 
 

@@ -31,9 +31,9 @@ Note that an inclusive gateway can have <strong>both fork and join behavior</str
       </ul>
       <h3>There's more...</h3>
       <ul>            
-          <li><a href="<%= @docUrl('design/reference.html') %>#/gateways/or">Inclusive Gateways in the BPMN Tutorial</a></li>
-          <li><a href="<%= @docUrl('implement/bpmn.html') %>#/gateways/sequence-flow">Conditional and Default Sequence Flows</a></li>
-          <li><a href="<%= @docUrl('implement/java.html') %>#/engine/expressions">Expression Language</a></li>
+          <li><a href="<%= @docUrl('design/reference.html') %>#!/gateways/or">Inclusive Gateways in the BPMN Tutorial</a></li>
+          <li><a href="<%= @docUrl('implement/bpmn.html') %>#!/gateways/sequence-flow">Conditional and Default Sequence Flows</a></li>
+          <li><a href="<%= @docUrl('implement/java.html') %>#!/engine/expressions">Expression Language</a></li>
       </ul>      
     </div>
   </div>
