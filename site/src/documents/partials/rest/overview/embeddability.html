@@ -12,7 +12,7 @@
   
   <h2>Prerequisites</h2>
   <p>
-    We recommend to use the REST API classes with <a href="http://www.jboss.org/resteasy/">Resteasy</a> as the JAX-RS implementation.
+    The REST API classes are tested with <a href="http://www.jboss.org/resteasy/">Resteasy</a> and <a href="http://jersey.java.net/">Jersey</a> as the JAX-RS implementation.
     Furthermore the engine classes and Jackson's <code>jackson-jaxrs</code> artifact have to be on the classpath.
   </p>
   
@@ -28,7 +28,7 @@
           <groupId>org.camunda.bpm</groupId>
           <artifactId>camunda-engine-rest</artifactId>
           <classifier>classes</classifier>
-          <version>7.0.0</version>
+          <version>7.0.0.alpha2</version>
         </dependency>
       </script>
     </li>
@@ -55,7 +55,6 @@
             classes.add(TaskRestServiceImpl.class);
             
             // mandatory
-            classes.add(EngineQueryDtoGetReader.class);
             classes.add(JacksonConfigurator.class);
             return classes;
           }
@@ -67,7 +66,6 @@
         If it is not included the default engine will always be used and <code>/engine/{name}</code> URLs will not be available.
         
         <p>
-          <code>EngineQueryDtoReader</code> is a mandatory message body reader, if you use any of the resources.
           <code>JacksonConfigurator</code> is required to configure the serialization of date fields correctly.
           You may also have to add the following Jackson providers: <code>org.codehaus.jackson.jaxrs.JacksonJsonProvider</code>,
           <code>org.codehaus.jackson.jaxrs.JsonMappingExceptionMapper</code> and <code>org.codehaus.jackson.jaxrs.JsonParseExceptionMapper</code>.
