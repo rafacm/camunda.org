@@ -22,13 +22,13 @@ layout: 'default'
       <div ng-show="search">Filtered results:</div>
 
       <ul class="nav nav-list" ng-hide="categories.length">
-        <li ng-repeat="page in pages" ng-class="navClass(page)"><a href="!#{{ page.url }}" tabindex="2">{{ page.name }}</a></li>
+        <li ng-repeat="page in pages" ng-class="navClass(page)"><a href="#!{{ page.url }}" tabindex="2">{{ page.name }}</a></li>
       </ul>
 
       <ul class="nav nav-list well" ng-repeat="category in categories">
         <li class="nav-header module">{{ category.name }}</li>
 
-        <li ng-repeat="page in category.pages" ng-class="navClass(page)"><a href="!#{{ page.url }}" tabindex="2">{{ page.name }}</a></li>
+        <li ng-repeat="page in category.pages" ng-class="navClass(page)"><a href="#!{{ page.url }}" tabindex="2">{{ page.name }}</a></li>
       </ul>
     </form>
   </div>
