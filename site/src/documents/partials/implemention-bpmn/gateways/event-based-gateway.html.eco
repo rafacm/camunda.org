@@ -28,7 +28,7 @@ The following process is an example of a process with an Event-based Gateway. Wh
       </ul>
       <h3>There's more...</h3>
       <ul>            
-          <li><a href="<%= @docUrl('design/reference.html') %>#/gateways/event">Event-based Gateways in the BPMN Tutorial</a></li>
+          <li><a href="<%= @docUrl('design/reference.html') %>#!/gateways/event">Event-based Gateways in the BPMN Tutorial</a></li>
       </ul>      
     </div>
   </div>

@@ -71,7 +71,7 @@ CAM_PAGES = [
   { section: "implemention-bpmn", category: "Gateways and Sequence Flows", id: "inclusive-gateway", name: "Inclusive Gateway (OR)", url: "/gateways/inclusive-gateway", keywords: "inclusive gateways or" },
   { section: "implemention-bpmn", category: "Gateways and Sequence Flows", id: "event-based-gateway", name: "Event Based Gateway", url: "/gateways/event-based-gateway", keywords: "event based gateways" },
 
-//  { section: "implemention-bpmn", category: "Events", id: "events-overview", name: "Overview and Basic Concepts", shortName: "Events Overview", url: "/events/event-overview", keywords: "events event overview concept" },
+  //  { section: "implemention-bpmn", category: "Events", id: "events-overview", name: "Overview and Basic Concepts", shortName: "Events Overview", url: "/events/event-overview", keywords: "events event overview concept" },
   { section: "implemention-bpmn", category: "Events", id: "blank-event", name: "Blank Event", url: "/events/none-events", keywords: "events blank event" },
   { section: "implemention-bpmn", category: "Events", id: "message-event", name: "Message Event", url: "/events/message-events", keywords: "events message event" },
   { section: "implemention-bpmn", category: "Events", id: "timer-event", name: "Timer Event", url: "/events/timer-events", keywords: "events timer event" },
@@ -118,5 +118,5 @@ CAM_PAGES = [
   { section: "rest", category: "Task", id: "post-complete", name: "Complete Task", url: "/task/post-complete", keywords: "tasks post task complete variables" },
   { section: "rest", category: "Task", id: "post-resolve", name: "Resolve Task", url: "/task/post-resolve", keywords: "tasks post task resolve variables" },
   { section: "rest", category: "Task", id: "post-delegate", name: "Delegate Task", url: "/task/post-delegate", keywords: "tasks post task delegate assignee" },
-  { section: "rest", category: "Task", id: "get-group-info", name: "Get a User's Groups", url: "/task/get-group-info", keywords: "tasks get task groups user" },
+  { section: "rest", category: "Task", id: "get-group-info", name: "Get a User's Groups", url: "/task/get-group-info", keywords: "tasks get task groups user" }
 ];

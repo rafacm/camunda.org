@@ -139,7 +139,7 @@ Typically you will add the processes.xml to your <code>src/main/resources/META-I
 </div>
 
 <p>
-  Please follow the instructions in the <a href="<%= @docUrl('implement/java.html') %>#/engine/activiti-migration-guide">Activiti Migration Guide</a> which contains a section about camunda fox at the end.
+  Please follow the instructions in the <a href="<%= @docUrl('implement/java.html') %>#!/engine/activiti-migration-guide">Activiti Migration Guide</a> which contains a section about camunda fox at the end.
 </p>
 
 

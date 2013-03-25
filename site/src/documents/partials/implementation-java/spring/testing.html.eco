@@ -6,7 +6,7 @@
 
 
       <p>
-When integrating with Spring, business processes can be tested very easily (in scope 2, see <a href="<%= @docUrl('implement/java.html') %>#/engine/testing">Testing Scopes</a>) using the standard camunda testing facilities. The following example shows how a business process is tested in a typical Spring-based unit test:
+When integrating with Spring, business processes can be tested very easily (in scope 2, see <a href="<%= @docUrl('implement/java.html') %>#!/engine/testing">Testing Scopes</a>) using the standard camunda testing facilities. The following example shows how a business process is tested in a typical Spring-based unit test:
 </p>
 
     

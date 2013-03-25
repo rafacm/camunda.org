@@ -17,6 +17,9 @@ angular
 /** ============================================================== */
 
 angular.module('camundaorg.controllers', [])
+.config(function($locationProvider) {
+  $locationProvider.hashPrefix('!');
+})
 .controller("DefaultController", function ($scope, $location) {
 
   // Bread Crumb 

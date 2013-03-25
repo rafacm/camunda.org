@@ -7,7 +7,7 @@
   <div class="row-fluid">
   <div class="span9">
       <p>
-        Cancel and compensation events occur in the context of the <a href="<%= @docUrl('implement/bpmn.html') %>#/subprocesses/transaction-subprocess">Transaction subprocess</a>. 
+        Cancel and compensation events occur in the context of the <a href="<%= @docUrl('implement/bpmn.html') %>#!/subprocesses/transaction-subprocess">Transaction subprocess</a>. 
         Please read that part first to understand the overall idea.
       </p>
 
@@ -15,7 +15,7 @@
       <h1>Cancel End Event</h1>
 
       <p>
-      The cancel end event can only be used in combination with a <a href="<%= @docUrl('implement/bpmn.html') %>#/subprocesses/transaction-subprocess">Transaction subprocess</a>. When the cancel end event is reached, a cancel event is thrown which must be caught by a cancel boundary event. The cancel boundary event then cancels the transaction and triggers compensation.
+      The cancel end event can only be used in combination with a <a href="<%= @docUrl('implement/bpmn.html') %>#!/subprocesses/transaction-subprocess">Transaction subprocess</a>. When the cancel end event is reached, a cancel event is thrown which must be caught by a cancel boundary event. The cancel boundary event then cancels the transaction and triggers compensation.
       </p>
 
       <div class="bpmnContainer"  data-bpmn-symbol="endevent/cancel" ></div>
@@ -31,8 +31,8 @@
       </ul>
       <h3>There's more...</h3>
       <ul>            
-          <li><a href="<%= @docUrl('implement/bpmn.html') %>#/subprocesses/transaction-subprocess">Transaction subprocess</a></li>
-          <li><a href="<%= @docUrl('design/reference.html') %>#/events/compensation">Compensation Events in the BPMN Turorial</a></li>
+          <li><a href="<%= @docUrl('implement/bpmn.html') %>#!/subprocesses/transaction-subprocess">Transaction subprocess</a></li>
+          <li><a href="<%= @docUrl('design/reference.html') %>#!/events/compensation">Compensation Events in the BPMN Turorial</a></li>
       </ul>      
     </div>
   </div>

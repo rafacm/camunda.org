@@ -15,7 +15,7 @@
           <li><a href="<%= @docUrl('design/modeler.html') %>">camunda Modeler</a></li>
           <li><a href="<%= @docUrl('design/cycle-tutorial.html') %>">camunda Cycle</a></li>
           <li><a href="<%= @docUrl('design/tutorial.html') %>">BPMN 2.0 Tutorial</a></li>
-          <li><a href="<%= @docUrl('design/reference.html#/reference') %>">BPMN 2.0 Reference</a></li>
+          <li><a href="<%= @docUrl('design/reference.html') %>#!/reference">BPMN 2.0 Reference</a></li>
         </ul>
       </div>
       <div class="span3">
@@ -23,9 +23,9 @@
         <ul>
           <li><a href="<%= @docUrl('implement.html') %>">Overview</a></li>
           <li><a href="<%= @docUrl('implement/getting-started.html') %>">Getting Started</a></li>
-          <li><a href="<%= @docUrl('implement/java.html#/engine/configuration-and-startup') %>">Java Reference</a></li>
-          <li><a href="<%= @docUrl('implement/bpmn.html#/index') %>">BPMN 2.0 Reference</a></li>
-          <li><a href="<%= @docUrl('implement/rest.html#/overview/introduction') %>">REST API</a></li>
+          <li><a href="<%= @docUrl('implement/java.html') %>#!/engine/configuration-and-startup">Java Reference</a></li>
+          <li><a href="<%= @docUrl('implement/bpmn.html') %>#!/index">BPMN 2.0 Reference</a></li>
+          <li><a href="<%= @docUrl('implement/rest.html') %>#!/overview/introduction">REST API</a></li>
           <li><a href="<%= @docUrl('implement/tasklist.html') %>">camunda Tasklist</a></li>
           <li><a href="<%= @docUrl('implement/cockpit.html') %>">camunda Cockpit</a></li>
         </ul>

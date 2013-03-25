@@ -50,7 +50,7 @@ An error event handler references the same error element to declare that it catc
       </ul>
       <h3>There's more...</h3>
       <ul>            
-          <li><a href="<%= @docUrl('design/reference.html') %>#/events/error">Error Events in the BPMN Tutorial</a></li>
+          <li><a href="<%= @docUrl('design/reference.html') %>#!/events/error">Error Events in the BPMN Tutorial</a></li>
           <li><a href="https://app.camunda.com/confluence/display/foxUserGuide/Error+Handling">Error Handling</a></li>
       </ul>      
     </div>

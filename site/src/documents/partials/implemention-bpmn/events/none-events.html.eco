@@ -28,7 +28,7 @@ Note: a subprocess always has a none start event.
       </ul>
       <h3>There's more...</h3>
       <ul>            
-          <li><a href="<%= @docUrl('design/reference.html') %>#/events/basics">Events in the BPMN Tutorial</a></li>
+          <li><a href="<%= @docUrl('design/reference.html') %>#!/events/basics">Events in the BPMN Tutorial</a></li>
       </ul>      
     </div>
   </div>
