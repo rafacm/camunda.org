@@ -25,20 +25,20 @@
                   <a href="<%= @docUrl('design.html') %>">Overview</a>
                 </li>
                 <li class="divider"></li>
-                <li class="nav-header">Tools</li>
-                <li ng-class="activeClass('/design/modeler.html')">
-                  <a href="<%= @docUrl('design/modeler.html') %>">camunda Modeler</a>
-                </li>
-                <li ng-class="activeClass('/design/cycle-tutorial.html')">
-                  <a href="<%= @docUrl('design/cycle-tutorial.html') %>">camunda Cycle</a>
-                </li>
-                <li class="divider"></li>
                 <li class="nav-header">Know-how</li>
                 <li ng-class="activeClass('/design/tutorial.html')">
                   <a href="<%= @docUrl('design/tutorial.html') %>">BPMN 2.0 Tutorial</a>
                 </li>
                 <li ng-class="activeClass('/design/reference.html')">
                   <a href="<%= @docUrl('design/reference.html') %>#!/reference">BPMN 2.0 Reference</a>
+                </li>
+                <li class="divider"></li>
+                <li class="nav-header">Tools</li>
+                <li ng-class="activeClass('/design/modeler.html')">
+                  <a href="<%= @docUrl('design/modeler.html') %>">camunda Modeler</a>
+                </li>
+                <li ng-class="activeClass('/design/cycle-tutorial.html')">
+                  <a href="<%= @docUrl('design/cycle-tutorial.html') %>">camunda Cycle</a>
                 </li>
               </ul>
             </li>
@@ -54,29 +54,49 @@
                 <li ng-class="activeClass('/implement/getting-started.html')">
                   <a href="<%= @docUrl('implement/getting-started.html') %>">Getting Started</a>
                 </li>
-                <li class="divider"></li>
-                <li class="nav-header">Process Engine</li>
-                <li ng-class="activeClass('/implement/java.html')">
-                  <a href="<%= @docUrl('implement/java.html') %>#!/engine/configuration-and-startup">
-                    Java Reference
-                  </a>
-                </li>
-                <li ng-class="activeClass('/implement/bpmn.html')">
-                  <a href="<%= @docUrl('implement/bpmn.html') %>#!/index">
-                    BPMN 2.0 Reference
-                  </a>
-                </li>
-                <li ng-class="activeClass('/implement/rest.html')">
-                  <a href="<%= @docUrl('implement/rest.html') %>#!/overview/introduction">
-                    REST API
-                  </a>
-                </li>
                 <li class="nav-header">Tools</li>
                 <li ng-class="activeClass('/implement/tasklist.html')">
                   <a href="<%= @docUrl('implement/tasklist.html') %>">camunda tasklist</a>
                 </li>
                 <li ng-class="activeClass('/implement/cockpit.html')">
                   <a href="<%= @docUrl('implement/cockpit.html') %>">camunda cockpit</a>
+                </li>
+              </ul>
+            </li>
+
+            <li class="dropdown" ng-class="activeClass('/documentation')">
+              <a href="#" class="dropdown-toggle">
+                Documentation <b class="caret"></b>
+              </a>
+              <ul class="dropdown-menu">
+                <li class="nav-header">Guides</li>
+                <li ng-class="activeClass('/documentation/installation.html')">
+                  <a href="<%= @docUrl('documentation/installation') %>#!/guide">
+                    Installation
+                  </a>
+                </li>
+                <li class="nav-header">Engine</li>
+                <li ng-class="activeClass('/implement/java.html')">
+                  <a href="<%= @docUrl('implement/java.html') %>#!/engine/configuration-and-startup">
+                    Engine Configuration
+                  </a>
+                </li>
+                <li ng-class="activeClass('/implement/bpmn.html')">
+                  <a href="<%= @docUrl('implement/bpmn.html') %>#!/index">
+                    Engine User Guide
+                  </a>
+                </li>
+                <li class="divider"></li>
+                <li class="nav-header">Reference</li>
+                <li ng-class="activeClass('/implement/rest.html')">
+                  <a href="<%= @docUrl('implement/rest.html') %>#!/overview/introduction">
+                    REST API
+                  </a>
+                </li>
+                <li ng-class="activeClass('/implement/rest.html')">
+                  <a href="http://www.camunda.org/javadocs">
+                    Javadocs
+                  </a>
                 </li>
               </ul>
             </li>

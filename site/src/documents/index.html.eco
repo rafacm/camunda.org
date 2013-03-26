@@ -93,7 +93,7 @@ layout: 'dark'
             </div>
             <form style="display:inline">
               <p>
-                Input a Number between 1 and 5: <input type="text" data-ng-model="guess" size="30" placeholder="Make a guess!"></input>
+                Input a Number between 1 and 5: <input type="text" data-ng-model="guess" size="30" placeholder="Make a guess!" />
               </p>
               <p class="center">
                 <button class="btn btn-success" data-ng-disabled="!isGuessValid()" data-ng-click="signal('guessNumber')">Complete</button>
