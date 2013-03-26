@@ -101,6 +101,7 @@ CAM_PAGES = [
   { section: "rest", category: "Process Definition", id: "get-activity-statistics", name: "Get Activity Instance Statistics", url: "/process-definition/get-activity-statistics", keywords: "definitions get process-definition activity statistics aggregate sum" },
   { section: "rest", category: "Process Definition", id: "get-start-form-key", name: "Get Start Form Key", url: "/process-definition/get-start-form-key", keywords: "definition get process-definition startForm start form key" },
   
+  { section: "rest", category: "Process Instance", id: "get-instance", name: "Get Single Instance", url: "/process-instance/get", keywords: "instance get process-instance" },
   { section: "rest", category: "Process Instance", id: "get-instances", name: "Get Instances", url: "/process-instance/get-query", keywords: "instances get process-instance query filter" },
   { section: "rest", category: "Process Instance", id: "get-instances-count", name: "Get Instances Count", url: "/process-instance/get-query-count", keywords: "instances get process-instance query filter count" },
   { section: "rest", category: "Process Instance", id: "post-instances", name: "Get Instances (POST)", url: "/process-instance/post-query", keywords: "instances post process-instance query filter" },
