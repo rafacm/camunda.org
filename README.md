@@ -18,7 +18,7 @@ Start hacking
 In order to start hacking the camunda.org homepage, you first need to setup docpad.
 
 1. install [node.js](http://nodejs.org/) if you haven't already got it.
-2. inside your terminal, navigate to the `site/` folder inside the repository. Type `npm update`
+2. inside your terminal, navigate to the `site/` folder inside the repository. Type `npm install`
 3. run docpad using `docpad run`
 
 Go to http://localhost:9778/
