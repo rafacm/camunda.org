@@ -54,7 +54,7 @@
   </a>
 
   <!-- scripts -->
-  <%- @getBlock('scripts').add(@commonScripts()).toHTML() %>
+  <%- @getBlock('scripts').add(@commonScripts(),{defer:false}).toHTML() %>
 
   <!-- tracking -->
   <script type="text/javascript">
