@@ -73,7 +73,7 @@ var docpadConfig = {
         "assets/vendor/analytics/analytics.js"
       ],
 
-      title: "camunda  BPM",
+      title: "camunda BPM",
 
       description: "camunda BPM platform, free, Open Source BPM and workflow based on BPMN 2.0",
 
