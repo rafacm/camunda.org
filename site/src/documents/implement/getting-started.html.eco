@@ -176,7 +176,7 @@ layout: 'default'
         <div class="row">
           <div class="span9">
             <p>
-              Next, you need to add a Process Application class. The Process Application class constitutes the interface between your application and the process engine. 
+              Next, you need to create a package, e.g. <code>org.camunda.bpm.example.loanapproval</code> and add a Process Application class to it. The Process Application class constitutes the interface between your application and the process engine. 
             </p>
             <div class="app-source" app-source-no-tabs="LoanApprovalApplication" annotate="code-annotations" ></div>
           </div>
@@ -257,7 +257,7 @@ layout: 'default'
               In the eclipse <em>Package Explorer</em> select the <code>src/main/resources</code> folder. Right-click and select <code>New &gt; Other ...</code>. Go to the folder <code>Other</code> and select <em>BPMN 2.0 Diagram</em>. Click Next.
             </p>
             <p>
-              On the second page, you must specify the file name of the process. Put in <em>load-approval.bpmn</em>. Click Finish.
+              On the second page, you must specify the file name of the process. Put in <em>loan-approval.bpmn</em>. Click Finish.
             </p>                
           </div>
         </div> 
