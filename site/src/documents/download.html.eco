@@ -36,12 +36,12 @@ layout: 'default'
           <td>camunda BPM platform</td>
           <td>7.0.0-alpha1</td>
           <td>
-            <a href="/download/camunda-bpm/tomcat/7.0.0-alpha1/zip/">zip</a> | 
-            <a href="/download/camunda-bpm/tomcat/7.0.0-alpha1/tar.gz/">tar.gz</a>
+            <a id="download-bpm" href="/download/camunda-bpm/tomcat/7.0.0-alpha1/zip/">zip</a> | 
+            <a id="download-bpm href="/download/camunda-bpm/tomcat/7.0.0-alpha1/tar.gz/">tar.gz</a>
           </td>
           <td>
-            <a href="/download/camunda-bpm/jboss/7.0.0-alpha1/zip/">zip</a> | 
-            <a href="/download/camunda-bpm/jboss/7.0.0-alpha1/tar.gz/">tar.gz</a>
+            <a id="download-bpm href="/download/camunda-bpm/jboss/7.0.0-alpha1/zip/">zip</a> | 
+            <a id="download-bpm href="/download/camunda-bpm/jboss/7.0.0-alpha1/tar.gz/">tar.gz</a>
           </td>                
         </tr>
       </tbody>
@@ -75,7 +75,7 @@ layout: 'default'
         You can download a prepackaged camunda modeler (Windows only). 
       </p>
       <p class="center">
-        <a href="/download/camunda-modeler/indigo/latest/zip/" class="btn btn-primary btn-large"><i class="icon-download-alt icon-large icon-white"></i>   Download
+        <a id="download-modeler href="/download/camunda-modeler/indigo/latest/zip/" class="btn btn-primary btn-large"><i class="icon-download-alt icon-large icon-white"></i>   Download
         </a>
       </p>
       <p>This distribution includes camunda Modeler installed in a Eclipse Indigo (32bit, Windows).</p>
