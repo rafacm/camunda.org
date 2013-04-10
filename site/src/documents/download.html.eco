@@ -26,6 +26,7 @@ layout: 'default'
       <thead>
         <tr>
           <th>Distribution</th>
+          <th>License*</th>
           <th>Version</th>
           <th><span class="container-tomcat container-small"></span><br>Apache Tomcat 7</th>
           <th><span class="container-as7 container-small"></span><br>JBoss AS 7</th>
@@ -34,6 +35,7 @@ layout: 'default'
       <tbody>
         <tr>
           <td>camunda BPM platform</td>
+          <td><a href="http://www.apache.org/licenses/LICENSE-2.0">Apache License 2.0</a></td>
           <td>7.0.0-alpha1</td>
           <td>
             <a id="download-bpm" href="/download/camunda-bpm/tomcat/7.0.0-alpha1/zip/">zip</a> | 
@@ -46,6 +48,10 @@ layout: 'default'
         </tr>
       </tbody>
     </table>
+    <p>
+      <strong>* License</strong> applies to code or documentation provided by camunda. Third-party libraries or application servers are distributed under their respective licenses.
+
+    </p>
   </div>
 </div>
 
