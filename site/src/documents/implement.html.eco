@@ -1,16 +1,16 @@
 ---
 
-title: 'Implement your processes'
+title: 'Open Source BPM and Workflow'
 layout: 'dark'
 
 ---
 
-<div style="position: relative; top: 80px; text-align: center">
+<div style="position: relative; margin-top: 90px; text-align: center">
   <h1 style="color: #333">Implement and Run your Processes</h1>
   <h3>with camunda BPM</h3>
 </div>
 
-<div style="position: relative; text-align: center; top: 120px;">
+<div style="position: relative; text-align: center; margin-top: 50px;">
 
   <div style="width: 543; margin: 0 auto">
 
@@ -43,7 +43,7 @@ layout: 'dark'
         <a href="<%= @docUrl('implement/getting-started.html') %>" class="btn btn-large">Getting Started</a>
       </p>
 
-      <p style="margin-top: 40px; font-size:120%">camunda BPM platform is a flexible framework for workflow and process automation. It's core is a native BPMN 2.0
+      <p style="margin-top: 40px; font-size:120%">camunda BPM platform is a flexible framework for workflow and process automation based on the Apache 2.0 License. It's core is a native BPMN 2.0
         process engine that runs inside the Java Virtual Machine. It can be enbedded inside any Java application and any Runtime Container. It
         integrates with Java EE 6 and is a perfect match for the Spring Framework. On top of the process engine, choose from a stack of tools for human
         workflow management, operations &amp; monitoring.</p>

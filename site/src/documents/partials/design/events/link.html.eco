@@ -7,7 +7,7 @@
 				As shown below, you can draw two associated links as an alternative to a sequence flow. Here, "associated" means there is a throwing link event as the "exit point," 
 				and a catching link event as the "entrance point," and the two events are marked as a pair - in our example by the designation "A." 
 			</p>
-			<div id="link" style="position:relative" data-bpmn-src="tutorial/link">
+			<div id="link" data-bpmn-src="tutorial/link">
 			</div>			
 			<p>
 				Link events can be very useful if:

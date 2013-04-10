@@ -13,7 +13,7 @@
 				than does a task. Both tasks and subprocesses are part of the activities class and are therefore represented as rectangles with rounded corners. The only difference is the plus sign, 
 				indicating a stored detailed sequence for the subprocess:
 			</p>
-			<div id="subprocess" style="position:relative" data-bpmn-src="tutorial/subprocess">
+			<div id="subprocess" data-bpmn-src="tutorial/subprocess">
 			</div>
 			<p>
 				What good is that to us? That depends most on how your BPMN tool supports the following options for connecting subprocesses with their parent processes: 
@@ -25,7 +25,7 @@
 					the parent process. A tool supporting this function enables you to expand and collapse the subprocess directly in the diagram, respectively, to show or hide details.</li>
 				</ul>
 			</p>
-			<div id="subprocess_expanded" style="position:relative" data-bpmn-src="tutorial/subprocess_expanded">
+			<div id="subprocess_expanded" data-bpmn-src="tutorial/subprocess_expanded">
 			</div>
 			<p>
 				Direct expansion may seem appealing, but often it is not useful in practice. Expanding the subprocess requires that all the adjacent symbols in the diagram shift to make room. 
@@ -58,16 +58,14 @@
 				As shown in the diagram below, we can represent how a spontaneous dinner invitation leads to canceling our cooking process. In the process shown, however, we could ignore 
 				the invitation if our meal had already been prepared and we are already eating it:
 			</p>
-			<div id="subprocess_attached" style="position:relative" data-bpmn-src="tutorial/subprocess_attached">
+			<div id="subprocess_attached" data-bpmn-src="tutorial/subprocess_attached">
 			</div>				
 			<p>
 				Where message, timer, and conditional events are involved, the parent process always aborts the subprocess when reacting to external circumstances. 
 				With error, cancellation, and escalation events, however, the subprocess reports these events to the parent process. This isn't as abstract as it may sound. 
 			</p>
-			<div style="width:100%; overflow:auto">
-				<div id="subprocess_error" style="position:relative" data-bpmn-src="tutorial/subprocess_error">
-				</div>				
-			</div>
+			<div id="subprocess_error" style="overflow-x: scroll; overflow-y: hidden;" data-bpmn-src="tutorial/subprocess_error"></div>				
+
 			<p>
 				In the bottom right of the diagram above, the item procurement task can fail because the item is no longer available. 
 				Because item procurement is a global subprocess, it triggers an  error event to tell the parent process that something went wrong. 
@@ -89,8 +87,7 @@
 				and the message won't be regarded as an error message. Also, the parent process can receive and process messages from escalation events without canceling the subprocess because 
 				non-interrupting intermediate events can be attached: 
 			</p>
-			<div style="width:100%; overflow:auto">
-				<div id="subprocess_escalation" style="position:relative" data-bpmn-src="tutorial/subprocess_escalation">
-				</div>				
-			</div>			
+
+			<div id="subprocess_escalation" style="overflow-x: scroll; overflow-y: hidden;" data-bpmn-src="tutorial/subprocess_escalation"></div>				
+
 </div>

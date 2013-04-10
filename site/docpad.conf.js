@@ -75,10 +75,10 @@ var docpadConfig = {
 
       title: "camunda BPM",
 
-      description: "The home of the camunda BPM platform",
+      description: "camunda BPM platform, free, Open Source BPM and workflow based on BPMN 2.0",
 
       // website keywords (separated by commas)
-      keywords: "camunda, camunda.org, bpm, engine, platform, process, automation, community",
+      keywords: "camunda, open source, free, Apache License, Apache 2.0, workflow, BPMN, BPMN 2.0, camunda.org, bpm, BPMS, engine, platform, process, automation, community",
 
       author: "camunda community",
       email: "community@camund.org",

@@ -14,7 +14,7 @@
 			<p>
 				Okay, that's pretty abstract, but we can demonstrate how an event subprocess works with an example:
 			</p>
-			<div id="subprocess_event" style="position:relative" data-bpmn-src="tutorial/subprocess_event">
+			<div id="subprocess_event" data-bpmn-src="tutorial/subprocess_event">
 			</div>	
 			<p>
 				We invited a couple of friends for dinner. This starts the "dinner preparation" subprocess of choosing a recipe and then preparing the meal. While we are doing that, the telephone rings. 
@@ -26,7 +26,7 @@
 				You can see below how event subprocesses are represented in collapsed state: The frame is a dotted line, and we have again used the plus sign to represent collapsed subprocesses.
 				In the top left corner, we also have the start event triggering the subprocess (TODO). 
 			</p>
-			<div id="subprocess_event_collapsed" style="position:relative" data-bpmn-src="tutorial/subprocess_event_collapsed">
+			<div id="subprocess_event_collapsed" data-bpmn-src="tutorial/subprocess_event_collapsed">
 			</div>	
 			<p>
 				The event types that can trigger both interrupting and non-interrupting event subprocesses are:

@@ -9,7 +9,7 @@
       Migration an existing application from Activiti 5.x (or camunda fox 6.x - see below) is very easy. This page describes the necessary steps.
 
       <div class="alert alert-info">
-        <strong>Getting Help:</strong> If you have any trouble ask for assistance in the <a href="/app/community-forum.html">Forum</a>.
+        <strong>Getting Help:</strong> If you have any trouble ask for assistance in the <a href="<%= @docUrl('community/forum.html') %>">Forum</a>.
        </div>      
 
       <p>The changes in short are:</p>
@@ -51,7 +51,7 @@
 
     <dt>Migrate to Activiti 5.11</dt>
     <dd>
-      We base our fork on the database schema of Activiti 5.11. So please <a href="http://www.activiti.org/userguide/index.html#databaseUpgrade">upgrade</a> your project to this database using the upgrade scripts provided by Activiti. If you are using a newer version best ask for assistence in the <a href="/app/community-forum.html">forum</a>.
+      We base our fork on the database schema of Activiti 5.11. So please <a href="http://www.activiti.org/userguide/index.html#databaseUpgrade">upgrade</a> your project to this database using the upgrade scripts provided by Activiti. If you are using a newer version best ask for assistence in the <a href="<%= @docUrl('community/forum.html') %>">forum</a>.
     </dd>
 
     <dt>Exchange Library.</dt>
@@ -226,7 +226,7 @@
   <li>Remove the <code>fox-platform-client.x.jar</code> from your deployment - it is not needed anymore.</li>
   <li>Add a Process Application Class, see <a href="<%= @docUrl('implement/java.html') %>#!/engine/process-application">Process Applications</a>.</li>
   <li>Adjust the processes.xml to the new format, see <a href="<%= @docUrl('implement/java.html') %>#!/engine/process-application">Process Applications</a>.</li>
-  <li>If you use the new camunda Tasklist component you have to adjust the <code>formKey</code>, as described in the <a href="http://localhost:8000/app/implement-getting-started.html">Getting Started Tutorial</a>. We provide more information soon.</li>
+  <li>If you use the new camunda Tasklist component you have to adjust the <code>formKey</code>, as described in the <a href="<%= @docUrl('implement/getting-started.html') %>">Getting Started Tutorial</a>. We provide more information soon.</li>
   <li>
     <p>
       If you use the <code>fox.taskForm</code> bean as described in <a href="https://app.camunda.com/confluence/display/foxUserGuide/Add+forms+to+your+Process+Application">Add forms to your Process Application</a> you have to make sure to have the <code>camunda-engine-cdi</code> dependency on your classpath:

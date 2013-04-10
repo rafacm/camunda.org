@@ -9,17 +9,7 @@
     </p>
     <div class="row-fluid">
       <div class="span3">
-        <h4>Design</h4>
-        <ul>
-          <li><a href="<%= @docUrl('design.html') %>">Overview</a></li>
-          <li><a href="<%= @docUrl('design/modeler.html') %>">camunda Modeler</a></li>
-          <li><a href="<%= @docUrl('design/cycle-tutorial.html') %>">camunda Cycle</a></li>
-          <li><a href="<%= @docUrl('design/tutorial.html') %>">BPMN 2.0 Tutorial</a></li>
-          <li><a href="<%= @docUrl('design/reference.html') %>#!/reference">BPMN 2.0 Reference</a></li>
-        </ul>
-      </div>
-      <div class="span3">
-        <h4>Implement</h4>
+        <h4>Documentation</h4>
         <ul>
           <li><a href="<%= @docUrl('implement.html') %>">Overview</a></li>
           <li><a href="<%= @docUrl('implement/getting-started.html') %>">Getting Started</a></li>
@@ -30,6 +20,16 @@
           <li><a href="<%= @docUrl('implement/cockpit.html') %>">camunda Cockpit</a></li>
         </ul>
       </div>
+      <div class="span3">
+        <h4>BPMN 2.0</h4>
+        <ul>
+          <li><a href="<%= @docUrl('design.html') %>">Overview</a></li>
+          <li><a href="<%= @docUrl('design/tutorial.html') %>">BPMN 2.0 Tutorial</a></li>
+          <li><a href="<%= @docUrl('design/reference.html') %>#!/reference">BPMN 2.0 Reference</a></li>
+          <li><a href="<%= @docUrl('design/modeler.html') %>">camunda Modeler</a></li>
+          <li><a href="<%= @docUrl('design/cycle-tutorial.html') %>">camunda Cycle</a></li>
+        </ul>
+      </div>      
       <div class="span3">
         <h4>Community</h4>
         <ul>

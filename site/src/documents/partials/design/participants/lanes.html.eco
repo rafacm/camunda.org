@@ -1,4 +1,4 @@
-<div data-bpmn-tutorial >
+<div data-bpmn-tutorial>
 			<div class="page-header" >
 				<h1>Lanes</h1>
 			</div>
@@ -6,19 +6,16 @@
 				We have talked about <b>what</b> to do in our processes, but we have not yet explained <b>who</b> is responsible for executing which tasks. In BPMN, you can answer this question with lanes. 
 			</p>
 				<div class="label label-warning">Hover over orange symbols for explanation</div>
-				<div  style="width:100%; overflow:auto;">
-					<div id="lanes" style="position:relative" data-bpmn-src="tutorial/lanes">
-						<div class="tutPop" id="sid-A6F4B130-61DD-4725-86E0-2E30D1571F9C" rel="popover" title="Lane" data-content="
-							A lane is a lane is a lane...
-						">
-						</div>
-						<div class="tutPop" id="sid-F843A70C-9AC5-4A9D-BEB9-50D6A3B3F8C7" rel="popover" title="Inclusive Gateway (Converging)" data-content="
-							We can use OR gateways to combine paths too: Depending on whether we want to eat just a salad or something real, or a salad and something real, we have to wait either for one token to arrive (merge) or for both tokens (synchronize) before we can eat.
-						">
-						</div>
-
+				<div id="lanes" style="position:relative; overflow-x: scroll; overflow-y: hidden;" data-bpmn-src="tutorial/lanes">
+					<div class="tutPop" id="sid-A6F4B130-61DD-4725-86E0-2E30D1571F9C" rel="popover" title="Lane" data-content="
+						A lane is a lane is a lane...
+					">
 					</div>
-				</div>		
+					<div class="tutPop" id="sid-F843A70C-9AC5-4A9D-BEB9-50D6A3B3F8C7" rel="popover" title="Inclusive Gateway (Converging)" data-content="
+						We can use OR gateways to combine paths too: Depending on whether we want to eat just a salad or something real, or a salad and something real, we have to wait either for one token to arrive (merge) or for both tokens (synchronize) before we can eat.
+					">
+					</div>
+				</div>	
 		
 			<p>
 				The diagram shows that the tasks in our sample process were assigned to particular people. We can derive the following process description from the assignments: 

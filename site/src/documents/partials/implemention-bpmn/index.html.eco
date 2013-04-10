@@ -9,7 +9,7 @@ This page gives you an overview of BPMN 2.0 elements and the current coverage of
 
 <div class="alert">
     <strong>Heads up!</strong> 
-    If you are unfamilliar with BPMN 2.0 you might want to check out our <a href="http://localhost:8000/app/design-tutorial.html">BPMN Tutorial</a> first.
+    If you are unfamilliar with BPMN 2.0 you might want to check out our <a href="<%= @docUrl('design/tutorial.html') %>">BPMN Tutorial</a> first.
 </div>
 
 <div class="label label-warning">The elements marked in orange are <strong>supported</strong>. Hover over the element to see from which version on they are supported.</div>

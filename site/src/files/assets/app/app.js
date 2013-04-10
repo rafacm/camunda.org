@@ -898,7 +898,7 @@ angular.module('camundaorg.directives')
           $.each( data.events, function( key, value ) {
 
             var myDateString = value.meeting.date.substring(0,6);
-            var myRow = myDateString + " | " + value.meeting.city + " | <a style='color:lightblue;' href='community-meetings-single.html?id=" + value.meeting.id + "'>" + value.meeting.subject + "</a><br/>";
+            var myRow = myDateString + " | " + value.meeting.city + " | <a style='color:lightblue;' href='community/meetings/register.html?id=" + value.meeting.id + "'>" + value.meeting.subject + "</a><br/>";
             element.append(myRow);
             
           });
@@ -1185,12 +1185,13 @@ angular.module('camundaorg.directives')
 
       // get pipe content via jsonp, using jquery because angular http seems to have a bug here:
       // getting a syntax error for our pipes
-      $.getJSON(url,
+      $.getJSON(url+"&_callback=?",
         function(data) {
           scope.items = data.value.items;
           scope.$digest();
         }
       );
+
     }
   };
 });

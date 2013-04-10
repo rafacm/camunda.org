@@ -13,7 +13,7 @@ layout: 'default'
 <div class="row">
   <p class="alert alert-success"><i class=" icon-leaf"></i>
     <strong>Community Distribution:</strong> You are downloading a community distribution of camunda BPM which is not supported by an SLA (service level agreement). 
-    <a href="support.html">Click here</a> if you need a fully supported enterprise edition of camunda BPM.
+    <a href="<%= @docUrl('support.html') %>">Click here</a> if you need a fully supported enterprise edition of camunda BPM.
   </p>
 </div>
 
@@ -36,12 +36,12 @@ layout: 'default'
           <td>camunda BPM platform</td>
           <td>7.0.0-alpha1</td>
           <td>
-            <a href="/download/camunda-bpm/tomcat/7.0.0-alpha1/zip/">zip</a> | 
-            <a href="/download/camunda-bpm/tomcat/7.0.0-alpha1/tar.gz/">tar.gz</a>
+            <a id="download-bpm" href="/download/camunda-bpm/tomcat/7.0.0-alpha1/zip/">zip</a> | 
+            <a id="download-bpm" href="/download/camunda-bpm/tomcat/7.0.0-alpha1/tar.gz/">tar.gz</a>
           </td>
           <td>
-            <a href="/download/camunda-bpm/jboss/7.0.0-alpha1/zip/">zip</a> | 
-            <a href="/download/camunda-bpm/jboss/7.0.0-alpha1/tar.gz/">tar.gz</a>
+            <a id="download-bpm" href="/download/camunda-bpm/jboss/7.0.0-alpha1/zip/">zip</a> | 
+            <a id="download-bpm" href="/download/camunda-bpm/jboss/7.0.0-alpha1/tar.gz/">tar.gz</a>
           </td>                
         </tr>
       </tbody>
@@ -64,7 +64,9 @@ layout: 'default'
           </div>
           <div class="span10">
             <h3 style="margin-top:0px; margin-bottom:5px;">Eclipse Update Site:</h3>
-            <a style="font-size:120%;" href="http://camunda.org/release/camunda-modeler/update-sites/latest/site/">http://camunda.org/release/camunda-modeler/update-sites/latest/site/</a>
+            <a style="font-size:120%;" href="http://camunda.org/release/camunda-modeler/update-sites/latest/site/">
+              http://camunda.org/release/camunda-modeler/update-sites/latest/site/
+            </a>
           </div>
         </div>
       </div>            
@@ -75,7 +77,8 @@ layout: 'default'
         You can download a prepackaged camunda modeler (Windows only). 
       </p>
       <p class="center">
-        <a href="/download/camunda-modeler/indigo/latest/zip/" class="btn btn-primary btn-large"><i class="icon-download-alt icon-large icon-white"></i>   Download
+        <a id="download-modeler" href="/download/camunda-modeler/indigo/latest/zip/" class="btn btn-primary btn-large">
+          <i class="icon-download-alt icon-large icon-white"></i> Download
         </a>
       </p>
       <p>This distribution includes camunda Modeler installed in a Eclipse Indigo (32bit, Windows).</p>
