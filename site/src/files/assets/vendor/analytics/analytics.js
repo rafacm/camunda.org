@@ -12,9 +12,9 @@ _gaq.push(['_trackPageview']);
 })();
 
 $('#download-modeler').click(
-  _gaq.push(['_trackEvent', 'Downloads', 'camunda-modeler', this.href]);
+  _gaq.push(['_trackEvent', 'Downloads', 'camunda-modeler', this.href])
 );
 
 $('#download-bpm').click(
-  _gaq.push(['_trackEvent', 'Downloads', 'camunda-bpm', this.href]);
-)
+  _gaq.push(['_trackEvent', 'Downloads', 'camunda-bpm', this.href])
+);
