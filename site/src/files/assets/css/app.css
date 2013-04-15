@@ -280,9 +280,15 @@ footer ul li {
  * Logo styling
 */
 .navbar .brand {
-  background-image: url(../img/logo.png);
-  margin-left: -30px;
+  background: left center no-repeat scroll url(../img/logo.png);
+  margin-left: -10px;
   width: 172px;
+}
+
+@media (max-width: 979px) {
+  .navbar .brand {
+    margin-left: -5px;
+  }
 }
 
 /**
