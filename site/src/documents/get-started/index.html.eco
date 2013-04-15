@@ -1,6 +1,6 @@
 ---
 
-title: 'Getting started'
+title: 'Get started'
 layout: 'default'
 
 ---
@@ -78,7 +78,7 @@ layout: 'default'
         First, download a distribution of camunda BPM platform. You can chose from different application servers. In this tutorial, we will use the Apache Tomcat 7 based distribution.
       </p>
       <p class="center">
-        <a class="btn btn-large btn-primary" href="<%= @docUrl('download.html') %>">
+        <a class="btn btn-large btn-primary" href="<%= @docUrl('download/') %>">
           <i class="icon-download-alt icon-large icon-white"></i> Download
         </a>
       </p>
@@ -537,7 +537,7 @@ INFO: Processing request by 'AC-343422'...
               <a href="<%= @docUrl('design/tutorial.html') %>">Learn more about BPMN</a>
             </li>
             <li>
-              <a href="<%= @docUrl('implement/bpmn.html#!/index') %>">Explore the BPMN Reference</a>
+              <a href="http://docs.camunda.org/bpmn20-reference/">Explore the BPMN Reference</a>
             </li>
             <li>
               <a href="https://twitter.com/share" class="twitter-share-button" data-url="http://www.camunda.org/implement/getting-started.html"

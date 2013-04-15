@@ -7,21 +7,21 @@
       </button>
 
       <!-- logo -->
-      <a class="brand ir" href="<%= @docUrl('index.html') %>">camunda.org</a>
+      <a class="brand ir" href="<%= @docUrl('') %>">camunda.org</a>
 
       <!-- navigation items -->
       <div class="nav-collapse collapse">
         <ul class="nav" ng-controller="NavigationController">
 
-          <li class="dropdown" ng-class="activeClass('/getting-started')">
-            <a href="getting-started.html">Get Started</a>
+          <li class="dropdown" ng-class="activeClass('/get-started')">
+            <a href="<%= @docUrl('get-started/') %>">Get Started</a>
             <ul class="dropdown-menu">
-              <li><a href="/implement/getting-started">Guide</a></li>
-              <li><a href="/download.html">Download</a></li>
+              <li><a href="http://docs.camunda.org/guides/">Guide</a></li>
+              <li><a href="<%= @docUrl('download/') %>" ng-class="activeClass('/download')">Download</a></li>
               <li class="divider"></li>
               <li ng-class="activeClass('/community/users.html')">
                 <a href="<%= @docUrl('community/users.html') %>">Who's using it?</a>
-              </li>              
+              </li>
             </ul>
           </li>
 
@@ -42,17 +42,17 @@
             </ul>
           </li>
                               
-          <li class="dropdown" ng-class="activeClass('/implement')">
-            <a href="<%= @docUrl('implement.html') %>" class="dropdown-toggle">
+          <li class="dropdown">
+            <a href="http://docs.camunda.org" class="dropdown-toggle">
               Documentation
             </a>
             <ul class="dropdown-menu">
-              <li><a href>User Guide</a></li>
-              <li><a href>API Reference</a></li>
-              <li><a href>Best Practices</a></li>
+              <li><a href="http://docs.camunda.org/guides/user-guide/">User Guide</a></li>
+              <li><a href="http://docs.camunda.org/references/">References</a></li>
+              <li><a href="http://docs.camunda.org/best-practices/">Best Practices</a></li>
               <li class="divider"></li>
-              <li><a href>Installation Guide</a></li>
-              <li><a href>Migration Guide</a></li>
+              <li><a href="http://docs.camunda.org/guides/installation-guide/">Installation Guide</a></li>
+              <li><a href="http://docs.camunda.org/guides/migration-guide/">Migration Guide</a></li>
             </ul>
           </li>
             

@@ -165,8 +165,8 @@ layout: 'dark'
   </ul>
 
   <p style="margin-top:40px">
-    <a class="btn btn-large btn-primary" href="<%= @docUrl('download.html') %>"><i class="icon-download-alt icon-large icon-white"></i> Download</a>
-    <a href="<%= @docUrl('implement/getting-started.html') %>" class="btn btn-large">Getting Started</a>
+    <a class="btn btn-large btn-primary" href="<%= @docUrl('download/') %>"><i class="icon-download-alt icon-large icon-white"></i> Download</a>
+    <a href="<%= @docUrl('/get-started/') %>" class="btn btn-large">Get Started</a>
   </p>
 </div>
 
