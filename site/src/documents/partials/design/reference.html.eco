@@ -2,8 +2,8 @@
 
 <div class="alert">
     <strong>Coverage in process engine: </strong>
-    If you are interessted which elements can be automated using the camunda BPMN 2.0 process engine check out 
-    <a href="<%= @docUrl('implement/bpmn.html') %>#!/index">BPMN 2.0 Coverage</a>.
+    If you are interessted which elements can be automated using the camunda BPMN 2.0 process engine check out our
+    <a href="http://docs.camunda.org/api-references/bpmn20/">BPMN 2.0 Coverage</a>.
 </div>
 
 			<div class="label label-warning">Click on orange symbols for explanation</div>

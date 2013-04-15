@@ -13,7 +13,7 @@ layout: 'dark'
 </div>
 
 <div class="center" style="font-size: 120%; position: relative;">
-  <a href="<%= @docUrl('implement.html') %>">Open source BPM and Workflow</a> based on <a href="<%= @docUrl('design.html') %>">BPMN 2.0</a>.
+  <a href="http://docs.camunda.org">Open source BPM and Workflow</a> based on <a href="<%= @docUrl('design.html') %>">BPMN 2.0</a>.
 </div>
 
 <div style="padding-top: 40px; width: 100%; height: 200px" data-ng-controller="NumberguessAppController">
