@@ -48,7 +48,7 @@
             </a>
             <ul class="dropdown-menu">
               <li><a href="http://docs.camunda.org/guides/user-guide/">User Guide</a></li>
-              <li><a href="http://docs.camunda.org/references/">References</a></li>
+              <li><a href="http://docs.camunda.org/api-references/">References</a></li>
               <li><a href="http://docs.camunda.org/best-practices/">Best Practices</a></li>
               <li class="divider"></li>
               <li><a href="http://docs.camunda.org/guides/installation-guide/">Installation Guide</a></li>
