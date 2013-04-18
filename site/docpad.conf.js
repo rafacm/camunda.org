@@ -169,7 +169,7 @@ var docpadConfig = {
       var url = document.url;
 
       for (var i = 0, u; !!(u = urls[i]); i++) {
-        u = u.replace(/\\/, "/");
+        u = u.replace(/[\\]+/g, "/");
 
         if (this.stringEndsWith(u, ".html")) {
           if (this.stringEndsWith(u, "/index.html")) {
