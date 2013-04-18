@@ -7,7 +7,7 @@
       </button>
 
       <!-- logo -->
-      <a class="brand ir" href="<%= @docUrl('') %>">camunda.org</a>
+      <a class="brand ir" href="./<%= @docUrl('') %>">camunda.org</a>
 
       <!-- navigation items -->
       <div class="nav-collapse collapse">
