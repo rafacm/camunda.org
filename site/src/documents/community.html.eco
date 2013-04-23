@@ -27,7 +27,7 @@ layout: 'dark'
       <p>
         Meet other users in our forum boards<br /> and discuss all your questions around BPM.
       </p>
-      <p style="color: #B5152B;">Forum Boards »</p>
+      <p style="color: #B5152B;">Forum Boards &raquo;</p>
     </div>
   </a>
   <a href="<%= @docUrl('community/meetings.html') %>">
@@ -53,7 +53,7 @@ layout: 'dark'
       <p>
         Visit our free community meetings<br />and get in touch with other BPM enthusiasts.
       </p>
-      <p style="color: #B5152B;">Next Meetings »</p>
+      <p style="color: #B5152B;">Next Meetings &raquo;</p>
     </div>
   </a>
   <a href="<%= @docUrl('community/users.html') %>">
@@ -71,7 +71,7 @@ layout: 'dark'
       <p>
         Who is already using camunda BPM?<br /> Have a look and hear their opinion.
       </p>
-      <p style="color: #B5152B;">camunda BPM Users »</p>
+      <p style="color: #B5152B;">camunda BPM Users &raquo;</p>
     </div>
   </a>
 </div>
@@ -83,7 +83,7 @@ layout: 'dark'
     Meet other users in our forum boards<br/> and discuss all your questions around BPM.
   </p>
   <p>
-     <a href="<%= @docUrl('community/forum.html') %>">Forum Boards »</a>
+     <a href="<%= @docUrl('community/forum.html') %>">Forum Boards &raquo;</a>
    </p>
 </div>
 <div class="span4 center">
@@ -92,7 +92,7 @@ layout: 'dark'
     Visit our free community meetings<br/>and get in touch with other BPM enthusiasts.
   </p>
   <p>
-    <a href="<%= @docUrl('community/meetings.html') %>">Next Meetings »</a>
+    <a href="<%= @docUrl('community/meetings.html') %>">Next Meetings &raquo;</a>
   </p>
 </div>
 <div class="span4 center">
@@ -101,7 +101,7 @@ layout: 'dark'
     Who is already using camunda BPM?<br/> Have a look and hear their opinion.
   </p>
   <p>
-    <a href="">camunda BPM Users »</a>
+    <a href="">camunda BPM Users &raquo;</a>
   </p>
 </div>
 </div>
@@ -124,7 +124,7 @@ layout: 'dark'
       <p>
         Why are we doing this?<br /> Learn our Vision and get infected.
       </p>
-      <p style="color: lightblue;">Our Vision »</p>
+      <p style="color: lightblue;">Our Vision &raquo;</p>
     </div>
   </a>
   <a href="<%= @docUrl('community/contribute.html') %>">
@@ -140,7 +140,7 @@ layout: 'dark'
       <p>
         We welcome you to contribute your ideas,<br />bugfixes and features to camunda BPM.
       </p>
-      <p style="color: lightblue;">How to Contribute »</p>
+      <p style="color: lightblue;">How to Contribute &raquo;</p>
     </div>
   </a>
   <a href="<%= @docUrl('community/team.html') %>">
@@ -160,7 +160,7 @@ layout: 'dark'
       <p>
         camunda BPM is driven by a bunch of <br />BPM enthusiasts ready to change the world.
       </p>
-      <p style="color: lightblue;">Meet the Team »</p>
+      <p style="color: lightblue;">Meet the Team &raquo;</p>
     </div>
   </a>
 </div>
@@ -174,7 +174,7 @@ layout: 'dark'
       Why are we doing this?<br/> Learn our Vision and get infected.
     </p>
     <p>
-       <a href="<%= @docUrl('community/vision.html') %>">Our Vision »</a>
+       <a href="<%= @docUrl('community/vision.html') %>">Our Vision &raquo;</a>
      </p>
   </div>
   <div class="span4 center">
@@ -183,7 +183,7 @@ layout: 'dark'
       We welcome you to contribute your ideas,<br/>bugfixes and features to camunda.org.
     </p>
     <p>
-      <a href="">How to Contribute »</a>
+      <a href="">How to Contribute &raquo;</a>
     </p>
   </div>
   <div class="span4 center">
@@ -193,7 +193,7 @@ layout: 'dark'
       camunda BPM is driven by a bunch of <br/>BPM enthusiasts ready to change the world.
     </p>
     <p>
-      <a href="">Meet the Team »</a>
+      <a href="">Meet the Team &raquo;</a>
     </p>
   </div>
   </div>

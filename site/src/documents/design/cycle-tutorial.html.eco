@@ -52,7 +52,7 @@ layout: 'default'
       <div class="page-header" >
         <h1>Setup</h1>
       </div>
-      <p>Cycle is already included in the camunda BPM distributions (<a href="<%= @docUrl('download.html') %>">Download Area</a>). 
+      <p>Cycle is already included in the camunda BPM distributions (<a href="<%= @docUrl('/download/') %>">Download Area</a>). 
         Just open <a href="http://localhost:8080/cycle">http://localhost:8080/cycle</a> and create a new Admin User.
       </p>
       <p>

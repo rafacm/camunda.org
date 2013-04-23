@@ -30,6 +30,7 @@ layout: 'default'
           <th>Version</th>
           <th><span class="container-tomcat container-small"></span><br>Apache Tomcat 7</th>
           <th><span class="container-as7 container-small"></span><br>JBoss AS 7</th>
+          <th><span class="container-glassfish container-small"></span><br>GlassFish 3.1.x</th>
         </tr>
       </thead>
       <tbody>
@@ -44,6 +45,24 @@ layout: 'default'
           <td>
             <a id="download-bpm" href="/download/camunda-bpm/jboss/7.0.0-alpha1/zip/">zip</a> | 
             <a id="download-bpm" href="/download/camunda-bpm/jboss/7.0.0-alpha1/tar.gz/">tar.gz</a>
+          </td>
+          <td></td>                
+        </tr>
+        <tr>
+          <td>camunda BPM platform</td>
+          <td><a href="http://www.apache.org/licenses/LICENSE-2.0">Apache License 2.0</a></td>
+          <td>7.0.0-alpha2</td>
+          <td>
+            <a id="download-bpm" href="/download/camunda-bpm/tomcat/7.0.0-alpha2/zip/">zip</a> | 
+            <a id="download-bpm" href="/download/camunda-bpm/tomcat/7.0.0-alpha2/tar.gz/">tar.gz</a>
+          </td>
+          <td>
+            <a id="download-bpm" href="/download/camunda-bpm/jboss/7.0.0-alpha2/zip/">zip</a> | 
+            <a id="download-bpm" href="/download/camunda-bpm/jboss/7.0.0-alpha2/tar.gz/">tar.gz</a>
+          </td>                
+          <td>
+            <a id="download-bpm" href="/download/camunda-bpm/glassfish/7.0.0-alpha2/zip/">zip</a> | 
+            <a id="download-bpm" href="/download/camunda-bpm/glassfish/7.0.0-alpha2/tar.gz/">tar.gz</a>
           </td>                
         </tr>
       </tbody>
