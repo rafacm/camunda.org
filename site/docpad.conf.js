@@ -121,7 +121,16 @@ var docpadConfig = {
 
     pathSeparator: function(url) {
 
-      var uriParts = (url || this.document.url.replace(this.site.url)).split("/");
+      if (!url) {
+        url = this.documentUrl();
+      }
+
+      if (url.indexOf("/") === 0) {
+        url = url.substring(1);
+      }
+
+      // windows bug: must split by / and \
+      var uriParts = url.split("/");
 
       function repeat(s, n) {
 
@@ -134,13 +143,44 @@ var docpadConfig = {
         return a.join('');
       }
 
-      return repeat('../', uriParts.length - 1);
+      var depth = 0;
+
+      if (uriParts.length) {
+
+        depth = uriParts.length - 1;
+      }
+
+      return repeat('../', depth);
     },
 
     docUrl: function(url) {
-      var documentUrl = this.document.url;
-
+      var documentUrl = this.documentUrl();
       return this.pathSeparator(documentUrl) + url;
+    },
+
+    stringEndsWith: function(str, ending) {
+      return str.indexOf(ending) == str.length - ending.length;
+    },
+
+    documentUrl: function() {
+      var document = this.document;
+      var urls = document.urls;
+
+      var url = document.url;
+
+      for (var i = 0, u; !!(u = urls[i]); i++) {
+        u = u.replace(/[\\]+/g, "/");
+
+        if (this.stringEndsWith(u, ".html")) {
+          if (this.stringEndsWith(u, "/index.html")) {
+            url = u.replace("index.html", "");
+          } else {
+            url = u;
+          }
+        }
+      }
+
+      return url;
     },
 
     relativize: function(paths, separator) {

@@ -11,10 +11,10 @@ _gaq.push(['_trackPageview']);
   var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
 })();
 
-$('#download-modeler').click(
-  _gaq.push(['_trackEvent', 'Downloads', 'camunda-modeler', this.href])
-);
+$('#download-modeler').click(function() {
+  _gaq.push(['_trackEvent', 'Downloads', 'camunda-modeler', this.href]);
+});
 
-$('#download-bpm').click(
-  _gaq.push(['_trackEvent', 'Downloads', 'camunda-bpm', this.href])
-);
+$('#download-bpm').click(function() {
+  _gaq.push(['_trackEvent', 'Downloads', 'camunda-bpm', this.href]);
+});

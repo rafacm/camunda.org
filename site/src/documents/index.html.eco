@@ -13,7 +13,7 @@ layout: 'dark'
 </div>
 
 <div class="center" style="font-size: 120%; position: relative;">
-  <a href="<%= @docUrl('implement.html') %>">Open source BPM and Workflow</a> based on <a href="<%= @docUrl('design.html') %>">BPMN 2.0</a>.
+  <a href="http://docs.camunda.org">Open source BPM and Workflow</a> based on <a href="<%= @docUrl('design.html') %>">BPMN 2.0</a>.
 </div>
 
 <div style="padding-top: 40px; width: 100%; height: 200px" data-ng-controller="NumberguessAppController">
@@ -61,7 +61,7 @@ layout: 'dark'
           </h3>
           <div class="popover-content">
             <p>
-              A <a href="<%= @docUrl('implement/bpmn.html#!/tasks/service-task') %>" target="_blank">Service Task</a> allows triggering an automatic system function like a
+              A <a href="http://docs.camunda.org/api-references/bpmn20/#!/tasks/service-task" target="_blank">Service Task</a> allows triggering an automatic system function like a
               Web Service or a Method of a Java Class.
             </p>
             <p>This service task generates a random number between 1 and 5.</p>
@@ -82,7 +82,7 @@ layout: 'dark'
           <div class="popover-content">
             <div data-ng-show="isFirstGuess()">
               <p>
-                The <a href="<%= @docUrl('implement/bpmn.html#!/tasks/user-task') %>" target="_blank">User Task</a> allows you to make an input.
+                The <a href="http://docs.camunda.org/api-references/bpmn20/#!/tasks/user-task" target="_blank">User Task</a> allows you to make an input.
               </p>
             </div>
             <div data-ng-show="!isFirstGuess() && guessCounter<6">
@@ -93,7 +93,7 @@ layout: 'dark'
             </div>
             <form style="display:inline">
               <p>
-                Input a Number between 1 and 5: <input type="text" data-ng-model="guess" size="30" placeholder="Make a guess!"></input>
+                Input a Number between 1 and 5: <input type="text" data-ng-model="guess" size="30" placeholder="Make a guess!" />
               </p>
               <p class="center">
                 <button class="btn btn-success" data-ng-disabled="!isGuessValid()" data-ng-click="signal('guessNumber')">Complete</button>
@@ -112,7 +112,7 @@ layout: 'dark'
           </h3>
           <div class="popover-content">
             <p>
-              The <a href="<%= @docUrl('implement/bpmn.html#!/gateways/exclusive-gateway') %>" target="_blank">Exclusive Gateway</a> marks a decision. In BPMN 2.0, the <a href="<%= @docUrl('implement/bpmn.html#!/gateways/sequence-flow') %>" target="_blank">Sequence Flows</a> that leave an Exclusive Gateway may have Conditions that are evaluated.
+              The <a href="http://docs.camunda.org/api-references/bpmn20/#!/gateways/exclusive-gateway" target="_blank">Exclusive Gateway</a> marks a decision. In BPMN 2.0, the <a href="http://docs.camunda.org/api-references/bpmn20/#!/gateways/sequence-flow" target="_blank">Sequence Flows</a> that leave an Exclusive Gateway may have Conditions that are evaluated.
             </p>
             <p>In this case, we check whether your guess is correct.</p>
             <p class="center">
@@ -165,8 +165,8 @@ layout: 'dark'
   </ul>
 
   <p style="margin-top:40px">
-    <a class="btn btn-large btn-primary" href="<%= @docUrl('download.html') %>"><i class="icon-download-alt icon-large icon-white"></i> Download</a>
-    <a href="<%= @docUrl('implement/getting-started.html') %>" class="btn btn-large">Getting Started</a>
+    <a class="btn btn-large btn-primary" href="<%= @docUrl('download/') %>"><i class="icon-download-alt icon-large icon-white"></i> Download</a>
+    <a href="<%= @docUrl('/get-started/') %>" class="btn btn-large">Get Started</a>
   </p>
 </div>
 

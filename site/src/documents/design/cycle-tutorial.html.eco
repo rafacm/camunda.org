@@ -52,7 +52,7 @@ layout: 'default'
       <div class="page-header" >
         <h1>Setup</h1>
       </div>
-      <p>Cycle is already included in the camunda BPM distributions (<a href="<%= @docUrl('download.html') %>">Download Area</a>). 
+      <p>Cycle is already included in the camunda BPM distributions (<a href="<%= @docUrl('/download/') %>">Download Area</a>). 
         Just open <a href="http://localhost:8080/cycle">http://localhost:8080/cycle</a> and create a new Admin User.
       </p>
       <p>
@@ -106,7 +106,7 @@ layout: 'default'
         <div id="signavio" class="thumbnail span2" data-img-thumb img-src="<%= @docUrl('assets/img/cycle/signavio.png') %>" ></div>
         <div class="span8">
           <p>
-            The guys from <a href="http://www.Signavio.com">Signavio</a> have created a web-based BPMN modeler. If you don't know it yet, you should it give it a try. It's extremely intuitive to use (so it's perfect for Business users) and offers several helpful collaboration features, including a sophisticated API, which is why Cycle currently works best with Signavio.
+            The guys from Signavio have created a web-based BPMN modeler. If you don't know it yet, you should it <a href="http://www.signavio.com/camunda">give it a try</a>. It's extremely intuitive to use (so it's perfect for Business users) and offers several helpful collaboration features, including a sophisticated API, which is why Cycle currently works best with Signavio.
           </p>
         </div>
       </div>

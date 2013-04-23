@@ -14,6 +14,6 @@
 		As a throwing event, it can be modeled only at the end of a process path so that the participant knows the process has failed. The parent process should likewise recognize the failure.
 	</p>
 	<p>
-		You can find example of error events e.g. in the <a href="<%= @docUrl('implement/bpmn.html#!/subprocesses/event-subprocess') %>">Implementation section for "Event Subprocesses"</a>.
+		You can find example of error events e.g. in the <a href="http://docs.camunda.org/api-references/bpmn20/#!/subprocesses/event-subprocess">Implementation section for "Event Subprocesses"</a>.
 	</p>
 </div>

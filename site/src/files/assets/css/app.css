@@ -19,15 +19,6 @@
     top: 10%;
 }
 
-.navbar .brand {
-  display: block;
-  background-image: url(../img/camunda_org.png);
-  background-size: contain;
-  background-position: center;
-  width: 155px;
-  height: 20px;
-}
-
 @media (min-width: 980px) {
   .navbar-inverse .nav > li:hover > a, .navbar-inverse .nav > li > a:hover {
     color: white;
@@ -262,16 +253,16 @@ footer {
   padding-bottom: 2em;
 }
 
+footer a, footer a:link, footer a:visited {
+  color: lightblue;
+}
+
+footer ul {
+  list-style-type: square;
+}
+
 footer ul li {
   font-size: 0.9em; 
-}
-
-.container-footer a {
-  color:lightblue;
-}
-
-.container-footer ul {
-  list-style-type:square
 }
 
 .wrapper {
@@ -289,13 +280,14 @@ footer ul li {
  * Logo styling
 */
 .navbar .brand {
-  display: block;
-  background-image: url(../img/camunda_org.png);
-  background-size: contain;
-  width: 169px;
-  height: 30px;
-  padding: 0px;
-  margin-top:5px;
+  background: left center no-repeat scroll url(../img/logo.png);
+  width: 172px;
+}
+
+@media (max-width: 979px) {
+  .navbar .brand {
+    margin-left: -5px;
+  }
 }
 
 /**
@@ -530,7 +522,6 @@ hr.soften {
 .tile-link:hover {
   border: 0px;
 }
-
 
 .container-tile {
   display: inline-block;

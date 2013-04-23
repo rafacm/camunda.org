@@ -1,23 +1,17 @@
 <!-- footer -->
 <footer class="footer">
 
-  <div class="container container-footer">
-    <p>
-      <a href="<%= @docUrl('index.html') %>">camunda.org</a> - 
-      created and maintained by <a href="http://www.camunda.com">camunda services GmbH</a> | 
-      This page is built with <a href="http://angularjs.org/">angularjs</a>. 
-    </p>
-    <div class="row-fluid">
+  <div class="container">
+    <div class="row">
       <div class="span3">
-        <h4>Documentation</h4>
+        <h4>camunda BPM</h4>
         <ul>
-          <li><a href="<%= @docUrl('implement.html') %>">Overview</a></li>
-          <li><a href="<%= @docUrl('implement/getting-started.html') %>">Getting Started</a></li>
-          <li><a href="<%= @docUrl('implement/java.html') %>#!/engine/configuration-and-startup">Java Reference</a></li>
-          <li><a href="<%= @docUrl('implement/bpmn.html') %>#!/index">BPMN 2.0 Reference</a></li>
-          <li><a href="<%= @docUrl('implement/rest.html') %>#!/overview/introduction">REST API</a></li>
-          <li><a href="<%= @docUrl('implement/tasklist.html') %>">camunda Tasklist</a></li>
-          <li><a href="<%= @docUrl('implement/cockpit.html') %>">camunda Cockpit</a></li>
+          <li><a href="<%= @docUrl('get-started/') %>">Getting Started</a></li>
+          <li><a href="<%= @docUrl('download/') %>">Download</a></li>
+          <li><a href="http://docs.camunda.org/guides/user-guide/">User Guide</a></li>
+          <li><a href="http://docs.camunda.org/guides/installation-guide/">Installation Guide</a></li>
+          <li><a href="http://docs.camunda.org/guides/migration-guide/">Migration Guide</a></li>
+          <li><a href="http://docs.camunda.org/api-references/">API References</a></li>
         </ul>
       </div>
       <div class="span3">
@@ -29,13 +23,12 @@
           <li><a href="<%= @docUrl('design/modeler.html') %>">camunda Modeler</a></li>
           <li><a href="<%= @docUrl('design/cycle-tutorial.html') %>">camunda Cycle</a></li>
         </ul>
-      </div>      
+      </div>
       <div class="span3">
         <h4>Community</h4>
         <ul>
-          <li><a href="<%= @docUrl('community.html') %>">Overview</a></li>
-          <li><a href="<%= @docUrl('community/forum.html') %>">Forum</a></li>
-          <li><a href="<%= @docUrl('community/meetings.html') %>">Next Meetings</a></li>
+          <li><a href="http://camundabpm.blogspot.com/">Blog</a> / <a href="<%= @docUrl('community/forum.html') %>">Forum</a></li>
+          <li><a href="<%= @docUrl('community/meetings.html') %>">Meetings</a></li>
           <li><a href="<%= @docUrl('community/users.html') %>">Who's using it?</a></li>
           <li><a href="<%= @docUrl('community/vision.html') %>">Our Vision</a></li>
           <li><a href="<%= @docUrl('community/contribute.html') %>">How to Contribute</a></li>
@@ -51,9 +44,17 @@
           <li><a href="http://www.camunda.com/fox/training/camunda-bpm-basics/">Training</a></li>
         </ul>
       </div>
-
     </div>
-    <span class="spacer"></span>
-  </div>
 
+    <p class="pull-right">
+      <a href="#" target="_self">Back to top</a>
+    </p>
+
+    <p>
+      <a href="<%= @docUrl('') %>">camunda.org</a> and <a href="http://docs.camunda.org">docs.camunda.org</a> are part of camunda BPM
+    </p>
+    <p>
+      Built by <a href="http://www.camunda.com">camunda</a> and contributors &mdash; camunda Services GmbH &copy; 2013
+    </p>
+  </div>
 </footer>
