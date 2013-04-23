@@ -11,13 +11,6 @@ layout: 'default'
 </div>
 
 <div class="row">
-  <p class="alert alert-success"><i class=" icon-leaf"></i>
-    <strong>Community Distribution:</strong> You are downloading a community distribution of camunda BPM which is not supported by an SLA (service level agreement). 
-    <a href="<%= @docUrl('support.html') %>">Click here</a> if you need a fully supported enterprise edition of camunda BPM.
-  </p>
-</div>
-
-<div class="row">
   <!-- dev team column -->
   <div>
     <h2>camunda BPM platform</h2>
@@ -34,6 +27,26 @@ layout: 'default'
         </tr>
       </thead>
       <tbody>
+        <tr style="background-color:#dff0d8;">
+          <td>camunda BPM platform</td>
+          <td><a href="http://www.apache.org/licenses/LICENSE-2.0">Apache License 2.0</a></td>
+          <td>7.0.0-alpha2 <strong>(current)</strong></td>
+          <td>
+            <a id="download-bpm" href="/download/camunda-bpm/tomcat/7.0.0-alpha2/zip/">zip</a> | 
+            <a id="download-bpm" href="/download/camunda-bpm/tomcat/7.0.0-alpha2/tar.gz/">tar.gz</a>
+          </td>
+          <td>
+            <a id="download-bpm" href="/download/camunda-bpm/jboss/7.0.0-alpha2/zip/">zip</a> | 
+            <a id="download-bpm" href="/download/camunda-bpm/jboss/7.0.0-alpha2/tar.gz/">tar.gz</a>
+          </td>                
+          <td>
+            <a id="download-bpm" href="/download/camunda-bpm/glassfish/7.0.0-alpha2/zip/">zip</a> | 
+            <a id="download-bpm" href="/download/camunda-bpm/glassfish/7.0.0-alpha2/tar.gz/">tar.gz</a>
+          </td>                
+        </tr>
+        <tr>
+          <td colspan="6" style="padding-top: 40px;"><strong>Previous Releases</strong></td>
+        </tr>      
         <tr>
           <td>camunda BPM platform</td>
           <td><a href="http://www.apache.org/licenses/LICENSE-2.0">Apache License 2.0</a></td>
@@ -48,23 +61,6 @@ layout: 'default'
           </td>
           <td></td>                
         </tr>
-        <tr>
-          <td>camunda BPM platform</td>
-          <td><a href="http://www.apache.org/licenses/LICENSE-2.0">Apache License 2.0</a></td>
-          <td>7.0.0-alpha2</td>
-          <td>
-            <a id="download-bpm" href="/download/camunda-bpm/tomcat/7.0.0-alpha2/zip/">zip</a> | 
-            <a id="download-bpm" href="/download/camunda-bpm/tomcat/7.0.0-alpha2/tar.gz/">tar.gz</a>
-          </td>
-          <td>
-            <a id="download-bpm" href="/download/camunda-bpm/jboss/7.0.0-alpha2/zip/">zip</a> | 
-            <a id="download-bpm" href="/download/camunda-bpm/jboss/7.0.0-alpha2/tar.gz/">tar.gz</a>
-          </td>                
-          <td>
-            <a id="download-bpm" href="/download/camunda-bpm/glassfish/7.0.0-alpha2/zip/">zip</a> | 
-            <a id="download-bpm" href="/download/camunda-bpm/glassfish/7.0.0-alpha2/tar.gz/">tar.gz</a>
-          </td>                
-        </tr>
       </tbody>
     </table>
     <p>
@@ -72,6 +68,13 @@ layout: 'default'
 
     </p>
   </div>
+</div>
+
+<div class="row">
+  <p><i class=" icon-leaf"></i>
+    <strong>Community Distribution:</strong> You are downloading a community distribution of camunda BPM which is not supported by an SLA (service level agreement). 
+    <a href="<%= @docUrl('support.html') %>">Click here</a> if you need a fully supported enterprise edition of camunda BPM.
+  </p>
 </div>
 
 <div class="row">
