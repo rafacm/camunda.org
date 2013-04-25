@@ -20,10 +20,10 @@ layout: 'dark'
     		  <p>
             <ul>
               <li>
-      			    <a href="<%= @docUrl('design/tutorial.html') %>">BPMN 2.0 Tutorial »</a>
+      			    <a href="<%= @docUrl('design/tutorial.html') %>">BPMN 2.0 Tutorial &raquo;</a>
               </li>
               <li>
-                <a href="<%= @docUrl('design/reference.html#!/reference') %>">BPMN 2.0 Reference »</a>
+                <a href="<%= @docUrl('design/reference.html#!/reference') %>">BPMN 2.0 Reference &raquo;</a>
               </li>
             </ul>
           </p>
@@ -39,7 +39,7 @@ layout: 'dark'
   		<h3 class="popover-title">Create BPMN 2.0 Diagrams</h3>
 
   		<div class="popover-content">
-  		  <p><a href="<%= @docUrl('design/modeler.html') %>">camunda Modeler »</a></p>
+  		  <p><a href="<%= @docUrl('design/modeler.html') %>">camunda Modeler &raquo;</a></p>
   		</div>
   	  </div>
   	</div>
@@ -56,7 +56,7 @@ layout: 'dark'
 		<h3 class="popover-title">Do the roundtrip with any BPMN 2.0 compliant Modeler</h3>
 
 		<div class="popover-content">
-		  <p><a href="<%= @docUrl('design/cycle-tutorial.html') %>">camunda Cycle »</a></p>
+		  <p><a href="<%= @docUrl('design/cycle-tutorial.html') %>">camunda Cycle &raquo;</a></p>
 		</div>
 	  </div>
 	</div>

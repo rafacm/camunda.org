@@ -11,13 +11,6 @@ layout: 'default'
 </div>
 
 <div class="row">
-  <p class="alert alert-success"><i class=" icon-leaf"></i>
-    <strong>Community Distribution:</strong> You are downloading a community distribution of camunda BPM which is not supported by an SLA (service level agreement). 
-    <a href="<%= @docUrl('support.html') %>">Click here</a> if you need a fully supported enterprise edition of camunda BPM.
-  </p>
-</div>
-
-<div class="row">
   <!-- dev team column -->
   <div>
     <h2>camunda BPM platform</h2>
@@ -26,14 +19,37 @@ layout: 'default'
       <thead>
         <tr>
           <th>Distribution</th>
+          <th>License*</th>
           <th>Version</th>
           <th><span class="container-tomcat container-small"></span><br>Apache Tomcat 7</th>
           <th><span class="container-as7 container-small"></span><br>JBoss AS 7</th>
+          <th><span class="container-glassfish container-small"></span><br>GlassFish 3.1.x</th>
         </tr>
       </thead>
       <tbody>
+        <tr style="background-color:#dff0d8;">
+          <td>camunda BPM platform</td>
+          <td><a href="http://www.apache.org/licenses/LICENSE-2.0">Apache License 2.0</a></td>
+          <td>7.0.0-alpha2 <strong>(current)</strong></td>
+          <td>
+            <a id="download-bpm" href="/download/camunda-bpm/tomcat/7.0.0-alpha2/zip/">zip</a> | 
+            <a id="download-bpm" href="/download/camunda-bpm/tomcat/7.0.0-alpha2/tar.gz/">tar.gz</a>
+          </td>
+          <td>
+            <a id="download-bpm" href="/download/camunda-bpm/jboss/7.0.0-alpha2/zip/">zip</a> | 
+            <a id="download-bpm" href="/download/camunda-bpm/jboss/7.0.0-alpha2/tar.gz/">tar.gz</a>
+          </td>                
+          <td>
+            <a id="download-bpm" href="/download/camunda-bpm/glassfish/7.0.0-alpha2/zip/">zip</a> | 
+            <a id="download-bpm" href="/download/camunda-bpm/glassfish/7.0.0-alpha2/tar.gz/">tar.gz</a>
+          </td>                
+        </tr>
+        <tr>
+          <td colspan="6" style="padding-top: 40px;"><strong>Previous Releases</strong></td>
+        </tr>      
         <tr>
           <td>camunda BPM platform</td>
+          <td><a href="http://www.apache.org/licenses/LICENSE-2.0">Apache License 2.0</a></td>
           <td>7.0.0-alpha1</td>
           <td>
             <a id="download-bpm" href="/download/camunda-bpm/tomcat/7.0.0-alpha1/zip/">zip</a> | 
@@ -42,11 +58,23 @@ layout: 'default'
           <td>
             <a id="download-bpm" href="/download/camunda-bpm/jboss/7.0.0-alpha1/zip/">zip</a> | 
             <a id="download-bpm" href="/download/camunda-bpm/jboss/7.0.0-alpha1/tar.gz/">tar.gz</a>
-          </td>                
+          </td>
+          <td></td>                
         </tr>
       </tbody>
     </table>
+    <p>
+      <strong>* License</strong> applies to code or documentation provided by camunda. Third-party libraries or application servers are distributed under their respective licenses.
+
+    </p>
   </div>
+</div>
+
+<div class="row">
+  <p><i class=" icon-leaf"></i>
+    <strong>Community Distribution:</strong> You are downloading a community distribution of camunda BPM which is not supported by an SLA (service level agreement). 
+    <a href="<%= @docUrl('support.html') %>">Click here</a> if you need a fully supported enterprise edition of camunda BPM.
+  </p>
 </div>
 
 <div class="row">
@@ -60,7 +88,7 @@ layout: 'default'
       <div class="alert alert-info">
         <div class="row-fluid">
           <div class="span1">
-            <img src="assets/img/modeler/eclipse.png">
+            <img src="<%- @docUrl('assets/img/modeler/eclipse.png') %>">
           </div>
           <div class="span10">
             <h3 style="margin-top:0px; margin-bottom:5px;">Eclipse Update Site:</h3>

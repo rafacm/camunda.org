@@ -30,7 +30,7 @@ layout: 'dark'
         Subscribe for an Enterprise Edition<br /> and get SLA backed support services.
       </p>
       <p style="color: #B5152B;">
-        Enterprise Edition »
+        Enterprise Edition &raquo;
       </p>
     </div>
   </a>
@@ -53,7 +53,7 @@ layout: 'dark'
         Whether it's just a small workshop or<br /> extensive project support. We are by your side.
       </p>
       <p style="color: #B5152B;">
-        Consulting Services »
+        Consulting Services &raquo;
       </p>
     </div>
   </a>
@@ -73,7 +73,7 @@ layout: 'dark'
       Need a head-start using camunda BPM? <br />Attend our courses or get a training onsite.
     </p>
     <p style="color: #B5152B;">
-      Training Services »
+      Training Services &raquo;
     </p>
   </div>
 </a>

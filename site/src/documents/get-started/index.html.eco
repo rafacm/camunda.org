@@ -1,6 +1,6 @@
 ---
 
-title: 'Getting started'
+title: 'Get started'
 layout: 'default'
 
 ---
@@ -78,7 +78,7 @@ layout: 'default'
         First, download a distribution of camunda BPM platform. You can chose from different application servers. In this tutorial, we will use the Apache Tomcat 7 based distribution.
       </p>
       <p class="center">
-        <a class="btn btn-large btn-primary" href="<%= @docUrl('download.html') %>">
+        <a class="btn btn-large btn-primary" href="<%= @docUrl('download/') %>">
           <i class="icon-download-alt icon-large icon-white"></i> Download
         </a>
       </p>
@@ -176,7 +176,7 @@ layout: 'default'
         <div class="row">
           <div class="span9">
             <p>
-              Next, you need to add a Process Application class. The Process Application class constitutes the interface between your application and the process engine. 
+              Next, you need to create a package, e.g. <code>org.camunda.bpm.example.loanapproval</code> and add a Process Application class to it. The Process Application class constitutes the interface between your application and the process engine. 
             </p>
             <div class="app-source" app-source-no-tabs="LoanApprovalApplication" annotate="code-annotations" ></div>
           </div>
@@ -257,7 +257,7 @@ layout: 'default'
               In the eclipse <em>Package Explorer</em> select the <code>src/main/resources</code> folder. Right-click and select <code>New &gt; Other ...</code>. Go to the folder <code>Other</code> and select <em>BPMN 2.0 Diagram</em>. Click Next.
             </p>
             <p>
-              On the second page, you must specify the file name of the process. Put in <em>load-approval.bpmn</em>. Click Finish.
+              On the second page, you must specify the file name of the process. Put in <em>loan-approval.bpmn</em>. Click Finish.
             </p>                
           </div>
         </div> 
@@ -537,10 +537,10 @@ INFO: Processing request by 'AC-343422'...
               <a href="<%= @docUrl('design/tutorial.html') %>">Learn more about BPMN</a>
             </li>
             <li>
-              <a href="<%= @docUrl('implement/bpmn.html#!/index') %>">Explore the BPMN Reference</a>
+              <a href="http://docs.camunda.org/api-references/bpmn20/">Explore the BPMN 2.0 Implementation Reference</a>
             </li>
             <li>
-              <a href="https://twitter.com/share" class="twitter-share-button" data-url="http://www.camunda.org/implement/getting-started.html"
+              <a href="https://twitter.com/share" class="twitter-share-button" data-url="http://camunda.org/get-started/"
                   data-text="Whohoo! I just developed my first #BPMN Process Application." data-size="large" data-hashtags="camunda">Tweet</a>
             </li>
           </ul>

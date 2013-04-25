@@ -11,7 +11,7 @@ layout: 'default'
     <span class="mCity"></span>, <span class="mDate"></span>
   </h3>
   <p>
-    <a href="<%= @docUrl('community/meetings.html') %>">Meetings Overview »</a>
+    <a href="<%= @docUrl('community/meetings.html') %>">Meetings Overview &raquo;</a>
   </p>
 </div>
 
