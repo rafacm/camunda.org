@@ -31,9 +31,8 @@ layout: 'default'
     <div class="span6">
       <h2>Report bugs or missing features</h2>
       <p>
-        <p class="alert alert alert-error">
-          We are currently applying for an open source license at Atlassian. Until our Jira is open to the community, 
-          we welcome you to report bugs in the <a href="<%= @docUrl('community/forum.html') %>">forums</a>.</p>
+        <p class="alert alert alert-success">
+          File bugs or feature requests in JIRA: <a href="https://app.camunda.com/jira" target="_blank">https://app.camunda.com/jira</a>. (Registration Needed.)
       </p>
     </div>
   </div>
