@@ -38,7 +38,7 @@ layout: 'default'
     <div class="row">
       <div class="span8">
         <h1>BPMN 2.0 Roundtrip</h1>  
-        <p>Get started with camunda cycle and the BPMN 2.0 rountrip. Learn how to keep process models in sync.</p>
+        <p>Get started with camunda cycle and the BPMN 2.0 roundtrip. Learn how to keep process models in sync.</p>
         <p>
           <a class="btn btn-large" href="<%= @docUrl('design/cycle-tutorial.html') %>">
             BPMN 2.0 Roundtrip Tutorial »
