@@ -768,3 +768,26 @@ img {
   filter: none;
   -webkit-filter: grayscale(0);
 }
+
+/** gettign started */
+
+.gs-guide {
+  padding: 30px;
+  margin-bottom: 30px;
+  font-size: 16px;
+  font-weight: 100;
+  line-height: 20px;
+  color: inherit;
+  border-style: solid;
+  border-width: 1px;
+  border-color: #eee;
+  -webkit-border-radius: 6px;
+  -moz-border-radius: 6px;
+  border-radius: 6px;
+}
+
+.gs-guide-primary {
+
+  background-color: #eee;
+
+}
