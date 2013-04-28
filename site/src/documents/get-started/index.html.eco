@@ -50,6 +50,24 @@ layout: 'default'
       </div>
     </div>    
   </div>
+
+  <div class="gs-guide">      
+    <div class="row">
+      <div class="span8">
+        <h1>The Spring Framework</h1>  
+        <p>Get started with using camunda BPM in Spring Webapplications. Learn how to embedd the process engine inside a Spring application, invoke Spring Beans from BPMN 2.0 Service tasks and deploy to a vanilla Apache Tomcat server. Stop there or adjust the project to deploy to a shared process engine on camunda BPM Apache Tomcat.</p>
+        <p>
+          <a class="btn btn-large" href="<%= @docUrl('get-started/spring-framework.html') %>">
+            Spring Framework Tutorial »
+          </a>        
+        </p>    
+      </div>
+      <div class="span3"> 
+        <img src="../assets/img/get-started/spring-framework/Spring_Logo.png">
+      </div>
+    </div>    
+  </div>
+
 </div>
 
 <div class="row">
