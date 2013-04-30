@@ -1179,8 +1179,15 @@ angular.module('camundaorg.directives')
 
       scope.items = [];
       var element = $(element);
+
+      function strip(html) {
+        var tmp = document.createElement("DIV");
+        tmp.innerHTML = html;
+        return tmp.textContent||tmp.innerText;
+      }
+
       scope.decode = function (theText) {
-        return $('<div />').html(theText.substr(0, truncate)).text() + " ...";
+        return $('<div />').html(strip(theText).substr(0, truncate)).text() + " ...";
       };
 
       // get pipe content via jsonp, using jquery because angular http seems to have a bug here:
