@@ -26,9 +26,9 @@ layout: 'default'
       <div class="page-header">
         <h1>Why should I care about BPMN 2.0?</h1>
       </div>
-      <p>Business Process Model and Notation (BPMN) is the global standard for process modelling and one of the most important components of a
+      <p>Business Process Model and Notation (BPMN) is the global standard for process modeling and one of the most important components of a
         successful Business-IT-Alignment.</p>
-      <p>More and more organisations are using BPMN and in more and more universities BPMN is taught as a subject. These are the reasons:</p>
+      <p>More and more organizations are using BPMN and in more and more universities BPMN is taught as a subject. These are the reasons:</p>
       <dl class="dl-horizontal">
         <dt>Standard</dt>
         <dd>
@@ -40,7 +40,7 @@ layout: 'default'
         <dd>The principle behind BPMN is rather simple which is why you can very quickly work with this notation.</dd>
         <dt>Power of expression</dt>
         <dd>If necessary, with BPMN you can describe precisely how a process functions. This is however more difficult than describing the process
-          only roughly. This way of precise modelling is possible, but not mandatory.</dd>
+          only roughly. This way of precise modeling is possible, but not mandatory.</dd>
         <dt>Implementation in IT</dt>
         <dd>BPMN has been primarily developed to support a technical implementation of processes ("Process Automation"). The more important the IT is
           in a company, the more helpful is the use of BPMN.</dd>
@@ -96,7 +96,7 @@ layout: 'default'
             </a>
           </div>
           <div id="collapseTwo" class="accordion-body collapse">
-            <div class="accordion-inner">You could always draw your diagrams from top to bottom instead fom left to right - the BPMN 2.0 standard
+            <div class="accordion-inner">You could always draw your diagrams from top to bottom instead from left to right - the BPMN 2.0 standard
               does not forbid it. However we do not recommend it: It is very uncommon, and experience has proven that people tend to understand the
               process flow better if it is described in the same way like written text (from left to right, at least in the western world).</div>
           </div>

@@ -35,17 +35,17 @@ layout: 'default'
         <h1>What will you learn?</h1>              
       </div>
 
-      This tutorial guides you through your first steps in using camunda BPM in a Spring Webapplication.
+      This tutorial guides you through your first steps in using camunda BPM in a Spring Web application.
         
       <dl class="dl-horizontal">        
         <dt>Setup</dt>
-        <dd>A Spring Webapplication project as an apache maven project.</dd>
+        <dd>A Spring Web application project as an Apache Maven project.</dd>
         <dt>Configure</dt>
         <dd>The camunda process engine and embed it inside your application.</dd>
         <dt>Deploy</dt>
-        <dd>Your project to a vanilla Apache Tomcat Server.</dd>
+        <dd>Your project to a vanilla Apache Tomcat server.</dd>
         <dt>Add Spring Task</dt>
-        <dd>Learn how to use EL Expressions for resolving Spring Beans from the BPMN 2.0 process.</dd>
+        <dd>Learn how to use UEL Expressions for resolving Spring Beans from the BPMN 2.0 process.</dd>
         <dt>Adapt</dt>
         <dd>Your project to use a Shared Process Engine and deploy it to the camunda BPM enhanced Tomcat server.</dd>
       </dl>
@@ -54,7 +54,7 @@ layout: 'default'
     <div class="alert">
         <p>
           <strong>Before you start</strong> 
-          In this tutorial we assume that you are familiar with the Basics of Java Webapplication development and the Spring Framework. We also assume that you have installed an eclipse distribution and the camunda modeler.
+          In this tutorial we assume that you are familiar with the Basics of Java Web application development and the Spring Framework. We also assume that you have installed an eclipse distribution and the camunda modeler.
         </p>        
       </div>
 
@@ -64,12 +64,12 @@ layout: 'default'
       </div>
 
       <p>
-        We will start with setting up a Spring Webapplication as Apache Maven Project inside Eclipse. This consists of four steps:
+        We will start with setting up a Spring Web application as Apache Maven Project inside Eclipse. This consists of four steps:
         <ol>
           <li><a href="#setup/eclipse">Create a new Maven Project in Eclipse</a></li>
-          <li><a href="#setup/maven">Add the camunda &amp; spring framework dependencies</a></li>          
+          <li><a href="#setup/maven">Add the camunda &amp; Spring framework dependencies</a></li>          
           <li><a href="#setup/web.xml">Add web.xml file for bootstrapping the Spring container</a></li>
-          <li><a href="#setup/application-context">Add a spring application context xml configuration file</a></li>
+          <li><a href="#setup/application-context">Add a Spring application context XML configuration file</a></li>
         </ol>
         In the following, we go through this process step by step.
       </p>
@@ -83,13 +83,13 @@ layout: 'default'
             </div>
             <div class="span7">
                <p>
-                First, we set up a new Apache Maven based project in eclipse. Let's call it <em>loanapproval-spring</em>. The screenshot on the left illustrates the settings we choose. Since we deploy a Webapplication, make sure to select <code>Packaging: war</code>.
+                First, we set up a new Apache Maven based project in eclipse. Let's call it <em>loanapproval-spring</em>. The screenshot on the left illustrates the settings we choose. Since we deploy a Web application, make sure to select <code>Packaging: war</code>.
               </p>              
               <p class="alert">
-                If you are unfamiliar with setting up a maven project, read the <em>Setup your Project</em> Section in the <a href="<%= @docUrl('get-started/developing-process-applications.html') %>">Getting started developing process applications</a> tutorial.
+                If you are unfamiliar with setting up a Maven project, read the <em>Setup your Project</em> Section in the <a href="<%= @docUrl('get-started/developing-process-applications.html') %>">Getting started developing process applications</a> tutorial.
               </p>
               <p>
-                When you are done, click Finish. Eclipse sets up a new maven project. The project appears in the <em>Project Explorer</em> View.
+                When you are done, click Finish. Eclipse sets up a new Maven project. The project appears in the <em>Project Explorer</em> View.
               </p>
             </div>
           </div>
@@ -100,7 +100,7 @@ layout: 'default'
           <div class="row">
             <div class="span9">
               <p>
-                The next step consists in setting up the maven dependencies for the new project. Maven dependencies need to be added to the <code>pom.xml</code> file of the project. We add both camunda BPM and Spring Framework dependencies:
+                The next step consists in setting up the Maven dependencies for the new project. Maven dependencies need to be added to the <code>pom.xml</code> file of the project. We add both camunda BPM and Spring Framework dependencies:
               </p>
 
               <div class="app-source" app-source-no-tabs="pom.xml" annotate="code-annotations" ></div>
@@ -117,7 +117,7 @@ layout: 'default'
           <div class="row">
             <div class="span9">
               <p>
-                Next, we add a <code>web.xml</code> file for bootstrapping the spring container. In order to do so, first add a folder named <code>WEB-INF</code> to the (already existing) <code>src/main/webapp</code> folder of you maven project. Inside this folder, add a file named <code>web.xml</code>:
+                Next, we add a <code>web.xml</code> file for bootstrapping the spring container. In order to do so, first add a folder named <code>WEB-INF</code> to the (already existing) <code>src/main/webapp</code> folder of you Maven project. Inside this folder, add a file named <code>web.xml</code>:
               </p>
 
               <div class="app-source" app-source-no-tabs="web.xml" annotate="code-annotations" ></div>
@@ -127,11 +127,11 @@ layout: 'default'
         </section> 
 
         <section id="setup/application-context">
-          <h3>Add a spring application context xml configuration file</h3>
+          <h3>Add a Spring application context XML configuration file</h3>
           <div class="row">
             <div class="span9">
               <p>
-                Next, we add a Spring ApplicationContext Xml file to the same <code>src/main/webapp/WEB-INF</code> folder. The file must be named <code>applicationContext.xml</code>. We start with an empty file:
+                Next, we add a Spring ApplicationContext XML file to the same <code>src/main/webapp/WEB-INF</code> folder. The file must be named <code>applicationContext.xml</code>. We start with an empty file:
               </p>
 
               <div class="app-source" app-source-no-tabs="applicationContext.xml" annotate="code-annotations" ></div>             
@@ -151,7 +151,7 @@ layout: 'default'
             </p>      
 
             <p>
-              You can now perform a full maven build and deploy the project to a vanilla apache tomcat server. You should see the following log output:
+              You can now perform a full Maven build and deploy the project to a vanilla Apache Tomcat server. You should see the following log output:
             </p>
             <pre class="console">
 28.04.2013 15:11:02 org.apache.catalina.startup.HostConfig deployWAR
@@ -168,7 +168,7 @@ INFO: Pre-instantiating singletons in org.springframework.beans.factory.support.
 INFO: Root WebApplicationContext: initialization completed in 170 ms
           </pre>
 
-          <p>This means that you have setup your spring web application correctly.</p>
+          <p>This means that you have setup your Spring web application correctly.</p>
 
         </div>
       </div>
@@ -179,12 +179,12 @@ INFO: Root WebApplicationContext: initialization completed in 170 ms
         <h1>Configure an Embedded Process Engine</h1>
       </div>
       <p>
-        Now that you have set up the project with the correct maven dependencies, we can start configuring the process engine. Add the following spring beans configuration to the <code>src/main/webapp/WEB-INF/applicationContext.xml</code> file:
+        Now that you have set up the project with the correct Maven dependencies, we can start configuring the process engine. Add the following Spring beans configuration to the <code>src/main/webapp/WEB-INF/applicationContext.xml</code> file:
       </p>
 
       <div class="app-source" app-source-no-tabs="embeddedEngine.xml" annotate="code-annotations" ></div>             
 
-      <p>After you added these definitions to the Spring Application context, perform a full maven build and redeploy the application. In the logfile of the Apache Tomcat Server you should be able to see the initialization of the process-engine:</p>
+      <p>After you added these definitions to the Spring Application context, perform a full Maven build and redeploy the application. In the logfile of the Apache Tomcat server you should be able to see the initialization of the process-engine:</p>
 
       <pre class="console">
 28.04.2013 15:33:04 org.camunda.bpm.engine.impl.db.DbSqlSession executeSchemaResource
@@ -203,7 +203,7 @@ INFO: ProcessEngine default created
         <h1>Add a Spring Bean Service Task</h1>
       </div>
       <p>
-        Now that we know how to bootstrap the process engine in a Spring Application context, we can add a BPMN 2.0 process model and interact with the process form inside our spring beans. In this section we will
+        Now that we know how to bootstrap the process engine in a Spring Application context, we can add a BPMN 2.0 process model and interact with the process form inside our Spring beans. In this section we will
         <ul>
           <li><a href="#servicetask/model">Model an executable BPMN 2.0 process.</a></li>
           <li><a href="#servicetask/deploy">Use Spring auto-deployment for BPMN 2.0 processes.</a></li>
@@ -239,7 +239,7 @@ INFO: ProcessEngine default created
       <div class="row">
         <div class="span9">
           <p>
-            In order for the process to be deployed, we use the auto-deployment feature provided by the camunda engine spring integration. In order to use this feature, modify the definition of the <code>processEngineConfiguration</code> bean inside your <code>src/main/webapp/WEB-INF/applicationContext.xml</code> file:
+            In order for the process to be deployed, we use the auto-deployment feature provided by the camunda engine Spring integration. In order to use this feature, modify the definition of the <code>processEngineConfiguration</code> bean inside your <code>src/main/webapp/WEB-INF/applicationContext.xml</code> file:
           </p>
 
           <div class="app-source" app-source-no-tabs="autodeployment" annotate="code-annotations" ></div>
@@ -289,13 +289,13 @@ INFO: Processing resource C:\demo\apache-tomcat-7.0.39\webapps\loanapproval-spri
       <div class="row">
         <div class="span9">
           <p>
-            The next step consists in starting a process instance from a Spring Bean. We will simply add a Spring Bean to the application context which jnjects the process engine and starts a single process instance from an <code>afterPropertiesSet()</code> Method:
+            The next step consists in starting a process instance from a Spring Bean. We will simply add a Spring Bean to the application context which injects the process engine and starts a single process instance from an <code>afterPropertiesSet()</code> Method:
           </p>
 
           <div class="app-source" app-source-no-tabs="starter-java" annotate="code-annotations" ></div>
 
           <p>
-            We add the spring bean to the applicationContext.xml file:
+            We add the Spring bean to the applicationContext.xml file:
           </p>
 
           <div class="app-source" app-source-no-tabs="starter-xml" annotate="code-annotations" ></div>
@@ -341,7 +341,7 @@ INFO: Processing resource C:\demo\apache-tomcat-7.0.39\webapps\loanapproval-spri
           <h3>Where to go from here?</h3>
           <ul>
             <li>
-              <a href="http://docs.camunda.org/guides/user-guide/">Read the documentation about the camunda spring integration in the userguide</a>
+              <a href="http://docs.camunda.org/guides/user-guide/">Read the documentation about the camunda Spring integration in the userguide</a>
             </li>
             <li>
               <a href="http://docs.camunda.org/api-references/bpmn20/">Explore the BPMN 2.0 Implementation Reference</a>
@@ -357,14 +357,14 @@ INFO: Processing resource C:\demo\apache-tomcat-7.0.39\webapps\loanapproval-spri
         <h1>Bonus Chapter: Use Shared Process Engine on camunda BPM Apache Tomcat</h1>
       </div>
       <p>
-        In this tutorial we explored how to setup an embedded process engine inside a webapplication using the Spring Framework. You can also use the Spring Framework for developing applications that use a Shared Process engine. As opposed to the Embedded Process engine, the Shared Process engine is controlled independently from an application and is started / stopped by the runtime container (like Apache Tomcat). This allows multiple applications (or a single modular application) to use the same process engine. You can also re-deploy individual applications independently from the process engine.
+        In this tutorial we explored how to setup an embedded process engine inside a Web application using the Spring Framework. You can also use the Spring Framework for developing applications that use a Shared Process engine. As opposed to the Embedded Process engine, the Shared Process engine is controlled independently from an application and is started / stopped by the runtime container (like Apache Tomcat). This allows multiple applications (or a single modular application) to use the same process engine. You can also re-deploy individual applications independently from the process engine.
       </p>
       <p>
         In order to configure the loanapproval-spring example to work with an embedded process engine, you have to change three things:
       </p>
       
       <p>
-        First, we need to set the scope of the maven dependency of the camunda-engine dependency to <code>provided</code>. On the camunda BPM platform the process engine library is provided as a shared library and does not need to be bundled with the application:
+        First, we need to set the scope of the Maven dependency of the camunda-engine dependency to <code>provided</code>. On the camunda BPM platform the process engine library is provided as a shared library and does not need to be bundled with the application:
       </p>      
       <div class="app-source" app-source-no-tabs="provided-engine" annotate="code-annotations" ></div>
 
@@ -405,7 +405,7 @@ INFO: Processing resource C:\demo\apache-tomcat-7.0.39\webapps\loanapproval-spri
   <artifactId>loanapproval-spring</artifactId>
   <version>0.0.1-SNAPSHOT</version>
   <packaging>war</packaging>
-  <name>Loan approval spring example</name>
+  <name>Loan approval Spring example</name>
 
   <properties>
     <camunda.version>7.0.0-alpha3</camunda.version>
@@ -441,13 +441,13 @@ INFO: Processing resource C:\demo\apache-tomcat-7.0.39\webapps\loanapproval-spri
   </dependencies>
 
   <repositories>
-    <!-- spring maven repository -->
+    <!-- Spring Maven repository -->
     <repository>
       <id>springsource-repo</id>
       <name>SpringSource Repository</name>
       <url>http://repo.springsource.org/release</url>
     </repository>
-    <!-- camunda maven repository -->
+    <!-- camunda Maven repository -->
     <repository>
       <id>camunda-bpm-nexus</id>
       <name>camunda-bpm-nexus</name>
@@ -767,15 +767,15 @@ public class CalculateInterestService implements JavaDelegate {
   { 
     "camunda-engine": "The process engine is the component responsible for picking up your BPMN 2.0 processes and executing them.",
     "camunda-engine-spring": "Spring framework integration module for the process engine.",
-    "spring-web": "The spring-web artifact declaratively pulls in the sping core libraries.",
+    "spring-web": "The Spring Web artifact declaratively pulls in the Spring core libraries.",
     "com.h2database": "we use an embedded H2 database for the process engine",
-    "springsource-repo": "repository for spring artifacts.",
-    "camunda-bpm-nexus" : "camunda nexus providing the maven artifacts."
+    "springsource-repo": "repository for Spring artifacts.",
+    "camunda-bpm-nexus" : "camunda nexus providing the Maven artifacts."
 
   }, 
   "web.xml":
   {
-    "contextConfigLocation": "location of spring xml files",
+    "contextConfigLocation": "location of Spring XML files",
     "ContextLoaderListener": "the listener that kick-starts Spring"    
   },
   "embeddedEngine.xml":

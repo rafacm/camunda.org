@@ -2,7 +2,7 @@
 
 <div class="alert">
     <strong>Coverage in process engine: </strong>
-    If you are interessted which elements can be automated using the camunda BPMN 2.0 process engine check out our
+    If you are interested which elements can be automated using the camunda BPMN 2.0 process engine check out our
     <a href="http://docs.camunda.org/api-references/bpmn20/">BPMN 2.0 Coverage</a>.
 </div>
 

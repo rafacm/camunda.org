@@ -55,7 +55,7 @@ layout: 'default'
     <div class="row">
       <div class="span8">
         <h1>The Spring Framework</h1>  
-        <p>Get started with using camunda BPM in Spring Webapplications. Learn how to embed the process engine inside a Spring application, invoke Spring Beans from BPMN 2.0 Service tasks and deploy to a vanilla Apache Tomcat server. Stop there or adjust the project to deploy to a shared process engine on camunda BPM Apache Tomcat.</p>
+        <p>Get started with using camunda BPM in Spring Web applications. Learn how to embed the process engine inside a Spring application, invoke Spring Beans from BPMN 2.0 Service tasks and deploy to a vanilla Apache Tomcat server. Stop there or adjust the project to deploy to a shared process engine on camunda BPM Apache Tomcat.</p>
         <p>
           <a class="btn btn-large" href="<%= @docUrl('get-started/spring-framework.html') %>">
             Spring Framework Tutorial &raquo;
@@ -76,7 +76,7 @@ layout: 'default'
       <div class="page-header">
         <h1>Apache Maven Coordinates</h1>
       </div>
-      <p>Here are the coordinates for incluing camunda BPM in Apache Maven Projects. <code>${camunda.version}</code> refers to the version of camunda BPM you want to include.</p>
+      <p>Here are the coordinates for including camunda BPM in Apache Maven Projects. <code>${camunda.version}</code> refers to the version of camunda BPM you want to include.</p>
       
       <div class="row">
         <div class="span6">
@@ -91,11 +91,11 @@ layout: 'default'
 
       <div class="row">
         <div class="span6">
-          <h3>Cdi Module</h3>
+          <h3>CDI Module</h3>
           <div class="app-source" app-source-no-tabs="engine-cdi.xml"></div>
         </div>
         <div class="span6">
-          <h3>Ejb Client</h3>
+          <h3>EJB Client</h3>
           <div class="app-source" app-source-no-tabs="ejb-client.xml"></div>
         </div>
       </div>
