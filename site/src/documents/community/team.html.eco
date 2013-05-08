@@ -573,9 +573,9 @@ layout: 'default'
               <a class="pull-left"> <img class="media-object img-circle" src="<%= @docUrl('assets/img/app/community/team/core/nastasja_johnston.jpg') %>">
               </a>
               <div class="media-body">
-                <p>I work at camunda as the Assistant to the CEOs and will take on the role of 
+                <p>I work at camunda as the Assistant to the CEOs and will take on the role of
                 community manager for camunda.org.</p>
-                <p>I look forward to growing the community and exciting community projects, 
+                <p>I look forward to growing the community and exciting community projects,
                 events and exchanges with a lot of people passionate about BPM.</p>
               </div>
             </div>
@@ -699,7 +699,7 @@ layout: 'default'
             <!-- end modal -->
         </div>
      </div>
-     <!-- end Rafael -->           
+     <!-- end Rafael -->
   </div>
   <!-- end dev team column -->
 
@@ -732,7 +732,7 @@ layout: 'default'
 
   <div class="span12">
     <p>
-      Want to join our team? 
+      Want to join our team?
       Become a camunda BPM hacker as a
       <a href="http://www.camunda.com/company/jobs/technical-consultant-mw/" target="_blank">
         technical consultant (German speaking)

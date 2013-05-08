@@ -6,7 +6,7 @@ layout: 'default'
 ---
 
 <style type="text/css">
-  
+
   .modal .modal-header img {
     max-width: 200px;
     max-height: 70px;

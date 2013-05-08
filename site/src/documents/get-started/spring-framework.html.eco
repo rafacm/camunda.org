@@ -32,12 +32,12 @@ layout: 'default'
   <div class="span9">
     <section id="intro">
       <div class="page-header">
-        <h1>What will you learn?</h1>              
+        <h1>What will you learn?</h1>
       </div>
 
       This tutorial guides you through your first steps in using camunda BPM in a Spring Web application.
-        
-      <dl class="dl-horizontal">        
+
+      <dl class="dl-horizontal">
         <dt>Setup</dt>
         <dd>A Spring Web application project as an Apache Maven project.</dd>
         <dt>Configure</dt>
@@ -53,9 +53,9 @@ layout: 'default'
 
     <div class="alert">
         <p>
-          <strong>Before you start</strong> 
+          <strong>Before you start</strong>
           In this tutorial we assume that you are familiar with the Basics of Java Web application development and the Spring Framework. We also assume that you have installed an eclipse distribution and the camunda modeler.
-        </p>        
+        </p>
       </div>
 
     <section id="setup">
@@ -67,7 +67,7 @@ layout: 'default'
         We will start with setting up a Spring Web application as Apache Maven Project inside Eclipse. This consists of four steps:
         <ol>
           <li><a href="#setup/eclipse">Create a new Maven Project in Eclipse</a></li>
-          <li><a href="#setup/maven">Add the camunda &amp; Spring framework dependencies</a></li>          
+          <li><a href="#setup/maven">Add the camunda &amp; Spring framework dependencies</a></li>
           <li><a href="#setup/web.xml">Add web.xml file for bootstrapping the Spring container</a></li>
           <li><a href="#setup/application-context">Add a Spring application context XML configuration file</a></li>
         </ol>
@@ -84,7 +84,7 @@ layout: 'default'
             <div class="span7">
                <p>
                 First, we set up a new Apache Maven based project in eclipse. Let's call it <em>loanapproval-spring</em>. The screenshot on the left illustrates the settings we choose. Since we deploy a Web application, make sure to select <code>Packaging: war</code>.
-              </p>              
+              </p>
               <p class="alert">
                 If you are unfamiliar with setting up a Maven project, read the <em>Setup your Project</em> Section in the <a href="<%= @docUrl('get-started/developing-process-applications.html') %>">Getting started developing process applications</a> tutorial.
               </p>
@@ -93,7 +93,7 @@ layout: 'default'
               </p>
             </div>
           </div>
-        </section> 
+        </section>
 
         <section id="setup/maven">
           <h3>Add camunda BPM &amp; Spring Framework dependencies</h3>
@@ -106,11 +106,11 @@ layout: 'default'
               <div class="app-source" app-source-no-tabs="pom.xml" annotate="code-annotations" ></div>
 
               <p>
-                Now you can perform the first build. Select the <code>pom.xml</code> in the Package Explorer, perform a Right Click and select <code>Run AS / Maven Install</code> 
+                Now you can perform the first build. Select the <code>pom.xml</code> in the Package Explorer, perform a Right Click and select <code>Run AS / Maven Install</code>
               </p>
             </div>
           </div>
-        </section> 
+        </section>
 
         <section id="setup/web.xml">
           <h3>Add web.xml file for bootstrapping the Spring container</h3>
@@ -124,7 +124,7 @@ layout: 'default'
 
             </div>
           </div>
-        </section> 
+        </section>
 
         <section id="setup/application-context">
           <h3>Add a Spring application context XML configuration file</h3>
@@ -134,10 +134,10 @@ layout: 'default'
                 Next, we add a Spring ApplicationContext XML file to the same <code>src/main/webapp/WEB-INF</code> folder. The file must be named <code>applicationContext.xml</code>. We start with an empty file:
               </p>
 
-              <div class="app-source" app-source-no-tabs="applicationContext.xml" annotate="code-annotations" ></div>             
+              <div class="app-source" app-source-no-tabs="applicationContext.xml" annotate="code-annotations" ></div>
             </div>
           </div>
-        </section> 
+        </section>
 
         <h3>Setup complete!</h3>
         <div class="row">
@@ -148,7 +148,7 @@ layout: 'default'
           <div class="span7">
             <p>
               Congratulation, you have completed the project setup. Your project should now look as depicted in the screenshot on the left.
-            </p>      
+            </p>
 
             <p>
               You can now perform a full Maven build and deploy the project to a vanilla Apache Tomcat server. You should see the following log output:
@@ -172,7 +172,7 @@ INFO: Root WebApplicationContext: initialization completed in 170 ms
 
         </div>
       </div>
-            
+
     </section>
     <section id="configure">
       <div class="page-header">
@@ -182,7 +182,7 @@ INFO: Root WebApplicationContext: initialization completed in 170 ms
         Now that you have set up the project with the correct Maven dependencies, we can start configuring the process engine. Add the following Spring beans configuration to the <code>src/main/webapp/WEB-INF/applicationContext.xml</code> file:
       </p>
 
-      <div class="app-source" app-source-no-tabs="embeddedEngine.xml" annotate="code-annotations" ></div>             
+      <div class="app-source" app-source-no-tabs="embeddedEngine.xml" annotate="code-annotations" ></div>
 
       <p>After you added these definitions to the Spring Application context, perform a full Maven build and redeploy the application. In the logfile of the Apache Tomcat server you should be able to see the initialization of the process-engine:</p>
 
@@ -210,7 +210,7 @@ INFO: ProcessEngine default created
           <li><a href="#servicetask/start">Start a process instance from a Spring bean.</a></li>
           <li><a href="#servicetask/invoke">Invoke a Spring bean from a BPMN 2.0 Service task.</a></li>
         </ul>
-      </p>              
+      </p>
     </section>
 
     <section id="servicetask/model">
@@ -223,7 +223,7 @@ INFO: ProcessEngine default created
         <div class="span7">
            <p>
             We start by modeling an executable process using the camunda modeler. The process should look as depicted in the screenshot on the left.
-          </p>              
+          </p>
           <p class="alert">
             If you are unfamiliar with modeling an executable process, you can read the section named <em>Model a Process</em> in the <a href="<%= @docUrl('get-started/developing-process-applications.html') %>">Getting started developing process applications</a> tutorial.
           </p>
@@ -259,30 +259,30 @@ INFO: Processing resource C:\demo\apache-tomcat-7.0.39\webapps\loanapproval-spri
       <div class="accordion" id="accAutoDeployment">
         <div class="accordion-group">
           <div class="accordion-heading">
-            <a class="accordion-toggle collapsed" data-toggle="collapse" data-parent="#accAutoDeployment" href="#accAutoDeploymentCollapsed"> <i class="icon-thumbs-up"></i> 
+            <a class="accordion-toggle collapsed" data-toggle="collapse" data-parent="#accAutoDeployment" href="#accAutoDeploymentCollapsed"> <i class="icon-thumbs-up"></i>
               Alternative: Auto-deployment using <code>META-INF/processes.xml</code>
             </a>
           </div>
           <div id="accAutoDeploymentCollapsed" class="accordion-body collapse">
             <div class="accordion-inner">
               <p>
-                The <code>deploymentResources</code> provides basic auto-deployment features. If you need more control over the deployment process, you can use the processes.xml based deployment options in combination with a <code>SpringProcessApplication</code>. This feature works with both the Embedded Process Engine (as used in this tutorial) and a Shared Process Engine. In order to use <code>META-INF/processes.xml</code> based deployment, you must make the following changes to the application context file:                
-              </p>   
+                The <code>deploymentResources</code> provides basic auto-deployment features. If you need more control over the deployment process, you can use the processes.xml based deployment options in combination with a <code>SpringProcessApplication</code>. This feature works with both the Embedded Process Engine (as used in this tutorial) and a Shared Process Engine. In order to use <code>META-INF/processes.xml</code> based deployment, you must make the following changes to the application context file:
+              </p>
 
-              <div class="app-source" app-source-no-tabs="applicationContext-withSpringPa" annotate="code-annotations" ></div>                      
+              <div class="app-source" app-source-no-tabs="applicationContext-withSpringPa" annotate="code-annotations" ></div>
 
               <p>
                 Now you can add a <code>META-INF/processes.xml</code> file:
               </p>
 
-              <div class="app-source" app-source-no-tabs="processes.xml" annotate="code-annotations" ></div>                      
+              <div class="app-source" app-source-no-tabs="processes.xml" annotate="code-annotations" ></div>
 
             </div>
           </div>
         </div>
       </div>
 
-    </section> 
+    </section>
 
     <section id="servicetask/start">
       <h3>Start a process instance from a Spring bean</h3>
@@ -299,10 +299,10 @@ INFO: Processing resource C:\demo\apache-tomcat-7.0.39\webapps\loanapproval-spri
           </p>
 
           <div class="app-source" app-source-no-tabs="starter-xml" annotate="code-annotations" ></div>
-          
+
         </div>
       </div>
-    </section> 
+    </section>
 
     <section id="servicetask/invoke">
       <h3>Invoke a Spring bean from a BPMN 2.0 Service task</h3>
@@ -314,8 +314,8 @@ INFO: Processing resource C:\demo\apache-tomcat-7.0.39\webapps\loanapproval-spri
           <div class="span7">
             <p>
               Referencing a Spring Bean from a BPMN 2.0 Service Task is simple. As shown in the screenshot on the left, we have to select the service task in the camunda modeler and provide an expression in the <em>Expression Delegate</em> Field. We type <code>${calculateInterestService}</code>.
-            </p>      
-            
+            </p>
+
         </div>
       </div>
 
@@ -327,7 +327,7 @@ INFO: Processing resource C:\demo\apache-tomcat-7.0.39\webapps\loanapproval-spri
 
       <div class="app-source" app-source-no-tabs="service-xml" annotate="code-annotations" ></div>
 
-    </section> 
+    </section>
 
     <section id="done">
       <div class="page-header">
@@ -336,7 +336,7 @@ INFO: Processing resource C:\demo\apache-tomcat-7.0.39\webapps\loanapproval-spri
       <div class="row">
         <div class="span9">
           <p>
-             This marks the end of this tutorial. You have successfully set up a Spring Application with an embedded process engine. You can deploy this project to virtually any application server.      
+             This marks the end of this tutorial. You have successfully set up a Spring Application with an embedded process engine. You can deploy this project to virtually any application server.
           </p>
           <h3>Where to go from here?</h3>
           <ul>
@@ -345,8 +345,8 @@ INFO: Processing resource C:\demo\apache-tomcat-7.0.39\webapps\loanapproval-spri
             </li>
             <li>
               <a href="http://docs.camunda.org/api-references/bpmn20/">Explore the BPMN 2.0 Implementation Reference</a>
-            </li>     
-            <li>Read the bonus chapter below about how to adapt the configuration of the application to deploy it to the camunda BPM Apache Tomcat.</li>       
+            </li>
+            <li>Read the bonus chapter below about how to adapt the configuration of the application to deploy it to the camunda BPM Apache Tomcat.</li>
           </ul>
         </div>
       </div>
@@ -362,16 +362,16 @@ INFO: Processing resource C:\demo\apache-tomcat-7.0.39\webapps\loanapproval-spri
       <p>
         In order to configure the loanapproval-spring example to work with an embedded process engine, you have to change three things:
       </p>
-      
+
       <p>
         First, we need to set the scope of the Maven dependency of the camunda-engine dependency to <code>provided</code>. On the camunda BPM platform the process engine library is provided as a shared library and does not need to be bundled with the application:
-      </p>      
+      </p>
       <div class="app-source" app-source-no-tabs="provided-engine" annotate="code-annotations" ></div>
 
       <p>
         Furthermore, you can delete the dependency <code>org.springframework:spring-jdbc</code>.
       </p>
-      <p>  
+      <p>
         Second, you need to add a <code>META-INF/processes.xml</code> file to your application.
       </p>
       <div class="app-source" app-source-no-tabs="platform-processes.xml" annotate="code-annotations" ></div>
@@ -380,14 +380,14 @@ INFO: Processing resource C:\demo\apache-tomcat-7.0.39\webapps\loanapproval-spri
         And third, the <code>applicationContext.xml</code> file is adjusted such that the shared process engine is looked up and a <code>SpringServletProcessApplication</code> is bootstrapped:
       </p>
       <div class="app-source" app-source-no-tabs="managed-engine-lookup" annotate="code-annotations" ></div>
-        
+
       </p>
     </section>
 
 
   </div>
 
- 
+
 
 </div>
 
@@ -412,12 +412,12 @@ INFO: Processing resource C:\demo\apache-tomcat-7.0.39\webapps\loanapproval-spri
     <spring.version>3.1.2.RELEASE</spring.version>
   </properties>
 
-  <dependencies>  
+  <dependencies>
     <dependency>
       <groupId>org.camunda.bpm</groupId>
       <artifactId>camunda-engine</artifactId>
       <version>${camunda.version}</version>
-    </dependency>    
+    </dependency>
     <dependency>
       <groupId>org.camunda.bpm</groupId>
       <artifactId>camunda-engine-spring</artifactId>
@@ -486,10 +486,10 @@ INFO: Processing resource C:\demo\apache-tomcat-7.0.39\webapps\loanapproval-spri
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xmlns:activiti="http://www.activiti.org/schema/spring/components"
-       xsi:schemaLocation="http://www.springframework.org/schema/beans   
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
                            http://www.springframework.org/schema/beans/spring-beans.xsd">
-       
-               
+
+
 </beans>
 </script>
 
@@ -544,7 +544,7 @@ INFO: Processing resource C:\demo\apache-tomcat-7.0.39\webapps\loanapproval-spri
   <property name="transactionManager" ref="transactionManager" />
   <property name="databaseSchemaUpdate" value="true" />
   <property name="jobExecutorActivate" value="false" />
-  <property name="deploymentResources" value="classpath*:*.bpmn" /> 
+  <property name="deploymentResources" value="classpath*:*.bpmn" />
 </bean>
 </script>
 
@@ -578,11 +578,11 @@ INFO: Processing resource C:\demo\apache-tomcat-7.0.39\webapps\loanapproval-spri
 
 <script type="text/xml" id="processes.xml">
 <?xml version="1.0" encoding="UTF-8" ?>
- 
+
 <process-application
   xmlns="http://www.camunda.org/schema/1.0/ProcessApplication"
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
- 
+
   <process-archive name="loan-approval">
     <process-engine>engine</process-engine>
     <properties>
@@ -590,7 +590,7 @@ INFO: Processing resource C:\demo\apache-tomcat-7.0.39\webapps\loanapproval-spri
       <property name="isScanForProcessDefinitions">true</property>
     </properties>
   </process-archive>
- 
+
 </process-application>
 </script>
 
@@ -599,14 +599,14 @@ INFO: Processing resource C:\demo\apache-tomcat-7.0.39\webapps\loanapproval-spri
 
 <script type="text/xml" id="starter-java">
 public class Starter implements InitializingBean {
-  
+
   @Autowired
   private RuntimeService runtimeService;
 
   public void afterPropertiesSet() throws Exception {
-    runtimeService.startProcessInstanceByKey("loanApproval");   
+    runtimeService.startProcessInstanceByKey("loanApproval");
   }
-  
+
   public void setRuntimeService(RuntimeService runtimeService) {
     this.runtimeService = runtimeService;
   }
@@ -621,15 +621,15 @@ public class Starter implements InitializingBean {
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xmlns:context="http://www.springframework.org/schema/context"
-       xsi:schemaLocation="http://www.springframework.org/schema/beans   
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
                            http://www.springframework.org/schema/beans/spring-beans.xsd
                            http://www.springframework.org/schema/context
                            http://www.springframework.org/schema/context/spring-context-2.5.xsd" >
 
   ...
-  
+
   <context:annotation-config />
-        
+
   <bean class="org.camunda.bpm.example.loanapproval.Starter"  />
 
   ...
@@ -644,7 +644,7 @@ public class Starter implements InitializingBean {
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xmlns:context="http://www.springframework.org/schema/context"
-       xsi:schemaLocation="http://www.springframework.org/schema/beans   
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
                            http://www.springframework.org/schema/beans/spring-beans.xsd
                            http://www.springframework.org/schema/context
                            http://www.springframework.org/schema/context/spring-context-2.5.xsd" >
@@ -660,11 +660,11 @@ public class Starter implements InitializingBean {
 
 <script type="text/xml" id="service-java">
 public class CalculateInterestService implements JavaDelegate {
-  
+
   public void execute(DelegateExecution delegate) throws Exception {
-    
+
     System.out.println("Spring Bean invoked.");
-    
+
   }
 
 }
@@ -677,13 +677,13 @@ public class CalculateInterestService implements JavaDelegate {
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xmlns:context="http://www.springframework.org/schema/context"
-       xsi:schemaLocation="http://www.springframework.org/schema/beans   
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
                            http://www.springframework.org/schema/beans/spring-beans.xsd
                            http://www.springframework.org/schema/context
                            http://www.springframework.org/schema/context/spring-context-2.5.xsd" >
   ...
   <context:annotation-config />
-        
+
   <bean class="org.camunda.bpm.example.loanapproval.Starter"  />
   <bean id="calculateInterestService" class="org.camunda.bpm.example.loanapproval.CalculateInterestService"  />
   ...
@@ -709,7 +709,7 @@ public class CalculateInterestService implements JavaDelegate {
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xmlns:context="http://www.springframework.org/schema/context"
-       xsi:schemaLocation="http://www.springframework.org/schema/beans   
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
                            http://www.springframework.org/schema/beans/spring-beans.xsd
                            http://www.springframework.org/schema/context
                            http://www.springframework.org/schema/context/spring-context-2.5.xsd" >
@@ -728,12 +728,12 @@ public class CalculateInterestService implements JavaDelegate {
 
 <!-- bootstrap the process application -->
 <bean id="processApplication" class="org.camunda.bpm.engine.spring.application.SpringServletProcessApplication" />
-      
+
 <context:annotation-config />
-      
+
 <bean class="org.camunda.bpm.example.loanapproval.Starter"  />
 <bean id="calculateInterestService" class="org.camunda.bpm.example.loanapproval.CalculateInterestService"  />
-               
+
 </beans>
 </script>
 
@@ -742,11 +742,11 @@ public class CalculateInterestService implements JavaDelegate {
 
 <script type="text/xml" id="platform-processes.xml">
 <?xml version="1.0" encoding="UTF-8" ?>
- 
+
 <process-application
   xmlns="http://www.camunda.org/schema/1.0/ProcessApplication"
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
- 
+
   <process-archive name="loan-approval">
     <process-engine>default</process-engine>
     <properties>
@@ -754,7 +754,7 @@ public class CalculateInterestService implements JavaDelegate {
       <property name="isScanForProcessDefinitions">true</property>
     </properties>
   </process-archive>
- 
+
 </process-application>
 </script>
 
@@ -762,9 +762,9 @@ public class CalculateInterestService implements JavaDelegate {
 <!-- ==================================================================== -->
 
 <script type="text/ng-template" id="code-annotations">
-{ 
+{
  "pom.xml":
-  { 
+  {
     "camunda-engine": "The process engine is the component responsible for picking up your BPMN 2.0 processes and executing them.",
     "camunda-engine-spring": "Spring framework integration module for the process engine.",
     "spring-web": "The Spring Web artifact declaratively pulls in the Spring core libraries.",
@@ -772,21 +772,21 @@ public class CalculateInterestService implements JavaDelegate {
     "springsource-repo": "repository for Spring artifacts.",
     "camunda-bpm-nexus" : "camunda nexus providing the Maven artifacts."
 
-  }, 
+  },
   "web.xml":
   {
     "contextConfigLocation": "location of Spring XML files",
-    "ContextLoaderListener": "the listener that kick-starts Spring"    
+    "ContextLoaderListener": "the listener that kick-starts Spring"
   },
   "embeddedEngine.xml":
   {
     "dataSource": "Configuration of the dataSource to be used by the process engine. In this case we use an in-memory H2 database.",
     "processEngineConfiguration": "The process engine configuration bean allows configuration the process engine. In this case, the datasource and transaction manager properties are configured.",
-    "ProcessEngineFactoryBean": "the Process Engine is created by a factory bean."    
+    "ProcessEngineFactoryBean": "the Process Engine is created by a factory bean."
   },
-  "autodeployment": 
+  "autodeployment":
   {
-    "classpath*:*.bpmn": "picks up all BPMN 2.0 files on the classpath and deploys them to the process engine."    
+    "classpath*:*.bpmn": "picks up all BPMN 2.0 files on the classpath and deploys them to the process engine."
   },
   "applicationContext-withSpringPa":
   {
@@ -795,7 +795,7 @@ public class CalculateInterestService implements JavaDelegate {
     "\"engine\"": "the name of the process engine. Must be referenced in the META-INF/processes.xml file."
   }
 }
-</script>  
+</script>
 
 
 
