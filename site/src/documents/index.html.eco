@@ -6,6 +6,11 @@ layout: 'dark'
 ---
 
 <div class="center" style="padding-top: 100px; position: relative;">
+  <!--[if lt IE 9]>
+    <p class="alert alert-info">
+      You are using Internet Explorer 8 or lower. This version is not supported for our website. Please use Internet Explorer 9 (or higher). Alternatively a different browser like Firefox or Chrome also works fine.
+    </p>
+  <![endif]-->
   <i class="camunda-icon"></i>
   <p>
     <h1>camunda BPM platform</h1>
