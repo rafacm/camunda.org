@@ -1,6 +1,6 @@
 ---
 
-title: 'Register for a Meeting'
+title: 'Meeting'
 layout: 'default'
 
 ---
@@ -16,7 +16,7 @@ layout: 'default'
 </div>
 
 <div class="row" style="padding-top: 40px; padding-bottom: 100px;">
-  <div class="span3">
+  <div class="span3" id="registerInternal" >
     <form id="registerForm_1" style="width: 80%">
       <fieldset>
         <legend>Register Now:</legend>
@@ -27,14 +27,33 @@ layout: 'default'
       <button type="submit" id="mSubmit" class="btn btn-primary registerForm_">Register now</button>
     </form>
     <p id="status" style="color: red;"></p>
-
   </div>
+  <div class="span3" id="registerExternal" >
+    <form id="" style="width: 80%">
+      <fieldset>
+        <legend>How to Register:</legend>
+        <div class="mRegisterText"></div>
+      </fieldset>
+    </form>
+  </div>
+  <div class="span3" id="registerPast" >
+    <form id="" style="width: 80%">
+      <fieldset>
+        <legend>Registration closed</legend>
+        <p>Sorry, you have missed this meeting :-(</p>
+      </fieldset>
+    </form>
+  </div>
+
+
   <div class="span6" data-meeting>
-    <h3 style="margin-top: 0px;">Where we meet</h3>
+    <h3 style="margin-top: 0px;">When & Where</h3>
+    <p class="mDate"></p>
     <p class="mPlace"></p>
-    <h3 style="margin-top: 0px;">Why you should come</h3>
+    <h3 style="margin-top: 0px;" id="whyCome">Why you should come</h3>
     <div class="mText"></div>
   </div>
+
   <div class="span2" style="font-size: 90%">
     <legend>Questions?</legend>
     <img style="width: 60%" src="<%= @docUrl('assets/img/app/community/team/core/nastasja_johnston.jpg') %>" class="img-polaroid" />
