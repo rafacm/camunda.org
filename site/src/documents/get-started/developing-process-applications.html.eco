@@ -628,7 +628,7 @@ public class LoanApprovalApplication extends ServletProcessApplication {
 @ConcurrencyManagement(ConcurrencyManagementType.BEAN) 
 @TransactionAttribute(TransactionAttributeType.REQUIRED)
 @Local(ProcessApplicationInterface.class)
-public class DefaultEjbProcessApplication extends EjbProcessApplication {
+public class LoanApprovalEjbApplication extends EjbProcessApplication {
   
   @PostConstruct
   public void start() {
