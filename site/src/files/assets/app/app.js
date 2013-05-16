@@ -879,10 +879,35 @@ angular.module('camundaorg.directives')
 
             var myDateString = value.meeting.date;
 
-            var myRow = "<td>" + myDateString + "</td><td><img src='" + App.appBase() + "assets/img/app/community/meetings/" + value.meeting.country + ".png' > " + value.meeting.country + "</td><td>" + value.meeting.city + "</td><td>" + value.meeting.subject + "</td><td>" + value.meeting.attendees + " attendees</td><td>" + parseInt(value.meeting.seats - value.meeting.attendees)  + " seats left</td>";
-            var selectDate = '<td><a style="color:black;" href="' + App.appBase() + 'community/meetings/register.html?id=' + value.meeting.id +'" role="button" class="btn">Register</a></td>';
-         
-            myRow = "<tr>" + selectDate + myRow + "</td></tr>";
+            var selectDate = '<td><a style="color:black;" href="' + App.appBase() + 'community/meetings/register.html?id=' + value.meeting.id +'" role="button" class="btn">Details</a></td>';
+            var myRowData = "<td>" + myDateString + "</td><td><img src='" + App.appBase() + "assets/img/app/community/meetings/" + value.meeting.country + ".png' > " + value.meeting.country + "</td><td>" + value.meeting.city + "</td><td>" + value.meeting.subject + "</td>";
+            var myRowAttendees = "<td></td><td></td>";
+            if (!value.meeting.registerText) {
+              var myRowAttendees = "<td>" + value.meeting.attendees + " attendees</td><td>" + parseInt(value.meeting.seats - value.meeting.attendees)  + " seats left</td>";
+            }
+            var myRow = "<tr>" + selectDate + myRowData + myRowAttendees + "</tr>";
+            element.append(myRow);
+          });
+      });
+    }
+  }
+})
+.directive('camundaEventsPast', function(App) {
+  return {
+    link: function(scope, element, attrs) {
+
+      $.getJSON('http://www.camunda.org/php/meeting.php?past=true', function(data) {
+          $.each( data.events, function( key, value ) {
+
+            var myDateString = value.meeting.date;
+
+            var selectDate = '<td><a style="color:black;" href="' + App.appBase() + 'community/meetings/register.html?id=' + value.meeting.id +'" role="button" class="btn">Details</a></td>';
+            var myRowData = "<td>" + myDateString + "</td><td><img src='" + App.appBase() + "assets/img/app/community/meetings/" + value.meeting.country + ".png' > " + value.meeting.country + "</td><td>" + value.meeting.city + "</td><td>" + value.meeting.subject + "</td>";
+            var myRowAttendees = "<td></td><td></td>";
+            if (!value.meeting.registerText) {
+              var myRowAttendees = "<td>" + value.meeting.attendees + " attendees</td>";
+            }
+            var myRow = "<tr>" + selectDate + myRowData + myRowAttendees + "</tr>";
             element.append(myRow);
           });
       });
@@ -907,7 +932,7 @@ angular.module('camundaorg.directives')
     }
   }
 })
-.directive('meeting', function() {
+.directive('meeting', function(App) {
     function updateAttendees  (meetingId) {
        $.getJSON('http://www.camunda.org/php/meeting.php?id=' + meetingId, function(data) {
           $.each( data.events, function( key, value ) {
@@ -949,8 +974,48 @@ angular.module('camundaorg.directives')
           $('.mCity').text(value.meeting.city);
           $('.mDate').text(value.meeting.date);
           $('.mSubject').append(value.meeting.subject);
-          $('.mText').append(value.meeting.text);
+
+
           $('.mPlace').append(value.meeting.place + ' (<a target="_blank" href="https://maps.google.de/maps?q=' + value.meeting.place + '">Google Maps</a>)');
+          
+          // if there is a text for external Registration
+          if (value.meeting.registerText) {
+            $('#registerInternal').hide();
+            $('#registerPast').hide();
+            $('#registerExternal').show();
+            $('.mRegisterText').append(value.meeting.registerText);
+          } else {
+            $('#registerExternal').hide();
+            $('#registerPast').hide();            
+            $('#registerInternal').show();
+          }
+
+          // if this is a past meeting
+          if ($.now() > Date.parse(value.meeting.date)) {
+            $('#registerInternal').hide();
+            $('#registerExternal').hide();
+            $('#registerPast').show();            
+
+            $('#whyCome').text("Retrospective");                        
+            $('.mText').append(value.meeting.retro);
+          } else {
+
+          // if there is a German Version of the Text
+          if (value.meeting.textDe) {
+            $('.mText').append('<p>Please note that the predominant language of the meeting is German, however, all speakers are proficient in English.</p>' + 
+                                '<ul class="nav nav-tabs">' + 
+                                '<li class="active"><a href="#deutsch" data-toggle="tab">Deutsch</a></li>' + 
+                                '<li><a href="#english" data-toggle="tab">English</a></li>' + 
+                                '</ul>' + 
+                                '<div class="tab-content">' + 
+                                '<div class="tab-pane active" id="deutsch">' + value.meeting.textDe + '</div>' + 
+                                '<div class="tab-pane" id="english">' + value.meeting.text + '</div>' + 
+                                '</div>');
+          } else {
+            $('.mText').append(value.meeting.text);
+          }
+
+          }
 
             if (parseInt(value.meeting.seats - value.meeting.attendees) < 1) {
               $('.mSeats').text ('Sorry, there are no seats left :-(');

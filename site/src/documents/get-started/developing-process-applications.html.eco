@@ -624,11 +624,12 @@ public class LoanApprovalApplication extends ServletProcessApplication {
 <script type="text/xml" id="LoanApprovalEjbApplication">
 @ProcessApplication("Loan Approval App")
 @Singleton
-@Startup 
+@Startup
 @ConcurrencyManagement(ConcurrencyManagementType.BEAN) 
-@TransactionAttribute(TransactionAttributeType.SUPPORTS)
-public class DefaultEjbProcessApplication extends EjbProcessApplication {
-   
+@TransactionAttribute(TransactionAttributeType.REQUIRED)
+@Local(ProcessApplicationInterface.class)
+public class LoanApprovalEjbApplication extends EjbProcessApplication {
+  
   @PostConstruct
   public void start() {
     deploy();
@@ -638,6 +639,7 @@ public class DefaultEjbProcessApplication extends EjbProcessApplication {
   public void stop() {
     undeploy();
   }
+    
 }
 </script>   
 
