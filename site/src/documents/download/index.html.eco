@@ -21,6 +21,7 @@ layout: 'default'
           <th>Distribution</th>
           <th>License*</th>
           <th>Version</th>
+          <th>Release Date</th>
           <th><span class="container-tomcat container-small"></span><br>Apache Tomcat 7</th>
           <th><span class="container-as7 container-small"></span><br>JBoss AS 7</th>
           <th><span class="container-glassfish container-small"></span><br>GlassFish 3.1.x</th>
@@ -30,7 +31,29 @@ layout: 'default'
         <tr style="background-color:#dff0d8;">
           <td>camunda BPM platform</td>
           <td><a href="http://www.apache.org/licenses/LICENSE-2.0">Apache License 2.0</a></td>
-          <td>7.0.0-alpha3 <strong>(current)</strong></td>
+          <td>7.0.0-alpha4 <strong>(current)</strong></td>
+          <td>16.05.2013</td>
+          <td>
+            <a id="download-bpm" href="/download/camunda-bpm/tomcat/7.0.0-alpha4/zip/">zip</a> | 
+            <a id="download-bpm" href="/download/camunda-bpm/tomcat/7.0.0-alpha4/tar.gz/">tar.gz</a>
+          </td>
+          <td>
+            <a id="download-bpm" href="/download/camunda-bpm/jboss/7.0.0-alpha4/zip/">zip</a> | 
+            <a id="download-bpm" href="/download/camunda-bpm/jboss/7.0.0-alpha4/tar.gz/">tar.gz</a>
+          </td>                
+          <td>
+            <a id="download-bpm" href="/download/camunda-bpm/glassfish/7.0.0-alpha4/zip/">zip</a> | 
+            <a id="download-bpm" href="/download/camunda-bpm/glassfish/7.0.0-alpha4/tar.gz/">tar.gz</a>
+          </td>                
+        </tr>
+        <tr>
+          <td colspan="6" style="padding-top: 40px;"><strong>Previous Releases</strong></td>
+        </tr>
+        <tr>
+          <td>camunda BPM platform</td>
+          <td><a href="http://www.apache.org/licenses/LICENSE-2.0">Apache License 2.0</a></td>
+          <td>7.0.0-alpha3</strong></td>
+          <td>03.05.2013</td>
           <td>
             <a id="download-bpm" href="/download/camunda-bpm/tomcat/7.0.0-alpha3/zip/">zip</a> | 
             <a id="download-bpm" href="/download/camunda-bpm/tomcat/7.0.0-alpha3/tar.gz/">tar.gz</a>
@@ -45,12 +68,10 @@ layout: 'default'
           </td>                
         </tr>
         <tr>
-          <td colspan="6" style="padding-top: 40px;"><strong>Previous Releases</strong></td>
-        </tr>
-        <tr>
           <td>camunda BPM platform</td>
           <td><a href="http://www.apache.org/licenses/LICENSE-2.0">Apache License 2.0</a></td>
           <td>7.0.0-alpha2</strong></td>
+          <td>23.04.2013</td>
           <td>
             <a id="download-bpm" href="/download/camunda-bpm/tomcat/7.0.0-alpha2/zip/">zip</a> | 
             <a id="download-bpm" href="/download/camunda-bpm/tomcat/7.0.0-alpha2/tar.gz/">tar.gz</a>
@@ -68,6 +89,7 @@ layout: 'default'
           <td>camunda BPM platform</td>
           <td><a href="http://www.apache.org/licenses/LICENSE-2.0">Apache License 2.0</a></td>
           <td>7.0.0-alpha1</td>
+          <td>18.03.2013</td>
           <td>
             <a id="download-bpm" href="/download/camunda-bpm/tomcat/7.0.0-alpha1/zip/">zip</a> | 
             <a id="download-bpm" href="/download/camunda-bpm/tomcat/7.0.0-alpha1/tar.gz/">tar.gz</a>
