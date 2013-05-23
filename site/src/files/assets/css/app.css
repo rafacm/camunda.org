@@ -19,6 +19,52 @@
     top: 10%;
 }
 
+/** IntelliJ Banner **/
+a.intellij-picture {
+  display: block; 
+  background: #0d3a9e url(http://www.jetbrains.com/idea/opensource/img/all/idea234x60_blue.gif) no-repeat 0 0; 
+  border: solid 1px #26409f; 
+  margin: 0;
+  padding: 0;
+  text-decoration: none;
+  text-indent: 0;
+  width: 252px; 
+  height: 58px;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  border-radius: 3px;
+}
+
+span.intellij-text404 {
+  margin: -4px 0 0 42px;
+  padding: 0;
+  float: left;
+  font-size: 10px;
+  cursor: pointer;
+  background-image: none;
+  border: 0;
+  color: #acc4f9;
+  font-family: trebuchet ms,arial,sans-serif;
+  font-weight: normal;
+  text-align: left;
+}
+
+span.intellij-textDesc {
+  margin: 33px 0 0 7px;
+  padding: 0 0 2px 0;
+  line-height: 12px;
+  font-size: 9px;
+  cursor: pointer;
+  background-image: none;
+  border: 0;
+  display: block;
+  width: 240px; 
+  color: #acc4f9;
+  font-family: trebuchet ms,arial,sans-serif;
+  font-weight: normal;
+  text-align: left;
+}
+
 @media (min-width: 980px) {
   .navbar-inverse .nav > li:hover > a, .navbar-inverse .nav > li > a:hover {
     color: white;
@@ -769,7 +815,7 @@ img {
   -webkit-filter: grayscale(0);
 }
 
-/** gettign started */
+/** getting started */
 
 .gs-guide {
   padding: 30px;
