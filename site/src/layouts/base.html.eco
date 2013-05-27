@@ -31,6 +31,11 @@
     <script async src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
   <![endif]-->
 
+  <!-- ie6-9 support for placeholder property -->
+  <!--[if lt IE 10]>
+    <script async src="<%= @docUrl('assets/vendor/jquery/placeholder/jquery.placeholderpatch.js') %>" ></script>
+  <![endif]-->
+
   <base app-base="<%= @pathSeparator() %>" />
 
   <!-- styles -->
