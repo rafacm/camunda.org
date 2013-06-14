@@ -190,7 +190,10 @@ layout: 'dark'
 
       <div class="span4" style="text-align: left;">
         <h3>#camunda Tweets</h3>
-        <div data-cam-tweets class="content-box"></div>
+        <a class="twitter-timeline" href="https://twitter.com/search?q=%23camunda" data-widget-id="345585721429590016">Tweets about "#camunda"</a>
+<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+
+
       </div>
 
       <div class="span4" style="text-align: left;">
