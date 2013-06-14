@@ -31,7 +31,28 @@ layout: 'default'
         <tr style="background-color:#dff0d8;">
           <td>camunda BPM platform</td>
           <td><a href="http://www.apache.org/licenses/LICENSE-2.0">Apache License 2.0</a></td>
-          <td>7.0.0-alpha5 <strong>(current)</strong></td>
+          <td>7.0.0-alpha6 <strong>(current)</strong></td>
+          <td>14.06.2013</td>
+          <td>
+            <a id="download-bpm" href="/download/camunda-bpm/tomcat/7.0.0-alpha6/zip/">zip</a> | 
+            <a id="download-bpm" href="/download/camunda-bpm/tomcat/7.0.0-alpha6/tar.gz/">tar.gz</a>
+          </td>
+          <td>
+            <a id="download-bpm" href="/download/camunda-bpm/jboss/7.0.0-alpha6/zip/">zip</a> | 
+            <a id="download-bpm" href="/download/camunda-bpm/jboss/7.0.0-alpha6/tar.gz/">tar.gz</a>
+          </td>                
+          <td>
+            <a id="download-bpm" href="/download/camunda-bpm/glassfish/7.0.0-alpha6/zip/">zip</a> | 
+            <a id="download-bpm" href="/download/camunda-bpm/glassfish/7.0.0-alpha6/tar.gz/">tar.gz</a>
+          </td>                
+        </tr>
+        <tr>
+          <td colspan="6" style="padding-top: 40px;"><strong>Previous Releases</strong></td>
+        </tr>
+        <tr>
+          <td>camunda BPM platform</td>
+          <td><a href="http://www.apache.org/licenses/LICENSE-2.0">Apache License 2.0</a></td>
+          <td>7.0.0-alpha5</td>
           <td>31.05.2013</td>
           <td>
             <a id="download-bpm" href="/download/camunda-bpm/tomcat/7.0.0-alpha5/zip/">zip</a> | 
@@ -44,10 +65,7 @@ layout: 'default'
           <td>
             <a id="download-bpm" href="/download/camunda-bpm/glassfish/7.0.0-alpha5/zip/">zip</a> | 
             <a id="download-bpm" href="/download/camunda-bpm/glassfish/7.0.0-alpha5/tar.gz/">tar.gz</a>
-          </td>                
-        </tr>
-        <tr>
-          <td colspan="6" style="padding-top: 40px;"><strong>Previous Releases</strong></td>
+          </td>   
         </tr>
         <tr>
           <td>camunda BPM platform</td>
