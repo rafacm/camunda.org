@@ -652,7 +652,7 @@ layout: 'default'
                 <div class="media-body">
                     <h4 class="media-heading">Rafael Cordones</h4>
                     <p>
-                        Software Developer &amp; Partner at plexiti GmbH
+                        Software Developer &amp; and Consultant
                     </p>
                 </div>
             </div>
@@ -670,21 +670,23 @@ layout: 'default'
                         <div class="media-body">
                             <p>
                                 I consider myself a full-stack software developer with the business value of the product on top of that stack.<br/>
-                                Since the (hidden) com<a href="http://plexiti.com">plexiti</a> of most software projects lies in understanding the business domain,
+                                Since the (hidden) complexity of most software projects lies in understanding the business domain,
                                 I have a passion for whole&#8209;team specification involvement, processes as first&#8209;class application citizens and
-                                application <a href="http://camel.apache.org">integration</a> <a href="http://www.springsource.org/spring-integration">frameworks</a>. Topped with a <a href="http://www.youtube.com/watch?v=eQsM6u0a038#t=07m03s">music-driven</a> implementation.
+                                application <a href="http://camel.apache.org">integration</a> <a href="http://www.springsource.org/spring-integration">frameworks</a>.
+                                Topped with a <a href="http://www.youtube.com/watch?v=uh9oUHO2dxE">music-driven</a> implementation.
                             </p>
                             <p>
                                 I believe myself inoculated against the Not Invented Here syndrome preferring instead to
                                 fully embrace a Proudly Found Elsewhere attitude.
                             </p>
                             <p>
-                                <a href="http://www.youtube.com/watch?v=3Wi1d0FNgdQ">I'm from Barcelona</a> by birth and European by choice. Currently living in Vienna.
+                                <a href="http://www.youtube.com/watch?v=3Wi1d0FNgdQ">I'm from Barcelona</a> by birth and European at heart. Currently living in Vienna.
                             </p>
                             <p>
                                 <b>Find me on the web:</b>
                             </p>
                             <ul>
+                                <li><a href="http://rafael.cordones.me">Blog</a></li>
                                 <li><a href="https://github.com/rafacm">GitHub</a></li>
                                 <li><a href="http://twitter.com/rafacm">Twitter</a></li>
                                 <li><a href="http://www.linkedin.com/in/rafaelcordones">LinkedIn</a></li>
