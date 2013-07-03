@@ -223,7 +223,7 @@ angular.module('camundaorg.controllers', [])
                   set.push(guessNumner);
                 }
 
-                var timeout = 1500;
+                var timeout = 750;
 
                 set.animate({
                   along: [to,set.id]
@@ -975,9 +975,11 @@ angular.module('camundaorg.directives')
           $('.mDate').text(value.meeting.date);
           $('.mSubject').append(value.meeting.subject);
 
+          var filteredMeetingPlace = value.meeting.place.replace(/\<a\ href=\".*.\"\>/, "");
+          filteredMeetingPlace = filteredMeetingPlace.replace(/\<\/a\>/, "");
+          //$('.mPlace').append(value.meeting.place + ' (<a target="_blank" href="https://maps.google.de/maps?q=' + value.meeting.place + '">Google Maps</a>)');
+          $('.mPlace').append(value.meeting.place + ' (<a target="_blank" href="https://maps.google.de/maps?q=' + filteredMeetingPlace + '">Google Maps</a>)');
 
-          $('.mPlace').append(value.meeting.place + ' (<a target="_blank" href="https://maps.google.de/maps?q=' + value.meeting.place + '">Google Maps</a>)');
-          
           // if there is a text for external Registration
           if (value.meeting.registerText) {
             $('#registerInternal').hide();

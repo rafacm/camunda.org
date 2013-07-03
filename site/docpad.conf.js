@@ -52,6 +52,7 @@ var docpadConfig = {
 
         "assets/vendor/jquery/tweet/jquery.tweet.js",
         "assets/vendor/jquery/validate/jquery.validate.min.js",
+        "assets/vendor/jquery/placeholder/jquery.placeholderpatch.js",
 
         "assets/vendor/bootstrap/js/bootstrap.min.js",
         "assets/vendor/log.js",

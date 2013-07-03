@@ -56,5 +56,8 @@
     <p>
       Built by <a href="http://www.camunda.com">camunda</a> and contributors &mdash; camunda Services GmbH &copy; 2013
     </p>
+    <p>
+      <a href="http://www.jetbrains.com/idea/features/javascript.html" class="intellij-picture" alt="Java IDE with advanced HTML/CSS/JS editor for hardcore web-developers" title="Java IDE with advanced HTML/CSS/JS editor for hardcore web-developers"><span class="intellij-text404">I'd be 404 without</span><span class="intellij-textDesc">Java IDE with advanced HTML/CSS/JS<br/>editor for hardcore web-developers</span></a>
+    </p>
   </div>
 </footer>
