@@ -32,7 +32,7 @@ layout: 'default'
           <td>camunda BPM platform</td>
           <td><a href="http://www.apache.org/licenses/LICENSE-2.0">Apache License 2.0</a></td>
           <td>7.0.0-alpha7 <strong>(current)</strong></td>
-          <td>14.06.2013</td>
+          <td>04.07.2013</td>
           <td>
             <a id="download-bpm" href="/download/camunda-bpm/tomcat/7.0.0-alpha7/zip/">zip</a> | 
             <a id="download-bpm" href="/download/camunda-bpm/tomcat/7.0.0-alpha7/tar.gz/">tar.gz</a>
