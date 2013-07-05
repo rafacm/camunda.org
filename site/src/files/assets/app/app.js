@@ -1015,10 +1015,28 @@ angular.module('camundaorg.directives')
           $('.mDate').text(value.meeting.date);
           $('.mSubject').append(value.meeting.subject);
 
-          var filteredMeetingPlace = value.meeting.place.replace(/\<a\ href=\".*.\"\>/, "");
+          // need to filter some meeting addresses because of address changes
+          // so first we use a new syntax for google-Links - happy welcome BBCODE style [L] and [/L]
+          var filteredByMatch = value.meeting.place.match(/\[L\].*\[\/L\]/);
+          if(filteredByMatch != null) {
+            filteredByMatch = filteredByMatch[0].replace(/\[L\]/, "").replace(/\[\/L\]/, "");
+          }
+
+          // if we found our [L] we slice it out of our meeting place text (we doesn't want to see the L in the text)
+          var location;
+          var meetingPlace;
+          if(filteredByMatch != null && 0 < filteredByMatch[0].length) {
+            location = filteredByMatch;
+            meetingPlace = value.meeting.place.substring(0, value.meeting.place.indexOf("[L]"));
+          } else {
+            location = meetingPlace = value.meeting.place;
+          }
+
+          // Additional <a href> filter - without some googlemaps-links would be very ... not so fine
+          var filteredMeetingPlace = location.replace(/\<a\ href=\".*\"\>/, "");
           filteredMeetingPlace = filteredMeetingPlace.replace(/\<\/a\>/, "");
-          //$('.mPlace').append(value.meeting.place + ' (<a target="_blank" href="https://maps.google.de/maps?q=' + value.meeting.place + '">Google Maps</a>)');
-          $('.mPlace').append(value.meeting.place + ' (<a target="_blank" href="https://maps.google.de/maps?q=' + filteredMeetingPlace + '">Google Maps</a>)');
+
+          $('.mPlace').append(meetingPlace + ' (<a target="_blank" href="https://maps.google.de/maps?q=' + filteredMeetingPlace + '">Google Maps</a>)');
 
           // if there is a text for external Registration
           if (value.meeting.registerText) {
