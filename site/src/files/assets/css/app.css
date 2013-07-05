@@ -776,6 +776,21 @@ div.content-box {
 /**
  * community/users
  */
+
+ .testimonial .span3 {
+  text-align: center;
+  border: 1px solid lightgrey;
+  height: 140px;
+  margin-right: 10px;
+  margin-bottom: 10px;
+  cursor: pointer;
+  color: black;
+  /*
+         filter: gray;
+         -webkit-filter: grayscale(1);            
+         */
+}
+
 .community-users .span3 {
   text-align: center;
   border: 1px solid lightgrey;
@@ -790,17 +805,53 @@ div.content-box {
          */
 }
 
+.community-users .span2 {
+  text-align: center;
+  border: 1px solid lightgrey;
+  height: 130px;
+  margin-right: 10px;
+  margin-bottom: 10px;
+  cursor: pointer;
+  color: black;
+  /*
+         filter: gray;
+         -webkit-filter: grayscale(1);            
+         */
+}
+
+.community-users .selected {
+  background-color: lightgrey; 
+}
+
 img {
   max-width: 100%;
 }
 
-.community-users .span3:hover {
+.community-users .span3:hover, .community-users .span2:hover {
   background-color: lightgrey;
   filter: none;
   -webkit-filter: grayscale(0);
 }
 
 .community-users img, .modal img.logo {
+  max-width: 100px;
+  max-height: 42px;
+  padding: 10px;
+}
+
+.community-user-logo {
+  height:55px; 
+  border-top: 1px solid lightgrey; 
+  border-bottom: 1px solid lightgrey; 
+  margin-bottom: 0px; 
+  padding-bottom: 0px;
+}
+
+.community-user-country {
+  padding-top:5px !important;
+}
+
+ .testimonial img {
   max-width: 200px;
   max-height: 70px;
   padding: 10px;

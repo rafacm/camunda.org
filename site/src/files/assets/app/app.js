@@ -892,6 +892,46 @@ angular.module('camundaorg.directives')
     }
   }
 })
+.directive('camundaUsers', function(App) {
+  return {
+    link: function(scope, element, attrs) {
+
+      // check for Deeplink to concrete user testimonial
+      if (document.URL.indexOf('#') > 0) {
+        var user = document.URL.substr(document.URL.indexOf('#')+3)
+          $(".span2").removeClass("selected");
+          $('#' + user).find(".span2").addClass ("selected");
+          $('#testimonialLogo').attr("src", $('#' + user).find("img").attr("src"));
+          $('#testimonialIndustry').text($('#' + user).find("h4").text());          
+          $('#testimonialQuote').html ( $('#' + user + 'Quote').html() );
+      }
+    }
+  }
+})
+
+.directive('camundaUser', function(App) {
+  return {
+    link: function(scope, element, attrs) {
+
+      $(element).click(function() {
+        $(".span2").removeClass("selected");
+        $(element).find(".span2").addClass ("selected");
+
+        $('#testimonialLogo').fadeOut(300, function() {
+          $('#testimonialLogo').attr("src", $(element).find("img").attr("src"));
+          $('#testimonialIndustry').text($(element).find("h4").text());
+          $('#testimonialLogo').fadeIn(900);
+        });
+
+        $('#testimonialQuote').fadeOut (300, function() {
+          $('#testimonialQuote').html ( $('#' + $(element).attr("id")  + "Quote").html() );
+          $('#testimonialQuote').fadeIn (900);
+        });
+
+      });
+    }
+  }
+})
 .directive('camundaEventsPast', function(App) {
   return {
     link: function(scope, element, attrs) {
