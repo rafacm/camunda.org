@@ -67,51 +67,6 @@ layout: 'default'
 
       <div class="span3">
         <div class="media">
-          <a class="pull-left" href="#andreas-details" data-toggle="modal"> <img class="media-object img-circle"
-            src="<%= @docUrl('assets/img/app/community/team/core/andreas_drobisch.jpg') %>">
-          </a>
-          <div class="media-body">
-            <h4 class="media-heading">Andreas Drobisch</h4>
-            <p>Scrum Master &amp; Core&nbsp;Developer</p>
-          </div>
-        </div>
-        <!-- start modal -->
-        <div id="andreas-details" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="andreas-details-label" aria-hidden="true">
-          <div class="modal-header">
-            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-            <h3 id="andreas-details-label">Andreas Drobisch</h3>
-          </div>
-          <div class="modal-body">
-            <div class="media">
-              <a class="pull-left"> <img class="media-object img-circle" src="<%= @docUrl('assets/img/app/community/team/core/andreas_drobisch.jpg') %>">
-              </a>
-              <div class="media-body">
-                <p>
-                  I work at camunda as Scrum Master and software engineer, mostly touching the modeler and the web stack. I am also very excited about the
-                  new directions in the web and java world caused by JavaScript and Scala. You can clone my ideas at <a
-                    href="https://github.com/adrobisch">GitHub</a> or read them at <a href="http://twitter.com/adrobisch">twitter</a> or in <a
-                    href="http://blog.drobisch.com">my blog</a>.
-                </p>
-                <p>
-                  <b>Find me on the web:</b>
-                </p>
-                <ul>
-                  <li><a href="https://github.com/adrobisch">GitHub</a></li>
-                  <li><a href="http://twitter.com/adrobisch">Twitter</a></li>
-                  <li><a href="http://blog.drobisch.com">Blog</a></li>
-                </ul>
-              </div>
-            </div>
-          </div>
-          <div class="modal-footer">
-            <button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
-          </div>
-        </div>
-        <!-- end modal -->
-      </div>
-
-      <div class="span3">
-        <div class="media">
           <a class="pull-left" href="#nico-details" data-toggle="modal"> <img class="media-object img-circle"
             src="<%= @docUrl('assets/img/app/community/team/core/nico_rehwaldt.jpg') %>">
           </a>
