@@ -145,6 +145,16 @@ layout: 'default'
       <img class="pull-left community-user-country" src="<%= @docUrl('assets/img/app/community/meetings/Germany.png') %>">            
     </div>
   </a>
+  <a id="swr" href="#!swr" data-camunda-user>
+    <div class="span2">
+      <h4>Media</h4>
+      <div class="community-user-logo" >
+        <img src="<%= @docUrl('assets/img/app/community/users/swr.jpg') %>">
+      </div>
+      <img class="pull-left community-user-country" src="<%= @docUrl('assets/img/app/community/meetings/Germany.png') %>">            
+    </div>
+  </a>
+
   <a id="oc" href="#!oc" data-camunda-user>
     <div class="span2">
       <h4>Consulting Services</h4>
@@ -331,6 +341,15 @@ The IHK-GfI is the joint technology- and competency-center for service-oriented 
         asynchronous jobs (e.g. timer-driven events). During the implementation and operation of our product, we additionally benefit from the extensive BPM
         experiences and competences by camunda.<br />(Markus Stecher, Director Product Development)
 
+    </p>
+  </div>
+
+  <div id="swrQuote">
+
+    <p><b>Südwestrundfunk</b> (<a href="http://www.swr.de/">Website</a>) | <b>Location: </b>Stuttgart, Germany | <b>Using: </b><a href="http://www.camunda.com/fox/product/community-vs-enterprise/">Community Edition</a></p>
+   <p>
+      <b>Why we recommend camunda BPM:</b><br /> 
+      For executing our Business Processes we need a stabile process engine, a sophisticated process visualization and development tools that are both intuitive and standardized (part of Eclipse IDE). After evaluating numerous BPM products for several weeks, camunda BPM turned out to be our first choice.
     </p>
   </div>
 
