@@ -1015,6 +1015,9 @@ angular.module('camundaorg.directives')
           $('.mDate').text(value.meeting.date);
           $('.mSubject').append(value.meeting.subject);
 
+
+          // We don't need a googlemaps link if we have a webinar (or someone shows me the place called internet on the worldmap)
+          var meetingSpace = '';
           if(value.meeting.isWebinar != true) {
 	          // need to filter some meeting addresses because of address changes
 	          // so first we use a new syntax for google-Links - happy welcome BBCODE style [L] and [/L]
@@ -1037,9 +1040,13 @@ angular.module('camundaorg.directives')
 	          var filteredMeetingPlace = location.replace(/\<a\ href=\".*\"\>/, "");
 	          filteredMeetingPlace = filteredMeetingPlace.replace(/\<\/a\>/, "");
 
-	          $('.mPlace').append(meetingPlace + ' (<a target="_blank" href="https://maps.google.de/maps?q=' + filteredMeetingPlace + '">Google Maps</a>)');
+	          meetingSpace = meetingPlace + ' (<a target="_blank" href="https://maps.google.de/maps?q=' + filteredMeetingPlace + '">Google Maps</a>)');
+          } else {
+          	  meetingSpace = meetingPlace;
           }
           
+          $('.mPlace').append(meetingSpace);
+
           // if there is a text for external Registration
           if (value.meeting.registerText) {
             $('#registerInternal').hide();
