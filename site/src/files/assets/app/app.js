@@ -1042,7 +1042,7 @@ angular.module('camundaorg.directives')
 
 	          meetingSpace = meetingPlace + ' (<a target="_blank" href="https://maps.google.de/maps?q=' + filteredMeetingPlace + '">Google Maps</a>)';
           } else {
-          	  meetingSpace = meetingPlace;
+          	  meetingSpace = value.meeting.place;
           }
           
           $('.mPlace').append(meetingSpace);
