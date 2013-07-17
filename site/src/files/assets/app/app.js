@@ -1040,7 +1040,7 @@ angular.module('camundaorg.directives')
 	          var filteredMeetingPlace = location.replace(/\<a\ href=\".*\"\>/, "");
 	          filteredMeetingPlace = filteredMeetingPlace.replace(/\<\/a\>/, "");
 
-	          meetingSpace = meetingPlace + ' (<a target="_blank" href="https://maps.google.de/maps?q=' + filteredMeetingPlace + '">Google Maps</a>)');
+	          meetingSpace = meetingPlace + ' (<a target="_blank" href="https://maps.google.de/maps?q=' + filteredMeetingPlace + '">Google Maps</a>)';
           } else {
           	  meetingSpace = meetingPlace;
           }
