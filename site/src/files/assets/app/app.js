@@ -858,7 +858,7 @@ angular.module('camundaorg.directives')
   return {
     link: function(scope, element, attrs) {
 
-      $.getJSON('../php/meeting.php', function(data) {
+      $.getJSON(window.location.origin + "/php/meeting.php', function(data) {
           $.each( data.events, function( key, value ) {
 
             var myDateString = value.meeting.date;
@@ -920,7 +920,7 @@ angular.module('camundaorg.directives')
   return {
     link: function(scope, element, attrs) {
 
-      $.getJSON('../php/meeting.php?past=true', function(data) {
+      $.getJSON(window.location.origin + "/php/meeting.php?past=true', function(data) {
           $.each( data.events, function( key, value ) {
 
             var myDateString = value.meeting.date;
@@ -960,7 +960,7 @@ angular.module('camundaorg.directives')
 .directive('meeting', function(App) {
     function updateAttendees  (meetingId) {
       jQuery.support.cors = true; // IE8 FTW!
-       $.getJSON('../php/meeting.php?id=' + meetingId, function(data) {
+       $.getJSON(window.location.origin + "/php/meeting.php?id=' + meetingId, function(data) {
           $.each( data.events, function( key, value ) {
             var freeSeats = parseInt(value.meeting.seats - value.meeting.attendees);
             if (freeSeats < 1) {
@@ -992,7 +992,7 @@ angular.module('camundaorg.directives')
         var meetingId = HTTP_GET_VARS["id"];
 
 
-        $.getJSON('../php/meeting.php?id=' + meetingId, function(data) {
+        $.getJSON(window.location.origin + '/php/meeting.php?id=' + meetingId, function(data) {
         
           $.each( data.events, function( key, value ) {
           
@@ -1103,7 +1103,7 @@ angular.module('camundaorg.directives')
                // HttpContext.Current.Response.AddHeader("Access-Control-Allow-Origin", "*");
                  $.ajax({
                  // pfad zur PHP Datei (ab HTML Datei)
-                      url: "../php/register.php",
+                      url: window.location.origin + "/php/register.php",
                  // Daten, die an Server gesendet werden soll in JSON Notation
                       data: {id: value.meeting.id, name: myName, email: myEmail},
                       datatype: "jsonp",
@@ -1150,7 +1150,7 @@ angular.module('camundaorg.directives')
                 var myEmail = $('#email').val();
                  $.ajax({
                  // pfad zur PHP Datei (ab HTML Datei)
-                      url: "../php/subscribeMeetings.php",
+                      url: window.location.origin + "/php/subscribeMeetings.php",
                  // Daten, die an Server gesendet werden soll in JSON Notation
                       data: {email: myEmail},
                       datatype: "jsonp",
