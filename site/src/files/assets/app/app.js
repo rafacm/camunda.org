@@ -858,7 +858,7 @@ angular.module('camundaorg.directives')
   return {
     link: function(scope, element, attrs) {
 
-      $.getJSON(window.location.origin + "/php/meeting.php', function(data) {
+      $.getJSON(window.location.origin + '/php/meeting.php', function(data) {
           $.each( data.events, function( key, value ) {
 
             var myDateString = value.meeting.date;
