@@ -349,33 +349,17 @@ angular.module('camundaorg.controllers', [])
 
 })
 
-.controller('RoadmapController', function ($scope, $resource, CSV) {
-  var getResource   = $resource('./assets/csv/roadmap.csv');
-    var roadmapResource = new getResource();
-    roadmapResource.$get({sid: Math.random()}, //generate a random string to prevent proxy caching
-        function(data) {
-            var i = 0;
-            var e = null;
-            var string = "";
-      $scope.roadmapErrorText = "";
-      
-            for(e in data) {
-                i++;
-            }
-            for(var n = 0; n<= i; n++) {
-                if(typeof data[n] === "undefined") {
-                    
-                } else {
-                    string = string + data[n];
-                }
-            }
-            $scope.roadmapRows = CSV.csv2json(string, { delim: ';', textdelim: '"'});
-        },
-        function() {
-            $scope.roadmapErrorText = "The roadmap is currently unavailable!";
-        }
-    );
-    
+.controller('RoadmapController', function ($scope, $http, CSV) {
+  $jQuery.support.cors = true;
+  $http({method: 'GET', url: './assets/csv/roadmap.csv'})
+      .success(function(data) {
+        $scope.roadmapErrorText = '';
+        $scope.roadmapRows = CSV.csv2json(data, { delim: ';', textdelim: '"'});
+      })
+      .error(function(data) {
+        $scope.roadmapErrorText = "Sorry, at the moment there is no Roadmap available."
+      });
+
     $scope.isNotNull = function(value) {
         if(value == 0 || typeof value === undefined || value == "" || value == "" || value == null) {
             return false;
@@ -874,7 +858,7 @@ angular.module('camundaorg.directives')
   return {
     link: function(scope, element, attrs) {
 
-      $.getJSON('http://www.camunda.org/php/meeting.php', function(data) {
+      $.getJSON('./php/meeting.php', function(data) {
           $.each( data.events, function( key, value ) {
 
             var myDateString = value.meeting.date;
@@ -936,7 +920,7 @@ angular.module('camundaorg.directives')
   return {
     link: function(scope, element, attrs) {
 
-      $.getJSON('http://www.camunda.org/php/meeting.php?past=true', function(data) {
+      $.getJSON('./php/meeting.php?past=true', function(data) {
           $.each( data.events, function( key, value ) {
 
             var myDateString = value.meeting.date;
@@ -955,10 +939,11 @@ angular.module('camundaorg.directives')
   }
 })
 .directive('camundaEventsHome', function() {
+  jQuery.support.cors = true; // IE8 FTW!
   return {
     link: function(scope, element, attrs) {
 
-      $.getJSON('http://www.camunda.org/php/meeting.php', function(data) {
+      $.getJSON('./php/meeting.php', function(data) {
 
           $.each( data.events, function( key, value ) {
 
@@ -974,7 +959,8 @@ angular.module('camundaorg.directives')
 })
 .directive('meeting', function(App) {
     function updateAttendees  (meetingId) {
-       $.getJSON('http://www.camunda.org/php/meeting.php?id=' + meetingId, function(data) {
+      jQuery.support.cors = true; // IE8 FTW!
+       $.getJSON('./php/meeting.php?id=' + meetingId, function(data) {
           $.each( data.events, function( key, value ) {
             var freeSeats = parseInt(value.meeting.seats - value.meeting.attendees);
             if (freeSeats < 1) {
@@ -1006,7 +992,7 @@ angular.module('camundaorg.directives')
         var meetingId = HTTP_GET_VARS["id"];
 
 
-        $.getJSON('http://www.camunda.org/php/meeting.php?id=' + meetingId, function(data) {
+        $.getJSON('./php/meeting.php?id=' + meetingId, function(data) {
         
           $.each( data.events, function( key, value ) {
           
@@ -1117,7 +1103,7 @@ angular.module('camundaorg.directives')
                // HttpContext.Current.Response.AddHeader("Access-Control-Allow-Origin", "*");
                  $.ajax({
                  // pfad zur PHP Datei (ab HTML Datei)
-                      url: "http://www.camunda.org/php/register.php",
+                      url: "./php/register.php",
                  // Daten, die an Server gesendet werden soll in JSON Notation
                       data: {id: value.meeting.id, name: myName, email: myEmail},
                       datatype: "jsonp",
@@ -1164,7 +1150,7 @@ angular.module('camundaorg.directives')
                 var myEmail = $('#email').val();
                  $.ajax({
                  // pfad zur PHP Datei (ab HTML Datei)
-                      url: "http://www.camunda.org/php/subscribeMeetings.php",
+                      url: "./php/subscribeMeetings.php",
                  // Daten, die an Server gesendet werden soll in JSON Notation
                       data: {email: myEmail},
                       datatype: "jsonp",
