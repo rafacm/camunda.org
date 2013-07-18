@@ -920,7 +920,7 @@ angular.module('camundaorg.directives')
   return {
     link: function(scope, element, attrs) {
 
-      $.getJSON(window.location.origin + "/php/meeting.php?past=true', function(data) {
+      $.getJSON(window.location.origin + '/php/meeting.php?past=true', function(data) {
           $.each( data.events, function( key, value ) {
 
             var myDateString = value.meeting.date;
@@ -960,7 +960,7 @@ angular.module('camundaorg.directives')
 .directive('meeting', function(App) {
     function updateAttendees  (meetingId) {
       jQuery.support.cors = true; // IE8 FTW!
-       $.getJSON(window.location.origin + "/php/meeting.php?id=' + meetingId, function(data) {
+       $.getJSON(window.location.origin + '/php/meeting.php?id=' + meetingId, function(data) {
           $.each( data.events, function( key, value ) {
             var freeSeats = parseInt(value.meeting.seats - value.meeting.attendees);
             if (freeSeats < 1) {
