@@ -958,7 +958,12 @@ angular.module('camundaorg.directives')
   }
 })
 .directive('meeting', function(App) {
-    function updateAttendees  (meetingId) {
+  function getTimestamp(dateString) {
+    var d = dateString.match(/[0-9A-Za-z]{2,4}/g);
+    return new Date(d[1] + ' ' + d[0] + ', ' + d[2] + ' ' + d[3] + ':' + d[4] + ':00').getTime();
+  }
+
+    function updateAttendees(meetingId) {
       jQuery.support.cors = true; // IE8 FTW!
        $.getJSON(window.location.protocol + "//" + window.location.hostname + '/php/meeting.php?id=' + meetingId, function(data) {
           $.each( data.events, function( key, value ) {
@@ -1046,9 +1051,10 @@ angular.module('camundaorg.directives')
           }
 
           // if this is a past meeting
-          if ($.now() > Date.parse(value.meeting.date)) {
+          if ($.now() > getTimestamp(value.meeting.date)) {
             $('#registerInternal').hide();
             $('#registerExternal').hide();
+            console.log()
             $('#registerPast').show();            
 
             $('#whyCome').text("Retrospective");                        
@@ -1114,7 +1120,7 @@ angular.module('camundaorg.directives')
                         $('#status').text(data);
                         $('#mName').val("");
                         $('#mEmail').val("");
-                        updateAttendees  (meetingId);
+                        updateAttendees(meetingId);
                       }
                  });
               }             
