@@ -350,7 +350,7 @@ angular.module('camundaorg.controllers', [])
 })
 
 .controller('RoadmapController', function ($scope, $http, CSV) {
-  $jQuery.support.cors = true;
+  jQuery.support.cors = true;
   $http({method: 'GET', url: './assets/csv/roadmap.csv'})
       .success(function(data) {
         $scope.roadmapErrorText = '';
