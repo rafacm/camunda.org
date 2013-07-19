@@ -31,7 +31,28 @@ layout: 'default'
         <tr style="background-color:#dff0d8;">
           <td>camunda BPM platform</td>
           <td><a href="http://www.apache.org/licenses/LICENSE-2.0">Apache License 2.0</a></td>
-          <td>7.0.0-alpha7 <strong>(current)</strong></td>
+          <td>7.0.0-alpha8 <strong>(current)</strong></td>
+          <td>19.07.2013</td>
+          <td>
+            <a id="download-bpm" href="/download/camunda-bpm/tomcat/7.0.0-alpha8/zip/">zip</a> | 
+            <a id="download-bpm" href="/download/camunda-bpm/tomcat/7.0.0-alpha8/tar.gz/">tar.gz</a>
+          </td>
+          <td>
+            <a id="download-bpm" href="/download/camunda-bpm/jboss/7.0.0-alpha8/zip/">zip</a> | 
+            <a id="download-bpm" href="/download/camunda-bpm/jboss/7.0.0-alpha8/tar.gz/">tar.gz</a>
+          </td>                
+          <td>
+            <a id="download-bpm" href="/download/camunda-bpm/glassfish/7.0.0-alpha8/zip/">zip</a> | 
+            <a id="download-bpm" href="/download/camunda-bpm/glassfish/7.0.0-alpha8/tar.gz/">tar.gz</a>
+          </td>                
+        </tr>
+        <tr>
+          <td colspan="6" style="padding-top: 40px;"><strong>Previous Releases</strong></td>
+        </tr>
+        <tr>
+          <td>camunda BPM platform</td>
+          <td><a href="http://www.apache.org/licenses/LICENSE-2.0">Apache License 2.0</a></td>
+          <td>7.0.0-alpha7</td>
           <td>04.07.2013</td>
           <td>
             <a id="download-bpm" href="/download/camunda-bpm/tomcat/7.0.0-alpha7/zip/">zip</a> | 
@@ -45,10 +66,7 @@ layout: 'default'
             <a id="download-bpm" href="/download/camunda-bpm/glassfish/7.0.0-alpha7/zip/">zip</a> | 
             <a id="download-bpm" href="/download/camunda-bpm/glassfish/7.0.0-alpha7/tar.gz/">tar.gz</a>
           </td>                
-        </tr>
-        <tr>
-          <td colspan="6" style="padding-top: 40px;"><strong>Previous Releases</strong></td>
-        </tr>
+        </tr>        
         <tr>
           <td>camunda BPM platform</td>
           <td><a href="http://www.apache.org/licenses/LICENSE-2.0">Apache License 2.0</a></td>
