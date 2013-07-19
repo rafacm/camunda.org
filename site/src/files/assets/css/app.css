@@ -888,3 +888,12 @@ img {
   background-color: #eee;
 
 }
+
+/* IE8 Hover Hack */
+ul.nav li.dropdown:hover > ul.dropdown-menu{
+  display: block;
+}
+
+a.menu:after, .dropdown-toggle:after {
+  content: none;
+}
