@@ -24,24 +24,21 @@ layout: 'default'
       <img id="testimonialLogo" src="<%= @docUrl('assets/img/app/community/users/dwp.png') %>">  
   </div>
   <div class="span8" id="testimonialQuote">
+  <p><b>Deutsche WertpapierService Bank AG</b> (<a href="http://www.dwpbank.de">Website</a>) | <b>Location: </b>Frankfurt, Germany | <b>Using: </b><a href="http://www.camunda.com/fox/product/community-vs-enterprise/">Enterprise Edition</a></p>
     <p>
-      <b>Why we chose camunda BPM:</b><br /> <em> "In the context of renewing our core system we have decided to enable new potential by introducing a
+      Deutsche WertpapierService Bank AG is the leading transaction bank for securities processing services on the German market. We look after around
+        390 banks and about 6 million securities accounts.
+      </p>
+   <p>
+      <b>Why we recommend camunda BPM:</b><br /> In the context of renewing our core system we have decided to enable new potential by introducing a
         BPM platform. The decision to take camunda has proven to be the right one regarding our special aims. The engine was integrated into our system with
         little effort and since then runs unobtrusively and without any problems. If we did encounter a problem, no matter if of technical or contractual
         nature, it was solved by camunda fast and customer-oriented. The development of the necessary know-how was also very competently supported by camunda.
         Especially our experience how camunda met our individual needs and wishes, was very positive (consulting, finding appointments for bug fixing, or
         contract terms). Thus we were able to concentrate on the aspects of introducing BPMN processes and on changing the development process instead of
-        investing unnecessary energy in coordination and technology with a new service provider."<br />(Dirk Schaube, Applications)
-      </em>
-    </p>
-    <p>
-      <b> Deutsche WertpapierService Bank AG is the leading transaction bank for securities processing services on the German market. We look after around
-        390 banks and about 6 million securities accounts. </b>
-    <p>
-      <a href="http://www.dwpbank.de">www.dwpbank.de</a>
+        investing unnecessary energy in coordination and technology with a new service provider.<br />(Dirk Schaube, Applications)
     </p>
 
-    </p>
   </div>
 </div>
 
@@ -127,6 +124,16 @@ layout: 'default'
       <img class="pull-left community-user-country" src="<%= @docUrl('assets/img/app/community/meetings/Germany.png') %>">            
     </div>
   </a>
+  <a id="ncver" href="#!ncver" data-camunda-user>
+    <div class="span2">
+      <h4>Public Sector</h4>
+      <div class="community-user-logo" >      
+        <img src="<%= @docUrl('assets/img/app/community/users/ncver.jpg') %>">
+      </div>
+      <img class="pull-left community-user-country" src="<%= @docUrl('assets/img/app/community/meetings/Australia.png') %>">            
+    </div>
+  </a>
+
   <a id="ige" href="#!ige" data-camunda-user>
     <div class="span2">
       <h4>Public Sector</h4>
@@ -314,6 +321,20 @@ COUNT+CARE is an experienced metering and billing service provider and as such o
         clients. Right from the beginning we got a very helpful coaching by camunda and could realize a complete transfers of the relevant know-how. We could
         also avoid expensive pitfalls by using the best practice blueprints provided by camunda. The support is also recommendable: Our questions and bug
         reports are promptly analyzed, resolved and answered.<br />(Simon Skaznik, Team Lead EDI Processes)
+
+    </p>
+  </div>
+
+ <div id="ncverQuote">
+
+    <p><b>National Centre for Vocational Education Research</b> (<a href="http://www.ncver.edu.au/">Website</a>) | <b>Location: </b>Aidelaide, Australia | <b>Using: </b><a href="http://www.camunda.com/fox/product/community-vs-enterprise/">Community Edition</a></p>
+    <p>
+The National Centre for Vocational Education Research (NCVER) is a not-for-profit company owned by state, territory and federal ministers responsible for training.
+It is a professional and independent body responsible for collecting, managing, analysing, evaluating and communicating research and statistics about vocational education and training (VET) nationally.
+        </p>
+   <p>
+      <b>Why we recommend camunda BPM:</b><br /> 
+     NCVER choose Camunda BPM over other products due to its simple and seamless integration with our existing product set. Getting it up and running really is as easy as they say it is and we had a working demo in less than an hour. Camunda’s support staff are friendly and helpful and although we have had no problems with the product so far they have proved very useful in getting us up and running quickly and efficiently.<br />(Phil Crick, Team Leader Technical Architecture )
 
     </p>
   </div>
