@@ -24,3 +24,21 @@ In order to start hacking the camunda.org homepage, you first need to setup docp
 Go to http://localhost:9778/
 
 Have fun.
+
+Troubleshooting
+===============
+
+In case you get the following error when executing `docpad run`
+
+```
+TypeError: Object #<DocPad> has no method 'parseDocumentDirectory'
+    at PartialsPlugin.populateCollections (...)
+```
+
+Try the following workaround:
+
+1. Delete the directory `site/node_modules`: `~/docs.camunda.org/site$ rm -rf node_modules`
+2. Install docpad *globally*: `~/docs.camunda.org/site$ sudo install -g docpad@6.43`
+3. Update: `~/docs.camunda.org/site$ npm update`
+4. Use the *globally installed* docpad: `~/docs.camunda.org/site$ docpad run`
+
